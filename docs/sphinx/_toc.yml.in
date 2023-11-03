@@ -1,0 +1,36 @@
+defaults:
+  numbered: False
+  maxdepth: 6
+root: index
+subtrees:
+- caption: Tutorials
+  entries:
+    - file: tutorial/quick_start
+
+- caption: How to Guides
+  entries:
+    - file: how-to/index
+    - file: how-to/install/install
+    - file: how-to/deep-learning-rocm
+      subtrees:
+        - entries:
+          - file: how-to/3rd-party/magma_install
+          - file: how-to/3rd-party/pytorch_install
+          - file: how-to/3rd-party/tensorflow_install
+
+- caption: Understand ROCm
+  entries:
+    - title: Compiler Disambiguation
+      file: understand/compiler_disambiguation
+    - file: understand/isv_deployment_win
+    - file: understand/cmake_packages
+    - file: understand/file_reorg
+
+- caption: Reference
+  entries:
+    - file: reference/3rd-party-support-matrix
+    - file: reference/docker-image-support-matrix
+
+- caption: About 
+  entries:
+    - file: about
