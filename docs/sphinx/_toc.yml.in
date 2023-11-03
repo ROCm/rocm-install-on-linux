@@ -5,18 +5,34 @@ root: index
 subtrees:
 - caption: Tutorials
   entries:
-    - file: tutorial/quick_start
+    - file: tutorial/quick-start
+    - file: tutorial/install-overview
 
 - caption: How to Guides
   entries:
     - file: how-to/index
-    - file: how-to/install/install
+    - file: how-to/amdgpu-install
+      title: Installation via AMDGPU Installer
+    - file: how-to/native-install/index
+      title: Installation via Package Manager
+      subtrees:
+      - entries:
+        - file: how-to/native-install/ubuntu
+          title: Ubuntu
+        - file: how-to/native-install/rhel
+          title: Red Hat Enterprise Linux
+        - file: how-to/native-install/sle
+          title: SUSE Linux Enterprise
+        - file: how-to/native-install/post-install
+          title: Post-Install Instructions
+        - file: how-to/native-install/package-manager-integration
+          title: Package Manager Integration
     - file: how-to/deep-learning-rocm
       subtrees:
         - entries:
-          - file: how-to/3rd-party/magma_install
-          - file: how-to/3rd-party/pytorch_install
-          - file: how-to/3rd-party/tensorflow_install
+          - file: how-to/3rd-party/magma-install
+          - file: how-to/3rd-party/pytorch-install
+          - file: how-to/3rd-party/tensorflow-install
 
 - caption: Understand ROCm
   entries:
@@ -28,6 +44,7 @@ subtrees:
 
 - caption: Reference
   entries:
+    - file: reference/system-requirements
     - file: reference/3rd-party-support-matrix
     - file: reference/docker-image-support-matrix
 
