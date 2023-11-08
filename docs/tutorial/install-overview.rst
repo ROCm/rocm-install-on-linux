@@ -1,19 +1,20 @@
-# ROCm Installation Options (Linux)
+ROCm Installation Options
+#########################
 
 Users installing ROCm must choose between various installation options. A new
-user should follow the [Quick Start guide](./quick_start).
+user should follow the :doc:`quick-start` guide.
 
-```{note}
-See {doc}`Radeon Installation instructions <radeon:install/install-radeon>`
-for those using the Radeon GPU with graphical applications.
-```
+.. note::
+    See :doc:`Radeon Installation instructions <radeon:install/install-radeon>`
+    for those using the Radeon GPU with graphical applications.
 
-## Package Manager versus AMDGPU Installer?
+Package Manager and AMDGPU Installer differences
+************************************************
 
 ROCm supports two methods for installation:
 
 - Directly using the Linux distribution's package manager
-- The `amdgpu-install` script
+- The ``amdgpu-install`` script
 
 There is no difference in the final installation state when choosing either
 option.
@@ -22,7 +23,7 @@ Using the distribution's package manager lets the user install,
 upgrade and uninstall using familiar commands and workflows. Third party
 ecosystem support is the same as your OS package manager.
 
-The `amdgpu-install` script is a wrapper around the package manager. The same
+The ``amdgpu-install`` script is a wrapper around the package manager. The same
 packages are installed by this script as the package manager system.
 
 The installer automates the installation process for the AMDGPU
@@ -32,9 +33,10 @@ and installing the desired drivers and meta-packages. Users who are
 less familiar with the package manager can choose this method for ROCm
 installation.
 
-(installation-types)=
+.. _installation-types:
 
-## Single Version ROCm install versus Multi-Version
+Single Version ROCm install versus Multi-Version
+************************************************
 
 ROCm packages are versioned with both semantic versioning that is package
 specific and a ROCm release version.
@@ -46,7 +48,8 @@ The single-version ROCm installation refers to the following:
 - Installation of a single instance of the ROCm release on a system
 - Use of non-versioned ROCm meta-packages
 
-### Multi-version Installation
+Multi-version Installation
+==========================
 
 The multi-version installation refers to the following:
 
@@ -55,22 +58,16 @@ The multi-version installation refers to the following:
   ability to support multiple versions of packages simultaneously.
 - Use of versioned ROCm meta-packages.
 
-```{attention}
-ROCm packages that were previously installed from a single-version installation
-must be removed before proceeding with the multi-version installation to avoid
-conflicts.
-```
+.. attention::
+    ROCm packages that were previously installed from a single-version installation
+    must be removed before proceeding with the multi-version installation to avoid
+    conflicts.
 
-```{note}
-Multiversion install is not available for the kernel driver module, also referred to as AMDGPU.
-```
+.. note::
+    Multiversion install is not available for the kernel driver module, also referred to as AMDGPU.
 
 The following image demonstrates the difference between single-version and
 multi-version ROCm installation types:
 
-```{figure-md} install-types
-
-<img src="/data/deploy/linux/image.001.png" alt="">
-
-ROCm Installation Types
-```
+.. image:: /data/install/linux/linux001.png
+    :alt: ROCm Installation Types
