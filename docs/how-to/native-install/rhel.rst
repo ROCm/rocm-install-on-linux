@@ -89,7 +89,7 @@ Upgrading
 To upgrade an existing ROCm installation to a newer version, follow the steps in
 :ref:`rhel-register-repo` and :ref:`rhel-install`.
 
-.. _ubuntu-uninstall:
+.. _rhel-uninstall:
 
 Uninstalling
 ************

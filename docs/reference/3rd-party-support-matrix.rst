@@ -140,4 +140,4 @@ contemporary CUDA / NVIDIA HPC SDK alternatives.
       - 1.17.2
       - 22.9
 
-For the latest documentation of these libraries, refer to :doc:`API libraries <../../reference/library-index.md>`.
+For the latest documentation of these libraries, refer to :doc:`API libraries <rocm:reference/all>`.
