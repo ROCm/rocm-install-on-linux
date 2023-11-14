@@ -21,6 +21,15 @@ If a GPU is not listed on this table, the GPU is not officially supported by AMD
               - LLVM Target
               - Support
 
+            * - AMD Instinct™ MI300XO
+              - CDNA3
+              - gfx940
+              - ✅
+            * - AMD Instinct™ MI300A
+              - CDNA3
+              - gfx940
+              - ✅
+
             * - AMD Instinct™ MI250X
               - CDNA2
               - gfx90a
@@ -116,18 +125,22 @@ AMD ROCm™ Platform supports the following Linux distributions.
       - Kernel
       - Support
 
+    * - RHEL 9.3
+      - 5.14
+      - ✅
     * - RHEL 9.2
       - 5.14
       - ✅
-    * - RHEL 9.1
-      - 5.14
-      - ✅
 
+    * - RHEL 8.9
+      - 4.18
+      - ✅
     * - RHEL 8.8
       - 4.18
       - ✅
-    * - RHEL 8.7
-      - 4.18
+
+    * - CentOS 7.9
+      - 3.10
       - ✅
 
     * - SLES 15 SP5
@@ -137,8 +150,15 @@ AMD ROCm™ Platform supports the following Linux distributions.
       - 5.14
       - ✅
 
+    * - Ubuntu 22.04.3
+      - 5.19
+      - ✅
     * - Ubuntu 22.04.2
       - 5.19
+      - ✅
+
+    * - Ubuntu 20.04.6
+      - 5.15
       - ✅
     * - Ubuntu 20.04.5
       - 5.15
