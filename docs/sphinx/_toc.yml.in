@@ -27,27 +27,19 @@ subtrees:
           title: Post-Install Instructions
         - file: how-to/native-install/package-manager-integration
           title: Package Manager Integration
-    - file: how-to/deep-learning-rocm
+    - file: how-to/prerequisites
+    - file: how-to/docker
+    - file: how-to/spack
+    - file: how-to/3rd-party/index
       subtrees:
         - entries:
           - file: how-to/3rd-party/magma-install
           - file: how-to/3rd-party/pytorch-install
           - file: how-to/3rd-party/tensorflow-install
 
-- caption: Understand ROCm
-  entries:
-    - title: Compiler Disambiguation
-      file: understand/compiler_disambiguation
-    - file: understand/isv_deployment_win
-    - file: understand/cmake_packages
-    - file: understand/file_reorg
-
 - caption: Reference
   entries:
     - file: reference/system-requirements
     - file: reference/3rd-party-support-matrix
     - file: reference/docker-image-support-matrix
-
-- caption: About 
-  entries:
-    - file: about
+    - file: reference/user-kernel-space-compat-matrix

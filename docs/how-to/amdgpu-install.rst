@@ -1,5 +1,5 @@
-``amdgpu-install`` Script
-#########################
+Installation via AMDGPU Script
+##############################
 
 ``amdgpu-install`` is a tool that helps you install and update AMDGPU and ROCm
 and its components.
@@ -17,7 +17,7 @@ Installation
 
 Installation of ``amdgpu-install`` differs slightly depending on the OS and its package manager.
 
-Make sure that the :doc:`how-to/prerequisites` are met before installing.
+Make sure that the :doc:`/how-to/prerequisites` are met before installing.
 
 Ubuntu
 ======
@@ -200,7 +200,7 @@ You must add the ROCm repositories manually for all ROCm releases you want to
 install except the latest one. The amdgpu-install script automatically adds the
 required repositories for the latest release.
 
-See the section "Register ROCm Packages" in :doc:`how-to/native-install/index`
+See the section "Register ROCm Packages" in :doc:`/how-to/native-install/index`
 for:
 
 - :ref:`Ubuntu <ubuntu-register-rocm>`
