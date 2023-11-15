@@ -21,7 +21,7 @@ If a GPU is not listed on this table, the GPU is not officially supported by AMD
               - LLVM Target
               - Support
 
-            * - AMD Instinct™ MI300XO
+            * - AMD Instinct™ MI300X
               - CDNA3
               - gfx940
               - ✅
