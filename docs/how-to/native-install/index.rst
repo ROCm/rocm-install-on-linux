@@ -30,4 +30,4 @@ Installation via Native Package Manager
 See also
 ********
 
-- :ref:`/reference/system-requirements`
+- :doc:`/reference/system-requirements`
