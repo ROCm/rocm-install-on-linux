@@ -64,7 +64,7 @@ Verifying package installation
 
             sudo yum list installed
 
-    .. tab-item:: SUSE
+    .. tab-item:: SLES
 
         .. code-block:: bash
 
