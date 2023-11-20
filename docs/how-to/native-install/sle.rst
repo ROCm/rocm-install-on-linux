@@ -12,12 +12,12 @@ Register Kernel-Mode Driver
 
     .. tab-set::
         {% for os_version in ['15.5', '15.4'] %}
-        .. tab-item:: RHEL {{ os_version }}
+        .. tab-item:: SLES {{ os_version }}
 
             .. code-block:: bash
                 :substitutions:
 
-                sudo tee /etc/yum.repos.d/amdgpu.repo <<EOF
+                sudo tee /etc/zypp/repos.d/amdgpu.repo <<EOF
                 [amdgpu]
                 name=amdgpu
                 baseurl=https://repo.radeon.com/amdgpu/|rocm_version|/sle/{{ os_version }}/main/x86_64/
@@ -25,6 +25,7 @@ Register Kernel-Mode Driver
                 gpgcheck=1
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
                 EOF
+
                 sudo zypper ref
         {% endfor %}
 
@@ -34,7 +35,7 @@ Register ROCm Packages
 .. code-block:: bash
     :substitutions:
 
-    sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
+    sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
     [ROCm-|rocm_version|]
     name=ROCm|rocm_version|
     baseurl=https://repo.radeon.com/rocm/zyp/|rocm_version|/main
@@ -43,7 +44,7 @@ Register ROCm Packages
     gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
     EOF
 
-    sudo yum clean all
+    sudo zypper ref
 
 Installation
 ************

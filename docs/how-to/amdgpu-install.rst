@@ -60,7 +60,7 @@ SUSE Linux Enterprise
 
     .. tab-set::
         {% for os_version in ['15.5', '15.4'] %}
-        .. tab-item:: RHEL-{{ os_version }}
+        .. tab-item:: SLES {{ os_version }}
 
             .. code-block:: bash
                 :substitutions:
