@@ -50,6 +50,10 @@ TensorFlow.
       - 1.12.1, 1.13, 2.0
       - 2.12, 2.13
 
+    * - 6.0.x
+      - 1.13, 2.0, 2.1
+      - 2.12, 2.13, 2.14
+
 .. _communication-libraries:
 
 Communication Libraries
@@ -140,4 +144,8 @@ contemporary CUDA / NVIDIA HPC SDK alternatives.
       - 1.17.2
       - 22.9
 
-For the latest documentation of these libraries, refer to :doc:`API libraries <rocm:reference/all>`.
+    * - 6.0.x
+      - 2.0.1
+      - 22.9
+
+For the latest documentation of these libraries, refer to :doc:`API libraries <../../reference/library-index.md>`.
