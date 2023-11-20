@@ -49,10 +49,6 @@ idna==3.4
     # via requests
 imagesize==1.4.1
     # via sphinx
-importlib-metadata==6.8.0
-    # via sphinx
-importlib-resources==6.1.0
-    # via rocm-docs-core
 jinja2==3.1.2
     # via
     #   myst-parser
@@ -106,7 +102,7 @@ requests==2.31.0
     # via
     #   pygithub
     #   sphinx
-rocm-docs-core==0.26.0
+rocm-docs-core==0.28.0
     # via -r requirements.in
 smmap==5.0.0
     # via gitdb
@@ -162,7 +158,3 @@ urllib3==1.26.13
     # via requests
 wrapt==1.14.1
     # via deprecated
-zipp==3.17.0
-    # via
-    #   importlib-metadata
-    #   importlib-resources
