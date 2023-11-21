@@ -1,14 +1,15 @@
 .. _3rd-party-support-matrix:
 
-Third Party Support Matrix
-##########################
+***************************************************************************
+Third-party support matrix
+***************************************************************************
 
 ROCm™ supports various 3rd party libraries and frameworks. Supported versions
 are tested and known to work. Non-supported versions of 3rd parties may also
 work, but aren't tested.
 
-Deep Learning
-*************
+Deep learning
+================================================
 
 ROCm releases support the most recent and two prior releases of PyTorch and
 TensorFlow.
@@ -58,8 +59,8 @@ TensorFlow.
 
 .. _communication-libraries:
 
-Communication Libraries
-***********************
+Communication libraries
+================================================
 
 ROCm supports `OpenUCX <https://openucx.org/>`_, an open-source,
 production-grade communication framework for data-centric and high performance
@@ -125,7 +126,7 @@ contemporary CUDA / NVIDIA HPC SDK alternatives.
     * - 5.2.x
       - 1.15
       - 22.2, 22.3
-    
+
     * - 5.3.x
       - 1.16
       - 22.7

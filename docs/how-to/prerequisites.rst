@@ -1,71 +1,52 @@
-Installation Prerequisites
-##########################
+*********************************************************************
+Installation prerequisites
+*********************************************************************
 
 You must perform the following steps before installing ROCm and check if the
 system meets all the requirements to proceed with the installation.
 
-Confirm the System Has a Supported Linux Distribution Version
-**************************************************************
+1. Confirm the system has a supported Linux version.
 
-The ROCm installation is supported only on specific Linux distributions and
-kernel versions.
+    a. To obtain the Linux distribution information, type the following command on your system from
+    the Command Line Interface (CLI):
 
-Check the Linux Distribution and Kernel Version on Your System
-==============================================================
+        .. code-block:: shell
 
-This section discusses obtaining information about the Linux distribution and
-kernel version.
+            uname -m && cat /etc/*release
 
-Linux Distribution Information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    b. Confirm that the obtained Linux distribution information matches with those listed in
+    :ref:`supported_distributions`.
 
-Verify the Linux distribution using the following steps:
+        **Example:** Running the command above on an Ubuntu system results in the
+        following output:
 
-1. To obtain the Linux distribution information, type the following command on
-   your system from the Command Line Interface (CLI):
+        .. code-block:: shell
 
-   .. code-block:: shell
+                x86_64
+                DISTRIB_ID=Ubuntu
+                DISTRIB_RELEASE=20.04
+                DISTRIB_CODENAME=focal
+                DISTRIB_DESCRIPTION="Ubuntu 20.04.5 LTS"
 
-       uname -m && cat /etc/*release
+2. Verify the kernel version using the following steps:
 
-2. Confirm that the obtained Linux distribution information matches with those listed in :ref:`supported_distributions`.
+    a. To check the kernel version of your Linux system, type the following command:
 
-   **Example:** Running the command above on an Ubuntu system results in the
-   following output:
+        .. code-block:: shell
 
-   .. code-block:: shell
+            uname -srmv
 
-        x86_64
-        DISTRIB_ID=Ubuntu
-        DISTRIB_RELEASE=20.04
-        DISTRIB_CODENAME=focal
-        DISTRIB_DESCRIPTION="Ubuntu 20.04.5 LTS"
-    
-.. _check-kernel-info:
+        **Example:** The output of the command above lists the kernel version in the following format:
 
-Kernel Information
-^^^^^^^^^^^^^^^^^^
+        .. code-block:: shell
 
-Verify the kernel version using the following steps:
+            Linux 5.15.0-46-generic #44~20.04.5-Ubuntu SMP Fri Jun 24 13:27:29 UTC 2022 x86_64
 
-1. To check the kernel version of your Linux system, type the following command:
-
-   .. code-block:: shell
-
-       uname -srmv
-
-   **Example:** The output of the command above lists the kernel version in the
-   following format:
-
-   .. code-block:: shell
-
-       Linux 5.15.0-46-generic #44~20.04.5-Ubuntu SMP Fri Jun 24 13:27:29 UTC 2022 x86_64
-
-2. Confirm that the obtained kernel version information matches with system
-   requirements as listed in :ref:`supported_distributions`.
+    b. Confirm that the obtained kernel version information matches with system requirements as listed
+    in :ref:`supported_distributions`.
 
 Additional package repositories
-*******************************
+==========================================================
 
 On some distributions the ROCm packages depend on packages outside the default
 package repositories. These extra repositories need to be enabled before
@@ -99,7 +80,7 @@ installation. Follow the instructions below based on your distributions.
                        sudo rpm -ivh epel-release-latest-8.noarch.rpm
 
         2. Enable the CodeReady Linux Builder repository:
-        
+
            .. code-block:: shell
 
                sudo crb enable
@@ -107,7 +88,7 @@ installation. Follow the instructions below based on your distributions.
     .. tab-item:: SUSE Linux Enterprise Server
 
         Add the Perl language repository.
-        
+
         .. tab-set::
 
             .. tab-item:: SLES 15.4
@@ -122,8 +103,8 @@ installation. Follow the instructions below based on your distributions.
 
                     zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/15.5/devel:languages:perl.repo
 
-Kernel Headers and Development Packages
-***************************************
+Kernel headers and development packages
+================================================================
 
 The driver package uses
 :abbr:`DKMS (Dynamic Kernel Module Support)` [DKMS-wiki]_ to build
@@ -159,8 +140,8 @@ to your distribution.
 
             sudo zypper install kernel-default-devel
 
-Setting Permissions for Groups
-******************************
+Setting permissions for groups
+================================================================
 
 This section provides steps to add any current user to a video group to access
 GPU resources.

@@ -1,14 +1,14 @@
-Red Hat Enterprise Linux Native Installation
-############################################
+**********************************************************************************************
+Red Hat Enterprise Linux native installation
+**********************************************************************************************
 
 .. _rhel-register-repo:
 
-Registering Repositories
-************************
+Register repositories
+=====================================================
 
-Register Kernel-Mode Driver
-===========================
-
+Register kernel-mode driver
+----------------------------------------------------------------------------------------------------------
 
 .. datatemplate:nodata::
 
@@ -35,8 +35,7 @@ Register Kernel-Mode Driver
 .. _rhel-register-rocm:
 
 Register ROCm packages
-======================
-
+----------------------------------------------------------------------------------------------------------
 
 .. datatemplate:nodata::
 
@@ -64,18 +63,19 @@ Register ROCm packages
 .. _rhel-install:
 
 Installation
-************
+=====================================================
 
-Install Kernel Driver
-=====================
+
+Install kernel driver
+----------------------------------------------------------------------------------------------------------
 
 .. code-block:: bash
 
     sudo yum install amdgpu-dkms
     sudo reboot
 
-Install ROCm Packages
-=====================
+Install ROCm packages
+----------------------------------------------------------------------------------------------------------
 
 .. code-block:: bash
 
@@ -83,19 +83,19 @@ Install ROCm Packages
 
 Perform :doc:`post-install`.
 
-Upgrading
-*********
+Upgrade
+=====================================================
 
 To upgrade an existing ROCm installation to a newer version, follow the steps in
 :ref:`rhel-register-repo` and :ref:`rhel-install`.
 
 .. _rhel-uninstall:
 
-Uninstalling
-************
+Uninstall
+=====================================================
 
-Uninstalling Specific Meta-Packages
-===================================
+Uninstall specific meta packages
+----------------------------------------------------------------------------------------------------------
 
 .. code-block:: bash
     :substitutions:
@@ -106,8 +106,8 @@ Uninstalling Specific Meta-Packages
     # Or for version specific packages:
     sudo yum remove rocm-hip-sdk|rocm_version|
 
-Complete Uninstallation of ROCm Packages
-========================================
+Uninstall ROCm packages
+----------------------------------------------------------------------------------------------------------
 
 .. code-block:: bash
     :substitutions:
@@ -116,15 +116,15 @@ Complete Uninstallation of ROCm Packages
     # Or for version specific packages:
     sudo yum remove rocm-core|rocm_version|
 
-Uninstall Kernel-Mode Driver
-============================
+Uninstall kernel-mode driver
+----------------------------------------------------------------------------------------------------------
 
 .. code-block:: bash
 
     sudo yum remove  amdgpu-dkms
 
-Remove ROCm and AMDGPU Repositories
-===================================
+Remove ROCm and AMDGPU repositories
+----------------------------------------------------------------------------------------------------------
 
 .. code-block:: bash
 

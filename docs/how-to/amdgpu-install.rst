@@ -1,5 +1,6 @@
-Installation via AMDGPU Script
-##############################
+*************************************************************************************
+Installation via AMDGPU installer
+*************************************************************************************
 
 ``amdgpu-install`` is a tool that helps you install and update AMDGPU and ROCm
 and its components.
@@ -13,14 +14,14 @@ and its components.
 .. _amdgpu-install-installation:
 
 Installation
-************
+=================================================
 
 Installation of ``amdgpu-install`` differs slightly depending on the OS and its package manager.
 
 Make sure that the :doc:`/how-to/prerequisites` are met before installing.
 
 Ubuntu
-======
+--------------------------------------------------------------------
 
 .. datatemplate:nodata::
 
@@ -38,7 +39,7 @@ Ubuntu
         {% endfor %}
 
 Red Hat Enterprise Linux
-========================
+--------------------------------------------------------------------
 
 .. datatemplate:nodata::
 
@@ -54,7 +55,7 @@ Red Hat Enterprise Linux
         {% endfor %}
 
 SUSE Linux Enterprise
-=====================
+--------------------------------------------------------------------
 
 .. datatemplate:nodata::
 
@@ -68,11 +69,8 @@ SUSE Linux Enterprise
                 sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
         {% endfor %}
 
-Usage
-*****
-
-Use case groups
-===============
+Use cases
+=================================================
 
 Instead of installing individual applications or libraries the installer script
 groups packages into specific use cases, matching typical workflows and
@@ -120,14 +118,14 @@ output below.
     - HIP development libraries
 
 
-Upgrading
-=========
+Upgrading ROCm
+=================================================
 
 The upgrade procedure with the installer script is exactly the same as
 :ref:`installing for first time use. <amdgpu-install-installation>`
 
 Installing ROCm packages
-==========================
+=================================================
 
 To install use cases specific to your requirements, use the installer
 amdgpu-install as follows:
@@ -158,8 +156,8 @@ amdgpu-install as follows:
 
       sudo amdgpu-install --usecase=workstation,rocm
 
-Uninstalling
-============
+Uninstalling ROCm
+=================================================
 
 To uninstall all ROCm packages and the kernel-mode driver the following commands
 can be used.
@@ -184,7 +182,7 @@ can be used.
       sudo amdgpu-install --uninstall --rocmrelease=all
 
 Multi-versioned ROCm Installation
-=================================
+=================================================
 
 By default (without the --rocmrelease option) the installer script will install
 packages in the single-version layout.
@@ -205,11 +203,11 @@ for:
 
 - :ref:`Ubuntu <ubuntu-register-rocm>`
 
-Aditional options
-*****************
+Additional options
+=================================================
 
 Unattended installation
-=======================
+------------------------------------------------------------------------
 
 Adding ``-y`` as a parameter to amdgpu-install skips user prompts (for
 automation). For example:
@@ -219,7 +217,7 @@ automation). For example:
     amdgpu-install -y --usecase=rocm
 
 Skipping kernel mode driver installation
-========================================
+------------------------------------------------------------------------
 
 The installer script tries to install the kernel mode driver along with the
 requested use cases. This might be unnecessary as in the case of docker

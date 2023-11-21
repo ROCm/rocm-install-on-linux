@@ -1,10 +1,11 @@
 .. _system-requirements:
 
-System Requirements
-###################
+**************************************************************************************
+System requirements
+**************************************************************************************
 
 Supported GPUs
-**************
+=============================================
 
 The table below shows supported GPUs for Instinct™, Radeon Pro™ and Radeon™ GPUs.
 Please click the tabs below to switch between GPU product lines.
@@ -86,7 +87,7 @@ If a GPU is not listed on this table, the GPU is not officially supported by AMD
               - RDNA2
               - GCN5.1
               - ✅
-    
+
     .. tab-item:: AND Radeon™
 
         .. list-table::
@@ -107,15 +108,14 @@ If a GPU is not listed on this table, the GPU is not officially supported by AMD
               - gfx906
               - ✅
 
-Support status
-==============
+Support status:
 
 ✅: **Supported** - AMD enables these GPUs in our software distributions for the corresponding ROCm product.
 ⚠️: **Deprecated** - Support will be removed in a future release.
 ❌: **Unsupported** - This configuration is not enabled in our software distributions.
 
 Supported OS
-************
+=============================================
 
 AMD ROCm™ Platform supports the following Linux distributions.
 
@@ -167,7 +167,7 @@ AMD ROCm™ Platform supports the following Linux distributions.
       - ✅
 
 Virtualization support
-**********************
+=============================================
 
 ROCm supports virtualization for select GPUs only as shown below.
 
@@ -195,8 +195,8 @@ ROCm supports virtualization for select GPUs only as shown below.
       - MI210
       - Ubuntu 20.04 (5.15.0), SLES 15 SP4 (5.14.21)
 
-CPU Support
-***********
+CPU support
+=============================================
 
 ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release of
 1st generation AMD Zen CPU and Intel™ Haswell support PCIe atomics.

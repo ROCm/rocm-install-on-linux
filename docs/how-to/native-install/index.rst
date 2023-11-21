@@ -1,12 +1,11 @@
-Installation via Native Package Manager
-#######################################
+******************************************************************************
+Installation via native package manager
+******************************************************************************
 
 .. grid:: 2
     :gutter: 1
 
     .. grid-item-card:: Install
-
-        How to install ROCm?
 
         - :doc:`Ubuntu </how-to/native-install/ubuntu>`
         - :doc:`Red Hat Enterprise Linux </how-to/native-install/rhel>`
@@ -24,10 +23,7 @@ Installation via Native Package Manager
 
         - :ref:`Ubuntu <ubuntu-uninstall>`
 
-    .. grid-item-card:: Package Manager Integration
+    .. grid-item-card:: Package manager integration
         :link: package-manager-integration
 
-See also
-********
-
-- :doc:`/reference/system-requirements`
+See also: :doc:`/reference/system-requirements`

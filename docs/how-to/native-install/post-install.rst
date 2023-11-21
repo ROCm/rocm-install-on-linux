@@ -1,71 +1,60 @@
-Post-Install Instructions
-#########################
+*************************************************************************
+Post-installation instructions
+*************************************************************************
 
+1.  Configure system linker.
 
-Post-install actions
-********************
+    Instruct the system linker where to find shared objects (``.so``-files) for ROCm applications.
 
-Configure system linker
-=======================
+    .. code-block:: bash
 
-Instruct the system linker where to find shared objects (``.so``-files) for ROCm applications.
+        sudo tee --append /etc/ld.so.conf.d/rocm.conf <<EOF
+        /opt/rocm/lib
+        /opt/rocm/lib64
+        EOF
+        sudo ldconfig
 
-.. code-block:: bash
+2. Configure ``PATH``.
 
-    sudo tee --append /etc/ld.so.conf.d/rocm.conf <<EOF
-    /opt/rocm/lib
-    /opt/rocm/lib64
-    EOF
-    sudo ldconfig
+    Add binary paths to the ``PATH`` environment variable.
 
-Configure ``PATH``
-==================
+    .. code-block:: bash
+        :substitutions:
 
-Add binary paths to the ``PATH`` environment variable.
+        export PATH=$PATH:/opt/rocm-|rocm_version|/bin:/opt/rocm-|rocm_version|/opencl/bin
 
-.. code-block:: bash
-    :substitutions:
+3. Verify kernel-mode driver installation.
 
-    export PATH=$PATH:/opt/rocm-|rocm_version|/bin:/opt/rocm-|rocm_version|/opencl/bin
+    .. code-block:: bash
 
-Validate installation
-*********************
+        dkms status
 
-Verifying kernel-mode driver installation
-=========================================
+4. Verify ROCm installation.
 
-.. code-block:: bash
+    .. code-block:: bash
+        :substitutions:
 
-    dkms status
+        /opt/rocm-|rocm_version|/bin/rocminfo
+        /opt/rocm-|rocm_version|/opencl/bin/clinfo
 
-Verifying ROCm installation
-===========================
+5. Verify package installation.
 
-.. code-block:: bash
-    :substitutions:
+    .. tab-set::
 
-    /opt/rocm-|rocm_version|/bin/rocminfo
-    /opt/rocm-|rocm_version|/opencl/bin/clinfo
+        .. tab-item:: Ubuntu
 
-Verifying package installation
-==============================
+            .. code-block:: bash
 
-.. tab-set::
-    
-    .. tab-item:: Ubuntu
+                sudo apt list --installed
 
-        .. code-block:: bash
+        .. tab-item:: RHEL
 
-            sudo apt list --installed
+            .. code-block:: bash
 
-    .. tab-item:: RHEL
+                sudo yum list installed
 
-        .. code-block:: bash
+        .. tab-item:: SLES
 
-            sudo yum list installed
+            .. code-block:: bash
 
-    .. tab-item:: SLES
-
-        .. code-block:: bash
-
-            sudo zypper search --installed-only
+                sudo zypper search --installed-only

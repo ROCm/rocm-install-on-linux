@@ -58,3 +58,8 @@ Additional resources
             - :doc:`how-to/3rd-party/magma-install`
             - :doc:`how-to/3rd-party/pytorch-install`
             - :doc:`how-to/3rd-party/tensorflow-install`
+
+    .. grid-item-card:: How-to
+
+            - :doc:`how-to/docker`
+            - :doc:`how-to/spack`

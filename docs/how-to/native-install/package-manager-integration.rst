@@ -1,15 +1,16 @@
-Package Manager Integration
-###########################
+************************************************************************************
+Package manager integration
+************************************************************************************
 
 This section provides information about the required meta-packages for the
 following AMD ROCm programming models:
 
-- Heterogeneous-Computing Interface for Portability (HIP)
-- OpenCL™
-- OpenMP™
+* Heterogeneous-Computing Interface for Portability (HIP)
+* OpenCL™
+* OpenMP™
 
-ROCm Package Naming Conventions
-*******************************
+ROCm package naming conventions
+============================================================
 
 A meta-package is a grouping of related packages and dependencies used to
 support a specific use case.
@@ -18,8 +19,8 @@ support a specific use case.
 
 All meta-packages exist in both versioned and non-versioned forms.
 
-- Non-versioned packages – For a single-version installation of the ROCm stack
-- Versioned packages – For multi-version installations of the ROCm stack
+* Non-versioned packages – For a single-version installation of the ROCm stack
+* Versioned packages – For multi-version installations of the ROCm stack
 
 .. image:: /data/install/linux/linux002.png
     :alt: ROCm Release Package Naming
@@ -49,8 +50,8 @@ valid only for rpm packages.
 
 **Example:** `el8` represents RHEL 8.x packages.
 
-Components of ROCm Programming Models
-*************************************
+Components of ROCm programming models
+============================================================
 
 The figure below demonstrates the high-level layered architecture of ROCm programming models and their meta-packages.
 All meta-packages are a combination of required packages and libraries.
@@ -63,40 +64,31 @@ All meta-packages are a combination of required packages and libraries.
   applications.
 
 .. image:: /data/install/linux/linux003.png
-    :alt: ROCm Meta Packages
+    :width: 1500
+    :alt: ROCm meta packages
 
 .. note::
-    ``rocm-llvm`` is not a meta-package but a single package that installs the ROCm clang compiler files.
+    ``rocm-llvm`` is not a meta-package; it's a single package that installs the ROCm Clang compiler files.
 
-.. list-table::
+.. csv-table::
+  :widths: 30, 70
+  :header: "Package", "Description"
 
-    * - ``rocm-language-runtime``
-      - The ROCm runtime.
-    * - ``rocm-developer-tools``
-      - Debug and profile HIP applications.
-    * - ``rocm-hip-runtime``
-      - Run HIP applications writen for the AMD platform.
-    * - ``rocm-hip-runtime-devel``
-      - Develop applications on HIP or port from CUDA.
-    * - ``rocm-opencl-runtime``
-      - Run OpenCL-based applications on the AMD platform.
-    * - ``rocm-opencl-sdk``
-      - Develop OpenCL-based applications for the AMD platform.
-    * - ``rocm-hip-libraries``
-      - HIP libraries optimized for the AMD platform.
-    * - ``rocm-hip-sdk``
-      - Develop or port HIP applications and libraries for the AMD platform.
-    * - ``rocm-ml-libraries``
-      - Key machine learning libraries. Includes MIOpen.
-    * - ``rocm-ml-sdk``
-      - Develop and run machine learning applications for AMD.
-    * - ``rocm-openmp-runtime``
-      - Run OpenMP-based applications on the AMD platform.
-    * - ``rocm-openmp-sdk``
-      - Develop OpenMP-based applications for the AMD platofrm.
+    ``rocm-language-runtime``, The ROCm runtime.
+    ``rocm-developer-tools``, Debug and profile HIP applications.
+    ``rocm-hip-runtime``, Run HIP applications writen for the AMD platform.
+    ``rocm-hip-runtime-devel``, Develop applications on HIP or port from CUDA.
+    ``rocm-opencl-runtime``, Run OpenCL-based applications on the AMD platform.
+    ``rocm-opencl-sdk``, Develop OpenCL-based applications for the AMD platform.
+    ``rocm-hip-libraries``, HIP libraries optimized for the AMD platform.
+    ``rocm-hip-sdk``, Develop or port HIP applications and libraries for the AMD platform.
+    ``rocm-ml-libraries``, Key machine learning libraries. Includes MIOpen.
+    ``rocm-ml-sdk``, Develop and run machine learning applications for AMD.
+    ``rocm-openmp-runtime``, Run OpenMP-based applications on the AMD platform.
+    ``rocm-openmp-sdk``, Develop OpenMP-based applications for the AMD software.
 
-Packages in ROCm Programming Models
-***********************************
+Packages in ROCm programming models
+============================================================
 
 This section discusses the available meta-packages and their packages.
 The following image visualizes the meta-packages and their associated packages in a ROCm programming model.

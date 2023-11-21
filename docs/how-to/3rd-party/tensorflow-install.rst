@@ -1,8 +1,6 @@
+****************************************************************************************
 Installing TensorFlow for ROCm
-##############################
-
-TensorFlow
-**********
+****************************************************************************************
 
 TensorFlow is an open-source library for solving machine-learning,
 deep-learning, and artificial-intelligence problems. It can be used to solve
@@ -31,12 +29,12 @@ development.
       - Last three versions at ROCm release.
 
 Installing TensorFlow
-=====================
+===============================================
 
 The following sections contain options for installing TensorFlow.
 
 Option 1: using a Docker image
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------------------------------------------------
 
 To install ROCm on bare metal, follow
 :doc:`/tutorial/install-overview`. The recommended option to
@@ -62,7 +60,7 @@ Follow these steps:
        --security-opt seccomp=unconfined rocm/tensorflow:latest
 
 Option 2: using a wheels package
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------------------------------------------------
 
 To install TensorFlow using the wheels package, follow these steps:
 
@@ -174,7 +172,7 @@ To install TensorFlow using the wheels package, follow these steps:
        `https://github.com/ROCmSoftwarePlatform/tensorflow-upstream/blob/develop-upstream/rocm_docs/tensorflow-rocm-release.md <https://github.com/ROCmSoftwarePlatform/tensorflow-upstream/blob/develop-upstream/rocm_docs/tensorflow-rocm-release.md>`_
 
 Test the TensorFlow installation
-================================
+=======================================
 
 To test the installation of TensorFlow, run the container image as specified in
 the previous section Installing TensorFlow. Ensure you have access to the Python
@@ -185,7 +183,7 @@ shell in the Docker container.
     python3 -c 'import tensorflow' 2> /dev/null && echo ‘Success’ || echo ‘Failure’
 
 Run a basic TensorFlow example
-==============================
+======================================
 
 The TensorFlow examples repository provides basic examples that exercise the
 framework's functionality. The MNIST database is a collection of handwritten

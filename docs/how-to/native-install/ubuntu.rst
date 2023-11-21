@@ -1,13 +1,14 @@
-Ubuntu Native Installation
-##########################
+****************************************************************************
+Ubuntu native installation
+****************************************************************************
 
 .. _ubuntu-register-repo:
 
-Registering Repositories
-************************
+Registering repositories
+=================================================
 
-Package Signing Key
-===================
+Package signing key
+---------------------------------------------------------------------------
 
 Download and convert the package signing key.
 
@@ -32,8 +33,8 @@ Download and convert the package signing key.
     but has the following SHA1 sum hash:
     ``73f5d8100de6048aa38a8b84cd9a87f05177d208 rocm.gpg.key``
 
-Register Kernel-Mode Driver
-===========================
+Register kernel-mode driver
+---------------------------------------------------------------------------
 
 Add the AMDGPU repository for the driver.
 
@@ -54,8 +55,8 @@ Add the AMDGPU repository for the driver.
 
 .. _ubuntu-register-rocm:
 
-Register ROCm Packages
-======================
+Register ROCm packages
+---------------------------------------------------------------------------
 
 Add the ROCm repository.
 
@@ -78,19 +79,19 @@ Add the ROCm repository.
 
 .. _ubuntu-install:
 
-Installation
-************
+Installing
+================================================
 
-Install Kernel Driver
-=====================
+Install kernel driver
+---------------------------------------------------------------------------
 
 .. code-block:: bash
 
     sudo apt install amdgpu-dkms
     sudo reboot
 
-Install ROCm Packages
-=====================
+Install ROCm packages
+---------------------------------------------------------------------------
 
 .. code-block:: bash
 
@@ -101,7 +102,7 @@ Perform :doc:`post-install`.
 .. _ubuntu-upgrade:
 
 Upgrading
-*********
+================================================
 
 To upgrade an existing ROCm installation to a newer version, follow the steps in
 :ref:`ubuntu-register-repo` and :ref:`ubuntu-install`.
@@ -109,10 +110,10 @@ To upgrade an existing ROCm installation to a newer version, follow the steps in
 .. _ubuntu-uninstall:
 
 Uninstalling
-************
+================================================
 
-Uninstalling Specific Meta-Packages
-===================================
+Uninstall specific meta packages
+---------------------------------------------------------------------------
 
 .. code-block:: bash
     :substitutions:
@@ -123,8 +124,8 @@ Uninstalling Specific Meta-Packages
     # Or for version specific packages:
     sudo apt autoremove rocm-hip-sdk|rocm_version|
 
-Complete Uninstallation of ROCm Packages
-========================================
+Uninstall ROCm packages
+---------------------------------------------------------------------------
 
 .. code-block:: bash
     :substitutions:
@@ -133,15 +134,15 @@ Complete Uninstallation of ROCm Packages
     # Or for version specific packages:
     sudo apt autoremove rocm-core|rocm_version|
 
-Uninstall Kernel-Mode Driver
-============================
+Uninstall kernel-mode driver
+---------------------------------------------------------------------------
 
 .. code-block:: bash
 
     sudo apt autoremove amdgpu-dkms
 
-Remove ROCm and AMDGPU Repositories
-===================================
+Remove ROCm and AMDGPU repositories
+---------------------------------------------------------------------------
 
 .. code-block:: bash
 

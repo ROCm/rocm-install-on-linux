@@ -1,11 +1,12 @@
-SUSE Linux Enterprise Native Installation
-#########################################
+*********************************************************************************************
+SUSE Linux Enterprise native installation
+*********************************************************************************************
 
-Registering ROCm Repositories
-*****************************
+Registering ROCm repositories
+===============================================
 
-Register Kernel-Mode Driver
-===========================
+Register kernel-mode driver
+--------------------------------------------------------------------------------------
 
 
 .. datatemplate:nodata::
@@ -29,8 +30,8 @@ Register Kernel-Mode Driver
                 sudo zypper ref
         {% endfor %}
 
-Register ROCm Packages
-======================
+Register ROCm packages
+--------------------------------------------------------------------------------------
 
 .. code-block:: bash
     :substitutions:
@@ -46,19 +47,19 @@ Register ROCm Packages
 
     sudo zypper ref
 
-Installation
-************
+Installing
+===============================================
 
-Install Kernel Driver
-=====================
+Install kernel driver
+--------------------------------------------------------------------------------------
 
 .. code-block:: bash
 
     sudo zypper --gpg-auto-import-keys install amdgpu-dkms
     sudo reboot
 
-Install ROCm Packages
-=====================
+Install ROCm packages
+--------------------------------------------------------------------------------------
 
 .. code-block:: bash
 

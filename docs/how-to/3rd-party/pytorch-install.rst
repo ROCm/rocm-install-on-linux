@@ -1,5 +1,6 @@
+**********************************************************************************
 Installing PyTorch for ROCm
-###########################
+**********************************************************************************
 
 `PyTorch <https://pytorch.org/>`_ is an open-source tensor library designed for deep learning. PyTorch on
 ROCm provides mixed-precision and large-scale training using our
@@ -22,7 +23,7 @@ For hardware, software, and third-party framework compatibility between ROCm and
 .. _using-docker-with-pytorch-pre-installed:
 
 Using a Docker image with PyTorch pre-installed
-***********************************************
+===============================================================
 
 1. Download the latest public `PyTorch Docker image <https://hub.docker.com/r/rocm/pytorch>`_.
 
@@ -50,7 +51,7 @@ Using a Docker image with PyTorch pre-installed
 .. _using-wheels-package:
 
 Using a wheels package
-**********************
+===============================================================
 
 PyTorch supports the ROCm platform by providing tested wheels packages. To access this feature, go
 to `pytorch.org/get-started/locally/ <https://pytorch.org/get-started/locally/>`_. For the correct
@@ -61,7 +62,7 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
    **Option 1:**
 
    a. Download a base Docker image with the correct user-space ROCm version.
-      
+
       .. list-table::
           :header-rows: 1
 
@@ -163,7 +164,7 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
 .. _using-pytorch-rocm-docker-image:
 
 Using the PyTorch ROCm base Docker image
-****************************************
+===============================================================
 
 The pre-built base Docker image has all dependencies installed, including:
 
@@ -243,7 +244,7 @@ scripts to determine the configuration of the build environment.
 .. _using-pytorch-upstream-docker-image:
 
 Using the PyTorch upstream Docker file
-**************************************
+===============================================================
 
 If you don't want to use a prebuilt base Docker image, you can build a custom base Docker image
 using scripts from the PyTorch repository. This uses a standard Docker image from operating system
@@ -346,7 +347,7 @@ maintainers and installs all the required dependencies, including:
        echo $? # should return 0 if success
 
 Testing the PyTorch installation
-********************************
+===============================================================
 
 You can use PyTorch unit tests to validate your PyTorch installation. If you used a
 **prebuilt PyTorch Docker image from AMD ROCm DockerHub** or installed an
@@ -407,7 +408,7 @@ If you want to manually run unit tests to validate your PyTorch installation ful
    You can replace ``test_nn.py`` with any other test set.
 
 Running a basic PyTorch example
-*******************************
+===============================================================
 
 The PyTorch examples repository provides basic examples that exercise the functionality of your
 framework.
@@ -420,7 +421,7 @@ Two of our favorite testing databases are:
   **visual object recognition**.
 
 MNIST PyTorch example
-=====================
+---------------------------------------------------------------------------------------------------------
 
 1. Clone the PyTorch examples repository.
 
@@ -452,7 +453,7 @@ MNIST PyTorch example
        Test set: Average loss: 0.0252, Accuracy: 9921/10000 (99%)
 
 ImageNet PyTorch example
-========================
+---------------------------------------------------------------------------------------------------------
 
 1. Clone the PyTorch examples repository (if you didn't already do this step in the preceding MNIST example).
 

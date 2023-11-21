@@ -1,5 +1,6 @@
+**************************************************************
 Introduction to Spack
-#####################
+**************************************************************
 
 Spack is a package management tool designed to support multiple software versions and
 configurations on a wide variety of platforms and environments. It was designed for large
@@ -15,14 +16,13 @@ the same package. For more information on Spack, see the
 `Spack Tutorial <https://spack-tutorial.readthedocs.io/en/latest/>`_.
 
 ROCM packages in Spack
-**********************
+===================================================
 
 .. list-table::
     :header-rows: 1
 
     * - Component
       - ``Spack Package Name``
-    
     * - ``rocm-cmake``
       - ``rocm-cmake``
     * - ``thunk``
@@ -177,8 +177,8 @@ ROCM packages in Spack
             yum install gcc-gfortran
             yum install gcc-c++
 
-Steps to build ROCm components using Spack
-******************************************
+Building ROCm components using Spack
+===================================================
 
 1. To use the spack package manager, clone the Spack project from GitHub.
 
@@ -203,8 +203,8 @@ Steps to build ROCm components using Spack
 
         root@[ixt-rack-104:/spack\#](http://ixt-rack-104/spack) spack help
 
-Using Spack to install ROCm components
-**************************************
+Installing ROCm components using Spack
+===================================================
 
 1. ``rocm-cmake``
 
@@ -229,7 +229,7 @@ Using Spack to install ROCm components
     packages.
 
     .. code-block:: shell
-        
+
         spack info mivisionx
 
     For example:
@@ -276,7 +276,7 @@ Using Spack to install ROCm components
 
         Variants:
         Name [Default] When Allowed values Description
-        ==================== ==== ==================== ==================================  
+        ==================== ==== ==================== ==================
 
         build_type [Release] -- Release, Debug, CMake build type
         RelWithDebInfo
@@ -296,7 +296,7 @@ Using Spack to install ROCm components
         root@[ixt-rack-104:/spack\#](http://ixt-rack-104/spack)
 
 Installing variants for ROCm components
-***************************************
+===================================================
 
 The variants listed above indicate that the ``mivisionx`` package is built by
 default with ``build_type=Release`` and the ``hip`` backend, and without the
@@ -329,7 +329,7 @@ For example:
         mivisionx@5.3.0%gcc@9.4.0+hip\~ipo\~opencl build_type=Release arch=linux-ubuntu20.04-skylake_avx512
 
 Creating an environment
-***********************
+===================================================
 
 You can create an environment with all the required components of your version.
 
@@ -369,7 +369,7 @@ create an environment.
 4. Activate the environment.
 
     .. code-block:: shell
-   
+
     spack env activate /localscratch/MyEnvironment
 
 5. Verify that you want all the component versions.
@@ -399,8 +399,8 @@ create an environment.
 
         spack env deactivate
 
-Create and apply a patch before installation
-********************************************
+Creating and applying a patch before installation
+===================================================
 
 Spack installs ROCm packages after pulling the source code from GitHub and building it locally. In
 order to build a component with any modification to the  source code, you must generate a patch and
