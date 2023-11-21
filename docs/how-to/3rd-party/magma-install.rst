@@ -1,5 +1,5 @@
 *******************************************************************************************
-MAGMA installation for ROCm
+Installing MAGMA for ROCm
 *******************************************************************************************
 
 Matrix Algebra on GPU and Multicore Architectures (MAGMA) is a
