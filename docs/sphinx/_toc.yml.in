@@ -3,18 +3,15 @@ defaults:
   maxdepth: 6
 root: index
 subtrees:
-- caption: Tutorials
-  entries:
+- entries:
     - file: tutorial/quick-start
-    - file: tutorial/install-overview
-
-- caption: How to Guides
-  entries:
-    - file: how-to/index
+      title: Quick-start install guide
+    - file: how-to/prerequisites
+      title: Prerequisites
     - file: how-to/amdgpu-install
       title: Installation via AMDGPU Installer
     - file: how-to/native-install/index
-      title: Installation via Package Manager
+      title: Installation via package manager
       subtrees:
       - entries:
         - file: how-to/native-install/ubuntu
@@ -26,20 +23,31 @@ subtrees:
         - file: how-to/native-install/post-install
           title: Post-Install Instructions
         - file: how-to/native-install/package-manager-integration
-          title: Package Manager Integration
-    - file: how-to/prerequisites
-    - file: how-to/docker
-    - file: how-to/spack
-    - file: how-to/3rd-party/index
-      subtrees:
-        - entries:
-          - file: how-to/3rd-party/magma-install
-          - file: how-to/3rd-party/pytorch-install
-          - file: how-to/3rd-party/tensorflow-install
+          title: Package manager integration
+
+- caption: Tutorials
+  entries:
+  - file: how-to/3rd-party/magma-install
+    title: Install Magma
+  - file: how-to/3rd-party/pytorch-install
+    title: Install PyTorch
+  - file: how-to/3rd-party/tensorflow-install
+    title: Install TensorFlow
+
+- caption: How-to
+  entries:
+  - file: how-to/docker
+    title: Install Docker containers
+  - file: how-to/spack
+    title: Introduction to Spack
 
 - caption: Reference
   entries:
     - file: reference/system-requirements
+      title: System requirements
     - file: reference/3rd-party-support-matrix
+      title: Third-party support
     - file: reference/docker-image-support-matrix
+      title: Docker image support
     - file: reference/user-kernel-space-compat-matrix
+      title: Kernel-space support

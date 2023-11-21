@@ -1,3 +1,5 @@
+.. _3rd-party-support-matrix:
+
 Third Party Support Matrix
 ##########################
 

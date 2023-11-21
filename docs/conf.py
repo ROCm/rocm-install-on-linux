@@ -10,7 +10,7 @@ import os
 from rocm_docs import ROCmDocs
 
 # ROCm version numbers
-rocm_version = '6.0.0' 
+rocm_version = '6.0.0'
 amdgpu_version = '6.0.0' # directory in # directory in https://repo.radeon.com/rocm/apt/https://repo.radeon.com/amdgpu-install/
 amdgpu_install_version = '6.0.60000-1' # version in https://repo.radeon.com/amdgpu-install/5.7.1/ubuntu/focal/
 
@@ -46,7 +46,7 @@ exclude_patterns = ['temp']
 
 external_toc_path = "./sphinx/_toc.yml"
 
-docs_core = ROCmDocs("Linux Installation")
+docs_core = ROCmDocs("ROCm installation (Linux)")
 docs_core.setup()
 
 external_projects_current_project = "rocm"
