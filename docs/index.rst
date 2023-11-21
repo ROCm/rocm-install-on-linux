@@ -1,7 +1,7 @@
 .. _rocm-install-home:
 
 ****************************************************************
-ROCm™ Linux installation
+ROCm installation for Linux
 ****************************************************************
 
 If you're new to ROCm, we recommend using the :ref:`rocm-install-quick` guide. If you want more
