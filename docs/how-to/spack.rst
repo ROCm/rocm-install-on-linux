@@ -13,108 +13,61 @@ Most importantly, Spack is *simple*. It offers a simple *spec* syntax, so users 
 versions and configuration options. Spack is also simple for package authors: package files are written
 in pure Python, and specs allow package authors to maintain a single file for many different builds of
 the same package. For more information on Spack, see the
-`Spack Tutorial <https://spack-tutorial.readthedocs.io/en/latest/>`_.
+`Spack tutorial <https://spack-tutorial.readthedocs.io/en/latest/>`_.
 
 ROCM packages in Spack
 ===================================================
 
-.. list-table::
-    :header-rows: 1
+.. csv-table::
+  :widths: 30, 70
+  :header: "Component", "Package name"
 
-    * - Component
-      - ``Spack Package Name``
-    * - ``rocm-cmake``
-      - ``rocm-cmake``
-    * - ``thunk``
-      - ``hsakmt-roct``
-    * - ``rocm-smi-lib``
-      - ``rocm-smi-lib``
-    * - ``hsa``
-      - ``hsa-rocr-dev``
-    * - ``lightning``
-      - ``llvm-amdgpu``
-    * - ``devicelibs``
-      - ``rocm-device-libs``
-    * - ``comgr``
-      - ``comgr``
-    * - ``rocclr (vdi)``
-      - ``hip-rocclr``
-    * - ``hipify_clang``
-      - ``hipify-clang``
-    * - ``hip (hip_in_vdi)``
-      - ``hip``
-    * - ``ocl (opencl_on_vdi )``
-      - ``rocm-opencl``
-    * - ``rocminfo``
-      - ``rocminfo``
-    * - ``clang-ocl``
-      - ``rocm-clang-ocl``
-    * - ``rccl``
-      - ``rccl``
-    * - ``atmi``
-      - ``atmi``
-    * - ``rocm_debug_agent``
-      - ``rocm-debug-agent``
-    * - ``rocm_bandwidth_test``
-      - ``rocm-bandwidth-test``
-    * - ``rocprofiler``
-      - ``rocprofiler-dev``
-    * - ``roctracer-dev-api``
-      - ``roctracer-dev-api``
-    * - ``roctracer``
-      - ``roctracer-dev``
-    * - ``dbgapi``
-      - ``rocm-dbgapi``
-    * - ``rocm-gdb``
-      - ``rocm-gdb``
-    * - ``openmp-extras``
-      - ``rocm-openmp-extras``
-    * - ``rocBLAS``
-      - ``rocblas``
-    * - ``hipBLAS``
-      - ``hipblas``
-    * - ``rocFFT``
-      - ``rocfft``
-    * - ``rocRAND``
-      - ``rocrand``
-    * - ``rocSPARSE``
-      - ``rocsparse``
-    * - ``hipSPARSE``
-      - ``hipsparse``
-    * - ``rocALUTION``
-      - ``rocalution``
-    * - ``rocSOLVER``
-      - ``rocsolver``
-    * - ``rocPRIM``
-      - ``rocprim``
-    * - ``rocThrust``
-      - ``rocthrust``
-    * - ``hipCUB``
-      - ``hipcub``
-    * - ``hipfort``
-      - ``hipfort``
-    * - ``ROCmValidationSuite``
-      - ``rocm-validation-suite``
-    * - ``MIOpenGEMM``
-      - ``miopengemm``
-    * - ``MIOpen(Hip variant)``
-      - ``miopen-hip``
-    * - ``MIOpen(opencl)``
-      - ``miopen-opencl``
-    * - ``MIVisionX``
-      - ``mivisionx``
-    * - ``AMDMIGraphX``
-      - ``migraphx``
-    * - ``rocm-tensile``
-      - ``rocm-tensile``
-    * - ``hipfft``
-      - ``hipfft``
-    * - ``RDC``
-      - ``rdc``
-    * - ``hipsolver``
-      - ``hipsolver``
-    * - ``mlirmiopen``
-      - ``mlirmiopen``
+    ``rocm-cmake``, ``rocm-cmake``
+    ``thunk``, ``hsakmt-roct``
+    ``rocm-smi-lib``, ``rocm-smi-lib``
+    ``hsa``, ``hsa-rocr-dev``
+    ``lightning``, ``llvm-amdgpu``
+    ``devicelibs``, ``rocm-device-libs``
+    ``comgr``, ``comgr``
+    ``rocclr (vdi)``, ``hip-rocclr``
+    ``hipify_clang``, ``hipify-clang``
+    ``hip (hip_in_vdi)``, ``hip``
+    ``ocl (opencl_on_vdi )``, ``rocm-opencl``
+    ``rocminfo``, ``rocminfo``
+    ``clang-ocl``, ``rocm-clang-ocl``
+    ``rccl``, ``rccl``
+    ``atmi``, ``atmi``
+    ``rocm_debug_agent``, ``rocm-debug-agent``
+    ``rocm_bandwidth_test``, ``rocm-bandwidth-test``
+    ``rocprofiler``, ``rocprofiler-dev``
+    ``roctracer-dev-api``, ``roctracer-dev-api``
+    ``roctracer``, ``roctracer-dev``
+    ``dbgapi``, ``rocm-dbgapi``
+    ``rocm-gdb``, ``rocm-gdb``
+    ``openmp-extras``, ``rocm-openmp-extras``
+    ``rocBLAS``, ``rocblas``
+    ``hipBLAS``, ``hipblas``
+    ``rocFFT``, ``rocfft``
+    ``rocRAND``, ``rocrand``
+    ``rocSPARSE``, ``rocsparse``
+    ``hipSPARSE``, ``hipsparse``
+    ``rocALUTION``, ``rocalution``
+    ``rocSOLVER``, ``rocsolver``
+    ``rocPRIM``, ``rocprim``
+    ``rocThrust``, ``rocthrust``
+    ``hipCUB``, ``hipcub``
+    ``hipfort``, ``hipfort``
+    ``ROCmValidationSuite``, ``rocm-validation-suite``
+    ``MIOpenGEMM``, ``miopengemm``
+    ``MIOpen(Hip variant)``, ``miopen-hip``
+    ``MIOpen(opencl)``, ``miopen-opencl``
+    ``MIVisionX``, ``mivisionx``
+    ``AMDMIGraphX``, ``migraphx``
+    ``rocm-tensile``, ``rocm-tensile``
+    ``hipfft``, ``hipfft``
+    ``RDC``, ``rdc``
+    ``hipsolver``, ``hipsolver``
+    ``mlirmiopen``, ``mlirmiopen``
 
 .. note::
     You must install all prerequisites before installing Spack.
@@ -233,7 +186,6 @@ Installing ROCm components using Spack
         spack info mivisionx
 
     For example:
-
 
     .. code-block:: shell
 

@@ -114,10 +114,10 @@ Support status:
 ⚠️: **Deprecated** - Support will be removed in a future release.
 ❌: **Unsupported** - This configuration is not enabled in our software distributions.
 
-Supported OS
+Supported operating systems
 =============================================
 
-AMD ROCm™ Platform supports the following Linux distributions.
+AMD ROCm™ Software supports the following Linux distributions.
 
 .. list-table::
     :widths: 50 50 25

@@ -2,8 +2,7 @@
 Installation prerequisites
 *********************************************************************
 
-You must perform the following steps before installing ROCm and check if the
-system meets all the requirements to proceed with the installation.
+Before installing ROCm, complete the following prerequisites.
 
 1. Confirm the system has a supported Linux version.
 
@@ -14,11 +13,10 @@ system meets all the requirements to proceed with the installation.
 
             uname -m && cat /etc/*release
 
-    b. Confirm that the obtained Linux distribution information matches with those listed in
-    :ref:`supported_distributions`.
+    b. Confirm that your Linux distribution matches a
+    :ref:`supported distribution<supported_distributions>`.
 
-        **Example:** Running the command above on an Ubuntu system results in the
-        following output:
+        **Example:** Running the preceding command on an Ubuntu system produces the following output:
 
         .. code-block:: shell
 
@@ -28,7 +26,7 @@ system meets all the requirements to proceed with the installation.
                 DISTRIB_CODENAME=focal
                 DISTRIB_DESCRIPTION="Ubuntu 20.04.5 LTS"
 
-2. Verify the kernel version using the following steps:
+2. Verify the kernel version.
 
     a. To check the kernel version of your Linux system, type the following command:
 
@@ -36,14 +34,14 @@ system meets all the requirements to proceed with the installation.
 
             uname -srmv
 
-        **Example:** The output of the command above lists the kernel version in the following format:
+        **Example:** The preceding command lists the kernel version in the following format:
 
         .. code-block:: shell
 
             Linux 5.15.0-46-generic #44~20.04.5-Ubuntu SMP Fri Jun 24 13:27:29 UTC 2022 x86_64
 
-    b. Confirm that the obtained kernel version information matches with system requirements as listed
-    in :ref:`supported_distributions`.
+    b. Confirm that your kernel version matches the system requirements, as listed in
+    :ref:`supported_distributions`.
 
 Additional package repositories
 ==========================================================
@@ -60,7 +58,7 @@ installation. Follow the instructions below based on your distributions.
 
     .. tab-item:: Red Hat Enterprise Linux
 
-        1. Add the EPEL repository:
+        1. Add the EPEL repository.
 
            .. tab-set::
 
@@ -79,7 +77,7 @@ installation. Follow the instructions below based on your distributions.
                        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
                        sudo rpm -ivh epel-release-latest-8.noarch.rpm
 
-        2. Enable the CodeReady Linux Builder repository:
+        2. Enable the CodeReady Linux Builder repository.
 
            .. code-block:: shell
 
