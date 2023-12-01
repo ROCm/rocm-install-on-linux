@@ -134,27 +134,27 @@ amdgpu-install as follows:
 
   .. code-block:: bash
 
-      sudo amdgpu-install --usecase=rocm
+    sudo amdgpu-install --usecase=rocm
 
 - For multiple use cases separate them with commas:
 
   .. code-block:: bash
 
-      sudo amdgpu-install --usecase=hiplibsdk,rocm
+    sudo amdgpu-install --usecase=hiplibsdk,rocm
 
 - For graphical workloads using the open-source driver add ``graphics``. For
   example:
 
   .. code-block:: bash
 
-      sudo amdgpu-install --usecase=graphics,rocm
+    sudo amdgpu-install --usecase=graphics,rocm
 
 - For graphical workloads using the proprietary driver add ``workstation``. For
   example:
 
   .. code-block:: bash
 
-      sudo amdgpu-install --usecase=workstation,rocm
+    sudo amdgpu-install --usecase=workstation,rocm
 
 Uninstalling ROCm
 =================================================
@@ -166,20 +166,20 @@ can be used.
 
   .. code-block:: bash
 
-      sudo amdgpu-install --uninstall
+    sudo amdgpu-install --uninstall
 
 - Uninstalling a Specific ROCm Release
 
   .. code-block:: bash
 
-      sudo amdgpu-install --uninstall --rocmrelease=<release-number>
+    sudo amdgpu-install --uninstall --rocmrelease=<release-number>
 
 
 - Uninstalling all ROCm Releases
 
   .. code-block:: bash
 
-      sudo amdgpu-install --uninstall --rocmrelease=all
+    sudo amdgpu-install --uninstall --rocmrelease=all
 
 Multi-versioned ROCm Installation
 =================================================
@@ -225,5 +225,5 @@ containers or you may wish to keep a specific version when using multi-version
 installation, and not have the last installed version overwrite the kernel mode
 driver.
 
-To skip the installation of the kernel-mode driver add the --no-dkms option when
+To skip the installation of the kernel-mode driver add the :code:`--no-dkms` option when
 calling the installer script.

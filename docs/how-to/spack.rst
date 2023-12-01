@@ -343,7 +343,7 @@ create an environment.
 
         spack find
 
-8. If any modification is made to the ``.yaml`` file, you must deactivate the existing environment and create a new one in order for the modications to be reflected.
+8. If any modification is made to the ``.yaml`` file, you must deactivate the existing environment and create a new one in order for the modifications to be reflected.
 
     To deactivate, use:
 
