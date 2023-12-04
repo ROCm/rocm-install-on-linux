@@ -130,7 +130,7 @@ Installing ROCm packages
 To install use cases specific to your requirements, use the installer
 amdgpu-install as follows:
 
-- To install a single use case add it with the --usecase option:
+- To install a single use case add it with the :code:`--usecase` option:
 
   .. code-block:: bash
 
@@ -184,7 +184,7 @@ can be used.
 Multi-versioned ROCm Installation
 =================================================
 
-By default (without the --rocmrelease option) the installer script will install
+By default (without the :code:`--rocmrelease` option) the installer script will install
 packages in the single-version layout.
 
 For the multi-version ROCm installation you must use the installer script from
