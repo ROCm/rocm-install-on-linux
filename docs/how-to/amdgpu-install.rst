@@ -130,31 +130,31 @@ Installing ROCm packages
 To install use cases specific to your requirements, use the installer
 amdgpu-install as follows:
 
-- To install a single use case add it with the --usecase option:
+- To install a single use case add it with the :code:`--usecase` option:
 
   .. code-block:: bash
 
-      sudo amdgpu-install --usecase=rocm
+    sudo amdgpu-install --usecase=rocm
 
 - For multiple use cases separate them with commas:
 
   .. code-block:: bash
 
-      sudo amdgpu-install --usecase=hiplibsdk,rocm
+    sudo amdgpu-install --usecase=hiplibsdk,rocm
 
 - For graphical workloads using the open-source driver add ``graphics``. For
   example:
 
   .. code-block:: bash
 
-      sudo amdgpu-install --usecase=graphics,rocm
+    sudo amdgpu-install --usecase=graphics,rocm
 
 - For graphical workloads using the proprietary driver add ``workstation``. For
   example:
 
   .. code-block:: bash
 
-      sudo amdgpu-install --usecase=workstation,rocm
+    sudo amdgpu-install --usecase=workstation,rocm
 
 Uninstalling ROCm
 =================================================
@@ -166,25 +166,25 @@ can be used.
 
   .. code-block:: bash
 
-      sudo amdgpu-install --uninstall
+    sudo amdgpu-install --uninstall
 
 - Uninstalling a Specific ROCm Release
 
   .. code-block:: bash
 
-      sudo amdgpu-install --uninstall --rocmrelease=<release-number>
+    sudo amdgpu-install --uninstall --rocmrelease=<release-number>
 
 
 - Uninstalling all ROCm Releases
 
   .. code-block:: bash
 
-      sudo amdgpu-install --uninstall --rocmrelease=all
+    sudo amdgpu-install --uninstall --rocmrelease=all
 
 Multi-versioned ROCm Installation
 =================================================
 
-By default (without the --rocmrelease option) the installer script will install
+By default (without the :code:`--rocmrelease` option) the installer script will install
 packages in the single-version layout.
 
 For the multi-version ROCm installation you must use the installer script from
@@ -225,5 +225,5 @@ containers or you may wish to keep a specific version when using multi-version
 installation, and not have the last installed version overwrite the kernel mode
 driver.
 
-To skip the installation of the kernel-mode driver add the --no-dkms option when
+To skip the installation of the kernel-mode driver add the :code:`--no-dkms` option when
 calling the installer script.
