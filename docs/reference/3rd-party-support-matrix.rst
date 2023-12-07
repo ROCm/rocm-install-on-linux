@@ -148,7 +148,7 @@ contemporary CUDA / NVIDIA HPC SDK alternatives.
       - 22.9
 
     * - 6.0.x
-      - 2.0.1
+      - 3.0.0
       - 22.9
 
 For the latest documentation of these libraries, refer to :doc:`API libraries <../../reference/library-index.md>`.

@@ -26,3 +26,4 @@ the compatibility combinations that are currently supported.
     "5.6.1", "5.7.0"
     "5.7.0", "5.5.0, 5.6.1"
     "5.7.1", "5.5.0, 5.6.1"
+    "6.0.0", "5.6.1, 5.7.0"
