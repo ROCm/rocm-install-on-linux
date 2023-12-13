@@ -2,7 +2,7 @@
 
 This repository contains installation instructions for ROCm on Linux, along with installation-related information.
 
-For Windows-related installation information (HIP SDK), refer to the [Windows installation GitHub repository](https://github.com/ROCm/rocm-install-on-windows) or the [ROCm docs Linux install page]().
+For Windows-related installation information (HIP SDK), refer to the [Windows installation GitHub repository](https://github.com/ROCm/rocm-install-on-windows) or the [ROCm docs Windows install page]().
 
 ## Building our documentation
 
