@@ -68,7 +68,7 @@ All meta-packages are a combination of required packages and libraries.
   +-----------------------------+---------------------------------+
   | Meta package                | Associated packages             |
   +=============================+=================================+
-  | ``rocm```                   | Meta packages:                  |
+  | ``rocm``                    | Meta packages:                  |
   |                             |                                 |
   |                             | - ``rocm-developer-tools``      |
   |                             | - ``rocm-ml-sdk``               |
