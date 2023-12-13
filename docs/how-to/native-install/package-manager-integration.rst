@@ -53,7 +53,7 @@ valid only for rpm packages.
 Components of ROCm programming models
 ============================================================
 
-The table below demonstrates the high-level layered architecture of ROCm programming models and their meta-packages.
+The figure below demonstrates the high-level layered architecture of ROCm programming models and their meta-packages.
 All meta-packages are a combination of required packages and libraries.
 
 .. image:: ../../data/install/linux/linux003.png
