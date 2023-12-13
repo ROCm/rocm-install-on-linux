@@ -53,8 +53,12 @@ valid only for rpm packages.
 Components of ROCm programming models
 ============================================================
 
-The figure below demonstrates the high-level layered architecture of ROCm programming models and their meta-packages.
+The table below demonstrates the high-level layered architecture of ROCm programming models and their meta-packages.
 All meta-packages are a combination of required packages and libraries.
+
+.. image:: /data/install/linux/linux003.png
+    :width: 1500
+    :alt: ROCm meta packages
 
 **Example:**
 
@@ -62,6 +66,32 @@ All meta-packages are a combination of required packages and libraries.
   applications.
 - ``rocm-hip-sdk`` contains runtime components to deploy and execute HIP
   applications.  
+
+.. note::
+    ``rocm-llvm`` is not a meta-package; it's a single package that installs the ROCm Clang compiler files.
+
+.. csv-table::
+  :widths: 30, 70
+  :header: "Package", "Description"
+
+    ``rocm-language-runtime``, The ROCm runtime.
+    ``rocm-developer-tools``, Debug and profile HIP applications.
+    ``rocm-hip-runtime``, Run HIP applications writen for the AMD platform.
+    ``rocm-hip-runtime-devel``, Develop applications on HIP or port from CUDA.
+    ``rocm-opencl-runtime``, Run OpenCL-based applications on the AMD platform.
+    ``rocm-opencl-sdk``, Develop OpenCL-based applications for the AMD platform.
+    ``rocm-hip-libraries``, HIP libraries optimized for the AMD platform.
+    ``rocm-hip-sdk``, Develop or port HIP applications and libraries for the AMD platform.
+    ``rocm-ml-libraries``, Key machine learning libraries. Includes MIOpen.
+    ``rocm-ml-sdk``, Develop and run machine learning applications for AMD.
+    ``rocm-openmp-runtime``, Run OpenMP-based applications on the AMD platform.
+    ``rocm-openmp-sdk``, Develop OpenMP-based applications for the AMD software.
+
+Packages in ROCm programming models
+============================================================
+
+This section discusses the available meta-packages and their packages.
+The following table visualizes the meta-packages and their associated (meta-)packages in a ROCm programming model.
 
 .. table::
 
@@ -232,39 +262,6 @@ All meta-packages are a combination of required packages and libraries.
   |                             | - ``openmp-extras-runtime``     |
   |                             | - ``rocm-core``                 |
   +-----------------------------+---------------------------------+
-
-.. note::
-    ``rocm-llvm`` is not a meta-package; it's a single package that installs the ROCm Clang compiler files.
-
-.. csv-table::
-  :widths: 30, 70
-  :header: "Package", "Description"
-
-    ``rocm-language-runtime``, The ROCm runtime.
-    ``rocm-developer-tools``, Debug and profile HIP applications.
-    ``rocm-hip-runtime``, Run HIP applications writen for the AMD platform.
-    ``rocm-hip-runtime-devel``, Develop applications on HIP or port from CUDA.
-    ``rocm-opencl-runtime``, Run OpenCL-based applications on the AMD platform.
-    ``rocm-opencl-sdk``, Develop OpenCL-based applications for the AMD platform.
-    ``rocm-hip-libraries``, HIP libraries optimized for the AMD platform.
-    ``rocm-hip-sdk``, Develop or port HIP applications and libraries for the AMD platform.
-    ``rocm-ml-libraries``, Key machine learning libraries. Includes MIOpen.
-    ``rocm-ml-sdk``, Develop and run machine learning applications for AMD.
-    ``rocm-openmp-runtime``, Run OpenMP-based applications on the AMD platform.
-    ``rocm-openmp-sdk``, Develop OpenMP-based applications for the AMD software.
-
-Packages in ROCm programming models
-============================================================
-
-This section discusses the available meta-packages and their packages.
-The following image visualizes the meta-packages and their associated packages in a ROCm programming model.
-
-.. image:: /data/install/linux/linux004.png
-    :alt: Associated packages
-
-- Meta-packages can include another meta-package.
-- ``rocm-core`` package is common across all the meta-packages.
-- Meta-packages and associated packages are represented in the same color.
 
 .. note::
     The figure above is for informational purposes only, as the individual packages in a meta-package are subject to change.
