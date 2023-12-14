@@ -88,7 +88,7 @@ If a GPU is not listed on this table, the GPU is not officially supported by AMD
               - GCN5.1
               - ✅
 
-    .. tab-item:: AND Radeon™
+    .. tab-item:: AMD Radeon™
 
         .. list-table::
             :widths: 50 25 25 10
