@@ -2,6 +2,8 @@
 SUSE Linux Enterprise native installation
 *********************************************************************************************
 
+.. _sle-register-rocm:
+
 Registering ROCm repositories
 ===============================================
 
@@ -47,6 +49,8 @@ Register ROCm packages
 
     sudo zypper ref
 
+.. _sle-install:
+
 Installing
 ===============================================
 
@@ -66,3 +70,67 @@ Install ROCm packages
     sudo zypper --gpg-auto-import-keys install rocm-hip-sdk
 
 Perform :doc:`post-install`.
+
+
+Upgrading
+================================================
+
+To upgrade an existing ROCm installation to a newer version, follow the steps in
+:ref:`sle-register-repo` and :ref:`sle-install`. After upgrading the kernel
+driver, it may also upgrade the GPU firmware which requires a system reboot to
+take effect.
+
+Uninstalling
+================================================
+
+Uninstall specific meta packages
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+    :substitutions:
+
+    # sudo zypper remove <package-name>
+    # For example:
+    sudo zypper remove rocm-hip-sdk
+    # Or for version specific packages:
+    sudo zypper remove rocm-hip-sdk|rocm_version|
+
+Uninstall ROCm packages
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+    :substitutions:
+
+    sudo zypper remove rocm-core
+    # Or for version specific packages:
+    sudo zypper remove rocm-core|rocm_version|
+
+Uninstall kernel-mode driver
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+
+    sudo zypper remove --clean-deps amdgpu-dkms
+
+Remove ROCm and AMDGPU repositories
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+    :substitutions:
+
+    # Remove the repositories.
+    # sudo zypper removerepo <rocm*/amdgpu>
+    #
+    # The name of the repositories can be listed with:
+    sudo zypper repos
+    
+    # Then remove the 'ROCm' and 'amdgpu' repositories.
+    # For example:
+    sudo zypper removerepo ROCm-|rocm_version|
+    sudo zypper removerepo amdgpu
+
+    # Clear the cache and clean the system.
+    sudo zypper clean --all
+
+    # Restart the system.
+    sudo reboot

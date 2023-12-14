@@ -105,7 +105,9 @@ Upgrading
 ================================================
 
 To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`ubuntu-register-repo` and :ref:`ubuntu-install`.
+:ref:`ubuntu-register-repo` and :ref:`ubuntu-install`. After upgrading the kernel
+driver, it may also upgrade the GPU firmware which requires a system reboot to
+take effect.
 
 .. _ubuntu-uninstall:
 
