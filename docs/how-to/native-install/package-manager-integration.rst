@@ -74,6 +74,7 @@ All meta-packages are a combination of required packages and libraries.
   :widths: 30, 70
   :header: "Package", "Description"
 
+    ``rocm``, All ROCm core packages, tools, and libraries.
     ``rocm-language-runtime``, The ROCm runtime.
     ``rocm-developer-tools``, Debug and profile HIP applications.
     ``rocm-hip-runtime``, Run HIP applications writen for the AMD platform.
