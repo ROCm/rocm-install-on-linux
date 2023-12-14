@@ -31,7 +31,7 @@ If a GPU is not listed on this table, the GPU is not officially supported by AMD
             * - AMD Instinct™ MI300A
               - CDNA3
               - gfx940
-              - ✅
+              - ✅ [#]_
 
             * - AMD Instinct™ MI250X
               - CDNA2
@@ -113,6 +113,10 @@ Support status:
 ✅: **Supported** - AMD enables these GPUs in our software distributions for the corresponding ROCm product.
 ⚠️: **Deprecated** - Support will be removed in a future release.
 ❌: **Unsupported** - This configuration is not enabled in our software distributions.
+
+.. [#]
+    MI300A is currently not officially support on RHEL 9.x.
+    This will be added on a later date.  
 
 Supported operating systems
 =============================================
