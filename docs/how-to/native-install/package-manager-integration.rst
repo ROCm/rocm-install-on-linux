@@ -19,8 +19,8 @@ support a specific use case.
 
 All meta-packages exist in both versioned and non-versioned forms.
 
-* Non-versioned packages – For a single-version installation of the ROCm stack
-* Versioned packages – For multi-version installations of the ROCm stack
+* Non-versioned packages: For a single-version installation of the ROCm stack
+* Versioned packages: For multi-version installations of the ROCm stack
 
 .. image:: ../../data/install/linux/linux002.png
     :alt: ROCm Release Package Naming
