@@ -115,7 +115,7 @@ Support status:
 ❌: **Unsupported** - This configuration is not enabled in our software distributions.
 
 .. [#]
-    MI300A is currently not officially support on RHEL 9.x.
+    MI300A is currently not officially supported on RHEL 9.x.
     This will be added on a later date.  
 
 Supported operating systems
