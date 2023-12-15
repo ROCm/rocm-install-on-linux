@@ -18,7 +18,7 @@ To install `PyTorch for ROCm <https://pytorch.org/blog/pytorch-for-amd-rocm-plat
 For hardware, software, and third-party framework compatibility between ROCm and PyTorch, refer to:
 
 * :ref:`system-requirements`
-* :doc:`3rd-party-support-matrix`
+* :doc:`../../reference/3rd-party-support-matrix`
 
 .. _using-docker-with-pytorch-pre-installed:
 
