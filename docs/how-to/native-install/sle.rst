@@ -76,7 +76,7 @@ Upgrading
 ================================================
 
 To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`sle-register-repo` and :ref:`sle-install`. After upgrading the kernel
+:ref:`sle-register-rocm` and :ref:`sle-install`. After upgrading the kernel
 driver, it may also upgrade the GPU firmware which requires a system reboot to
 take effect.
 

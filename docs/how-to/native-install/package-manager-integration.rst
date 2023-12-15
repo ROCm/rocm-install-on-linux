@@ -72,21 +72,22 @@ All meta-packages are a combination of required packages and libraries.
 
 .. csv-table::
   :widths: 30, 70
+  :delim: ;
   :header: "Package", "Description"
 
-    ``rocm``, All ROCm core packages, tools, and libraries.
-    ``rocm-language-runtime``, The ROCm runtime.
-    ``rocm-developer-tools``, Debug and profile HIP applications.
-    ``rocm-hip-runtime``, Run HIP applications writen for the AMD platform.
-    ``rocm-hip-runtime-devel``, Develop applications on HIP or port from CUDA.
-    ``rocm-opencl-runtime``, Run OpenCL-based applications on the AMD platform.
-    ``rocm-opencl-sdk``, Develop OpenCL-based applications for the AMD platform.
-    ``rocm-hip-libraries``, HIP libraries optimized for the AMD platform.
-    ``rocm-hip-sdk``, Develop or port HIP applications and libraries for the AMD platform.
-    ``rocm-ml-libraries``, Key machine learning libraries. Includes MIOpen.
-    ``rocm-ml-sdk``, Develop and run machine learning applications for AMD.
-    ``rocm-openmp-runtime``, Run OpenMP-based applications on the AMD platform.
-    ``rocm-openmp-sdk``, Develop OpenMP-based applications for the AMD software.
+    ``rocm``; All ROCm core packages, tools, and libraries.
+    ``rocm-language-runtime``; The ROCm runtime.
+    ``rocm-developer-tools``; Debug and profile HIP applications.
+    ``rocm-hip-runtime``; Run HIP applications writen for the AMD platform.
+    ``rocm-hip-runtime-devel``; Develop applications on HIP or port from CUDA.
+    ``rocm-opencl-runtime``; Run OpenCL-based applications on the AMD platform.
+    ``rocm-opencl-sdk``; Develop OpenCL-based applications for the AMD platform.
+    ``rocm-hip-libraries``; HIP libraries optimized for the AMD platform.
+    ``rocm-hip-sdk``; Develop or port HIP applications and libraries for the AMD platform.
+    ``rocm-ml-libraries``; Key machine learning libraries. Includes MIOpen.
+    ``rocm-ml-sdk``; Develop and run machine learning applications for AMD.
+    ``rocm-openmp-runtime``; Run OpenMP-based applications on the AMD platform.
+    ``rocm-openmp-sdk``; Develop OpenMP-based applications for the AMD software.
 
 Packages in ROCm programming models
 ============================================================
