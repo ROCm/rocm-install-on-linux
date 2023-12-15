@@ -14,12 +14,14 @@ Prepare to install
     :gutter: 1
 
     .. grid-item-card:: Prerequisites
-        :link: how-to/prerequisites.rst
+        :link: how-to/prerequisites
+        :link-type: doc
 
         The prerequisites page lists the required steps *before* installation.
 
     .. grid-item-card:: Install options
-        :link: /tutorial/install-overview.rst
+        :link: tutorial/install-overview
+        :link-type: doc
 
         Package manager vs AMDGPU installer
 
@@ -32,12 +34,14 @@ Choose your install method
     :gutter: 1
 
     .. grid-item-card:: Package manager
-        :link: how-to/native-install/index.rst
+        :link: how-to/native-install/index
+        :link-type: doc
 
         Directly use your distribution's package manager to install ROCm.
 
     .. grid-item-card:: AMDGPU installer
-        :link: how-to/amdgpu-install.rst
+        :link: how-to/amdgpu-install
+        :link-type: doc
 
         Use an installer tool that orchestrates changes via the package manager.
 
