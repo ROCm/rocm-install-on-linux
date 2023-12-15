@@ -26,11 +26,11 @@ If a GPU is not listed on this table, the GPU is not officially supported by AMD
 
             * - AMD Instinct™ MI300X
               - CDNA3
-              - gfx940
+              - gfx942
               - ✅
             * - AMD Instinct™ MI300A
               - CDNA3
-              - gfx940
+              - gfx942
               - ✅ [#]_
 
             * - AMD Instinct™ MI250X
