@@ -11,7 +11,7 @@ from rocm_docs import ROCmDocs
 
 # ROCm version numbers
 rocm_version = '6.0.0'
-amdgpu_version = '6.0.0' # directory in # directory in https://repo.radeon.com/rocm/apt/https://repo.radeon.com/amdgpu-install/
+amdgpu_version = '6.0' # directory in # directory in https://repo.radeon.com/rocm/apt/https://repo.radeon.com/amdgpu-install/
 amdgpu_install_version = '6.0.60000-1' # version in https://repo.radeon.com/amdgpu-install/5.7.1/ubuntu/focal/
 
 latex_engine = "xelatex"
