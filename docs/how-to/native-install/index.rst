@@ -24,6 +24,6 @@ Installation via native package manager
         - :ref:`Ubuntu <ubuntu-uninstall>`
 
     .. grid-item-card:: Package manager integration
-        :link: package-manager-integration
+        :link: package-manager-integration.html
 
 See also: :doc:`/reference/system-requirements`
