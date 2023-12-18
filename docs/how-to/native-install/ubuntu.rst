@@ -50,7 +50,7 @@ Add the AMDGPU repository for the driver.
 
                 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/|rocm_version|/ubuntu {{ os_release }} main" \
                     | sudo tee /etc/apt/sources.list.d/amdgpu.list
-                sudo apt update 
+                sudo apt update
         {% endfor %}
 
 .. _ubuntu-register-rocm:
@@ -72,7 +72,6 @@ Add the ROCm repository.
 
                 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/|rocm_version| {{ os_release }} main" \
                     | sudo tee --append /etc/apt/sources.list.d/rocm.list
-                done
                 echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
                     | sudo tee /etc/apt/preferences.d/rocm-pin-600
         {% endfor %}
@@ -97,7 +96,7 @@ Install ROCm packages
 
     sudo apt install rocm-hip-sdk
 
-Perform :doc:`post-install`.
+Complete the :doc:`post-install`.
 
 .. _ubuntu-upgrade:
 

@@ -26,7 +26,7 @@ The ROCm runtimes make use of multiple device files:
   GPU. Where ``<node>`` is a number for each card in the system starting from 128.
 
 Exposing these devices to a container is done by using the
-[``--device``](https://docs.docker.com/engine/reference/commandline/run/#device)
+`--device <https://docs.docker.com/engine/reference/commandline/run/#device>`_
 option, i.e. to allow access to all GPUs expose ``/dev/kfd`` and all
 ``/dev/dri/renderD`` devices:
 
