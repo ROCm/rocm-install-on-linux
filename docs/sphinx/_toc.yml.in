@@ -11,7 +11,7 @@ subtrees:
     - file: how-to/prerequisites
       title: Prerequisites
     - file: how-to/amdgpu-install
-      title: Installation via AMDGPU Installer
+      title: Installation via AMDGPU installer
     - file: how-to/native-install/index
       title: Installation via package manager
       subtrees:
@@ -23,7 +23,7 @@ subtrees:
         - file: how-to/native-install/sle
           title: SUSE Linux Enterprise
         - file: how-to/native-install/post-install
-          title: Post-Install Instructions
+          title: Post-Install instructions
         - file: how-to/native-install/package-manager-integration
           title: Package manager integration
 

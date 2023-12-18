@@ -7,7 +7,9 @@ ROCm provides mixed-precision and large-scale training using our
 `MIOpen <https://github.com/ROCmSoftwarePlatform/MIOpen>`_ and
 `RCCL <https://github.com/ROCmSoftwarePlatform/rccl>`_ libraries.
 
-To install `PyTorch for ROCm <https://pytorch.org/blog/pytorch-for-amd-rocm-platform-now-available-as-python-package/>`_, you have the following options:
+To install
+`PyTorch for ROCm <https://pytorch.org/blog/pytorch-for-amd-rocm-platform-now-available-as-python-package/>`_,
+you have the following options:
 
 * :ref:`using-docker-with-pytorch-pre-installed`
   (recommended)
@@ -18,7 +20,7 @@ To install `PyTorch for ROCm <https://pytorch.org/blog/pytorch-for-amd-rocm-plat
 For hardware, software, and third-party framework compatibility between ROCm and PyTorch, refer to:
 
 * :ref:`system-requirements`
-* :doc:`../../reference/3rd-party-support-matrix`
+* :ref:`3rd-party-support-matrix`
 
 .. _using-docker-with-pytorch-pre-installed:
 
@@ -69,11 +71,11 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
           * - Base OS
             - Docker Image
           * - Ubuntu 20.04
-            - `rocm/dev-ubuntu-20.04 <https://hub.docker.com/r/rocm/dev-ubuntu-20.04>`
+            - `rocm/dev-ubuntu-20.04 <https://hub.docker.com/r/rocm/dev-ubuntu-20.04>`_
           * - Ubuntu 22.04
-            - `rocm/dev-ubuntu-20.04 <https://hub.docker.com/r/rocm/dev-ubuntu-22.04>`
+            - `rocm/dev-ubuntu-20.04 <https://hub.docker.com/r/rocm/dev-ubuntu-22.04>`_
           * - CentOS 7
-            - `rocm/dev-centos-7 <https://hub.docker.com/r/rocm/dev-centos-7>`
+            - `rocm/dev-centos-7 <https://hub.docker.com/r/rocm/dev-centos-7>`_
 
    b. Pull the selected image.
 
@@ -119,7 +121,7 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
        pip3 install wheel setuptools
 
 3. Install ``torch``, ``torchvision``, and ``torchaudio``, as specified in the
-   `installation matrix <https://pytorch.org/get-started/locally/>`.
+   `installation matrix <https://pytorch.org/get-started/locally/>`_.
 
    .. note::
 
@@ -135,8 +137,7 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
    PyTorch uses `MIOpen <https://github.com/ROCmSoftwarePlatform/MIOpen>`_ for machine learning
    primitives, which are compiled into kernels at runtime. Runtime compilation causes a small warm-up
    phase when starting PyTorch, and MIOpen kdb files contain precompiled kernels that can speed up
-   application warm-up phases. For more information, refer to the
-   {doc}`MIOpen installation page <miopen:install>`.
+   application warm-up phases.
 
    MIOpen kdb files can be used with ROCm PyTorch wheels. However, the kdb files need to be placed in
    a specific location with respect to the PyTorch installation path. A helper script simplifies this task by
@@ -232,7 +233,7 @@ scripts to determine the configuration of the build environment.
        ./.ci/pytorch/build.sh
 
    This converts PyTorch sources for
-   [HIP compatibility](https://www.amd.com/en/developer/rocm-hub/hip-sdk.html) and builds the
+   `HIP compatibility <https://www.amd.com/en/developer/rocm-hub/hip-sdk.html>`_ and builds the
    PyTorch framework.
 
    To check if your build is successful, run:
@@ -455,7 +456,8 @@ MNIST PyTorch example
 ImageNet PyTorch example
 ---------------------------------------------------------------------------------------------------------
 
-1. Clone the PyTorch examples repository (if you didn't already do this step in the preceding MNIST example).
+1. Clone the PyTorch examples repository (if you didn't already do this in the preceding MNIST
+   example).
 
    .. code-block:: bash
 
