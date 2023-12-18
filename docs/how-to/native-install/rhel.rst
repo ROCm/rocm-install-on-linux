@@ -81,7 +81,7 @@ Install ROCm packages
 
     sudo yum install rocm-hip-sdk
 
-Perform :doc:`post-install`.
+Complete the :doc:`post-install`.
 
 Upgrade
 =====================================================

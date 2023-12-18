@@ -105,17 +105,13 @@ Kernel headers and development packages
 ================================================================
 
 The driver package uses
-:abbr:`DKMS (Dynamic Kernel Module Support)` [DKMS-wiki]_ to build
-the `amdgpu-dkms` module (driver) for the installed kernels. This requires the
-Linux kernel headers and modules to be installed for each. Usually these are
-automatically installed with the kernel, but if you have multiple kernel
-versions or you have downloaded the kernel images and not the kernel
+`DKMS (Dynamic Kernel Module Support) <https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support>`_
+to build the `amdgpu-dkms` module (driver) for the installed kernels. This requires the Linux kernel
+headers and modules to be installed for each. Usually these are automatically installed with the kernel,
+but if you have multiple kernel versions or you have downloaded the kernel images and not the kernel
 meta-packages then they must be manually installed.
 
-.. [DKMS-wiki] https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support
-
-To install for the currently active kernel run the command corresponding
-to your distribution.
+To install for the currently active kernel run the command corresponding to your distribution.
 
 .. tab-set::
 

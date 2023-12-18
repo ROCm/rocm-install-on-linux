@@ -9,11 +9,10 @@ exotic architectures using libraries that do not have a standard ABI. Spack is n
 a new version does not break existing installations, so many configurations can coexist on the same
 system.
 
-Most importantly, Spack is *simple*. It offers a simple *spec* syntax, so users can concisely specify
+Most importantly, Spack is *simple*. It offers a simple ``spec`` syntax, so users can concisely specify
 versions and configuration options. Spack is also simple for package authors: package files are written
 in pure Python, and specs allow package authors to maintain a single file for many different builds of
-the same package. For more information on Spack, see the
-`Spack tutorial <https://spack-tutorial.readthedocs.io/en/latest/>`_.
+the same package.
 
 ROCM packages in Spack
 ===================================================
@@ -133,7 +132,7 @@ ROCM packages in Spack
 Building ROCm components using Spack
 ===================================================
 
-1. To use the spack package manager, clone the Spack project from GitHub.
+1. To use the Spack package manager, clone the Spack project from GitHub.
 
     .. code-block:: shell
 
@@ -283,8 +282,7 @@ Creating an environment
 
 You can create an environment with all the required components of your version.
 
-1. In the root folder, create a new folder when you can create a ``.yaml`` file. This file is used to
-create an environment.
+1. In the root folder, create a new folder when you can create a ``.yaml`` file. This file is used to create an environment.
 
     .. code-block:: shell
 
@@ -320,7 +318,7 @@ create an environment.
 
     .. code-block:: shell
 
-    spack env activate /localscratch/MyEnvironment
+        spack env activate /localscratch/MyEnvironment
 
 5. Verify that you want all the component versions.
 

@@ -6,7 +6,7 @@ Installation via AMDGPU installer
 and its components.
 
 .. warning::
-    ROCm currently doesn't support integrated graphics. Should your system have an
+    ROCm doesn't currently support integrated graphics. Should your system have an
     AMD IGP installed, disable it in the BIOS prior to using ROCm. If the driver can
     enumerate the IGP, the ROCm runtime may crash the system, even if told to omit
     it via :ref:`hip_visible_devices`.
@@ -117,12 +117,11 @@ output below.
     - ROCm math libraries
     - HIP development libraries
 
-
 Upgrading ROCm
 =================================================
 
 The upgrade procedure with the installer script is exactly the same as
-:ref:`installing for first time use. <amdgpu-install-installation>`
+:ref:`installing for first time use<amdgpu-install-installation>`.
 
 Installing ROCm packages
 =================================================
@@ -199,9 +198,7 @@ install except the latest one. The amdgpu-install script automatically adds the
 required repositories for the latest release.
 
 See the section "Register ROCm Packages" in :doc:`/how-to/native-install/index`
-for:
-
-- :ref:`Ubuntu <ubuntu-register-rocm>`
+for :ref:`Ubuntu<ubuntu-register-rocm>`.
 
 Additional options
 =================================================

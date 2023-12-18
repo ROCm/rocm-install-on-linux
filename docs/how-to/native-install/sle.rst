@@ -69,8 +69,7 @@ Install ROCm packages
 
     sudo zypper --gpg-auto-import-keys install rocm-hip-sdk
 
-Perform :doc:`post-install`.
-
+Complete the :doc:`post-install`.
 
 Upgrading
 ================================================

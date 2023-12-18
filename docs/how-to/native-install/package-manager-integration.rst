@@ -60,12 +60,16 @@ All meta-packages are a combination of required packages and libraries.
     :width: 1500
     :alt: ROCm meta packages
 
+.. note::
+    The preceding figure is for informational purposes only. The individual packages in a meta-package
+    are subject to change. To avoid conflicts, install meta-packages, not individual packages.
+
 **Example:**
 
 - ``rocm-hip-runtime`` is used to deploy on supported machines to execute HIP
   applications.
 - ``rocm-hip-sdk`` contains runtime components to deploy and execute HIP
-  applications.  
+  applications.
 
 .. note::
     ``rocm-llvm`` is not a meta-package; it's a single package that installs the ROCm Clang compiler files.
@@ -265,7 +269,3 @@ The following table shows the meta-packages and their associated (meta-)packages
   |                            | ``openmp-extras-runtime``,      |
   |                            | ``rocm-core``                   |
   +----------------------------+---------------------------------+
-
-.. note::
-    The figure above is for informational purposes only, as the individual packages in a meta-package are subject to change.
-    Install meta-packages, and not individual packages, to avoid conflicts.

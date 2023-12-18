@@ -82,7 +82,7 @@ applications.
       - COMPATIBLE
       - COMPATIBLE
 
-The Unified Collective Communication (`UCC <https://github.com/openucx/ucc>`_) library also has
+The `Unified Collective Communication (UCC) <https://github.com/openucx/ucc>`_ library also has
 support for ROCm devices.
 
 .. list-table::
@@ -100,7 +100,8 @@ support for ROCm devices.
       - COMPATIBLE
       - COMPATIBLE
 
-## Algorithm libraries
+Algorithm libraries
+================================================
 
 ROCm releases provide algorithm libraries with interfaces compatible with
 contemporary CUDA / NVIDIA HPC SDK alternatives.
@@ -151,4 +152,5 @@ contemporary CUDA / NVIDIA HPC SDK alternatives.
       - 3.0.0
       - 22.9
 
-For the latest documentation of these libraries, refer to :doc:`API libraries <../../reference/library-index.md>`.
+For the latest documentation of these libraries, refer to the
+`ROCm API libraries <https://rocm.docs.amd.com/en/latest/reference/library-index.html>`_.
