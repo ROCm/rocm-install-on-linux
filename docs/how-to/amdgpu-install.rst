@@ -167,14 +167,14 @@ can be used.
 
     sudo amdgpu-install --uninstall
 
-- Uninstalling a Specific ROCm Release
+- Uninstalling a specific ROCm release
 
   .. code-block:: bash
 
     sudo amdgpu-install --uninstall --rocmrelease=<release-number>
 
 
-- Uninstalling all ROCm Releases
+- Uninstalling all ROCm releases
 
   .. code-block:: bash
 
