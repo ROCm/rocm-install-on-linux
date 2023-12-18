@@ -25,11 +25,11 @@ GPU is not listed on this table, It's not officially supported by AMD.
 
             * - AMD Instinct™ MI300X
               - CDNA3
-              - gfx940
+              - gfx942
               - ✅
             * - AMD Instinct™ MI300A
               - CDNA3
-              - gfx940
+              - gfx942
               - ✅ [#]_
 
             * - AMD Instinct™ MI250X
@@ -99,6 +99,10 @@ GPU is not listed on this table, It's not officially supported by AMD.
               - Support
 
             * - AMD Radeon™ RX 7900 XTX
+              - RDNA3
+              - gfx1100
+              - ✅
+            * - AMD Radeon™ RX 7900 XT
               - RDNA3
               - gfx1100
               - ✅
