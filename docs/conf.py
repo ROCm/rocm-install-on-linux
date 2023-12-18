@@ -4,11 +4,6 @@
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-import shutil
-import os
-
-from rocm_docs import ROCmDocs
-
 # ROCm version numbers
 rocm_version = '6.0'
 amdgpu_version = '6.0' # directory in # directory in https://repo.radeon.com/rocm/apt/https://repo.radeon.com/amdgpu-install/
@@ -38,7 +33,7 @@ article_pages = [
     {
         "file":"release",
         "os":["linux"],
-        "date":"2023-07-27"
+        "date":"2023-12-15"
     }
 ]
 
@@ -46,15 +41,18 @@ exclude_patterns = ['temp']
 
 external_toc_path = "./sphinx/_toc.yml"
 
-docs_core = ROCmDocs("ROCm installation (Linux)")
-docs_core.setup()
+html_theme = "rocm_docs_theme"
+html_theme_options = {"flavor": "rocm-docs-home"}
+
+extensions = [
+    "rocm_docs",
+    "sphinxcontrib.datatemplates",
+    "sphinx_substitution_extensions",
+]
+
+html_title = "ROCm installation (Linux)"
 
 external_projects_current_project = "rocm"
-
-docs_core.extensions += [
-    'sphinxcontrib.datatemplates',
-    'sphinx_substitution_extensions'
-]
 
 # Add the following replacements to every RST file.
 rst_prolog = f"""
@@ -63,8 +61,6 @@ rst_prolog = f"""
 .. |amdgpu_install_version| replace:: {amdgpu_install_version}
 """
 
-for sphinx_var in ROCmDocs.SPHINX_VARS:
-    globals()[sphinx_var] = getattr(docs_core, sphinx_var)
 html_theme_options = {
     "link_main_doc": True
 }
