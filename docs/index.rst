@@ -4,11 +4,8 @@
 ROCm installation for Linux
 ****************************************************************
 
-If you're new to ROCm, we recommend using the :ref:`quick-start` guide. If you want more
+If you're new to ROCm, we recommend using the :ref:`rocm-install-quick`. If you want more
 complete instructions, refer to the following sections.
-
-Prepare to install
-========================================
 
 .. grid:: 2
     :gutter: 1
@@ -16,14 +13,19 @@ Prepare to install
     .. grid-item-card:: Prerequisites
         :link: how-to/prerequisites.html
 
-        The prerequisites page lists the required steps *before* installation.
+        ROCm quick-start installation guide.
 
     .. grid-item-card:: Install options
         :link: tutorial/install-overview.html
 
-        Package manager vs AMDGPU installer
+        * Package manager vs AMDGPU installer
+        * Single-version vs multi-version
 
-        Single-version vs multi-version
+    .. grid-item-card:: Prerequisites
+        :link: how-to/prerequisites.html
+        :link-type: doc
+
+        Steps required before installation.
 
 Choose your install method
 ========================================

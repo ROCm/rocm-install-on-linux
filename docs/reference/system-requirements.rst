@@ -7,9 +7,8 @@ System requirements
 Supported GPUs
 =============================================
 
-The table below shows supported GPUs for Instinct™, Radeon Pro™ and Radeon™ GPUs.
-Please click the tabs below to switch between GPU product lines.
-If a GPU is not listed on this table, the GPU is not officially supported by AMD.
+The following table shows the supported GPUs for Instinct™, Radeon Pro™ and Radeon™ GPUs. If a
+GPU is not listed on this table, It's not officially supported by AMD.
 
 .. tab-set::
 
@@ -21,7 +20,7 @@ If a GPU is not listed on this table, the GPU is not officially supported by AMD
 
             * - GPU
               - Architecture
-              - LLVM Target
+              - LLVM target
               - Support
 
             * - AMD Instinct™ MI300X
@@ -68,7 +67,7 @@ If a GPU is not listed on this table, the GPU is not officially supported by AMD
 
             * - GPU
               - Architecture
-              - LLVM Target
+              - LLVM target
               - Support
 
             * - AMD Radeon™ Pro W7900
@@ -96,7 +95,7 @@ If a GPU is not listed on this table, the GPU is not officially supported by AMD
 
             * - GPU
               - Architecture
-              - LLVM Target
+              - LLVM target
               - Support
 
             * - AMD Radeon™ RX 7900 XTX
@@ -110,13 +109,16 @@ If a GPU is not listed on this table, the GPU is not officially supported by AMD
 
 Support status:
 
-✅: **Supported** - AMD enables these GPUs in our software distributions for the corresponding ROCm product.
-⚠️: **Deprecated** - Support will be removed in a future release.
-❌: **Unsupported** - This configuration is not enabled in our software distributions.
+✅: **Supported** - AMD enables these GPUs in our software distributions for the corresponding
+ROCm product.\
+⚠️: **Deprecated** - Support will be removed in a future release.\
+❌: **Unsupported** - This configuration is not enabled in our software distributions.\
 
 .. [#]
     MI300A is currently not officially supported on RHEL 9.x.
-    This will be added on a later date.  
+    This will be added on a later date.
+
+.. _supported_distributions:
 
 Supported operating systems
 =============================================

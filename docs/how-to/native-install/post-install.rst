@@ -2,7 +2,7 @@
 Post-installation instructions
 *************************************************************************
 
-1.  Configure system linker.
+1.  Configure the system linker.
 
     Instruct the system linker where to find shared objects (``.so``-files) for ROCm applications.
 
