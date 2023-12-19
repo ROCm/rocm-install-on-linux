@@ -5,8 +5,8 @@ Third-party support matrix
 ***************************************************************************
 
 ROCm™ supports various 3rd party libraries and frameworks. Supported versions
-are tested and known to work. Non-supported versions of 3rd parties may also
-work, but aren't tested.
+are tested and known to work. Non-supported third-party versions may also
+work, but these aren't tested.
 
 Deep learning
 ================================================
