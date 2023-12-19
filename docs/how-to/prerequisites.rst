@@ -40,8 +40,7 @@ Before installing ROCm, complete the following prerequisites.
 
             Linux 5.15.0-46-generic #44~20.04.5-Ubuntu SMP Fri Jun 24 13:27:29 UTC 2022 x86_64
 
-    b. Confirm that your kernel version matches the system requirements, as listed in
-    :ref:`supported_distributions`.
+    b. Confirm that your kernel version matches the system requirements, as listed in :ref:`supported_distributions`.
 
 Additional package repositories
 ==========================================================

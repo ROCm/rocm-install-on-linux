@@ -9,15 +9,21 @@ more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
 
 To start, choose your preferred install method and operating system:
 
-* :ref:`rocm-amdgpu-quick`
-    * :ref:`amdgpu-ubuntu`
-    * :ref:`amdgpu-rhel`
-    * :ref:`amdgpu-suse`
 
-* :ref:`rocm-package-man-quick`
-    * :ref:`package-man-ubuntu`
-    * :ref:`package-man-rhel`
-    * :ref:`package-man-suse`
+.. grid:: 2
+    :gutter: 1
+
+    .. grid-item-card:: :ref:`rocm-amdgpu-quick`
+
+        * :ref:`amdgpu-ubuntu`
+        * :ref:`amdgpu-rhel`
+        * :ref:`amdgpu-suse`
+
+    .. grid-item-card:: :ref:`rocm-package-man-quick`
+
+        * :ref:`package-man-ubuntu`
+        * :ref:`package-man-rhel`
+        * :ref:`package-man-suse`
 
 .. _rocm-amdgpu-quick:
 

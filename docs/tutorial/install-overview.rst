@@ -11,8 +11,8 @@ sections.
 If you're new to ROCm, we recommend using the :ref:`rocm-install-quick` guide.
 
 .. note::
-    If you're using the Radeon GPU with graphical applications, see
-    :doc:`Radeon Installation instructions <radeon:install/install-radeon>`.
+    If you're using the Radeon GPU with graphical applications, refer to the
+    :doc:`Radeon installation instructions <https://www.amd.com/en/support/kb/faq/rs-install>`.
 
 Package manager versus AMDGPU installer
 ===========================================================
