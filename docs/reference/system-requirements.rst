@@ -102,6 +102,10 @@ GPU is not listed on this table, It's not officially supported by AMD.
               - RDNA3
               - gfx1100
               - ✅
+            * - AMD Radeon™ RX 7900 XT
+              - RDNA3
+              - gfx1100
+              - ✅
             * - AMD Radeon™ VII
               - GCN5.1
               - gfx906

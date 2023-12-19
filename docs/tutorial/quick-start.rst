@@ -25,12 +25,12 @@ To start, choose your preferred install method and operating system:
         * :ref:`package-man-rhel`
         * :ref:`package-man-suse`
 
-.. _rocm-amdgpu-quick:
+.. _rocm-package-man-quick:
 
-AMDGPU installer
+Native package manager
 ==========================================
 
-.. _amdgpu-ubuntu:
+.. _package-man-ubuntu:
 
 Ubuntu
 ------------------------------------------------
@@ -48,15 +48,13 @@ Ubuntu
                 sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
                 # See prerequisites. Adding current user to Video and Render groups
                 sudo usermod -a -G render,video $LOGNAME
-                wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
-                sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
                 sudo apt update
                 sudo apt install amdgpu-dkms
                 sudo apt install rocm-hip-libraries
                 echo Please reboot system for all settings to take effect.
         {% endfor %}
 
-.. _amdgpu-rhel:
+.. _package-man-rhel:
 
 Red Hat Enterprise Linux
 ------------------------------------------------------------------------------------
@@ -77,14 +75,13 @@ Red Hat Enterprise Linux
                 sudo yum install kernel-headers kernel-devel
                 # See prerequisites. Adding current user to Video and Render groups
                 sudo usermod -a -G render,video $LOGNAME
-                sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_release }}.noarch.rpm 
                 sudo yum clean all
                 sudo yum install amdgpu-dkms
                 sudo yum install rocm-hip-libraries
                 echo Please reboot system for all settings to take effect.
         {% endfor %}
 
-.. _amdgpu-suse:
+.. _package-man-suse:
 
 SUSE Linux Enterprise Server
 ------------------------------------------------------------------------------------
@@ -104,20 +101,18 @@ SUSE Linux Enterprise Server
                 sudo zypper install kernel-default-devel
                 # See prerequisites. Adding current user to Video and Render groups
                 sudo usermod -a -G render,video $LOGNAME
-                sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
                 sudo zypper refresh
                 sudo zypper install amdgpu-dkms
                 sudo zypper install rocm-hip-libraries
                 echo Please reboot system for all settings to take effect.
-                sudo amdgpu-install --usecase=graphics,rocm
         {% endfor %}
 
-.. _rocm-package-man-quick:
+.. _rocm-amdgpu-quick:
 
-Native package manager
+AMDGPU installer
 =================================================
 
-.. _package-man-ubuntu:
+.. _amdgpu-ubuntu:
 
 Ubuntu
 ------------------------------------------------------------------------------------
@@ -135,10 +130,10 @@ Ubuntu
                 sudo apt update
                 wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                 sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
-                sudo amdgpu-install --usecase=graphics,rocm
+                sudo amdgpu-install --usecase=rocm
         {% endfor %}
 
-.. _package-man-rhel:
+.. _amdgpu-rhel:
 
 Red Hat Enterprise Linux
 ------------------------------------------------------------------------------------
@@ -154,10 +149,10 @@ Red Hat Enterprise Linux
                 :substitutions:
 
                 sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_release }}.noarch.rpm 
-                sudo amdgpu-install --usecase=graphics,rocm
+                sudo amdgpu-install --usecase=rocm
         {% endfor %}
 
-.. _package-man-suse:
+.. _amdgpu-suse:
 
 SUSE Linux Enterprise Server
 ------------------------------------------------------------------------------------
@@ -173,5 +168,5 @@ SUSE Linux Enterprise Server
                 :substitutions:
 
                 sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
-                sudo amdgpu-install --usecase=graphics,rocm
+                sudo amdgpu-install --usecase=rocm
         {% endfor %}
