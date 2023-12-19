@@ -73,7 +73,7 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
           * - Ubuntu 20.04
             - `rocm/dev-ubuntu-20.04 <https://hub.docker.com/r/rocm/dev-ubuntu-20.04>`_
           * - Ubuntu 22.04
-            - `rocm/dev-ubuntu-20.04 <https://hub.docker.com/r/rocm/dev-ubuntu-22.04>`_
+            - `rocm/dev-ubuntu-22.04 <https://hub.docker.com/r/rocm/dev-ubuntu-22.04>`_
           * - CentOS 7
             - `rocm/dev-centos-7 <https://hub.docker.com/r/rocm/dev-centos-7>`_
 

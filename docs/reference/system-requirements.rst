@@ -118,6 +118,8 @@ ROCm product.\
     MI300A is currently not officially supported on RHEL 9.x.
     This will be added on a later date.
 
+.. _supported_distributions:
+
 Supported operating systems
 =============================================
 
