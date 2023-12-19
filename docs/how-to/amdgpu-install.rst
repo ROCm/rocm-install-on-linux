@@ -9,7 +9,7 @@ and its components.
     ROCm doesn't currently support integrated graphics. Should your system have an
     AMD IGP installed, disable it in the BIOS prior to using ROCm. If the driver can
     enumerate the IGP, the ROCm runtime may crash the system, even if told to omit
-    it via :ref:`hip_visible_devices`.
+    it via `HIP_VISIBLE_DEVICES <https://rocm.docs.amd.com/en/latest/conceptual/gpu-isolation.html#hip-visible-devices>`_.
 
 .. _amdgpu-install-installation:
 
@@ -167,14 +167,14 @@ can be used.
 
     sudo amdgpu-install --uninstall
 
-- Uninstalling a Specific ROCm Release
+- Uninstalling a specific ROCm release
 
   .. code-block:: bash
 
     sudo amdgpu-install --uninstall --rocmrelease=<release-number>
 
 
-- Uninstalling all ROCm Releases
+- Uninstalling all ROCm releases
 
   .. code-block:: bash
 
