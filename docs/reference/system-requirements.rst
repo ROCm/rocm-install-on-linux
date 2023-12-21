@@ -72,7 +72,7 @@ AMD ROCm™ Software supports the following Linux distributions.
     :widths: 50, 50, 25
     :header: "OS", "Kernel", "Support"
 
-    "RHEL 9.3", 5.14.0-362", "✅"
+    "RHEL 9.3", "5.14.0-362", "✅"
     "RHEL 9.2", "5.14.0-362", "✅"
     "RHEL 8.9", "4.18-513", "✅"
     "RHEL 8.8", "4.18-513", "✅"
