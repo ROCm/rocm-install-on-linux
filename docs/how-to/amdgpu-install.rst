@@ -127,7 +127,7 @@ Installing ROCm packages
 =================================================
 
 To install use cases specific to your requirements, use the installer
-amdgpu-install as follows:
+``amdgpu-install`` as follows:
 
 - To install a single use case add it with the :code:`--usecase` option:
 
