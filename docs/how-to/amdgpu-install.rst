@@ -194,7 +194,7 @@ simultaneously, you are required to download the installer from the latest ROCm
 release 5.7.
 
 You must add the ROCm repositories manually for all ROCm releases you want to
-install except the latest one. The amdgpu-install script automatically adds the
+install except the latest one. The ``amdgpu-install`` script automatically adds the
 required repositories for the latest release.
 
 See the section "Register ROCm Packages" in :doc:`/how-to/native-install/index`
@@ -206,7 +206,7 @@ Additional options
 Unattended installation
 ------------------------------------------------------------------------
 
-Adding ``-y`` as a parameter to amdgpu-install skips user prompts (for
+Adding ``-y`` as a parameter to ``amdgpu-install`` skips user prompts (for
 automation). For example:
 
 .. code-block:: bash
