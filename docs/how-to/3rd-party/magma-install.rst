@@ -1,3 +1,7 @@
+.. meta::
+  :description: Installing MAGMA for ROCm
+  :keywords: installation instructions, MAGMA, AMD, ROCm
+
 *******************************************************************************************
 Installing MAGMA for ROCm
 *******************************************************************************************

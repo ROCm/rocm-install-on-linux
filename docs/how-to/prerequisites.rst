@@ -1,3 +1,7 @@
+.. meta::
+  :description: Installation prerequisites
+  :keywords: installation prerequisites, AMD, ROCm
+
 *********************************************************************
 Installation prerequisites
 *********************************************************************

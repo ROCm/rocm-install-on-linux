@@ -1,3 +1,8 @@
+.. meta::
+  :description: ROCm installation options
+  :keywords: ROCm installation, AMD, ROCm, Package manager, AMDGPU, single-version installation,
+  multi-version installation
+
 .. _rocm-install-overview:
 
 *************************************************************

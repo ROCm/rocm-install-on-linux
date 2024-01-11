@@ -1,5 +1,11 @@
+.. meta::
+  :description: User and kernel-space support matrix
+
+  :keywords: Linux support, support matrix, system requirements, user space versions, Kernel Fusion
+  Driver , AMD, ROCm
+
 *****************************************************************************************
-User/kernel-space support matrix
+User and kernel-space support matrix
 *****************************************************************************************
 
 ROCm™ provides forward and backward compatibility between the Kernel Fusion
