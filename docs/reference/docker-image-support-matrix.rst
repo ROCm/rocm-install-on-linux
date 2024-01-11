@@ -1,3 +1,7 @@
+.. meta::
+  :description: Docker image support matrix
+  :keywords: ROCm installation, AMD, ROCm, Docker, Docker image
+
 .. _docker-support-matrix:
 
 ******************************************************************

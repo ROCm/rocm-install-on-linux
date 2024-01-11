@@ -1,3 +1,7 @@
+.. meta::
+  :description: Installing PyTorch for ROCm
+  :keywords: installation instructions, PyTorch, AMD, ROCm
+
 **********************************************************************************
 Installing PyTorch for ROCm
 **********************************************************************************

@@ -1,3 +1,7 @@
+.. meta::
+  :description: Quick-start install guide
+  :keywords: ROCm installation, AMD, ROCm, Package manager, AMDGPU
+
 .. _rocm-install-quick:
 
 *************************************************************
@@ -18,7 +22,7 @@ To start, choose your preferred install method and operating system:
         * :ref:`package-man-ubuntu`
         * :ref:`package-man-rhel`
         * :ref:`package-man-suse`
-        
+
     .. grid-item-card:: :ref:`rocm-amdgpu-quick`
 
         * :ref:`amdgpu-ubuntu`
