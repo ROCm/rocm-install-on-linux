@@ -1,3 +1,8 @@
+.. meta::
+  :description: Red Hat Enterprise Linux native installation
+  :keywords: ROCm install, installation instructions, RHEL, Red Hat Enterprise Linux native installation,
+  AMD, ROCm
+
 **********************************************************************************************
 Red Hat Enterprise Linux native installation
 **********************************************************************************************

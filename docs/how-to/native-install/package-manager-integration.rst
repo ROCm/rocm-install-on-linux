@@ -1,3 +1,7 @@
+.. meta::
+  :description: Package manager integration
+  :keywords: OpenCL, OpenMP, package manager, AMD, ROCm
+
 ************************************************************************************
 Package manager integration
 ************************************************************************************
