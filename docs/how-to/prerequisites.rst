@@ -82,7 +82,7 @@ installation. Follow the instructions below based on your distributions.
 
         2. Enable the CodeReady Linux Builder repository.
 
-            To be able to enable crb, maybe you need to install ``dnf-plugin-config-manager`` first.
+            In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
 
            .. code-block:: shell
 
