@@ -18,7 +18,7 @@ Register kernel-mode driver
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_release, os_version) in [('8', '8.8'), ('8', '8.7'), ('9', '9.2'), ('9', '9.1')] %}
+        {% for (os_release, os_version) in [('9', '9.3'), ('9', '9.2'), ('8', '8.9'), ('8', '8.8')] %}
         .. tab-item:: RHEL {{ os_version }}
             :sync: rhel-{{ os_version }} rhel-{{ os_release }}
 
@@ -45,7 +45,7 @@ Register ROCm packages
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for os_release in ['8', '9'] %}
+        {% for os_release in ['9', '8'] %}
         .. tab-item:: RHEL {{ os_release }}
             :sync: rhel-{{ os_release }}
 
@@ -55,7 +55,7 @@ Register ROCm packages
                 sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
                 [ROCm-|rocm_version|]
                 name=ROCm|rocm_version|
-                baseurl=https://repo.radeon.com/rocm/thel{{ os_release }}/|rocm_version|/main
+                baseurl=https://repo.radeon.com/rocm/rhel{{ os_release }}/|rocm_version|/main
                 enabled=1
                 priority=50
                 gpgcheck=1

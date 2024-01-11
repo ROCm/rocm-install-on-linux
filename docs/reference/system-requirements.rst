@@ -40,7 +40,7 @@ GPU is not listed on this table, It's not officially supported by AMD.
       "AMD Radeon™ Pro W7900", "RDNA3", "gfx1100", "✅"
       "AMD Radeon™ Pro W6800", "RDNA3", "gfx1030", "✅"
       "AMD Radeon™ Pro V620", "RDNA2", "gfx1030", "✅"
-      "AMD Radeon™ Pro VII", "RDNA2", "GCN5.1", "✅"
+      "AMD Radeon™ Pro VII", "GCN5.1", "gfx906", "✅"
 
   .. tab-item:: AMD Radeon™
 
@@ -72,7 +72,7 @@ AMD ROCm™ Software supports the following Linux distributions.
     :widths: 50, 50, 25
     :header: "OS", "Kernel", "Support"
 
-    "RHEL 9.3", 5.14.0-362", "✅"
+    "RHEL 9.3", "5.14.0-362", "✅"
     "RHEL 9.2", "5.14.0-362", "✅"
     "RHEL 8.9", "4.18-513", "✅"
     "RHEL 8.8", "4.18-513", "✅"
