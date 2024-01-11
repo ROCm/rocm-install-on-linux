@@ -68,7 +68,7 @@ Red Hat Enterprise Linux
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_release, os_version) in [('8', '8.8'), ('8', '8.7'), ('9', '9.2'), ('9', '9.1')] %}
+        {% for (os_release, os_version) in [('8', '8.8'), ('8', '8.7'), ('9', '9.3'), ('9', '9.2'), ('9', '9.1')] %}
         .. tab-item:: {{ os_version }}
             :sync: rhel-{{ os_version }} rhel-{{ os_release }}
 
