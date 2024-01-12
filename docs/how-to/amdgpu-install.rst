@@ -159,6 +159,13 @@ To install use cases specific to your requirements, use the installer
 
     sudo amdgpu-install --usecase=workstation,rocm
 
+- To install LLVM ASAN (Address Sanitizer) instrumented binaries of packages
+  that support it add ``asan``. For example:
+
+  .. code-block:: bash
+
+    sudo amdgpu-install --usecase=rocm,asan
+
 Uninstalling ROCm
 =================================================
 
