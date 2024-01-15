@@ -1,3 +1,7 @@
+.. meta::
+  :description: ROCm installation for Linux
+  :keywords: ROCm installation, AMD, ROCm, Package manager, AMDGPU
+
 .. _rocm-install-home:
 
 ****************************************************************

@@ -1,3 +1,7 @@
+.. meta::
+  :description: Installing TensorFlow for ROCm
+  :keywords: installation instructions, TensorFlow, AMD, ROCm
+
 ****************************************************************************************
 Installing TensorFlow for ROCm
 ****************************************************************************************

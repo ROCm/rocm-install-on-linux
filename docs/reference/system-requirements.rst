@@ -1,6 +1,7 @@
 .. meta::
   :description: Linux GPU and OS support
-  :keywords: Linux support, ROCm distributions
+  :keywords: Linux support, ROCm distributions, system requirements, supported GPUs,  Instinct,
+  Radeon Pro, Radeon, AMD, ROCm
 
 .. _system-requirements:
 
