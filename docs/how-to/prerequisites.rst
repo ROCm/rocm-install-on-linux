@@ -78,9 +78,15 @@ installation. Follow the instructions below based on your distributions.
                    .. code-block:: shell
 
                        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
-                       sudo rpm -ivh epel-release-latest-8.noarch.rpm
+                       sudo rpm -ivh epel-release-latest-9.noarch.rpm
 
-        2. Enable the CodeReady Linux Builder repository.
+        2. Enable the CodeReady Linux Builder (CRB) repository.
+
+            In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
+
+           .. code-block:: shell
+
+               sudo dnf install dnf-plugin-config-manager
 
            .. code-block:: shell
 

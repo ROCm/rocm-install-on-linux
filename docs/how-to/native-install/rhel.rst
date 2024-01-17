@@ -84,7 +84,7 @@ Install ROCm packages
 
 .. code-block:: bash
 
-    sudo yum install rocm-hip-sdk
+    sudo yum install rocm
 
 Complete the :doc:`post-install`.
 
