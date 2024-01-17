@@ -69,9 +69,15 @@ Supported operating systems
 
 AMD ROCm™ Software supports the following Linux distributions.
 
+.. note::
+  ROCm on Radeon does not offer the same operating system support as ROCm. For more information,
+  refer to the
+  `ROCm on Radeon <https://rocm.docs.amd.com/projects/radeon/en/latest/docs/prerequisites.html#supported-operating-systems>_`
+  documentation.
+
 .. csv-table::
     :widths: 50, 50, 25
-    :header: "OS", "Kernel", "Support"
+    :header: "Operating system", "Kernel", "Support"
 
     "RHEL 9.3", "5.14.0-362", "✅"
     "RHEL 9.2", "5.14.0-362", "✅"
