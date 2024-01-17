@@ -152,7 +152,7 @@ CUDA/NVIDIA HPC SDK alternatives.
       - 22.9
 
     * - 6.0.x
-      - 3.0.0
+      - 2.0.1
       - 22.9
 
 For the latest documentation of these libraries, refer to the
