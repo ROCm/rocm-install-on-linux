@@ -94,32 +94,65 @@ output below.
     If --usecase option is not present, the default selection is "graphics,opencl,hip"
 
     Available use cases:
-    rocm(for users and developers requiring full ROCm stack)
-    - OpenCL (ROCr/KFD based) runtime
-    - HIP runtimes
-    - Machine learning framework
-    - All ROCm libraries and applications
-    - ROCm Compiler and device libraries
-    - ROCr runtime and thunk
-    lrt(for users of applications requiring ROCm runtime)
-    - ROCm Compiler and device libraries
-    - ROCr runtime and thunk
-    opencl(for users of applications requiring OpenCL on Vega or
-    later products)
-    - ROCr based OpenCL
-    - ROCm Language runtime
+    dkms            (to only install the kernel mode driver)
+      - Kernel mode driver (included in all usecases)
+    graphics        (for users of graphics applications)
+      - Open source Mesa 3D graphics and multimedia libraries
+    multimedia      (for users of open source multimedia)
+      - Open source Mesa 3D multimedia libraries
+    multimediasdk   (for developers of open source multimedia)
+      - Open source Mesa 3D multimedia libraries
+      - Development headers for multimedia libraries
+    workstation     (for users of legacy WS applications)
+      - Open source multimedia libraries
+      - Closed source (legacy) OpenGL
+    rocm            (for users and developers requiring full ROCm stack)
+      - OpenCL (ROCr/KFD based) runtime
+      - HIP runtimes
+      - Machine learning framework
+      - All ROCm libraries and applications
+    rocmdev         (for developers requiring ROCm runtime and
+                    profiling/debugging tools)
+      - HIP runtimes
+      - OpenCL runtime
+      - Profiler, Tracer and Debugger tools
+    rocmdevtools    (for developers requiring ROCm profiling/debugging tools)
+      - Profiler, Tracer and Debugger tools
+    amf             (for users of AMF based multimedia)
+      - AMF closed source multimedia library
+    lrt             (for users of applications requiring ROCm runtime)
+      - ROCm Compiler and device libraries
+      - ROCr runtime and thunk
+    opencl          (for users of applications requiring OpenCL on Vega or later
+                    products)
+      - ROCr based OpenCL
+      - ROCm Language runtime
+    openclsdk       (for application developers requiring ROCr based OpenCL)
+      - ROCr based OpenCL
+      - ROCm Language runtime
+      - development and SDK files for ROCr based OpenCL
+    hip             (for users of HIP runtime on AMD products)
+      - HIP runtimes
+    hiplibsdk       (for application developers requiring HIP on AMD products)
+      - HIP runtimes
+      - ROCm math libraries
+      - HIP development libraries
+    openmpsdk       (for users of openmp/flang on AMD products)
+      - OpenMP runtime and devel packages
+    mllib           (for users executing machine learning workloads)
+      - MIOpen hip/tensile libraries
+      - Clang OpenCL
+      - MIOpen kernels
+    mlsdk           (for developers executing machine learning workloads)
+      - MIOpen development libraries
+      - Clang OpenCL development libraries
+      - MIOpen kernels
+    asan            (for users of ASAN enabled ROCm packages)
+      - ASAN enabled OpenCL (ROCr/KFD based) runtime
+      - ASAN enabled HIP runtimes
+      - ASAN enabled Machine learning framework
+      - ASAN enabled ROCm libraries
 
-    openclsdk (for application developers requiring ROCr based OpenCL)
-    - ROCr based OpenCL
-    - ROCm Language runtime
-    - development and SDK files for ROCr based OpenCL
-
-    hip(for users of HIP runtime on AMD products)
-    - HIP runtimes
-    hiplibsdk (for application developers requiring HIP on AMD products)
-    - HIP runtimes
-    - ROCm math libraries
-    - HIP development libraries
 
 Upgrading ROCm
 =================================================
@@ -158,6 +191,13 @@ To install use cases specific to your requirements, use the installer
   .. code-block:: bash
 
     sudo amdgpu-install --usecase=workstation,rocm
+
+- To install LLVM ASAN (Address Sanitizer) instrumented binaries of packages
+  that support it add ``asan``. For example:
+
+  .. code-block:: bash
+
+    sudo amdgpu-install --usecase=rocm,asan
 
 Uninstalling ROCm
 =================================================
