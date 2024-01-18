@@ -11,8 +11,11 @@ Quick-start install guide
 For a quick summary on installing ROCm on Linux, follow the steps listed on this page. If you want
 more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
 
-To start, choose your preferred install method and operating system:
+.. tip::
+    If you're using a Radeon GPU, refer to the
+    `Radeon installation instructions <https://rocm.docs.amd.com/projects/radeon/en/latest/docs/install/install-radeon.html>`_
 
+To start, choose your preferred installation method and operating system:
 
 .. grid:: 2
     :gutter: 1
