@@ -1,3 +1,7 @@
+.. meta::
+  :description: Quick-start install guide
+  :keywords: ROCm installation, AMD, ROCm, Package manager, AMDGPU
+
 .. _rocm-install-quick:
 
 *************************************************************
@@ -18,7 +22,7 @@ To start, choose your preferred install method and operating system:
         * :ref:`package-man-ubuntu`
         * :ref:`package-man-rhel`
         * :ref:`package-man-suse`
-        
+
     .. grid-item-card:: :ref:`rocm-amdgpu-quick`
 
         * :ref:`amdgpu-ubuntu`
@@ -64,7 +68,7 @@ Red Hat Enterprise Linux
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_release, os_version) in [('8', '8.8'), ('8', '8.7'), ('9', '9.2'), ('9', '9.1')] %}
+        {% for (os_release, os_version) in [('9', '9.3'), ('9', '9.2'), ('8', '8.9'), ('8', '8.8')] %}
         .. tab-item:: {{ os_version }}
             :sync: rhel-{{ os_version }} rhel-{{ os_release }}
 
@@ -145,7 +149,7 @@ Red Hat Enterprise Linux
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_release, os_version) in [('8', '8.8'), ('8', '8.7'), ('9', '9.2'), ('9', '9.1')] %}
+        {% for (os_release, os_version) in [('9', '9.3'), ('9', '9.2'), ('8', '8.9'), ('8', '8.8')] %}
         .. tab-item:: {{ os_version }}
             :sync: rhel-{{ os_version }} rhel-{{ os_release }}
 

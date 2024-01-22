@@ -1,3 +1,7 @@
+.. meta::
+  :description: Introduction to Spack
+  :keywords: Spack, package management tool, AMD, ROCm
+
 **************************************************************
 Introduction to Spack
 **************************************************************

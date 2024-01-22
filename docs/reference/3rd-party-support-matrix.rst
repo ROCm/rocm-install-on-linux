@@ -1,12 +1,16 @@
+.. meta::
+  :description: Third-party support matrix
+  :keywords: ROCm installation, AMD, ROCm, third-party support matrix
+
 .. _3rd-party-support-matrix:
 
 ***************************************************************************
 Third-party support matrix
 ***************************************************************************
 
-ROCm™ supports various 3rd party libraries and frameworks. Supported versions
-are tested and known to work. Non-supported third-party versions may also
-work, but these aren't tested.
+ROCm™ supports various third-party libraries and frameworks. We've tested our supported versions, so
+you can be assured that they work. Non-supported third-party versions may also work, but we haven't
+tested these for functionality.
 
 Deep learning
 ================================================
@@ -62,9 +66,8 @@ TensorFlow.
 Communication libraries
 ================================================
 
-ROCm supports `OpenUCX <https://openucx.org/>`_, an open-source,
-production-grade communication framework for data-centric and high performance
-applications.
+ROCm supports `OpenUCX <https://openucx.org/>`_, an open-source, production-grade
+communication framework for data-centric and high performance applications.
 
 
 .. list-table::
@@ -103,8 +106,8 @@ support for ROCm devices.
 Algorithm libraries
 ================================================
 
-ROCm releases provide algorithm libraries with interfaces compatible with
-contemporary CUDA / NVIDIA HPC SDK alternatives.
+ROCm releases provide algorithm libraries with interfaces compatible with contemporary
+CUDA/NVIDIA HPC SDK alternatives.
 
 * Thrust → rocThrust
 * CUB → hipCUB
@@ -149,7 +152,7 @@ contemporary CUDA / NVIDIA HPC SDK alternatives.
       - 22.9
 
     * - 6.0.x
-      - 3.0.0
+      - 2.0.1
       - 22.9
 
 For the latest documentation of these libraries, refer to the

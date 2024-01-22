@@ -1,3 +1,7 @@
+.. meta::
+  :description: Install ROCm Docker containers
+  :keywords: installation instructions, Docker, AMD, ROCm
+
 ********************************************************************************
 Install ROCm Docker containers
 ********************************************************************************

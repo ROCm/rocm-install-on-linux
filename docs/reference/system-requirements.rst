@@ -1,6 +1,7 @@
 .. meta::
   :description: Linux GPU and OS support
-  :keywords: Linux support, ROCm distributions
+  :keywords: Linux support, ROCm distributions, system requirements, supported GPUs,  Instinct,
+    Radeon Pro, Radeon, AMD, ROCm
 
 .. _system-requirements:
 
@@ -79,10 +80,13 @@ AMD ROCm™ Software supports the following Linux distributions.
     "CentOS 7.9", "3.10", "✅"
     "SLES 15 SP5", "5.14.21-150500", "✅"
     "SLES 15 SP4", "5.14.21-150500", "✅"
+    "Ubuntu 22.04.4", "6.6", "✅ :sup:`2`"
     "Ubuntu 22.04.3", "6.2", "✅"
     "Ubuntu 22.04.2", "5.19", "✅"
     "Ubuntu 20.04.6", "5.15", "✅"
     "Ubuntu 20.04.5", "5.15", "✅"
+
+:sup:`2` Preview support for HWE kernels
 
 Virtualization support
 =============================================
