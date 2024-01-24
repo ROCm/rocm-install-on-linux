@@ -25,7 +25,7 @@ Post-installation instructions
     .. code-block:: bash
         :substitutions:
 
-        export PATH=$PATH:/opt/rocm-|rocm_version|/bin
+        export PATH=$PATH:/opt/rocm-|rocm_directory_version|/bin
 
 3. Verify kernel-mode driver installation.
 
@@ -38,8 +38,8 @@ Post-installation instructions
     .. code-block:: bash
         :substitutions:
 
-        /opt/rocm-|rocm_version|/bin/rocminfo
-        /opt/rocm-|rocm_version|/bin/clinfo
+        /opt/rocm-|rocm_directory_version|/bin/rocminfo
+        /opt/rocm-|rocm_directory_version|/bin/clinfo
 
 5. Verify package installation.
 
