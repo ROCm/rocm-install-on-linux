@@ -41,7 +41,7 @@ GPU is not listed on this table, It's not officially supported by AMD.
       "AMD Radeon™ Pro W7900", "RDNA3", "gfx1100", "✅"
       "AMD Radeon™ Pro W6800", "RDNA3", "gfx1030", "✅"
       "AMD Radeon™ Pro V620", "RDNA2", "gfx1030", "✅"
-      "AMD Radeon™ Pro VII", "GCN5.1", "gfx906", "✅"
+      "AMD Radeon™ Pro VII", "GCN5.1", "gfx906", "⚠️"
 
   .. tab-item:: AMD Radeon™
 
@@ -51,7 +51,7 @@ GPU is not listed on this table, It's not officially supported by AMD.
 
       "AMD Radeon™ RX 7900 XTX", "RDNA3", "gfx1100", "✅"
       "AMD Radeon™ RX 7900 XT", "RDNA3", "gfx1100", "✅"
-      "AMD Radeon™ VII", "GCN5.1", "gfx906", "✅"
+      "AMD Radeon™ VII", "GCN5.1", "gfx906", "⚠️"
 
 ✅: **Supported** - AMD enables these GPUs in our software distributions for the corresponding
 ROCm product.
@@ -69,22 +69,44 @@ Supported operating systems
 
 AMD ROCm™ Software supports the following Linux distributions.
 
-.. csv-table::
-    :widths: 50, 50, 25
-    :header: "OS", "Kernel", "Support"
+.. tab-set::
 
-    "RHEL 9.3", "5.14.0-362", "✅"
-    "RHEL 9.2", "5.14.0-362", "✅"
-    "RHEL 8.9", "4.18-513", "✅"
-    "RHEL 8.8", "4.18-513", "✅"
-    "CentOS 7.9", "3.10", "✅"
-    "SLES 15 SP5", "5.14.21-150500", "✅"
-    "SLES 15 SP4", "5.14.21-150500", "✅"
-    "Ubuntu 22.04.4", "6.6", "✅ :sup:`2`"
-    "Ubuntu 22.04.3", "6.2", "✅"
-    "Ubuntu 22.04.2", "5.19", "✅"
-    "Ubuntu 20.04.6", "5.15", "✅"
-    "Ubuntu 20.04.5", "5.15", "✅"
+  .. tab-item:: RHEL
+
+    .. csv-table::
+        :widths: 50, 50, 50, 50
+        :header: "OS", "ROCm 5.7", "ROCm 6.0", "ROCm Next"
+
+        "RHEL 9.3", "❌", "5.14.0-362 ✅", "✅"
+        "RHEL 9.2", "KernelV ✅", "5.14.0-362 ✅", "✅"
+        "RHEL 9.1", "KernelV ✅", "⚠️", "⚠️"
+        "RHEL 8.9", "❌", "4.18-513 ✅", "✅"
+        "RHEL 8.8", "KernelV ✅", "4.18-513 ✅", "✅"
+        "RHEL 8.7", "KernelV ✅", "⚠️", "⚠️"
+        "CentOS 7.9", "KernelV ✅", "3.10 ✅", "✅"
+
+  .. tab-item:: SLES
+
+    .. csv-table::
+        :widths: 50, 50, 50, 50
+        :header: "OS", "ROCm 5.7", "ROCm 6.0", "ROCm Next"
+
+        "SLES 15 SP6", "❌", "❌", "✅"
+        "SLES 15 SP5", "KernelV ✅", "5.14.21-150500 ✅", "✅"
+        "SLES 15 SP4", "KernelV ✅", "5.14.21-150500 ✅", "✅"
+
+  .. tab-item:: Ubuntu
+
+    .. csv-table::
+        :widths: 50, 50, 50, 50
+        :header: "OS", "ROCm 5.7", "ROCm 6.0", "ROCm Next"
+
+        "Ubuntu 22.04.5", "❌", "❌", "✅"
+        "Ubuntu 22.04.4", "KernelV ✅", "6.6 ✅ :sup:`2`", "✅"
+        "Ubuntu 22.04.3", "KernelV ✅", "6.2 ✅", "✅"
+        "Ubuntu 22.04.2", "KernelV ✅", "5.19 ✅", "⚠️"
+        "Ubuntu 20.04.6", "KernelV ✅", "5.15 ✅", "✅"
+        "Ubuntu 20.04.5", "KernelV ✅", "5.15 ✅", "✅"
 
 :sup:`2` Preview support for HWE kernels
 
