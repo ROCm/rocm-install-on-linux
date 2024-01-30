@@ -1,10 +1,10 @@
 .. meta::
-  :description: Red Hat Enterprise Linux native installation
+  :description: Red Hat Enterprise Linux/Oracle Linux native installation
   :keywords: ROCm install, installation instructions, RHEL, Red Hat Enterprise Linux native installation,
     AMD, ROCm
 
 **********************************************************************************************
-Red Hat Enterprise Linux native installation
+Red Hat Enterprise Linux/Oracle Linux native installation
 **********************************************************************************************
 
 .. _rhel-register-repo:
@@ -46,7 +46,7 @@ Register ROCm packages
 
     .. tab-set::
         {% for os_release in ['9', '8'] %}
-        .. tab-item:: RHEL {{ os_release }}
+        .. tab-item:: RHEL/OL {{ os_release }}
             :sync: rhel-{{ os_release }}
 
             .. code-block:: bash

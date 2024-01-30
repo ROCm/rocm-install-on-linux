@@ -62,7 +62,7 @@ Ubuntu
 
 .. _package-man-rhel:
 
-Red Hat Enterprise Linux
+Red Hat Enterprise Linux/Oracle Linux
 ------------------------------------------------------------------------------------
 
 .. datatemplate:nodata::
@@ -84,7 +84,7 @@ Red Hat Enterprise Linux
                 sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_release }}.noarch.rpm 
                 sudo yum clean all
                 sudo yum install amdgpu-dkms
-                sudo yum install rocm-hip-libraries
+                sudo yum install rocm
                 echo Please reboot system for all settings to take effect.
         {% endfor %}
 
@@ -143,7 +143,7 @@ Ubuntu
 
 .. _amdgpu-rhel:
 
-Red Hat Enterprise Linux
+Red Hat Enterprise Linux/Oracle Linux
 ------------------------------------------------------------------------------------
 
 .. datatemplate:nodata::

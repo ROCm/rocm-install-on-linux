@@ -59,7 +59,7 @@ installation. Follow the instructions below based on your distributions.
 
         All packages are available in the default Ubuntu repositories, therefore no additional repositories need to be added.
 
-    .. tab-item:: Red Hat Enterprise Linux
+    .. tab-item:: Red Hat Enterprise Linux/Oracle Linux
 
         1. Add the EPEL repository.
 
@@ -130,7 +130,7 @@ To install for the currently active kernel run the command corresponding to your
 
             sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
 
-    .. tab-item:: Red Hat Enterprise Linux
+    .. tab-item:: Red Hat Enterprise Linux/Oracle Linux
 
         .. code-block:: shell
 
