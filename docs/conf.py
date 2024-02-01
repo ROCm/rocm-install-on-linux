@@ -5,9 +5,9 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # ROCm version numbers
-rocm_version = '6.0'
-rocm_directory_version = '6.0.0' # in 6.0 rcom was located in /opt/rocm-6.0.0
-amdgpu_version = '6.0' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+rocm_version = '6.0.2'
+rocm_directory_version = '6.0.2' # in 6.0 rcom was located in /opt/rocm-6.0.0
+amdgpu_version = '6.0.2' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
 amdgpu_install_version = '6.0.60000-1' # version in https://repo.radeon.com/amdgpu-install/5.7.1/ubuntu/focal/
 
 latex_engine = "xelatex"
