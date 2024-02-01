@@ -22,7 +22,7 @@ latex_elements = {
 # configurations for PDF output by Read the Docs
 project = "ROCm Installation on Linux"
 author = "Advanced Micro Devices, Inc."
-copyright = "Copyright (c) 2023 Advanced Micro Devices, Inc. All rights reserved."
+copyright = "Copyright (c) 2024 Advanced Micro Devices, Inc. All rights reserved."
 version = "6.0.2"
 release = "6.0.2"
 setting_all_article_info = True
