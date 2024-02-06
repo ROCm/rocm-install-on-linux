@@ -56,8 +56,8 @@ Ubuntu
                 sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
                 sudo apt update
                 sudo apt install amdgpu-dkms
-                sudo apt install rocm-hip-libraries
-                echo Please reboot system for all settings to take effect.
+                sudo apt install rocm
+                echo "Please reboot system for all settings to take effect."
         {% endfor %}
 
 .. _package-man-rhel:
@@ -85,7 +85,7 @@ Red Hat Enterprise Linux/Oracle Linux
                 sudo yum clean all
                 sudo yum install amdgpu-dkms
                 sudo yum install rocm
-                echo Please reboot system for all settings to take effect.
+                echo "Please reboot system for all settings to take effect."
         {% endfor %}
 
 .. _package-man-suse:
@@ -111,8 +111,8 @@ SUSE Linux Enterprise Server
                 sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
                 sudo zypper refresh
                 sudo zypper install amdgpu-dkms
-                sudo zypper install rocm-hip-libraries
-                echo Please reboot system for all settings to take effect.
+                sudo zypper install rocm
+                echo "Please reboot system for all settings to take effect."
         {% endfor %}
 
 .. _rocm-amdgpu-quick:
