@@ -80,9 +80,12 @@ Upgrading
 ================================================
 
 To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`sles-register-rocm` and :ref:`sles-install`. Upgrading the kernel
-driver may also upgrade the GPU firmware, which requires a system reboot to
-take effect.
+:ref:`sles-register-rocm` and :ref:`sles-install`. 
+
+.. note::
+
+    Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
+    system reboot to take effect.
 
 Uninstalling
 ================================================

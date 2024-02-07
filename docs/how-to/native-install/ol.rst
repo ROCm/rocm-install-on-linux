@@ -73,9 +73,12 @@ Upgrade
 =====================================================
 
 To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`ol-register-repo` and :ref:`ol-install`. Upgrading the kernel
-driver may also upgrade the GPU firmware, which requires a system reboot to
-take effect.
+:ref:`ol-register-repo` and :ref:`ol-install`. 
+
+.. note::
+
+    Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
+    system reboot to take effect.
 
 .. _ol-uninstall:
 
