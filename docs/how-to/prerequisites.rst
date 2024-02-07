@@ -61,14 +61,14 @@ installation. Follow the instructions below based on your distributions.
         All packages are available in the default Ubuntu repositories, therefore no additional repositories need to be added.
 
     .. tab-item:: Red Hat Enterprise Linux/Oracle Linux
-        :sync: rehl-tab
+        :sync: rhel-tab
 
         1. Add the EPEL repository.
 
             .. datatemplate:nodata::
 
                 .. tab-set::
-                {% for os_release in config.html_context['rehl_release_version_numbers']  %}
+                {% for os_release in config.html_context['rhel_release_version_numbers']  %}
                     .. tab-item:: RHEL/OL {{ os_release }}
 
                         .. code-block:: shell
@@ -98,7 +98,7 @@ installation. Follow the instructions below based on your distributions.
         
             .. tab-set::
             
-                {% for os_version in config.html_context['sle_version_numbers'] %}
+                {% for os_version in config.html_context['sles_version_numbers'] %}
                 {% set os_release, os_sp  = os_version.split('.') %}
                 .. tab-item:: SLES {{ os_version }}
 
@@ -130,7 +130,7 @@ To install for the currently active kernel run the command corresponding to your
             sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
 
     .. tab-item:: Red Hat Enterprise Linux/Oracle Linux
-        :sync: rehl-tab
+        :sync: rhel-tab
 
         .. code-block:: shell
 

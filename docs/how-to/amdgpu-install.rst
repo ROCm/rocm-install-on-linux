@@ -48,7 +48,7 @@ Red Hat Enterprise Linux
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_release, os_version) in config.html_context['rehl_version_numbers'] %}
+        {% for (os_release, os_version) in config.html_context['rhel_version_numbers'] %}
         .. tab-item:: RHEL {{ os_version }}
             :sync: rhel-{{ os_version }} rhel-{{ os_release }}
 
@@ -81,7 +81,7 @@ SUSE Linux Enterprise
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for os_version in config.html_context['sle_version_numbers'] %}
+        {% for os_version in config.html_context['sles_version_numbers'] %}
         .. tab-item:: SLES {{ os_version }}
 
             .. code-block:: bash

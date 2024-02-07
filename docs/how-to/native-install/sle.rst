@@ -7,7 +7,7 @@
 SUSE Linux Enterprise native installation
 *********************************************************************************************
 
-.. _sle-register-rocm:
+.. _sles-register-rocm:
 
 Registering ROCm repositories
 ===============================================
@@ -19,7 +19,7 @@ Register kernel-mode driver
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for os_version in config.html_context['sle_version_numbers'] %}
+        {% for os_version in config.html_context['sles_version_numbers'] %}
         .. tab-item:: SLES {{ os_version }}
 
             .. code-block:: bash
@@ -54,7 +54,7 @@ Register ROCm packages
 
     sudo zypper ref
 
-.. _sle-install:
+.. _sles-install:
 
 Installing
 ===============================================
@@ -80,7 +80,7 @@ Upgrading
 ================================================
 
 To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`sle-register-rocm` and :ref:`sle-install`. After upgrading the kernel
+:ref:`sles-register-rocm` and :ref:`sles-install`. After upgrading the kernel
 driver, it may also upgrade the GPU firmware which requires a system reboot to
 take effect.
 

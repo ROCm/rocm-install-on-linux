@@ -31,9 +31,9 @@ all_article_info_author = ""
 
 # Supported linux version numbers
 ubuntu_version_numbers = [('22.04', 'jammy'), ('20.04', 'focal')]
-rehl_release_version_numbers = ['9', '8']
-rehl_version_numbers = [('9', '9.3'), ('9', '9.2'), ('8', '8.9'), ('8', '8.8')]
-sle_version_numbers = ['15.5', '15.4']
+rhel_release_version_numbers = ['9', '8']
+rhel_version_numbers = [('9', '9.3'), ('9', '9.2'), ('8', '8.9'), ('8', '8.8')]
+sles_version_numbers = ['15.5', '15.4']
 ol_release_version_numbers = ['8']
 ol_version_numbers = [('8', '8.8')]
 
@@ -80,9 +80,9 @@ html_theme_options = {
 
 html_context = {
     "ubuntu_version_numbers" : ubuntu_version_numbers,
-    "sle_version_numbers" : sle_version_numbers,
-    "rehl_release_version_numbers" : rehl_release_version_numbers,
-    "rehl_version_numbers" : rehl_version_numbers,
+    "sles_version_numbers" : sles_version_numbers,
+    "rhel_release_version_numbers" : rhel_release_version_numbers,
+    "rhel_version_numbers" : rhel_version_numbers,
     "ol_release_version_numbers" : ol_release_version_numbers,
     "ol_version_numbers" : ol_version_numbers
 }

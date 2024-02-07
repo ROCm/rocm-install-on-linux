@@ -18,7 +18,7 @@ Register kernel-mode driver
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_release, os_version) in config.html_context['rehl_version_numbers'] %}
+        {% for (os_release, os_version) in config.html_context['rhel_version_numbers'] %}
         .. tab-item:: RHEL {{ os_version }}
             :sync: rhel-{{ os_version }} rhel-{{ os_release }}
 
@@ -45,7 +45,7 @@ Register ROCm packages
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for os_release in config.html_context['rehl_release_version_numbers']  %}
+        {% for os_release in config.html_context['rhel_release_version_numbers']  %}
         .. tab-item:: RHEL {{ os_release }}
             :sync: rhel-{{ os_release }}
 
