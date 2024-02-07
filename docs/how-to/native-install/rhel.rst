@@ -73,8 +73,8 @@ Upgrade
 =====================================================
 
 To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`rhel-register-repo` and :ref:`rhel-install`. After upgrading the kernel
-driver, it may also upgrade the GPU firmware which requires a system reboot to
+:ref:`rhel-register-repo` and :ref:`rhel-install`. Upgrading the kernel
+driver may also upgrade the GPU firmware, which requires a system reboot to
 take effect.
 
 .. _rhel-uninstall:

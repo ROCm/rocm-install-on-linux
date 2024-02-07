@@ -24,7 +24,7 @@ subtrees:
           title: Red Hat Enterprise Linux
         - file: how-to/native-install/ol
           title: Oracle Linux
-        - file: how-to/native-install/sle
+        - file: how-to/native-install/sles
           title: SUSE Linux Enterprise
         - file: how-to/native-install/post-install
           title: Post-Install instructions
