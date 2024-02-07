@@ -9,7 +9,7 @@ Installation prerequisites
 Before installing ROCm, complete the following prerequisites.
 
 1. Confirm the system has a supported Linux version.
-    
+
     a. To obtain the Linux distribution information, type the following command on your system from
     the Command Line Interface (CLI):
 
