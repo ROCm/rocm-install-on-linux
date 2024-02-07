@@ -19,7 +19,7 @@ Register kernel-mode driver
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for os_version in ['15.5', '15.4'] %}
+        {% for os_version in config.html_context['sle_version_numbers'] %}
         .. tab-item:: SLES {{ os_version }}
 
             .. code-block:: bash
@@ -72,7 +72,7 @@ Install ROCm packages
 
 .. code-block:: bash
 
-    sudo zypper --gpg-auto-import-keys install rocm-hip-sdk
+    sudo zypper --gpg-auto-import-keys install rocm
 
 Complete the :doc:`post-install`.
 
@@ -95,9 +95,9 @@ Uninstall specific meta packages
 
     # sudo zypper remove <package-name>
     # For example:
-    sudo zypper remove rocm-hip-sdk
+    sudo zypper remove rocm
     # Or for version specific packages:
-    sudo zypper remove rocm-hip-sdk|rocm_version|
+    sudo zypper remove rocm|rocm_version|
 
 Uninstall ROCm packages
 ---------------------------------------------------------------------------

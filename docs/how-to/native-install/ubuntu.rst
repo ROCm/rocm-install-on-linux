@@ -45,7 +45,7 @@ Add the AMDGPU repository for the driver.
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_version, os_release) in [('22.04', 'jammy'), ('20.04', 'focal')] %}
+        {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
         .. tab-item:: Ubuntu {{ os_version }}
             :sync: ubuntu-{{ os_version}}
 
@@ -67,7 +67,7 @@ Add the ROCm repository.
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_version, os_release) in [('22.04', 'jammy'), ('20.04', 'focal')] %}
+        {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
         .. tab-item:: Ubuntu {{ os_version }}
             :sync: ubuntu-{{ os_version}}
 
@@ -98,7 +98,7 @@ Install ROCm packages
 
 .. code-block:: bash
 
-    sudo apt install rocm-hip-sdk
+    sudo apt install rocm
 
 Complete the :doc:`post-install`.
 
@@ -125,9 +125,9 @@ Uninstall specific meta packages
 
     # sudo apt autoremove <package-name>
     # For example:
-    sudo apt autoremove rocm-hip-sdk
+    sudo apt autoremove rocm
     # Or for version specific packages:
-    sudo apt autoremove rocm-hip-sdk|rocm_version|
+    sudo apt autoremove rocm|rocm_version|
 
 Uninstall ROCm packages
 ---------------------------------------------------------------------------

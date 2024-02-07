@@ -9,7 +9,7 @@ Installation prerequisites
 Before installing ROCm, complete the following prerequisites.
 
 1. Confirm the system has a supported Linux version.
-
+    
     a. To obtain the Linux distribution information, type the following command on your system from
     the Command Line Interface (CLI):
 
@@ -56,29 +56,26 @@ installation. Follow the instructions below based on your distributions.
 .. tab-set::
 
     .. tab-item:: Ubuntu
+        :sync: ubuntu-tab
 
         All packages are available in the default Ubuntu repositories, therefore no additional repositories need to be added.
 
     .. tab-item:: Red Hat Enterprise Linux/Oracle Linux
+        :sync: rehl-tab
 
         1. Add the EPEL repository.
 
-           .. tab-set::
+            .. datatemplate:nodata::
 
+                .. tab-set::
+                {% for os_release in config.html_context['rehl_release_version_numbers']  %}
+                    .. tab-item:: RHEL/OL {{ os_release }}
 
-               .. tab-item:: RHEL 8
+                        .. code-block:: shell
 
-                   .. code-block:: shell
-
-                       wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-                       sudo rpm -ivh epel-release-latest-8.noarch.rpm
-
-               .. tab-item:: RHEL 9
-
-                   .. code-block:: shell
-
-                       wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
-                       sudo rpm -ivh epel-release-latest-9.noarch.rpm
+                            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_release }}.noarch.rpm
+                            sudo rpm -ivh epel-release-latest-{{ os_release }}.noarch.rpm
+                {% endfor %}
 
         2. Enable the CodeReady Linux Builder (CRB) repository.
 
@@ -93,22 +90,23 @@ installation. Follow the instructions below based on your distributions.
                sudo crb enable
 
     .. tab-item:: SUSE Linux Enterprise Server
+        :sync: sle-tab
 
         Add the Perl language repository.
 
-        .. tab-set::
+        .. datatemplate:nodata::
+        
+            .. tab-set::
+            
+                {% for os_version in config.html_context['sle_version_numbers'] %}
+                {% set os_release, os_sp  = os_version.split('.') %}
+                .. tab-item:: SLES {{ os_version }}
 
-            .. tab-item:: SLES 15.4
+                    .. code-block:: shell
 
-                .. code-block:: shell
-
-                    zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/15.4/devel:languages:perl.repo
-
-            .. tab-item:: SLES 15.5
-
-                .. code-block:: shell
-
-                    zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/15.5/devel:languages:perl.repo
+                        zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/{{ os_version }}/devel:languages:perl.repo
+            
+                {% endfor %}
 
 Kernel headers and development packages
 ================================================================
@@ -125,12 +123,14 @@ To install for the currently active kernel run the command corresponding to your
 .. tab-set::
 
     .. tab-item:: Ubuntu
+        :sync: ubuntu-tab
 
         .. code-block:: shell
 
             sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
 
     .. tab-item:: Red Hat Enterprise Linux/Oracle Linux
+        :sync: rehl-tab
 
         .. code-block:: shell
 
@@ -138,6 +138,7 @@ To install for the currently active kernel run the command corresponding to your
 
 
     .. tab-item:: SUSE Linux Enterprise Server
+        :sync: sle-tab
 
         .. code-block:: shell
 

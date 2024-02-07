@@ -30,7 +30,7 @@ Ubuntu
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_version, os_release) in [('22.04', 'jammy'), ('20.04', 'focal')] %}
+        {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
         .. tab-item:: Ubuntu {{ os_version }}
             :sync: ubuntu-{{ os_version}}
 
@@ -42,13 +42,13 @@ Ubuntu
                 sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
         {% endfor %}
 
-Red Hat Enterprise Linux/Oracle Linux
+Red Hat Enterprise Linux
 --------------------------------------------------------------------
 
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_release, os_version) in [('9', '9.3'), ('9', '9.2'), ('8', '8.9'), ('8', '8.8')] %}
+        {% for (os_release, os_version) in config.html_context['rehl_version_numbers'] %}
         .. tab-item:: RHEL {{ os_version }}
             :sync: rhel-{{ os_version }} rhel-{{ os_release }}
 
@@ -58,13 +58,30 @@ Red Hat Enterprise Linux/Oracle Linux
                 sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_release }}.noarch.rpm
         {% endfor %}
 
+Oracle Linux
+--------------------------------------------------------------------
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+        {% for (os_release, os_version) in config.html_context['ol_version_numbers'] %}
+        .. tab-item:: OL {{ os_version }}
+            :sync: ol-{{ os_version }} ol-{{ os_release }}
+
+            .. code-block:: bash
+                :substitutions:
+
+                sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_release }}.noarch.rpm
+        {% endfor %}
+
+
 SUSE Linux Enterprise
 --------------------------------------------------------------------
 
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for os_version in ['15.5', '15.4'] %}
+        {% for os_version in config.html_context['sle_version_numbers'] %}
         .. tab-item:: SLES {{ os_version }}
 
             .. code-block:: bash

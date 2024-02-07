@@ -29,6 +29,14 @@ setting_all_article_info = True
 all_article_info_os = ["linux"]
 all_article_info_author = ""
 
+# Supported linux version numbers
+ubuntu_version_numbers = [('22.04', 'jammy'), ('20.04', 'focal')]
+rehl_release_version_numbers = ['9', '8']
+rehl_version_numbers = [('9', '9.3'), ('9', '9.2'), ('8', '8.9'), ('8', '8.8')]
+sle_version_numbers = ['15.5', '15.4']
+ol_release_version_numbers = ['8']
+ol_version_numbers = [('8', '8.8')]
+
 # pages with specific settings
 article_pages = [
     {
@@ -38,7 +46,11 @@ article_pages = [
     }
 ]
 
-exclude_patterns = ['temp']
+exclude_patterns = [
+    'temp', 
+    'how-to/native-install/install-rocm-template.rst', 
+    'how-to/native-install/uninstall-rocm-template.rst'
+]
 
 external_toc_path = "./sphinx/_toc.yml"
 
@@ -64,4 +76,13 @@ rst_prolog = f"""
 
 html_theme_options = {
     "link_main_doc": True
+}
+
+html_context = {
+    "ubuntu_version_numbers" : ubuntu_version_numbers,
+    "sle_version_numbers" : sle_version_numbers,
+    "rehl_release_version_numbers" : rehl_release_version_numbers,
+    "rehl_version_numbers" : rehl_version_numbers,
+    "ol_release_version_numbers" : ol_release_version_numbers,
+    "ol_version_numbers" : ol_version_numbers
 }
