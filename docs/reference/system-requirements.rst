@@ -12,7 +12,7 @@ System requirements (Linux)
 Supported GPUs
 =============================================
 
-The following table shows the supported GPUs for Instinct™, Radeon™ PRO and Radeon™ GPUs. If a
+The following table shows the supported GPUs for Instinct™, Radeon™ PRO and Radeon™. If a
 GPU is not listed on this table, It's not officially supported by AMD.
 
 .. tab-set::
