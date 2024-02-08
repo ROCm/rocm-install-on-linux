@@ -23,14 +23,14 @@ GPU is not listed on this table, It's not officially supported by AMD.
       :widths: 50, 25, 25, 10
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
-      "AMD Instinct™ MI300X", "CDNA3", "gfx942", "✅"
-      "AMD Instinct™ MI300A", "CDNA3", "gfx942", "✅ :sup:`1`"
-      "AMD Instinct™ MI250X", "CDNA2", "gfx90a", "✅"
-      "AMD Instinct™ MI250", "CDNA2", "gfx90a", "✅"
-      "AMD Instinct™ MI210", "CDNA2", "gfx90a", "✅"
-      "AMD Instinct™ MI100", "CDNA", "gfx908", "✅"
-      "AMD Instinct™ MI50", "GCN5.1", "gfx906", "⚠️"
-      "AMD Instinct™ MI25", "GCN5.0", "gfx900", "❌"
+      "AMD Instinct MI300X", "CDNA3", "gfx942", "✅"
+      "AMD Instinct MI300A", "CDNA3", "gfx942", "✅ :sup:`1`"
+      "AMD Instinct MI250X", "CDNA2", "gfx90a", "✅"
+      "AMD Instinct MI250", "CDNA2", "gfx90a", "✅"
+      "AMD Instinct MI210", "CDNA2", "gfx90a", "✅"
+      "AMD Instinct MI100", "CDNA", "gfx908", "✅"
+      "AMD Instinct MI50", "GCN5.1", "gfx906", "⚠️"
+      "AMD Instinct MI25", "GCN5.0", "gfx900", "❌"
 
   .. tab-item:: AMD Radeon PRO
 
