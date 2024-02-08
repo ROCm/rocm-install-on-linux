@@ -1,7 +1,7 @@
 .. meta::
   :description: Linux GPU and OS support
   :keywords: Linux support, ROCm distributions, system requirements, supported GPUs,  Instinct,
-    Radeon Pro, Radeon, AMD, ROCm
+    Radeon PRO, Radeon, AMD, ROCm
 
 .. _system-requirements:
 
@@ -12,7 +12,7 @@ System requirements (Linux)
 Supported GPUs
 =============================================
 
-The following table shows the supported GPUs for Instinct™, Radeon Pro™ and Radeon™ GPUs. If a
+The following table shows the supported GPUs for Instinct™, Radeon™ PRO and Radeon™ GPUs. If a
 GPU is not listed on this table, It's not officially supported by AMD.
 
 .. tab-set::
@@ -32,26 +32,28 @@ GPU is not listed on this table, It's not officially supported by AMD.
       "AMD Instinct™ MI50", "GCN5.1", "gfx906", "⚠️"
       "AMD Instinct™ MI25", "GCN5.0", "gfx900", "❌"
 
-  .. tab-item:: AMD Radeon Pro™
+  .. tab-item:: AMD Radeon PRO
 
     .. csv-table::
       :widths: 50, 25, 25, 10
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
-      "AMD Radeon™ Pro W7900", "RDNA3", "gfx1100", "✅"
-      "AMD Radeon™ Pro W6800", "RDNA3", "gfx1030", "✅"
-      "AMD Radeon™ Pro V620", "RDNA2", "gfx1030", "✅"
-      "AMD Radeon™ Pro VII", "GCN5.1", "gfx906", "✅"
+      "AMD Radeon PRO W7900", "RDNA3", "gfx1100", "✅"
+      "AMD Radeon PRO W7800", "RDNA3", "gfx1100", "✅"
+      "AMD Radeon PRO W6800", "RDNA3", "gfx1030", "✅"
+      "AMD Radeon PRO V620", "RDNA2", "gfx1030", "✅"
+      "AMD Radeon PRO VII", "GCN5.1", "gfx906", "✅"
 
-  .. tab-item:: AMD Radeon™
+  .. tab-item:: AMD Radeon
 
     .. csv-table::
       :widths: 50, 25, 25, 10
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
-      "AMD Radeon™ RX 7900 XTX", "RDNA3", "gfx1100", "✅"
-      "AMD Radeon™ RX 7900 XT", "RDNA3", "gfx1100", "✅"
-      "AMD Radeon™ VII", "GCN5.1", "gfx906", "✅"
+      "AMD Radeon RX 7900 XTX", "RDNA3", "gfx1100", "✅"
+      "AMD Radeon RX 7900 XT", "RDNA3", "gfx1100", "✅"
+      "AMD Radeon RX 7900 GRE", "RDNA3", "gfx1100", "✅"
+      "AMD Radeon VII", "GCN5.1", "gfx906", "✅"
 
 ✅: **Supported** - AMD enables these GPUs in our software distributions for the corresponding
 ROCm product.
@@ -95,7 +97,7 @@ ROCm supports virtualization for select GPUs only as shown below.
 
 .. csv-table::
     :widths: 50, 25, 25, 50
-    :header: "Hypervisor", "Version", "GPU", "Validated Guest OS (Kernel)"
+    :header: "Hypervisor", "Version", "GPU", "Validated guest OS (kernel)"
 
     "VMWare", "ESXI 8", "MI250", "Ubuntu 20.04 (5.15.0)"
     "VMWare", "ESXI 8", "MI210", "Ubuntu 20.04 (5.15.0), SLES 15 SP4 (5.14.21)"
