@@ -17,7 +17,7 @@ GPU is not listed on this table, It's not officially supported by AMD.
 
 .. tab-set::
 
-  .. tab-item:: AMD Instinct™
+  .. tab-item:: AMD Instinct
 
     .. csv-table::
       :widths: 50, 25, 25, 10
