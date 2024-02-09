@@ -45,7 +45,7 @@ Add the AMDGPU repository for the driver.
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_version, os_release) in [('22.04', 'jammy'), ('20.04', 'focal')] %}
+        {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
         .. tab-item:: Ubuntu {{ os_version }}
             :sync: ubuntu-{{ os_version}}
 
@@ -67,7 +67,7 @@ Add the ROCm repository.
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_version, os_release) in [('22.04', 'jammy'), ('20.04', 'focal')] %}
+        {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
         .. tab-item:: Ubuntu {{ os_version }}
             :sync: ubuntu-{{ os_version}}
 
@@ -98,7 +98,7 @@ Install ROCm packages
 
 .. code-block:: bash
 
-    sudo apt install rocm-hip-sdk
+    sudo apt install rocm
 
 Complete the :doc:`post-install`.
 
@@ -108,9 +108,12 @@ Upgrading
 ================================================
 
 To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`ubuntu-register-repo` and :ref:`ubuntu-install`. After upgrading the kernel
-driver, it may also upgrade the GPU firmware which requires a system reboot to
-take effect.
+:ref:`ubuntu-register-repo` and :ref:`ubuntu-install`. 
+
+.. note::
+
+    Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
+    system reboot to take effect.
 
 .. _ubuntu-uninstall:
 
@@ -125,9 +128,9 @@ Uninstall specific meta packages
 
     # sudo apt autoremove <package-name>
     # For example:
-    sudo apt autoremove rocm-hip-sdk
+    sudo apt autoremove rocm
     # Or for version specific packages:
-    sudo apt autoremove rocm-hip-sdk|rocm_version|
+    sudo apt autoremove rocm|rocm_version|
 
 Uninstall ROCm packages
 ---------------------------------------------------------------------------

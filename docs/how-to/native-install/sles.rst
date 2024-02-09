@@ -7,7 +7,7 @@
 SUSE Linux Enterprise native installation
 *********************************************************************************************
 
-.. _sle-register-rocm:
+.. _sles-register-rocm:
 
 Registering ROCm repositories
 ===============================================
@@ -19,7 +19,7 @@ Register kernel-mode driver
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for os_version in ['15.5', '15.4'] %}
+        {% for os_version in config.html_context['sles_version_numbers'] %}
         .. tab-item:: SLES {{ os_version }}
 
             .. code-block:: bash
@@ -54,7 +54,7 @@ Register ROCm packages
 
     sudo zypper ref
 
-.. _sle-install:
+.. _sles-install:
 
 Installing
 ===============================================
@@ -72,7 +72,7 @@ Install ROCm packages
 
 .. code-block:: bash
 
-    sudo zypper --gpg-auto-import-keys install rocm-hip-sdk
+    sudo zypper --gpg-auto-import-keys install rocm
 
 Complete the :doc:`post-install`.
 
@@ -80,9 +80,12 @@ Upgrading
 ================================================
 
 To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`sle-register-rocm` and :ref:`sle-install`. After upgrading the kernel
-driver, it may also upgrade the GPU firmware which requires a system reboot to
-take effect.
+:ref:`sles-register-rocm` and :ref:`sles-install`. 
+
+.. note::
+
+    Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
+    system reboot to take effect.
 
 Uninstalling
 ================================================
@@ -95,9 +98,9 @@ Uninstall specific meta packages
 
     # sudo zypper remove <package-name>
     # For example:
-    sudo zypper remove rocm-hip-sdk
+    sudo zypper remove rocm
     # Or for version specific packages:
-    sudo zypper remove rocm-hip-sdk|rocm_version|
+    sudo zypper remove rocm|rocm_version|
 
 Uninstall ROCm packages
 ---------------------------------------------------------------------------
