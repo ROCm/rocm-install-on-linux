@@ -236,9 +236,7 @@ scripts to determine the configuration of the build environment.
 
        ./.ci/pytorch/build.sh
 
-   This converts PyTorch sources for
-   `HIP compatibility <https://www.amd.com/en/developer/rocm-hub/hip-sdk.html>`_ and builds the
-   PyTorch framework.
+   This converts PyTorch sources for HIP compatibility and builds the PyTorch framework.
 
    To check if your build is successful, run:
 
