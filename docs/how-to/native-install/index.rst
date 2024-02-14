@@ -14,7 +14,7 @@ Installation via native package manager
 
         - :doc:`Ubuntu</how-to/native-install/ubuntu>`
         - :doc:`Red Hat Enterprise Linux</how-to/native-install/rhel>`
-        - :doc:`SUSE Linux Enterprise</how-to/native-install/sle>`
+        - :doc:`SUSE Linux Enterprise</how-to/native-install/sles>`
 
     .. grid-item-card:: Upgrade
 

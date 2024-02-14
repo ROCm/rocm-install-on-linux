@@ -155,5 +155,5 @@ CUDA/NVIDIA HPC SDK alternatives.
       - 2.0.1
       - 22.9
 
-For the latest documentation of these libraries, refer to the
-`ROCm API libraries <https://rocm.docs.amd.com/en/latest/reference/library-index.html>`_.
+For the latest documentation of these libraries, refer to the ROCm
+:doc:`API libraries <rocm:reference/api-libraries>`.

@@ -40,7 +40,7 @@ GPU is not listed on this table, It's not officially supported by AMD.
 
       "AMD Radeon PRO W7900", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W7800", "RDNA3", "gfx1100", "✅"
-      "AMD Radeon PRO W6800", "RDNA3", "gfx1030", "✅"
+      "AMD Radeon PRO W6800", "RDNA2", "gfx1030", "✅"
       "AMD Radeon PRO V620", "RDNA2", "gfx1030", "✅"
       "AMD Radeon PRO VII", "GCN5.1", "gfx906", "✅"
 

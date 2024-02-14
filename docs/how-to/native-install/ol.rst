@@ -1,13 +1,13 @@
 .. meta::
-  :description: Red Hat Enterprise Linux native installation
-  :keywords: ROCm install, installation instructions, RHEL, Red Hat Enterprise Linux native installation,
+  :description: Oracle Linux native installation
+  :keywords: ROCm install, installation instructions, OL, Oracle Linux  native installation,
     AMD, ROCm
 
 **********************************************************************************************
-Red Hat Enterprise Linux native installation
+Oracle Linux native installation
 **********************************************************************************************
 
-.. _rhel-register-repo:
+.. _ol-register-repo:
 
 Register repositories
 =====================================================
@@ -18,9 +18,9 @@ Register kernel-mode driver
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_release, os_version) in config.html_context['rhel_version_numbers'] %}
-        .. tab-item:: RHEL {{ os_version }}
-            :sync: rhel-{{ os_version }} rhel-{{ os_release }}
+        {% for (os_release, os_version) in config.html_context['ol_version_numbers'] %}
+        .. tab-item:: OL {{ os_version }}
+            :sync: ol-{{ os_version }} ol-{{ os_release }}
 
             .. code-block:: bash
                 :substitutions:
@@ -37,7 +37,7 @@ Register kernel-mode driver
                 sudo yum clean all
         {% endfor %}
 
-.. _rhel-register-rocm:
+.. _ol-register-rocm:
 
 Register ROCm packages
 ----------------------------------------------------------------------------------------------------------
@@ -45,9 +45,9 @@ Register ROCm packages
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for os_release in config.html_context['rhel_release_version_numbers']  %}
-        .. tab-item:: RHEL {{ os_release }}
-            :sync: rhel-{{ os_release }}
+        {% for os_release in config.html_context['ol_release_version_numbers'] %}
+        .. tab-item:: OL {{ os_release }}
+            :sync: ol-{{ os_release }}
 
             .. code-block:: bash
                 :substitutions:
@@ -65,7 +65,7 @@ Register ROCm packages
                 sudo yum clean all
         {% endfor %}
 
-.. _rhel-install:
+.. _ol-install:
 
 .. include:: install-rocm-template.rst
 
@@ -73,13 +73,13 @@ Upgrade
 =====================================================
 
 To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`rhel-register-repo` and :ref:`rhel-install`. 
+:ref:`ol-register-repo` and :ref:`ol-install`. 
 
 .. note::
 
     Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
     system reboot to take effect.
 
-.. _rhel-uninstall:
+.. _ol-uninstall:
 
 .. include:: uninstall-rocm-template.rst
