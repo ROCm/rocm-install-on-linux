@@ -61,6 +61,10 @@ TensorFlow.
       - 1.13, 2.0, 2.1
       - 2.12, 2.13, 2.14
 
+    * - 6.1.x
+      - 2.0, 2.1
+      - 2.13, 2.14, 2.15
+
 .. _communication-libraries:
 
 Communication libraries
