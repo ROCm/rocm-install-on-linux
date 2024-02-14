@@ -88,7 +88,7 @@ Docker images in the ROCm ecosystem
 Base images
 -------------------------------------------------------------------------------------------------
 
-The `ROCm Docker repository <https://github.com/RadeonOpenCompute/ROCm-docker>`_ hosts images useful for users
+The `ROCm Docker repository <https://github.com/ROCm/ROCm-docker>`_ hosts images useful for users
 wishing to build their own containers leveraging ROCm. The built images are
 available from `Docker Hub <https://hub.docker.com/u/rocm>`_. In particular
 ``rocm/rocm-terminal`` is a small image with the prerequisites to build HIP
