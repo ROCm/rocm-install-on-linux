@@ -13,7 +13,7 @@ Supported GPUs
 =============================================
 
 The following table shows the supported GPUs for Instinct™, Radeon™ PRO and Radeon™. If a
-GPU is not listed on this table, It's not officially supported by AMD.
+GPU is not listed on this table, it's not officially supported by AMD.
 
 .. tab-set::
 
@@ -73,7 +73,7 @@ AMD ROCm™ Software supports the following Linux distributions.
 
 .. csv-table::
     :widths: 50, 50, 25
-    :header: "OS", "Kernel", "Support"
+    :header: "Operating system", "Kernel", "Support"
 
     "RHEL 9.3", "5.14.0-362", "✅"
     "RHEL 9.2", "5.14.0-362", "✅"
