@@ -26,6 +26,8 @@ subtrees:
           title: Oracle Linux
         - file: how-to/native-install/sles
           title: SUSE Linux Enterprise
+        - file: how-to/native-install/ubuntu-wsl2-docker-desktop-win
+          title: WSL2 & Docker Desktop for Windows
         - file: how-to/native-install/post-install
           title: Post-Install instructions
         - file: how-to/native-install/package-manager-integration

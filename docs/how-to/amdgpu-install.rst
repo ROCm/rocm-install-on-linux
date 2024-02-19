@@ -90,6 +90,24 @@ SUSE Linux Enterprise
                 sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
         {% endfor %}
 
+Ubuntu (WSL2 / Docker for Windows)
+--------------------------------------------------------------------
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+        {% for (os_version, os_release) in config.html_context['ubuntu_wsl2_docker_desktop_win_version_numbers'] %}
+        .. tab-item:: {{ os_version }}
+            :sync: ubuntu-wsl2-docker-desktop-win-{{ os_version}}
+
+            .. code-block:: bash
+                :substitutions:
+
+                sudo apt update
+                wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
+                sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
+        {% endfor %}
+
 Use cases
 =================================================
 
@@ -128,6 +146,8 @@ output below.
       - HIP runtimes
       - Machine learning framework
       - All ROCm libraries and applications
+    wsl             (for using ROCm in a WSL)
+      - ROCr WSL runtime library (Ubuntu 22.04 only)
     rocmdev         (for developers requiring ROCm runtime and
                     profiling/debugging tools)
       - HIP runtimes
@@ -215,6 +235,13 @@ To install use cases specific to your requirements, use the installer
   .. code-block:: bash
 
     sudo amdgpu-install --usecase=rocm,asan
+
+- To install the WSL2 and Docker Desktop for Windows compatible binaries add
+  ``wsl``. For example:
+
+  .. code-block:: bash
+
+    sudo amdgpu-install --usecase=rocm,wsl --no-dkms --no-32
 
 Uninstalling ROCm
 =================================================

@@ -36,6 +36,7 @@ rhel_version_numbers = [('9', '9.3'), ('9', '9.2'), ('8', '8.9'), ('8', '8.8')]
 sles_version_numbers = ['15.5', '15.4']
 ol_release_version_numbers = ['8']
 ol_version_numbers = [('8', '8.8')]
+ubuntu_wsl2_docker_desktop_win_version_numbers = [('22.04', 'jammy')]
 
 # pages with specific settings
 article_pages = [
@@ -85,5 +86,6 @@ html_context = {
     "rhel_release_version_numbers" : rhel_release_version_numbers,
     "rhel_version_numbers" : rhel_version_numbers,
     "ol_release_version_numbers" : ol_release_version_numbers,
-    "ol_version_numbers" : ol_version_numbers
+    "ol_version_numbers" : ol_version_numbers,
+    "ubuntu_wsl2_docker_desktop_win_version_numbers": ubuntu_wsl2_docker_desktop_win_version_numbers
 }

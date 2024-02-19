@@ -108,6 +108,11 @@ installation. Follow the instructions below based on your distributions.
             
                 {% endfor %}
 
+    .. tab-item:: Ubuntu (WSL2 / Docker Desktop for Windows)
+        :sync: ubuntu-wsl2-docker-desktop-win-tab
+
+        All packages are available in the default Ubuntu repositories, therefore no additional repositories need to be added.
+
 Kernel headers and development packages
 ================================================================
 
@@ -144,6 +149,11 @@ To install for the currently active kernel run the command corresponding to your
 
             sudo zypper install kernel-default-devel
 
+    .. tab-item:: Ubuntu (WSL2 / Docker Desktop for Windows)
+        :sync: ubuntu-wsl2-docker-desktop-win-tab
+
+        WSL2 and Docker for Windows don't make use of DKMS, instead they rely on an alternative ROCr (ROCm Runtime) binary relaying to the host driver.
+
 Setting permissions for groups
 ================================================================
 
@@ -172,3 +182,11 @@ the following commands:
     echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
     echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
     echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
+
+Host system requirements
+================================================================
+
+When installing ROCm in WSL2 or Docker Desktop for Windows containers, the host
+system must have the latest device drivers installed on the host system. To
+obtain the latest drivers for your system, visit
+`AMD Drivers and Support <https://www.amd.com/en/support>`_.

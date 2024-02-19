@@ -16,6 +16,7 @@ Installation via native package manager
         - :doc:`Red Hat Enterprise Linux</how-to/native-install/rhel>`
         - :doc:`SUSE Linux Enterprise</how-to/native-install/sles>`
         - :doc:`Oracle Linux</how-to/native-install/ol>`
+        - :doc:`Ubuntu (WSL2 / Docker Desktop for Windows)</how-to/native-install/ubuntu-wsl2-docker-desktop-win>`
 
     .. grid-item-card:: Upgrade
 

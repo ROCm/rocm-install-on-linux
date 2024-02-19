@@ -62,3 +62,9 @@ Post-installation instructions
             .. code-block:: bash
 
                 sudo zypper search --installed-only
+
+         .. tab-item:: Ubuntu (WSL2 / Docker for Windows)
+
+            .. code-block:: bash
+
+                sudo apt list --installed

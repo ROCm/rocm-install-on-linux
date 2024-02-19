@@ -15,54 +15,78 @@ ROCm kernel-mode driver must be installed on the host. Please refer to
 user-space parts (like the HIP-runtime or math libraries) of the ROCm stack will
 be loaded from the container image and don't need to be installed to the host.
 
+Linux Docker containers running on Windows do not make use of ``amdgpu-dkms``,
+but instead use an alternative user-space ROCm Runtime (ROCr) relaying to the
+host driver.
+
 .. _docker-access-gpus-in-container:
 
 Accessing GPUs in containers
 ==========================================
 
-In order to access GPUs in a container (to run applications using HIP, OpenCL or
-OpenMP offloading) explicit access to the GPUs must be granted.
+.. tab-set::
 
-The ROCm runtimes make use of multiple device files:
+    .. tab-item:: Native Linux
+        :sync: native-linux-tab
 
-- ``/dev/kfd``: the main compute interface shared by all GPUs
-- ``/dev/dri/renderD<node>``: direct rendering interface (DRI) devices for each
-  GPU. Where ``<node>`` is a number for each card in the system starting from 128.
+        In order to access GPUs in a container (to run applications using HIP, OpenCL or
+        OpenMP offloading) explicit access to the GPUs must be granted.
 
-Exposing these devices to a container is done by using the
-`--device <https://docs.docker.com/engine/reference/commandline/run/#device>`_
-option, i.e. to allow access to all GPUs expose ``/dev/kfd`` and all
-``/dev/dri/renderD`` devices:
+        The ROCm runtimes make use of multiple device files:
 
-.. code-block:: shell
+        - ``/dev/kfd``: the main compute interface shared by all GPUs
+        - ``/dev/dri/renderD<node>``: direct rendering interface (DRI) devices for each
+          GPU. Where ``<node>`` is a number for each card in the system starting from 128.
 
-    docker run --device /dev/kfd --device /dev/renderD128 --device /dev/renderD129 ...
+        Exposing these devices to a container is done by using the
+        `--device <https://docs.docker.com/engine/reference/commandline/run/#device>`_
+        option, i.e. to allow access to all GPUs expose ``/dev/kfd`` and all
+        ``/dev/dri/renderD`` devices:
 
-More conveniently, instead of listing all devices, the entire ``/dev/dri`` folder
-can be exposed to the new container:
+        .. code-block:: shell
 
-.. code-block:: shell
+            docker run --device /dev/kfd --device /dev/renderD128 --device /dev/renderD129 ...
 
-    docker run --device /dev/kfd --device /dev/dri
+        More conveniently, instead of listing all devices, the entire ``/dev/dri`` folder
+        can be exposed to the new container:
 
-Note that this gives more access than strictly required, as it also exposes the
-other device files found in that folder to the container.
+        .. code-block:: shell
+
+            docker run --device /dev/kfd --device /dev/dri
+
+        Note that this gives more access than strictly required, as it also exposes the
+        other device files found in that folder to the container.
+
+    .. tab-item:: WSL2 / Docker Desktop for Windows
+        :sync: wsl2-docker-desktop-win-tab
+
+        GPUs are automatically available to ROCr on WSL2 kernels and need no user intervention.
 
 .. _docker-restrict-gpus:
 
 Restricting a container to a subset of the GPUs
 -------------------------------------------------------------------------------------------------
 
-If a ``/dev/dri/renderD`` device is not exposed to a container then it cannot use
-the GPU associated with it; this allows to restrict a container to any subset of
-devices.
+.. tab-set::
 
-For example to allow the container to access the first and third GPU start it
-like:
+    .. tab-item:: Native Linux
+        :sync: native-linux-tab
 
-.. code-block:: shell
+        If a ``/dev/dri/renderD`` device is not exposed to a container then it cannot use
+        the GPU associated with it; this allows to restrict a container to any subset of
+        devices.
 
-    docker run --device /dev/kfd --device /dev/dri/renderD128 --device /dev/dri/renderD130 <image>
+        For example to allow the container to access the first and third GPU start it
+        like:
+
+        .. code-block:: shell
+
+            docker run --device /dev/kfd --device /dev/dri/renderD128 --device /dev/dri/renderD130 <image>
+
+    .. tab-item:: WSL2 / Docker Desktop for Windows
+        :sync: wsl2-docker-desktop-win-tab
+
+        Devices can't be filtered at the hypervisor level.
 
 Additional options
 -------------------------------------------------------------------------------------------------

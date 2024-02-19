@@ -87,8 +87,13 @@ AMD ROCm™ Software supports the following Linux distributions.
     "Ubuntu 22.04.2", "5.19", "✅"
     "Ubuntu 20.04.6", "5.15", "✅"
     "Ubuntu 20.04.5", "5.15", "✅"
+    "Ubuntu 22.04.3", "5.15.133.1-microsoft-standard-WSL2", "🚧 :sup:`3`"
+
+🚧: **Preview** - This configuration is under development and is released for preview purposes.
 
 :sup:`2` Preview support for HWE kernels
+
+:sup:`3` Preview support for device access in WSL2 and Docker Desktop for Windows.
 
 Virtualization support
 =============================================

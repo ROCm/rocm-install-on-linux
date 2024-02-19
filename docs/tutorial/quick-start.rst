@@ -23,6 +23,7 @@ To start, choose your preferred install method and operating system:
         * :ref:`package-man-rhel`
         * :ref:`package-man-suse`
         * :ref:`package-man-ol`
+        * :ref:`package-man-ubuntu-wsl2-docker-desktop-win`
 
     .. grid-item-card:: :ref:`rocm-amdgpu-quick`
 
@@ -30,6 +31,7 @@ To start, choose your preferred install method and operating system:
         * :ref:`amdgpu-rhel`
         * :ref:`amdgpu-suse`
         * :ref:`amdgpu-ol`
+        * :ref:`amdgpu-ubuntu-wsl2-docker-desktop-win`
 
 .. _rocm-package-man-quick:
 
@@ -145,6 +147,28 @@ SUSE Linux Enterprise Server
                 echo "Please reboot system for all settings to take effect."
         {% endfor %}
 
+.. _package-man-ubuntu-wsl2-docker-desktop-win:
+
+Ubuntu (WSL2 / Docker for Windows)
+------------------------------------------------------------------------------------
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+        {% for (os_version, os_release) in config.html_context['ubuntu_wsl2_docker_desktop_win_version_numbers'] %}
+        .. tab-item:: {{ os_version }}
+            :sync: ubuntu-wsl2-docker-desktop-win-{{ os_version}}
+
+            .. code-block:: bash
+                :substitutions:
+
+                wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
+                sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
+                sudo apt update
+                sudo apt install hsa-runtime-rocr4wsl-amdgpu rocminfo4wsl-amdgpu
+                sudo apt install rocm
+        {% endfor %}
+
 .. _rocm-amdgpu-quick:
 
 AMDGPU installer
@@ -226,4 +250,25 @@ SUSE Linux Enterprise Server
 
                 sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
                 sudo amdgpu-install --usecase=graphics,rocm
+        {% endfor %}
+
+.. _amdgpu-ubuntu-wsl2-docker-desktop-win:
+
+Ubuntu (WSL2 / Docker for Windows)
+------------------------------------------------------------------------------------
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+        {% for (os_version, os_release) in config.html_context['ubuntu_wsl2_docker_desktop_win_version_numbers'] %}
+        .. tab-item:: {{ os_version }}
+            :sync: ubuntu-wsl2-docker-desktop-win-{{ os_version}}
+
+            .. code-block:: bash
+                :substitutions:
+
+                sudo apt update
+                wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
+                sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
+                sudo amdgpu-install --usecase=graphics,rocm,wsl
         {% endfor %}
