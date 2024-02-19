@@ -22,12 +22,14 @@ To start, choose your preferred install method and operating system:
         * :ref:`package-man-ubuntu`
         * :ref:`package-man-rhel`
         * :ref:`package-man-suse`
+        * :ref:`package-man-ol`
 
     .. grid-item-card:: :ref:`rocm-amdgpu-quick`
 
         * :ref:`amdgpu-ubuntu`
         * :ref:`amdgpu-rhel`
         * :ref:`amdgpu-suse`
+        * :ref:`amdgpu-ol`
 
 .. _rocm-package-man-quick:
 
