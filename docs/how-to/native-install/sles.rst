@@ -20,7 +20,7 @@ Register kernel-mode driver
 
     .. tab-set::
         {% for os_version in config.html_context['sles_version_numbers'] %}
-        .. tab-item:: SLES {{ os_version }}
+        .. tab-item:: {{ os_version }}
 
             .. code-block:: bash
                 :substitutions:

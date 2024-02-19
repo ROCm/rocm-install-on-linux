@@ -19,7 +19,7 @@ Register kernel-mode driver
 
     .. tab-set::
         {% for (os_release, os_version) in config.html_context['ol_version_numbers'] %}
-        .. tab-item:: OL {{ os_version }}
+        .. tab-item:: {{ os_version }}
             :sync: ol-{{ os_version }} ol-{{ os_release }}
 
             .. code-block:: bash
@@ -46,7 +46,7 @@ Register ROCm packages
 
     .. tab-set::
         {% for os_release in config.html_context['ol_release_version_numbers'] %}
-        .. tab-item:: OL {{ os_release }}
+        .. tab-item:: {{ os_release }}
             :sync: ol-{{ os_release }}
 
             .. code-block:: bash

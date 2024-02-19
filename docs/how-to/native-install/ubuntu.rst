@@ -46,7 +46,7 @@ Add the AMDGPU repository for the driver.
 
     .. tab-set::
         {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
-        .. tab-item:: Ubuntu {{ os_version }}
+        .. tab-item:: {{ os_version }}
             :sync: ubuntu-{{ os_version}}
 
             .. code-block:: bash
@@ -68,7 +68,7 @@ Add the ROCm repository.
 
     .. tab-set::
         {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
-        .. tab-item:: Ubuntu {{ os_version }}
+        .. tab-item:: {{ os_version }}
             :sync: ubuntu-{{ os_version}}
 
             .. code-block:: bash

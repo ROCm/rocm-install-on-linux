@@ -31,7 +31,7 @@ Ubuntu
 
     .. tab-set::
         {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
-        .. tab-item:: Ubuntu {{ os_version }}
+        .. tab-item:: {{ os_version }}
             :sync: ubuntu-{{ os_version}}
 
             .. code-block:: bash
@@ -49,7 +49,7 @@ Red Hat Enterprise Linux
 
     .. tab-set::
         {% for (os_release, os_version) in config.html_context['rhel_version_numbers'] %}
-        .. tab-item:: RHEL {{ os_version }}
+        .. tab-item:: {{ os_version }}
             :sync: rhel-{{ os_version }} rhel-{{ os_release }}
 
             .. code-block:: bash
@@ -65,7 +65,7 @@ Oracle Linux
 
     .. tab-set::
         {% for (os_release, os_version) in config.html_context['ol_version_numbers'] %}
-        .. tab-item:: OL {{ os_version }}
+        .. tab-item:: {{ os_version }}
             :sync: ol-{{ os_version }} ol-{{ os_release }}
 
             .. code-block:: bash
@@ -82,7 +82,7 @@ SUSE Linux Enterprise
 
     .. tab-set::
         {% for os_version in config.html_context['sles_version_numbers'] %}
-        .. tab-item:: SLES {{ os_version }}
+        .. tab-item:: {{ os_version }}
 
             .. code-block:: bash
                 :substitutions:
