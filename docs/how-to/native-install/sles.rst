@@ -43,14 +43,16 @@ Register ROCm packages
 .. code-block:: bash
     :substitutions:
 
+    for ver in 5.3 5.3.2 5.3.3 5.4 5.4.1 5.4.2 5.4.3 5.4.5 5.4.6 5.5 5.5.1 5.5.2 5.5.3 5.6 5.6.1 5.7 5.7.1 5.7.2 5.7.3 6.0 6.0.1 6.0.2; do
     sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
-    [ROCm-|rocm_version|]
-    name=ROCm|rocm_version|
-    baseurl=https://repo.radeon.com/rocm/zyp/|rocm_version|/main
+    [ROCm-$ver]
+    name=ROCm$ver
+    baseurl=https://repo.radeon.com/rocm/zyp/$ver/main
     enabled=1
     gpgcheck=1
     gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
     EOF
+    done
 
     sudo zypper ref
 

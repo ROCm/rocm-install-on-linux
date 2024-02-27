@@ -241,6 +241,11 @@ You must add the ROCm repositories manually for all ROCm releases you want to
 install except the latest one. The ``amdgpu-install`` script automatically adds the
 required repositories for the latest release.
 
+  .. code-block:: bash
+    sudo amdgpu-install --usecase=rocm --rocmrelease=6.0.1
+    sudo amdgpu-install --usecase=rocm --rocmrelease=5.5
+
+
 See the section "Register ROCm Packages" in :doc:`/how-to/native-install/index`
 for :ref:`Ubuntu<ubuntu-register-rocm>`.
 
