@@ -52,7 +52,7 @@ Add the AMDGPU repository for the driver.
             .. code-block:: bash
                 :substitutions:
 
-                for ver in 5.3 5.3.2 5.3.3 5.4 5.4.1 5.4.2 5.4.3 5.4.5 5.4.6 5.5 5.5.1 5.5.2 5.5.3 5.6 5.6.1 5.7 5.7.1 5.7.2 5.7.3 6.0 6.0.1 6.0.2; do
+                for ver in |rocm_last_versions|; do
                 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/$ver/ubuntu {{ os_release }} main" \
                     | sudo tee /etc/apt/sources.list.d/amdgpu.list
                 done
@@ -76,7 +76,7 @@ Add the ROCm repository.
             .. code-block:: bash
                 :substitutions:
 
-                for ver in 5.3 5.3.2 5.3.3 5.4 5.4.1 5.4.2 5.4.3 5.4.5 5.4.6 5.5 5.5.1 5.5.2 5.5.3 5.6 5.6.1 5.7 5.7.1 5.7.2 5.7.3 6.0 6.0.1 6.0.2; do
+                for ver in |rocm_last_versions|; do
                 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/$ver {{ os_release }} main" \
                     | sudo tee --append /etc/apt/sources.list.d/rocm.list
                 done
