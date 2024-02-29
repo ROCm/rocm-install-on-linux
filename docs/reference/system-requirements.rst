@@ -13,7 +13,7 @@ Supported GPUs
 =============================================
 
 The following table shows the supported GPUs for Instinct™, Radeon™ PRO and Radeon™. If a
-GPU is not listed on this table, It's not officially supported by AMD.
+GPU is not listed on this table, it's not officially supported by AMD.
 
 .. tab-set::
 
@@ -42,7 +42,7 @@ GPU is not listed on this table, It's not officially supported by AMD.
       "AMD Radeon PRO W7800", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W6800", "RDNA2", "gfx1030", "✅"
       "AMD Radeon PRO V620", "RDNA2", "gfx1030", "✅"
-      "AMD Radeon PRO VII", "GCN5.1", "gfx906", "✅"
+      "AMD Radeon PRO VII", "GCN5.1", "gfx906", "⚠️"
 
   .. tab-item:: AMD Radeon
 
@@ -53,7 +53,7 @@ GPU is not listed on this table, It's not officially supported by AMD.
       "AMD Radeon RX 7900 XTX", "RDNA3", "gfx1100", "✅"
       "AMD Radeon RX 7900 XT", "RDNA3", "gfx1100", "✅"
       "AMD Radeon RX 7900 GRE", "RDNA3", "gfx1100", "✅"
-      "AMD Radeon VII", "GCN5.1", "gfx906", "✅"
+      "AMD Radeon VII", "GCN5.1", "gfx906", "⚠️"
 
 ✅: **Supported** - AMD enables these GPUs in our software distributions for the corresponding
 ROCm product.
@@ -73,7 +73,7 @@ AMD ROCm™ Software supports the following Linux distributions.
 
 .. csv-table::
     :widths: 50, 50, 25
-    :header: "OS", "Kernel", "Support"
+    :header: "Operating system", "Kernel", "Support"
 
     "RHEL 9.3", "5.14.0-362", "✅"
     "RHEL 9.2", "5.14.0-362", "✅"
