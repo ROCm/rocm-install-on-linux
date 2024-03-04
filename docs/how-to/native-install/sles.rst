@@ -43,7 +43,7 @@ Register ROCm packages
 .. code-block:: bash
     :substitutions:
 
-    for ver in |rocm_last_versions|; do
+    for ver in |rocm_latest_versions|; do
     sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
     [ROCm-$ver]
     name=ROCm$ver

@@ -6,7 +6,7 @@
 
 # ROCm version numbers
 rocm_version = '6.0.2'
-rocm_last_versions = '6.0.1 6.0.2'
+rocm_latest_versions = '6.0.1 6.0.2'
 rocm_directory_version = '6.0.2' # in 6.0 rocm was located in /opt/rocm-6.0.0
 amdgpu_version = '6.0.2' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
 amdgpu_install_version = '6.0.60002-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
