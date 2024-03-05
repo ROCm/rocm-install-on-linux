@@ -88,6 +88,34 @@ Red Hat Enterprise Linux
                 echo "Please reboot system for all settings to take effect."
         {% endfor %}
 
+.. _package-man-ol:
+
+Oracle Linux
+------------------------------------------------------------------------------------
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+        {% for (os_release, os_version) in config.html_context['ol_version_numbers'] %}
+        .. tab-item:: {{ os_version }}
+            :sync: ol-{{ os_version }} ol-{{ os_release }}
+
+            .. code-block:: bash
+                :substitutions:
+
+                wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_release }}.noarch.rpm
+                sudo rpm -ivh epel-release-latest-{{ os_release }}.noarch.rpm
+                sudo crb enable
+                sudo yum install kernel-headers kernel-devel
+                # See prerequisites. Adding current user to Video and Render groups
+                sudo usermod -a -G render,video $LOGNAME
+                sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_release }}.noarch.rpm 
+                sudo yum clean all
+                sudo yum install amdgpu-dkms
+                sudo yum install rocm
+                echo "Please reboot system for all settings to take effect."
+        {% endfor %}
+
 .. _package-man-suse:
 
 SUSE Linux Enterprise Server
@@ -152,6 +180,25 @@ Red Hat Enterprise Linux
         {% for (os_release, os_version) in config.html_context['rhel_version_numbers'] %}
         .. tab-item:: {{ os_version }}
             :sync: rhel-{{ os_version }} rhel-{{ os_release }}
+
+            .. code-block:: bash
+                :substitutions:
+
+                sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_release }}.noarch.rpm 
+                sudo amdgpu-install --usecase=graphics,rocm
+        {% endfor %}
+
+.. _amdgpu-ol:
+
+Oracle Linux
+------------------------------------------------------------------------------------
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+        {% for (os_release, os_version) in config.html_context['ol_version_numbers'] %}
+        .. tab-item:: {{ os_version }}
+            :sync: ol-{{ os_version }} ol-{{ os_release }}
 
             .. code-block:: bash
                 :substitutions:

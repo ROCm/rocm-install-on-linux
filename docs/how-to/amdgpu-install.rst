@@ -58,6 +58,23 @@ Red Hat Enterprise Linux
                 sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_release }}.noarch.rpm
         {% endfor %}
 
+Oracle Linux
+--------------------------------------------------------------------
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+        {% for (os_release, os_version) in config.html_context['ol_version_numbers'] %}
+        .. tab-item:: OL {{ os_version }}
+            :sync: ol-{{ os_version }} ol-{{ os_release }}
+
+            .. code-block:: bash
+                :substitutions:
+
+                sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_release }}.noarch.rpm
+        {% endfor %}
+
+
 SUSE Linux Enterprise
 --------------------------------------------------------------------
 
