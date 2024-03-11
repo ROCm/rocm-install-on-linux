@@ -8,43 +8,41 @@ Installation prerequisites
 
 Before installing ROCm, complete the following prerequisites.
 
-1. Confirm the system has a supported Linux version.
+#. Confirm the system has a supported Linux version.
 
-    a. To obtain the Linux distribution information, type the following command on your system from
-    the Command Line Interface (CLI):
+   * To obtain the Linux distribution information, type the following command on your system from the Command Line Interface (CLI):
 
-        .. code-block:: shell
+     .. code-block:: shell
 
-            uname -m && cat /etc/*release
+        uname -m && cat /etc/*release
 
-    b. Confirm that your Linux distribution matches a
-    :ref:`supported distribution<supported_distributions>`.
+   * Confirm that your Linux distribution matches a :ref:`supported distribution<supported_distributions>`.
 
-        **Example:** Running the preceding command on an Ubuntu system produces the following output:
+     **Example:** Running the preceding command on an Ubuntu system produces the following output:
 
-        .. code-block:: shell
+     .. code-block:: shell
 
-                x86_64
-                DISTRIB_ID=Ubuntu
-                DISTRIB_RELEASE=20.04
-                DISTRIB_CODENAME=focal
-                DISTRIB_DESCRIPTION="Ubuntu 20.04.5 LTS"
+        x86_64
+        DISTRIB_ID=Ubuntu
+        DISTRIB_RELEASE=20.04
+        DISTRIB_CODENAME=focal
+        DISTRIB_DESCRIPTION="Ubuntu 20.04.5 LTS"
 
-2. Verify the kernel version.
+#. Verify the kernel version.
 
-    a. To check the kernel version of your Linux system, type the following command:
+   * To check the kernel version of your Linux system, type the following command:
 
-        .. code-block:: shell
+     .. code-block:: shell
 
-            uname -srmv
+        uname -srmv
 
-        **Example:** The preceding command lists the kernel version in the following format:
+     **Example:** The preceding command lists the kernel version in the following format:
 
-        .. code-block:: shell
+     .. code-block:: shell
 
-            Linux 5.15.0-46-generic #44~20.04.5-Ubuntu SMP Fri Jun 24 13:27:29 UTC 2022 x86_64
+        Linux 5.15.0-46-generic #44~20.04.5-Ubuntu SMP Fri Jun 24 13:27:29 UTC 2022 x86_64
 
-    b. Confirm that your kernel version matches the system requirements, as listed in :ref:`supported_distributions`.
+   * Confirm that your kernel version matches the system requirements, as listed in :ref:`supported_distributions`.
 
 Additional package repositories
 ==========================================================
@@ -65,28 +63,25 @@ installation. Follow the instructions below based on your distributions.
 
         1. Add the EPEL repository.
 
-            .. datatemplate:nodata::
+           .. datatemplate:nodata::
 
-                .. tab-set::
-                {% for os_release in config.html_context['rhel_release_version_numbers']  %}
-                    .. tab-item:: RHEL/OL {{ os_release }}
+               .. tab-set::
+                  {% for os_release in config.html_context['rhel_release_version_numbers']  %}
+                      .. tab-item:: RHEL/OL {{ os_release }}
 
-                        .. code-block:: shell
+                          .. code-block:: shell
 
-                            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_release }}.noarch.rpm
-                            sudo rpm -ivh epel-release-latest-{{ os_release }}.noarch.rpm
-                {% endfor %}
+                              wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_release }}.noarch.rpm
+                              sudo rpm -ivh epel-release-latest-{{ os_release }}.noarch.rpm
+                  {% endfor %}
 
         2. Enable the CodeReady Linux Builder (CRB) repository.
 
-            In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
+           In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
 
            .. code-block:: shell
 
                sudo dnf install dnf-plugin-config-manager
-
-           .. code-block:: shell
-
                sudo crb enable
 
     .. tab-item:: SUSE Linux Enterprise Server
