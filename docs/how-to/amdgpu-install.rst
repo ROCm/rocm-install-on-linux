@@ -154,6 +154,17 @@ output below.
       - ASAN enabled ROCm libraries
 
 
+.. _amdgpu-install-dkms:
+
+Install ``amdgpu-dkms``
+-------------------------------------------------
+
+In order to install the DKMS only (minimal requirement for launching containers with GPU access), you use the ``dkms`` usecase, as follows:
+
+.. code-block:: bash
+
+   amdgpu-install --usecase=dkms
+
 Upgrading ROCm
 =================================================
 
