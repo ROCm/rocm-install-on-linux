@@ -71,6 +71,7 @@ external_projects_current_project = "rocm"
 # Add the following replacements to every RST file.
 rst_prolog = f"""
 .. |rocm_version| replace:: {rocm_version}
+.. |rocm_latest_versions| replace:: {rocm_latest_versions}
 .. |amdgpu_version| replace:: {amdgpu_version}
 .. |rocm_directory_version| replace:: {rocm_directory_version}
 .. |amdgpu_install_version| replace:: {amdgpu_install_version}
