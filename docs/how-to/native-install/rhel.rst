@@ -25,6 +25,68 @@ Register kernel-mode driver
             .. code-block:: bash
                 :substitutions:
 
+                sudo tee /etc/yum.repos.d/amdgpu.repo <<EOF
+                [amdgpu]
+                name=amdgpu
+                baseurl=https://repo.radeon.com/amdgpu/|rocm_version|/rhel/{{ os_version }}/main/x86_64/
+                enabled=1
+                priority=50
+                gpgcheck=1
+                gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+                EOF
+                sudo yum clean all
+        {% endfor %}
+
+.. _rhel-register-rocm:
+
+Register ROCm packages
+----------------------------------------------------------------------------------------------------------
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+        {% for os_release in config.html_context['rhel_release_version_numbers']  %}
+        .. tab-item:: RHEL {{ os_release }}
+            :sync: rhel-{{ os_release }}
+
+            .. code-block:: bash
+                :substitutions:
+
+                sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
+                [ROCm-|rocm_version|]
+                name=ROCm|rocm_version|
+                baseurl=https://repo.radeon.com/rocm/rhel{{ os_release }}/|rocm_version|/main
+                enabled=1
+                priority=50
+                gpgcheck=1
+                gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+                EOF
+
+                sudo yum clean all
+        {% endfor %}
+
+.. _rhel-install:
+
+.. include:: install-rocm-template.rst
+
+.. _rhel-multi-install:
+
+Multi-version install
+=====================================================
+
+Register kernel-mode driver
+----------------------------------------------------------------------------------------------------------
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+        {% for (os_release, os_version) in config.html_context['rhel_version_numbers'] %}
+        .. tab-item:: RHEL {{ os_version }}
+            :sync: rhel-{{ os_version }} rhel-{{ os_release }}
+
+            .. code-block:: bash
+                :substitutions:
+
                 for ver in |rocm_latest_versions|; do
                 sudo tee /etc/yum.repos.d/amdgpu.repo <<EOF
                 [amdgpu]
@@ -39,7 +101,7 @@ Register kernel-mode driver
                 sudo yum clean all
         {% endfor %}
 
-.. _rhel-register-rocm:
+.. _rhel-multi-register-rocm:
 
 Register ROCm packages
 ----------------------------------------------------------------------------------------------------------
@@ -69,9 +131,12 @@ Register ROCm packages
                 sudo yum clean all
         {% endfor %}
 
-.. _rhel-install:
+.. _rhel-multi-install:
 
-.. include:: install-rocm-template.rst
+Installing
+----------------------------------------------------------------------------------------------------------
+
+The installing step is the same as previously described, follow the steps in :ref:`rhel-install`.
 
 .. _rhel-upgrade:
 

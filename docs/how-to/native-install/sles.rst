@@ -12,6 +12,8 @@ SUSE Linux Enterprise native installation
 Registering ROCm repositories
 ===============================================
 
+.. _sles-register-driver:
+
 Register kernel-mode driver
 --------------------------------------------------------------------------------------
 
@@ -43,16 +45,14 @@ Register ROCm packages
 .. code-block:: bash
     :substitutions:
 
-    for ver in |rocm_latest_versions|; do
     sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
-    [ROCm-$ver]
-    name=ROCm$ver
-    baseurl=https://repo.radeon.com/rocm/zyp/$ver/main
+    [ROCm-|rocm_version|]
+    name=ROCm|rocm_version|
+    baseurl=https://repo.radeon.com/rocm/zyp/|rocm_version|/main
     enabled=1
     gpgcheck=1
     gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
     EOF
-    done
 
     sudo zypper ref
 
@@ -77,6 +77,40 @@ Install ROCm packages
     sudo zypper --gpg-auto-import-keys install rocm
 
 Complete the :doc:`post-install`.
+
+.. _sles-register-rocm:
+
+Multi-version install
+===============================================
+
+Register kernel-mode driver
+--------------------------------------------------------------------------------------
+
+This step is the same as previously described, follow the steps in :ref:`sles-register-driver`..
+
+Register ROCm packages
+--------------------------------------------------------------------------------------
+
+.. code-block:: bash
+    :substitutions:
+
+    for ver in |rocm_latest_versions|; do
+    sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
+    [ROCm-$ver]
+    name=ROCm$ver
+    baseurl=https://repo.radeon.com/rocm/zyp/$ver/main
+    enabled=1
+    gpgcheck=1
+    gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+    EOF
+    done
+
+    sudo zypper ref
+
+Installing
+--------------------------------------------------------------------------------------
+
+The installing step is the same as previously described, follow the steps in :ref:`sles-install`.
 
 .. _sles-upgrade:
 
