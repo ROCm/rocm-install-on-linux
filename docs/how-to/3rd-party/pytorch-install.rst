@@ -90,3 +90,39 @@ Install From Source
 
 If a pre-built wheel is not available to match your specific Python, PyTorch, and ROCm versions,
 you can build and install PyTorch from source. See the `official build instructions <https://github.com/pytorch/pytorch#from-source>`_ for details.
+
+[Optional] Installing pre-compiled MIOpen kernels
+--------------------------------------------------
+
+PyTorch uses `MIOpen <https://github.com/ROCm/MIOpen>`_ for machine learning
+primitives, which are compiled into kernels at runtime. Runtime compilation causes a small warm-up
+phase when starting PyTorch, and MIOpen kdb files contain precompiled kernels that can speed up
+application warm-up phases.
+
+MIOpen kdb files can be used with ROCm PyTorch wheels. However, the kdb files need to be placed in
+a specific location with respect to the PyTorch installation path. A helper script simplifies this task by
+taking the ROCm version and GPU architecture as inputs. This works for Ubuntu and CentOS.
+
+.. note::
+
+   Installing pre-compiled MIOpen kernels can speed up warm-up, but will not affect performance after the
+   initial warm-up. Additionally, as MIOpen caches kernels, this warm-up cost is only paid once.
+
+To install MIOpen kbd files for pytorch, run:
+
+.. code-block:: shell
+
+                wget https://raw.githubusercontent.com/wiki/ROCmSoftwarePlatform/pytorch/files/install_kdb_files_for_pytorch_wheels.sh
+
+                #Optional; replace 'gfx90a' with your architecture and 5.6 with your preferred ROCm version
+                export GFX_ARCH=gfx90a
+                export ROCM_VERSION=5.6
+
+                ./install_kdb_files_for_pytorch_wheels.sh
+
+Further reading:
+
+* `Using MIOpen kbd files with PyTorch Wheels <https://github.com/ROCm/pytorch/wiki/Using-MIOpen-kdb-files-with-ROCm-PyTorch-wheels>`_
+* `MIOpen Docs <https://docs.amd.com/projects/MIOpen/en/latest/>`_
+* `Installing pre-compiled MIOpen kernels <https://docs.amd.com/projects/MIOpen/en/latest/cache.html#installing-pre-compiled-kernels>`_
+* `MIOpen repo <https://github.com/ROCm/MIOpen>`_
