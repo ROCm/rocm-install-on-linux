@@ -59,7 +59,7 @@ instructions for your distribution.
         All packages are available in the default Ubuntu repositories, so you don't need to add additional
         repositories.
 
-    .. tab-item:: Red Hat Enterprise Linux
+    .. tab-item:: Red Hat Enterprise Linux / Oracle Linux
         :sync: rhel-tab
 
         1. Add the EPEL repository.

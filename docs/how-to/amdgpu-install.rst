@@ -42,7 +42,7 @@ Ubuntu
                 sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
         {% endfor %}
 
-Red Hat Enterprise Linux
+Red Hat Enterprise Linux / Oracle Linux
 --------------------------------------------------------------------
 
 .. datatemplate:nodata::

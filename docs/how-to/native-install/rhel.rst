@@ -1,10 +1,10 @@
 .. meta::
-  :description: Red Hat Enterprise Linux native installation
+  :description: Red Hat Enterprise Linux and Oracle Linux native installation
   :keywords: ROCm install, installation instructions, RHEL, Red Hat Enterprise Linux native installation,
-    AMD, ROCm
+   Oracle Linux, AMD, ROCm
 
 **********************************************************************************************
-Red Hat Enterprise Linux native installation
+Red Hat Enterprise Linux and Oracle Linux native installation
 **********************************************************************************************
 
 .. _rhel-register-repo:
@@ -56,7 +56,7 @@ Register ROCm packages
                 sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
                 [ROCm-|rocm_version|]
                 name=ROCm|rocm_version|
-                baseurl=https://repo.radeon.com/rocm/rhel{{ os_release }}/|rocm_version|/main
+                baseurl=https://repo.radeon.com/rocm/el{{ os_release }}/|rocm_version|/main
                 enabled=1
                 priority=50
                 gpgcheck=1
