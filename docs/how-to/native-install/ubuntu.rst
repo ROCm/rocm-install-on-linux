@@ -35,7 +35,7 @@ Download and convert the package signing key.
     re-add the key from the ROCm to the apt repository as mentioned above.
     The current ``rocm.gpg.key`` is not available in a standard key ring distribution
     but has the following SHA1 sum hash:
-    ``ececf5eea22ced391975f46ba3e11ad58a12c794 rocm.gpg.key``
+    ``73f5d8100de6048aa38a8b84cd9a87f05177d208 rocm.gpg.key``
 
 Register kernel-mode driver
 ---------------------------------------------------------------------------
