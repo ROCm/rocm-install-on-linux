@@ -35,7 +35,7 @@ Download and convert the package signing key.
     re-add the key from the ROCm to the apt repository as mentioned above.
     The current ``rocm.gpg.key`` is not available in a standard key ring distribution
     but has the following SHA1 sum hash:
-    ``73f5d8100de6048aa38a8b84cd9a87f05177d208 rocm.gpg.key``
+    ``ececf5eea22ced391975f46ba3e11ad58a12c794 rocm.gpg.key``
 
 Register kernel-mode driver
 ---------------------------------------------------------------------------
@@ -54,7 +54,6 @@ Add the AMDGPU repository for the driver.
 
                 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/|rocm_version|/ubuntu {{ os_release }} main" \
                     | sudo tee /etc/apt/sources.list.d/amdgpu.list
-                sudo apt update
         {% endfor %}
 
 .. _ubuntu-register-rocm:
@@ -79,6 +78,13 @@ Add the ROCm repository.
                 echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
                     | sudo tee /etc/apt/preferences.d/rocm-pin-600
         {% endfor %}
+
+Update the package information with added AMDGPU driver and ROCm repositories:
+
+.. code-block:: bash
+
+    sudo apt update
+
 
 .. _ubuntu-install:
 
