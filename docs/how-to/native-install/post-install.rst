@@ -6,59 +6,59 @@
 Post-installation instructions
 *************************************************************************
 
-1.  Configure the system linker.
+#. Configure the system linker.
 
-    Instruct the system linker where to find shared objects (``.so``-files) for ROCm applications.
+   Instruct the system linker where to find shared objects (``.so``-files) for ROCm applications.
 
-    .. code-block:: bash
+   .. code-block:: bash
 
-        sudo tee --append /etc/ld.so.conf.d/rocm.conf <<EOF
-        /opt/rocm/lib
-        /opt/rocm/lib64
-        EOF
-        sudo ldconfig
+       sudo tee --append /etc/ld.so.conf.d/rocm.conf <<EOF
+       /opt/rocm/lib
+       /opt/rocm/lib64
+       EOF
+       sudo ldconfig
 
-2. Configure ``PATH``.
+#. Configure ``PATH``.
 
-    Add binary paths to the ``PATH`` environment variable.
+   Add binary paths to the ``PATH`` environment variable.
 
-    .. code-block:: bash
-        :substitutions:
+   .. code-block:: bash
+       :substitutions:
 
-        export PATH=$PATH:/opt/rocm-|rocm_directory_version|/bin
+       export PATH=$PATH:/opt/rocm-|rocm_directory_version|/bin
 
-3. Verify kernel-mode driver installation.
+#. Verify kernel-mode driver installation.
 
-    .. code-block:: bash
+   .. code-block:: bash
 
-        dkms status
+       dkms status
 
-4. Verify ROCm installation.
+#. Verify ROCm installation.
 
-    .. code-block:: bash
-        :substitutions:
+   .. code-block:: bash
+       :substitutions:
 
-        /opt/rocm-|rocm_directory_version|/bin/rocminfo
-        /opt/rocm-|rocm_directory_version|/bin/clinfo
+       /opt/rocm-|rocm_directory_version|/bin/rocminfo
+       /opt/rocm-|rocm_directory_version|/bin/clinfo
 
-5. Verify package installation.
+#. Verify package installation.
 
-    .. tab-set::
+   .. tab-set::
 
-        .. tab-item:: Ubuntu
+       .. tab-item:: Ubuntu
 
-            .. code-block:: bash
+           .. code-block:: bash
 
-                sudo apt list --installed
+               sudo apt list --installed
 
-        .. tab-item:: RHEL
+       .. tab-item:: RHEL
 
-            .. code-block:: bash
+           .. code-block:: bash
 
-                sudo yum list installed
+               sudo yum list installed
 
-        .. tab-item:: SLES
+       .. tab-item:: SLES
 
-            .. code-block:: bash
+           .. code-block:: bash
 
-                sudo zypper search --installed-only
+               sudo zypper search --installed-only
