@@ -3,7 +3,7 @@
   :keywords: installation instructions, PyTorch, AMD, ROCm
 
 **********************************************************************************
-PyTorch for ROCm
+Installing PyTorch for ROCm
 **********************************************************************************
 
 `PyTorch <https://pytorch.org/>`_ is an open-source tensor library designed for deep learning. PyTorch on
@@ -122,7 +122,133 @@ To install MIOpen kbd files for pytorch, run:
 
 Further reading:
 
-* `Using MIOpen kbd files with PyTorch Wheels <https://github.com/ROCm/pytorch/wiki/Using-MIOpen-kdb-files-with-ROCm-PyTorch-wheels>`_
 * `MIOpen Docs <https://docs.amd.com/projects/MIOpen/en/latest/>`_
-* `Installing pre-compiled MIOpen kernels <https://docs.amd.com/projects/MIOpen/en/latest/cache.html#installing-pre-compiled-kernels>`_
 * `MIOpen repo <https://github.com/ROCm/MIOpen>`_
+* `Installing pre-compiled MIOpen kernels <https://docs.amd.com/projects/MIOpen/en/latest/cache.html#installing-pre-compiled-kernels>`_
+* `Using MIOpen kbd files with PyTorch Wheels <https://github.com/ROCm/pytorch/wiki/Using-MIOpen-kdb-files-with-ROCm-PyTorch-wheels>`_
+
+Testing the PyTorch installation
+---------------------------------
+
+You can use PyTorch unit tests to validate your PyTorch installation.
+
+If you want to manually run unit tests to validate your PyTorch installation fully, follow these steps:
+
+1. Import the torch package in Python to test if PyTorch is installed and accessible.
+
+   .. note::
+
+       Do not run the following command in the PyTorch git folder.
+
+   .. code-block:: bash
+
+       python3 -c 'import torch' 2> /dev/null && echo 'Success' || echo 'Failure'
+
+2. Check if the GPU is accessible from PyTorch. In the PyTorch framework, ``torch.cuda`` is a generic way
+   to access the GPU. This can only access an AMD GPU if one is available.
+
+   .. code-block:: bash
+
+       python3 -c 'import torch; print(torch.cuda.is_available())'
+
+
+3. Run unit tests to validate the PyTorch installation fully.
+
+   .. note::
+
+       You must run the following command from the PyTorch home directory.
+
+   .. code-block:: bash
+
+       PYTORCH_TEST_WITH_ROCM=1 python3 test/run_test.py --verbose \
+       --include test_nn test_torch test_cuda test_ops \
+       test_unary_ufuncs test_binary_ufuncs test_autograd
+
+   This command ensures that the required environment variable is set to skip certain unit tests for
+   ROCm. This also applies to wheel installs in a non-controlled environment.
+
+   .. note::
+
+       Make sure your PyTorch source code corresponds to the PyTorch wheel or the installation in the
+       Docker image. Incompatible PyTorch source code can give errors when running unit tests.
+
+   Some tests may be skipped, as appropriate, based on your system configuration. ROCm doesn't
+   support all PyTorch features; tests that evaluate unsupported features are skipped. Other tests might
+   be skipped, depending on the host or GPU memory and the number of available GPUs.
+
+   If the compilation and installation are correct, all tests will pass.
+
+4. Run individual unit tests.
+
+   .. code-block:: bash
+
+       PYTORCH_TEST_WITH_ROCM=1 python3 test/test_nn.py --verbose
+
+   You can replace ``test_nn.py`` with any other test set.
+
+Running a basic PyTorch example
+---------------------------------
+
+The PyTorch examples repository provides basic examples that exercise the functionality of your
+framework.
+
+Two of our favorite testing databases are:
+
+* **MNIST** (Modified National Institute of Standards and Technology): A database of handwritten
+  digits that can be used to train a Convolutional Neural Network for **handwriting recognition**.
+* **ImageNet**: A database of images that can be used to train a network for
+  **visual object recognition**.
+
+MNIST PyTorch example
+.......................
+
+1. Clone the PyTorch examples repository.
+
+   .. code-block:: bash
+
+       git clone https://github.com/pytorch/examples.git
+
+2. Go to the MNIST example folder.
+
+   .. code-block:: bash
+
+       cd examples/mnist
+
+3. Follow the instructions in the ``README.md`` file in this folder to install the requirements. Then run:
+
+   .. code-block:: bash
+
+       python3 main.py
+
+   This generates the following output:
+
+   .. code-block::
+
+       ...
+       Train Epoch: 14 [58240/60000 (97%)]     Loss: 0.010128
+       Train Epoch: 14 [58880/60000 (98%)]     Loss: 0.001348
+       Train Epoch: 14 [59520/60000 (99%)]     Loss: 0.005261
+
+       Test set: Average loss: 0.0252, Accuracy: 9921/10000 (99%)
+
+ImageNet PyTorch example
+............................
+
+1. Clone the PyTorch examples repository (if you didn't already do this in the preceding MNIST
+   example).
+
+   .. code-block:: bash
+
+       git clone https://github.com/pytorch/examples.git
+
+2. Go to the ImageNet example folder.
+
+   .. code-block:: bash
+
+       cd examples/imagenet
+
+3. Follow the instructions in the ``README.md`` file in this folder to install the Requirements. Then run:
+
+   .. code-block:: bash
+
+       python3 main.py

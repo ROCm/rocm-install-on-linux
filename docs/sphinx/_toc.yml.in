@@ -40,6 +40,7 @@ subtrees:
       - file: how-to/3rd-party/pytorch-docker
         title: PyTorch + Docker
 
+
   - file: how-to/3rd-party/magma-install
     title: Install Magma
   - file: how-to/3rd-party/pytorch-install-old
