@@ -27,6 +27,8 @@ Post-installation instructions
 
        export PATH=$PATH:/opt/rocm-|rocm_directory_version|/bin
 
+.. _verify-dkms:
+
 #. Verify kernel-mode driver installation.
 
    .. code-block:: bash

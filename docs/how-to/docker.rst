@@ -11,18 +11,12 @@ Using Docker to run your ROCm applications is one of the best ways to get consis
 Prerequisites
 ==========================================
 
-* ``amdgpu-dkms``
-
-  Docker containers share the kernel with the host OS, therefore, the ROCm kernel-mode driver (``amdgpu-dkms``) must be installed on the host.
+* ``amdgpu-dkms`` : Docker containers share the kernel with the host OS, therefore, the ROCm kernel-mode driver (``amdgpu-dkms``) must be installed on the host.
   If you've already installed ROCm, you probably already have ``amdgpu-dkms``.
 
-  * Check for ``amdgpu-dkms``:
+  * :ref:`Chedk for amdgpu-dkms<verify-dkms>`
 
-    <PUT CROSS-PLATFORM METHOD OF CHECKING HERE>
-
-  * Install ``amdgpu-dkms``
-
-    * You can follow the :ref:`standard install instructions<rocm-install-quick>` (which comes with amdgpu-dkms), or :ref:`install amdgpu-dkms only<amdgpu-install-dkms>`
+  * If missing, you can follow the :ref:`standard install instructions<rocm-install-quick>` (which comes with amdgpu-dkms), or :ref:`install amdgpu-dkms only<amdgpu-install-dkms>`.
 
 .. _docker-access-gpus-in-container:
 
