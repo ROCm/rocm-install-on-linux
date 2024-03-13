@@ -31,9 +31,18 @@ subtrees:
 
 - caption: Tutorials
   entries:
+  - file: how-to/3rd-party/pytorch-index
+    title: PyTorch
+    subtrees:
+    - entries:
+      - file: how-to/3rd-party/pytorch-install
+        title: Install PyTorch
+      - file: how-to/3rd-party/pytorch-docker
+        title: PyTorch + Docker
+
   - file: how-to/3rd-party/magma-install
     title: Install Magma
-  - file: how-to/3rd-party/pytorch-install
+  - file: how-to/3rd-party/pytorch-install-old
     title: Install PyTorch
   - file: how-to/3rd-party/tensorflow-install
     title: Install TensorFlow

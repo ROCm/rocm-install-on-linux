@@ -1,0 +1,26 @@
+ARG ROCM_VERSION=5.7
+FROM rocm/dev-ubuntu-22.04:$ROCM_VERSION
+
+ARG ROCM_VERSION # Re-declare for use in this scope
+
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update \
+    # Add the deadsnakes repo for python
+    && apt-get install -y software-properties-common && add-apt-repository ppa:deadsnakes/ppa \
+    # Install Pyton 3.11 and other deps
+    && apt-get update && apt-get install -y \
+    python3.11 \
+    python3.11-venv \
+    wget \
+    # Clean up the cache
+    && rm -rf /var/lib/apt/lists/*
+
+# Create a virtual environment, and put it at the front of our PATH
+RUN python3.11 -m venv venv
+ENV PATH=/venv/bin:$PATH
+
+# Install Pytorch
+RUN --mount=type=cache,target=/root/.cache/pip pip3 install torch==2.2.1 torchvision==0.17.1 --index-url https://download.pytorch.org/whl/rocm$ROCM_VERSION/
+
+# Install additional python dependencies
+RUN pip3 install transformers==4.38.2
