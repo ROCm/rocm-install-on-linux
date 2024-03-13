@@ -110,7 +110,22 @@ Register ROCm packages
 Installing
 --------------------------------------------------------------------------------------
 
-The installing step is the same as previously described, follow the steps in :ref:`sles-install`.
+Install kernel driver.
+
+.. code-block:: bash
+
+    sudo zypper --gpg-auto-import-keys install amdgpu-dkms
+    sudo reboot
+
+Install ROCm packages.
+
+.. code-block:: bash
+
+    for ver in |rocm_latest_versions|; do
+        sudo zypper --gpg-auto-import-keys install rocm-hip-sdk$ver
+    done
+
+Complete the :doc:`post-install`.
 
 .. _sles-upgrade:
 

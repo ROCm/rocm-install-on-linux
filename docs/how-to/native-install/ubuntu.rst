@@ -171,7 +171,22 @@ Add the ROCm repository.
 Installing
 ---------------------------------------------------------------------------
 
-The installing step is the same as previously described, follow the steps in :ref:`ubuntu-install`.
+Install the kernel driver.
+
+.. code-block:: bash
+
+    sudo apt install amdgpu-dkms
+    sudo reboot
+
+Install ROCm packages.
+
+.. code-block:: bash
+
+    for ver in |rocm_latest_versions|; do
+        sudo apt install rocm-hip-sdk$ver
+    done
+
+Complete the :doc:`post-install`.
 
 .. _ubuntu-upgrade:
 

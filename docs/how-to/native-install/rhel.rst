@@ -136,7 +136,22 @@ Register ROCm packages
 Installing
 ----------------------------------------------------------------------------------------------------------
 
-The installing step is the same as previously described, follow the steps in :ref:`rhel-install`.
+Install kernel driver.
+
+.. code-block:: bash
+
+    sudo yum install amdgpu-dkms
+    sudo reboot
+
+Install ROCm packages.
+
+.. code-block:: bash
+
+    for ver in |rocm_latest_versions|; do
+        sudo yum install rocm-hip-sdk$ver
+    done
+
+Complete the :doc:`post-install`.
 
 .. _rhel-upgrade:
 
