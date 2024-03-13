@@ -159,7 +159,7 @@ output below.
 Install ``amdgpu-dkms``
 -------------------------------------------------
 
-In order to install the DKMS only (minimal requirement for launching containers with GPU access), you use the ``dkms`` usecase, as follows:
+In order to install the DKMS only (minimal requirement for launching containers with GPU access), you use the ``dkms`` use case, as follows:
 
 .. code-block:: bash
 

@@ -51,7 +51,7 @@ The purpose of each option is listed below:
 Docker Compose
 ------------------------------
 
-You can also use ``docker compose`` to launch your containers, even when launching a single container. This can be a convienent way to
+You can also use ``docker compose`` to launch your containers, even when launching a single container. This can be a convenient way to
 run complex docker commands (like the one above) without having to remember all the CLI arguments Here is a docker-compose file which
 is equivalent to the ``docker run`` command above:
 
