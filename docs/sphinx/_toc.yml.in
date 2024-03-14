@@ -28,6 +28,8 @@ subtrees:
           title: Post-Install instructions
         - file: how-to/native-install/package-manager-integration
           title: Package manager integration
+    - file: how-to/native-install/install-faq
+      title: Installation FAQ
 
 - caption: Tutorials
   entries:

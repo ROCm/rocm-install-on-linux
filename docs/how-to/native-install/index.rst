@@ -34,3 +34,5 @@ Installation via native package manager
         Required meta-packages for ROCm programming models.
 
 See also: :doc:`/reference/system-requirements`.
+For any install issues, check :doc:`install-faq`.
+
