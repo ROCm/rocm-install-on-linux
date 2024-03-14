@@ -1,2 +1,6 @@
 ROCmVersionWithoutCommas
 TensorFlowVersion
+URI
+EPEL
+cmath
+lstdc
