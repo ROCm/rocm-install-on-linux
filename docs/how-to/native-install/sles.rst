@@ -120,6 +120,7 @@ Install kernel driver.
 Install ROCm packages.
 
 .. code-block:: bash
+    :substitutions:
 
     for ver in |rocm_latest_versions|; do
         sudo zypper --gpg-auto-import-keys install rocm-hip-sdk$ver

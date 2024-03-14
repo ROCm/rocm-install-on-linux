@@ -181,6 +181,7 @@ Install the kernel driver.
 Install ROCm packages.
 
 .. code-block:: bash
+    :substitutions:
 
     for ver in |rocm_latest_versions|; do
         sudo apt install rocm-hip-sdk$ver

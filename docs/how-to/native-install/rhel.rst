@@ -146,6 +146,7 @@ Install kernel driver.
 Install ROCm packages.
 
 .. code-block:: bash
+    :substitutions:
 
     for ver in |rocm_latest_versions|; do
         sudo yum install rocm-hip-sdk$ver
