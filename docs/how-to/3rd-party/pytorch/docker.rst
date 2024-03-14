@@ -22,11 +22,26 @@ Regardless of which image you use or build, running PyTorch docker images requir
 
                 docker run -it --device=/dev/fkd --device=/dev/dri --security-opt seccomp=unconfined --ipc=host <image>
 
+Alternatively, you can use the equivalent ``docker-compose.yaml``:
+
+.. code-block:: yaml
+
+    version: "3.7"
+    services:
+      my-service:
+        image: <image>
+        device:
+          - /dev/fdk
+          - /dev/dri
+        security_opt:
+          - seccomp:unconfined
+        ipc: host
+
 
 Pre-Built PyTorch+ROCm Docker Images
 --------------------------------------
 
-The easiest method to run PyTorch+ROCm is to use a pre-built image from `AMD ROCm on docker hub <https://hub.docker.com/u/rocm>`_, which contain ROCm as well as PyTorch. You can select an image from either of the following sources, with your desired OS, ROCm, Python, and PyTorch versions.
+The easiest method to run PyTorch+ROCm is to use a pre-built image from ``AMD ROCm on docker hub <https://hub.docker.com/u/rocm>`_, which contain ROCm as well as PyTorch. You can select an image from either of the following sources, with your desired OS, ROCm, Python, and PyTorch versions.
 
 * `rocm/pytorch <https://hub.docker.com/r/rocm/pytorch>`_ - latest stable builds
 * `rocm/pytorch-nightly <https://hub.docker.com/r/rocm/pytorch-nightly>`_ - latest nightly builds
