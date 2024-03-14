@@ -11,41 +11,75 @@ ROCm provides mixed-precision and large-scale training using our
 `MIOpen <https://github.com/ROCmSoftwarePlatform/MIOpen>`_ and
 `RCCL <https://github.com/ROCmSoftwarePlatform/rccl>`_ libraries.
 
+Install from pre-built wheels
+-----------------------------
 
+PyTorch supports the ROCm platform by providing pre-built wheels packages for a variety of PyTorch and ROCm versions.
 
-Installation (Pip)
-------------------
+.. Warning::
 
-PyTorch supports the ROCm platform by providing pre-built wheels packages for a variety of PyTorch and ROCm versions. To install the
-latest version:
+  **Make sure the PyTorch version you install was compiled for your ROCm version!** If there is a mismatch, you may experience
+  performace degredation or errors.
+
+The Major and Minor versions must match, but different Patch versions are acceptable. For example, PyTorch 2.2.1+ROCm6.0 will work with ROCm 6.0.1, but not 6.1, or 5.7.
+
+To check your rocm version:
+
+.. code-block:: shell
+
+                $ rocm-smi -V
+                ROCM-SMI-LIB version: 5.7.0
+
+Latest Stable
+=============
+To install the latest version:
 
 * Navigate to `pytorch.org/get-started/locally/ <https://pytorch.org/get-started/locally/>`_.
 * Select ``Stable``, ``Linux``, ``Pip``, ``Python``, and ``ROCm``
 
-You should see ``pip3 install`` commmand
+  * The ``ROCm`` box will indicate which ROCm version these wheels were built for
+
+You should see a ``pip3 install`` commmand:
 
 .. code-block:: shell
 
     pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.7
 
+
 .. Note::
+
+   **PyTorch typically only builds the latest stable builds against a single version of ROCm.** If this ROCm version
+   does not match your needs, see :ref:`torch-nightly` or :ref:`torch-additional-versions` below.
+
+.. Tip::
 
    You should use a virtual environment when installing python packages in order to separate dependencies
    from the system and other projects.
 
+.. _torch-nightly:
+
+Nightly
+=======
+
+In addition to stable wheels, PyTorch also publishes nightly builds, which *may* be against a newer version of ROCm. Nightly builds can be a great way
+to get access to newer features.
+
+To install from nightly:
+
+* Navigate to `pytorch.org/get-started/locally/ <https://pytorch.org/get-started/locally/>`_.
+* Select **``Nightly``**, ``Linux``, ``Pip``, ``Python``, and ``ROCm``
+
+.. _torch-additional-versions:
+
 Additional Versions
-...................
+===================
 
-In addition to the latest stable version, you can also install new, preview versions, as well as older versions.
+In addition to the latest stable and nightly wheels, you can search for previous versions on `PyTorch's docs here <https://pytorch.org/get-started/previous-versions/>`_
 
-* Preview (Nightly): Select ``Preview (Nightly)`` from the `installation matrix <https://pytorch.org/get-started/locally/>`_
-
-* Previous versions: You can search for previous versions on `PyTorch's docs here <https://pytorch.org/get-started/previous-versions/>`_
-
-  Make sure to search for the appropriate ROCm version
+**Make sure to search for the appropriate ROCm version**
 
 Other Package Managers
-......................
+-----------------------
 
 You can also use more sophisticated dependency management tools like PDM and Poetry. These tools provide several benefits over ``pip``, including
 automatic creation of virtual environments, complex dependency resolution, lockfiles, and more.
