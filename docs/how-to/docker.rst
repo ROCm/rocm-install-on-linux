@@ -87,14 +87,16 @@ For example, to expose the first and second GPU:
 Docker images in the ROCm ecosystem
 =======================================================
 
-Base images
--------------------------------------------------------------------------------------------------
-
 The `ROCm Docker repository <https://github.com/ROCm/ROCm-docker>`_ hosts images useful for users
 wishing to build their own containers leveraging ROCm. The built images are
 available from `Docker Hub <https://hub.docker.com/u/rocm>`_. In particular
-``rocm/rocm-terminal`` is a small image with the prerequisites to build HIP
-applications, but does not include any libraries.
+
+* ``rocm/rocm-terminal`` is a small image with the prerequisites to build HIP
+  applications, but does not include any libraries.
+
+* :ref:`ROCm dev images <https://hub.docker.com/search?q=rocm%2Fdev>`_ provide a variety of OS + ROCm versions,
+  and are a great starting place for building applications
+
 
 Applications
 -------------------------------------------------------------------------------------------------
