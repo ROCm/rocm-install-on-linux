@@ -66,13 +66,16 @@ installation. Follow the instructions below based on your distributions.
            .. datatemplate:nodata::
 
                .. tab-set::
+
                   {% for os_release in config.html_context['rhel_release_version_numbers']  %}
+
                       .. tab-item:: RHEL/OL {{ os_release }}
 
                           .. code-block:: shell
 
                               wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_release }}.noarch.rpm
                               sudo rpm -ivh epel-release-latest-{{ os_release }}.noarch.rpm
+
                   {% endfor %}
 
         2. Enable the CodeReady Linux Builder (CRB) repository.
@@ -90,24 +93,25 @@ installation. Follow the instructions below based on your distributions.
         Add the Perl language repository.
 
         .. datatemplate:nodata::
-        
+
             .. tab-set::
-            
+
                 {% for os_version in config.html_context['sles_version_numbers'] %}
                 {% set os_release, os_sp  = os_version.split('.') %}
+
                 .. tab-item:: SLES {{ os_version }}
 
                     .. code-block:: shell
 
                         zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/{{ os_version }}/devel:languages:perl.repo
-            
+
                 {% endfor %}
 
 Kernel headers and development packages
 ================================================================
 
 The driver package uses
-`DKMS (Dynamic Kernel Module Support) <https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support>`_
+`Dynamic Kernel Module Support (DKMS) <https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support>`_
 to build the `amdgpu-dkms` module (driver) for the installed kernels. This requires the Linux kernel
 headers and modules to be installed for each. Usually these are automatically installed with the kernel,
 but if you have multiple kernel versions or you have downloaded the kernel images and not the kernel
