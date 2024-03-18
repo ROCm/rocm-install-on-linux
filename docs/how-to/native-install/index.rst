@@ -18,13 +18,9 @@ Installation via native package manager
 
     .. grid-item-card:: Post-install
 
-        Instructions for upgrading an existing ROCm installation.
-
         * :doc:`post-install steps <./post-install>`
 
     .. grid-item-card:: Upgrade
-
-        Instructions for upgrading an existing ROCm installation.
 
         * :ref:`Ubuntu <ubuntu-upgrade>`
         * :ref:`RHEL <rhel-upgrade>`
