@@ -20,18 +20,18 @@ complete instructions, refer to the following sections.
 
         ROCm quick-start installation guide.
 
-    .. grid-item-card:: Install options
-        :link: tutorial/install-overview
-        :link-type: doc
-
-        * Package manager vs AMDGPU installer
-        * Single-version vs multi-version
-
     .. grid-item-card:: Prerequisites
         :link: how-to/prerequisites
         :link-type: doc
 
         Steps required before installation.
+
+    .. grid-item-card:: Install overview
+        :link: tutorial/install-overview
+        :link-type: doc
+
+        * Package manager vs AMDGPU installer
+        * Single-version vs multi-version
 
 Choose your install method
 ========================================

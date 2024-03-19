@@ -4,12 +4,12 @@ defaults:
 root: index
 subtrees:
 - entries:
-    - file: tutorial/install-overview
-      title: Installation overview
     - file: tutorial/quick-start
       title: Quick-start install guide
     - file: how-to/prerequisites
       title: Prerequisites
+    - file: tutorial/install-overview
+      title: Installation overview
     - file: reference/system-requirements
       title: System requirements
     - file: how-to/amdgpu-install
@@ -21,11 +21,11 @@ subtrees:
         - file: how-to/native-install/ubuntu
           title: Ubuntu
         - file: how-to/native-install/rhel
-          title: Red Hat Enterprise Linux
+          title: RHEL
         - file: how-to/native-install/sles
-          title: SUSE Linux Enterprise
+          title: SLES
         - file: how-to/native-install/post-install
-          title: Post-Install instructions
+          title: Post-install instructions
         - file: how-to/native-install/package-manager-integration
           title: Package manager integration
 
