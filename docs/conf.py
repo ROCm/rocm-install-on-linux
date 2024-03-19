@@ -5,10 +5,10 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # ROCm version numbers
-rocm_version = '6.0.2'
-rocm_directory_version = '6.0.2' # in 6.0 rocm was located in /opt/rocm-6.0.0
-amdgpu_version = '6.0.2' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '6.0.60002-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+rocm_version = '6.1'
+rocm_directory_version = '6.1.0' # in 6.0 rocm was located in /opt/rocm-6.0.0
+amdgpu_version = '6.1' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '6.1.60100-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
 
 latex_engine = "xelatex"
 latex_elements = {
@@ -23,8 +23,8 @@ latex_elements = {
 project = "ROCm installation on Linux"
 author = "Advanced Micro Devices, Inc."
 copyright = "Copyright (c) 2024 Advanced Micro Devices, Inc. All rights reserved."
-version = "6.0.2"
-release = "6.0.2"
+version = "6.1.0"
+release = "6.1.0"
 setting_all_article_info = True
 all_article_info_os = ["linux"]
 all_article_info_author = ""
@@ -32,8 +32,8 @@ all_article_info_author = ""
 # Supported linux version numbers
 ubuntu_version_numbers = [('22.04', 'jammy'), ('20.04', 'focal')]
 rhel_release_version_numbers = ['9', '8']
-rhel_version_numbers = [('9', '9.3'), ('9', '9.2'), ('8', '8.9'), ('8', '8.8')]
-sles_version_numbers = ['15.5', '15.4']
+rhel_version_numbers = [('9', '9.4'), ('9', '9.3'), ('9', '9.2'), ('8', '8.10'), ('8', '8.9'), ('8', '8.8')]
+sles_version_numbers = ['15.6', '15.5', '15.4']
 ol_release_version_numbers = ['8']
 ol_version_numbers = [('8', '8.8')]
 
