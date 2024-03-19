@@ -16,3 +16,12 @@ pip3 install -r sphinx/requirements.txt
 
 python3 -m sphinx -T -E -b html -d _build/doctrees -D language=en . _build/html
 ```
+
+## Build using PDM
+
+You can also use [PDM](https://pdm-project.org/latest/#installation) to manage the build environment.
+
+* To create `venv` and install build requirements, use: `pdm sync`
+* To build the docs, use: `pdm run inv build`
+
+Now you can open `docs/_build/html/index.html` in your browser.
