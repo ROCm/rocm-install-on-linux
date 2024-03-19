@@ -76,16 +76,20 @@ Install ROCm packages
 
 Complete the :doc:`post-install`.
 
+.. _sles-upgrade:
+
 Upgrading
 ================================================
 
 To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`sles-register-rocm` and :ref:`sles-install`. 
+:ref:`sles-register-rocm` and :ref:`sles-install`.
 
 .. note::
 
     Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
     system reboot to take effect.
+
+.. _sles-uninstall:
 
 Uninstalling
 ================================================
@@ -99,7 +103,7 @@ Uninstall specific meta packages
     # sudo zypper remove <package-name>
     # For example:
     sudo zypper remove rocm
-    # Or for version specific packages:
+    # Or, for version specific packages:
     sudo zypper remove rocm|rocm_version|
 
 Uninstall ROCm packages
@@ -130,7 +134,7 @@ Remove ROCm and AMDGPU repositories
     #
     # The name of the repositories can be listed with:
     sudo zypper repos
-    
+
     # Then remove the 'ROCm' and 'amdgpu' repositories.
     # For example:
     sudo zypper removerepo ROCm-|rocm_version|
