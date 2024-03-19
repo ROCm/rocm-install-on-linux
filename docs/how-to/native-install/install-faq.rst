@@ -1,45 +1,55 @@
 .. meta::
-  :description: Frequently asked questions for install
+  :description: Troubleshooting installation issues
   :keywords: Linux, install, FAQ, ubuntu, RHEL, SUSE, AMD, ROCm
 
 ************************************************************************************
-Installation FAQ
+Troubleshooting installation issues
 ************************************************************************************
 
-Here are some of the frequently asked questions from some common issues people faced with ROCm.
+Here is a summary of common issues associated with ROCm installation.
 
-**Q1: On installation, I'm getting "Problem: nothing provides 'perl-URI-Encode' needed to be installed by ..."** `#1827 <https://github.com/ROCm/ROCm/issues/1827>`_
+`Issue #1827 <https://github.com/ROCm/ROCm/issues/1827>`_
+================================================================
 
-A1: Ensure that the :doc:`../prerequisites` are installed.  There are prerequisite PERL packages required for SUSE.  RHEL also requires EPEL to be installed, which is also mentioned in prerequisites.  Be sure to install those first, then repeat your installation steps.
+* **Problem**: When installing, I get
+  `"Problem: nothing provides 'perl-URI-Encode' needed to be installed by ..."`.
 
+* **Solution**: Ensure that the :doc:` prerequisites <../prerequisites>` are correctly installed.
+  * There are prerequisite PERL packages required for SUSE.
+  * RHEL requires that you install EPEL (also mentioned in prerequisites).
 
-**Q2: When compiling HIP programs, I'm getting linking error for -lstdc++, or "fatal error: 'cmath' file not found"** `#2031 <https://github.com/ROCm/ROCm/issues/2031>`_
+  Once you've successfully installed the prerequisites for your operating system, repeat the installation
+  steps.
 
-A2: You can install C++ libs by using your package manager.  Ubuntu example is below:
+`Issue #2031 <https://github.com/ROCm/ROCm/issues/2031>`_
+================================================================
 
-.. code-block:: bash
+* **Problem**: When compiling HIP programs, I get a linking error for ``-lstdc++``, or
+  "fatal error: 'cmath' file not found".
 
-  sudo apt-get install libstdc++-12-dev
+* **Solution**:  You can install C++ libraries using your package manager. Here's an Ubuntu example:
 
+  .. code-block:: bash
 
-**Q3: The latest version of ROCm is 6.0.2, but the install instructions only install 6.0.0.** `#2422 <https://github.com/ROCm/ROCm/issues/2422>`_
+    sudo apt-get install libstdc++-12-dev
 
-A3: We have 3 install methods:
+`Issue #2422 <https://github.com/ROCm/ROCm/issues/2422>`_
+================================================================
 
-* Quick-start installation - Installs latest **major** release (i.e. 6.0.0)
+* **Problem**: The latest version of ROCm is 6.0.2, but the install instructions install version 6.0.0.
 
-* Native package manager install method - Provides latest **major and minor** release (i.e. 6.0.0, 6.0.2)
+* **Solution**: If you used the quick-start install, try another install method. The quick-start method installs only the latest major release.
 
-* ``amdgpu-install`` method - Provides latest **major and minor** release (i.e. 6.0.0, 6.0.2)
+  Here are the three installation methods you can choose from:
 
-So if you installed with quick-start instructions, it may be expected that you only have the latest major release.  If you want to get the latest minor revisions, please follow the other two install methods.
+  * Quick-start: Installs the latest **major** release (i.e., 6.0.0)
+  * Native package manager: Provides the latest **major and minor** release (i.e., 6.0.0, 6.0.2)
+  * ``amdgpu-install``: Provides the latest **major and minor** release (i.e., 6.0.0 and 6.0.2)
 
+`Issue #1607 <https://github.com/ROCm/ROCm/issues/1607>`_
+================================================================
 
-**Q4: After successfully installing ROCm, when I run rocminfo, the command is not found.** `#1607 <https://github.com/ROCm/ROCm/issues/1607>`_
+* **Problem**: When I run ``rocminfo`` after successfully installing ROCm, the command is not found
 
-A4: You likely just need to update your ``PATH`` environment variable.  Follow the instructions in the :doc:`post-install` for updating your ``PATH``.
-
-
-
-
-
+* **Solution**:  Update your ``PATH`` environment variable. Follow the instructions on the
+  :doc:`post-install <post-install>` page,

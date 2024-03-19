@@ -59,17 +59,17 @@ Additional resources
 
     .. grid-item-card:: Reference material
 
-        - :doc:`reference/system-requirements`
-        - :doc:`reference/docker-image-support-matrix`
-        - :doc:`reference/3rd-party-support-matrix`
+        * :doc:`reference/system-requirements`
+        * :doc:`reference/docker-image-support-matrix`
+        * :doc:`reference/3rd-party-support-matrix`
 
     .. grid-item-card:: Tutorials
 
-            - :doc:`how-to/3rd-party/magma-install`
-            - :doc:`how-to/3rd-party/pytorch-install`
-            - :doc:`how-to/3rd-party/tensorflow-install`
+        * :doc:`how-to/3rd-party/magma-install`
+        * :doc:`how-to/3rd-party/pytorch-install`
+        * :doc:`how-to/3rd-party/tensorflow-install`
 
     .. grid-item-card:: How-to guides
 
-            - :doc:`how-to/docker`
-            - :doc:`how-to/spack`
+        * :doc:`how-to/docker`
+        * :doc:`how-to/spack`
