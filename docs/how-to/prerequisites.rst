@@ -90,9 +90,8 @@ installation. Follow the instructions below based on your distributions.
         Add the Perl language repository.
 
         .. datatemplate:nodata::
-        
+
             .. tab-set::
-            
                 {% for os_version in config.html_context['sles_version_numbers'] %}
                 {% set os_release, os_sp  = os_version.split('.') %}
                 .. tab-item:: SLES {{ os_version }}
@@ -100,14 +99,13 @@ installation. Follow the instructions below based on your distributions.
                     .. code-block:: shell
 
                         zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/{{ os_version }}/devel:languages:perl.repo
-            
                 {% endfor %}
 
 Kernel headers and development packages
 ================================================================
 
 The driver package uses
-`DKMS (Dynamic Kernel Module Support) <https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support>`_
+`Dynamic Kernel Module Support (DKMS) <https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support>`_
 to build the `amdgpu-dkms` module (driver) for the installed kernels. This requires the Linux kernel
 headers and modules to be installed for each. Usually these are automatically installed with the kernel,
 but if you have multiple kernel versions or you have downloaded the kernel images and not the kernel

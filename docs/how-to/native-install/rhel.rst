@@ -69,11 +69,13 @@ Register ROCm packages
 
 .. include:: install-rocm-template.rst
 
+.. _rhel-upgrade:
+
 Upgrade
 =====================================================
 
 To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`rhel-register-repo` and :ref:`rhel-install`. 
+:ref:`rhel-register-repo` and :ref:`rhel-install`.
 
 .. note::
 
