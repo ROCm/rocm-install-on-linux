@@ -74,6 +74,10 @@ Register ROCm packages
 Multi-version install
 =====================================================
 
+Multi-version install is for the special case, when you need multiple versions of ROCm
+on the same machine, not just the newest. If you just want to install the latest use
+the steps in :ref:`rhel-register-repo` and :ref:`rhel-install`.
+
 Register kernel-mode driver
 ----------------------------------------------------------------------------------------------------------
 
@@ -149,7 +153,7 @@ Install ROCm packages.
     :substitutions:
 
     for ver in |rocm_latest_versions|; do
-        sudo yum install rocm-hip-sdk$ver
+        sudo yum install rocm$ver
     done
 
 Complete the :doc:`post-install`.

@@ -83,6 +83,10 @@ Complete the :doc:`post-install`.
 Multi-version install
 ===============================================
 
+Multi-version install is for the special case, when you need multiple versions of ROCm
+on the same machine, not just the newest. If you just want to install the latest use
+the steps in :ref:`sles-register-rocm` and :ref:`sles-install`.
+
 Register kernel-mode driver
 --------------------------------------------------------------------------------------
 
@@ -123,7 +127,7 @@ Install ROCm packages.
     :substitutions:
 
     for ver in |rocm_latest_versions|; do
-        sudo zypper --gpg-auto-import-keys install rocm-hip-sdk$ver
+        sudo zypper --gpg-auto-import-keys install rocm$ver
     done
 
 Complete the :doc:`post-install`.

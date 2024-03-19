@@ -78,6 +78,7 @@ Add the ROCm repository.
 
                 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/|rocm_version| {{ os_release }} main" \
                     | sudo tee --append /etc/apt/sources.list.d/rocm.list
+                sudo apt update
                 echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
                     | sudo tee /etc/apt/preferences.d/rocm-pin-600
         {% endfor %}
@@ -115,6 +116,10 @@ Complete the :doc:`post-install`.
 
 Multi-version install
 =================================================
+
+Multi-version install is for the special case, when you need multiple versions of ROCm
+on the same machine, not just the newest. If you just want to install the latest use
+the steps in :ref:`ubuntu-register-repo` and :ref:`ubuntu-install`.
 
 Package signing key
 ---------------------------------------------------------------------------
@@ -164,6 +169,7 @@ Add the ROCm repository.
                 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/$ver {{ os_release }} main" \
                     | sudo tee --append /etc/apt/sources.list.d/rocm.list
                 done
+                sudo apt update
                 echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
                     | sudo tee /etc/apt/preferences.d/rocm-pin-600
         {% endfor %}
@@ -184,7 +190,7 @@ Install ROCm packages.
     :substitutions:
 
     for ver in |rocm_latest_versions|; do
-        sudo apt install rocm-hip-sdk$ver
+        sudo apt install rocm$ver
     done
 
 Complete the :doc:`post-install`.
