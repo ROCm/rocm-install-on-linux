@@ -12,7 +12,7 @@ ROCm provides mixed-precision and large-scale training using our
 `RCCL <https://github.com/ROCmSoftwarePlatform/rccl>`_ libraries.
 
 Install from pre-built wheels
------------------------------
+=============================
 
 PyTorch supports the ROCm platform by providing pre-built wheels packages for a variety of PyTorch and ROCm versions.
 
@@ -31,7 +31,8 @@ To check your rocm version:
                 ROCM-SMI-LIB version: 5.7.0
 
 Latest Stable
-=============
+-------------
+
 To install the latest version:
 
 * Navigate to `pytorch.org/get-started/locally/ <https://pytorch.org/get-started/locally/>`_.
@@ -59,7 +60,7 @@ You should see a ``pip3 install`` commmand:
 .. _torch-nightly:
 
 Nightly
-=======
+-------
 
 In addition to stable wheels, PyTorch also publishes nightly builds, which *may* be against a newer version of ROCm. Nightly builds can be a great way
 to get access to newer features.
@@ -72,20 +73,26 @@ To install from nightly:
 .. _torch-additional-versions:
 
 Additional Versions
-===================
+-------------------
 
 In addition to the latest stable and nightly wheels, you can search for previous versions on `PyTorch's docs here <https://pytorch.org/get-started/previous-versions/>`_
 
 **Make sure to search for the appropriate ROCm version**
 
+Install From Source
+===================
+
+If a pre-built wheel is not available to match your specific Python, PyTorch, and ROCm versions,
+you can build and install PyTorch from source. See the `official build instructions <https://github.com/pytorch/pytorch#from-source>`_ for details.
+
 Other Package Managers
------------------------
+=======================
 
 You can also use more sophisticated dependency management tools like PDM and Poetry. These tools provide several benefits over ``pip``, including
 automatic creation of virtual environments, complex dependency resolution, lockfiles, and more.
 
 `PDM <https://pdm-project.org/latest/>`_
-++++++++++++++++++++++++++++++++++++++++++++++
+-------------------------------------------
 
 * Add the ``index-url`` from above as a `source <https://pdm-project.org/latest/usage/config/#configure-the-package-indexes>`_ by adding the following lines to your ``pyproject.toml`` file:
 
@@ -104,8 +111,7 @@ automatic creation of virtual environments, complex dependency resolution, lockf
 PDM will then first look in the proided source to install any package, before falling back to `pypi.org <pypi.org>`_.
 
 `Poetry <https://python-poetry.org/docs/>`_
-++++++++++++++++++++++++++++++++++++++++++++
-
+----------------------------------------------
 
 * Add the ``index-url`` from above as a `source <https://python-poetry.org/docs/dependency-specification/#source-dependencies>`_:
 
@@ -119,14 +125,8 @@ PDM will then first look in the proided source to install any package, before fa
 
      poetry add torch --source torch-index
 
-Install From Source
---------------------
-
-If a pre-built wheel is not available to match your specific Python, PyTorch, and ROCm versions,
-you can build and install PyTorch from source. See the `official build instructions <https://github.com/pytorch/pytorch#from-source>`_ for details.
-
 [Optional] Installing pre-compiled MIOpen kernels
---------------------------------------------------
+===================================================
 
 PyTorch uses `MIOpen <https://github.com/ROCm/MIOpen>`_ for machine learning
 primitives, which are compiled into kernels at runtime. Runtime compilation causes a small warm-up
@@ -162,7 +162,7 @@ Further reading:
 * `Using MIOpen kbd files with PyTorch Wheels <https://github.com/ROCm/pytorch/wiki/Using-MIOpen-kdb-files-with-ROCm-PyTorch-wheels>`_
 
 Testing the PyTorch installation
----------------------------------
+=================================
 
 You can use PyTorch unit tests to validate your PyTorch installation.
 
@@ -221,7 +221,7 @@ If you want to manually run unit tests to validate your PyTorch installation ful
    You can replace ``test_nn.py`` with any other test set.
 
 Running a basic PyTorch example
----------------------------------
+================================
 
 The PyTorch examples repository provides basic examples that exercise the functionality of your
 framework.
@@ -234,7 +234,7 @@ Two of our favorite testing databases are:
   **visual object recognition**.
 
 MNIST PyTorch example
-.......................
+------------------------
 
 1. Clone the PyTorch examples repository.
 
@@ -266,7 +266,7 @@ MNIST PyTorch example
        Test set: Average loss: 0.0252, Accuracy: 9921/10000 (99%)
 
 ImageNet PyTorch example
-............................
+----------------------------
 
 1. Clone the PyTorch examples repository (if you didn't already do this in the preceding MNIST
    example).

@@ -20,7 +20,9 @@ Regardless of which image you use or build, running PyTorch docker images requir
 
 .. code-block:: bash
 
-                docker run -it --device=/dev/fkd --device=/dev/dri --security-opt seccomp=unconfined --ipc=host <image>
+                docker run -it --device=/dev/fkd --device=/dev/dri \
+                  --security-opt seccomp=unconfined --ipc=host \
+                  <image>
 
 Alternatively, you can use the equivalent ``docker-compose.yaml``:
 
@@ -41,7 +43,7 @@ Alternatively, you can use the equivalent ``docker-compose.yaml``:
 Pre-Built PyTorch+ROCm Docker Images
 --------------------------------------
 
-The easiest method to run PyTorch+ROCm is to use a pre-built image from ``AMD ROCm on docker hub <https://hub.docker.com/u/rocm>`_, which contain ROCm as well as PyTorch. You can select an image from either of the following sources, with your desired OS, ROCm, Python, and PyTorch versions.
+The easiest method to run PyTorch+ROCm is to use a pre-built image from `AMD ROCm on docker hub <https://hub.docker.com/u/rocm>`_, which contain ROCm as well as PyTorch. You can select an image from either of the following sources, with your desired OS, ROCm, Python, and PyTorch versions.
 
 * `rocm/pytorch <https://hub.docker.com/r/rocm/pytorch>`_ - latest stable builds
 * `rocm/pytorch-nightly <https://hub.docker.com/r/rocm/pytorch-nightly>`_ - latest nightly builds
@@ -50,8 +52,13 @@ For example, to run the latest rocm/pytorch image, run:
 
 .. code-block:: bash
 
-                docker run -it --device=/dev/fkd --device=/dev/dri --security-opt seccomp=unconfined --ipc=host rocm/pytorch:latest
+                docker run -it --device=/dev/fkd --device=/dev/dri \
+                  --security-opt seccomp=unconfined --ipc=host \
+                  rocm/pytorch:rocm6.0.2_ubuntu22.04_py3.10_pytorch_2.1.2
 
+.. Tip::
+
+   Always use a specific tag (e.g. ``rocm6.0.2_ubuntu22.04_py3.10_pytorch_2.1.2``) over ``latest``! Otherwise, the image may change without your knowledge.
 
 Custom Docker Images
 --------------------
@@ -73,7 +80,7 @@ We provide several dev containers, which contain just the base OS + ROCm. These 
 
 Below is an example ``dockerfile`` based on ``rocm/dev-ubuntu-22.04:5.7``
 
-.. literalinclude:: ../../docker_examples/torch/dockerfile_from_dev_ubuntu
+.. literalinclude:: ../../../docker_examples/torch/dockerfile_from_dev_ubuntu
                     :language: dockerfile
 
 .. tip::

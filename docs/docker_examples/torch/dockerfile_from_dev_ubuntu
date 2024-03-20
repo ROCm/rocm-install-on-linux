@@ -20,7 +20,7 @@ RUN python3.11 -m venv venv
 ENV PATH=/venv/bin:$PATH
 
 # Install Pytorch
-RUN --mount=type=cache,target=/root/.cache/pip pip3 install torch==2.2.1 torchvision==0.17.1 --index-url https://download.pytorch.org/whl/rocm$ROCM_VERSION/
+RUN pip3 install torch==2.2.1 torchvision==0.17.1 --index-url https://download.pytorch.org/whl/rocm$ROCM_VERSION/
 
 # Install additional python dependencies
 RUN pip3 install transformers==4.38.2
