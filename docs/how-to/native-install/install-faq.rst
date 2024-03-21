@@ -14,7 +14,8 @@ Here is a summary of common issues associated with ROCm installation.
 * **Problem**: When installing, I get
   `"Problem: nothing provides 'perl-URI-Encode' needed to be installed by ..."`.
 
-* **Solution**: Ensure that the :doc:` prerequisites <../prerequisites>` are correctly installed.
+* **Solution**: Ensure that the :doc:`prerequisites <../prerequisites>` are correctly installed.
+
   * There are prerequisite PERL packages required for SUSE.
   * RHEL requires that you install EPEL (also mentioned in prerequisites).
 
