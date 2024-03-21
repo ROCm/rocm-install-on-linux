@@ -47,7 +47,7 @@ TensorFlow. For TensorFlow the exact version follows the <TensorFlowVersion>.<RO
 
     * - 5.5.x
       - 1.11, 1.12.1, 1.13, 2.0
-      - 2.10, 2.11, 2.13
+      - 2.10, 2.11, 2.12
 
     * - 5.6.x
       - 1.12.1, 1.13, 2.0, 2.1
