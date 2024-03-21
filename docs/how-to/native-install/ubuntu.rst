@@ -162,9 +162,9 @@ Add the ROCm repository.
                 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/$ver {{ os_release }} main" \
                     | sudo tee --append /etc/apt/sources.list.d/rocm.list
                 done
-                sudo apt update
                 echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
                     | sudo tee /etc/apt/preferences.d/rocm-pin-600
+                sudo apt update
         {% endfor %}
 
 Installing
