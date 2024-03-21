@@ -91,7 +91,7 @@ Register kernel-mode driver
             .. code-block:: bash
                 :substitutions:
 
-                for ver in |rocm_latest_versions|; do
+                for ver in |rocm_multi_versions|; do
                 sudo tee /etc/yum.repos.d/amdgpu.repo <<EOF
                 [amdgpu]
                 name=amdgpu
@@ -120,7 +120,7 @@ Register ROCm packages
             .. code-block:: bash
                 :substitutions:
 
-                for ver in |rocm_latest_versions|; do
+                for ver in |rocm_multi_versions|; do
                 sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
                 [ROCm-$ver]
                 name=ROCm|rocm_version|
@@ -152,7 +152,7 @@ Install ROCm packages.
 .. code-block:: bash
     :substitutions:
 
-    for ver in |rocm_latest_versions|; do
+    for ver in |rocm_multi_versions|; do
         sudo yum install rocm$ver
     done
 
