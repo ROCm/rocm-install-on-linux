@@ -6,9 +6,9 @@
 Post-installation instructions
 *************************************************************************
 
-#. Configure the system linker.
+1. Configure the system linker.
 
-   Instruct the system linker where to find shared objects (``.so``-files) for ROCm applications.
+   Instruct the system linker where to find shared objects (``.so`` files) for ROCm applications.
 
    .. code-block:: bash
 
@@ -18,7 +18,7 @@ Post-installation instructions
        EOF
        sudo ldconfig
 
-#. Configure ``PATH``.
+2. Configure ``PATH``.
 
    Add binary paths to the ``PATH`` environment variable.
 
@@ -29,13 +29,13 @@ Post-installation instructions
 
 .. _verify-dkms:
 
-#. Verify kernel-mode driver installation.
+3. Verify kernel-mode driver installation.
 
    .. code-block:: bash
 
        dkms status
 
-#. Verify ROCm installation.
+4. Verify ROCm installation.
 
    .. code-block:: bash
        :substitutions:
@@ -43,7 +43,7 @@ Post-installation instructions
        /opt/rocm-|rocm_directory_version|/bin/rocminfo
        /opt/rocm-|rocm_directory_version|/bin/clinfo
 
-#. Verify package installation.
+5. Verify package installation.
 
    .. tab-set::
 
