@@ -12,15 +12,15 @@ Before installing ROCm, complete the following prerequisites.
 
    * To obtain the Linux distribution information, use the following command:
 
-        .. code-block:: shell
+     .. code-block:: shell
 
-            uname -m && cat /etc/*release
+          uname -m && cat /etc/*release
 
-   * Confirm that your Linux distribution matches a :ref:`supported distribution<supported_distributions>`.
+   * Confirm that your Linux distribution matches a :ref:`supported distribution <supported_distributions>`.
 
-        **Example:** Running the preceding command on an Ubuntu system produces the following output:
+     **Example:** Running the preceding command on an Ubuntu system produces the following output:
 
-        .. code-block:: shell
+     .. code-block:: shell
 
             x86_64
             DISTRIB_ID=Ubuntu
@@ -32,13 +32,13 @@ Before installing ROCm, complete the following prerequisites.
 
    * To check the kernel version of your Linux system, type the following command:
 
-        .. code-block:: shell
+     .. code-block:: shell
 
             uname -srmv
 
-        **Example:** The preceding command lists the kernel version in the following format:
+     **Example:** The preceding command lists the kernel version in the following format:
 
-        .. code-block:: shell
+     .. code-block:: shell
 
             Linux 5.15.0-46-generic #44~20.04.5-Ubuntu SMP Fri Jun 24 13:27:29 UTC 2022 x86_64
 
@@ -158,13 +158,13 @@ recommend using the video group for all ROCm-supported operating systems.
 
 2. Add yourself to the ``render`` and ``video`` group using the command:
 
-    .. code-block:: shell
+   .. code-block:: shell
 
         sudo usermod -a -G render,video $LOGNAME
 
-    To add all future users to the ``video`` and ``render`` groups by default, run the following commands:
+   To add all future users to the ``video`` and ``render`` groups by default, run the following commands:
 
-    .. code-block:: shell
+   .. code-block:: shell
 
         echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
         echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
