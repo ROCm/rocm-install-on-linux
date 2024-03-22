@@ -32,6 +32,7 @@ Download and convert the package signing key.
 .. _ubuntu-register-driver:
 
 .. note::
+
     The GPG key may change; ensure it is updated when installing a new release.
     If the key signature verification fails while updating,
     re-add the key from the ROCm to the apt repository as mentioned above.
