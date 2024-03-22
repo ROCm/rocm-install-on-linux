@@ -201,7 +201,7 @@ scripts to determine the configuration of the build environment.
 
        cd ~
        git clone https://github.com/pytorch/pytorch.git
-       cd /pytorch
+       cd pytorch
        git submodule update --init --recursive
 
 4. Set ROCm architecture (optional). The Docker image tag is ``rocm/pytorch:latest-base``.
