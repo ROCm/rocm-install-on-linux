@@ -6,14 +6,14 @@
 Installation via AMDGPU installer
 *************************************************************************************
 
-``amdgpu-install`` is a tool that helps you install and update AMDGPU and ROCm
-and its components.
+``amdgpu-install`` is a tool that helps you install and update AMDGPU, ROCm, and ROCm components.
 
 .. warning::
-    ROCm doesn't currently support integrated graphics. Should your system have an
-    AMD IGP installed, disable it in the BIOS prior to using ROCm. If the driver can
-    enumerate the IGP, the ROCm runtime may crash the system, even if told to omit
-    it via `HIP_VISIBLE_DEVICES <https://rocm.docs.amd.com/en/latest/conceptual/gpu-isolation.html#hip-visible-devices>`_.
+
+  ROCm doesn't currently support integrated graphics. Should your system have an
+  AMD IGP installed, disable it in the BIOS prior to using ROCm. If the driver can
+  enumerate the IGP, the ROCm runtime may crash the system, even if told to omit
+  it via `HIP_VISIBLE_DEVICES <https://rocm.docs.amd.com/en/latest/conceptual/gpu-isolation.html#hip-visible-devices>`_.
 
 .. _amdgpu-install-installation:
 
@@ -76,18 +76,16 @@ SUSE Linux Enterprise
 Use cases
 =================================================
 
-Instead of installing individual applications or libraries the installer script
-groups packages into specific use cases, matching typical workflows and
-runtimes.
+Instead of installing individual applications or libraries, the installer script groups packages into specific
+use cases that match typical workflows and runtimes.
 
-To display a list of available use cases execute the command:
+To display a list of available use cases, run:
 
 .. code-block:: bash
 
     sudo amdgpu-install --list-usecase
 
-The available use-cases will be printed in a format similar to the example
-output below.
+The available use-cases are printed in a format similar to:
 
 .. code-block::
 
@@ -154,46 +152,55 @@ output below.
       - ASAN enabled ROCm libraries
 
 
+.. _amdgpu-install-dkms:
+
+Install amdgpu-dkms
+-------------------------------------------------
+
+In order to install only the DKMS, which is a minimal requirement for launching containers with GPU
+access, use the ``dkms`` use case:
+
+.. code-block:: bash
+
+   amdgpu-install --usecase=dkms
+
 Upgrading ROCm
 =================================================
 
 The upgrade procedure with the installer script is exactly the same as
-:ref:`installing for first time use<amdgpu-install-installation>`.
+:ref:`installing for first time use <amdgpu-install-installation>`.
 
 Installing ROCm packages
 =================================================
 
-To install use cases specific to your requirements, use the installer
-``amdgpu-install`` as follows:
+To install use cases specific to your requirements, use the installer (``amdgpu-install``) as follows:
 
-- To install a single use case add it with the :code:`--usecase` option:
+* To install a single use case, add it with the ``--usecase`` option:
 
   .. code-block:: bash
 
     sudo amdgpu-install --usecase=rocm
 
-- For multiple use cases separate them with commas:
+* For multiple use cases, separate them with commas:
 
   .. code-block:: bash
 
     sudo amdgpu-install --usecase=hiplibsdk,rocm
 
-- For graphical workloads using the open-source driver add ``graphics``. For
-  example:
+* For graphical workloads using the open-source driver, add ``graphics``. For example:
 
   .. code-block:: bash
 
     sudo amdgpu-install --usecase=graphics,rocm
 
-- For graphical workloads using the proprietary driver add ``workstation``. For
-  example:
+* For graphical workloads using the proprietary driver, add ``workstation``. For example:
 
   .. code-block:: bash
 
     sudo amdgpu-install --usecase=workstation,rocm
 
-- To install LLVM ASAN (Address Sanitizer) instrumented binaries of packages
-  that support it add ``asan``. For example:
+* To install LLVM AddressSanitizer (ASAN) instrumented binaries (for packages that support it), add
+  ``asan``. For example:
 
   .. code-block:: bash
 
@@ -202,69 +209,61 @@ To install use cases specific to your requirements, use the installer
 Uninstalling ROCm
 =================================================
 
-To uninstall all ROCm packages and the kernel-mode driver the following commands
-can be used.
+To uninstall all ROCm packages and the kernel-mode driver, use the following commands.
 
-- Uninstalling Single-Version Install
+* Uninstalling single-version install
 
   .. code-block:: bash
 
     sudo amdgpu-install --uninstall
 
-- Uninstalling a specific ROCm release
+* Uninstalling a specific ROCm release
 
   .. code-block:: bash
 
     sudo amdgpu-install --uninstall --rocmrelease=<release-number>
 
 
-- Uninstalling all ROCm releases
+* Uninstalling all ROCm releases
 
   .. code-block:: bash
 
     sudo amdgpu-install --uninstall --rocmrelease=all
 
-Multi-versioned ROCm Installation
+Multi-versioned ROCm installation
 =================================================
 
-By default (without the :code:`--rocmrelease` option) the installer script will install
-packages in the single-version layout.
+By default (without the ``--rocmrelease`` option), the installer script installs packages in the
+single-version layout.
 
-For the multi-version ROCm installation you must use the installer script from
-the latest release of ROCm that you wish to install.
+For the multi-version ROCm installation, you must use the installer script from the latest ROCm release
+you want to install.
 
-**Example:** If you want to install ROCm releases 5.5.3, 5.6.1 and 5.7
-simultaneously, you are required to download the installer from the latest ROCm
-release 5.7.
+**Example:** If you want to install ROCm releases 5.5.3, 5.6.1, and 5.7 simultaneously, you must
+download the ROCm 5.7 installer. Then, you must manually add the ROCm repositories for all ROCm
+releases you want to install, except for the latest one. The ``amdgpu-install`` script automatically adds
+the required repositories for the latest release.
 
-You must add the ROCm repositories manually for all ROCm releases you want to
-install except the latest one. The ``amdgpu-install`` script automatically adds the
-required repositories for the latest release.
-
-See the section "Register ROCm Packages" in :doc:`/how-to/native-install/index`
-for :ref:`Ubuntu<ubuntu-register-rocm>`.
+Refer to :ref:`Register ROCm packages <ubuntu-register-rocm>` on the
+:doc:`Ubuntu native installation <./native-install/ubuntu>` page.
 
 Additional options
 =================================================
 
-Unattended installation
-------------------------------------------------------------------------
+* Unattended installation.
 
-Adding ``-y`` as a parameter to ``amdgpu-install`` skips user prompts (for
-automation). For example:
+  Adding ``-y`` as a parameter to ``amdgpu-install`` skips user prompts (for automation). For example:
 
-.. code-block:: bash
+  .. code-block:: bash
 
-    amdgpu-install -y --usecase=rocm
+      amdgpu-install -y --usecase=rocm
 
-Skipping kernel mode driver installation
-------------------------------------------------------------------------
+* Skipping kernel mode driver installation.
 
-The installer script tries to install the kernel mode driver along with the
-requested use cases. This might be unnecessary as in the case of docker
-containers or you may wish to keep a specific version when using multi-version
-installation, and not have the last installed version overwrite the kernel mode
-driver.
+  The installer script tries to install the kernel mode driver along with the requested use cases. This
+  might be unnecessary (as in the case of Docker containers) or you may want to keep a specific version
+  when using multi-version installation, and not have the last installed version overwrite the kernel
+  mode driver.
 
-To skip the installation of the kernel-mode driver add the :code:`--no-dkms` option when
-calling the installer script.
+  To skip the installation of the kernel-mode driver, add the ``--no-dkms`` option when calling the
+  installer script.

@@ -11,3 +11,8 @@ updates:
     schedule:
       interval: "daily"
     versioning-strategy: increase
+    labels:
+      - "documentation"
+      - "dependencies"
+    reviewers:
+      - "samjwu"
