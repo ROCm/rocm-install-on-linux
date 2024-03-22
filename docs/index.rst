@@ -57,7 +57,7 @@ Additional resources
 .. grid:: 2
     :gutter: 1
 
-    .. grid-item-card:: Reference material
+    .. grid-item-card:: Reference
 
         * :doc:`reference/system-requirements`
         * :doc:`reference/docker-image-support-matrix`
@@ -69,7 +69,7 @@ Additional resources
         * :doc:`how-to/3rd-party/pytorch-install`
         * :doc:`how-to/3rd-party/tensorflow-install`
 
-    .. grid-item-card:: How-to guides
+    .. grid-item-card:: How to
 
-        * :doc:`how-to/docker`
-        * :doc:`how-to/spack`
+        * :doc:`Run Docker containers <how-to/docker>`
+        * :doc:`Use Spack <how-to/spack>`
