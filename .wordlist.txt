@@ -4,3 +4,4 @@ URI
 EPEL
 cmath
 lstdc
+dkms
