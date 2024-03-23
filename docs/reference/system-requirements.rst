@@ -82,7 +82,7 @@ AMD ROCm™ Software supports the following Linux distributions.
     "CentOS 7.9", "3.10", "✅"
     "SLES 15 SP5", "5.14.21-150500", "✅"
     "SLES 15 SP4", "5.14.21-150500", "✅"
-    "Ubuntu 22.04.4", "6.6", "✅"
+    "Ubuntu 22.04.4", "6.5", "✅"
     "Ubuntu 22.04.3", "6.2", "✅"
     "Ubuntu 20.04.6", "5.15", "✅"
     "Ubuntu 20.04.5", "5.15", "✅"
