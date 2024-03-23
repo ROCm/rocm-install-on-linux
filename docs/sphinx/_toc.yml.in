@@ -41,9 +41,9 @@ subtrees:
 - caption: How-to
   entries:
   - file: how-to/docker
-    title: Install Docker containers
+    title: Run Docker containers
   - file: how-to/spack
-    title: Introduction to Spack
+    title: Use Spack
 
 - caption: Reference
   entries:

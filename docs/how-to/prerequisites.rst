@@ -8,55 +8,56 @@ Installation prerequisites
 
 Before installing ROCm, complete the following prerequisites.
 
-#. Confirm the system has a supported Linux version.
+1. Confirm the system has a supported Linux version.
 
-   * To obtain the Linux distribution information, type the following command on your system from the Command Line Interface (CLI):
+   * To obtain the Linux distribution information, use the following command:
 
      .. code-block:: shell
 
-        uname -m && cat /etc/*release
+          uname -m && cat /etc/*release
 
-   * Confirm that your Linux distribution matches a :ref:`supported distribution<supported_distributions>`.
+   * Confirm that your Linux distribution matches a :ref:`supported distribution <supported_distributions>`.
 
      **Example:** Running the preceding command on an Ubuntu system produces the following output:
 
      .. code-block:: shell
 
-        x86_64
-        DISTRIB_ID=Ubuntu
-        DISTRIB_RELEASE=20.04
-        DISTRIB_CODENAME=focal
-        DISTRIB_DESCRIPTION="Ubuntu 20.04.5 LTS"
+            x86_64
+            DISTRIB_ID=Ubuntu
+            DISTRIB_RELEASE=20.04
+            DISTRIB_CODENAME=focal
+            DISTRIB_DESCRIPTION="Ubuntu 20.04.5 LTS"
 
-#. Verify the kernel version.
+2. Verify the kernel version.
 
    * To check the kernel version of your Linux system, type the following command:
 
      .. code-block:: shell
 
-        uname -srmv
+            uname -srmv
 
      **Example:** The preceding command lists the kernel version in the following format:
 
      .. code-block:: shell
 
-        Linux 5.15.0-46-generic #44~20.04.5-Ubuntu SMP Fri Jun 24 13:27:29 UTC 2022 x86_64
+            Linux 5.15.0-46-generic #44~20.04.5-Ubuntu SMP Fri Jun 24 13:27:29 UTC 2022 x86_64
 
    * Confirm that your kernel version matches the system requirements, as listed in :ref:`supported_distributions`.
 
 Additional package repositories
 ==========================================================
 
-On some distributions the ROCm packages depend on packages outside the default
-package repositories. These extra repositories need to be enabled before
-installation. Follow the instructions below based on your distributions.
+On some distributions the ROCm packages depend on packages outside the default package
+repositories. These extra repositories need to be enabled before installation. Use the following
+instructions for your distribution.
 
 .. tab-set::
 
     .. tab-item:: Ubuntu
         :sync: ubuntu-tab
 
-        All packages are available in the default Ubuntu repositories, therefore no additional repositories need to be added.
+        All packages are available in the default Ubuntu repositories, so you don't need to add additional
+        repositories.
 
     .. tab-item:: Red Hat Enterprise Linux
         :sync: rhel-tab
@@ -71,10 +72,10 @@ installation. Follow the instructions below based on your distributions.
 
                       .. tab-item:: RHEL/OL {{ os_release }}
 
-                          .. code-block:: shell
+                        .. code-block:: shell
 
-                              wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_release }}.noarch.rpm
-                              sudo rpm -ivh epel-release-latest-{{ os_release }}.noarch.rpm
+                            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_release }}.noarch.rpm
+                            sudo rpm -ivh epel-release-latest-{{ os_release }}.noarch.rpm
 
                   {% endfor %}
 
@@ -146,10 +147,8 @@ To install for the currently active kernel run the command corresponding to your
 Setting permissions for groups
 ================================================================
 
-This section provides steps to add any current user to a video group to access
-GPU resources.
-Use of the video group is recommended for all ROCm-supported operating
-systems.
+This section provides steps to add any current user to a video group to access GPU resources. We
+recommend using the video group for all ROCm-supported operating systems.
 
 1. To check the groups in your system, issue the following command:
 
@@ -161,13 +160,12 @@ systems.
 
    .. code-block:: shell
 
-       sudo usermod -a -G render,video $LOGNAME
+        sudo usermod -a -G render,video $LOGNAME
 
-To add all future users to the ``video`` and ``render`` groups by default, run
-the following commands:
+   To add all future users to the ``video`` and ``render`` groups by default, run the following commands:
 
-.. code-block:: shell
+   .. code-block:: shell
 
-    echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
-    echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
-    echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
+        echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
+        echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
+        echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf

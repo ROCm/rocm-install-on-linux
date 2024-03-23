@@ -18,7 +18,7 @@ versions and configuration options. Spack is also simple for package authors: pa
 in pure Python, and specs allow package authors to maintain a single file for many different builds of
 the same package.
 
-ROCM packages in Spack
+ROCm packages in Spack
 ===================================================
 
 .. csv-table::
