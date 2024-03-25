@@ -79,17 +79,13 @@ AMD ROCm™ Software supports the following Linux distributions.
     "RHEL 9.2", "5.14.0-362", "✅"
     "RHEL 8.9", "4.18-513", "✅"
     "RHEL 8.8", "4.18-513", "✅"
-    "Oracle Linux 8.8", "5.15.0-101.103.2.1.el8uek.x86_64", "✅"
     "CentOS 7.9", "3.10", "✅"
     "SLES 15 SP5", "5.14.21-150500", "✅"
     "SLES 15 SP4", "5.14.21-150500", "✅"
-    "Ubuntu 22.04.4", "6.6", "✅ :sup:`2`"
+    "Ubuntu 22.04.4", "6.5", "✅"
     "Ubuntu 22.04.3", "6.2", "✅"
-    "Ubuntu 22.04.2", "5.19", "✅"
     "Ubuntu 20.04.6", "5.15", "✅"
     "Ubuntu 20.04.5", "5.15", "✅"
-
-:sup:`2` Preview support for HWE kernels
 
 Virtualization support
 =============================================

@@ -1,2 +1,3 @@
 ROCmVersionWithoutCommas
 TensorFlowVersion
+dkms
