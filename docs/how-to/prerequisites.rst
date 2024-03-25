@@ -96,13 +96,17 @@ installation. Follow the instructions below based on your distributions.
 
         Add the Perl language repository.
 
+        .. note::
+            Mar 25, 2024: We currently need to install the Perl module from SLES 15 SP5 as a workaround. The module was removed for SLES 15 SP4.
+
+
         .. tab-set::
 
             .. tab-item:: SLES 15.4
 
                 .. code-block:: shell
 
-                    zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/15.4/devel:languages:perl.repo
+                    zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/15.5/devel:languages:perl.repo
 
             .. tab-item:: SLES 15.5
 

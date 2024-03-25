@@ -104,7 +104,8 @@ SUSE Linux Enterprise Server
             .. code-block:: bash
                 :substitutions:
 
-                sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/SLE_{{ os_release }}_SP{{ os_sp }}/devel:languages:perl.repo
+                # As of Mar 25 2024, installing Perl module for SLES 15.5 since the module was removed for SLES 15.4
+                sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/SLE_15_SP5/devel:languages:perl.repo
                 sudo zypper install kernel-default-devel
                 # See prerequisites. Adding current user to Video and Render groups
                 sudo usermod -a -G render,video $LOGNAME
