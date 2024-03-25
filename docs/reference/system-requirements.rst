@@ -23,8 +23,8 @@ GPU is not listed on this table, it's not officially supported by AMD.
       :widths: 50, 25, 25, 10
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
-      "AMD Instinct MI300X", "CDNA3", "gfx942", "✅"
-      "AMD Instinct MI300A", "CDNA3", "gfx942", "✅ :sup:`1`"
+      "AMD Instinct MI300X", "CDNA3", "gfx942", "✅ :sup:`1`"
+      "AMD Instinct MI300A", "CDNA3", "gfx942", "✅"
       "AMD Instinct MI250X", "CDNA2", "gfx90a", "✅"
       "AMD Instinct MI250", "CDNA2", "gfx90a", "✅"
       "AMD Instinct MI210", "CDNA2", "gfx90a", "✅"
@@ -62,7 +62,7 @@ ROCm product.
 
 ❌: **Unsupported** - This configuration is not enabled in our software distributions.
 
-:sup:`1` MI300A is currently not officially supported on RHEL 9.x. This will be added on a later date.
+:sup:`1` MI300X is only officially supported on Ubuntu 22.04.4. Other distros will be added at a later date.
 
 .. _supported_distributions:
 
