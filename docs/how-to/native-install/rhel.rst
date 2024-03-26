@@ -137,8 +137,6 @@ Register ROCm packages
                 sudo yum clean all
         {% endfor %}
 
-.. _rhel-multi-install:
-
 Installing
 ----------------------------------------------------------------------------------------------------------
 
