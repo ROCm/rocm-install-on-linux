@@ -8,155 +8,123 @@
 Quick-start install guide
 *************************************************************
 
-For a quick summary on installing ROCm on Linux, follow the steps listed on this page. If you want
+For a quick summary on installing ROCm on Linux, choose your preferred operating
+system and install method and follow the steps listed in the table. If you want
 more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
 
-To start, choose your preferred install method and operating system:
-
-
-.. grid:: 2
-    :gutter: 1
-
-    .. grid-item-card:: :ref:`rocm-package-man-quick`
-
-    .. grid-item-card:: :ref:`rocm-amdgpu-quick`
-
-.. _rocm-package-man-quick:
-
-Native package manager
-==========================================
-
 .. datatemplate:nodata::
 
     .. tab-set::
 
         .. tab-item:: Ubuntu
-            :sync: ubuntu
 
             .. tab-set::
 
                 {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
                 .. tab-item:: {{ os_version }}
-                    :sync: ubuntu-{{ os_version}}
 
-                    .. code-block:: bash
-                        :substitutions:
+                    .. tab-set::
 
-                        sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
-                        # See prerequisites. Adding current user to Video and Render groups
-                        sudo usermod -a -G render,video $LOGNAME
-                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
-                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
-                        sudo apt update
-                        sudo apt install amdgpu-dkms
-                        sudo apt install rocm
-                        echo "Please reboot system for all settings to take effect."
+                        .. tab-item:: Native package manager
+                            :sync: native-package-manager
+
+                            .. code-block:: bash
+                                :substitutions:
+
+                                sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
+                                sudo usermod -a -G render,video $LOGNAME # Adding current user to Video, Render groups. See prerequisites.
+                                wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
+                                sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
+                                sudo apt update
+                                sudo apt install amdgpu-dkms
+                                sudo apt install rocm
+                                echo "Please reboot system for all settings to take effect."
+
+                        .. tab-item:: AMDGPU installer
+                            :sync: amdgpu-installer
+
+                            .. code-block:: bash
+                                :substitutions:
+
+                                sudo apt update
+                                wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
+                                sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
+                                sudo amdgpu-install --usecase=graphics,rocm
                 {% endfor %}
 
         .. tab-item:: Red Hat Enterprise Linux
-            :sync: rhel
 
             .. tab-set::
 
                 {% for os_version in config.html_context['rhel_version_numbers'] %}
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
-                    :sync: rhel-{{ os_version }} rhel-{{ os_major }}
 
-                    .. code-block:: bash
-                        :substitutions:
+                    .. tab-set::
 
-                        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
-                        sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
-                        sudo crb enable
-                        sudo yum install kernel-headers kernel-devel
-                        # See prerequisites. Adding current user to Video and Render groups
-                        sudo usermod -a -G render,video $LOGNAME
-                        sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm 
-                        sudo yum clean all
-                        sudo yum install amdgpu-dkms
-                        sudo yum install rocm
-                        echo "Please reboot system for all settings to take effect."
+                        .. tab-item:: Native package manager
+                            :sync: native-package-manager
+
+                            .. code-block:: bash
+                                :substitutions:
+
+                                wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
+                                sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
+                                sudo crb enable
+                                sudo yum install kernel-headers kernel-devel
+                                sudo usermod -a -G render,video $LOGNAME # Adding current user to Video, Render groups. See prerequisites.
+                                sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+                                sudo yum clean all
+                                sudo yum install amdgpu-dkms
+                                sudo yum install rocm
+                                echo "Please reboot system for all settings to take effect."
+
+                        .. tab-item:: AMDGPU installer
+                            :sync: amdgpu-installer
+
+                            .. code-block:: bash
+                                :substitutions:
+
+                                sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+                                sudo amdgpu-install --usecase=graphics,rocm
                 {% endfor %}
 
+
         .. tab-item:: SUSE Linux Enterprise Server
-            :sync: sles
 
             .. tab-set::
 
                 {% for os_version in config.html_context['sles_version_numbers'] %}
-                {% set os_release, os_sp  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
-                    :sync: sles-{{ os_version }}
 
-                    .. code-block:: bash
-                        :substitutions:
+                    .. tab-set::
 
-                        sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/SLE_{{ os_release }}_SP{{ os_sp }}/devel:languages:perl.repo
-                        sudo zypper install kernel-default-devel
-                        # See prerequisites. Adding current user to Video and Render groups
-                        sudo usermod -a -G render,video $LOGNAME
-                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
-                        sudo zypper refresh
-                        sudo zypper install amdgpu-dkms
-                        sudo zypper install rocm
-                        echo "Please reboot system for all settings to take effect."
-                {% endfor %}
+                        .. tab-item:: Native package manager
+                            :sync: native-package-manager
 
-.. _rocm-amdgpu-quick:
+                            .. code-block:: bash
+                                :substitutions:
 
-AMDGPU installer
-=================================================
+                {% if os_version == "15.4" %}
+                                # Currently installing Perl module from SLES 15.5, as it was removed from 15.4
+                                sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/15.5/devel:languages:perl.repo
+                {% else %}
+                                sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
+                {% endif %}
+                                sudo zypper install kernel-default-devel
+                                sudo usermod -a -G render,video $LOGNAME # Adding current user to Video, Render groups. See prerequisites.
+                                sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
+                                sudo zypper refresh
+                                sudo zypper install amdgpu-dkms
+                                sudo zypper install rocm
+                                echo "Please reboot system for all settings to take effect."
 
-.. datatemplate:nodata::
+                        .. tab-item:: AMDGPU installer
+                            :sync: amdgpu-installer
 
-    .. tab-set::
+                            .. code-block:: bash
+                                :substitutions:
 
-        .. tab-item:: Ubuntu
-            :sync: ubuntu
-
-            .. tab-set::
-
-                {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
-                .. tab-item:: {{ os_version }}
-                    :sync: ubuntu-{{ os_version}}
-
-                    .. code-block:: bash
-                        :substitutions:
-
-                        sudo apt update
-                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
-                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
-                        sudo amdgpu-install --usecase=graphics,rocm
-                {% endfor %}
-
-        .. tab-item:: Red Hat Enterprise Linux
-            :sync: rhel
-
-            .. tab-set::
-                {% for os_version in config.html_context['rhel_version_numbers'] %}
-                {% set os_major, _  = os_version.split('.') %}
-                .. tab-item:: {{ os_version }}
-                    :sync: rhel-{{ os_version }} rhel-{{ os_major}}
-
-                    .. code-block:: bash
-                        :substitutions:
-
-                        sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm 
-                        sudo amdgpu-install --usecase=graphics,rocm
-                {% endfor %}
-
-        .. tab-item:: SUSE Linux Enterprise Server
-            :sync: sles
-
-            .. tab-set::
-                {% for os_version in config.html_context['sles_version_numbers'] %}
-                .. tab-item:: {{ os_version }}
-                    :sync: sles-{{ os_version }}
-
-                    .. code-block:: bash
-                        :substitutions:
-
-                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
-                        sudo amdgpu-install --usecase=graphics,rocm
+                                sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
+                                sudo amdgpu-install --usecase=graphics,rocm
                 {% endfor %}
