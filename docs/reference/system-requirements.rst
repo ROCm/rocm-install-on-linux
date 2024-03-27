@@ -62,9 +62,9 @@ ROCm product.
 
 ❌: **Unsupported** - This configuration is not enabled in our software distributions.
 
-:sup:`1` MI300X is only officially supported on Ubuntu 22.04.4. Other OS support will be added at a later date.
+:sup:`1` MI300X is only officially supported on Ubuntu 22.04.4.
 
-:sup:`2` MI300A is only officially supported on Ubuntu 22.04.4, RHEL 9.3, RHEL 8.9 and SLES 15 SP5. Other OS support will be added at a later date.
+:sup:`2` MI300A is only officially supported on Ubuntu 22.04.4, RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
 
 .. _supported_distributions:
 
