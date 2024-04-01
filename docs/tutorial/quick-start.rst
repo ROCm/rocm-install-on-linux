@@ -46,6 +46,8 @@ more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
                             .. code-block:: bash
                                 :substitutions:
 
+                                sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
+                                sudo usermod -a -G render,video $LOGNAME # Adding current user to Video, Render groups. See prerequisites.
                                 sudo apt update
                                 wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                                 sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
@@ -85,6 +87,11 @@ more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
                             .. code-block:: bash
                                 :substitutions:
 
+                                wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
+                                sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
+                                sudo crb enable
+                                sudo yum install kernel-headers kernel-devel
+                                sudo usermod -a -G render,video $LOGNAME # Adding current user to Video, Render groups. See prerequisites.
                                 sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                                 sudo amdgpu-install --usecase=graphics,rocm
                 {% endfor %}
@@ -106,7 +113,7 @@ more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
                                 :substitutions:
 
                 {% if os_version == "15.4" %}
-                                # Currently installing Perl module from SLES 15.5, as it was removed from 15.4
+                                # Installing Perl module from SLES 15.5, as it was removed from 15.4
                                 sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/15.5/devel:languages:perl.repo
                 {% else %}
                                 sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
@@ -125,6 +132,14 @@ more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
                             .. code-block:: bash
                                 :substitutions:
 
+                {% if os_version == "15.4" %}
+                                # Installing Perl module from SLES 15.5, as it was removed from 15.4
+                                sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/15.5/devel:languages:perl.repo
+                {% else %}
+                                sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
+                {% endif %}
+                                sudo zypper install kernel-default-devel
+                                sudo usermod -a -G render,video $LOGNAME # Adding current user to Video, Render groups. See prerequisites.
                                 sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
                                 sudo amdgpu-install --usecase=graphics,rocm
                 {% endfor %}
