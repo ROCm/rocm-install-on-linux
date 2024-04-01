@@ -48,14 +48,15 @@ Red Hat Enterprise Linux
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_release, os_version) in config.html_context['rhel_version_numbers'] %}
+        {% for os_version in config.html_context['rhel_version_numbers'] %}
+        {% set os_major, _  = os_version.split('.') %}
         .. tab-item:: RHEL {{ os_version }}
-            :sync: rhel-{{ os_version }} rhel-{{ os_release }}
+            :sync: rhel-{{ os_version }} rhel-{{ os_major }}
 
             .. code-block:: bash
                 :substitutions:
 
-                sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_release }}.noarch.rpm
+                sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
         {% endfor %}
 
 SUSE Linux Enterprise

@@ -18,9 +18,10 @@ Register kernel-mode driver
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_release, os_version) in config.html_context['rhel_version_numbers'] %}
+        {% for os_version in config.html_context['rhel_version_numbers'] %}
+        {% set os_major, _  = os_version.split('.') %}
         .. tab-item:: RHEL {{ os_version }}
-            :sync: rhel-{{ os_version }} rhel-{{ os_release }}
+            :sync: rhel-{{ os_version }} rhel-{{ os_major }}
 
             .. code-block:: bash
                 :substitutions:
@@ -84,9 +85,10 @@ Register kernel-mode driver
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_release, os_version) in config.html_context['rhel_version_numbers'] %}
+        {% for os_version in config.html_context['rhel_version_numbers'] %}
+        {% set os_major, _  = os_version.split('.') %}
         .. tab-item:: RHEL {{ os_version }}
-            :sync: rhel-{{ os_version }} rhel-{{ os_release }}
+            :sync: rhel-{{ os_version }} rhel-{{ os_major }}
 
             .. code-block:: bash
                 :substitutions:
@@ -134,8 +136,6 @@ Register ROCm packages
 
                 sudo yum clean all
         {% endfor %}
-
-.. _rhel-multi-install:
 
 Installing
 ----------------------------------------------------------------------------------------------------------

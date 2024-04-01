@@ -78,8 +78,6 @@ Install ROCm packages
 
 Complete the :doc:`post-install`.
 
-.. _sles-register-rocm:
-
 Multi-version install
 ===============================================
 
@@ -90,7 +88,7 @@ the steps in :ref:`sles-register-rocm` and :ref:`sles-install`.
 Register kernel-mode driver
 --------------------------------------------------------------------------------------
 
-This step is the same as previously described, follow the steps in :ref:`sles-register-driver`..
+This step is the same as previously described, follow the steps in :ref:`sles-register-driver`.
 
 Register ROCm packages
 --------------------------------------------------------------------------------------
