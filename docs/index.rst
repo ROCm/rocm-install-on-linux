@@ -63,11 +63,12 @@ Additional resources
         * :doc:`reference/docker-image-support-matrix`
         * :doc:`reference/3rd-party-support-matrix`
 
-    .. grid-item-card:: Tutorials
+    .. grid-item-card:: Install
 
-        * :doc:`how-to/3rd-party/magma-install`
-        * :doc:`how-to/3rd-party/pytorch-install`
-        * :doc:`how-to/3rd-party/tensorflow-install`
+        * :doc:`MAGMA <how-to/3rd-party/magma-install>`
+        * :doc:`PyTorch <how-to/3rd-party/pytorch-install>`
+        * :doc:`TensorFlow <how-to/3rd-party/tensorflow-install>`
+        * :doc:`JAX <how-to/3rd-party/jax-install>`
 
     .. grid-item-card:: How to
 
