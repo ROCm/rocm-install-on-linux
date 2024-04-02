@@ -29,14 +29,16 @@ subtrees:
         - file: how-to/native-install/package-manager-integration
           title: Package manager integration
 
-- caption: Tutorials
+- caption: Install
   entries:
   - file: how-to/3rd-party/magma-install
-    title: Install Magma
+    title: Magma
   - file: how-to/3rd-party/pytorch-install
-    title: Install PyTorch
+    title: PyTorch
   - file: how-to/3rd-party/tensorflow-install
-    title: Install TensorFlow
+    title: TensorFlow
+  - file: how-to/3rd-party/jax-install
+    title: JAX
 
 - caption: How-to
   entries:
