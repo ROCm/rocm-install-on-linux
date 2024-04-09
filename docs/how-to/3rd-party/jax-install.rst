@@ -39,29 +39,36 @@ JAX wheels and Docker images are released through the GitHub
 1.  Pull the latest public JAX Docker image.
 
     .. code-block:: shell
+
       docker pull rocm/jax:latest
+
 2.  Start Docker container.
 
     .. code-block:: shell
+
       docker run -it -w /workspace --device=/dev/kfd --device=/dev/dri --group-add video \
       --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --shm-size 16G rocm/jax:latest
+
 3.  Verify the installation.
 
     .. code-block:: shell
+
       python3 -c 'import jax' 2> /dev/null && echo 'Success' || echo 'Failure'
+
 4.  Verify that the GPU is accessible from JAX.
 
     .. code-block:: shell
+
       python3 -c 'import jax; print(jax.devices())'
+
 5.  Run a basic example to ensure installation is successful.
 
+
     .. code-block:: shell
+
       git clone https://github.com/google/jax.git jax
-
       cd jax
-
       export PYTHONPATH=/workspace/jax/examples/:$PYTHONPATH
-
       python3 examples/mnist_classifier.py
 
     Your output should look similar to this:
