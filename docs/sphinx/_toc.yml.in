@@ -5,7 +5,7 @@ root: index
 subtrees:
 - entries:
     - file: tutorial/quick-start
-      title: Quick-start install guide
+      title: Quick start install guide
     - file: how-to/prerequisites
       title: Prerequisites
     - file: tutorial/install-overview

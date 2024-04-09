@@ -14,7 +14,7 @@ complete instructions, refer to the following sections.
 .. grid:: 2
     :gutter: 1
 
-    .. grid-item-card:: Quick-start
+    .. grid-item-card:: Quick start
         :link: tutorial/quick-start
         :link-type: doc
 
