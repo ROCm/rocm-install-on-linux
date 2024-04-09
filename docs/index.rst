@@ -18,7 +18,7 @@ complete instructions, refer to the following sections.
         :link: tutorial/quick-start
         :link-type: doc
 
-        ROCm quick-start installation guide.
+        ROCm quick start installation guide.
 
     .. grid-item-card:: Prerequisites
         :link: how-to/prerequisites
