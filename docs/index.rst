@@ -14,11 +14,11 @@ complete instructions, refer to the following sections.
 .. grid:: 2
     :gutter: 1
 
-    .. grid-item-card:: Quick-start
+    .. grid-item-card:: Quick start
         :link: tutorial/quick-start
         :link-type: doc
 
-        ROCm quick-start installation guide.
+        ROCm quick start installation guide.
 
     .. grid-item-card:: Prerequisites
         :link: how-to/prerequisites
@@ -63,11 +63,16 @@ Additional resources
         * :doc:`reference/docker-image-support-matrix`
         * :doc:`reference/3rd-party-support-matrix`
 
-    .. grid-item-card:: Tutorials
+    .. grid-item-card:: Troubleshooting and FAQ
 
-        * :doc:`how-to/3rd-party/magma-install`
-        * :doc:`how-to/3rd-party/pytorch-install`
-        * :doc:`how-to/3rd-party/tensorflow-install`
+        * :doc:`Troubleshooting <how-to/native-install/install-faq>`
+
+    .. grid-item-card:: Install
+
+        * :doc:`MAGMA <how-to/3rd-party/magma-install>`
+        * :doc:`PyTorch <how-to/3rd-party/pytorch-install>`
+        * :doc:`TensorFlow <how-to/3rd-party/tensorflow-install>`
+        * :doc:`JAX <how-to/3rd-party/jax-install>`
 
     .. grid-item-card:: How to
 
