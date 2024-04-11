@@ -38,4 +38,5 @@ Installation via native package manager
 
         * :doc:`meta-packages <./package-manager-integration>`
 
-See also: :doc:`/reference/system-requirements`.
+See also: :doc:`/reference/system-requirements`. If you encounter install issues, you can refer to the
+:doc:`troubleshooting <install-faq>` page.

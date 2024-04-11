@@ -63,6 +63,10 @@ Additional resources
         * :doc:`reference/docker-image-support-matrix`
         * :doc:`reference/3rd-party-support-matrix`
 
+    .. grid-item-card:: Troubleshooting and FAQ
+
+        * :doc:`Troubleshooting <how-to/native-install/install-faq>`
+
     .. grid-item-card:: Install
 
         * :doc:`MAGMA <how-to/3rd-party/magma-install>`

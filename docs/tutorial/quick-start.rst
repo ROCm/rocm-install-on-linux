@@ -5,7 +5,7 @@
 .. _rocm-install-quick:
 
 *************************************************************
-Quick start install guide
+ROCm quick start install guide for Linux
 *************************************************************
 
 For a quick summary on installing ROCm on Linux, choose your preferred operating
