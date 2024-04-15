@@ -27,9 +27,9 @@ Refer to `ROCm Issue #2422 <https://github.com/ROCm/ROCm/issues/2422>`_ for addi
 Issue #2: Install Prerequisites
 ==================================
 
-When installing, I see the following message "Problem: nothing provides 'perl-URI-Encode' needed to be installed by ..."
+When installing, I see the following message: ``Problem: nothing provides perl-URI-Encode needed to be installed by ...``
 
-**Solution:** Ensure that the :doc:`../prerequisites` are installed.  There are prerequisite PERL packages required for SUSE.  RHEL also requires EPEL to be installed, which is also mentioned in prerequisites.  Be sure to install those first, then repeat your installation steps.
+**Solution:** Ensure that the :doc:`../prerequisites` are installed.  There are prerequisite PERL packages required for SUSE.  RHEL also requires Extra Packages for Enterprise Linux (EPEL) to be installed, which is also mentioned in prerequisites.  Be sure to install those first, then repeat your installation steps.
 
 Refer to `ROCm Issue #1827 <https://github.com/ROCm/ROCm/issues/1827>`_. 
 
@@ -47,7 +47,7 @@ Refer to `ROCm Issue #1607 <https://github.com/ROCm/ROCm/issues/1607>`_.
 Issue #4: C++ libraries
 =========================
 
-When compiling HIP programs, I get a linking error for ``-lstdc++``, or "fatal error: 'cmath' file not found".
+When compiling HIP programs, I get a linking error for ``-lstdc++``, or ``fatal error: 'cmath' file not found``.
 
 **Solution:** You can install C++ libraries using your package manager. The following is an Ubuntu example:
 
@@ -73,4 +73,3 @@ After rebooting use ``cat /proc/cmdline`` to see that it is added:
 ``BOOT_IMAGE=/vmlinuz-5.15.0-101-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro iommu=pt``
 
 Refer to `RCCL Issue #1129 <https://github.com/ROCm/rccl/issues/1129>`_ for more information. 
-
