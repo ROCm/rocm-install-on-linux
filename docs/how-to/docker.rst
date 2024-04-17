@@ -89,6 +89,8 @@ For example, to expose the first and second GPU:
 
     docker run --device /dev/kfd --device /dev/dri/renderD128 --device /dev/dri/renderD129 ..
 
+Running `rocm-smi` inside the container will enumerate only the two GPUs passed into the docker container.
+Running `rocm-smi` on bare metal will list enumerate all ROCm-capable GPUs on the machine.
 
 Docker images in the ROCm ecosystem
 =======================================================
