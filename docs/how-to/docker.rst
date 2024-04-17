@@ -89,8 +89,13 @@ For example, to expose the first and second GPU:
 
     docker run --device /dev/kfd --device /dev/dri/renderD128 --device /dev/dri/renderD129 ..
 
-Running `rocm-smi` inside the container will enumerate only the two GPUs passed into the docker container.
-Running `rocm-smi` on bare metal will list enumerate all ROCm-capable GPUs on the machine.
+Verifying the amdgpu driver has been loaded on GPUs
+--------------------------------------------------------------------
+
+`rocm-smi` is a tool that acts as a command line interface for manipulating and monitoring the amdgpu kernel.
+
+Running `rocm-smi` inside the container will only enumerate the GPUs passed into the docker container.
+Running `rocm-smi` on bare metal will enumerate all ROCm-capable GPUs on the machine.
 
 Docker images in the ROCm ecosystem
 =======================================================
