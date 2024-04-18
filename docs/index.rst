@@ -69,10 +69,10 @@ Additional resources
 
     .. grid-item-card:: Install
 
-        * :doc:`MAGMA <how-to/3rd-party/magma-install>`
         * :doc:`PyTorch <how-to/3rd-party/pytorch-install>`
         * :doc:`TensorFlow <how-to/3rd-party/tensorflow-install>`
         * :doc:`JAX <how-to/3rd-party/jax-install>`
+        * :doc:`MAGMA <how-to/3rd-party/magma-install>`
 
     .. grid-item-card:: How to
 
