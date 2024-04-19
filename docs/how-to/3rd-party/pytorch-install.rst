@@ -271,7 +271,7 @@ maintainers and installs all the required dependencies, including:
 
        cd ~
        git clone https://github.com/pytorch/pytorch.git
-       cd /pytorch
+       cd pytorch
        git submodule update --init --recursive
 
 2. Build the PyTorch Docker image.
