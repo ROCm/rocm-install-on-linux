@@ -409,7 +409,7 @@ If you want to manually run unit tests to validate your PyTorch installation ful
 
    If the compilation and installation are correct, all tests will pass.
 
-4. Run individual unit tests.
+4. (Optional) Run individual unit tests.
 
    .. code-block:: bash
 
