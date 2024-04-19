@@ -369,7 +369,7 @@ If you want to manually run unit tests to validate your PyTorch installation ful
 
    .. note::
 
-       Do not run the following command in the PyTorch git folder.
+       Do not run the following command from the PyTorch home directory.
 
    .. code-block:: bash
 
