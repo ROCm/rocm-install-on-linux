@@ -241,7 +241,7 @@ Inside the docker container, run the following steps:
 
    .. code-block:: bash
 
-       ./.ci/pytorch/build.sh
+       .ci/pytorch/build.sh
 
    This converts PyTorch sources for HIP compatibility and builds the PyTorch framework.
 
@@ -314,7 +314,7 @@ maintainers and installs all the required dependencies, including:
 
    .. code-block:: bash
 
-       cd pytorch
+       cd /pytorch
 
 5. Set ROCm architecture.
 
@@ -344,7 +344,7 @@ maintainers and installs all the required dependencies, including:
 
    .. code-block:: bash
 
-       ./.ci/pytorch/build.sh
+       .ci/pytorch/build.sh
 
    This converts PyTorch sources for
    `HIP compatibility <https://www.amd.com/en/developer/rocm-hub/hip-sdk.html>`_ and builds the
