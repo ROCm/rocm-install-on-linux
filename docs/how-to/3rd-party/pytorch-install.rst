@@ -283,7 +283,7 @@ maintainers and installs all the required dependencies, including:
 
    Where:
    * ``<os-version>``: ``ubuntu20.04`` (or ``focal``), ``ubuntu22.04`` (or ``jammy``), ``centos7.5``, or ``centos9``
-   * ``<rocm-version>``: ``5.4``, ``5.5``, or ``5.6``
+   * ``<rocm-version>``: ``5.7``, ``6.0``, or ``6.1``
    * ``<python-version>``: ``3.8`` - ``3.11``
 
    To verify that your image was successfully created, run:
