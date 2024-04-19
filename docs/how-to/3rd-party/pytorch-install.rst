@@ -158,11 +158,11 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
 
    .. code-block:: bash
 
-       #Optional; replace 'gfx90a' with your architecture and 5.6 with your preferred ROCm version
+       #Optional; replace 'gfx90a' with your architecture and 6.1 with your preferred ROCm version
        export GFX_ARCH=gfx90a
 
        #Optional
-       export ROCM_VERSION=5.6
+       export ROCM_VERSION=6.1
 
        ./install_kdb_files_for_pytorch_wheels.sh
 
@@ -195,6 +195,8 @@ scripts to determine the configuration of the build environment.
 
    You can also pass the ``-v`` argument to mount any data directories from the host onto the container.
 
+Inside the docker container, run the following steps:
+
 3. Clone the PyTorch repository.
 
    .. code-block:: bash
@@ -204,7 +206,7 @@ scripts to determine the configuration of the build environment.
        cd pytorch
        git submodule update --init --recursive
 
-4. Set ROCm architecture (optional). The Docker image tag is ``rocm/pytorch:latest-base``.
+4. Set ROCm architecture (optional).
 
    .. note::
 
@@ -215,6 +217,11 @@ scripts to determine the configuration of the build environment.
        * gfx908
        * gfx90a
        * gfx1030
+       * gfx1100
+       * gfx1101
+       * gfx940
+       * gfx941
+       * gfx942
 
    If you want to compile *only* for your microarchitecture (uarch), run:
 
