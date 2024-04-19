@@ -34,7 +34,7 @@ In order to grant access to GPUs from within a container, run your container wit
 
 The purpose of each option is as follows:
 
-* ``--device /dev/fdk``
+* ``--device /dev/kfd``
 
   This is the main compute interface, shared by all GPUs.
 
