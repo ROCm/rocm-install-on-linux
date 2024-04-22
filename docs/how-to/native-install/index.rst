@@ -18,7 +18,7 @@ Installation via native package manager
 
     .. grid-item-card:: Post-install
 
-        * :doc:`post-install steps <./post-install>`
+        * :doc:`Post-install steps <./post-install>`
 
     .. grid-item-card:: Upgrade
 
@@ -36,7 +36,7 @@ Installation via native package manager
 
         Required meta-packages for ROCm programming models.
 
-        * :doc:`meta-packages <./package-manager-integration>`
+        * :doc:`Meta-packages <./package-manager-integration>`
 
 See also: :doc:`/reference/system-requirements`. If you encounter install issues, you can refer to the
 :doc:`troubleshooting <install-faq>` page.
