@@ -67,7 +67,7 @@ ROCm product.
 :sup:`2` MI300A is supported on Ubuntu 22.04.4, RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
 
 .. important:: 
-  Systems with multiple GPUs may require ``iommu=pt`` to be set at boot time to prevent application hangs, as described in :ref:`multi-gpu`. 
+  Systems with multiple GPUs may require ``iommu=pt`` to be set at boot time to prevent application hangs, as described in :doc:`Troubleshooting - Issue #5 <../how-to/native-install/install-faq>`
 
 .. _supported_distributions:
 
