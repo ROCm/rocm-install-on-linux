@@ -58,18 +58,36 @@ When compiling HIP programs, I get a linking error for ``-lstdc++``, or ``fatal 
 Refer to `ROCm Issue #2031 <https://github.com/ROCm/ROCm/issues/2031>`_.
 
 
+.. _multi-gpu:
+
 Issue #5: Application hangs on Multi-GPU systems
 ==================================================
 
 Running on a system with multiple GPUs the application hangs with the GPU use at 100%, but without the expected GPU temperature buildup
 
 This issue often results in the following message in the application transcript: 
-``NCCL WARN Missing "iommu=pt" from kernel command line which can lead to system instablity or hang!``
 
-**Solution:** To resolve this issue add ``iommu=pt`` to ``GRUB_CMDLINE_LINUX_DEFAULT`` in ``/etc/default/grub``. Then run ``sudo update-grub``. 
+.. code-block:: shell
 
-After rebooting use ``cat /proc/cmdline`` to see that it is added:
+  NCCL WARN Missing "iommu=pt" from kernel command line which can lead to system instablity or hang!
 
-``BOOT_IMAGE=/vmlinuz-5.15.0-101-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro iommu=pt``
+**Solution:** To resolve this issue add ``iommu=pt`` to ``GRUB_CMDLINE_LINUX_DEFAULT`` in ``/etc/default/grub``. Then run the following command: 
+
+.. code-block:: shell
+
+  sudo update-grub 
+
+Reboot the system, and run the following command:
+
+.. code-block:: shell
+
+  cat /proc/cmdline
+
+The returned information should reflect the addition of ``iommu``:
+
+.. code-block:: shell
+
+  BOOT_IMAGE=/vmlinuz-5.15.0-101-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro iommu=pt
 
 Refer to `RCCL Issue #1129 <https://github.com/ROCm/rccl/issues/1129>`_ for more information. 
+
