@@ -80,14 +80,14 @@ communication framework for data-centric and high performance applications.
     * - ROCm version
       - UCX version
 
-    * - <= 5.4.x
-      - >= 1.14.0
+    * - >= 6.1.1
+      - >= 1.15.0
 
     * - >= 5.5.0, <= 6.1.0
       - >= 1.14.1
 
-    * - >= 6.1.1
-      - >= 1.15.0
+    * - <= 5.4.x
+      - >= 1.14.0
 
 The `Unified Collective Communication (UCC) <https://github.com/openucx/ucc>`_ library also has
 support for ROCm devices.
@@ -98,11 +98,11 @@ support for ROCm devices.
     * - ROCm version
       - UCC version
 
-    * - <= 5.5.x
-      - >= 1.1.0
-
     * - >= 5.6.0
       - >= 1.2.0
+
+    * - <= 5.5.x
+      - >= 1.1.0
 
 Algorithm libraries
 ================================================
