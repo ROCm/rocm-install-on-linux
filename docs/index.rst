@@ -14,11 +14,11 @@ complete instructions, refer to the following sections.
 .. grid:: 2
     :gutter: 1
 
-    .. grid-item-card:: Quick-start
+    .. grid-item-card:: Quick start
         :link: tutorial/quick-start
         :link-type: doc
 
-        ROCm quick-start installation guide.
+        ROCm quick start installation guide.
 
     .. grid-item-card:: Prerequisites
         :link: how-to/prerequisites
@@ -57,19 +57,24 @@ Additional resources
 .. grid:: 2
     :gutter: 1
 
-    .. grid-item-card:: Reference material
+    .. grid-item-card:: Reference
 
-        - :doc:`reference/system-requirements`
-        - :doc:`reference/docker-image-support-matrix`
-        - :doc:`reference/3rd-party-support-matrix`
+        * :doc:`reference/system-requirements`
+        * :doc:`reference/docker-image-support-matrix`
+        * :doc:`reference/3rd-party-support-matrix`
 
-    .. grid-item-card:: Tutorials
+    .. grid-item-card:: Troubleshooting and FAQ
 
-            - :doc:`how-to/3rd-party/magma-install`
-            - :doc:`how-to/3rd-party/pytorch-install`
-            - :doc:`how-to/3rd-party/tensorflow-install`
+        * :doc:`Troubleshooting <how-to/native-install/install-faq>`
 
-    .. grid-item-card:: How-to guides
+    .. grid-item-card:: Install
 
-            - :doc:`how-to/docker`
-            - :doc:`how-to/spack`
+        * :doc:`PyTorch <how-to/3rd-party/pytorch-install>`
+        * :doc:`TensorFlow <how-to/3rd-party/tensorflow-install>`
+        * :doc:`JAX <how-to/3rd-party/jax-install>`
+        * :doc:`MAGMA <how-to/3rd-party/magma-install>`
+
+    .. grid-item-card:: How to
+
+        * :doc:`Run Docker containers <how-to/docker>`
+        * :doc:`Use Spack <how-to/spack>`

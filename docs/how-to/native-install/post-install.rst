@@ -17,6 +17,11 @@ Post-installation instructions
        /opt/rocm/lib64
        EOF
        sudo ldconfig
+       sudo tee --append /etc/ld.so.conf.d/rocm.conf <<EOF
+       /opt/rocm/lib
+       /opt/rocm/lib64
+       EOF
+       sudo ldconfig
 
 #. Configure ``PATH``.
 

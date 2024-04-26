@@ -5,9 +5,11 @@ root: index
 subtrees:
 - entries:
     - file: tutorial/quick-start
-      title: Quick-start install guide
+      title: Quick start install guide
     - file: how-to/prerequisites
       title: Prerequisites
+    - file: tutorial/install-overview
+      title: Installation overview
     - file: tutorial/install-overview
       title: Installation overview
     - file: reference/system-requirements
@@ -21,15 +23,17 @@ subtrees:
         - file: how-to/native-install/ubuntu
           title: Ubuntu
         - file: how-to/native-install/rhel
-          title: Red Hat Enterprise Linux
+          title: RHEL
         - file: how-to/native-install/sles
-          title: SUSE Linux Enterprise
+          title: SLES
         - file: how-to/native-install/post-install
-          title: Post-Install instructions
+          title: Post-install instructions
         - file: how-to/native-install/package-manager-integration
           title: Package manager integration
+    - file: how-to/native-install/install-faq
+      title: Troubleshooting
 
-- caption: Tutorials
+- caption: Install
   entries:
   - file: how-to/3rd-party/pytorch/index
     title: PyTorch
@@ -46,14 +50,18 @@ subtrees:
   - file: how-to/3rd-party/pytorch-install-old
     title: Install PyTorch
   - file: how-to/3rd-party/tensorflow-install
-    title: Install TensorFlow
+    title: TensorFlow
+  - file: how-to/3rd-party/jax-install
+    title: JAX
+  - file: how-to/3rd-party/magma-install
+    title: Magma
 
 - caption: How-to
   entries:
   - file: how-to/docker
-    title: Running Docker containers
+    title: Run Docker containers
   - file: how-to/spack
-    title: Introduction to Spack
+    title: Use Spack
 
 - caption: Reference
   entries:
