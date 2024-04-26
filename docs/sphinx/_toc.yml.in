@@ -5,7 +5,7 @@ root: index
 subtrees:
 - entries:
     - file: tutorial/quick-start
-      title: Quick-start install guide
+      title: Quick start install guide
     - file: how-to/prerequisites
       title: Prerequisites
     - file: tutorial/install-overview
@@ -23,15 +23,17 @@ subtrees:
         - file: how-to/native-install/ubuntu
           title: Ubuntu
         - file: how-to/native-install/rhel
-          title: Red Hat Enterprise Linux
+          title: RHEL
         - file: how-to/native-install/sles
-          title: SUSE Linux Enterprise
+          title: SLES
         - file: how-to/native-install/post-install
-          title: Post-Install instructions
+          title: Post-install instructions
         - file: how-to/native-install/package-manager-integration
           title: Package manager integration
+    - file: how-to/native-install/install-faq
+      title: Troubleshooting
 
-- caption: Tutorials
+- caption: Install
   entries:
   - file: how-to/3rd-party/pytorch/index
     title: PyTorch
@@ -59,7 +61,7 @@ subtrees:
   - file: how-to/docker
     title: Run Docker containers
   - file: how-to/spack
-    title: Introduction to Spack
+    title: Use Spack
 
 - caption: Reference
   entries:

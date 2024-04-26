@@ -93,19 +93,19 @@ For example, to expose the first and second GPU:
 Docker images in the ROCm ecosystem
 =======================================================
 
-Base images
--------------------------------------------------------------------------------------------------
+The `ROCm Docker repository <https://github.com/ROCm/ROCm-docker>`_ hosts images useful for
+building your own containers, leveraging ROCm. The built images are available on
+`Docker Hub <https://hub.docker.com/u/rocm>`_. In particular:
 
-The `ROCm Docker repository <https://github.com/ROCm/ROCm-docker>`_ hosts images useful for users
-wishing to build their own containers leveraging ROCm. The built images are
-available from `Docker Hub <https://hub.docker.com/u/rocm>`_. In particular
-``rocm/rocm-terminal`` is a small image with the prerequisites to build HIP
-applications, but does not include any libraries.
+* ``rocm/rocm-terminal`` is a small image with the prerequisites to build HIP applications, but does not
+  include any libraries.
+
+* `ROCm dev images <https://hub.docker.com/search?q=rocm%2Fdev>`_ provide a variety of OS +
+  ROCm versions, and are a great starting place for building applications
 
 Applications
 -------------------------------------------------------------------------------------------------
 
 AMD provides pre-built images for various GPU-ready applications through
-`Infinity Hub <https://www.amd.com/en/technologies/infinity-hub>`_.
-Examples for invoking each application and suggested parameters used for
-benchmarking are also provided there.
+`Infinity Hub <https://www.amd.com/en/technologies/infinity-hub>`_. There, you'll also find examples
+for invoking each application and suggested parameters used for benchmarking.
