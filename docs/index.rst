@@ -14,7 +14,7 @@ complete instructions, refer to the following sections.
 .. grid:: 2
     :gutter: 1
 
-    .. grid-item-card:: Quick start
+    .. grid-item-card:: Quick-start
         :link: tutorial/quick-start
         :link-type: doc
 
@@ -57,15 +57,17 @@ Additional resources
 .. grid:: 2
     :gutter: 1
 
-    .. grid-item-card:: Reference
+    .. grid-item-card:: Reference material
 
-        * :doc:`reference/system-requirements`
-        * :doc:`reference/docker-image-support-matrix`
-        * :doc:`reference/3rd-party-support-matrix`
+        - :doc:`reference/system-requirements`
+        - :doc:`reference/docker-image-support-matrix`
+        - :doc:`reference/3rd-party-support-matrix`
 
-    .. grid-item-card:: Troubleshooting and FAQ
+    .. grid-item-card:: Tutorials
 
-        * :doc:`Troubleshooting <how-to/native-install/install-faq>`
+            - :doc:`how-to/3rd-party/magma-install`
+            - :doc:`how-to/3rd-party/pytorch-install`
+            - :doc:`how-to/3rd-party/tensorflow-install`
 
     .. grid-item-card:: Install
 

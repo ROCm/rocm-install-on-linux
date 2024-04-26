@@ -12,31 +12,25 @@ Installation via native package manager
 
     .. grid-item-card:: Install
 
-        * :doc:`Ubuntu <./ubuntu>`
-        * :doc:`RHEL <./rhel>`
-        * :doc:`SLES <./sles>`
-
-    .. grid-item-card:: Post-install
-
-        * :doc:`Post-install steps <./post-install>`
+        - :doc:`Ubuntu</how-to/native-install/ubuntu>`
+        - :doc:`Red Hat Enterprise Linux</how-to/native-install/rhel>`
+        - :doc:`SUSE Linux Enterprise</how-to/native-install/sles>`
 
     .. grid-item-card:: Upgrade
 
-        * :ref:`Ubuntu <ubuntu-upgrade>`
-        * :ref:`RHEL <rhel-upgrade>`
-        * :ref:`SLES <sles-upgrade>`
+        Instructions for upgrading an existing ROCm installation.
+
+        - :ref:`Ubuntu<ubuntu-upgrade>`
 
     .. grid-item-card:: Uninstall
 
-        * :ref:`Ubuntu <ubuntu-uninstall>`
-        * :ref:`RHEL <rhel-uninstall>`
-        * :ref:`SLES <sles-uninstall>`
+        Steps for removing ROCm packages libraries and tools.
+
+        - :ref:`Ubuntu<ubuntu-uninstall>`
 
     .. grid-item-card:: Package manager integration
+        :link: package-manager-integration.html
 
         Required meta-packages for ROCm programming models.
 
-        * :doc:`Meta-packages <./package-manager-integration>`
-
-See also: :doc:`/reference/system-requirements`. If you encounter install issues, you can refer to the
-:doc:`troubleshooting <install-faq>` page.
+See also: :doc:`/reference/system-requirements`.

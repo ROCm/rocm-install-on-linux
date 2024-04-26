@@ -23,8 +23,8 @@ GPU is not listed on this table, it's not officially supported by AMD.
       :widths: 50, 25, 25, 10
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
-      "AMD Instinct MI300X", "CDNA3", "gfx942", "✅ :sup:`1`"
-      "AMD Instinct MI300A", "CDNA3", "gfx942", "✅ :sup:`2`"
+      "AMD Instinct MI300X", "CDNA3", "gfx942", "✅"
+      "AMD Instinct MI300A", "CDNA3", "gfx942", "✅ :sup:`1`"
       "AMD Instinct MI250X", "CDNA2", "gfx90a", "✅"
       "AMD Instinct MI250", "CDNA2", "gfx90a", "✅"
       "AMD Instinct MI210", "CDNA2", "gfx90a", "✅"
@@ -62,12 +62,7 @@ ROCm product.
 
 ❌: **Unsupported** - This configuration is not enabled in our software distributions.
 
-:sup:`1` MI300X is only supported on Ubuntu 22.04.4.
-
-:sup:`2` MI300A is supported on Ubuntu 22.04.4, RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
-
-.. important:: 
-  Systems with multiple GPUs may require ``iommu=pt`` to be set at boot time to prevent application hangs, as described in :doc:`Troubleshooting - Issue #5 <../how-to/native-install/install-faq>`
+:sup:`1` MI300A is currently not officially supported on RHEL 9.x. This will be added on a later date.
 
 .. _supported_distributions:
 
@@ -84,13 +79,17 @@ AMD ROCm™ Software supports the following Linux distributions.
     "RHEL 9.2", "5.14.0-362", "✅"
     "RHEL 8.9", "4.18-513", "✅"
     "RHEL 8.8", "4.18-513", "✅"
+    "Oracle Linux 8.8", "5.15.0-101.103.2.1.el8uek.x86_64", "✅"
     "CentOS 7.9", "3.10", "✅"
     "SLES 15 SP5", "5.14.21-150500", "✅"
     "SLES 15 SP4", "5.14.21-150500", "✅"
-    "Ubuntu 22.04.4", "6.5", "✅"
+    "Ubuntu 22.04.4", "6.6", "✅ :sup:`2`"
     "Ubuntu 22.04.3", "6.2", "✅"
+    "Ubuntu 22.04.2", "5.19", "✅"
     "Ubuntu 20.04.6", "5.15", "✅"
     "Ubuntu 20.04.5", "5.15", "✅"
+
+:sup:`2` Preview support for HWE kernels
 
 Virtualization support
 =============================================

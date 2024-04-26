@@ -47,17 +47,16 @@ Before installing ROCm, complete the following prerequisites.
 Additional package repositories
 ==========================================================
 
-On some distributions the ROCm packages depend on packages outside the default package
-repositories. These extra repositories need to be enabled before installation. Use the following
-instructions for your distribution.
+On some distributions the ROCm packages depend on packages outside the default
+package repositories. These extra repositories need to be enabled before
+installation. Follow the instructions below based on your distributions.
 
 .. tab-set::
 
     .. tab-item:: Ubuntu
         :sync: ubuntu-tab
 
-        All packages are available in the default Ubuntu repositories, so you don't need to add additional
-        repositories.
+        All packages are available in the default Ubuntu repositories, therefore no additional repositories need to be added.
 
     .. tab-item:: Red Hat Enterprise Linux
         :sync: rhel-tab
@@ -67,16 +66,13 @@ instructions for your distribution.
            .. datatemplate:nodata::
 
                .. tab-set::
-
                   {% for os_release in config.html_context['rhel_release_version_numbers']  %}
-
                       .. tab-item:: RHEL/OL {{ os_release }}
 
                           .. code-block:: shell
 
-                            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_release }}.noarch.rpm
-                            sudo rpm -ivh epel-release-latest-{{ os_release }}.noarch.rpm
-
+                              wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_release }}.noarch.rpm
+                              sudo rpm -ivh epel-release-latest-{{ os_release }}.noarch.rpm
                   {% endfor %}
 
         2. Enable the CodeReady Linux Builder (CRB) repository.
@@ -93,21 +89,17 @@ instructions for your distribution.
 
         Add the Perl language repository.
 
-        .. note::
-            We currently need to install the Perl module from SLES 15 SP5 as a workaround. The module was removed for SLES 15 SP4.
-
         .. datatemplate:nodata::
 
             .. tab-set::
 
                 {% for os_version in config.html_context['sles_version_numbers'] %}
                 {% set os_release, os_sp  = os_version.split('.') %}
-
                 .. tab-item:: SLES {{ os_version }}
 
                     .. code-block:: shell
 
-                        zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/15.5/devel:languages:perl.repo
+                        zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/{{ os_version }}/devel:languages:perl.repo
 
                 {% endfor %}
 
@@ -115,7 +107,7 @@ Kernel headers and development packages
 ================================================================
 
 The driver package uses
-`Dynamic Kernel Module Support (DKMS) <https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support>`_
+`DKMS (Dynamic Kernel Module Support) <https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support>`_
 to build the `amdgpu-dkms` module (driver) for the installed kernels. This requires the Linux kernel
 headers and modules to be installed for each. Usually these are automatically installed with the kernel,
 but if you have multiple kernel versions or you have downloaded the kernel images and not the kernel
@@ -150,8 +142,10 @@ To install for the currently active kernel run the command corresponding to your
 Setting permissions for groups
 ================================================================
 
-This section provides steps to add any current user to a video group to access GPU resources. We
-recommend using the video group for all ROCm-supported operating systems.
+This section provides steps to add any current user to a video group to access
+GPU resources.
+Use of the video group is recommended for all ROCm-supported operating
+systems.
 
 1. To check the groups in your system, issue the following command:
 
@@ -163,12 +157,13 @@ recommend using the video group for all ROCm-supported operating systems.
 
    .. code-block:: shell
 
-        sudo usermod -a -G render,video $LOGNAME
+       sudo usermod -a -G render,video $LOGNAME
 
-   To add all future users to the ``video`` and ``render`` groups by default, run the following commands:
+To add all future users to the ``video`` and ``render`` groups by default, run
+the following commands:
 
-   .. code-block:: shell
+.. code-block:: shell
 
-        echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
-        echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
-        echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
+    echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
+    echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
+    echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
