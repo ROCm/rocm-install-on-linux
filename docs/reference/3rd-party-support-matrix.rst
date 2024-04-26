@@ -16,7 +16,7 @@ Deep learning
 ================================================
 
 ROCm releases support the most recent and two prior releases of PyTorch and
-TensorFlow. For TensorFlow the exact version follows the <TensorFlowVersion>.<ROCmVersionWithoutCommas> format.
+TensorFlow. For TensorFlow the exact version follows the ``<TensorFlowVersion>.<ROCmVersionWithoutCommas>`` format.
 
 .. list-table::
     :header-rows: 1
