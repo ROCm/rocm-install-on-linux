@@ -54,7 +54,7 @@ more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
                                 sudo amdgpu-install --usecase=graphics,rocm
                 {% endfor %}
 
-        .. tab-item:: Red Hat Enterprise Linux
+        .. tab-item:: Red Hat Enterprise Linux / Oracle Linux
 
             .. tab-set::
 

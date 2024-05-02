@@ -13,7 +13,7 @@ Installation via native package manager
     .. grid-item-card:: Install
 
         * :doc:`Ubuntu <./ubuntu>`
-        * :doc:`RHEL <./rhel>`
+        * :doc:`RHEL/Oracle <./rhel>`
         * :doc:`SLES <./sles>`
 
     .. grid-item-card:: Post-install
@@ -23,13 +23,13 @@ Installation via native package manager
     .. grid-item-card:: Upgrade
 
         * :ref:`Ubuntu <ubuntu-upgrade>`
-        * :ref:`RHEL <rhel-upgrade>`
+        * :ref:`RHEL/Oracle <rhel-upgrade>`
         * :ref:`SLES <sles-upgrade>`
 
     .. grid-item-card:: Uninstall
 
         * :ref:`Ubuntu <ubuntu-uninstall>`
-        * :ref:`RHEL <rhel-uninstall>`
+        * :ref:`RHEL/Oracle <rhel-uninstall>`
         * :ref:`SLES <sles-uninstall>`
 
     .. grid-item-card:: Package manager integration

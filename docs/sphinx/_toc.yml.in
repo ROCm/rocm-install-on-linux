@@ -21,7 +21,7 @@ subtrees:
         - file: how-to/native-install/ubuntu
           title: Ubuntu
         - file: how-to/native-install/rhel
-          title: RHEL
+          title: RHEL/Oracle
         - file: how-to/native-install/sles
           title: SLES
         - file: how-to/native-install/post-install
