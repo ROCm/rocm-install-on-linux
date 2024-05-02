@@ -70,7 +70,7 @@ instructions for your distribution.
 
                   {% for os_release in config.html_context['rhel_release_version_numbers']  %}
 
-                      .. tab-item:: RHEL/OL {{ os_release }}
+                      .. tab-item:: EL {{ os_release }}
 
                         .. code-block:: shell
 
@@ -132,7 +132,7 @@ To install for the currently active kernel run the command corresponding to your
 
             sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
 
-    .. tab-item:: Red Hat Enterprise Linux
+    .. tab-item:: Red Hat Enterprise Linux / Oracle Linux
         :sync: rhel-tab
 
         .. code-block:: shell
