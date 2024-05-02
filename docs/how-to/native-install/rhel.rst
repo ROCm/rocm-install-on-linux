@@ -20,7 +20,7 @@ Register kernel-mode driver
     .. tab-set::
         {% for os_version in config.html_context['rhel_version_numbers'] %}
         {% set os_major, _  = os_version.split('.') %}
-        .. tab-item:: RHEL {{ os_version }}
+        .. tab-item:: EL {{ os_version }}
             :sync: rhel-{{ os_version }} rhel-{{ os_major }}
 
             .. code-block:: bash
@@ -29,7 +29,7 @@ Register kernel-mode driver
                 sudo tee /etc/yum.repos.d/amdgpu.repo <<EOF
                 [amdgpu]
                 name=amdgpu
-                baseurl=https://repo.radeon.com/amdgpu/|rocm_version|/rhel/{{ os_version }}/main/x86_64/
+                baseurl=https://repo.radeon.com/amdgpu/|rocm_version|/el/{{ os_version }}/main/x86_64/
                 enabled=1
                 priority=50
                 gpgcheck=1
@@ -47,7 +47,7 @@ Register ROCm packages
 
     .. tab-set::
         {% for os_release in config.html_context['rhel_release_version_numbers']  %}
-        .. tab-item:: RHEL {{ os_release }}
+        .. tab-item:: EL {{ os_release }}
             :sync: rhel-{{ os_release }}
 
             .. code-block:: bash
@@ -87,7 +87,7 @@ Register kernel-mode driver
     .. tab-set::
         {% for os_version in config.html_context['rhel_version_numbers'] %}
         {% set os_major, _  = os_version.split('.') %}
-        .. tab-item:: RHEL {{ os_version }}
+        .. tab-item:: EL {{ os_version }}
             :sync: rhel-{{ os_version }} rhel-{{ os_major }}
 
             .. code-block:: bash
@@ -97,7 +97,7 @@ Register kernel-mode driver
                 sudo tee /etc/yum.repos.d/amdgpu.repo <<EOF
                 [amdgpu]
                 name=amdgpu
-                baseurl=https://repo.radeon.com/amdgpu/$ver/rhel/{{ os_version }}/main/x86_64/
+                baseurl=https://repo.radeon.com/amdgpu/$ver/el/{{ os_version }}/main/x86_64/
                 enabled=1
                 priority=50
                 gpgcheck=1
@@ -116,7 +116,7 @@ Register ROCm packages
 
     .. tab-set::
         {% for os_release in config.html_context['rhel_release_version_numbers']  %}
-        .. tab-item:: RHEL {{ os_release }}
+        .. tab-item:: EL {{ os_release }}
             :sync: rhel-{{ os_release }}
 
             .. code-block:: bash
@@ -126,7 +126,7 @@ Register ROCm packages
                 sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
                 [ROCm-$ver]
                 name=ROCm|rocm_version|
-                baseurl=https://repo.radeon.com/rocm/rhel{{ os_release }}/$ver/main
+                baseurl=https://repo.radeon.com/rocm/el{{ os_release }}/$ver/main
                 enabled=1
                 priority=50
                 gpgcheck=1

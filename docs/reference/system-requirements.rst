@@ -62,7 +62,7 @@ ROCm product.
 
 ❌: **Unsupported** - This configuration is not enabled in our software distributions.
 
-:sup:`1` MI300X is only supported on Ubuntu 22.04.4.
+:sup:`1` MI300X is only supported on Ubuntu 22.04.4 and Oracle 8.8.
 
 :sup:`2` MI300A is supported on Ubuntu 22.04.4, RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
 
@@ -80,6 +80,7 @@ AMD ROCm™ Software supports the following Linux distributions.
     :widths: 50, 50, 25
     :header: "Operating system", "Kernel", "Support"
 
+    "Oracle 8.8", "5.15.0-204", "✅ :sup:`3`"
     "RHEL 9.3", "5.14.0-362", "✅"
     "RHEL 9.2", "5.14.0-362", "✅"
     "RHEL 8.9", "4.18-513", "✅"
@@ -91,6 +92,8 @@ AMD ROCm™ Software supports the following Linux distributions.
     "Ubuntu 22.04.3", "6.2", "✅"
     "Ubuntu 20.04.6", "5.15", "✅"
     "Ubuntu 20.04.5", "5.15", "✅"
+
+:sup:`3` Oracle is only supported with MI300X
 
 Virtualization support
 =============================================
