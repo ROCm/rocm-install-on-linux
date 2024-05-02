@@ -72,6 +72,7 @@ more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
 
                                 wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
                                 sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
+                                sudo dnf install dnf-plugin-config-manager
                                 sudo crb enable
                                 sudo yum install kernel-headers kernel-devel
                                 sudo usermod -a -G render,video $LOGNAME # Adding current user to Video, Render groups. See prerequisites.
@@ -89,6 +90,7 @@ more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
 
                                 wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
                                 sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
+                                sudo dnf install dnf-plugin-config-manager
                                 sudo crb enable
                                 sudo yum install kernel-headers kernel-devel
                                 sudo usermod -a -G render,video $LOGNAME # Adding current user to Video, Render groups. See prerequisites.
