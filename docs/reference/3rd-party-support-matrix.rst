@@ -83,7 +83,7 @@ communication framework for data-centric and high performance applications.
     * - >= 6.1.1
       - >= 1.15.0
 
-    * - >= 5.5.0, <= 6.1.0
+    * - <= 6.1.0, >= 5.5.0
       - >= 1.14.1
 
     * - <= 5.4.x
