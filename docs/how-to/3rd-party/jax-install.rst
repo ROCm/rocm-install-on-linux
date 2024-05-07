@@ -23,7 +23,7 @@ You can currently use JAX with the following hardware and software:
 * GPUs: MI250 and MI300
 * OS: Ubuntu 20.04
 * Python: 3.9, 3.10, 3.11
-* ROCm: 5.7.0, 6.0.0
+* ROCm: 6.0.0, 6.1.0
 
 Installing JAX
 ========================================
