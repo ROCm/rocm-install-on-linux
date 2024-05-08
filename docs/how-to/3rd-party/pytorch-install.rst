@@ -8,8 +8,8 @@ Installing PyTorch for ROCm
 
 `PyTorch <https://pytorch.org/>`_ is an open-source tensor library designed for deep learning. PyTorch on
 ROCm provides mixed-precision and large-scale training using our
-`MIOpen <https://github.com/ROCmSoftwarePlatform/MIOpen>`_ and
-`RCCL <https://github.com/ROCmSoftwarePlatform/rccl>`_ libraries.
+`MIOpen <https://github.com/ROCm/MIOpen>`_ and
+`RCCL <https://github.com/ROCm/rccl>`_ libraries.
 
 To install
 `PyTorch for ROCm <https://pytorch.org/blog/pytorch-for-amd-rocm-platform-now-available-as-python-package/>`_,
@@ -138,7 +138,7 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
 
 4. (Optional) Use MIOpen kdb files with ROCm PyTorch wheels.
 
-   PyTorch uses `MIOpen <https://github.com/ROCmSoftwarePlatform/MIOpen>`_ for machine learning
+   PyTorch uses `MIOpen <https://github.com/ROCm/MIOpen>`_ for machine learning
    primitives, which are compiled into kernels at runtime. Runtime compilation causes a small warm-up
    phase when starting PyTorch, and MIOpen kdb files contain precompiled kernels that can speed up
    application warm-up phases.
@@ -148,11 +148,11 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
    taking the ROCm version and GPU architecture as inputs. This works for Ubuntu and CentOS.
 
    You can download the helper script here:
-   `install_kdb_files_for_pytorch_wheels.sh <https://raw.githubusercontent.com/wiki/ROCmSoftwarePlatform/pytorch/files/install_kdb_files_for_pytorch_wheels.sh>`_, or use:
+   `install_kdb_files_for_pytorch_wheels.sh <https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh>`_, or use:
 
    .. code-block:: bash
 
-       wget https://raw.githubusercontent.com/wiki/ROCmSoftwarePlatform/pytorch/files/install_kdb_files_for_pytorch_wheels.sh
+       wget https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh
 
    After installing ROCm PyTorch wheels, run the following code:
 
@@ -212,6 +212,7 @@ Inside the docker container, run the following steps:
 
        By default in the ``rocm/pytorch:latest-base`` image, PyTorch builds simultaneously for the following
        architectures:
+
        * gfx900
        * gfx906
        * gfx908
@@ -282,9 +283,10 @@ maintainers and installs all the required dependencies, including:
        ./build.sh pytorch-linux-<os-version>-rocm<rocm-version>-py<python-version> -t rocm/pytorch:build_from_dockerfile
 
    Where:
-   * ``<os-version>``: ``ubuntu20.04`` (or ``focal``), ``ubuntu22.04`` (or ``jammy``), ``centos7.5``, or ``centos9``
-   * ``<rocm-version>``: ``5.7``, ``6.0``, or ``6.1``
-   * ``<python-version>``: ``3.8`` - ``3.11``
+
+   * ``<os-version>`` = ``ubuntu20.04`` (or ``focal``), ``ubuntu22.04`` (or ``jammy``), ``centos7.5``, or ``centos9``
+   * ``<rocm-version>`` = ``5.7``, ``6.0``, or ``6.1``
+   * ``<python-version>`` = ``3.8`` - ``3.11``
 
    To verify that your image was successfully created, run:
 
