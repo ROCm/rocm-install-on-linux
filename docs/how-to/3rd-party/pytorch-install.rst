@@ -8,8 +8,8 @@ Installing PyTorch for ROCm
 
 `PyTorch <https://pytorch.org/>`_ is an open-source tensor library designed for deep learning. PyTorch on
 ROCm provides mixed-precision and large-scale training using our
-`MIOpen <https://github.com/ROCmSoftwarePlatform/MIOpen>`_ and
-`RCCL <https://github.com/ROCmSoftwarePlatform/rccl>`_ libraries.
+`MIOpen <https://github.com/ROCm/MIOpen>`_ and
+`RCCL <https://github.com/ROCm/rccl>`_ libraries.
 
 To install
 `PyTorch for ROCm <https://pytorch.org/blog/pytorch-for-amd-rocm-platform-now-available-as-python-package/>`_,
@@ -132,16 +132,16 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
 
    .. note::
 
-       The following command uses the ROCm 5.6 PyTorch wheel. If you want a different version of ROCm,
+       The following command uses the ROCm 6.1 PyTorch wheel. If you want a different version of ROCm,
        modify the command accordingly.
 
    .. code-block:: bash
 
-       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm5.6/
+       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.1/
 
 4. (Optional) Use MIOpen kdb files with ROCm PyTorch wheels.
 
-   PyTorch uses `MIOpen <https://github.com/ROCmSoftwarePlatform/MIOpen>`_ for machine learning
+   PyTorch uses `MIOpen <https://github.com/ROCm/MIOpen>`_ for machine learning
    primitives, which are compiled into kernels at runtime. Runtime compilation causes a small warm-up
    phase when starting PyTorch, and MIOpen kdb files contain precompiled kernels that can speed up
    application warm-up phases.
@@ -151,21 +151,21 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
    taking the ROCm version and GPU architecture as inputs. This works for Ubuntu and CentOS.
 
    You can download the helper script here:
-   `install_kdb_files_for_pytorch_wheels.sh <https://raw.githubusercontent.com/wiki/ROCmSoftwarePlatform/pytorch/files/install_kdb_files_for_pytorch_wheels.sh>`_, or use:
+   `install_kdb_files_for_pytorch_wheels.sh <https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh>`_, or use:
 
    .. code-block:: bash
 
-       wget https://raw.githubusercontent.com/wiki/ROCmSoftwarePlatform/pytorch/files/install_kdb_files_for_pytorch_wheels.sh
+       wget https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh
 
    After installing ROCm PyTorch wheels, run the following code:
 
    .. code-block:: bash
 
-       #Optional; replace 'gfx90a' with your architecture and 5.6 with your preferred ROCm version
+       #Optional; replace 'gfx90a' with your architecture and 6.1 with your preferred ROCm version
        export GFX_ARCH=gfx90a
 
        #Optional
-       export ROCM_VERSION=5.6
+       export ROCM_VERSION=6.1
 
        ./install_kdb_files_for_pytorch_wheels.sh
 
@@ -198,6 +198,8 @@ scripts to determine the configuration of the build environment.
 
    You can also pass the ``-v`` argument to mount any data directories from the host onto the container.
 
+Inside the docker container, run the following steps:
+
 3. Clone the PyTorch repository.
 
    .. code-block:: bash
@@ -207,17 +209,23 @@ scripts to determine the configuration of the build environment.
        cd pytorch
        git submodule update --init --recursive
 
-4. Set ROCm architecture (optional). The Docker image tag is ``rocm/pytorch:latest-base``.
+4. Set ROCm architecture (optional).
 
    .. note::
 
        By default in the ``rocm/pytorch:latest-base`` image, PyTorch builds simultaneously for the following
        architectures:
+
        * gfx900
        * gfx906
        * gfx908
        * gfx90a
        * gfx1030
+       * gfx1100
+       * gfx1101
+       * gfx940
+       * gfx941
+       * gfx942
 
    If you want to compile *only* for your microarchitecture (uarch), run:
 
@@ -237,7 +245,7 @@ scripts to determine the configuration of the build environment.
 
    .. code-block:: bash
 
-       ./.ci/pytorch/build.sh
+       .ci/pytorch/build.sh
 
    This converts PyTorch sources for HIP compatibility and builds the PyTorch framework.
 
@@ -267,7 +275,7 @@ maintainers and installs all the required dependencies, including:
 
        cd ~
        git clone https://github.com/pytorch/pytorch.git
-       cd /pytorch
+       cd pytorch
        git submodule update --init --recursive
 
 2. Build the PyTorch Docker image.
@@ -278,9 +286,10 @@ maintainers and installs all the required dependencies, including:
        ./build.sh pytorch-linux-<os-version>-rocm<rocm-version>-py<python-version> -t rocm/pytorch:build_from_dockerfile
 
    Where:
-   * ``<os-version>``: ``ubuntu20.04`` (or ``focal``), ``ubuntu22.04`` (or ``jammy``), ``centos7.5``, or ``centos9``
-   * ``<rocm-version>``: ``5.4``, ``5.5``, or ``5.6``
-   * ``<python-version>``: ``3.8`` - ``3.11``
+
+   * ``<os-version>`` = ``ubuntu20.04`` (or ``focal``), ``ubuntu22.04`` (or ``jammy``), ``centos7.5``, or ``centos9``
+   * ``<rocm-version>`` = ``5.7``, ``6.0``, or ``6.1``
+   * ``<python-version>`` = ``3.8`` - ``3.11``
 
    To verify that your image was successfully created, run:
 
@@ -310,7 +319,7 @@ maintainers and installs all the required dependencies, including:
 
    .. code-block:: bash
 
-       cd pytorch
+       cd /pytorch
 
 5. Set ROCm architecture.
 
@@ -340,7 +349,7 @@ maintainers and installs all the required dependencies, including:
 
    .. code-block:: bash
 
-       ./.ci/pytorch/build.sh
+       .ci/pytorch/build.sh
 
    This converts PyTorch sources for
    `HIP compatibility <https://www.amd.com/en/developer/rocm-hub/hip-sdk.html>`_ and builds the
@@ -365,7 +374,7 @@ If you want to manually run unit tests to validate your PyTorch installation ful
 
    .. note::
 
-       Do not run the following command in the PyTorch git folder.
+       Do not run the following command from the PyTorch home directory.
 
    .. code-block:: bash
 
@@ -405,7 +414,7 @@ If you want to manually run unit tests to validate your PyTorch installation ful
 
    If the compilation and installation are correct, all tests will pass.
 
-4. Run individual unit tests.
+4. (Optional) Run individual unit tests.
 
    .. code-block:: bash
 
