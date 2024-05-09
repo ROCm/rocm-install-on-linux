@@ -8,39 +8,39 @@ Installation prerequisites
 
 Before installing ROCm, complete the following prerequisites.
 
-1. Confirm the system has a supported Linux version.
+#. Confirm the system has a supported Linux version.
 
    * To obtain the Linux distribution information, use the following command:
 
      .. code-block:: shell
 
-          uname -m && cat /etc/*release
+        uname -m && cat /etc/*release
 
-   * Confirm that your Linux distribution matches a :ref:`supported distribution <supported_distributions>`.
+   * Confirm that your Linux distribution matches a :ref:`supported distribution<supported_distributions>`.
 
      **Example:** Running the preceding command on an Ubuntu system produces the following output:
 
      .. code-block:: shell
 
-            x86_64
-            DISTRIB_ID=Ubuntu
-            DISTRIB_RELEASE=20.04
-            DISTRIB_CODENAME=focal
-            DISTRIB_DESCRIPTION="Ubuntu 20.04.5 LTS"
+        x86_64
+        DISTRIB_ID=Ubuntu
+        DISTRIB_RELEASE=20.04
+        DISTRIB_CODENAME=focal
+        DISTRIB_DESCRIPTION="Ubuntu 20.04.5 LTS"
 
-2. Verify the kernel version.
+#. Verify the kernel version.
 
    * To check the kernel version of your Linux system, type the following command:
 
      .. code-block:: shell
 
-            uname -srmv
+        uname -srmv
 
      **Example:** The preceding command lists the kernel version in the following format:
 
      .. code-block:: shell
 
-            Linux 5.15.0-46-generic #44~20.04.5-Ubuntu SMP Fri Jun 24 13:27:29 UTC 2022 x86_64
+        Linux 5.15.0-46-generic #44~20.04.5-Ubuntu SMP Fri Jun 24 13:27:29 UTC 2022 x86_64
 
    * Confirm that your kernel version matches the system requirements, as listed in :ref:`supported_distributions`.
 
@@ -72,7 +72,7 @@ instructions for your distribution.
 
                       .. tab-item:: RHEL/OL {{ os_release }}
 
-                        .. code-block:: shell
+                          .. code-block:: shell
 
                             wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_release }}.noarch.rpm
                             sudo rpm -ivh epel-release-latest-{{ os_release }}.noarch.rpm
