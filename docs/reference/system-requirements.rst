@@ -88,10 +88,10 @@ AMD ROCm™ Software supports the following Linux distributions.
     "CentOS 7.9", "3.10", "✅"
     "SLES 15 SP5", "5.14.21-150500", "✅"
     "SLES 15 SP4", "5.14.21-150500", "✅"
-    "Ubuntu 22.04.4" (kernel: GA 5.15\, HWE 6.5), "6.5", "✅"
-    "Ubuntu 22.04.3" (kernel: GA 5.15\, HWE 6.5), "6.2", "✅"
-    "Ubuntu 20.04.6" (kernel: GA 5.15\, HWE 6.5), "5.15", "✅"
-    "Ubuntu 20.04.5" (kernel: GA 5.15\, HWE 6.5), "5.15", "✅"
+    "Ubuntu 22.04.4", "GA 5.15, HWE 6.5", "✅"
+    "Ubuntu 22.04.3", "GA 5.15, HWE 6.2", "✅"
+    "Ubuntu 20.04.6", "HWE 5.15", "✅"
+    "Ubuntu 20.04.5", "HWE 5.15", "✅"
 
 Virtualization support
 =============================================
@@ -102,9 +102,9 @@ ROCm supports virtualization for select GPUs only as shown below.
     :widths: 50, 25, 25, 50
     :header: "Hypervisor", "Version", "GPU", "Validated guest OS (kernel)"
 
-    "VMWare", "ESXI 8", "MI250", "Ubuntu 20.04 (5.15.0)"
-    "VMWare", "ESXI 8", "MI210", "Ubuntu 20.04 (5.15.0), SLES 15 SP4 (5.14.21)"
-    "VMWare", "ESXI 7", "MI210", "Ubuntu 20.04 (5.15.0), SLES 15 SP4 (5.14.21)"
+    "VMWare", "ESXI 8", "MI250", "Ubuntu 20.04 (HWE 5.15)"
+    "VMWare", "ESXI 8", "MI210", "Ubuntu 20.04 (HWE 5.15), SLES 15 SP4 (5.14.21)"
+    "VMWare", "ESXI 7", "MI210", "Ubuntu 20.04 (HWE 5.15), SLES 15 SP4 (5.14.21)"
 
 CPU support
 =============================================
