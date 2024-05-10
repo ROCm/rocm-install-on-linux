@@ -62,9 +62,9 @@ ROCm product.
 
 ❌: **Unsupported** - This configuration is not enabled in our software distributions.
 
-:sup:`1` MI300X is only supported on Ubuntu 22.04.4 [kernel: 5.15 (GA), 6.8 (HWE)].
+:sup:`1` MI300X is only supported on Ubuntu 22.04.4 (kernel: 5.15 [GA], 6.8 [HWE]).
 
-:sup:`2` MI300A is supported on Ubuntu 22.04.4 [kernel: 5.15 (GA), 6.8 (HWE)], RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
+:sup:`2` MI300A is supported on Ubuntu 22.04.4 (kernel: 5.15 [GA], 6.8 [HWE]), RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
 
 .. important:: 
   Systems with multiple GPUs may require ``iommu=pt`` to be set at boot time to prevent application hangs, as described in :doc:`Troubleshooting - Issue #5 <../how-to/native-install/install-faq>`
@@ -88,10 +88,10 @@ AMD ROCm™ Software supports the following Linux distributions.
     "CentOS 7.9", "3.10", "✅"
     "SLES 15 SP5", "5.14.21-150500", "✅"
     "SLES 15 SP4", "5.14.21-150500", "✅"
-    "Ubuntu 22.04.4", "5.15 (GA), 6.5 (HWE)", "✅"
-    "Ubuntu 22.04.3", "5.15 (GA), 6.2 (HWE)", "✅"
-    "Ubuntu 20.04.6", "5.15 (HWE)", "✅"
-    "Ubuntu 20.04.5", "5.15 (HWE)", "✅"
+    "Ubuntu 22.04.4", "5.15 [GA], 6.5 [HWE]", "✅"
+    "Ubuntu 22.04.3", "5.15 [GA], 6.2 [HWE]", "✅"
+    "Ubuntu 20.04.6", "5.15 [HWE]", "✅"
+    "Ubuntu 20.04.5", "5.15 [HWE]", "✅"
 
 Virtualization support
 =============================================
@@ -102,9 +102,9 @@ ROCm supports virtualization for select GPUs only as shown below.
     :widths: 50, 25, 25, 50
     :header: "Hypervisor", "Version", "GPU", "Validated guest OS (kernel)"
 
-    "VMWare", "ESXI 8", "MI250", "Ubuntu 20.04 [kernel: 5.15 (HWE)]"
-    "VMWare", "ESXI 8", "MI210", "Ubuntu 20.04 [kernel: 5.15 (HWE)], SLES 15 SP4 (5.14.21)"
-    "VMWare", "ESXI 7", "MI210", "Ubuntu 20.04 [kernel: 5.15 (HWE)], SLES 15 SP4 (5.14.21)"
+    "VMWare", "ESXI 8", "MI250", "Ubuntu 20.04 (5.15 [HWE])"
+    "VMWare", "ESXI 8", "MI210", "Ubuntu 20.04 (5.15 [HWE]), SLES 15 SP4 (5.14.21)"
+    "VMWare", "ESXI 7", "MI210", "Ubuntu 20.04 (5.15 [HWE]), SLES 15 SP4 (5.14.21)"
 
 CPU support
 =============================================
