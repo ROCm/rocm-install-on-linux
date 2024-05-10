@@ -62,9 +62,9 @@ ROCm product.
 
 ❌: **Unsupported** - This configuration is not enabled in our software distributions.
 
-:sup:`1` MI300X is only supported on Ubuntu 22.04.4 (kernel: 5.15 [GA], 6.8 [HWE]).
+:sup:`1` MI300X is only supported on Ubuntu 22.04.4 (kernel: 5.15 [GA]).
 
-:sup:`2` MI300A is supported on Ubuntu 22.04.4 (kernel: 5.15 [GA], 6.8 [HWE]), RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
+:sup:`2` MI300A is supported on Ubuntu 22.04.4 (kernel: 5.15 [GA], 6.5 [HWE]), RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
 
 .. important:: 
   Systems with multiple GPUs may require ``iommu=pt`` to be set at boot time to prevent application hangs, as described in :doc:`Troubleshooting - Issue #5 <../how-to/native-install/install-faq>`
