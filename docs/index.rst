@@ -8,7 +8,7 @@
 ROCm installation for Linux
 ****************************************************************
 
-If you're new to ROCm, we recommend using the :ref:`rocm-install-quick`. If you want more
+If you are new to ROCm, we recommend using the :ref:`rocm-install-quick`. If you want more
 complete instructions, refer to the following sections.
 
 .. grid:: 2
