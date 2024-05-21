@@ -74,6 +74,8 @@ SUSE Linux Enterprise
                 sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
         {% endfor %}
 
+.. _amdgpu-install-use-cases:
+
 Use cases
 =================================================
 
@@ -230,6 +232,8 @@ To uninstall all ROCm packages and the kernel-mode driver, use the following com
   .. code-block:: bash
 
     sudo amdgpu-install --uninstall --rocmrelease=all
+
+.. _amdgpu-install-multi-version:
 
 Multi-versioned ROCm installation
 =================================================
