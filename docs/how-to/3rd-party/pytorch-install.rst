@@ -63,8 +63,8 @@ PyTorch supports the ROCm platform by providing tested wheels packages. To acces
 to `pytorch.org/get-started/locally/ <https://pytorch.org/get-started/locally/>`_. For the correct
 wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matrix.
 
-.. note:: 
-    The available ROCm release varies between the 'PyTorch Build' of ``Stable`` or ``Nightly``.  More recent releases are generally available through the Nightly builds. 
+.. note::
+    The available ROCm release varies between the 'PyTorch Build' of ``Stable`` or ``Nightly``.  More recent releases are generally available through the Nightly builds.
 
 1. Choose one of the following three options:
 
@@ -351,6 +351,8 @@ maintainers and installs all the required dependencies, including:
    .. code-block:: bash
 
        echo $? # should return 0 if success
+
+.. _test-pytorch-installation:
 
 Testing the PyTorch installation
 ===============================================================
