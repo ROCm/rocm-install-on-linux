@@ -25,6 +25,8 @@ You can currently use JAX with the following hardware and software:
 * Python: 3.9, 3.10, 3.11
 * ROCm: 6.0.0, 6.1.0
 
+.. _install-jax-prebuilt-docker:
+
 Installing JAX
 ========================================
 
@@ -33,7 +35,7 @@ JAX wheels and Docker images are released through the GitHub
 
 .. tip::
 
-  To build JAX from source files, refer to the `JAX developer documentation <https://jax.readthedocs.io/en/latest/developer.html>`_ 
+  To build JAX from source files, refer to the `JAX developer documentation <https://jax.readthedocs.io/en/latest/developer.html>`_
   or use the `ROCm build script <https://github.com/google/jax/blob/main/build/rocm/build_rocm.sh>`_.
 
 1.  Pull the latest public JAX Docker image.
@@ -48,6 +50,8 @@ JAX wheels and Docker images are released through the GitHub
 
       docker run -it -w /workspace --device=/dev/kfd --device=/dev/dri --group-add video \
       --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --shm-size 16G rocm/jax:latest
+
+.. _test-jax-installation:
 
 3.  Verify the installation.
 
