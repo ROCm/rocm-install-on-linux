@@ -24,8 +24,8 @@ development.
     :header-rows: 1
     :widths: 1, 1
 
-    * - ROCm
-      - TensorFlow
+    * - ROCm version
+      - TensorFlow version
     * - 6.1.x
       - 2.13.1, 2.14.0, 2.15.0
     * - 6.0.x
@@ -82,7 +82,8 @@ To install TensorFlow using the wheels package, use the following command.
 
 * ``[wheel-version]`` is the :ref:`TensorFlow version <install-tensorflow-versions>`.
 
-* ``[repo]`` is ``https://repo.radeon.com/rocm/manylinux/rocm-rel-X.Y/`` for versions 6.1 and later where ``X.Y`` is the ROCm version.
+* ``[repo]`` is ``https://repo.radeon.com/rocm/manylinux/rocm-rel-X.Y/`` for versions 6.1 and later,
+  where ``X.Y`` indicates the :ref:`ROCm version <install-tensorflow-versions>`.
 
 .. note::
 
