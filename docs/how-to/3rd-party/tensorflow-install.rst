@@ -7,31 +7,31 @@ Installing TensorFlow for ROCm
 ****************************************************************************************
 
 TensorFlow is an open-source library for solving machine-learning,
-deep-learning, and artificial-intelligence problems. It can be used to solve
-many problems across different sectors and industries but primarily focuses on
+deep-learning, and artificial-intelligence problems. It can solve many
+problems across different sectors and industries but primarily focuses on
 training and inference in neural networks. It is one of the most popular and
 in-demand frameworks and is very active in open source contribution and
 development.
 
 .. warning::
 
-    As of ROCm 6.1, Tensorflow-rocm packages are now found on https://repo.radeon.com/rocm/manylinux .
-    Previous to ROCm 6.1, packages were found at https://pypi.org/project/tensorflow-rocm
+    As of ROCm 6.1, Tensorflow-rocm packages are found on https://repo.radeon.com/rocm/manylinux .
+    Previous to ROCm 6.1, packages were found on https://pypi.org/project/tensorflow-rocm
 
 .. list-table::
     :header-rows: 1
 
     * - ROCm
       - TensorFlow
+    * - 6.1.x
+      - 2.13.1, 2.14.0, 2.15.0
     * - 6.0.x
       - 2.12.1, 2.13.1, 2.14.0
-    * - 6.1.0
-      - 2.13.1, 2.14.0, 2.15.0
 
 Installing TensorFlow
 ===============================================
 
-The following sections contain options for installing TensorFlow.
+The following section describes TensorFlow installation options.
 
 Option 1: using a Docker image
 -------------------------------------------------------------------------------
@@ -62,23 +62,15 @@ Follow these steps:
 Option 2: using a wheels package
 -------------------------------------------------------------------------------
 
-To install TensorFlow using the wheels package, follow these steps:
-
-1. Install TensorFlow for the Python version as indicated in Step 2.
+To install TensorFlow using the wheels package, use the command below:
 
    .. code-block:: shell
 
        /usr/bin/python[version] -m pip install --user tensorflow-rocm==[wheel-version] -f [repo] --upgrade
 
-   Where [version] is optionally the python version, [wheel-version] is the TensorFlow version as
-   referred to in the table above, and [repo] is ``https://repo.radeon.com/rocm/manylinux/rocm-rel-X.Y/``
+   Where [version], an optional parameter, is the Python versions; [wheel-version] is the TensorFlow version as
+   referred to in the table above; and [repo] is ``https://repo.radeon.com/rocm/manylinux/rocm-rel-X.Y/``
    for 6.1 and later where ``X.Y`` is the ROCm version.
-
-2. Verify installation.
-
-   .. code-block:: shell
-
-       python3 -c 'import tensorflow' 2> /dev/null && echo 'Success' || echo 'Failure'
 
    .. note::
 
