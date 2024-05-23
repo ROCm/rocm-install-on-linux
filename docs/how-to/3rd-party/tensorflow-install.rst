@@ -18,7 +18,7 @@ development.
    As of ROCm 6.1, ``tensorflow-rocm`` packages are found at `<https://repo.radeon.com/rocm/manylinux>`__.
    Prior to ROCm 6.1, packages were found at `<https://pypi.org/project/tensorflow-rocm>`_.
 
-.. _tensorflow-install-tensorflow-versions:
+.. _install-tensorflow-versions:
 
 .. list-table::
     :header-rows: 1
@@ -31,12 +31,14 @@ development.
     * - 6.0.x
       - 2.12.1, 2.13.1, 2.14.0
 
-.. _tensorflow-install-options:
+.. _install-tensorflow-options:
 
 Installing TensorFlow
 ===============================================
 
 The following section describes TensorFlow installation options.
+
+.. _install-tensorflow-prebuilt-docker:
 
 Using a prebuilt Docker image
 -------------------------------------------------------------------------------
@@ -65,6 +67,8 @@ Follow these steps:
        --ipc=host --shm-size 16G --group-add video --cap-add=SYS_PTRACE \
        --security-opt seccomp=unconfined rocm/tensorflow:latest
 
+.. _install-tensorflow-wheels:
+
 Using a wheels package
 -------------------------------------------------------------------------------
 
@@ -76,7 +80,7 @@ To install TensorFlow using the wheels package, use the following command.
 
 * The optional ``[version]`` parameter is the Python version.
 
-* ``[wheel-version]`` is the :ref:`TensorFlow version <tensorflow-install-tensorflow-versions>`.
+* ``[wheel-version]`` is the :ref:`TensorFlow version <install-tensorflow-versions>`.
 
 * ``[repo]`` is ``https://repo.radeon.com/rocm/manylinux/rocm-rel-X.Y/`` for versions 6.1 and later where ``X.Y`` is the ROCm version.
 
@@ -85,11 +89,13 @@ To install TensorFlow using the wheels package, use the following command.
    For details on ``tensorflow-rocm`` wheels and ROCm version compatibility, refer to
    `<https://github.com/ROCm/tensorflow-upstream/blob/develop-upstream/rocm_docs/tensorflow-rocm-release.md>`__.
 
+.. _test-tensorflow-installation:
+
 Testing the TensorFlow installation
 =======================================
 
 To test the installation of TensorFlow, run the container as specified in
-:ref:`Installing TensorFlow <tensorflow-install-options>`. Ensure you have access to the Python
+:ref:`Installing TensorFlow <install-tensorflow-options>`. Ensure you have access to the Python
 shell in the Docker container.
 
 .. code-block:: shell
