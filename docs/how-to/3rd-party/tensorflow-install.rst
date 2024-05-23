@@ -13,7 +13,7 @@ neural network training and inference. It is one of the most popular and
 in-demand frameworks and is very active in open-source contribution and
 development.
 
-.. warning::
+.. note::
 
    As of ROCm 6.1, ``tensorflow-rocm`` packages are found at `<https://repo.radeon.com/rocm/manylinux>`__.
    Prior to ROCm 6.1, packages were found at `<https://pypi.org/project/tensorflow-rocm>`_.
