@@ -76,7 +76,7 @@ To install TensorFlow using the wheels package, use the following command.
 
 .. code-block:: shell
 
-   /usr/bin/python[version] -m pip install --user tensorflow-rocm==[wheel-version] -f [repo] --upgrade
+   pip install --user tensorflow-rocm==[wheel-version] -f [repo] --upgrade
 
 * The optional ``[version]`` parameter is the Python version.
 
