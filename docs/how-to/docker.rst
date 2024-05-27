@@ -89,6 +89,14 @@ For example, to expose the first and second GPU:
 
     docker run --device /dev/kfd --device /dev/dri/renderD128 --device /dev/dri/renderD129 ..
 
+Verifying the amdgpu driver has been loaded on GPUs
+--------------------------------------------------------------------
+
+``rocminfo`` is an application for reporting information about the HSA system attributes and agents.
+``rocm-smi`` is a tool that acts as a command line interface for manipulating and monitoring the amdgpu kernel.
+
+Running ``rocminfo`` and ``rocm-smi`` inside the container will only enumerate the GPUs passed into the docker container.
+Running ``rocminfo`` and ``rocm-smi`` on bare metal will enumerate all ROCm-capable GPUs on the machine.
 
 Docker images in the ROCm ecosystem
 =======================================================
