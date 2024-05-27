@@ -106,23 +106,41 @@ shell in the Docker container.
 Running a basic TensorFlow example
 ======================================
 
-The TensorFlow examples repository provides basic examples that exercise the
-framework's functionality. The MNIST database is a collection of handwritten
-digits that may be used to train a Convolutional Neural Network for handwriting
-recognition.
+To quickly validate your TensorFlow environment, let's run a basic TensorFlow example.
 
-Follow these steps:
+The MNIST dataset is a collection of handwritten digits that may be used to train a Convolutional Neural Network (CNN)
+for handwriting recognition.
 
-1. Clone the TensorFlow example repository.
+Run the following sample code to load the MNIST dataset, then train and evaluate it.
 
-   .. code-block:: shell
+.. code-block:: python
 
-       cd ~
-       git clone https://github.com/tensorflow/models.git
+   import tensorflow as tf
+   print("TensorFlow version:", tf.__version__)
+   mnist = tf.keras.datasets.mnist
+   
+   (x_train, y_train), (x_test, y_test) = mnist.load_data()
+   x_train, x_test = x_train / 255.0, x_test / 255.0
+   model = tf.keras.models.Sequential([
+     tf.keras.layers.Flatten(input_shape=(28, 28)),
+     tf.keras.layers.Dense(128, activation='relu'),
+     tf.keras.layers.Dropout(0.2),
+     tf.keras.layers.Dense(10)
+   ])
+   predictions = model(x_train[:1]).numpy()
+   tf.nn.softmax(predictions).numpy()
+   loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+   loss_fn(y_train[:1], predictions).numpy()
+   model.compile(optimizer='adam',
+                 loss=loss_fn,
+                 metrics=['accuracy'])
+   model.fit(x_train, y_train, epochs=5)
+   model.evaluate(x_test,  y_test, verbose=2)
 
-2. Install the dependencies of the code, and run the code.
+.. image:: ../../data/install/tensorflow-install/tensorflow-training-example.png
+   :alt: Example output of TensorFlow MNIST training example
+   :align: center
 
-   .. code-block:: shell
+If successful, the image classifier is now trained to around 98% accuracy on this dataset.
 
-      pip3 install -r requirement.txt
-      python[version] mnist_tf.py
+.. image :: ../../data/install/tensorflow-install/tensorflow-training-example-evaluate.png
