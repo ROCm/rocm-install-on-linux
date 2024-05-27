@@ -78,8 +78,6 @@ To install TensorFlow using the wheels package, use the following command.
 
    pip install --user tensorflow-rocm==[wheel-version] -f [repo] --upgrade
 
-* The optional ``[version]`` parameter is the Python version.
-
 * ``[wheel-version]`` is the :ref:`TensorFlow version <install-tensorflow-versions>`.
 
 * ``[repo]`` is ``https://repo.radeon.com/rocm/manylinux/rocm-rel-X.Y/`` for versions 6.1 and later,
@@ -109,7 +107,7 @@ Running a basic TensorFlow example
 To quickly validate your TensorFlow environment, let's run a basic TensorFlow example.
 
 The MNIST dataset is a collection of handwritten digits that may be used to train a Convolutional Neural Network (CNN)
-for handwriting recognition.
+for handwriting recognition. This dataset is included with your TensorFlow installation.
 
 Run the following sample code to load the MNIST dataset, then train and evaluate it.
 
@@ -137,10 +135,9 @@ Run the following sample code to load the MNIST dataset, then train and evaluate
    model.fit(x_train, y_train, epochs=5)
    model.evaluate(x_test,  y_test, verbose=2)
 
-.. image:: ../../data/install/tensorflow-install/tensorflow-training-example.png
+If successful, you should see the following output indicating the image classifier is now trained to around 98% accuracy
+on this dataset.
+
+.. image:: ../../data/install/tensorflow-install/tensorflow-test-output.png
    :alt: Example output of TensorFlow MNIST training example
    :align: center
-
-If successful, the image classifier is now trained to around 98% accuracy on this dataset.
-
-.. image :: ../../data/install/tensorflow-install/tensorflow-training-example-evaluate.png
