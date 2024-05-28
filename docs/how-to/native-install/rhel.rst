@@ -20,7 +20,7 @@ Register kernel-mode driver
     .. tab-set::
         {% for os_version in config.html_context['rhel_version_numbers'] %}
         {% set os_major, _  = os_version.split('.') %}
-        .. tab-item:: EL {{ os_version }}
+        .. tab-item::  {{ os_version }}
             :sync: rhel-{{ os_version }} rhel-{{ os_major }}
 
             .. code-block:: bash
@@ -47,7 +47,7 @@ Register ROCm packages
 
     .. tab-set::
         {% for os_release in config.html_context['rhel_release_version_numbers']  %}
-        .. tab-item:: EL {{ os_release }}
+        .. tab-item:: {{ os_release }}
             :sync: rhel-{{ os_release }}
 
             .. code-block:: bash
@@ -87,7 +87,7 @@ Register kernel-mode driver
     .. tab-set::
         {% for os_version in config.html_context['rhel_version_numbers'] %}
         {% set os_major, _  = os_version.split('.') %}
-        .. tab-item:: EL {{ os_version }}
+        .. tab-item:: {{ os_version }}
             :sync: rhel-{{ os_version }} rhel-{{ os_major }}
 
             .. code-block:: bash
@@ -116,7 +116,7 @@ Register ROCm packages
 
     .. tab-set::
         {% for os_release in config.html_context['rhel_release_version_numbers']  %}
-        .. tab-item:: EL {{ os_release }}
+        .. tab-item:: {{ os_release }}
             :sync: rhel-{{ os_release }}
 
             .. code-block:: bash

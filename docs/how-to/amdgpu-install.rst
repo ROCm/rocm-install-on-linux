@@ -50,7 +50,7 @@ Red Hat Enterprise Linux / Oracle Linux
     .. tab-set::
         {% for os_version in config.html_context['rhel_version_numbers'] %}
         {% set os_major, _  = os_version.split('.') %}
-        .. tab-item:: EL {{ os_version }}
+        .. tab-item:: RHEL/OL {{ os_version }}
             :sync: rhel-{{ os_version }} rhel-{{ os_major }}
 
             .. code-block:: bash
