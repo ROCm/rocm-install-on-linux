@@ -99,7 +99,7 @@ shell in the Docker container.
 
 .. code-block:: shell
 
-    python[version] -c 'import tensorflow' 2> /dev/null && echo ‘Success’ || echo ‘Failure’
+    python -c 'import tensorflow' 2> /dev/null && echo ‘Success’ || echo ‘Failure’
 
 Running a basic TensorFlow example
 ======================================
