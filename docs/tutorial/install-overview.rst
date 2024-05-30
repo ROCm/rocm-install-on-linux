@@ -6,14 +6,14 @@
 .. _rocm-install-overview:
 
 *************************************************************
-ROCm installation options
+ROCm installation overview
 *************************************************************
 
 To install ROCm, you can use the AMDGPU installer or the package manager. You can also opt for
 single-version or multi-version installation. These topics are described in detail in the following
 sections.
 
-If you're new to ROCm, we recommend using the :ref:`rocm-install-quick` guide.
+If you're new to ROCm, we recommend using the :ref:`rocm-install-quick`.
 
 .. note::
     If you're using a Radeon GPU with graphical applications, refer to the
