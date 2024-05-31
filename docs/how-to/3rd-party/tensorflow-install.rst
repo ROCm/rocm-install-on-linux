@@ -76,8 +76,11 @@ Using a wheels package
 
    * ``[major.minor]`` indicates the `ROCm release version <https://repo.radeon.com/rocm/manylinux/>`_; for instance,
      ``6.1``.
+   |
 
    .. _install-tensorflow-versions:
+
+   The following table associates ROCm versions with their supported TensorFlow versions.
 
    .. list-table::
        :header-rows: 1
