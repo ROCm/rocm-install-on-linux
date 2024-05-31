@@ -8,27 +8,15 @@
 ROCm installation for Linux
 ****************************************************************
 
-If you're new to ROCm, we recommend using the :ref:`rocm-install-quick`. 
+This section describes the ROCm for Linux installation. Two options are provided:
 
-.. grid:: 2
+.. grid:: 1
     :gutter: 3
 
     .. grid-item-card:: Install
 
-        * :doc:`Quick start guide (recommended) <tutorial/quick-start>`
-
-        For a more detailed install, follow:
-
-        #. :doc:`Prerequisites <how-to/prerequisites>`
-
-        #. :doc:`Choose your install method <tutorial/install-overview>`
-
-           * :doc:`Package manager install <how-to/native-install/index>`
-           * :doc:`AMDGPU install <how-to/amdgpu-install>`
-
-        #. :doc:`Post install <how-to/native-install/post-install>`
-
-        * Check :doc:`Troubleshooting <how-to/native-install/install-faq>` for help
+       * :doc:`Quick start install <tutorial/quick-start>` - recommended if you're new to ROCm
+       * :doc:`Detailed install <tutorial/detailed-install>` - if you require complete install
 
 
 
@@ -40,10 +28,10 @@ Additional resources
 
     .. grid-item-card:: Tutorials
 
-        * :doc:`PyTorch <how-to/3rd-party/pytorch-install>`
-        * :doc:`TensorFlow <how-to/3rd-party/tensorflow-install>`
-        * :doc:`JAX <how-to/3rd-party/jax-install>`
-        * :doc:`MAGMA <how-to/3rd-party/magma-install>`
+        * :doc:`PyTorch install <how-to/3rd-party/pytorch-install>`
+        * :doc:`TensorFlow install <how-to/3rd-party/tensorflow-install>`
+        * :doc:`JAX install <how-to/3rd-party/jax-install>`
+        * :doc:`MAGMA install <how-to/3rd-party/magma-install>`
 
     .. grid-item-card:: How to
 
