@@ -70,7 +70,7 @@ Using a wheels package
 
    .. code-block:: shell
 
-      pip install --user tensorflow-rocm==[wheel-version] -f https://repo.radeon.com/rocm/manylinux/rocm-rel-X.Y --upgrade
+      pip install --user tensorflow-rocm==[wheel-version] -f https://repo.radeon.com/rocm/manylinux/rocm-rel-[major.minor] --upgrade
 
    * ``[wheel-version]`` indicates the TensorFlow version.
 
