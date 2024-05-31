@@ -38,15 +38,6 @@ sles_version_numbers = ['15.5', '15.4']
 ol_release_version_numbers = ['8']
 ol_version_numbers = [('8', '8.8')]
 
-# pages with specific settings
-article_pages = [
-    {
-        "file":"release",
-        "os":["linux"],
-        "date":"2023-12-15"
-    }
-]
-
 exclude_patterns = [
     'temp', 
     'how-to/native-install/install-rocm-template.rst', 
