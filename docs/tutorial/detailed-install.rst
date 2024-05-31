@@ -5,32 +5,15 @@
 .. _detailed-install-overview:
 
 *************************************************************
-ROCm detailed installation overview
+ROCm on Linux detailed installation overview
 *************************************************************
 
 To install ROCm, please follow these steps
 
-.. grid:: 2
-    :gutter: 3
+#. :doc:`Install and confirm prerequisites <../how-to/prerequisites>`
+#. :doc:`Choose installation method <../tutorial/install-overview>`
+#. :doc:`Complete post-installation steps <../how-to/native-install/post-install>`
 
-    .. grid-item-card:: Install
-
-       1. :doc:`Prerequisites <../how-to/prerequisites>`
-
-       2. :doc:`Choose your install method <../tutorial/install-overview>`
-
-          * :doc:`Package manager install <../how-to/native-install/index>`
-
-            * :doc:`Ubuntu <../how-to/native-install/ubuntu>`
-            * :doc:`RHEL <../how-to/native-install/rhel>`
-            * :doc:`SLES <../how-to/native-install/sles>`
-
-          * :doc:`AMDGPU install <../how-to/amdgpu-install>`
-
-       3. :doc:`Post install <../how-to/native-install/post-install>`
-
-If you run into issues, consult the guide below 
-
-* :doc:`Troubleshooting <../how-to/native-install/install-faq>`
+If you have a problem with your ROCm on Linux installation, see :doc:`installation troubleshooting <../how-to/native-install/install-faq>`. Also, consider sharing the problem in the `ROCm on Linux Github <https://github.com/ROCm/rocm-install-on-linux/issues>`_ repository in the `issues section <https://github.com/ROCm/rocm-install-on-linux/issues>`_.
 
 
