@@ -13,24 +13,6 @@ neural network training and inference. It is one of the most popular and
 in-demand frameworks and is very active in open-source contribution and
 development.
 
-.. note::
-
-   As of ROCm 6.1, ``tensorflow-rocm`` packages are found at `<https://repo.radeon.com/rocm/manylinux>`__.
-   Prior to ROCm 6.1, packages were found at `<https://pypi.org/project/tensorflow-rocm>`_.
-
-.. _install-tensorflow-versions:
-
-.. list-table::
-    :header-rows: 1
-    :widths: 1, 1
-
-    * - ROCm version
-      - TensorFlow version
-    * - 6.1.x
-      - 2.13.1, 2.14.0, 2.15.0
-    * - 6.0.x
-      - 2.12.1, 2.13.1, 2.14.0
-
 .. _install-tensorflow-options:
 
 Installing TensorFlow
@@ -53,13 +35,13 @@ should perform as tested and mitigate potential installation issues.
 
 Follow these steps:
 
-1. Pull the latest public TensorFlow Docker image.
+#. Pull the latest public TensorFlow Docker image.
 
    .. code-block:: shell
 
        docker pull rocm/tensorflow:latest
 
-2. Once you have pulled the image, run it by using the command below:
+#. Once you have pulled the image, run it by using the command below:
 
    .. code-block:: shell
 
@@ -72,21 +54,48 @@ Follow these steps:
 Using a wheels package
 -------------------------------------------------------------------------------
 
-To install TensorFlow using the wheels package, use the following command.
+#. Ensure your environment is using a supported Python version for the desired ``tensorflow-rocm`` wheel.
 
-.. code-block:: shell
+   a. To check compatible Python versions, navigate to the desired ROCm release version
+      in `<https://repo.radeon.com/rocm/manylinux/>`__.
 
-   pip install --user tensorflow-rocm==[wheel-version] -f [repo] --upgrade
+   b. In the versioned ROCm release directory, take note of the Python versions associated with the desired
+      wheel version indicated by ``cp`` in the wheels' file names.
+      
+      For example, ``tensorflow_rocm-2.15.0-cp310-cp310-manylinux2014_x86_64.whl`` targets Python 3.10, as indicated by
+      ``cp310``.
 
-* ``[wheel-version]`` is the :ref:`TensorFlow version <install-tensorflow-versions>`.
+#. To install TensorFlow, use the following command. Replace ``[wheel-version]`` and the ROCm version ``[major.minor]``
+   as appropriate.
 
-* ``[repo]`` is ``https://repo.radeon.com/rocm/manylinux/rocm-rel-X.Y/`` for versions 6.1 and later,
-  where ``X.Y`` indicates the :ref:`ROCm version <install-tensorflow-versions>`.
+   .. code-block:: shell
+
+      pip install --user tensorflow-rocm==[wheel-version] -f https://repo.radeon.com/rocm/manylinux/rocm-rel-X.Y --upgrade
+
+   * ``[wheel-version]`` indicates the TensorFlow version.
+
+   * ``[major.minor]`` indicates the `ROCm release version <https://repo.radeon.com/rocm/manylinux/>`_; for instance,
+     ``6.1``.
+
+   .. _install-tensorflow-versions:
+
+   .. list-table::
+       :header-rows: 1
+
+       * - ROCm version
+         - TensorFlow version
+       * - 6.1.x
+         - 2.13.1, 2.14.0, 2.15.0
+       * - 6.0.x
+         - 2.12.1, 2.13.1, 2.14.0
 
 .. note::
 
-   For details on ``tensorflow-rocm`` wheels and ROCm version compatibility, refer to
-   `<https://github.com/ROCm/tensorflow-upstream/blob/develop-upstream/rocm_docs/tensorflow-rocm-release.md>`__.
+   As of ROCm 6.1, ``tensorflow-rocm`` packages are found at `<https://repo.radeon.com/rocm/manylinux>`__.
+   Prior to ROCm 6.1, packages were found at `<https://pypi.org/project/tensorflow-rocm>`_.
+
+For details on ``tensorflow-rocm`` wheels and ROCm version compatibility, refer to
+`<https://github.com/ROCm/tensorflow-upstream/blob/develop-upstream/rocm_docs/tensorflow-rocm-release.md>`__.
 
 .. _test-tensorflow-installation:
 
