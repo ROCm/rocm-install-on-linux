@@ -8,66 +8,37 @@
 ROCm installation for Linux
 ****************************************************************
 
-If you're new to ROCm, we recommend using the :ref:`rocm-install-quick`. If you want more
-complete instructions, refer to the following sections.
+If you're new to ROCm, we recommend using the :ref:`rocm-install-quick`. 
 
 .. grid:: 2
-    :gutter: 1
+    :gutter: 3
 
-    .. grid-item-card:: Quick start
-        :link: tutorial/quick-start
-        :link-type: doc
+    .. grid-item-card:: Install
 
-        ROCm quick start installation guide.
+        * :doc:`Quick start guide (recommended) <tutorial/quick-start>`
 
-    .. grid-item-card:: Prerequisites
-        :link: how-to/prerequisites
-        :link-type: doc
+        For a more detailed install, follow:
 
-        Steps required before installation.
+        #. :doc:`Prerequisites <how-to/prerequisites>`
 
-    .. grid-item-card:: Install overview
-        :link: tutorial/install-overview
-        :link-type: doc
+        #. :doc:`Choose your install method <tutorial/install-overview>`
 
-        * Package manager vs AMDGPU installer
-        * Single-version vs multi-version
+           * :doc:`Package manager install <how-to/native-install/index>`
+           * :doc:`AMDGPU install <how-to/amdgpu-install>`
 
-Choose your install method
-========================================
+        #. :doc:`Post install <how-to/native-install/post-install>`
 
-.. grid:: 2
-    :gutter: 1
+        * Check :doc:`Troubleshooting <how-to/native-install/install-faq>` for help
 
-    .. grid-item-card:: Package manager
-        :link: how-to/native-install/index
-        :link-type: doc
 
-        Directly use your distribution's package manager to install ROCm.
-
-    .. grid-item-card:: AMDGPU installer
-        :link: how-to/amdgpu-install
-        :link-type: doc
-
-        Use an installer tool that orchestrates changes via the package manager.
 
 Additional resources
 ========================================
 
 .. grid:: 2
-    :gutter: 1
+    :gutter: 3
 
-    .. grid-item-card:: Reference
-
-        * :doc:`reference/system-requirements`
-        * :doc:`reference/docker-image-support-matrix`
-        * :doc:`reference/3rd-party-support-matrix`
-
-    .. grid-item-card:: Troubleshooting and FAQ
-
-        * :doc:`Troubleshooting <how-to/native-install/install-faq>`
-
-    .. grid-item-card:: Install
+    .. grid-item-card:: Tutorials
 
         * :doc:`PyTorch <how-to/3rd-party/pytorch-install>`
         * :doc:`TensorFlow <how-to/3rd-party/tensorflow-install>`
@@ -78,3 +49,15 @@ Additional resources
 
         * :doc:`Run Docker containers <how-to/docker>`
         * :doc:`Use Spack <how-to/spack>`
+    
+    .. grid-item-card:: Conceptual
+
+        * :doc:`Package manager integration <how-to/native-install/package-manager-integration>`
+
+    .. grid-item-card:: Reference
+
+        * :doc:`reference/system-requirements`
+        * :doc:`reference/3rd-party-support-matrix`
+        * :doc:`reference/docker-image-support-matrix`
+        * :doc:`reference/user-kernel-space-compat-matrix`
+        * :doc:`Troubleshooting <how-to/native-install/install-faq>`

@@ -3,35 +3,37 @@ defaults:
   maxdepth: 6
 root: index
 subtrees:
-- entries:
+- caption: Install
+  entries:
     - file: tutorial/quick-start
       title: Quick start install guide
-    - file: how-to/prerequisites
-      title: Prerequisites
-    - file: tutorial/install-overview
-      title: Installation overview
-    - file: reference/system-requirements
-      title: System requirements
-    - file: how-to/amdgpu-install
-      title: Installation via AMDGPU installer
-    - file: how-to/native-install/index
-      title: Installation via package manager
+    - file: tutorial/detailed-install
+      title: Detailed install
       subtrees:
       - entries:
-        - file: how-to/native-install/ubuntu
-          title: Ubuntu
-        - file: how-to/native-install/rhel
-          title: RHEL
-        - file: how-to/native-install/sles
-          title: SLES
+        - file: how-to/prerequisites
+          title: Prerequisites
+        - file: tutorial/install-overview
+          title: Package manager vs AMDGPU Install
+          subtrees:
+          - entries:
+            - file: how-to/native-install/index
+              title: Installation via package manager
+              subtrees:
+              - entries:
+                - file: how-to/native-install/ubuntu
+                  title: Ubuntu
+                - file: how-to/native-install/rhel
+                  title: RHEL
+                - file: how-to/native-install/sles
+                  title: SLES
+            - file: how-to/amdgpu-install
+              title: Installation via AMDGPU installer
         - file: how-to/native-install/post-install
           title: Post-install instructions
-        - file: how-to/native-install/package-manager-integration
-          title: Package manager integration
-    - file: how-to/native-install/install-faq
-      title: Troubleshooting
+    
 
-- caption: Install
+- caption: Tutorials
   entries:
   - file: how-to/3rd-party/pytorch-install
     title: PyTorch
@@ -49,11 +51,20 @@ subtrees:
   - file: how-to/spack
     title: Use Spack
 
+- caption: Conceptual
+  entries:
+  - file: how-to/native-install/package-manager-integration
+    title: Package manager integration
+
 - caption: Reference
   entries:
+    - file: reference/system-requirements
+      title: System requirements
     - file: reference/3rd-party-support-matrix
       title: Third-party support
     - file: reference/docker-image-support-matrix
       title: Docker image support
     - file: reference/user-kernel-space-compat-matrix
       title: Kernel-space support
+    - file: how-to/native-install/install-faq
+      title: Troubleshooting

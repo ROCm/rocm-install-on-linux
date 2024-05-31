@@ -70,7 +70,7 @@ instructions for your distribution.
 
                   {% for os_release in config.html_context['rhel_release_version_numbers']  %}
 
-                      .. tab-item:: RHEL/OL {{ os_release }}
+                      .. tab-item:: RHEL {{ os_release }}
 
                         .. code-block:: shell
 
