@@ -81,7 +81,7 @@ All meta-packages are a combination of required packages and libraries.
 .. csv-table::
   :widths: 30, 70
   :delim: ;
-  :header: "Package", "Description"
+  :header: Package; Description
 
     ``rocm``; All ROCm core packages, tools, and libraries.
     ``rocm-language-runtime``; The ROCm runtime.
