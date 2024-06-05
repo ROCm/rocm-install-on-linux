@@ -147,4 +147,4 @@ more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
                 {% endfor %}
 
 
-If you encounter install issues, you can refer to the :doc:`troubleshooting <install-faq>` page.
+If you encounter install issues, you can refer to the :doc:`troubleshooting <../how-to/native-install/install-faq>` page.
