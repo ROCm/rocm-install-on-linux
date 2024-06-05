@@ -70,7 +70,7 @@ instructions for your distribution.
 
                   {% for os_release in config.html_context['rhel_release_version_numbers']  %}
 
-                      .. tab-item:: RHEL/OL {{ os_release }}
+                      .. tab-item:: RHEL {{ os_release }}
 
                         .. code-block:: shell
 
@@ -137,7 +137,7 @@ To install for the currently active kernel run the command corresponding to your
 
         .. code-block:: shell
 
-            sudo yum install kernel-headers kernel-devel
+            sudo yum install kernel-headers-$(uname -r) kernel-devel-$(uname -r)
 
 
     .. tab-item:: SUSE Linux Enterprise Server
