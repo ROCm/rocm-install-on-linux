@@ -137,7 +137,7 @@ To install for the currently active kernel run the command corresponding to your
 
         .. code-block:: shell
 
-            sudo yum install kernel-headers-$(uname -r) kernel-devel-$(uname -r)
+            sudo yum install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
 
 
     .. tab-item:: SUSE Linux Enterprise Server

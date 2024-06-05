@@ -74,7 +74,7 @@ more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
                                 sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
                                 sudo dnf install dnf-plugin-config-manager
                                 sudo crb enable
-                                sudo yum install kernel-headers-$(uname -r) kernel-devel-$(uname -r)
+                                sudo yum install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
                                 sudo usermod -a -G render,video $LOGNAME # Adding current user to Video, Render groups. See prerequisites.
                                 sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                                 sudo yum clean all
@@ -92,7 +92,7 @@ more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
                                 sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
                                 sudo dnf install dnf-plugin-config-manager
                                 sudo crb enable
-                                sudo yum install kernel-headers-$(uname -r) kernel-devel-$(uname -r)
+                                sudo yum install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
                                 sudo usermod -a -G render,video $LOGNAME # Adding current user to Video, Render groups. See prerequisites.
                                 sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                                 sudo amdgpu-install --usecase=graphics,rocm
