@@ -6,9 +6,9 @@
 Installing TensorFlow for ROCm
 ****************************************************************************************
 
-TensorFlow is an open-source library for solving machine learning,
+`TensorFlow <https://www.tensorflow.org>`_ is an open-source library for solving machine learning,
 deep learning, and AI problems. It can solve many
-problems across different sectors and industries, but primarily focuses on
+problems across different sectors and industries but primarily focuses on
 neural network training and inference. It is one of the most popular and
 in-demand frameworks and is very active in open-source contribution and
 development.
@@ -29,8 +29,8 @@ To install ROCm on bare metal, follow
 :doc:`/tutorial/install-overview`. The recommended option to
 get a TensorFlow environment is through Docker.
 
-Using Docker provides portability and access to a prebuilt Docker image that
-has been rigorously tested within AMD. This can also save compilation time and
+Using Docker provides portability and access to a prebuilt Docker image
+rigorously tested within AMD. This can also save compilation time and
 should perform as tested and mitigate potential installation issues.
 
 Follow these steps:
@@ -54,49 +54,74 @@ Follow these steps:
 Using a wheels package
 -------------------------------------------------------------------------------
 
-#. Ensure your environment is using a supported Python version for the desired ``tensorflow-rocm`` wheel.
-
-   a. To check compatible Python versions, navigate to the desired ROCm release version
-      in `<https://repo.radeon.com/rocm/manylinux/>`__.
-
-   b. In the versioned ROCm release directory, take note of the Python versions associated with the desired
-      wheel version indicated by ``cp`` in the wheels' file names.
-      
-      For example, ``tensorflow_rocm-2.15.0-cp310-cp310-manylinux2014_x86_64.whl`` targets Python 3.10, as indicated by
-      ``cp310``.
-
-#. To install TensorFlow, use the following command. Replace ``[wheel-version]`` and the ROCm version ``[major.minor]``
-   as appropriate.
-
-   .. code-block:: shell
-
-      pip install --user tensorflow-rocm==[wheel-version] -f https://repo.radeon.com/rocm/manylinux/rocm-rel-[major.minor] --upgrade
-
-   * ``[wheel-version]`` indicates the TensorFlow version.
-
-   * ``[major.minor]`` indicates the `ROCm release version <https://repo.radeon.com/rocm/manylinux/>`_; for instance,
-     ``6.1``.
-   |
-
-   .. _install-tensorflow-versions:
-
-   The following table associates ROCm versions with their supported TensorFlow versions.
-
-   .. list-table::
-       :header-rows: 1
-
-       * - ROCm version
-         - TensorFlow version
-       * - 6.1.x
-         - 2.13.1, 2.14.0, 2.15.0
-       * - 6.0.x
-         - 2.12.1, 2.13.1, 2.14.0
+Follow these steps to install ROCm on Linux using a ready-made Python wheel.
 
 .. note::
 
    As of ROCm 6.1, ``tensorflow-rocm`` packages are found at `<https://repo.radeon.com/rocm/manylinux>`__.
-   Prior to ROCm 6.1, packages were found at `<https://pypi.org/project/tensorflow-rocm>`_.
+   Before ROCm 6.1, packages were found at `<https://pypi.org/project/tensorflow-rocm>`__.
 
+.. tab-set::
+
+   .. tab-item:: ROCm 6.1 and later
+
+      #. Make sure you're using a supported Python version for the desired ``tensorflow-rocm`` wheel.
+
+         a. To check compatible Python versions, navigate to the desired ROCm release version
+            in `<https://repo.radeon.com/rocm/manylinux/>`__.
+
+         b. In the versioned ROCm release directory, take note of the `Python version tag
+            <https://packaging.python.org/en/latest/specifications/platform-compatibility-tags/#python-tag>`_ associated
+            with the wheel version indicated by ``cp`` in the wheels' file names.
+
+            For example, ``tensorflow_rocm-2.15.0-cp310-cp310-manylinux2014_x86_64.whl`` targets Python 3.10, as indicated by
+            ``cp310``.
+
+      #. To install TensorFlow, use the following command. Replace ``[wheel-version]`` and the ROCm version ``[major.minor]``
+         as appropriate.
+
+         .. code-block:: shell
+
+            pip install --user tensorflow-rocm==[wheel-version] -f https://repo.radeon.com/rocm/manylinux/rocm-rel-[major.minor] --upgrade
+
+         * ``[wheel-version]`` indicates the TensorFlow version.
+
+         * ``[major.minor]`` indicates the `ROCm release version <https://repo.radeon.com/rocm/manylinux/>`_; for instance,
+           ``6.1``.
+
+   .. tab-item:: Before ROCm 6.1
+
+      #. Make sure you're using a supported Python version for the desired ``tensorflow-rocm`` wheel.
+
+      #. To install TensorFlow, use the following command. Replace ``[wheel-version]`` with the appropriate
+         ``tensorflow-rocm`` version `from PyPI <https://pypi.org/project/tensorflow-rocm/#history>`_.
+
+         .. code-block:: shell
+
+            pip install --user tensorflow-rocm==[wheel-version] --upgrade
+
+.. _install-tensorflow-versions:
+
+The following table associates ROCm versions with their supported TensorFlow versions.
+
+.. list-table::
+    :header-rows: 1
+
+    * - ROCm version
+      - TensorFlow version
+    * - 6.1.x
+      - .. list-table::
+
+           * - 2.13.1
+             - 2.14.0
+             - 2.15.0
+
+    * - 6.0.x
+      - .. list-table::
+
+           * - 2.12.1
+             - 2.13.1
+             - 2.14.0
 For details on ``tensorflow-rocm`` wheels and ROCm version compatibility, refer to
 `<https://github.com/ROCm/tensorflow-upstream/blob/develop-upstream/rocm_docs/tensorflow-rocm-release.md>`__.
 
@@ -116,10 +141,11 @@ shell in the Docker container.
 Running a basic TensorFlow example
 ======================================
 
-To quickly validate your TensorFlow environment, let's run a basic TensorFlow example.
+Run a basic TensorFlow example to test your TensorFlow environment.
 
-The MNIST dataset is a collection of handwritten digits that may be used to train a Convolutional Neural Network (CNN)
-for handwriting recognition. This dataset is included with your TensorFlow installation.
+The MNIST dataset is a collection of handwritten digits that may be used to
+train a convolutional neural network (CNN) for handwriting recognition. This
+dataset is included with your TensorFlow installation.
 
 Run the following sample code to load the MNIST dataset, then train and evaluate it.
 
@@ -128,7 +154,7 @@ Run the following sample code to load the MNIST dataset, then train and evaluate
    import tensorflow as tf
    print("TensorFlow version:", tf.__version__)
    mnist = tf.keras.datasets.mnist
-   
+
    (x_train, y_train), (x_test, y_test) = mnist.load_data()
    x_train, x_test = x_train / 255.0, x_test / 255.0
    model = tf.keras.models.Sequential([
@@ -147,7 +173,7 @@ Run the following sample code to load the MNIST dataset, then train and evaluate
    model.fit(x_train, y_train, epochs=5)
    model.evaluate(x_test,  y_test, verbose=2)
 
-If successful, you should see the following output indicating the image classifier is now trained to around 98% accuracy
+If successful, you should see the following output indicating the image classifier is now trained to around 98 percent accuracy
 on this dataset.
 
 .. image:: ../../data/install/tensorflow-install/tensorflow-test-output.png
