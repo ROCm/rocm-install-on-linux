@@ -96,6 +96,9 @@ Follow these steps to install ROCm on Linux using a ready-made Python wheel.
       #. To install TensorFlow, use the following command. Replace ``[wheel-version]`` with the appropriate
          ``tensorflow-rocm`` version `from PyPI <https://pypi.org/project/tensorflow-rocm/#history>`_.
 
+         See ROCm versions with their associated ``tensorflow-rocm`` versions in
+         `<https://github.com/ROCm/tensorflow-upstream/blob/develop-upstream/rocm_docs/tensorflow-rocm-release.md>`__.
+
          .. code-block:: shell
 
             pip install --user tensorflow-rocm==[wheel-version] --upgrade
