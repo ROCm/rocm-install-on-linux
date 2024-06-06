@@ -91,3 +91,83 @@ The returned information should reflect the addition of ``iommu``:
 
 Refer to `RCCL Issue #1129 <https://github.com/ROCm/rccl/issues/1129>`_ for more information. 
 
+
+.. _troubleshooting-registering-license:
+
+Issue #6: Registering Enterprise Linux
+========================================
+
+Prior to installing ROCm, you should be registered and activated with the distro you're using.  Visit these external pages for help with your OS distro.
+
+.. tab-set::
+
+  .. tab-item:: RHEL
+
+    Typically you can register by following the step-by-step user interface.
+    However, if you need to register by command line, you can follow these examples:
+    
+    .. code-block:: shell
+
+      subscription-manager register --username <username> --password <password>
+      subscription-manager attach --auto
+      subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+
+    More details about `registering for RHEL <https://access.redhat.com/solutions/253273>`_
+
+  .. tab-item:: SLES
+
+    Typically you can register by following the step-by-step user interface.
+    However, if you need to register by command line, you can follow these examples:
+    
+    .. code-block:: shell
+
+      SUSEConnect -r <REGCODE>
+      SUSEConnect -p sle-module-desktop-application/15.4/x86_64
+      SUSEConnect -p sle-module-development-tools/15.4/x86_64
+      SUSEConnect -p PackageHub/15.4/x86_64
+
+    More details about `registering for SLES <https://www.suse.com/support/kb/doc/?id=000018564>`_
+
+
+
+.. _troubleshooting-install-missing-packages-for-dockers:
+
+Issue #7: Additional packages for docker images
+================================================
+
+Docker images may not include some basic packages.  When installing ROCm using docker images, you may need to install packages prior to following ROCm install instructions. Here are some suggested steps when using docker images.
+
+.. tab-set::
+
+  .. tab-item:: Ubuntu
+
+    .. code-block:: shell
+
+      apt update
+      apt install sudo wget
+
+
+  .. tab-item:: RHEL
+
+    .. code-block:: shell
+
+      dnf install sudo wget
+      subscription-manager register --username <username> --password <password>
+      subscription-manager attach --auto
+      subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+
+
+  .. tab-item:: SLES
+
+    .. code-block:: shell
+
+      zypper install sudo wget SUSEConnet
+      SUSEConnect -r <REGCODE>
+      SUSEConnect -p sle-module-desktop-application/15.4/x86_64
+      SUSEConnect -p sle-module-development-tools/15.4/x86_64
+      SUSEConnect -p PackageHub/15.4/x86_64
+
+
+After installing these packages and registering using your license for enterprise linux, you can install ROCm following the :doc:`quick start guide <../../tutorial/quick-start>` on your docker images.
+
+
