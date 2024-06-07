@@ -81,7 +81,7 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                         sudo zypper install amdgpu-dkms rocm
                 {% endfor %}
 
-.. important::
+.. note::
 
    To apply all settings, reboot your system.
 
