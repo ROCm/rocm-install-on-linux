@@ -4,9 +4,9 @@
 
 .. _rocm-install-quick:
 
-*************************************************************
-ROCm quick start installation guide for Linux
-*************************************************************
+******************************
+Quick start installation guide
+******************************
 
 This topic provides basic installation instructions for ROCm on Linux using your distribution’s native package manager. Review your required installation instructions by selecting your operating system and version, and then run the provided commands in your terminal.
 
@@ -96,3 +96,5 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
    To apply all settings, reboot your system.
 
 If you have issues with your installation, see :doc:`Troubleshooting <../how-to/native-install/install-faq>`.
+
+After completing the installation, review the :doc:`../how-to/native-install/post-install`.
