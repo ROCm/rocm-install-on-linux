@@ -100,30 +100,30 @@ Docker images may not include some basic packages.  When installing ROCm using d
   .. tab-item:: Ubuntu
     :sync: ubuntu-tab
 
-        .. code-block:: shell
+    .. code-block:: shell
 
-            apt update
-            apt install sudo wget
+        apt update
+        apt install sudo wget
 
 
   .. tab-item:: Red Hat Enterprise Linux
     :sync: rhel-tab
 
-        .. code-block:: shell
+    .. code-block:: shell
 
-            dnf install sudo wget
-            subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+        dnf install sudo wget
+        subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
 
 
   .. tab-item:: SUSE Linux Enterprise Server
     :sync: sle-tab
 
-        .. code-block:: shell
+    .. code-block:: shell
 
-            zypper install sudo wget SUSEConnet
-            SUSEConnect -p sle-module-desktop-application/15.4/x86_64
-            SUSEConnect -p sle-module-development-tools/15.4/x86_64
-            SUSEConnect -p PackageHub/15.4/x86_64
+        zypper install sudo wget SUSEConnet
+        SUSEConnect -p sle-module-desktop-application/15.4/x86_64
+        SUSEConnect -p sle-module-development-tools/15.4/x86_64
+        SUSEConnect -p PackageHub/15.4/x86_64
 
 
 
