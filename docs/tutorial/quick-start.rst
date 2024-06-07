@@ -33,6 +33,7 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                         sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                         wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                         sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
+                        sudo apt update
                         sudo apt install amdgpu-dkms rocm
                 {% endfor %}
 
@@ -86,4 +87,4 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
 
    Reboot your system for all settings to take effect.
 
-If you encounter install issues, refer to :doc:`Troubleshooting <../how-to/native-install/install-faq>`.
+If you encounter issues with your installation, refer to :doc:`Troubleshooting <../how-to/native-install/install-faq>`.
