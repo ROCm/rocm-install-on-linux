@@ -46,11 +46,11 @@ Before installing ROCm, complete the following prerequisites.
 
 .. _register-enterprise-linux:
 
-Register your enterprise linux
+Register your Enterprise Linux
 ==========================================================
 
-If you are using Red Hat Enterprise Linux (RHEL) or SUSE Linux Enterprise Server (SLES), you should register
-your operating system to ensure you are able to download and install packages.
+If you're using Red Hat Enterprise Linux (RHEL) or SUSE Linux Enterprise Server (SLES), register
+your operating system to ensure you're able to download and install packages.
 
 .. tab-set::
 
@@ -64,7 +64,7 @@ your operating system to ensure you are able to download and install packages.
 
         Typically you can register by following the step-by-step user interface.
         However, if you need to register by command line, you can follow these examples:
-        
+
         .. code-block:: shell
 
             subscription-manager register --username <username> --password <password>
@@ -78,7 +78,7 @@ your operating system to ensure you are able to download and install packages.
 
         Typically you can register by following the step-by-step user interface.
         However, if you need to register by command line, you can follow these examples:
-        
+
         .. code-block:: shell
 
             SUSEConnect -r <REGCODE>
@@ -90,10 +90,13 @@ your operating system to ensure you are able to download and install packages.
 
 .. _additional-packages-for-dockers:
 
-Additional packages for docker images
+Additional packages for Docker images
 ================================================
 
-Docker images may not include some basic packages.  When installing ROCm using docker images, you may need to install packages prior to following ROCm install instructions. Here are some suggested steps when using docker images.
+Docker images often come with a minimal set of pre-installed packages which may not include those required for your ROCm
+installation. Before installing ROCm, you might need to install some packages to support its installation.
+
+Here are some suggested steps when using Docker images.
 
 .. tab-set::
 
@@ -120,7 +123,7 @@ Docker images may not include some basic packages.  When installing ROCm using d
 
     .. code-block:: shell
 
-        zypper install sudo wget SUSEConnet
+        zypper install sudo wget SUSEConnect
         SUSEConnect -p sle-module-desktop-application/15.4/x86_64
         SUSEConnect -p sle-module-development-tools/15.4/x86_64
         SUSEConnect -p PackageHub/15.4/x86_64
@@ -130,17 +133,16 @@ Docker images may not include some basic packages.  When installing ROCm using d
 Additional package repositories
 ==========================================================
 
-On some distributions the ROCm packages depend on packages outside the default package
-repositories. These extra repositories need to be enabled before installation. Use the following
-instructions for your distribution.
+For some distributions, the ROCm installation packages depend on packages that aren't included in the default package
+repositories. These external repositories need to be sourced before installation. Use the following
+instructions specific to your distribution to add the necessary repositories.
 
 .. tab-set::
 
     .. tab-item:: Ubuntu
         :sync: ubuntu-tab
 
-        All packages are available in the default Ubuntu repositories, so you don't need to add additional
-        repositories.
+        All ROCm installation packages are available in the default Ubuntu repositories.
 
     .. tab-item:: Red Hat Enterprise Linux
         :sync: rhel-tab
