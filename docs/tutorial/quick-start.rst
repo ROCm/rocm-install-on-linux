@@ -88,3 +88,5 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
 .. important::
 
    Reboot your system for all settings to take effect.
+
+If you encounter install issues, refer to :doc:`Troubleshooting <../how-to/native-install/install-faq>`.
