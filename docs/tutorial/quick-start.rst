@@ -30,8 +30,7 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
 
                         sudo apt update
                         sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
-                        # Add the current user to the render and video groups (see prerequisites).
-                        sudo usermod -a -G render,video $LOGNAME
+                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                         wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                         sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
                         sudo apt install amdgpu-dkms rocm
@@ -53,8 +52,7 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                         sudo dnf install dnf-plugin-config-manager
                         sudo crb enable
                         sudo yum install kernel-headers kernel-devel
-                        # Add the current user to the render and video groups (see prerequisites).
-                        sudo usermod -a -G render,video $LOGNAME
+                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                         sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                         sudo yum clean all
                         sudo yum install amdgpu-dkms rocm
@@ -78,8 +76,7 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                         sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
                 {% endif %}
                         sudo zypper install kernel-default-devel
-                        # Add the current user to the render and video groups (see prerequisites).
-                        sudo usermod -a -G render,video $LOGNAME
+                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                         sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
                         sudo zypper refresh
                         sudo zypper install amdgpu-dkms rocm
