@@ -28,14 +28,13 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                     .. code-block:: bash
                         :substitutions:
 
+                        sudo apt update
                         sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
-                        sudo usermod -a -G render,video $LOGNAME # Adding current user to Video, Render groups. See prerequisites.
+                        # Add the current user to the render and video groups (see prerequisites).
+                        sudo usermod -a -G render,video $LOGNAME
                         wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                         sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
-                        sudo apt update
-                        sudo apt install amdgpu-dkms
-                        sudo apt install rocm
-                        echo "Please reboot system for all settings to take effect."
+                        sudo apt install amdgpu-dkms rocm
                 {% endfor %}
 
         .. tab-item:: Red Hat Enterprise Linux
@@ -54,12 +53,11 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                         sudo dnf install dnf-plugin-config-manager
                         sudo crb enable
                         sudo yum install kernel-headers kernel-devel
-                        sudo usermod -a -G render,video $LOGNAME # Adding current user to Video, Render groups. See prerequisites.
+                        # Add the current user to the render and video groups (see prerequisites).
+                        sudo usermod -a -G render,video $LOGNAME
                         sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                         sudo yum clean all
-                        sudo yum install amdgpu-dkms
-                        sudo yum install rocm
-                        echo "Please reboot system for all settings to take effect."
+                        sudo yum install amdgpu-dkms rocm
                 {% endfor %}
 
 
@@ -80,10 +78,13 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                         sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
                 {% endif %}
                         sudo zypper install kernel-default-devel
-                        sudo usermod -a -G render,video $LOGNAME # Adding current user to Video, Render groups. See prerequisites.
+                        # Add the current user to the render and video groups (see prerequisites).
+                        sudo usermod -a -G render,video $LOGNAME
                         sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
                         sudo zypper refresh
-                        sudo zypper install amdgpu-dkms
-                        sudo zypper install rocm
-                        echo "Please reboot system for all settings to take effect."
+                        sudo zypper install amdgpu-dkms rocm
                 {% endfor %}
+
+.. important::
+
+   Reboot your system for all settings to take effect.
