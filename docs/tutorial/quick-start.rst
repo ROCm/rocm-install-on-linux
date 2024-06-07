@@ -10,17 +10,11 @@ Quick start installation guide
 
 This topic provides basic installation instructions for ROCm on Linux using your distribution’s native package manager. Review your required installation instructions by selecting your operating system and version, and then run the provided commands in your terminal.
 
+If you're using RHEL or SLES, be sure to :ref:`register with your distro <register-enterprise-linux>` before installation.
+If you're using a Docker image, you'll need to install :ref:`additional packages for Docker images <additional-packages-for-dockers>`.
+
+
 For more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
-
-.. note::
-
-    If you're using RHEL or SLES, be sure to register with your distro before installation.  
-    If you need guidance, get :ref:`help with registering your distro <troubleshooting-registering-license>`. 
-
-.. caution::
-
-    Docker images contain a bare minimum install so some important packages may need to be installed, prior 
-    to installing ROCm. Get :ref:`help installing packages on your docker image <troubleshooting-install-missing-packages-for-dockers>`, before running the install.
 
 .. datatemplate:nodata::
 

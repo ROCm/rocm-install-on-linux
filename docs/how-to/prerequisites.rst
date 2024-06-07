@@ -44,6 +44,89 @@ Before installing ROCm, complete the following prerequisites.
 
    * Confirm that your kernel version matches the system requirements, as listed in :ref:`supported_distributions`.
 
+.. _register-enterprise-linux:
+
+Register your enterprise linux
+==========================================================
+
+If you are using Red Hat Enterprise Linux (RHEL) or SUSE Linux Enterprise Server (SLES), you should register
+your operating system to ensure you are able to download and install packages.
+
+.. tab-set::
+
+  .. tab-item:: Ubuntu
+        :sync: ubuntu-tab
+
+        There is no registration required for Ubuntu.
+
+  .. tab-item:: Red Hat Enterprise Linux
+        :sync: rhel-tab
+
+        Typically you can register by following the step-by-step user interface.
+        However, if you need to register by command line, you can follow these examples:
+        
+        .. code-block:: shell
+
+            subscription-manager register --username <username> --password <password>
+            subscription-manager attach --auto
+            subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+
+        More details about `registering for RHEL <https://access.redhat.com/solutions/253273>`_
+
+  .. tab-item:: SUSE Linux Enterprise Server
+        :sync: sle-tab
+
+        Typically you can register by following the step-by-step user interface.
+        However, if you need to register by command line, you can follow these examples:
+        
+        .. code-block:: shell
+
+            SUSEConnect -r <REGCODE>
+            SUSEConnect -p sle-module-desktop-application/15.4/x86_64
+            SUSEConnect -p sle-module-development-tools/15.4/x86_64
+            SUSEConnect -p PackageHub/15.4/x86_64
+
+        More details about `registering for SLES <https://www.suse.com/support/kb/doc/?id=000018564>`_
+
+.. _additional-packages-for-dockers:
+
+Additional packages for docker images
+================================================
+
+Docker images may not include some basic packages.  When installing ROCm using docker images, you may need to install packages prior to following ROCm install instructions. Here are some suggested steps when using docker images.
+
+.. tab-set::
+
+  .. tab-item:: Ubuntu
+    :sync: ubuntu-tab
+
+        .. code-block:: shell
+
+            apt update
+            apt install sudo wget
+
+
+  .. tab-item:: Red Hat Enterprise Linux
+    :sync: rhel-tab
+
+        .. code-block:: shell
+
+            dnf install sudo wget
+            subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+
+
+  .. tab-item:: SUSE Linux Enterprise Server
+    :sync: sle-tab
+
+        .. code-block:: shell
+
+            zypper install sudo wget SUSEConnet
+            SUSEConnect -p sle-module-desktop-application/15.4/x86_64
+            SUSEConnect -p sle-module-development-tools/15.4/x86_64
+            SUSEConnect -p PackageHub/15.4/x86_64
+
+
+
 Additional package repositories
 ==========================================================
 
