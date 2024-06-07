@@ -48,7 +48,7 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                 .. tab-item:: {{ os_version }}
 
                    Before installing ROCm on RHEL, `register your system with Red Hat <https://access.redhat.com/solutions/253273>`_.
-                   For more guidance, see :ref:`Registering Enterprise Linux <troubleshooting-registering-license>`.
+                   For more guidance, see :ref:`Register your Enterprise Linux <register-enterprise-linux>`.
 
                    .. code-block:: bash
                        :substitutions:
@@ -74,7 +74,7 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                 .. tab-item:: {{ os_version }}
 
                    Before installing ROCm on SLES, `register your system with SUSE <https://www.suse.com/support/kb/doc/?id=000018564>`_.
-                   For more guidance, see :ref:`Registering Enterprise Linux <troubleshooting-registering-license>`.
+                   For more guidance, see :ref:`Register your Enterprise Linux <register-enterprise-linux>`.
 
                    .. code-block:: bash
                        :substitutions:
