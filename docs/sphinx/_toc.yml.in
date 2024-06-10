@@ -32,9 +32,13 @@ subtrees:
         - file: how-to/native-install/post-install
           title: Post-install instructions
     
-
-- caption: Tutorials
+    
+- caption: How-to
   entries:
+  - file: how-to/docker
+    title: Run Docker containers
+  - file: how-to/spack
+    title: Use Spack
   - file: how-to/3rd-party/pytorch-install
     title: PyTorch install
   - file: how-to/3rd-party/tensorflow-install
@@ -43,18 +47,6 @@ subtrees:
     title: JAX install
   - file: how-to/3rd-party/magma-install
     title: Magma install
-    
-- caption: How-to
-  entries:
-  - file: how-to/docker
-    title: Run Docker containers
-  - file: how-to/spack
-    title: Use Spack
-
-- caption: Conceptual
-  entries:
-  - file: how-to/native-install/package-manager-integration
-    title: Package manager integration
 
 - caption: Reference
   entries:
@@ -66,5 +58,7 @@ subtrees:
       title: Docker image support
     - file: reference/user-kernel-space-compat-matrix
       title: Kernel-space support
+    - file: how-to/native-install/package-manager-integration
+      title: Package manager integration
     - file: how-to/native-install/install-faq
       title: Troubleshooting
