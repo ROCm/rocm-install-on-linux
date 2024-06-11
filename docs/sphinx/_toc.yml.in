@@ -50,15 +50,15 @@ subtrees:
 
 - caption: Reference
   entries:
+    - file: reference/docker-image-support-matrix
+      title: Docker image support
+    - file: how-to/native-install/package-manager-integration
+      title: Package manager integration
     - file: reference/system-requirements
       title: System requirements
     - file: reference/3rd-party-support-matrix
       title: Third-party support
-    - file: reference/docker-image-support-matrix
-      title: Docker image support
-    - file: reference/user-kernel-space-compat-matrix
-      title: Kernel-space support
-    - file: how-to/native-install/package-manager-integration
-      title: Package manager integration
     - file: how-to/native-install/install-faq
       title: Troubleshooting
+    - file: reference/user-kernel-space-compat-matrix
+      title: User & Kernel-space support

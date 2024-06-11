@@ -18,6 +18,12 @@ Select the install instructions for your operating system
         * :doc:`RHEL <./rhel>`
         * :doc:`SLES <./sles>`
 
+    .. grid-item-card:: Uninstall
+
+        * :ref:`Ubuntu <ubuntu-uninstall>`
+        * :ref:`RHEL <rhel-uninstall>`
+        * :ref:`SLES <sles-uninstall>`
+
     
 
 See also: :doc:`/reference/system-requirements`. If you encounter install issues, you can refer to the

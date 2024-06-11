@@ -70,6 +70,24 @@ Register ROCm packages
 
 .. include:: install-rocm-template.rst
 
+
+.. _rhel-upgrade:
+
+Upgrade
+=====================================================
+
+To upgrade an existing ROCm installation to a newer version, follow the steps in
+:ref:`rhel-register-repo` and :ref:`rhel-install`.
+
+.. note::
+
+    Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
+    system reboot to take effect.
+
+.. _rhel-uninstall:
+
+.. include:: uninstall-rocm-template.rst
+
 .. _rhel-multi-install:
 
 Multi-version install
@@ -157,20 +175,3 @@ Install ROCm packages.
     done
 
 Complete the :doc:`post-install`.
-
-.. _rhel-upgrade:
-
-Upgrade
-=====================================================
-
-To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`rhel-register-repo` and :ref:`rhel-install`.
-
-.. note::
-
-    Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
-    system reboot to take effect.
-
-.. _rhel-uninstall:
-
-.. include:: uninstall-rocm-template.rst

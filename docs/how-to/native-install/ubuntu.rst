@@ -106,6 +106,70 @@ Install ROCm packages
 
 Complete the :doc:`post-install`.
 
+
+.. _ubuntu-upgrade:
+
+Upgrading
+================================================
+
+To upgrade an existing ROCm installation to a newer version, follow the steps in
+:ref:`ubuntu-register-repo` and :ref:`ubuntu-install`. 
+
+.. note::
+
+    Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
+    system reboot to take effect.
+
+.. _ubuntu-uninstall:
+
+Uninstalling
+================================================
+
+Uninstall specific meta packages
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+    :substitutions:
+
+    # sudo apt autoremove <package-name>
+    # For example:
+    sudo apt autoremove rocm
+    # Or for version specific packages:
+    sudo apt autoremove rocm|rocm_version|
+
+Uninstall ROCm packages
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+    :substitutions:
+
+    sudo apt autoremove rocm-core
+    # Or for version specific packages:
+    sudo apt autoremove rocm-core|rocm_version|
+
+Uninstall kernel-mode driver
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+
+    sudo apt autoremove amdgpu-dkms
+
+Remove ROCm and AMDGPU repositories
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+
+    # Remove the repositories.
+    sudo rm /etc/apt/sources.list.d/rocm.list
+    sudo rm /etc/apt/sources.list.d/amdgpu.list
+
+    # Clear the cache and clean the system.
+    sudo rm -rf /var/cache/apt/*
+    sudo apt-get clean all
+
+    # Restart the system.
+    sudo reboot
+
 .. _ubuntu-multi-install:
 
 Multi-version install
@@ -188,66 +252,3 @@ Install ROCm packages.
     done
 
 Complete the :doc:`post-install`.
-
-.. _ubuntu-upgrade:
-
-Upgrading
-================================================
-
-To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`ubuntu-register-repo` and :ref:`ubuntu-install`. 
-
-.. note::
-
-    Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
-    system reboot to take effect.
-
-.. _ubuntu-uninstall:
-
-Uninstalling
-================================================
-
-Uninstall specific meta packages
----------------------------------------------------------------------------
-
-.. code-block:: bash
-    :substitutions:
-
-    # sudo apt autoremove <package-name>
-    # For example:
-    sudo apt autoremove rocm
-    # Or for version specific packages:
-    sudo apt autoremove rocm|rocm_version|
-
-Uninstall ROCm packages
----------------------------------------------------------------------------
-
-.. code-block:: bash
-    :substitutions:
-
-    sudo apt autoremove rocm-core
-    # Or for version specific packages:
-    sudo apt autoremove rocm-core|rocm_version|
-
-Uninstall kernel-mode driver
----------------------------------------------------------------------------
-
-.. code-block:: bash
-
-    sudo apt autoremove amdgpu-dkms
-
-Remove ROCm and AMDGPU repositories
----------------------------------------------------------------------------
-
-.. code-block:: bash
-
-    # Remove the repositories.
-    sudo rm /etc/apt/sources.list.d/rocm.list
-    sudo rm /etc/apt/sources.list.d/amdgpu.list
-
-    # Clear the cache and clean the system.
-    sudo rm -rf /var/cache/apt/*
-    sudo apt-get clean all
-
-    # Restart the system.
-    sudo reboot

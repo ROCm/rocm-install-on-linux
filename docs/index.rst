@@ -8,15 +8,15 @@
 ROCm installation for Linux
 ****************************************************************
 
-This section describes the ROCm for Linux installation. Two options are provided:
+This section describes the ROCm for Linux installation options.
 
 .. grid:: 1
     :gutter: 3
 
     .. grid-item-card:: Install
 
-       * :doc:`Quick start install <tutorial/quick-start>` - recommended if you're new to ROCm
-       * :doc:`Detailed install <tutorial/detailed-install>` - in depth explanation of a complete ROCm install
+       * :doc:`Quick start <tutorial/quick-start>` - recommended if you're new to ROCm
+       * :doc:`Detailed <tutorial/detailed-install>` - if you require complete installation information
 
 
 
@@ -39,9 +39,10 @@ Additional resources
 
     .. grid-item-card:: Reference
 
+        * :doc:`reference/docker-image-support-matrix`
+        * :doc:`Package manager integration <how-to/native-install/package-manager-integration>`
         * :doc:`reference/system-requirements`
         * :doc:`reference/3rd-party-support-matrix`
-        * :doc:`reference/docker-image-support-matrix`
-        * :doc:`reference/user-kernel-space-compat-matrix`
-        * :doc:`Package manager integration <how-to/native-install/package-manager-integration>`
         * :doc:`Troubleshooting <how-to/native-install/install-faq>`
+        * :doc:`reference/user-kernel-space-compat-matrix`
+        
