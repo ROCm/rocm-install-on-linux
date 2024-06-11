@@ -38,6 +38,7 @@ GPU is not listed on this table, it's not officially supported by AMD.
       :widths: 50, 25, 25, 10
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
+      "AMD Radeon PRO W7900 Dual Slot", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W7900", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W7800", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W6800", "RDNA2", "gfx1030", "✅"
