@@ -30,7 +30,7 @@ Additional resources
 
         * :doc:`Run Docker containers <how-to/docker>`
         * :doc:`Use Spack <how-to/spack>`
-        * Install deep learning frameworks
+        * :doc:`Install deep learning frameworks <how-to/3rd-party/third-party-index>`
 
           * :doc:`PyTorch <how-to/3rd-party/pytorch-install>`
           * :doc:`TensorFlow <how-to/3rd-party/tensorflow-install>`

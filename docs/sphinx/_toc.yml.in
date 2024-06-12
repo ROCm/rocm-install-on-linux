@@ -39,14 +39,17 @@ subtrees:
     title: Run Docker containers
   - file: how-to/spack
     title: Use Spack
-  - file: how-to/3rd-party/pytorch-install
-    title: PyTorch install
-  - file: how-to/3rd-party/tensorflow-install
-    title: TensorFlow install
-  - file: how-to/3rd-party/jax-install
-    title: JAX install
-  - file: how-to/3rd-party/magma-install
-    title: MAGMA install
+  - file: how-to/3rd-party/third-party-index
+    subtrees:
+    - entries:
+      - file: how-to/3rd-party/pytorch-install
+        title: PyTorch
+      - file: how-to/3rd-party/tensorflow-install
+        title: TensorFlow
+      - file: how-to/3rd-party/jax-install
+        title: JAX
+      - file: how-to/3rd-party/magma-install
+        title: MAGMA
 
 - caption: Reference
   entries:
