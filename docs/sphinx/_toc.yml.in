@@ -35,10 +35,6 @@ subtrees:
     
 - caption: How to
   entries:
-  - file: how-to/docker
-    title: Run Docker containers
-  - file: how-to/spack
-    title: Use Spack
   - file: how-to/3rd-party/third-party-index
     subtrees:
     - entries:
@@ -50,6 +46,10 @@ subtrees:
         title: JAX
       - file: how-to/3rd-party/magma-install
         title: MAGMA
+  - file: how-to/docker
+    title: Run Docker containers
+  - file: how-to/spack
+    title: Use Spack
 
 - caption: Reference
   entries:

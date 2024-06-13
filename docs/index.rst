@@ -18,6 +18,14 @@ This section describes the ROCm for Linux installation options.
        * :doc:`Quick start <tutorial/quick-start>` - recommended if you're new to ROCm
        * :doc:`Detailed <tutorial/detailed-install>` - if you require complete installation information
 
+         * :doc:`Prerequisites <how-to/prerequisites>`
+         * :doc:`Choose installation method <tutorial/install-overview>`
+
+           * :doc:`Package manager install <how-to/native-install/index>`
+           * :doc:`AMDGPU install <how-to/amdgpu-install>`
+
+         * :doc:`Post-install instructions <../how-to/native-install/post-install>`
+
 
 
 Additional resources
@@ -28,14 +36,15 @@ Additional resources
 
     .. grid-item-card:: How to
 
-        * :doc:`Run Docker containers <how-to/docker>`
-        * :doc:`Use Spack <how-to/spack>`
         * :doc:`Install deep learning frameworks <how-to/3rd-party/third-party-index>`
 
           * :doc:`PyTorch <how-to/3rd-party/pytorch-install>`
           * :doc:`TensorFlow <how-to/3rd-party/tensorflow-install>`
           * :doc:`JAX <how-to/3rd-party/jax-install>`
           * :doc:`MAGMA <how-to/3rd-party/magma-install>`
+
+        * :doc:`Run Docker containers <how-to/docker>`
+        * :doc:`Use Spack <how-to/spack>`
 
     .. grid-item-card:: Reference
 
