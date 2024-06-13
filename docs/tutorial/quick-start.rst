@@ -33,8 +33,6 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt update
                        sudo apt install amdgpu-dkms rocm
-
-                   To apply all settings, reboot your system.
                 {% endfor %}
 
         .. tab-item:: Red Hat Enterprise Linux
@@ -59,8 +57,6 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                        sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        sudo yum clean all
                        sudo yum install amdgpu-dkms rocm
-
-                   To apply all settings, reboot your system.
                 {% endfor %}
 
         .. tab-item:: SUSE Linux Enterprise Server
@@ -86,10 +82,10 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
                        sudo zypper refresh
                        sudo zypper install amdgpu-dkms rocm
-
-                   To apply all settings, reboot your system.
                 {% endfor %}
 
-If you have issues with your installation, see :doc:`Troubleshooting <../how-to/native-install/install-faq>`.
+.. note::
 
-After completing the installation, review the :doc:`../how-to/native-install/post-install`.
+    To apply all settings, reboot your system.
+
+After completing the installation, review the :doc:`../how-to/native-install/post-install`. If you have issues with your installation, see :doc:`Troubleshooting <../how-to/native-install/install-faq>`.
