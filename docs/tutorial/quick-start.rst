@@ -10,8 +10,6 @@ Quick start installation guide
 
 This topic provides basic installation instructions for ROCm on Linux using your distribution’s native package manager. Review your required installation instructions by selecting your operating system and version, and then run the provided commands in your terminal.
 
-If you're using a Docker image, you'll need to install :ref:`additional packages for Docker images <additional-packages-for-dockers>`.
-
 For more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
 
 .. datatemplate:nodata::

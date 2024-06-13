@@ -88,47 +88,6 @@ your operating system to ensure you're able to download and install packages.
 
         More details about `registering for SLES <https://www.suse.com/support/kb/doc/?id=000018564>`_
 
-.. _additional-packages-for-dockers:
-
-Additional packages for Docker images
-================================================
-
-Docker images often come with a minimal set of pre-installed packages which may not include those required for your ROCm
-installation. Before installing ROCm, you might need to install some packages to support its installation.
-
-Here are some suggested steps when using Docker images.
-
-.. tab-set::
-
-  .. tab-item:: Ubuntu
-    :sync: ubuntu-tab
-
-    .. code-block:: shell
-
-        apt update
-        apt install sudo wget
-
-
-  .. tab-item:: Red Hat Enterprise Linux
-    :sync: rhel-tab
-
-    .. code-block:: shell
-
-        dnf install sudo wget
-        subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
-
-
-  .. tab-item:: SUSE Linux Enterprise Server
-    :sync: sle-tab
-
-    .. code-block:: shell
-
-        zypper install sudo wget SUSEConnect
-        SUSEConnect -p sle-module-desktop-application/15.4/x86_64
-        SUSEConnect -p sle-module-development-tools/15.4/x86_64
-        SUSEConnect -p PackageHub/15.4/x86_64
-
-
 
 Additional package repositories
 ==========================================================
