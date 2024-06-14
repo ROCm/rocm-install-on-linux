@@ -14,9 +14,9 @@ This section describes the ROCm for Linux installation options.
     :gutter: 3
 
     .. grid-item-card:: Install ROCm
-
+      
        * :doc:`Quick start <tutorial/quick-start>` - recommended for new users
-       * :doc:`Detailed install <tutorial/detailed-install>`
+       * :doc:`Detailed install <tutorial/detailed-install>` - includes explanations
 
     .. grid-item-card:: Install deep learning frameworks
 
