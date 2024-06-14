@@ -29,8 +29,8 @@ subtrees:
                   title: SLES
             - file: how-to/amdgpu-install
               title: Installation via AMDGPU installer
-            - file: how-to/multi-version-install
-              title: Install multiple ROCm versions
+            - file: how-to/native-install/multi-version-install
+              title: Installing multiple ROCm versions
         - file: how-to/native-install/post-install
           title: Post-install instructions
     
