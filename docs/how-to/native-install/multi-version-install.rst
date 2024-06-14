@@ -7,7 +7,7 @@ Installing multiple ROCm versions
 *********************************
 
 A multi-version ROCm installation covers situations where you need multiple
-verions of ROCm on the same machine -- for compatibility with different
+versions of ROCm on the same machine -- for compatibility with different
 applications and hardware, testing, and other use cases.
 
 .. _installation-types:
@@ -21,13 +21,14 @@ A multi-version ROCm installation involves the following.
   package name and its dependencies with the release version adds the ability to
   support multiple versions of packages simultaneously.
 
-A single-version ROCm installation involves the following. See
-:doc:`../../tutorial/quick-start` or :doc:`../../tutorial/detailed-install` for
-a standard installation.
+A single-version ROCm installation involves the following.
 
 * Installing a single instance of the ROCm release on a system.
 
 * Using non-versioned ROCm meta-packages.
+
+See :doc:`../../tutorial/quick-start` or :doc:`../../tutorial/detailed-install` for
+a standard single-version installation.
 
 The following diagram illustrates the difference between single-version and
 multi-version ROCm installations.
