@@ -1,14 +1,8 @@
 .. _ubuntu-multi-install:
 
-Multi-version install is for the special case, when you need multiple versions of ROCm
-on the same machine, not just the newest. If you just want to install the latest use
-the steps in :ref:`ubuntu-register-repo` and :ref:`ubuntu-install`.
+1. Set up your package signing key following the steps in :ref:`ubuntu-package-key`.
 
-1. Package signing key
-
-   This step is the same as previously described, follow the steps in :ref:`ubuntu-package-key`..
-
-2. Register kernel-mode driver
+2. Register the kernel-mode driver.
 
    Add the AMDGPU repository for the driver.
 
@@ -31,7 +25,7 @@ the steps in :ref:`ubuntu-register-repo` and :ref:`ubuntu-install`.
 
 .. _ubuntu-multi-register-rocm:
 
-3. Register ROCm packages
+3. Register ROCm packages.
 
    Add the ROCm repository.
 
@@ -63,7 +57,7 @@ the steps in :ref:`ubuntu-register-repo` and :ref:`ubuntu-install`.
       sudo apt install amdgpu-dkms
       sudo reboot
 
-   Install ROCm packages.
+   Install the registered ROCm packages.
 
    .. code-block:: bash
       :substitutions:
@@ -72,4 +66,10 @@ the steps in :ref:`ubuntu-register-repo` and :ref:`ubuntu-install`.
           sudo apt install rocm$ver
       done
 
-5. Complete the :doc:`../post-install.rst`.
+5. Complete the :doc:`post-install`.
+
+.. tip::
+
+   For a single-version installation of the latest ROCm version on Ubuntu,
+   use the steps in :ref:`ubuntu-register-repo` and :ref:`ubuntu-install`.
+

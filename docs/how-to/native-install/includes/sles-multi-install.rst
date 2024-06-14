@@ -1,47 +1,47 @@
 .. _sles-multi-install:
 
-Multi-version install is for the special case, when you need multiple versions of ROCm
-on the same machine, not just the newest. If you just want to install the latest use
-the steps in :ref:`sles-register-rocm` and :ref:`sles-install`.
+1. Register the kernel-mode driver following the steps in :ref:`sles-register-driver`.
 
-.. rubric:: Register kernel-mode driver
+2. Register ROCm packages.
 
-This step is the same as previously described, follow the steps in :ref:`sles-register-driver`.
+   .. code-block:: bash
+      :substitutions:
 
-.. rubric:: Register ROCm packages
+      for ver in |rocm_multi_versions|; do
+      sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
+      [ROCm-$ver]
+      name=ROCm$ver
+      baseurl=https://repo.radeon.com/rocm/zyp/$ver/main
+      enabled=1
+      gpgcheck=1
+      gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+      EOF
+      done
 
-.. code-block:: bash
-    :substitutions:
+      sudo zypper ref
 
-    for ver in |rocm_multi_versions|; do
-    sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
-    [ROCm-$ver]
-    name=ROCm$ver
-    baseurl=https://repo.radeon.com/rocm/zyp/$ver/main
-    enabled=1
-    gpgcheck=1
-    gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
-    EOF
-    done
+3. Install ROCm.
 
-    sudo zypper ref
+   Install kernel driver.
 
-.. rubric:: Installing
+   .. code-block:: bash
 
-Install kernel driver.
+      sudo zypper --gpg-auto-import-keys install amdgpu-dkms
+      sudo reboot
 
-.. code-block:: bash
+   Install the registered ROCm packages.
 
-    sudo zypper --gpg-auto-import-keys install amdgpu-dkms
-    sudo reboot
+   .. code-block:: bash
+      :substitutions:
 
-Install ROCm packages.
+      for ver in |rocm_multi_versions|; do
+          sudo zypper --gpg-auto-import-keys install rocm$ver
+      done
 
-.. code-block:: bash
-    :substitutions:
+4. Complete the :doc:`post-install`.
 
-    for ver in |rocm_multi_versions|; do
-        sudo zypper --gpg-auto-import-keys install rocm$ver
-    done
+.. tip::
 
-Complete the :doc:`post-install`.
+   For a single-version installation of the latest ROCm version on SLES,
+   use the steps in :ref:`sles-register-rocm` and :ref:`sles-install`.
+
