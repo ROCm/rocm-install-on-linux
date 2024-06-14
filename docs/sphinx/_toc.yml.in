@@ -3,7 +3,7 @@ defaults:
   maxdepth: 6
 root: index
 subtrees:
-- caption: Install
+- caption: Install ROCm
   entries:
     - file: tutorial/quick-start
       title: Quick start installation guide
@@ -31,21 +31,20 @@ subtrees:
               title: Installation via AMDGPU installer
         - file: how-to/native-install/post-install
           title: Post-install instructions
-    
+
+- caption: Install deep learning frameworks
+  entries:
+    - file: how-to/3rd-party/pytorch-install
+      title: PyTorch
+    - file: how-to/3rd-party/tensorflow-install
+      title: TensorFlow
+    - file: how-to/3rd-party/jax-install
+      title: JAX
+    - file: how-to/3rd-party/magma-install
+      title: MAGMA
     
 - caption: How to
   entries:
-  - file: how-to/3rd-party/third-party-index
-    subtrees:
-    - entries:
-      - file: how-to/3rd-party/pytorch-install
-        title: PyTorch
-      - file: how-to/3rd-party/tensorflow-install
-        title: TensorFlow
-      - file: how-to/3rd-party/jax-install
-        title: JAX
-      - file: how-to/3rd-party/magma-install
-        title: MAGMA
   - file: how-to/docker
     title: Run Docker containers
   - file: how-to/spack
