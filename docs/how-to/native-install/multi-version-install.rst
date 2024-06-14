@@ -80,5 +80,5 @@ repositories for all ROCm releases you want to install except for the latest
 one. The ``amdgpu-install`` script automatically adds the required repositories
 for the latest release.
 
-Refer to :ref:`Register ROCm packages <ubuntu-register-rocm>` on the
-:doc:`Ubuntu native installation <./native-install/ubuntu>` page.
+Refer to :ref:`Register ROCm packages <ubuntu-register-rocm>` for guidance on
+manually adding ROCm repositories.
