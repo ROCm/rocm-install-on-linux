@@ -2,9 +2,9 @@
   :description: Install multiple ROCm versions
   :keywords: installation instructions, AMD, ROCm, multiple versions
 
-******************************
-Install multiple ROCm versions
-******************************
+*********************************
+Installing multiple ROCm versions
+*********************************
 
 A multi-version ROCm installation covers situations where you need multiple
 verions of ROCm on the same machine -- for compatibility with different
@@ -40,8 +40,8 @@ multi-version ROCm installations.
    The AMDGPU kernel driver module does not support multi-version installation.
 
 
-Multi-version installation via package manager
-==============================================
+Using your package manager
+==========================
 
 Before proceeding with a multi-version ROCm installation, you must remove
 ROCm packages that were previously installed from a single-version
@@ -63,19 +63,21 @@ installation to avoid conflicts.
 
 .. _amdgpu-install-multi-version:
 
-Multi-version installation via AMDGPU installer
-===============================================
+Using the AMDGPU installer
+==========================
 
 By default (without the ``--rocmrelease`` option), the ``amdgpu-install``
-installer script installs packages in the single-version layout.
+script installs packages in the single-version layout. See
+:doc:`how-to/amdgpu-install` for an overview of the AMDGPU installer.
 
 For a multi-version ROCm installation, you must use the installer script from
 the latest ROCm release you want to install.
 
-**Example:** If you want to install ROCm releases 5.5.3, 5.6.1, and 5.7 simultaneously, you must
-download the ROCm 5.7 installer. Then, you must manually add the ROCm repositories for all ROCm
-releases you want to install, except for the latest one. The ``amdgpu-install`` script automatically adds
-the required repositories for the latest release.
+For example, to install ROCm releases 5.5.3, 5.6.1, and 5.7 simultaneously, you
+must download the ROCm 5.7 installer. Then, you must manually add the ROCm
+repositories for all ROCm releases you want to install except for the latest
+one. The ``amdgpu-install`` script automatically adds the required repositories
+for the latest release.
 
 Refer to :ref:`Register ROCm packages <ubuntu-register-rocm>` on the
 :doc:`Ubuntu native installation <./native-install/ubuntu>` page.
