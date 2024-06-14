@@ -58,21 +58,21 @@
 
 3. Install ROCm.
 
-   Install kernel driver.
+   a. Install kernel driver.
 
-   .. code-block:: bash
+      .. code-block:: bash
 
-      sudo yum install amdgpu-dkms
-      sudo reboot
+         sudo yum install amdgpu-dkms
+         sudo reboot
 
-   Install the registered ROCm packages.
+   b. Install the registered ROCm packages.
 
-   .. code-block:: bash
-      :substitutions:
+      .. code-block:: bash
+         :substitutions:
 
-      for ver in |rocm_multi_versions|; do
-          sudo yum install rocm$ver
-      done
+         for ver in |rocm_multi_versions|; do
+             sudo yum install rocm$ver
+         done
 
 4. Complete the :doc:`post-install`.
 

@@ -50,21 +50,21 @@
 
 4. Install ROCm.
 
-   Install the kernel driver.
+   a. Install the kernel driver.
 
-   .. code-block:: bash
+      .. code-block:: bash
 
-      sudo apt install amdgpu-dkms
-      sudo reboot
+         sudo apt install amdgpu-dkms
+         sudo reboot
 
-   Install the registered ROCm packages.
+   b. Install the registered ROCm packages.
 
-   .. code-block:: bash
-      :substitutions:
+      .. code-block:: bash
+         :substitutions:
 
-      for ver in |rocm_multi_versions|; do
-          sudo apt install rocm$ver
-      done
+         for ver in |rocm_multi_versions|; do
+             sudo apt install rocm$ver
+         done
 
 5. Complete the :doc:`post-install`.
 
