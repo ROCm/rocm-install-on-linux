@@ -38,7 +38,7 @@ multi-version ROCm installations.
 
 .. note::
 
-   The AMDGPU kernel driver module does not support multi-version installation.
+   Multi-version install is not available for the kernel driver module, also referred to as AMDGPU.
 
 
 Using your package manager
@@ -69,7 +69,7 @@ Using the AMDGPU installer
 
 By default (without the ``--rocmrelease`` option), the ``amdgpu-install``
 script installs packages in the single-version layout. See
-:doc:`how-to/amdgpu-install` for an overview of the AMDGPU installer.
+:doc:`../../how-to/amdgpu-install` for an overview of the AMDGPU installer.
 
 For a multi-version ROCm installation, you must use the installer script from
 the latest ROCm release you want to install.
