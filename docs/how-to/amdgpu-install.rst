@@ -233,25 +233,6 @@ To uninstall all ROCm packages and the kernel-mode driver, use the following com
 
     sudo amdgpu-install --uninstall --rocmrelease=all
 
-.. _amdgpu-install-multi-version:
-
-Multi-versioned ROCm installation
-=================================================
-
-By default (without the ``--rocmrelease`` option), the installer script installs packages in the
-single-version layout.
-
-For the multi-version ROCm installation, you must use the installer script from the latest ROCm release
-you want to install.
-
-**Example:** If you want to install ROCm releases 5.5.3, 5.6.1, and 5.7 simultaneously, you must
-download the ROCm 5.7 installer. Then, you must manually add the ROCm repositories for all ROCm
-releases you want to install, except for the latest one. The ``amdgpu-install`` script automatically adds
-the required repositories for the latest release.
-
-Refer to :ref:`Register ROCm packages <ubuntu-register-rocm>` on the
-:doc:`Ubuntu native installation <./native-install/ubuntu>` page.
-
 Additional options
 =================================================
 
