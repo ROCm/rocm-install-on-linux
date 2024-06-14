@@ -50,7 +50,7 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                         sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
                         sudo dnf install dnf-plugin-config-manager
                         sudo crb enable
-                        sudo yum install kernel-headers kernel-devel
+                        sudo yum install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
                         sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                         sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                         sudo yum clean all
