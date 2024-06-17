@@ -94,8 +94,7 @@ Refer to `RCCL Issue #1129 <https://github.com/ROCm/rccl/issues/1129>`_ for more
 .. _troubleshooting-install-missing-packages-for-dockers:
 
 Issue #6: Additional packages for Docker installations
-
-================================================
+========================================================
 
 Docker images often come with minimal installations, meaning some essential packages might be missing. When installing ROCm within a Docker container, you might need to install additional packages for a successful ROCm installation. Use the following commands to install the prerequisite packages.
 
@@ -124,7 +123,6 @@ Docker images often come with minimal installations, meaning some essential pack
     .. code-block:: shell
 
       zypper install sudo wget SUSEConnect
-
       SUSEConnect -r <REGCODE>
       SUSEConnect -p sle-module-desktop-application/15.4/x86_64
       SUSEConnect -p sle-module-development-tools/15.4/x86_64
