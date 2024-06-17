@@ -14,11 +14,11 @@ subtrees:
         - file: how-to/prerequisites
           title: Prerequisites
         - file: tutorial/install-overview
-          title: Package manager vs AMDGPU Install
+          title: Installation methods
           subtrees:
           - entries:
             - file: how-to/native-install/index
-              title: Installation via package manager
+              title: Package manager
               subtrees:
               - entries:
                 - file: how-to/native-install/ubuntu
@@ -28,9 +28,9 @@ subtrees:
                 - file: how-to/native-install/sles
                   title: SLES
             - file: how-to/amdgpu-install
-              title: Installation via AMDGPU installer
+              title: AMDGPU installer
             - file: how-to/native-install/multi-version-install
-              title: Installing multiple ROCm versions
+              title: Multi version install
         - file: how-to/native-install/post-install
           title: Post-install instructions
 

@@ -9,15 +9,24 @@
 ROCm installation overview
 *************************************************************
 
-To install ROCm, you can use the AMDGPU installer or the package manager. You can also opt for
-single-version or multi-version installation. These topics are described in detail in the following
-sections.
-
 If you're new to ROCm, we recommend using the :ref:`rocm-install-quick`.
 
 .. note::
     If you're using a Radeon GPU with graphical applications, refer to the
     `Radeon installation instructions <https://www.amd.com/en/support/kb/faq/rs-install>`_.
+
+To install ROCm, you can use the package manager or the AMDGPU installer. You can also opt for
+single-version or multi-version installation. These topics are described in detail in the following
+sections.
+
+Installation methods
+######################
+
+* :ref:`package_manager_versus_amdgpu`
+* :ref:`Multi version installation (Optional) <multi-version-install-overview>`
+
+
+.. _package_manager_versus_amdgpu:
 
 Package manager versus AMDGPU installer
 ===========================================================
@@ -42,3 +51,14 @@ for ROCm, including setting up the repository, cleaning the system, updating,
 and installing the desired drivers and meta-packages. Users who are
 less familiar with the package manager can choose this method for ROCm
 installation.
+
+* :doc:`Package manager installation <../how-to/native-install/index>`
+* :doc:`AMDGPU installation <../how-to/amdgpu-install>`
+
+.. _multi-version-install-overview:
+
+Multi version installation (Optional)
+===========================================================
+
+A select few users may want to install multiple versions of ROCm. Multi version installation covers situations where you need multiple versions of ROCm on the same machine. 
+Follow :doc:`installing multiple ROCm versions<../how-to/native-install/multi-version-install>` for instructions.
