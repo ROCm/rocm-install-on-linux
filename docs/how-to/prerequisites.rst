@@ -63,7 +63,7 @@ your operating system to ensure you're able to download and install packages.
         :sync: rhel-tab
 
         Typically you can register by following the step-by-step user interface.
-        However, if you need to register by command line, you can follow these examples:
+        If you need to register by command line, use the following commands:
 
         .. code-block:: shell
 
@@ -77,7 +77,7 @@ your operating system to ensure you're able to download and install packages.
         :sync: sle-tab
 
         Typically you can register by following the step-by-step user interface.
-        However, if you need to register by command line, you can follow these examples:
+        If you need to register by command line, use the following commands:
 
         .. code-block:: shell
 

@@ -93,10 +93,11 @@ Refer to `RCCL Issue #1129 <https://github.com/ROCm/rccl/issues/1129>`_ for more
 
 .. _troubleshooting-install-missing-packages-for-dockers:
 
-Issue #6: Additional packages for dockers
+Issue #6: Additional packages for Docker installations
+
 ================================================
 
-Docker containers may not include some basic packages.  When installing ROCm within docker containers, you may need to install packages prior to following the ROCm install instructions. Here are some suggested steps when using docker containers.
+Docker images often come with minimal installations, meaning some essential packages might be missing. When installing ROCm within a Docker container, you might need to install additional packages for a successful ROCm installation. Use the following commands to install the prerequisite packages.
 
 .. tab-set::
 
@@ -122,13 +123,15 @@ Docker containers may not include some basic packages.  When installing ROCm wit
 
     .. code-block:: shell
 
-      zypper install sudo wget SUSEConnet
+      zypper install sudo wget SUSEConnect
+
       SUSEConnect -r <REGCODE>
       SUSEConnect -p sle-module-desktop-application/15.4/x86_64
       SUSEConnect -p sle-module-development-tools/15.4/x86_64
       SUSEConnect -p PackageHub/15.4/x86_64
 
 
-After installing these packages and registering using your license for enterprise linux, you can install ROCm following the :doc:`quick start guide <../../tutorial/quick-start>` in your docker container.
+After installing these packages and :ref:`registering using your license for Enterprise Linux <register-enterprise-linux>` (if applicable), install ROCm following the :doc:`Quick start installation guide <../../tutorial/quick-start>` in your Docker container.
+
 
 
