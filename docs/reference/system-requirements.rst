@@ -82,7 +82,7 @@ AMD ROCm™ Software supports the following Linux distributions.
     "Ubuntu 22.04.3", "5.15 [GA], 6.2 [HWE]", "✅"
     "Ubuntu 20.04.6", "5.15 [HWE]", "✅"
     "Ubuntu 20.04.5", "5.15 [HWE]", "✅"
-    "RHEL 9.4", "5.14.0-362", "✅"
+    "RHEL 9.4", "5.14.0-362", "✅ :sup:`3`"
     "RHEL 9.3", "5.14.0-362", "✅"
     "RHEL 9.2", "5.14.0-362", "✅"
     "RHEL 8.9", "4.18-513", "✅"
@@ -91,6 +91,8 @@ AMD ROCm™ Software supports the following Linux distributions.
     "SLES 15 SP5", "5.14.21-150500", "✅"
     "SLES 15 SP4", "5.14.21-150500", "✅"
     "Oracle Linux 8.9", "5.15.0-205.1.49.5.1", "✅ [#oracle89]_"
+
+:sup:`3` RHEL 9.4 is only tested on AMD Instinct MI300A.
 
 Virtualization support
 =============================================
