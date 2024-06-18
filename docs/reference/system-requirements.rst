@@ -92,7 +92,7 @@ AMD ROCm™ Software supports the following Linux distributions.
     "SLES 15 SP4", "5.14.21-150500", "✅"
     "Oracle Linux 8.9", "5.15.0-205.1.49.5.1", "✅ [#oracle89]_"
 
-:sup:`3` RHEL 9.4 is only tested on AMD Instinct MI300A.
+:sup:`3` RHEL 9.4 is only supported on AMD Instinct MI300A.
 
 Virtualization support
 =============================================
