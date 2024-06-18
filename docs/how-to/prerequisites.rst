@@ -44,20 +44,64 @@ Before installing ROCm, complete the following prerequisites.
 
    * Confirm that your kernel version matches the system requirements, as listed in :ref:`supported_distributions`.
 
+.. _register-enterprise-linux:
+
+Register your Enterprise Linux
+==========================================================
+
+If you're using Red Hat Enterprise Linux (RHEL) or SUSE Linux Enterprise Server (SLES), register
+your operating system to ensure you're able to download and install packages.
+
+.. tab-set::
+
+  .. tab-item:: Ubuntu
+        :sync: ubuntu-tab
+
+        There is no registration required for Ubuntu.
+
+  .. tab-item:: Red Hat Enterprise Linux
+        :sync: rhel-tab
+
+        Typically you can register by following the step-by-step user interface.
+        If you need to register by command line, use the following commands:
+
+        .. code-block:: shell
+
+            subscription-manager register --username <username> --password <password>
+            subscription-manager attach --auto
+            subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+
+        More details about `registering for RHEL <https://access.redhat.com/solutions/253273>`_
+
+  .. tab-item:: SUSE Linux Enterprise Server
+        :sync: sle-tab
+
+        Typically you can register by following the step-by-step user interface.
+        If you need to register by command line, use the following commands:
+
+        .. code-block:: shell
+
+            SUSEConnect -r <REGCODE>
+            SUSEConnect -p sle-module-desktop-application/15.4/x86_64
+            SUSEConnect -p sle-module-development-tools/15.4/x86_64
+            SUSEConnect -p PackageHub/15.4/x86_64
+
+        More details about `registering for SLES <https://www.suse.com/support/kb/doc/?id=000018564>`_
+
+
 Additional package repositories
 ==========================================================
 
-On some distributions the ROCm packages depend on packages outside the default package
-repositories. These extra repositories need to be enabled before installation. Use the following
-instructions for your distribution.
+For some distributions, the ROCm installation packages depend on packages that aren't included in the default package
+repositories. These external repositories need to be sourced before installation. Use the following
+instructions specific to your distribution to add the necessary repositories.
 
 .. tab-set::
 
     .. tab-item:: Ubuntu
         :sync: ubuntu-tab
 
-        All packages are available in the default Ubuntu repositories, so you don't need to add additional
-        repositories.
+        All ROCm installation packages are available in the default Ubuntu repositories.
 
     .. tab-item:: Red Hat Enterprise Linux
         :sync: rhel-tab
