@@ -59,7 +59,9 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                        sudo yum install amdgpu-dkms rocm
 
                 {% if os_version == '9.4' %}
-                    RHEL 9.4 is only supported on AMD Instinct MI300A.
+                    .. note::
+
+                        RHEL 9.4 is only supported on AMD Instinct MI300A.
                 {% endif %}
                 {% endfor %}
 

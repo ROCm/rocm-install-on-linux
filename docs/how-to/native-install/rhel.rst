@@ -37,7 +37,9 @@ Register kernel-mode driver
                 EOF
                 sudo yum clean all
         {% if os_version == '9.4' %}
-            RHEL 9.4 is only supported on AMD Instinct MI300A.
+            .. note::
+
+                RHEL 9.4 is only supported on AMD Instinct MI300A.
         {% endif %}
         {% endfor %}
 
@@ -109,7 +111,9 @@ Register kernel-mode driver
                 done
                 sudo yum clean all
         {% if os_version == '9.4' %}
-            RHEL 9.4 is only supported on AMD Instinct MI300A.
+            .. note::
+
+                RHEL 9.4 is only supported on AMD Instinct MI300A.
         {% endif %}
         {% endfor %}
 
