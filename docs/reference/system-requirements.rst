@@ -23,8 +23,8 @@ GPU is not listed on this table, it's not officially supported by AMD.
       :widths: 50, 25, 25, 10
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
-      "AMD Instinct MI300X", "CDNA3", "gfx942", "✅ :sup:`1`"
-      "AMD Instinct MI300A", "CDNA3", "gfx942", "✅ :sup:`2`"
+      "AMD Instinct MI300X", "CDNA3", "gfx942", "✅ [#mi300x]_"
+      "AMD Instinct MI300A", "CDNA3", "gfx942", "✅ [#mi300a]_"
       "AMD Instinct MI250X", "CDNA2", "gfx90a", "✅"
       "AMD Instinct MI250", "CDNA2", "gfx90a", "✅"
       "AMD Instinct MI210", "CDNA2", "gfx90a", "✅"
@@ -63,10 +63,6 @@ ROCm product.
 
 ❌: **Unsupported** - This configuration is not enabled in our software distributions.
 
-:sup:`1` MI300X is only supported on Ubuntu 22.04.4 (kernel: 5.15 [GA]) and Oracle Linux 8.9.
-
-:sup:`2` MI300A is supported on Ubuntu 22.04.4 (kernel: 5.15 [GA], 6.5 [HWE]), RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
-
 .. important:: 
   Systems with multiple GPUs may require ``iommu=pt`` to be set at boot time to prevent application hangs, as described in :doc:`Troubleshooting - Issue #5 <../how-to/native-install/install-faq>`
 
@@ -93,9 +89,7 @@ AMD ROCm™ Software supports the following Linux distributions.
     "CentOS 7.9", "3.10", "✅"
     "SLES 15 SP5", "5.14.21-150500", "✅"
     "SLES 15 SP4", "5.14.21-150500", "✅"
-    "Oracle Linux 8.9", "5.15.0-205.1.49.5.1", "✅ :sup:`3`"
-    
-:sup:`3` Oracle Linux 8.9 is only supported on AMD Instinct MI300X.
+    "Oracle Linux 8.9", "5.15.0-205.1.49.5.1", "✅ [#oracle89]_"
 
 Virtualization support
 =============================================
@@ -115,3 +109,9 @@ CPU support
 
 ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release of
 1st generation AMD Zen CPU and Intel™ Haswell support PCIe atomics.
+
+.. rubric:: Footnotes
+
+.. [#mi300x] MI300X is supported only on Ubuntu 22.04.4 (kernel: 5.15 [GA]) and Oracle Linux 8.9.
+.. [#mi300a] MI300A is supported on Ubuntu 22.04.4 (kernel: 5.15 [GA], 6.5 [HWE]), RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
+.. [#oracle89] Oracle Linux 8.9 is supported only on AMD Instinct MI300X.
