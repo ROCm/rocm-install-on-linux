@@ -57,6 +57,10 @@ Red Hat Enterprise Linux
                 :substitutions:
 
                 sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+
+        {% if os_version == '9.4' %}
+            RHEL 9.4 is only supported on AMD Instinct MI300A.
+        {% endif %}
         {% endfor %}
 
 SUSE Linux Enterprise
