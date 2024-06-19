@@ -36,6 +36,11 @@ Register kernel-mode driver
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
                 EOF
                 sudo yum clean all
+        {% if os_version == '9.4' %}
+            .. note::
+
+                RHEL 9.4 is supported only on AMD Instinct MI300A.
+        {% endif %}
         {% endfor %}
 
 .. _rhel-register-rocm:
@@ -105,6 +110,11 @@ Register kernel-mode driver
                 EOF
                 done
                 sudo yum clean all
+        {% if os_version == '9.4' %}
+            .. note::
+
+                RHEL 9.4 is only supported on AMD Instinct MI300A.
+        {% endif %}
         {% endfor %}
 
 .. _rhel-multi-register-rocm:
