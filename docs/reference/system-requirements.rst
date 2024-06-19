@@ -81,6 +81,7 @@ AMD ROCm™ Software supports the following Linux distributions.
     "Ubuntu 22.04.3", "5.15 [GA], 6.2 [HWE]", "✅"
     "Ubuntu 20.04.6", "5.15 [HWE]", "✅"
     "Ubuntu 20.04.5", "5.15 [HWE]", "✅"
+    "RHEL 9.4", "5.14.0-362", "✅ [#red-hat94]_"
     "RHEL 9.3", "5.14.0-362", "✅"
     "RHEL 9.2", "5.14.0-362", "✅"
     "RHEL 8.9", "4.18-513", "✅"
@@ -112,5 +113,6 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 .. rubric:: Footnotes
 
 .. [#mi300x] MI300X is supported only on Ubuntu 22.04.4 (kernel: 5.15 [GA]) and Oracle Linux 8.9.
-.. [#mi300a] MI300A is supported on Ubuntu 22.04.4 (kernel: 5.15 [GA], 6.5 [HWE]), RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
+.. [#mi300a] MI300A is supported on Ubuntu 22.04.4 (kernel: 5.15 [GA], 6.5 [HWE]), RHEL 9.4, RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
+.. [#red-hat94] RHEL 9.4 is supported only on AMD Instinct MI300A.
 .. [#oracle89] Oracle Linux 8.9 is supported only on AMD Instinct MI300X.
