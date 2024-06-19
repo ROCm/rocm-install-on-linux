@@ -23,8 +23,8 @@ GPU is not listed on this table, it's not officially supported by AMD.
       :widths: 50, 25, 25, 10
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
-      "AMD Instinct MI300X", "CDNA3", "gfx942", "✅ :sup:`1`"
-      "AMD Instinct MI300A", "CDNA3", "gfx942", "✅ :sup:`2`"
+      "AMD Instinct MI300X", "CDNA3", "gfx942", "✅ [#mi300x]_"
+      "AMD Instinct MI300A", "CDNA3", "gfx942", "✅ [#mi300a]_"
       "AMD Instinct MI250X", "CDNA2", "gfx90a", "✅"
       "AMD Instinct MI250", "CDNA2", "gfx90a", "✅"
       "AMD Instinct MI210", "CDNA2", "gfx90a", "✅"
@@ -62,10 +62,6 @@ ROCm product.
 
 ❌: **Unsupported** - This configuration is not enabled in our software distributions.
 
-:sup:`1` MI300X is only supported on Ubuntu 22.04.4.
-
-:sup:`2` MI300A is supported on Ubuntu 22.04.4, RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
-
 .. important:: 
   Systems with multiple GPUs may require ``iommu=pt`` to be set at boot time to prevent application hangs, as described in :doc:`Troubleshooting - Issue #5 <../how-to/native-install/install-faq>`
 
@@ -80,6 +76,11 @@ AMD ROCm™ Software supports the following Linux distributions.
     :widths: 50, 50, 25
     :header: "Operating system", "Kernel", "Support"
 
+    "Ubuntu 22.04.4", "5.15 [GA], 6.5 [HWE]", "✅"
+    "Ubuntu 22.04.3", "5.15 [GA], 6.2 [HWE]", "✅"
+    "Ubuntu 20.04.6", "5.15 [HWE]", "✅"
+    "Ubuntu 20.04.5", "5.15 [HWE]", "✅"
+    "RHEL 9.4", "5.14.0-362", "✅ [#red-hat94]_"
     "RHEL 9.3", "5.14.0-362", "✅"
     "RHEL 9.2", "5.14.0-362", "✅"
     "RHEL 8.9", "4.18-513", "✅"
@@ -87,10 +88,6 @@ AMD ROCm™ Software supports the following Linux distributions.
     "CentOS 7.9", "3.10", "✅"
     "SLES 15 SP5", "5.14.21-150500", "✅"
     "SLES 15 SP4", "5.14.21-150500", "✅"
-    "Ubuntu 22.04.4", "6.5", "✅"
-    "Ubuntu 22.04.3", "6.2", "✅"
-    "Ubuntu 20.04.6", "5.15", "✅"
-    "Ubuntu 20.04.5", "5.15", "✅"
 
 Virtualization support
 =============================================
@@ -110,3 +107,9 @@ CPU support
 
 ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release of
 1st generation AMD Zen CPU and Intel™ Haswell support PCIe atomics.
+
+.. rubric:: Footnotes
+
+.. [#mi300x] MI300X is supported only on Ubuntu 22.04.4 (kernel: 5.15 [GA]).
+.. [#mi300a] MI300A is supported on Ubuntu 22.04.4 (kernel: 5.15 [GA], 6.5 [HWE]), RHEL 9.4, RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
+.. [#red-hat94] RHEL 9.4 is supported only on AMD Instinct MI300A.
