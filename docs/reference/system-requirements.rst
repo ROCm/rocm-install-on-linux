@@ -113,7 +113,7 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 
 .. rubric:: Footnotes
 
-.. [#mi300x] MI300X is only supported on Ubuntu 22.04.4 (kernel: 5.15 [GA]).
+.. [#mi300x] MI300X is supported only on Ubuntu 22.04.4 (kernel: 5.15 [GA]).
 .. [#mi300a] MI300A is supported on Ubuntu 22.04.4 (kernel: 5.15 [GA], 6.5 [HWE]), RHEL 9.4, RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
 .. [#red-hat94] RHEL 9.4 is supported only on AMD Instinct MI300A.
 .. [#oracle89] Oracle Linux 8.9 is supported only on AMD Instinct MI300X.

@@ -61,7 +61,7 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                 {% if os_version == '9.4' %}
                    .. note::
 
-                       RHEL 9.4 is only supported on AMD Instinct MI300A.
+                       RHEL 9.4 is supported only on AMD Instinct MI300A.
                 {% endif %}
                 {% endfor %}
 
