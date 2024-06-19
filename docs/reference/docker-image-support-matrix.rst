@@ -8,9 +8,9 @@
 Docker image support matrix
 ******************************************************************
 
-AMD validates and publishes `PyTorch <https://hub.docker.com/r/rocm/pytorch>`_ and
-`TensorFlow <https://hub.docker.com/r/rocm/tensorflow>`_ containers on Docker Hub. The following
-tags, and associated inventories, are validated with ROCm 6.1.
+AMD validates and publishes ready-made `PyTorch <https://hub.docker.com/r/rocm/pytorch>`_ and
+`TensorFlow <https://hub.docker.com/r/rocm/tensorflow>`_ images with ROCm backends on Docker Hub.
+The following Docker image tags and associated inventories are validated for ROCm 6.1.
 
 .. tab-set::
 
