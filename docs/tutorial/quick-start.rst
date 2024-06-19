@@ -8,7 +8,9 @@
 Quick start installation guide
 ******************************
 
-This topic provides basic installation instructions for ROCm on Linux using your distribution’s native package manager. Review your required installation instructions by selecting your operating system and version, and then run the provided commands in your terminal.
+This topic provides basic installation instructions for ROCm on Linux using your distribution’s native package manager. Before you begin, you should confirm your :ref:`kernel version <verify_kernel_version>` matches the :ref:`ROCm system requirements <supported_distributions>`.  
+
+Once you do, review your required installation instructions by selecting your operating system and version, and then run the provided commands in your terminal.
 
 For more in-depth installation instructions, refer to :ref:`detailed-install-overview`.
 
