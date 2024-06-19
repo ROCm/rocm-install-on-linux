@@ -57,6 +57,12 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
                        sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        sudo yum clean all
                        sudo yum install amdgpu-dkms rocm
+
+                {% if os_version == '9.4' %}
+                   .. note::
+
+                       RHEL 9.4 is supported only on AMD Instinct MI300A.
+                {% endif %}
                 {% endfor %}
 
         .. tab-item:: SUSE Linux Enterprise Server
