@@ -91,3 +91,45 @@ The returned information should reflect the addition of ``iommu``:
 
 Refer to `RCCL Issue #1129 <https://github.com/ROCm/rccl/issues/1129>`_ for more information. 
 
+.. _troubleshooting-install-missing-packages-for-dockers:
+
+Issue #6: Additional packages for Docker installations
+========================================================
+
+Docker images often come with minimal installations, meaning some essential packages might be missing. When installing ROCm within a Docker container, you might need to install additional packages for a successful ROCm installation. Use the following commands to install the prerequisite packages.
+
+.. tab-set::
+
+  .. tab-item:: Ubuntu
+
+    .. code-block:: shell
+
+      apt update
+      apt install sudo wget
+
+
+  .. tab-item:: RHEL
+
+    .. code-block:: shell
+
+      dnf install sudo wget
+      subscription-manager register --username <username> --password <password>
+      subscription-manager attach --auto
+      subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+
+
+  .. tab-item:: SLES
+
+    .. code-block:: shell
+
+      zypper install sudo wget SUSEConnect
+      SUSEConnect -r <REGCODE>
+      SUSEConnect -p sle-module-desktop-application/15.4/x86_64
+      SUSEConnect -p sle-module-development-tools/15.4/x86_64
+      SUSEConnect -p PackageHub/15.4/x86_64
+
+
+After installing these packages and :ref:`registering using your license for Enterprise Linux <register-enterprise-linux>` (if applicable), install ROCm following the :doc:`Quick start installation guide <../../tutorial/quick-start>` in your Docker container.
+
+
+
