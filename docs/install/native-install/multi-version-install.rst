@@ -27,7 +27,7 @@ A single-version ROCm installation involves the following.
 
 * Using non-versioned ROCm meta-packages.
 
-See :doc:`../../tutorial/quick-start` or :doc:`../../tutorial/detailed-install` for
+See :doc:`../../install/quick-start` or :doc:`../../install/detailed-install` for
 a standard single-version installation.
 
 The following diagram illustrates the difference between single-version and
@@ -69,7 +69,7 @@ Using the AMDGPU installer
 
 By default (without the ``--rocmrelease`` option), the ``amdgpu-install``
 script installs packages in the single-version layout. See
-:doc:`../../how-to/amdgpu-install` for an overview of the AMDGPU installer.
+:doc:`../../install/amdgpu-install` for an overview of the AMDGPU installer.
 
 For a multi-version ROCm installation, you must use the installer script from
 the latest ROCm release you want to install.

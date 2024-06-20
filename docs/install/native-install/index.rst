@@ -27,4 +27,4 @@ Select the install instructions for your operating system
     
 
 See also: :doc:`/reference/system-requirements`. If you encounter install issues, you can refer to the
-:doc:`troubleshooting <install-faq>` page.
+:doc:`troubleshooting </reference/install-faq>` page.

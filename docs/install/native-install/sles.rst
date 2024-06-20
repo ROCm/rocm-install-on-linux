@@ -76,7 +76,7 @@ Install ROCm packages
 
     sudo zypper --gpg-auto-import-keys install rocm
 
-Complete the :doc:`post-install`.
+Complete the :doc:`../post-install`.
 
 .. _sles-upgrade:
 

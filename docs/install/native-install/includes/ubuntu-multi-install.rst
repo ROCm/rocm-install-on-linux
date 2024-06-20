@@ -66,7 +66,7 @@
              sudo apt install rocm$ver
          done
 
-5. Complete the :doc:`post-install`.
+5. Complete the :doc:`../post-install`.
 
 .. tip::
 

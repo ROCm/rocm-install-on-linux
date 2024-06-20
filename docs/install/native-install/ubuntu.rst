@@ -104,7 +104,7 @@ Install ROCm packages
 
     sudo apt install rocm
 
-Complete the :doc:`post-install`.
+Complete the :doc:`../post-install`.
 
 
 .. _ubuntu-upgrade:

@@ -52,8 +52,8 @@ and installing the desired drivers and meta-packages. Users who are
 less familiar with the package manager can choose this method for ROCm
 installation.
 
-* :doc:`Package manager installation <../how-to/native-install/index>`
-* :doc:`AMDGPU installation <../how-to/amdgpu-install>`
+* :doc:`Package manager installation <../install/native-install/index>`
+* :doc:`AMDGPU installation <../install/amdgpu-install>`
 
 .. _multi-version-install-overview:
 
@@ -61,4 +61,4 @@ Multi version installation (Optional)
 ===========================================================
 
 A select few users may want to install multiple versions of ROCm. Multi version installation covers situations where you need multiple versions of ROCm on the same machine. 
-Follow :doc:`installing multiple ROCm versions<../how-to/native-install/multi-version-install>` for instructions.
+Follow :doc:`installing multiple ROCm versions<../install/native-install/multi-version-install>` for instructions.

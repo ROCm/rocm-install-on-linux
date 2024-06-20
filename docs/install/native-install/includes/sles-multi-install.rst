@@ -38,7 +38,7 @@
              sudo zypper --gpg-auto-import-keys install rocm$ver
          done
 
-4. Complete the :doc:`post-install`.
+4. Complete the :doc:`../post-install`.
 
 .. tip::
 

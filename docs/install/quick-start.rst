@@ -96,4 +96,4 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
 
     To apply all settings, reboot your system.
 
-After completing the installation, review the :doc:`../how-to/native-install/post-install`. If you have issues with your installation, see :doc:`Troubleshooting <../how-to/native-install/install-faq>`.
+After completing the installation, review the :doc:`post-install`. If you have issues with your installation, see :doc:`Troubleshooting <../reference/install-faq>`.

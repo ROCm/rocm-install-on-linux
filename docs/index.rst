@@ -15,15 +15,15 @@ This section describes the ROCm for Linux installation options.
 
     .. grid-item-card:: Install ROCm
       
-       * :doc:`Quick start <tutorial/quick-start>` - recommended for new users
-       * :doc:`Detailed install <tutorial/detailed-install>` - includes explanations
+       * :doc:`Quick start <install/quick-start>` - recommended for new users
+       * :doc:`Detailed install <install/detailed-install>` - includes explanations
 
     .. grid-item-card:: Install deep learning frameworks
 
-       * :doc:`PyTorch <how-to/3rd-party/pytorch-install>`
-       * :doc:`TensorFlow <how-to/3rd-party/tensorflow-install>`
-       * :doc:`JAX <how-to/3rd-party/jax-install>`
-       * :doc:`MAGMA <how-to/3rd-party/magma-install>`
+       * :doc:`PyTorch <install/3rd-party/pytorch-install>`
+       * :doc:`TensorFlow <install/3rd-party/tensorflow-install>`
+       * :doc:`JAX <install/3rd-party/jax-install>`
+       * :doc:`MAGMA <install/3rd-party/magma-install>`
 
 
 The documentation is structured as follows:
@@ -39,9 +39,9 @@ The documentation is structured as follows:
     .. grid-item-card:: Reference
 
         * :doc:`reference/docker-image-support-matrix`
-        * :doc:`Package manager integration <how-to/native-install/package-manager-integration>`
+        * :doc:`reference/package-manager-integration`
         * :doc:`reference/system-requirements`
         * :doc:`reference/3rd-party-support-matrix`
-        * :doc:`Troubleshooting <how-to/native-install/install-faq>`
+        * :doc:`Troubleshooting <reference/install-faq>`
         * :doc:`reference/user-kernel-space-compat-matrix`
         

@@ -5,44 +5,44 @@ root: index
 subtrees:
 - caption: Install ROCm
   entries:
-    - file: tutorial/quick-start
+    - file: install/quick-start
       title: Quick start installation guide
-    - file: tutorial/detailed-install
+    - file: install/detailed-install
       title: Detailed install
       subtrees:
       - entries:
-        - file: how-to/prerequisites
+        - file: install/prerequisites
           title: Prerequisites
-        - file: tutorial/install-overview
+        - file: install/install-overview
           title: Installation methods
           subtrees:
           - entries:
-            - file: how-to/native-install/index
+            - file: install/native-install/index
               title: Package manager
               subtrees:
               - entries:
-                - file: how-to/native-install/ubuntu
+                - file: install/native-install/ubuntu
                   title: Ubuntu
-                - file: how-to/native-install/rhel
+                - file: install/native-install/rhel
                   title: RHEL
-                - file: how-to/native-install/sles
+                - file: install/native-install/sles
                   title: SLES
-            - file: how-to/amdgpu-install
+            - file: install/amdgpu-install
               title: AMDGPU installer
-            - file: how-to/native-install/multi-version-install
+            - file: install/native-install/multi-version-install
               title: Multi version install
-        - file: how-to/native-install/post-install
+        - file: install/post-install
           title: Post-install instructions
 
 - caption: Install deep learning frameworks
   entries:
-    - file: how-to/3rd-party/pytorch-install
+    - file: install/3rd-party/pytorch-install
       title: PyTorch
-    - file: how-to/3rd-party/tensorflow-install
+    - file: install/3rd-party/tensorflow-install
       title: TensorFlow
-    - file: how-to/3rd-party/jax-install
+    - file: install/3rd-party/jax-install
       title: JAX
-    - file: how-to/3rd-party/magma-install
+    - file: install/3rd-party/magma-install
       title: MAGMA
     
 - caption: How to
@@ -56,13 +56,13 @@ subtrees:
   entries:
     - file: reference/docker-image-support-matrix
       title: Docker image support
-    - file: how-to/native-install/package-manager-integration
+    - file: reference/package-manager-integration
       title: Package manager integration
     - file: reference/system-requirements
       title: System requirements
     - file: reference/3rd-party-support-matrix
       title: Third-party support
-    - file: how-to/native-install/install-faq
+    - file: reference/install-faq
       title: Troubleshooting
     - file: reference/user-kernel-space-compat-matrix
       title: User & Kernel-space support
