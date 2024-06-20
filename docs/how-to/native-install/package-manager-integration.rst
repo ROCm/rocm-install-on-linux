@@ -140,7 +140,7 @@ The following table shows the meta-packages and their associated (meta-)packages
   |                            | ``rocprofiler-plugins``,        |
   |                            | ``roctracer``                   |
   +----------------------------+---------------------------------+
-  | ``rocm-mi-sdk``            | Meta packages:                  |
+  | ``rocm-ml-sdk``            | Meta packages:                  |
   |                            |                                 |
   |                            | ``rocm-hip-sdk``,               |
   |                            | ``rocm-ml-libraries``           |
