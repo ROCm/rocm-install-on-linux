@@ -44,7 +44,7 @@ Using a prebuilt Docker image
 -------------------------------------------------------------------------------
 
 To install ROCm on bare metal, follow
-:doc:`/tutorial/install-overview`. The recommended option to
+:doc:`/install/install-overview`. The recommended option to
 get a TensorFlow environment is through Docker.
 
 Using Docker provides portability and access to a prebuilt Docker image that

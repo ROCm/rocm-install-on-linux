@@ -26,7 +26,7 @@ All meta-packages exist in both versioned and non-versioned forms.
 * Non-versioned packages: For a single-version installation of the ROCm stack
 * Versioned packages: For multi-version installations of the ROCm stack
 
-.. image:: ../../data/install/linux/linux002.png
+.. image:: ../data/install/linux/linux002.png
     :alt: ROCm Release Package Naming
 
 The figure above demonstrates the single and multi-version ROCm packages' naming
@@ -60,7 +60,7 @@ Components of ROCm programming models
 The figure below demonstrates the high-level layered architecture of ROCm programming models and their meta-packages.
 All meta-packages are a combination of required packages and libraries.
 
-.. image:: ../../data/install/linux/linux003.png
+.. image:: ../data/install/linux/linux003.png
     :width: 1500
     :alt: ROCm meta packages
 

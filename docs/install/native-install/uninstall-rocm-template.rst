@@ -28,7 +28,7 @@ Uninstall kernel-mode driver
 
 .. code-block:: bash
 
-    sudo yum remove  amdgpu-dkms
+    sudo yum remove amdgpu-dkms
 
 Remove ROCm and AMDGPU repositories
 ----------------------------------------------------------------------------------------------------------

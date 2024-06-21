@@ -64,7 +64,7 @@ ROCm product.
 ❌: **Unsupported** - This configuration is not enabled in our software distributions.
 
 .. important:: 
-  Systems with multiple GPUs may require ``iommu=pt`` to be set at boot time to prevent application hangs, as described in :doc:`Troubleshooting - Issue #5 <../how-to/native-install/install-faq>`
+  Systems with multiple GPUs may require ``iommu=pt`` to be set at boot time to prevent application hangs, as described in :doc:`Troubleshooting - Issue #5 <../reference/install-faq>`
 
 .. _supported_distributions:
 

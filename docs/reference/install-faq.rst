@@ -17,9 +17,9 @@ As an example, the latest version of ROCm is 6.0.2, but the installation instruc
 
 **Solution:** You may have used the quick-start installation method which only installs the latest major release. Use one of the other available installation methods:
 
-* :doc:`Quick-start installation <../../tutorial/quick-start>` - Installs only the latest **major** release (i.e. 6.0.0, or 6.1.0)
-* :doc:`Native package manager install method <./index>` - Installs the specified *major and minor* release version (i.e. 6.0.0, 6.0.2)
-* :doc:`amdgpu-install method <../amdgpu-install>` - Installs the specified *major and minor* release version (i.e. 6.0.0, 6.0.2)
+* :doc:`Quick-start installation <../install/quick-start>` - Installs only the latest **major** release (i.e. 6.0.0, or 6.1.0)
+* :doc:`Native package manager install method <../install/native-install/index>` - Installs the specified *major and minor* release version (i.e. 6.0.0, 6.0.2)
+* :doc:`amdgpu-install method <../install/amdgpu-install>` - Installs the specified *major and minor* release version (i.e. 6.0.0, 6.0.2)
 
 Refer to `ROCm Issue #2422 <https://github.com/ROCm/ROCm/issues/2422>`_ for additional details.
 
@@ -29,7 +29,7 @@ Issue #2: Install Prerequisites
 
 When installing, I see the following message: ``Problem: nothing provides perl-URI-Encode needed to be installed by ...``
 
-**Solution:** Ensure that the :doc:`../prerequisites` are installed.  There are prerequisite PERL packages required for SUSE.  RHEL also requires Extra Packages for Enterprise Linux (EPEL) to be installed, which is also mentioned in prerequisites.  Be sure to install those first, then repeat your installation steps.
+**Solution:** Ensure that the :doc:`../install/prerequisites` are installed.  There are prerequisite PERL packages required for SUSE.  RHEL also requires Extra Packages for Enterprise Linux (EPEL) to be installed, which is also mentioned in prerequisites.  Be sure to install those first, then repeat your installation steps.
 
 Refer to `ROCm Issue #1827 <https://github.com/ROCm/ROCm/issues/1827>`_. 
 
@@ -39,7 +39,7 @@ Issue #3: PATH variable
 
 After successfully installing ROCm, when I run ``rocminfo`` (or another ROCm tool) the command is not found.
 
-**Solution:** You may need to update your ``PATH`` environment variable as described in :doc:`./post-install`.
+**Solution:** You may need to update your ``PATH`` environment variable as described in :doc:`../install/post-install`.
 
 Refer to `ROCm Issue #1607 <https://github.com/ROCm/ROCm/issues/1607>`_.
 
@@ -129,7 +129,7 @@ Docker images often come with minimal installations, meaning some essential pack
       SUSEConnect -p PackageHub/15.4/x86_64
 
 
-After installing these packages and :ref:`registering using your license for Enterprise Linux <register-enterprise-linux>` (if applicable), install ROCm following the :doc:`Quick start installation guide <../../tutorial/quick-start>` in your Docker container.
+After installing these packages and :ref:`registering using your license for Enterprise Linux <register-enterprise-linux>` (if applicable), install ROCm following the :doc:`Quick start installation guide <../install/quick-start>` in your Docker container.
 
 
 
