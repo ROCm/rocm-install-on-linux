@@ -33,8 +33,8 @@ Package manager versus AMDGPU installer
 
 ROCm supports two methods for installation:
 
-- Using the Linux distribution package manager
-- Running the ``amdgpu-install`` script
+* :doc:`Using the Linux distribution package manager <../install/native-install/index>`
+* :doc:`Running the amdgpu-install script <../install/amdgpu-install>`
 
 There is no difference in the final installation between these two methods.
 
@@ -51,9 +51,6 @@ for ROCm, including setting up the repository, cleaning the system, updating,
 and installing the desired drivers and meta-packages. Users who are
 less familiar with the package manager can choose this method for ROCm
 installation.
-
-* :doc:`Package manager installation <../install/native-install/index>`
-* :doc:`AMDGPU installation <../install/amdgpu-install>`
 
 .. _multi-version-install-overview:
 
