@@ -59,6 +59,7 @@ external_projects_current_project = "rocm"
 rst_prolog = f"""
 .. |rocm_version| replace:: {rocm_version}
 .. |amdgpu_version| replace:: {amdgpu_version}
+.. |rocm_directory_version| replace:: {rocm_directory_version}
 .. |amdgpu_install_version| replace:: {amdgpu_install_version}
 """
 
