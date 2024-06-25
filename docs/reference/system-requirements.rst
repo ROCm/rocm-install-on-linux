@@ -59,7 +59,7 @@ GPU is not listed on this table, it's not officially supported by AMD.
 ✅: **Supported** - AMD enables these GPUs in our software distributions for the corresponding
 ROCm product.
 
-⚠️: **Deprecated** - Support for deprecated devices will be removed in a future release. While all existing functionalities on these GPUs will be maintained, no new functionalities may be added.
+⚠️: **Deprecated** - All existing GPU functionality will be maintained, and no new functionality will be added.
 
 ❌: **Unsupported** - HIP runtime may continue to work but prebuilt ROCm libraries published by AMD no longer support your product and will cause run-time errors.
 
