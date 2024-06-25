@@ -59,9 +59,9 @@ GPU is not listed on this table, it's not officially supported by AMD.
 ✅: **Supported** - AMD enables these GPUs in our software distributions for the corresponding
 ROCm product.
 
-⚠️: **Deprecated** - Support will be removed in a future release.
+⚠️: **Deprecated** - Support for deprecated devices will be removed in a future release. While all existing functionalities on these GPUs will be maintained, no new functionalities may be added.
 
-❌: **Unsupported** - This configuration is not enabled in our software distributions.
+❌: **Unsupported** - HIP runtime may continue to work but prebuilt ROCm libraries published by AMD no longer support your product and will cause run-time errors.
 
 .. important:: 
   Systems with multiple GPUs may require ``iommu=pt`` to be set at boot time to prevent application hangs, as described in :doc:`Troubleshooting - Issue #5 <../how-to/native-install/install-faq>`
