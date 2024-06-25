@@ -78,6 +78,7 @@ Add the ROCm repository.
                     | sudo tee --append /etc/apt/sources.list.d/rocm.list
                 echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
                     | sudo tee /etc/apt/preferences.d/rocm-pin-600
+                sudo apt update
         {% endfor %}
 
 .. _ubuntu-install:
