@@ -61,7 +61,7 @@ ROCm product.
 
 ⚠️: **Deprecated** - All existing GPU functionality will be maintained, and no new functionality will be added.
 
-❌: **Unsupported** - HIP runtime may continue to work but prebuilt ROCm libraries published by AMD no longer support your product and will cause run-time errors.
+❌: **Unsupported** - HIP runtime might continue to perform as expected, but prebuilt ROCm libraries published by AMD are no longer supported and will result in runtime errors.
 
 .. important:: 
   Systems with multiple GPUs may require ``iommu=pt`` to be set at boot time to prevent application hangs, as described in :doc:`Troubleshooting - Issue #5 <../how-to/native-install/install-faq>`
