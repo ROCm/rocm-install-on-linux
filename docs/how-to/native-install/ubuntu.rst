@@ -33,9 +33,6 @@ Download and convert the package signing key.
     The GPG key may change; ensure it is updated when installing a new release.
     If the key signature verification fails while updating,
     re-add the key from the ROCm to the apt repository as mentioned above.
-    The current ``rocm.gpg.key`` is not available in a standard key ring distribution
-    but has the following SHA1 sum hash:
-    ``73f5d8100de6048aa38a8b84cd9a87f05177d208 rocm.gpg.key``
 
 Register kernel-mode driver
 ---------------------------------------------------------------------------
