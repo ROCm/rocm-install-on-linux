@@ -97,7 +97,7 @@ tags, and associated inventories, are validated with ROCm 6.1.
 
             .. tab-item:: CentOS 7
 
-               Tag 
+               Tag
                  `rocm6.1_centos7_py3.9_pytorch_staging <https://hub.docker.com/layers/rocm/pytorch/rocm6.1_centos7_py3.9_pytorch_staging/images/sha256-b4311bc0c6221ffc388f678a0654f64919a3ecd46024ecf67b09fb494d6d192d>`_
 
                Inventory
