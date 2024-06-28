@@ -308,7 +308,7 @@ maintainers and installs all the required dependencies, including:
 
    .. code-block:: bash
 
-       docker run -it --cap-add=SYS_PTRACE --security-opt --user root seccomp=unconfined \
+       docker run -it --cap-add=SYS_PTRACE --security-opt seccomp=unconfined \
        --user root --device=/dev/kfd --device=/dev/dri \
        --group-add video --ipc=host --shm-size 8G \
        -v ~/pytorch:/pytorch rocm/pytorch:build_from_dockerfile
