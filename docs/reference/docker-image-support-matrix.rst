@@ -30,6 +30,7 @@ tags, and associated inventories, are validated with ROCm 6.1.
                  * `Apex 1.1.0 <https://github.com/ROCm/apex/tree/release/1.1.0>`_
                  * `torchvision 0.16.1 <https://github.com/pytorch/vision/tree/v0.16.1>`_
                  * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+                 * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
                  * `UCX 1.14.1 <https://github.com/openucx/ucx/tree/v1.14.1>`_
                  * `OMPI 4.1.5 <https://github.com/open-mpi/ompi/tree/v4.1.5>`_
                  * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
@@ -46,6 +47,7 @@ tags, and associated inventories, are validated with ROCm 6.1.
                  * `Apex 0.1 <https://github.com/ROCmSoftwarePlatform/apex/tree/v0.1>`_
                  * `torchvision 0.16.0 <https://github.com/pytorch/vision/tree/release/0.16>`_
                  * `TensorBoard 2.14.0 <https://github.com/tensorflow/tensorboard/tree/2.14>`_
+                 * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
                  * `UCX 1.10.0 <https://github.com/openucx/ucx/tree/v1.10.0>`_
                  * `OMPI 4.0.3 <https://github.com/open-mpi/ompi/tree/v4.0.3>`_
                  * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
@@ -64,6 +66,7 @@ tags, and associated inventories, are validated with ROCm 6.1.
                  * `Apex 1.0.0 <https://github.com/ROCm/apex/tree/release/1.0.0>`_
                  * `torchvision 0.15.2 <https://github.com/pytorch/vision/tree/release/0.15>`_
                  * `TensorBoard 2.16.2 <https://github.com/tensorflow/tensorboard/tree/2.16.2>`_
+                 * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
                  * `UCX 1.10.0 <https://github.com/openucx/ucx/tree/v1.10.0>`_
                  * `OMPI 4.0.3 <https://github.com/open-mpi/ompi/tree/v4.0.3>`_
                  * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
@@ -83,6 +86,7 @@ tags, and associated inventories, are validated with ROCm 6.1.
                  * `Apex 0.1 <https://github.com/ROCmSoftwarePlatform/apex/tree/v0.1>`_
                  * `torchvision 0.15.2 <https://github.com/pytorch/vision/tree/release/0.15>`_
                  * `TensorBoard 2.14.0 <https://github.com/tensorflow/tensorboard/tree/2.14>`_
+                 * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
                  * `UCX 1.10.0 <https://github.com/openucx/ucx/tree/v1.10.0>`_
                  * `OMPI 4.0.3 <https://github.com/open-mpi/ompi/tree/v4.0.3>`_
                  * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
@@ -93,7 +97,7 @@ tags, and associated inventories, are validated with ROCm 6.1.
 
             .. tab-item:: CentOS 7
 
-               Tag 
+               Tag
                  `rocm6.1_centos7_py3.9_pytorch_staging <https://hub.docker.com/layers/rocm/pytorch/rocm6.1_centos7_py3.9_pytorch_staging/images/sha256-b4311bc0c6221ffc388f678a0654f64919a3ecd46024ecf67b09fb494d6d192d>`_
 
                Inventory
@@ -102,6 +106,7 @@ tags, and associated inventories, are validated with ROCm 6.1.
                  * `PyTorch 2.3.0 <https://github.com/ROCmSoftwarePlatform/pytorch/tree/rocm6.1_internal_testing>`_
                  * `Apex 0.1 <https://github.com/ROCmSoftwarePlatform/apex/tree/v0.1>`_
                  * `torchvision 0.18.0 <https://github.com/pytorch/vision/tree/release/0.18>`_
+                 * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
 
     .. tab-item:: TensorFlow
 
