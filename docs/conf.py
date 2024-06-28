@@ -6,10 +6,10 @@
 
 # ROCm version numbers
 rocm_version = '6.1.2'
-rocm_multi_versions = '6.1.2 6.1.0'
+rocm_multi_versions = '6.1.2 6.1.1'
 rocm_directory_version = '6.1.2' # in 6.0 rocm was located in /opt/rocm-6.0.0
 amdgpu_version = '6.1.2' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '6.1.60102-1' # version in https://repo.radeon.com/amdgpu-install/6.1.2/ubuntu/jammy/
+amdgpu_install_version = '6.1.60102-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
 
 latex_engine = "xelatex"
 latex_elements = {
