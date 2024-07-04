@@ -56,8 +56,7 @@ GPU is not listed on this table, it's not officially supported by AMD.
       "AMD Radeon RX 7900 GRE", "RDNA3", "gfx1100", "✅"
       "AMD Radeon VII", "GCN5.1", "gfx906", "⚠️"
 
-✅: **Supported** - AMD enables these GPUs in our software distributions for the corresponding
-ROCm product.
+✅: **Supported** - Official software distributions of the current ROCm release fully enables this hardware.
 
 ⚠️: **Deprecated** - The current ROCm release has limited support for this hardware. Existing features and capabilities are maintained, but no new features or optimizations will be added. A future ROCm release will remove support.
 
