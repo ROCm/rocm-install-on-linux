@@ -77,3 +77,4 @@ Additional resources
 
         * :doc:`Run Docker containers <how-to/docker>`
         * :doc:`Use Spack <how-to/spack>`
+        * :doc:`MI300 pass-through on Cloud Hypervisor <how-to/MI300-Passthrough>`

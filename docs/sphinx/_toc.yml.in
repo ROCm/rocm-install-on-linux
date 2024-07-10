@@ -46,6 +46,8 @@ subtrees:
     title: Run Docker containers
   - file: how-to/spack
     title: Use Spack
+  - file: how-to/MI300-Passthrough
+    title: MI300 pass-through on Cloud Hypervisor
 
 - caption: Reference
   entries:
