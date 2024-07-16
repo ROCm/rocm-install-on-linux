@@ -16,7 +16,6 @@ For MI300 GPUs pass-through on the Cloud Hypervisor uses VFIO as a base solution
    :width: 500
    :alt: An abstract representation of VFIO pass-through operation
 
-
 Host SW setting - Linux kernel setup
 ====================================
 
@@ -64,19 +63,6 @@ Apply the ``/etc/default/grub`` updates for the appropriate OS as shown below:
             $ sudo update-grub2
             $ sudo reboot
 
-    .. tab-item:: Rocky Linux
-        :sync: RockyLinux
-
-        .. code-block:: shell
-
-            $ sudo grub2-mkconfig -o /boot/efi/EFI/rocky/grub.cfg 
-            $ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
-            $ sudo reboot
-
-        The ``grubby`` utility can also be used to update the kernel command line arguments:
-        
-        ``$ grubby --update-kernel=ALL --args="<NEW_PARAMETER>"``
-
 
 Known issues
 ------------
@@ -103,18 +89,22 @@ To resolve these issues edit the ``/etc/security/limits.conf`` file to increase 
 VM Hard disk image setup
 ========================
 
+.. # COMMENT: The following lines define a break for use in the table below. 
+.. |br| raw:: html 
+
+    <br />
+
 Setting up the VM hard disk image is a one-time task. After you have completed the VM hard disk image setup using the following steps you won't need to set up the VM hard disk image again.
 
-1.	Install hard disk image convert tools:
+1.  Install hard disk image convert tools:
 
     To enlarge and convert a hard disk image from ``qcow2`` to ``raw`` format, you need to use the ``qemu-img`` tool. Creating a cloud-init hard disk image also requires ``mtools``. Command to install ``qemu-img`` and ``mtools``:
 
     .. code-block:: shell
 
         $ sudo apt-get -y install qemu-img mtools  # For Ubuntu
-        $ sudo dnf -y install qemu-img mtools      # For Rocky Linux
 
-2.	Download the Cloud Hypervisor initial files:
+2.  Download the Cloud Hypervisor initial files:
 
     To setup the cloud-hypervisor VM, you need hypervisor related files such as applications, cloud-hypervisor customized kernel files hypervisor-fw, and pre-installed Ubuntu hard disk images. 
     
@@ -126,14 +116,16 @@ Setting up the VM hard disk image is a one-time task. After you have completed t
         :widths: 30, 70
         :header: "File", "Command"
 
-        hypervisor-fw, "$ wget https://github.com/cloud-hypervisor/rust-hypervisor-firmware/releases/download/0.4.2/hypervisor-fw"
-        cloud-hypervisor,	"$ wget https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v38.0/cloud-hypervisor"
-        jammy-server-cloudimg-amd64.img, "$ wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
-        user-data,	"$ wget https://raw.githubusercontent.com/cloud-hypervisor/cloud-hypervisor/main/test_data/cloud-init/ubuntu/local/user-data"
-        meta-data,	"$ wget https://raw.githubusercontent.com/cloud-hypervisor/cloud-hypervisor/main/test_data/cloud-init/ubuntu/local/meta-data"
-        Network-config,	"$ wget https://raw.githubusercontent.com/cloud-hypervisor/cloud-hypervisor/main/test_data/cloud-init/ubuntu/local/network-config"
+        hypervisor-fw, `$ wget https://github.com/cloud-hypervisor/rust-hypervisor-firmware/releases/download/0.4.2/hypervisor-fw`
+        cloud-hypervisor,	`$ wget https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v38.0/cloud-hypervisor`
+        jammy-server-cloudimg-amd64.img, `$ wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img`
+        user-data,	`$ wget https://raw.githubusercontent.com/cloud-hypervisor/cloud-hypervisor/main/test_data/cloud-init/ubuntu/local/user-data`
+        meta-data,	`$ wget https://raw.githubusercontent.com/cloud-hypervisor/cloud-hypervisor/main/test_data/cloud-init/ubuntu/local/meta-data`
+        Network-config,	`$ wget https://raw.githubusercontent.com/cloud-hypervisor/cloud-hypervisor/main/test_data/cloud-init/ubuntu/local/network-config`
 
-3.	Enlarge and convert the VM hard disk image to RAW format:
+
+
+3.  Enlarge and convert the VM hard disk image to RAW format:
 
     The pre-installed Ubuntu hard disk image capacity is small and doesn't have enough space to host the ROCm software stack. The Ubuntu hard disk image capacity needs to be expanded. 
     The Cloud Hypervisor doesn't support ``qcow2`` format hard disk image. You must convert it to RAW format.
@@ -145,7 +137,7 @@ Setting up the VM hard disk image is a one-time task. After you have completed t
         $ qemu-img create -b jammy-server-cloudimg-amd64.img -F qcow2 -f qcow2 jammy-server-cloudimg-amd64.qcow2 200G
         $ qemu-img convert -p -f qcow2 -O raw jammy-server-cloudimg-amd64.qcow2 jammy-server-cloudimg-amd64.raw
 
-4.	Create a ``cloud-init`` hard disk image:
+4.  Create a ``cloud-init`` hard disk image:
 
     The pre-installed Ubuntu hard disk image does not come with a default hostname, username, and password, so it needs to use a ``cloud-init`` disk image to set up the hostname, username, and password on the first boot.
 
@@ -160,7 +152,7 @@ Setting up the VM hard disk image is a one-time task. After you have completed t
         $ mcopy -oi /tmp/ubuntu-cloudinit.img -s meta-data ::
         $ mcopy -oi /tmp/ubuntu-cloudinit.img -s network-config ::
 
-5.	Start the VM for the first time:
+5.  Start the VM for the first time:
 
     Start your VM for the first time with the following commands:
 
@@ -179,7 +171,7 @@ Setting up the VM hard disk image is a one-time task. After you have completed t
     .. note::
         Some parameters in the command are only used when first starting the VM. These parameters will be changed in the following sections.
 
-6.	Setup the network in VM:
+6.  Setup the network in VM:
 
     After the VM is started, log in to the VM and configure the Ethernet. You'll use a NIC to communicate with the host, configured with IP address ``192.168.11.2``. The other NICs are used for bridging to the host network, configured as DHCP.
 
@@ -208,7 +200,7 @@ Setting up the VM hard disk image is a one-time task. After you have completed t
 
         $ sudo netplan apply
 
-7.	Disable auto-loading ``amdgpu`` in VM:
+7.  Disable auto-loading ``amdgpu`` in VM:
 
     You generally don't want the VM to automatically load the amdgpu driver. So add ``amdgpu`` to ``modprobe`` blacklist.
 
@@ -221,7 +213,7 @@ Setting up the VM hard disk image is a one-time task. After you have completed t
     .. tip::
         You can skip this if you need the VM to load ``amdgpu`` automatically.
 
-8.	Shutdown the VM:
+8.  Shutdown the VM:
 
     After you have completed the preceding steps to configure the VM hard disk image, you must shut down the VM.
 
@@ -229,7 +221,7 @@ Setting up the VM hard disk image is a one-time task. After you have completed t
 
         $ sudo shutdown now
 
-9.	Remove non-used files:
+9.  Remove non-used files:
 
     Because VM hard disk image setup is a one-time job, some files are not required after the setup job is completed, and you can safely delete them. 
     
