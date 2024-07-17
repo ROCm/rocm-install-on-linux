@@ -41,7 +41,9 @@ ol_version_numbers = [('8', '8.8')]
 exclude_patterns = [
     'temp', 
     'how-to/native-install/install-rocm-template.rst', 
-    'how-to/native-install/uninstall-rocm-template.rst'
+    'how-to/native-install/uninstall-rocm-template.rst',
+    'reference/algorithm-libraries-support-matrix-content.rst',
+    'reference/user-kernel-space-compat-matrix-content.rst'
 ]
 
 external_toc_path = "./sphinx/_toc.yml"
