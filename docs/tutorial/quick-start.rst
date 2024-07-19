@@ -12,6 +12,10 @@ This topic provides basic installation instructions for ROCm on Linux using your
 
 For more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
 
+.. note::
+    If you're using a Radeon GPU with graphical applications, refer to the
+    `Radeon installation instructions <https://rocm.docs.amd.com/projects/radeon/en/latest/index.html>`_.
+
 .. datatemplate:nodata::
 
     .. tab-set::
