@@ -78,18 +78,16 @@ AMD ROCm™ Software supports the following Linux distributions.
     :header: "Operating system", "Kernel", "Support"
     :escape: \
 
-    "Ubuntu 22.04.4", "5.15 [GA], 6.5 [HWE]", "✅"
-    "Ubuntu 22.04.3", "5.15 [GA], 6.2 [HWE]", "✅"
     "Ubuntu 20.04.6", "5.15 [HWE]", "✅"
     "Ubuntu 20.04.5", "5.15 [HWE]", "✅"
+    "Ubuntu 22.04.4", "5.15 [GA], 6.5 [HWE]", "✅"
+    "Ubuntu 22.04", "6.8", "✅"
     "RHEL 9.4", "5.14.0-362", "✅ [#red-hat94]_"
     "RHEL 9.3", "5.14.0-362", "✅"
-    "RHEL 9.2", "5.14.0-362", "✅"
-    "RHEL 8.9", "4.18-513", "✅"
-    "RHEL 8.8", "4.18-513", "✅"
-    "CentOS 7.9", "3.10", "✅"
+    "RHEL 8.10", "4.18.0-544", "✅"
+    "RHEL 8.9", "4.18.0-513", "✅"
     "SLES 15 SP5", "5.14.21-150500", "✅"
-    "SLES 15 SP4", "5.14.21-150500", "✅"
+    "SLES 15 SP6 [preview only]", "6.4", "✅"
     "Oracle Linux 8.9", "5.15.0-205.149.5.4 UEK", "✅ [#oracle89]_"
 
 Virtualization support
@@ -114,6 +112,5 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 .. rubric:: Footnotes
 
 .. [#mi300x] MI300X is supported only on Ubuntu 22.04.4 (kernel: 5.15 [GA]) and Oracle Linux 8.9.
-.. [#mi300a] MI300A is supported on Ubuntu 22.04.4 (kernel: 5.15 [GA], 6.5 [HWE]), RHEL 9.4, RHEL 9.3, RHEL 8.9 and SLES 15 SP5.
 .. [#red-hat94] RHEL 9.4 is supported only on AMD Instinct MI300A.
 .. [#oracle89] Oracle Linux 8.9 is supported only on AMD Instinct MI300X.
