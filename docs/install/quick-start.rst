@@ -14,6 +14,10 @@ Once you do, review your required installation instructions by selecting your op
 
 For more in-depth installation instructions, refer to :ref:`detailed-install-overview`.
 
+.. note::
+    If you're using a Radeon GPU with graphical applications, refer to the
+    `Radeon installation instructions <https://rocm.docs.amd.com/projects/radeon/en/latest/index.html>`_.
+
 .. datatemplate:nodata::
 
     .. tab-set::

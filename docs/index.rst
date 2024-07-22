@@ -10,6 +10,10 @@ ROCm installation for Linux
 
 This section describes the ROCm for Linux installation options.
 
+.. note::
+    If you're using a Radeon GPU with graphical applications, refer to the
+    `Radeon installation instructions <https://rocm.docs.amd.com/projects/radeon/en/latest/index.html>`_.
+    
 .. grid:: 2
     :gutter: 3
 
