@@ -17,4 +17,4 @@ Install ROCm packages
 
     sudo yum install rocm
 
-Complete the :doc:`post-install`.
+Complete the :doc:`../post-install`.
