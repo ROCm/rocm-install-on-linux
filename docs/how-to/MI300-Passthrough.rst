@@ -51,8 +51,6 @@ The changes to ``/etc/default/grub`` are shown in the following code with the re
 
 Apply the ``/etc/default/grub`` updates for the appropriate OS as shown below:
 
-.. tab:: 
-
 .. tab-set::
     .. tab-item:: Ubuntu
         :sync: Ubuntu

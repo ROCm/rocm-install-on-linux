@@ -1,4 +1,6 @@
+ARI
 BARs
+br
 Broadcom
 DHCP
 dkms
@@ -9,6 +11,7 @@ FWDEV
 hostname
 hotplug
 IFWI
+IIO
 IRQs
 MACVTAP
 MSRs
