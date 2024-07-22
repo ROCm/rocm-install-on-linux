@@ -8,9 +8,11 @@
 Quick start installation guide
 ******************************
 
-This topic provides basic installation instructions for ROCm on Linux using your distribution’s native package manager. Review your required installation instructions by selecting your operating system and version, and then run the provided commands in your terminal.
+This topic provides basic installation instructions for ROCm on Linux using your distribution’s native package manager. Before you begin, you should confirm your :ref:`kernel version <verify_kernel_version>` matches the :ref:`ROCm system requirements <supported_distributions>`.  
 
-For more in-depth installation instructions, refer to :ref:`rocm-install-overview`.
+Once you do, review your required installation instructions by selecting your operating system and version, and then run the provided commands in your terminal.
+
+For more in-depth installation instructions, refer to :ref:`detailed-install-overview`.
 
 .. note::
     If you're using a Radeon GPU with graphical applications, refer to the
@@ -98,4 +100,4 @@ For more in-depth installation instructions, refer to :ref:`rocm-install-overvie
 
     To apply all settings, reboot your system.
 
-After completing the installation, review the :doc:`../how-to/native-install/post-install`. If you have issues with your installation, see :doc:`Troubleshooting <../how-to/native-install/install-faq>`.
+After completing the installation, review the :doc:`post-install`. If you have issues with your installation, see :doc:`Troubleshooting <../reference/install-faq>`.

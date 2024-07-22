@@ -28,6 +28,8 @@ Before installing ROCm, complete the following prerequisites.
             DISTRIB_CODENAME=focal
             DISTRIB_DESCRIPTION="Ubuntu 20.04.5 LTS"
 
+.. _verify_kernel_version:
+
 2. Verify the kernel version.
 
    * To check the kernel version of your Linux system, type the following command:

@@ -3,42 +3,45 @@ defaults:
   maxdepth: 6
 root: index
 subtrees:
-- entries:
-    - file: tutorial/quick-start
-      title: Quick start installation
-    - file: how-to/prerequisites
-      title: Prerequisites
-    - file: tutorial/install-overview
-      title: Installation overview
-    - file: reference/system-requirements
-      title: System requirements
-    - file: how-to/amdgpu-install
-      title: Installation via AMDGPU installer
-    - file: how-to/native-install/index
-      title: Installation via package manager
+- caption: Install ROCm
+  entries:
+    - file: install/quick-start
+      title: Quick start installation guide
+    - file: install/detailed-install
+      title: Detailed install
       subtrees:
       - entries:
-        - file: how-to/native-install/ubuntu
-          title: Ubuntu
-        - file: how-to/native-install/rhel
-          title: RHEL
-        - file: how-to/native-install/sles
-          title: SLES
-        - file: how-to/native-install/post-install
+        - file: install/prerequisites
+          title: Prerequisites
+        - file: install/install-overview
+          title: Installation methods
+          subtrees:
+          - entries:
+            - file: install/native-install/index
+              title: Package manager
+              subtrees:
+              - entries:
+                - file: install/native-install/ubuntu
+                  title: Ubuntu
+                - file: install/native-install/rhel
+                  title: RHEL
+                - file: install/native-install/sles
+                  title: SLES
+            - file: install/amdgpu-install
+              title: AMDGPU installer
+            - file: install/native-install/multi-version-install
+              title: Multi version install
+        - file: install/post-install
           title: Post-install instructions
-        - file: how-to/native-install/package-manager-integration
-          title: Package manager integration
-    - file: how-to/native-install/install-faq
-      title: Troubleshooting
 
-- caption: Install
+- caption: Install deep learning frameworks
   entries:
-  - file: how-to/3rd-party/pytorch-install
-    title: PyTorch
-  - file: how-to/3rd-party/tensorflow-install
-    title: TensorFlow
-  - file: how-to/3rd-party/jax-install
-    title: JAX
+    - file: install/3rd-party/pytorch-install
+      title: PyTorch
+    - file: install/3rd-party/tensorflow-install
+      title: TensorFlow
+    - file: install/3rd-party/jax-install
+      title: JAX
     
 - caption: How to
   entries:
@@ -49,9 +52,15 @@ subtrees:
 
 - caption: Reference
   entries:
-    - file: reference/3rd-party-support-matrix
-      title: Third-party support
     - file: reference/docker-image-support-matrix
       title: Docker image support
+    - file: reference/package-manager-integration
+      title: Package manager integration
+    - file: reference/system-requirements
+      title: System requirements
+    - file: reference/3rd-party-support-matrix
+      title: Third-party support
+    - file: reference/install-faq
+      title: Troubleshooting
     - file: reference/user-kernel-space-compat-matrix
-      title: Kernel-space support
+      title: User & Kernel-space support
