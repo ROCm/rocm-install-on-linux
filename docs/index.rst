@@ -23,7 +23,6 @@ This section describes the ROCm for Linux installation options.
        * :doc:`PyTorch <install/3rd-party/pytorch-install>`
        * :doc:`TensorFlow <install/3rd-party/tensorflow-install>`
        * :doc:`JAX <install/3rd-party/jax-install>`
-       * :doc:`MAGMA <install/3rd-party/magma-install>`
 
 
 The documentation is structured as follows:
