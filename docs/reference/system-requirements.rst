@@ -24,7 +24,7 @@ GPU is not listed on this table, it's not officially supported by AMD.
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
       "AMD Instinct MI300X", "CDNA3", "gfx942", "✅ [#mi300x]_"
-      "AMD Instinct MI300A", "CDNA3", "gfx942", "✅ [#mi300a]_"
+      "AMD Instinct MI300A", "CDNA3", "gfx942", "✅"
       "AMD Instinct MI250X", "CDNA2", "gfx90a", "✅"
       "AMD Instinct MI250", "CDNA2", "gfx90a", "✅"
       "AMD Instinct MI210", "CDNA2", "gfx90a", "✅"
@@ -77,16 +77,17 @@ AMD ROCm™ Software supports the following Linux distributions.
     :header: "Operating system", "Kernel", "Support"
     :escape: \
 
+    "Ubuntu 24.04", "6.8 [GA]", "✅"
+    "Ubuntu 22.04.5", "6.5 [HWE]", "✅ [#ubuntu22045]_"
+    "Ubuntu 22.04.4", "6.5 [HWE]", "✅"
     "Ubuntu 20.04.6", "5.15 [HWE]", "✅"
     "Ubuntu 20.04.5", "5.15 [HWE]", "✅"
-    "Ubuntu 22.04.4", "5.15 [GA], 6.5 [HWE]", "✅"
-    "Ubuntu 22.04", "6.8", "✅"
-    "RHEL 9.4", "5.14.0-362", "✅ [#red-hat94]_"
+    "RHEL 9.4", "5.14.0-427", "✅"
     "RHEL 9.3", "5.14.0-362", "✅"
     "RHEL 8.10", "4.18.0-544", "✅"
     "RHEL 8.9", "4.18.0-513", "✅"
-    "SLES 15 SP5", "5.14.21-150500", "✅"
-    "SLES 15 SP6 [preview only]", "6.4", "✅"
+    "SLES 15 SP6", "6.4", "✅"
+    "SLES 15 SP5", "5.14.21-150500", "✅"    
     "Oracle Linux 8.9", "5.15.0-205.149.5.4 UEK", "✅ [#oracle89]_"
 
 Virtualization support
@@ -111,5 +112,5 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 .. rubric:: Footnotes
 
 .. [#mi300x] MI300X is supported only on Ubuntu 22.04.4 (kernel: 5.15 [GA]) and Oracle Linux 8.9.
-.. [#red-hat94] RHEL 9.4 is supported only on AMD Instinct MI300A.
+.. [#ubuntu22045] Preview support for HWE kernels.
 .. [#oracle89] Oracle Linux 8.9 is supported only on AMD Instinct MI300X.
