@@ -1,0 +1,4 @@
+[repo-offline]
+name=ROCm-amdgpu offline repository
+baseurl=file:///tmp/offline-repo
+enabled=0

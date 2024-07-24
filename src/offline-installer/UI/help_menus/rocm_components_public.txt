@@ -1,0 +1,61 @@
+   rocm                    For users and developers requiring full ROCm stack.
+                             - OpenCL (ROCr/KFD based) runtime
+                             - HIP runtimes
+                             - Machine learning framework
+                             - All ROCm libraries and applications 
+   
+   rocmdev                 For developers requiring ROCm runtime and 
+                           profiling/debugging tools.
+                             - HIP runtimes
+                             - OpenCL runtime
+                             - Profiler, Tracer and Debugger tools                   
+   
+   rocmdevtools            For developers requiring ROCm profiling/debugging 
+                           tools.
+                             - Profiler, Tracer and Debugger tools                      
+   
+   lrt                     For users of applications requiring ROCm runtime.
+                             - ROCm Compiler and device libraries
+                             - ROCr runtime and thunk 
+   
+   hip                     For users of HIP runtime on AMD products.
+                             - HIP runtimes    
+   
+   hiplibsdk               For application developers requiring HIP on AMD 
+                           products.
+                             - HIP runtimes
+                             - ROCm math libraries
+                             - HIP development libraries   
+   
+   graphics                For users of graphics applications.
+                             - Open source Mesa 3D graphics and multimedia 
+                               libraries 
+
+   multimediasdk           For developers of open source multimedia.
+                             - Open source Mesa 3D multimedia libraries
+                             - Development headers for multimedia libraries
+   
+   opencl                  For users of applications requiring OpenCL on Vega 
+                             or later products.                   
+                             - ROCr based OpenCL
+                             - ROCm Language runtime
+   
+   openclsdk               For application developers requiring ROCr based 
+                           OpenCL.
+                             - ROCr based OpenCL
+                             - ROCm Language runtime
+                             - development and SDK files for ROCr based OpenCL     
+   
+   openmpsdk               For users of openmp/flang on AMD products.
+                             - OpenMP runtime and devel packages                              
+   
+   mllib                   For users executing machine learning workloads.
+                             - MIOpen hip/tensile libraries
+                             - Clang OpenCL
+                             - MIOpen kernels                   
+   
+   mlsdk                   For developers executing machine learning workloads.
+                             - MIOpen development libraries
+                             - Clang OpenCL development libraries
+                             - MIOpen kernels
+   

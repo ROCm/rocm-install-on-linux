@@ -1,6 +1,16 @@
 .venv
 .vscode
-build
+# Ignore build directories we create
+/**build**/
+# Ignore any offline installer packages we create
+*.run
+# Ignore the build binary of the rocm offline installer UI
+rocm_offline_ui
+# Ignore any packages we download when running the actual .run offline installer.
+*/packages/*
+*/installer-package/*
+
+
 
 # documentation artifacts
 _build/
@@ -11,3 +21,6 @@ _toc.yml
 docBin/
 _doxygen/
 _readthedocs/
+
+# macos specific things
+.DS_Store
