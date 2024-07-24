@@ -22,8 +22,12 @@ TensorFlow. For TensorFlow the exact version follows the ``<TensorFlowVersion>.<
     :header-rows: 1
 
     * - ROCm
-      - `Pytorch <https://github.com/pytorch/pytorch/releases/>`_
+      - `PyTorch <https://github.com/pytorch/pytorch/releases/>`_
       - `TensorFlow <https://github.com/tensorflow/tensorflow/releases/>`_
+
+    * - 6.2.x
+      - 1.13, 2.0, 2.1, 2.2, 2.3
+      - 2.14, 2.15, 2.16
 
     * - 6.1.x
       - 1.13, 2.0, 2.1
