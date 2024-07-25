@@ -72,18 +72,18 @@ Installing prerequisites for Spack
         .. code-block:: shell
 
             # Install some essential utilities:
-            yum update
-            yum install make
-            yum install patch bash tar yum install gzip unzip bzip2 xz file gnupg2 git gawk
-            yum group install "Development Tools"
-            yum install vim
+            dnf update
+            dnf install make
+            dnf install patch bash tar yum install gzip unzip bzip2 xz file gnupg2 git gawk
+            dnf group install "Development Tools"
+            dnf install vim
             # Install Python:
-            yum install python3
+            dnf install python3
             pip3 install --upgrade pip
             # Install compilers:
-            yum install gcc
-            yum install gcc-gfortran
-            yum install gcc-c++
+            dnf install gcc
+            dnf install gcc-gfortran
+            dnf install gcc-c++
 
 Building ROCm components using Spack
 ===================================================
