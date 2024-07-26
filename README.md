@@ -28,3 +28,9 @@ You can also use [PDM](https://pdm-project.org/latest/#installation) to manage t
 * To build the docs, use: `pdm run inv build`
 
 Now you can open `docs/_build/html/index.html` in your browser.
+
+## ROCm Offline Installer Creator (Linux)
+
+This repository contains tools for installing ROCm on Linux including the ROCm Offline Installer
+Creator.  Use this tool to create an offline installation of ROCm.
+[Offline Installer Creator](https://github.com/ROCm/rocm-install-on-linux-internal/tree/develop/src/offline-installer).
