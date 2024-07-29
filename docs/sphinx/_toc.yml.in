@@ -31,6 +31,8 @@ subtrees:
               title: AMDGPU installer
             - file: install/native-install/multi-version-install
               title: Multi version install
+            - file: install/rocm-offline-installer
+              title: ROCm Offline Installer Creator
         - file: install/post-install
           title: Post-install instructions
 
