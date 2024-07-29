@@ -87,7 +87,7 @@ ROCm packages in Spack
             apt-get install make patch bash tar gzip unzip bzip2 file gnupg2 git gawk
             apt-get update -y
             apt-get install -y xz-utils
-            apt-get build-essential
+            apt-get install build-essential
             apt-get install vim
             # Install Python:
             apt-get install python3
