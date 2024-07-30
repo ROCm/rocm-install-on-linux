@@ -519,6 +519,8 @@ echo "    $EXTRA_PACKAGES"
 
 
 echo --------------------------------------------------
+echo "CREATE_PACKAGE           = $CREATE_PACKAGE"
+echo "CREATE_VERSION           = $CREATE_VERSION"
 echo "CREATE_BUILD_TAG         = $CREATE_BUILD_TAG"
 echo "CREATE_DISTRO_NAME       = $CREATE_DISTRO_NAME"
 echo "CREATE_DISTRO_VER        = $CREATE_DISTRO_VER"

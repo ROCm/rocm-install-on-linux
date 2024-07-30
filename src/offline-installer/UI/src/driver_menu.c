@@ -189,10 +189,20 @@ void driver_menu_opts_toggle_grey_items(MENU_DATA *pMenuData)
     
     ROCM_MENU_CONFIG *pRocmConfig = &pMenuData->pConfig->rocm_config;
     DRIVER_MENU_CONFIG *pDriverConfig = &pMenuData->pConfig->driver_config;
+    OFFLINE_INSTALL_CONFIG *pConfig = pMenuData->pConfig;
 
     // Only enable the 3 driver opts if install_driver is true and user has selected
     // a rocm version
-    bool enable = pDriverConfig->install_driver && pRocmConfig->rocm_version_selected;
+    bool enable = false;
+
+    if (pDriverConfig->install_driver)
+    {
+        if (pConfig->installerType == eINSTALL_TYPE_REPO_PUBLIC) 
+        {
+            enable = pRocmConfig->rocm_version_selected;
+        }
+    }
+    
 
     // enable/disable all driver option fields
     menu_set_item_select(pMenuData, DRIVER_MENU_ITEM_GRP_INDEX, enable);
@@ -205,6 +215,7 @@ void driver_menu_opts_toggle_grey_items(MENU_DATA *pMenuData)
         pDriverConfig->set_group = false;
         pDriverConfig->blacklist_driver = false;
         pDriverConfig->start_driver = false;
+
         if (!pRocmConfig->install_rocm)
         {
             reset_rocm_version_menu(pRocmConfig);
@@ -216,8 +227,8 @@ void driver_menu_opts_toggle_grey_items(MENU_DATA *pMenuData)
 void driver_menu_toggle_grey_items(MENU_DATA *pMenuData)
 {
     DRIVER_MENU_CONFIG *pDriverConfig = &(pMenuData->pConfig)->driver_config;
-
-    menu_set_item_select(pMenuData, DRIVER_MENU_ITEM_DRIVER_VER_INDEX, pDriverConfig->install_driver);
+    bool enable = pDriverConfig->install_driver;
+    menu_set_item_select(pMenuData, DRIVER_MENU_ITEM_DRIVER_VER_INDEX, enable);
     driver_menu_opts_toggle_grey_items(pMenuData);
 }
 

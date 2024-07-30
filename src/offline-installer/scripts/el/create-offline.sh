@@ -677,6 +677,23 @@ parse_build_config() {
     fi
 }
 
+parse_version() {
+    i=0
+    
+    while IFS= read -r line; do
+        case $i in
+            0) CREATE_VERSION="$line" ;;
+            1) CREATE_ROCM_VERSION="$line" ;;
+            2) CREATE_PACKAGE="$line" ;;
+        esac
+        
+        i=$((i+1))
+    done < "./VERSION"
+    
+    echo Creator Version : $CREATE_VERSION-$CREATE_ROCM_VERSION
+    echo Creator Package : $CREATE_PACKAGE
+}
+
 config_create() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Create Configure...
@@ -755,6 +772,8 @@ config_create() {
     
     parse_build_config
     
+    parse_version
+    
     echo Create Configure...Complete
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 }
@@ -768,6 +787,8 @@ write_install_config() {
         echo Warning Config file exists!
     else
         # Write out all config parameters for used by the installer
+        echo CREATE_PACKAGE=\"$CREATE_PACKAGE\" >> $INSTALLER_CONFIG_FILE
+        echo CREATE_VERSION=\"$CREATE_VERSION-$CREATE_ROCM_VERSION\" >> $INSTALLER_CONFIG_FILE
         echo CREATE_BUILD_TAG=\"$CREATE_BUILD_TAG\" >> $INSTALLER_CONFIG_FILE
         echo CREATE_DISTRO_NAME=\"$DISTRO_NAME\" >> $INSTALLER_CONFIG_FILE
         echo CREATE_DISTRO_VER=\"$DISTRO_VER\" >> $INSTALLER_CONFIG_FILE
