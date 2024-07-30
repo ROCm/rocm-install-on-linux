@@ -50,12 +50,14 @@ print_version() {
         case $i in
             0) VERSION="$line" ;;
             1) ROCM_VERSION="$line" ;;
+            2) PACKAGE="$line" ;;
         esac
         
         i=$((i+1))
     done < "./VERSION"
     
     echo ROCm Offline Creator Version : $VERSION-$ROCM_VERSION
+    echo ROCm Offline Creator Package : $PACKAGE
 }
 
 ####### Main script ###############################################################

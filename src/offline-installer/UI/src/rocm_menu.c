@@ -204,11 +204,11 @@ int rocmVersionsMatrix[ROCM_VERS_ROWS][ROCM_VERS_COLS] = {
     {0,0,0,0,0,0,0,0,0,1}, // sles 15.6
 };
 
-// char *rocmVersions[ROCM_VERS_MENU_MAX_SIZE];
-// char *rocmVersionsDesc[ROCM_VERS_MENU_MAX_SIZE];
-
 char **rocmVersions = NULL;
 char **rocmVersionsDesc = NULL;
+
+MENU_PROP rocmMenuVersionProps = {0};
+ITEMLIST_PARAMS rocmMenuVersionItems = {0};
 
 MENU_PROP rocmHelpMenuMainProps  = {
     .pMenuTitle = "ROCm Options Help",
@@ -673,7 +673,7 @@ void create_rocm_menu_version_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, 
     
     int numItems = getRocmVersionOpsArray(pMenuData, rocmVersions, rocmVersionsDesc, pConfig) + 1;
 
-    MENU_PROP rocmMenuVersionProps  = {
+    rocmMenuVersionProps = (MENU_PROP) {
         .pMenuTitle = "ROCm Version Configuration",
         .pMenuControlMsg = "<DONE> to exit : Space key to select/unselect version",
         .numLines = numItems - 1,
@@ -683,7 +683,7 @@ void create_rocm_menu_version_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, 
         .numItems = numItems
     };
 
-    ITEMLIST_PARAMS rocmMenuVersionItems = {
+    rocmMenuVersionItems = (ITEMLIST_PARAMS) {
         .numItems           = numItems,
         .pItemListTitle     = "Select which version you wish to package in the offline installer:",
         .pItemListChoices   = rocmVersions,

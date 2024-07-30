@@ -76,7 +76,7 @@ VALIDATE_DOWNLOAD=yes
 PROMPT_USER=0
 
 # Cleanup repos
-CREATE_CLEAN_ZYP_REPOS_AMD=(repo-tar-offline.repo repo-offline.repo amdgpu.repo amdgpu-proprietary.repo amdgpu-build.repo amdgpu-local.repo amdgpu.repo.rpmsave rocm-build.repo rocm.repo rocm.repo.rpmsave)
+CREATE_CLEAN_ZYP_REPOS_AMD=(repo-tar-offline.repo repo-offline.repo amdgpu.repo amdgpu-proprietary.repo amdgpu-build.repo amdgpu-local.repo amdgpu.repo.rpmsave rocm-build.repo rocm.repo rocm.repo.rpmsave oss.repo)
 
 
 ###### Functions ###############################################################
@@ -191,6 +191,25 @@ os_release() {
     echo "   ${KERNEL_VER}"
 }
 
+setup_oss_repo() {    
+    # Create a .repo file for the OSS repo
+    echo Setting up OSS repo..
+        
+    if [[ $DISTRO_VER == 15.4 ]]; then
+        $SUDO zypper addrepo http://download.opensuse.org/distribution/leap/15.4/repo/oss/ oss
+    elif [[ $DISTRO_VER == 15.5 ]]; then
+        $SUDO zypper addrepo http://download.opensuse.org/distribution/leap/15.5/repo/oss/ oss
+    elif [[ $DISTRO_VER == 15.6 ]]; then
+        $SUDO zypper addrepo http://download.opensuse.org/distribution/leap/15.6/repo/oss/ oss
+    else
+        echo "Unsupported version for OSS."
+    fi
+    
+    $SUDO zypper --gpg-auto-import-keys ref
+    
+    echo Setting up OSS repo..Complete
+}
+
 install_prereqs() {
     # Add the perl repo
     zypper repos | grep -q devel_languages_perl
@@ -211,6 +230,15 @@ install_prereqs() {
         
     else
         echo "Perl language repo already added."
+    fi
+    
+    # Add the oss repo if ROCm 6.2+
+    if [[ "${ROCM_VERSIONS:0:1}" -eq 6 ]] && [[ "${ROCM_VERSIONS:2:1}" -ge 2 ]]; then
+        setup_oss_repo
+    elif [[ "${ROCM_VERSIONS:0:1}" -ge 7 ]]; then
+        setup_oss_repo
+    else
+        OSS Repo not required.
     fi
 }
 
@@ -391,15 +419,15 @@ get_installer_package_list() {
     if [ $? -eq 0 ]; then
         echo "Kernel Packages for $KERNEL_PACKAGE_VER are available in the repositories."
         
-        KERNEL_PACKAGE_VER=$($SUDO zypper search -s kernel-default-devel | grep $(uname -r | sed "s/-default//") | awk '{print $6}')
+        KERNEL_PACKAGE_VER=$($SUDO zypper search -s kernel-default-devel | grep $(uname -r | sed "s/-default//") | awk '{print $6}' | head -n 1)
         KERNEL_PACKAGES="kernel-default-devel-$KERNEL_PACKAGE_VER "
         echo "Using $KERNEL_PACKAGE_VER for kernel-default-devel"
         
-        KERNEL_PACKAGE_VER=$($SUDO zypper search -s kernel-syms | grep $(uname -r | sed "s/-default//") | awk '{print $6}')
+        KERNEL_PACKAGE_VER=$($SUDO zypper search -s kernel-syms | grep $(uname -r | sed "s/-default//") | awk '{print $6}' | head -n 1)
         KERNEL_PACKAGES+="kernel-syms-$KERNEL_PACKAGE_VER "
         echo "Using $KERNEL_PACKAGE_VER for kernel-syms"
         
-        KERNEL_PACKAGE_VER=$($SUDO zypper search -s kernel-macros | grep $(uname -r | sed "s/-default//") | awk '{print $6}')
+        KERNEL_PACKAGE_VER=$($SUDO zypper search -s kernel-macros | grep $(uname -r | sed "s/-default//") | awk '{print $6}' | head -n 1)
         KERNEL_PACKAGES+="kernel-macros-$KERNEL_PACKAGE_VER "
         echo "Using $KERNEL_PACKAGE_VER for kernel-macros"
     else
@@ -631,6 +659,23 @@ parse_build_config() {
     fi
 }
 
+parse_version() {
+    i=0
+    
+    while IFS= read -r line; do
+        case $i in
+            0) CREATE_VERSION="$line" ;;
+            1) CREATE_ROCM_VERSION="$line" ;;
+            2) CREATE_PACKAGE="$line" ;;
+        esac
+        
+        i=$((i+1))
+    done < "./VERSION"
+    
+    echo Creator Version : $CREATE_VERSION-$CREATE_ROCM_VERSION
+    echo Creator Package : $CREATE_PACKAGE
+}
+
 config_create() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Create Configure...
@@ -709,6 +754,8 @@ config_create() {
     
     parse_build_config
     
+    parse_version
+    
     echo Create Configure...Complete
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 }
@@ -722,6 +769,8 @@ write_install_config() {
         echo Warning Config file exists!
     else
         # Write out all config parameters for used by the installer
+        echo CREATE_PACKAGE=\"$CREATE_PACKAGE\" >> $INSTALLER_CONFIG_FILE
+        echo CREATE_VERSION=\"$CREATE_VERSION-$CREATE_ROCM_VERSION\" >> $INSTALLER_CONFIG_FILE
         echo CREATE_BUILD_TAG=\"$CREATE_BUILD_TAG\" >> $INSTALLER_CONFIG_FILE
         echo CREATE_DISTRO_NAME=\"$DISTRO_NAME\" >> $INSTALLER_CONFIG_FILE
         echo CREATE_DISTRO_VER=\"$DISTRO_VER\" >> $INSTALLER_CONFIG_FILE

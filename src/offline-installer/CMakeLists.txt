@@ -200,6 +200,13 @@ message(STATUS "PACKAGE_NAME     = " ${PACKAGE_NAME})
 # makeself [options] archive_dir file_name label [startup_script] [args]
 message(STATUS "run command: makeself ${SCRIPT_DIRECTORY} ${PACKAGE_NAME}.run \"ROCm Offline Install Creator\" ./offline_init.sh")
 
+# Update the VERSION file for the PACKAGE name
+file(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/VERSION 
+"${VERSION_STRING}
+${ROCM_VERSION_STRING}
+${PACKAGE_NAME}
+")
+
 # Define the offline targets
 add_custom_target(rocm_offline_creator ALL
                   COMMAND echo "Copying version file"
