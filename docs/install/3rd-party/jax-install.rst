@@ -71,9 +71,11 @@ JAX wheels and Docker images are released through the GitHub
     .. code-block:: shell
 
       git clone https://github.com/google/jax.git jax
-      cd jax
-      export PYTHONPATH=/workspace/jax/examples/:$PYTHONPATH
-      python3 examples/mnist_classifier.py
+      cp jax/examples/datasets.py .
+      cp jax/examples/mnist_classifier.py .
+      sed -i -e 's/from examples //' mnist_classifier.py
+      export PYTHONPATH=.:$PYTHONPATH
+      python3 mnist_classifier.py
 
     Your output should look similar to this:
 
