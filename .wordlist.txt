@@ -2,6 +2,7 @@ ARI
 BARs
 br
 Broadcom
+CTest
 DHCP
 dkms
 dmesg
@@ -17,6 +18,8 @@ MACVTAP
 MSRs
 pci
 PLX
+preconfigured
+Repo
 rocHPL
 ROCmVersionWithoutCommas
 SBR

@@ -59,7 +59,7 @@ The ROCm Offline Installer Creator tool supports the following Linux distributio
 
 * Ubuntu: 20.04, 22.04, 24.04
 * RHEL: 8.9, 8.10, 9.2, 9.3, 9.4
-* SLSE: 15.5, 15.6
+* SLES: 15.5, 15.6
 
 Getting started
 ================================================
@@ -266,7 +266,7 @@ components are integrated into the resulting installer.
 The following ROCm Components are available for offline installation. For more information on
 the components, see :doc:`What is ROCm <rocm:what-is-rocm>`.
 
-* rocm
+* ``rocm``
   
   * For users and developers requiring the full ROCm stack
   * OpenCL (ROCr/KFD based) runtime
@@ -274,73 +274,73 @@ the components, see :doc:`What is ROCm <rocm:what-is-rocm>`.
   * Machine-learning framework
   * All ROCm libraries and applications
 
-* rocmdev
+* ``rocmdev``
 
   * For developers requiring the ROCm runtime, with profiling and debugging tools
   * HIP runtimes
   * OpenCL runtime
   * Profiler, tracer, and debugger tools
 
-* rocmdevtools
+* ``rocmdevtools``
 
   * For developers requiring the ROCm profiling and debugging tools
   * Profiler, tracer, and debugger tools
 
-* lrt
+* ``lrt``
 
   * For users of applications using the ROCm runtime
   * ROCm compiler and device libraries
   * ROCr runtime and thunk
 
-* hip
+* ``hip``
 
   * For users of the HIP runtime on AMD products
   * HIP runtimes
 
-* hiplibsdk
+* ``hiplibsdk``
 
   * For application developers using HIP on AMD products
   * HIP runtimes
   * ROCm math libraries
   * HIP development libraries
 
-* graphics
+* ``graphics``
 
   * For users of graphics applications
   * Open-source Mesa 3D graphics and multimedia libraries
 
-* multimediasdk
+* ``multimediasdk``
 
   * For developers of open-source multimedia
   * Open-source Mesa 3D multimedia libraries
   * Development headers for multimedia libraries
 
-* opencl
+* ``opencl``
 
   * For users of applications requiring OpenCL on Vega or later products
   * ROCr-based OpenCL
   * ROCm language runtime
 
-* openclsdk
+* ``openclsdk``
 
   * For application developers requiring ROCr-based OpenCL
   * ROCr-based OpenCL
   * ROCm language runtime
   * Development and SDK files for ROCr-based OpenCL
 
-* openmpsdk
+* ``openmpsdk``
 
   * For users of OpenMP or Flang on AMD products
   * OpenMP runtime and development packages
 
-* mllib
+* ``mllib``
 
   * For users running machine-learning workloads
   * MIOpen hip and tensile libraries
   * Clang OpenCL
   * MIOpen kernels
 
-* mlsdk 
+* ``mlsdk`` 
 
   * For developers running machine-learning workloads
   * MIOpen development libraries
@@ -558,7 +558,7 @@ Follow these steps to create an offline installer:
 
       .. code-block:: shell 
 
-         ./rocm-offine-install.run <option>
+         ./rocm-offline-install.run <option>
 
       The ``option`` parameter can either be omitted or optionally set to ``prompt`` or ``dryrun``.
       The ``prompt`` option enables user prompts 
@@ -573,13 +573,13 @@ Follow these steps to create an offline installer:
 
       .. code-block:: shell 
 
-         ./rocm-offine-install.run prompt
+         ./rocm-offline-install.run prompt
 
       or
 
       .. code-block:: shell 
 
-         ./rocm-offine-install.run dryrun
+         ./rocm-offline-install.run dryrun
 
       .. note::
 
@@ -649,7 +649,7 @@ To build the Offline Installer Creator:
          :sync: SLES
 
 
-         Install the following for SLSE 15.5:
+         Install the following for SLES 15.5:
 
          .. code-block:: bash
 
@@ -659,7 +659,7 @@ To build the Offline Installer Creator:
             sudo zypper install ncurses-devel
             sudo zipper install makeself
 
-         Install the following for SLSE 15.6:
+         Install the following for SLES 15.6:
 
          .. code-block:: bash
 
@@ -686,7 +686,7 @@ To build the Offline Installer Creator:
 
 #. Build the Offline Installer Creator
 
-   The Offine Installer Creator is built for both standard and test use. 
+   The Offline Installer Creator is built for both standard and test use. 
    The output is placed in the CMake build directory.
 
    * To build the tool, run the following command:
@@ -720,8 +720,8 @@ Tests are available for the following component combinations:
 *  ROCm only: Creates an installer for the rocm component only.
 *  Driver only: Creates an installer for the amdgpu driver only.
 *  ROCm and driver: Creates an installer for both the rocm component and the amdgpu driver.
-*  ROCm and graphics: Creates an installer for the "rocm,graphics" component.
-*  hip and hiplibsdk: Creates an installer for the "hip,hiplibsdk" component.
+*  ROCm and graphics: Creates an installer for the ``rocm,graphics`` component.
+*  ``hip`` and ``hiplibsdk``: Creates an installer for the ``hip,hiplibsdk`` component.
 
 Building the tests
 -----------------------------------
