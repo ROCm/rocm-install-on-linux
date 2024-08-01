@@ -11,9 +11,7 @@ ROCm provides mixed-precision and large-scale training using our
 `MIOpen <https://github.com/ROCm/MIOpen>`_ and
 `RCCL <https://github.com/ROCm/rccl>`_ libraries.
 
-To install
-`PyTorch for ROCm <https://pytorch.org/blog/pytorch-for-amd-rocm-platform-now-available-as-python-package/>`_,
-you have the following options:
+To install PyTorch for ROCm, you have the following options:
 
 * :ref:`using-docker-with-pytorch-pre-installed`
   (recommended)
