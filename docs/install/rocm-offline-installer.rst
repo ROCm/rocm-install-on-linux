@@ -124,6 +124,7 @@ the **Main** menu. From here, you can customize the offline installer using the 
 menu and options in the ROCm, driver, and extra packages menus. 
 
 .. image:: ../data/how-to/rocm-offline-installer-1-main-menu.png
+   :width: 800
    :alt: The main user interface menu for the Offline Installer Creator
 
 After configuring all the options, select **Create Offline Installer** to review the settings
@@ -156,6 +157,7 @@ Main menu
 The **Main** menu is the starting point for installer configuration.
 
 .. image:: ../data/how-to/rocm-offline-installer-1-main-menu.png
+   :width: 800
    :alt: The main user interface menu for the Offline Installer Creator
 
 .. _create-configuration-label:
@@ -168,6 +170,7 @@ installer. Configuration items in this menu include the input repository, the ty
 perform, and the name and output location for the new installer. 
 
 .. image:: ../data/how-to/rocm-offline-installer-2-create-install-options.png 
+   :width: 800
    :alt: The Create Configuration menu for the Offline Installer Creator
 
 * **Installer Input**
@@ -230,6 +233,7 @@ the offline installer. If ROCm installation is included, a specific version and 
 components are integrated into the resulting installer.
 
 .. image:: ../data/how-to/rocm-offline-installer-3-rocm-options.png 
+   :width: 800
    :alt: The ROCm Options menu for the Offline Installer Creator
 
 * **Install ROCm**
@@ -358,6 +362,7 @@ is integrated into the installer. In addition, the installer can configure sever
 options for offline installation.
 
 .. image:: ../data/how-to/rocm-offline-installer-4-driver-options.png
+   :width: 800
    :alt: The Driver Options menu for the Offline Installer Creator 
 
 * **Install amdgpu Driver**
@@ -436,6 +441,7 @@ as extra packages for the installer, provided they are not already included
 as part of a given ROCm component.
 
 .. image:: ../data/how-to/rocm-offline-installer-5-extra-packages.png
+   :width: 800
    :alt: The Extra Packages menu for the Offline Installer Creator 
 
 .. note::
@@ -459,12 +465,15 @@ The following illustrations show the three menu pages required to
 create the offline installer.
 
 .. image:: ../data/how-to/rocm-offline-installer-6-offline-installer-configuration-1.png
+   :width: 800
    :alt: The first page of the Create Offline Installer menu for the Offline Installer Creator 
 
 .. image:: ../data/how-to/rocm-offline-installer-7-offline-installer-configuration-2.png
+   :width: 800
    :alt: The second page of the Create Offline Installer menu for the Offline Installer Creator 
 
 .. image:: ../data/how-to/rocm-offline-installer-8-offline-installer-configuration-3.png
+   :width: 800
    :alt: The third page of the Create Offline Installer menu for the Offline Installer Creator 
 
 Using the ROCm Offline Installer Creator
@@ -657,7 +666,7 @@ To build the Offline Installer Creator:
             sudo zypper install cmake
             sudo zypper install gcc gcc-c++
             sudo zypper install ncurses-devel
-            sudo zipper install makeself
+            sudo zypper install makeself
 
          Install the following for SLES 15.6:
 
@@ -667,7 +676,7 @@ To build the Offline Installer Creator:
             sudo zypper install cmake
             sudo zypper install gcc gcc-c++
             sudo zypper install ncurses-devel
-            sudo zipper install makeself
+            sudo zypper install makeself
 
 #. Clone the tool source
 
