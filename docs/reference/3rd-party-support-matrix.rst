@@ -122,6 +122,10 @@ CUDA/NVIDIA HPC SDK alternatives.
       - Thrust / CUB
       - HPC SDK
 
+    * - 6.2.x
+      - 2.2.0
+      - 22.9
+    
     * - 6.1.x
       - 2.1.0
       - 22.9

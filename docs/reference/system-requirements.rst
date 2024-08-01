@@ -78,15 +78,14 @@ AMD ROCm™ Software supports the following Linux distributions.
     :escape: \
 
     "Ubuntu 24.04", "6.8 [GA]", "✅"
-    "Ubuntu 22.04.5", "6.5 [HWE]", "✅ [#Ubuntu22045]_"
-    "Ubuntu 22.04.4", "6.5 [HWE]", "✅"
-    "Ubuntu 20.04.6", "5.15 [HWE]", "✅"
-    "RHEL 9.4", "5.14.0-427", "✅"
-    "RHEL 9.3", "5.14.0-362", "✅"
-    "RHEL 8.10", "4.18.0-544", "✅"
-    "RHEL 8.9", "4.18.0-513", "✅"
-    "SLES 15 SP6", "6.4", "✅"
-    "SLES 15 SP5", "5.14.21-150500", "✅"    
+    "Ubuntu 22.04.5", "5.15 [GA], 6.8 [HWE]", "✅ [#Ubuntu22045]_"
+    "Ubuntu 22.04.4", "5.15 [GA], 6.5 [HWE]", "✅"
+    "RHEL 9.4", "5.14.0", "✅"
+    "RHEL 9.3", "5.14.0", "✅"
+    "RHEL 8.10", "4.18.0", "✅"
+    "RHEL 8.9", "4.18.0", "✅"
+    "SLES 15 SP6", "6.4.0", "✅"
+    "SLES 15 SP5", "5.14.21", "✅"    
     "Oracle Linux 8.9", "5.15.0-205.149.5.4 UEK", "✅ [#oracle89]_"
 
 Virtualization support
@@ -110,6 +109,6 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 
 .. rubric:: Footnotes
 
-.. [#mi300x] MI300X is supported only on Ubuntu 22.04.4 (kernel: 5.15 [GA]) and Oracle Linux 8.9.
-.. [#Ubuntu22045] Preview support for HWE kernels.
+.. [#mi300x] MI300X is supported on Ubuntu 24.04 (kernel: 6.8 [GA]), Ubuntu 22.04.5 (kernel: 5.15 [GA]), Ubuntu 22.04.4 (kernel: 5.15 [GA]), RHEL 9.4 (kernel: 5.14.0), RHEL 9.3 (kernel: 5.14.0), RHEL 8.10 (kernel: 4.18.0), RHEL 8.9 (kernel: 4.18.0), SLES 15 SP6 (kernel: 6.4.0), SLES 15 SP5 (kernel: 5.14.21) and Oracle Linux 8.9.
+.. [#Ubuntu22045] Preview support for HWE kernel.
 .. [#oracle89] Oracle Linux 8.9 is supported only on AMD Instinct MI300X.
