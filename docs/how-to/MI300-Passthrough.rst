@@ -537,14 +537,14 @@ Third-party/non-AMD issues
 AMD firmware/driver issues
 --------------------------
 
-#.	Guest driver reload issues: The guest driver reload will not work, for example loading the driver again after unloading it. The reason for this is that the whole GPU reset issue (described in PLAT-158336) is triggered when the driver tries to reload on the same run. If the driver needs to be reloaded, the way to do that is to reboot the server.
+#.	Guest driver reload issues: The guest driver reload will not work, for example loading the driver again after unloading it. The reason for this is that the whole GPU reset issue (described in the next issue) is triggered when the driver tries to reload on the same run. If the driver needs to be reloaded, the way to do that is to reboot the server.
 #.	Mode 1 reset failed at first try on SMCi system: Whole GPU reset issue: The whole GPU reset is not able to complete because of an Uncorrectable Error triggering on device recovery. When the issue is observed, for example a GPU hang, the way to recover is to reboot the server.
-#.	Fail to enter D3Hot during VM off on SuperMicro systems: When the VM is turned off, kernel will issue an SBR and then set the power state to D3Hot sequentially on all GPUs. However, the kernel will fail to set D3Hot and ``dmesg`` will report the following error: “refused to change power state from D0 to D3hot”. This has no functional impact, and this cannot be fixed due to architecture limitations.
+#.	Fail to enter D3Hot during VM off: When the VM is turned off, kernel will issue an SBR and then set the power state to D3Hot sequentially on all GPUs. However, the kernel will fail to set D3Hot and ``dmesg`` will report the following error: “refused to change power state from D0 to D3hot”. This has no functional impact, and this cannot be fixed due to architecture limitations.
 
 
 Key fixes
 =========
 
-VM off fails on SuperMicro systems due to all GPUs link drop: Previously, turning off or rebooting the VM when the driver is loaded will cause the GPUs to fall off the bus. This was root caused to a link retraining issue and is fixed in the IFWI. 
+VM off fails due to all GPUs link drop: Previously, turning off or rebooting the VM when the driver is loaded will cause the GPUs to fall off the bus. This was root caused to a link retraining issue and is fixed in the IFWI. 
 
 
