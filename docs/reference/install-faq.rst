@@ -131,5 +131,24 @@ Docker images often come with minimal installations, meaning some essential pack
 
 After installing these packages and :ref:`registering using your license for Enterprise Linux <register-enterprise-linux>` (if applicable), install ROCm following the :doc:`Quick start installation guide <../install/quick-start>` in your Docker container.
 
+Issue #7: Installations using Python wheels (``.whl`` files) do not support soft links
+============================================================
 
+If you have installed ROCm or any ROCm component using a Python wheel (``.whl`` file), running a ROCm command which is soft linked will fail with "not found" on Ubuntu, "bad interpreter: No such file or directory" on SLES, and "ModuleNotFoundError" on RHEL. 
 
+**Solution:** Python wheel files do not support soft links. You will need to run soft linked commands from within their installation directories, or using the full path to their locations. 
+
+For example, run ``rocm-smi`` on ROCm 6.2 in the following way:
+
+.. code-block:: shell
+    
+  cd /opt/rocm-6.2.0/libexec/rocm_smi/ 
+  python3 rocm_smi.py 
+
+or 
+
+.. code-block:: shell
+    
+  python3 /opt/rocm-6.2.0/libexec/rocm_smi/rocm_smi.py
+
+See `Symbolic links in wheels <https://discuss.python.org/t/symbolic-links-in-wheels/1945>`_ for more information.
