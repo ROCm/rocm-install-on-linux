@@ -66,25 +66,6 @@ Installing prerequisites for Spack
             zypper install gcc-fortran
             zypper install gcc-c++
 
-    .. tab-item:: CentOS
-        :sync: CentOS
-
-        .. code-block:: shell
-
-            # Install some essential utilities:
-            dnf update
-            dnf install make
-            dnf install patch bash tar yum install gzip unzip bzip2 xz file gnupg2 git gawk
-            dnf group install "Development Tools"
-            dnf install vim
-            # Install Python:
-            dnf install python3
-            pip3 install --upgrade pip
-            # Install compilers:
-            dnf install gcc
-            dnf install gcc-gfortran
-            dnf install gcc-c++
-
 Building ROCm components using Spack
 ===================================================
 
