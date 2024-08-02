@@ -5,12 +5,14 @@
 .. _troubleshooting:
 
 ************************************************************************************
-Installation Troubleshooting
+Installation troubleshooting
 ************************************************************************************
 
 Troubleshooting describes issues that some users encounter when installing the ROCm tools or libraries.
 
-Issue #1: Installation Methods
+.. _troubleshooting-install-methods:
+
+Issue #1: Installation methods
 =================================
 
 As an example, the latest version of ROCm is 6.0.2, but the installation instructions result in release 6.0.0 being installed.
@@ -23,8 +25,9 @@ As an example, the latest version of ROCm is 6.0.2, but the installation instruc
 
 Refer to `ROCm Issue #2422 <https://github.com/ROCm/ROCm/issues/2422>`_ for additional details.
 
+.. _troubleshooting-install-prerequisites:
 
-Issue #2: Install Prerequisites
+Issue #2: Install prerequisites
 ==================================
 
 When installing, I see the following message: ``Problem: nothing provides perl-URI-Encode needed to be installed by ...``
@@ -33,6 +36,7 @@ When installing, I see the following message: ``Problem: nothing provides perl-U
 
 Refer to `ROCm Issue #1827 <https://github.com/ROCm/ROCm/issues/1827>`_. 
 
+.. _troubleshooting-path:
 
 Issue #3: PATH variable
 ============================
@@ -43,6 +47,7 @@ After successfully installing ROCm, when I run ``rocminfo`` (or another ROCm too
 
 Refer to `ROCm Issue #1607 <https://github.com/ROCm/ROCm/issues/1607>`_.
 
+.. _troubleshooting-cpp-libs:
 
 Issue #4: C++ libraries
 =========================
@@ -56,7 +61,6 @@ When compiling HIP programs, I get a linking error for ``-lstdc++``, or ``fatal 
   sudo apt-get install libstdc++-12-dev
 
 Refer to `ROCm Issue #2031 <https://github.com/ROCm/ROCm/issues/2031>`_.
-
 
 .. _multi-gpu:
 
@@ -128,8 +132,29 @@ Docker images often come with minimal installations, meaning some essential pack
       SUSEConnect -p sle-module-development-tools/15.4/x86_64
       SUSEConnect -p PackageHub/15.4/x86_64
 
-
 After installing these packages and :ref:`registering using your license for Enterprise Linux <register-enterprise-linux>` (if applicable), install ROCm following the :doc:`Quick start installation guide <../install/quick-start>` in your Docker container.
 
+.. _troubleshooting-symlinks:
 
+Issue #7: Installations using Python wheels (``.whl`` files) do not support soft links
+======================================================================================
 
+If you have installed ROCm or any ROCm component using a Python wheel (``.whl`` file), running
+a ROCm command which is soft-linked will fail with ``not found`` on Ubuntu, ``bad interpreter: No such file or directory`` on SLES, and ``ModuleNotFoundError`` on RHEL. 
+
+**Solution:** Python wheel files do not support soft links (symbolic links). You will need to run soft-linked commands from within their installation directories, or using the full path to their locations. 
+
+For example, run ``rocm-smi`` on ROCm 6.2 in the following way:
+
+.. code-block:: shell
+    
+  cd /opt/rocm-6.2.0/libexec/rocm_smi/ 
+  python3 rocm_smi.py 
+
+or 
+
+.. code-block:: shell
+    
+  python3 /opt/rocm-6.2.0/libexec/rocm_smi/rocm_smi.py
+
+See `Symbolic links in wheels <https://discuss.python.org/t/symbolic-links-in-wheels/1945>`_ for more information.

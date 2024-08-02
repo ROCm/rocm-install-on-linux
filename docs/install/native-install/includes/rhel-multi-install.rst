@@ -17,14 +17,14 @@
                   sudo tee /etc/yum.repos.d/amdgpu.repo <<EOF
                   [amdgpu]
                   name=amdgpu
-                  baseurl=https://repo.radeon.com/amdgpu/$ver/rhel/{{ os_version }}/main/x86_64/
+                  baseurl=https://repo.radeon.com/amdgpu/$ver/el/{{ os_version }}/main/x86_64/
                   enabled=1
                   priority=50
                   gpgcheck=1
                   gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
                   EOF
                   done
-                  sudo yum clean all
+                  sudo dnf clean all
           {% endfor %}
 
 .. _rhel-multi-register-rocm:
@@ -45,15 +45,14 @@
                  sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
                  [ROCm-$ver]
                  name=ROCm|rocm_version|
-                 baseurl=https://repo.radeon.com/rocm/rhel{{ os_release }}/$ver/main
+                 baseurl=https://repo.radeon.com/rocm/el{{ os_release }}/$ver/main
                  enabled=1
                  priority=50
                  gpgcheck=1
                  gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
                  EOF
                  done
-
-                 sudo yum clean all
+                 sudo dnf clean all
          {% endfor %}
 
 3. Install ROCm.
@@ -62,7 +61,7 @@
 
       .. code-block:: bash
 
-         sudo yum install amdgpu-dkms
+         sudo dnf install amdgpu-dkms
          sudo reboot
 
    b. Install the registered ROCm packages.
@@ -71,7 +70,7 @@
          :substitutions:
 
          for ver in |rocm_multi_versions|; do
-             sudo yum install rocm$ver
+             sudo dnf install rocm$ver
          done
 
 4. Complete the :doc:`../post-install`.

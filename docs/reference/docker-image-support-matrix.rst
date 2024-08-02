@@ -94,19 +94,6 @@ The following Docker image tags and associated inventories are validated for ROC
 
                   <hr>
 
-            .. tab-item:: CentOS 7
-
-               Tag
-                 `rocm6.1_centos7_py3.9_pytorch_staging <https://hub.docker.com/layers/rocm/pytorch/rocm6.1_centos7_py3.9_pytorch_staging/images/sha256-b4311bc0c6221ffc388f678a0654f64919a3ecd46024ecf67b09fb494d6d192d>`_
-
-               Inventory
-                 * `ROCm 6.1 <https://repo.radeon.com/rocm/yum/6.1/>`_
-                 * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
-                 * `PyTorch 2.3.0 <https://github.com/ROCmSoftwarePlatform/pytorch/tree/rocm6.1_internal_testing>`_
-                 * `Apex 0.1 <https://github.com/ROCmSoftwarePlatform/apex/tree/v0.1>`_
-                 * `torchvision 0.18.0 <https://github.com/pytorch/vision/tree/release/0.18>`_
-                 * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
-
     .. tab-item:: TensorFlow
 
         .. tab-set::

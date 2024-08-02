@@ -58,17 +58,11 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                        sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
                        sudo dnf install dnf-plugin-config-manager
                        sudo crb enable
-                       sudo yum install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
+                       sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
-                       sudo yum install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
-                       sudo yum clean all
-                       sudo yum install amdgpu-dkms rocm
-
-                {% if os_version == '9.4' %}
-                   .. note::
-
-                       RHEL 9.4 is supported only on AMD Instinct MI300A.
-                {% endif %}
+                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+                       sudo dnf clean all
+                       sudo dnf install amdgpu-dkms rocm
                 {% endfor %}
 
         .. tab-item:: SUSE Linux Enterprise Server
@@ -83,12 +77,8 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                    .. code-block:: bash
                        :substitutions:
 
-                {% if os_version == "15.4" %}
-                       # Installing Perl module from SLES 15.5, as it was removed from 15.4
-                       sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/15.5/devel:languages:perl.repo
-                {% else %}
                        sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
-                {% endif %}
+                       sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/ Education
                        sudo zypper install kernel-default-devel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm

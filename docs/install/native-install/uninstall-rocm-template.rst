@@ -9,9 +9,9 @@ Uninstall specific meta packages
 
     # sudo apt autoremove <package-name>
     # For example:
-    sudo yum remove rocm
+    sudo dnf remove rocm
     # Or for version specific packages:
-    sudo yum remove rocm|rocm_version|
+    sudo dnf remove rocm|rocm_version|
 
 Uninstall ROCm packages
 ----------------------------------------------------------------------------------------------------------
@@ -19,16 +19,16 @@ Uninstall ROCm packages
 .. code-block:: bash
     :substitutions:
 
-    sudo yum remove rocm-core
+    sudo dnf remove rocm-core
     # Or for version specific packages:
-    sudo yum remove rocm-core|rocm_version|
+    sudo dnf remove rocm-core|rocm_version|
 
 Uninstall kernel-mode driver
 ----------------------------------------------------------------------------------------------------------
 
 .. code-block:: bash
 
-    sudo yum remove amdgpu-dkms
+    sudo dnf remove amdgpu-dkms
 
 Remove ROCm and AMDGPU repositories
 ----------------------------------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ Remove ROCm and AMDGPU repositories
 
     # Clear the cache and clean the system.
     sudo rm -rf /var/cache/yum
-    sudo yum clean all
+    sudo dnf clean all
 
     # Restart the system.
     sudo reboot

@@ -29,18 +29,13 @@ Register kernel-mode driver
                 sudo tee /etc/yum.repos.d/amdgpu.repo <<EOF
                 [amdgpu]
                 name=amdgpu
-                baseurl=https://repo.radeon.com/amdgpu/|rocm_version|/rhel/{{ os_version }}/main/x86_64/
+                baseurl=https://repo.radeon.com/amdgpu/|rocm_version|/el/{{ os_version }}/main/x86_64/
                 enabled=1
                 priority=50
                 gpgcheck=1
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
                 EOF
-                sudo yum clean all
-        {% if os_version == '9.4' %}
-            .. note::
-
-                RHEL 9.4 is supported only on AMD Instinct MI300A.
-        {% endif %}
+                sudo dnf clean all
         {% endfor %}
 
 .. _rhel-register-rocm:
@@ -61,14 +56,13 @@ Register ROCm packages
                 sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
                 [ROCm-|rocm_version|]
                 name=ROCm|rocm_version|
-                baseurl=https://repo.radeon.com/rocm/rhel{{ os_release }}/|rocm_version|/main
+                baseurl=https://repo.radeon.com/rocm/el{{ os_release }}/|rocm_version|/main
                 enabled=1
                 priority=50
                 gpgcheck=1
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
                 EOF
-
-                sudo yum clean all
+                sudo dnf clean all
         {% endfor %}
 
 .. _rhel-install:

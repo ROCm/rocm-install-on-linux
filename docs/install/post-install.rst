@@ -57,7 +57,7 @@ Post-installation instructions
 
            .. code-block:: bash
 
-               sudo yum list installed
+               sudo dnf list installed
 
        .. tab-item:: SLES
 

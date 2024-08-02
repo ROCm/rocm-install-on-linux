@@ -8,9 +8,7 @@
 Third-party support matrix
 ***************************************************************************
 
-ROCm™ supports various third-party libraries and frameworks. We've tested our supported versions, so
-you can be assured that they work. Non-supported third-party versions may also work, but we haven't
-tested these for functionality.
+ROCm™ supports a variety of third-party libraries and frameworks. The supported versions have been tested so you can be assured that they function as expected. Non-supported third-party versions might work but haven’t been tested.
 
 Deep learning
 ================================================
@@ -22,8 +20,12 @@ TensorFlow. For TensorFlow the exact version follows the ``<TensorFlowVersion>.<
     :header-rows: 1
 
     * - ROCm
-      - `Pytorch <https://github.com/pytorch/pytorch/releases/>`_
+      - `PyTorch <https://github.com/pytorch/pytorch/releases/>`_
       - `TensorFlow <https://github.com/tensorflow/tensorflow/releases/>`_
+
+    * - 6.2.x
+      - 1.13, 2.0, 2.1, 2.2, 2.3
+      - 2.14, 2.15, 2.16
 
     * - 6.1.x
       - 1.13, 2.0, 2.1
@@ -65,6 +67,11 @@ TensorFlow. For TensorFlow the exact version follows the ``<TensorFlowVersion>.<
       - 1.8, 1.9, 1.10
       - 2.6, 2.7, 2.8
 
+.. note::
+
+   See the :ref:`Compatibility matrix <rocm:framework-support-compatibility-matrix>` for an overview
+   of deep learning framework support across ROCm releases.
+
 .. _communication-libraries:
 
 Communication libraries
@@ -104,6 +111,11 @@ support for ROCm devices.
     * - <= 5.5.x
       - >= 1.1.0
 
+.. note::
+
+   See the :ref:`Compatibility matrix <rocm:thirdpartycomms-support-compatibility-matrix>` for an overview
+   of support for third-party communication libraries across ROCm releases.
+
 Algorithm libraries
 ================================================
 
@@ -120,6 +132,10 @@ CUDA/NVIDIA HPC SDK alternatives.
       - Thrust / CUB
       - HPC SDK
 
+    * - 6.2.x
+      - 2.2.0
+      - 22.9
+    
     * - 6.1.x
       - 2.1.0
       - 22.9
@@ -162,3 +178,8 @@ CUDA/NVIDIA HPC SDK alternatives.
 
 For the latest documentation of these libraries, refer to the ROCm
 :doc:`API libraries <rocm:reference/api-libraries>`.
+
+.. note::
+
+   See the :ref:`Compatibility matrix <rocm:thirdpartyalgorithm-support-compatibility-matrix>` for an overview
+   of algorithm library support across ROCm releases.

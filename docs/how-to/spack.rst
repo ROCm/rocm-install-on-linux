@@ -66,25 +66,6 @@ Installing prerequisites for Spack
             zypper install gcc-fortran
             zypper install gcc-c++
 
-    .. tab-item:: CentOS
-        :sync: CentOS
-
-        .. code-block:: shell
-
-            # Install some essential utilities:
-            yum update
-            yum install make
-            yum install patch bash tar yum install gzip unzip bzip2 xz file gnupg2 git gawk
-            yum group install "Development Tools"
-            yum install vim
-            # Install Python:
-            yum install python3
-            pip3 install --upgrade pip
-            # Install compilers:
-            yum install gcc
-            yum install gcc-gfortran
-            yum install gcc-c++
-
 Building ROCm components using Spack
 ===================================================
 

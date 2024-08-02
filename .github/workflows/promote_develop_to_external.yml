@@ -1,0 +1,3 @@
+name: Promote develop to external
+on:
+  workflow_dispatch:

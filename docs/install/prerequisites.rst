@@ -137,10 +137,7 @@ instructions specific to your distribution to add the necessary repositories.
     .. tab-item:: SUSE Linux Enterprise Server
         :sync: sle-tab
 
-        Add the Perl language repository.
-
-        .. note::
-            We currently need to install the Perl module from SLES 15 SP5 as a workaround. The module was removed for SLES 15 SP4.
+        Add the Perl language and Education repositories.
 
         .. datatemplate:nodata::
 
@@ -153,7 +150,8 @@ instructions specific to your distribution to add the necessary repositories.
 
                     .. code-block:: shell
 
-                        zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/15.5/devel:languages:perl.repo
+                        sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/{{ os_version }}/devel:languages:perl.repo
+                        sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/ Education
 
                 {% endfor %}
 
@@ -183,7 +181,7 @@ To install for the currently active kernel run the command corresponding to your
 
         .. code-block:: shell
 
-            sudo yum install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
+            sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
 
 
     .. tab-item:: SUSE Linux Enterprise Server
