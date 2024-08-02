@@ -137,7 +137,7 @@ instructions specific to your distribution to add the necessary repositories.
     .. tab-item:: SUSE Linux Enterprise Server
         :sync: sle-tab
 
-        Add the Perl language repository.
+        Add the Perl language and Education repositories.
 
         .. datatemplate:nodata::
 
@@ -150,7 +150,8 @@ instructions specific to your distribution to add the necessary repositories.
 
                     .. code-block:: shell
 
-                        zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/{{ os_version }}/devel:languages:perl.repo
+                        sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/{{ os_version }}/devel:languages:perl.repo
+                        sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/ Education
 
                 {% endfor %}
 

@@ -78,6 +78,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                        :substitutions:
 
                        sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
+                       sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/ Education
                        sudo zypper install kernel-default-devel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
