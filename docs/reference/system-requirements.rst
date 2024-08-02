@@ -12,8 +12,8 @@ System requirements (Linux)
 Supported GPUs
 =============================================
 
-The following table shows the supported GPUs for Instinct™, Radeon™ PRO and Radeon™. If a
-GPU is not listed on this table, it's not officially supported by AMD.
+The following table shows the supported AMD Instinct™ accelerators, and Radeon™ PRO
+and Radeon GPUs. If a GPU is not listed on this table, it's not officially supported by AMD.
 
 .. tab-set::
 
@@ -21,7 +21,7 @@ GPU is not listed on this table, it's not officially supported by AMD.
 
     .. csv-table::
       :widths: 50, 25, 25, 10
-      :header: "GPU", "Architecture", "LLVM target", "Support"
+      :header: "Accelerator", "Architecture", "LLVM target", "Support"
 
       "AMD Instinct MI300X", "CDNA3", "gfx942", "✅ [#mi300x]_"
       "AMD Instinct MI300A", "CDNA3", "gfx942", "✅"
@@ -63,14 +63,21 @@ GPU is not listed on this table, it's not officially supported by AMD.
 ❌: **Unsupported** - The current ROCm release does not support this hardware. The HIP runtime might continue to run applications for an unsupported GPU, but prebuilt ROCm libraries are not officially supported and will cause runtime errors.
 
 .. important:: 
-  Systems with multiple GPUs may require ``iommu=pt`` to be set at boot time to prevent application hangs, as described in :doc:`Troubleshooting - Issue #5 <../reference/install-faq>`
+
+   Systems with multiple GPUs may require ``iommu=pt`` to be set at boot time to prevent application hangs, as described in
+   :ref:`multi-gpu`.
+
+.. note::
+
+   See the :ref:`Compatibility matrix <rocm:architecture-support-compatibility-matrix>` for an overview
+   of supported GPU architectures across ROCm releases.
 
 .. _supported_distributions:
 
 Supported operating systems
 =============================================
 
-AMD ROCm™ Software supports the following Linux distributions.
+AMD ROCm software supports the following Linux distributions.
 
 .. csv-table::
     :widths: 50, 50, 25
@@ -87,6 +94,11 @@ AMD ROCm™ Software supports the following Linux distributions.
     "SLES 15 SP6", "6.4.0", "✅"
     "SLES 15 SP5", "5.14.21", "✅"    
     "Oracle Linux 8.9", "5.15.0-205.149.5.4 UEK", "✅ [#oracle89]_"
+
+.. note::
+
+   See the :doc:`rocm:compatibility/compatibility-matrix` for an overview
+   of OS support across ROCm releases.
 
 Virtualization support
 =============================================
@@ -109,6 +121,8 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 
 .. rubric:: Footnotes
 
-.. [#mi300x] MI300X is supported on Ubuntu 24.04 (kernel: 6.8 [GA]), Ubuntu 22.04.5 (kernel: 5.15 [GA]), Ubuntu 22.04.4 (kernel: 5.15 [GA]), RHEL 9.4 (kernel: 5.14.0), RHEL 9.3 (kernel: 5.14.0), RHEL 8.10 (kernel: 4.18.0), RHEL 8.9 (kernel: 4.18.0), SLES 15 SP6 (kernel: 6.4.0), SLES 15 SP5 (kernel: 5.14.21) and Oracle Linux 8.9.
+.. [#mi300x] Operating system support for AMD Instinct MI300X is
+   extended to all listed in :ref:`Supported operating systems <supported_distributions>` *except* Ubuntu 22.04.5
+   (kernel: 6.8 [HWE]) and Ubuntu 22.04.4 (kernel: 6.5 [HWE]).
 .. [#Ubuntu22045] Preview support for HWE kernel.
 .. [#oracle89] Oracle Linux 8.9 is supported only on AMD Instinct MI300X.

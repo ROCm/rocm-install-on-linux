@@ -67,6 +67,11 @@ TensorFlow. For TensorFlow the exact version follows the ``<TensorFlowVersion>.<
       - 1.8, 1.9, 1.10
       - 2.6, 2.7, 2.8
 
+.. note::
+
+   See the :ref:`Compatibility matrix <rocm:framework-support-compatibility-matrix>` for an overview
+   of deep learning framework support across ROCm releases.
+
 .. _communication-libraries:
 
 Communication libraries
@@ -105,6 +110,11 @@ support for ROCm devices.
 
     * - <= 5.5.x
       - >= 1.1.0
+
+.. note::
+
+   See the :ref:`Compatibility matrix <rocm:thirdpartycomms-support-compatibility-matrix>` for an overview
+   of support for third-party communication libraries across ROCm releases.
 
 Algorithm libraries
 ================================================
@@ -168,3 +178,8 @@ CUDA/NVIDIA HPC SDK alternatives.
 
 For the latest documentation of these libraries, refer to the ROCm
 :doc:`API libraries <rocm:reference/api-libraries>`.
+
+.. note::
+
+   See the :ref:`Compatibility matrix <rocm:thirdpartyalgorithm-support-compatibility-matrix>` for an overview
+   of algorithm library support across ROCm releases.
