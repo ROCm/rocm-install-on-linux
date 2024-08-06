@@ -71,7 +71,7 @@ Download the Offline Installer Creator from ``repo.radeon.com`` using the follow
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/<rocm-version>/<distro>/<distro-version>/<creator-package>
+   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-<rocm-version>/<distro>/<distro-version>/<creator-package>
 
 Substitute your values for the following placeholders:
 
@@ -85,7 +85,7 @@ for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-6.2/ubuntu/22.04/rocm-offline-creator_1.0.0.60200-1~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-6.2/ubuntu/22.04/rocm-offline-creator_1.0.0.60200-3~22.04.run
 
 Installer Creation
 ================================================
