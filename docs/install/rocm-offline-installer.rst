@@ -682,13 +682,13 @@ To build the Offline Installer Creator:
 
    .. code-block:: shell 
 
-      git clone git@github.com:ROCm/rocm-install-on-linux.git
+      git clone https://github.com/ROCm/rocm-install-on-linux
 
 #. Build the configuration
 
    .. code-block:: shell 
 
-      cd src/offline-install
+      cd rocm-install-on-linux/src/offline-install
       mkdir build 
       cd build
       cmake ..
