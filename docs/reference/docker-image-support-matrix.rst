@@ -168,6 +168,19 @@ The following Docker image tags and associated inventories are validated for ROC
                   <hr>
 
                Tag
+                 `rocm/tensorflow:rocm6.2-py3.9-tf2.16-runtime <https://hub.docker.com/layers/rocm/tensorflow/rocm6.2-py3.9-tf2.16-runtime/images/sha256-ea1f05be5f618111ad0edbf25458fc96e02bc596859cf8c7ddbbf7c797fa22b3>`_
+
+               Inventory
+                 * `ROCm 6.2 <https://repo.radeon.com/rocm/apt/6.2/>`_
+                 * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                 * `tensorflow-rocm 2.16.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.2/>`_
+                 * `TensorBoard 2.16.2 <https://github.com/tensorflow/tensorboard/tree/2.16.2>`_
+
+               .. raw:: html
+
+                  <hr>
+
+               Tag
                  `rocm/tensorflow:rocm6.2-py3.9-tf2.15-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.2-py3.9-tf2.15-dev/images/sha256-1a28f5735a719e2a6ef076523ce76fa308663ad12f0b5530666468a2b775666f>`_
 
                Inventory
@@ -181,7 +194,29 @@ The following Docker image tags and associated inventories are validated for ROC
                   <hr>
 
                Tag
+                 `rocm/tensorflow:rocm6.2-py3.9-tf2.15-runtime <https://hub.docker.com/layers/rocm/tensorflow/rocm6.2-py3.9-tf2.15-runtime/images/sha256-81ef38ce067666ab2a4ba3cff8f5803f8596b4d7395169b4f0e2946ba2a403f6>`_
+
+               Inventory
+                 * `ROCm 6.2 <https://repo.radeon.com/rocm/apt/6.2/>`_
+                 * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                 * `tensorflow-rocm 2.15.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.2/>`_
+                 * `TensorBoard 2.15.2 <https://github.com/tensorflow/tensorboard/tree/2.15.2>`_
+
+               .. raw:: html
+
+                  <hr>
+
+               Tag
                  `rocm/tensorflow:rocm6.2-py3.9-tf2.14-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.2-py3.9-tf2.14-dev/images/sha256-ad1fbaed5b9f2085d2716468147aca8d390e0e99470960e7b8f7e11d0286e80f>`_
+
+               Inventory
+                 * `ROCm 6.2 <https://repo.radeon.com/rocm/apt/6.2/>`_
+                 * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                 * `tensorflow-rocm 2.14.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.2/>`_
+                 * `TensorBoard 2.14.1 <https://github.com/tensorflow/tensorboard/tree/2.15.2>`_
+
+               Tag
+                 `rocm/tensorflow:rocm6.2-py3.9-tf2.14-runtime <https://hub.docker.com/layers/rocm/tensorflow/rocm6.2-py3.9-tf2.14-runtime/images/sha256-ed0ca0548ba140253e23ef683440e144e90e309e26d208ad2a84b5d6d5ddd95a>`_
 
                Inventory
                  * `ROCm 6.2 <https://repo.radeon.com/rocm/apt/6.2/>`_
