@@ -688,7 +688,7 @@ To build the Offline Installer Creator:
 
    .. code-block:: shell 
 
-      cd rocm-install-on-linux/src/offline-install
+      cd rocm-install-on-linux/src/offline-installer
       mkdir build 
       cd build
       cmake ..
