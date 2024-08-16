@@ -54,6 +54,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                    .. code-block:: bash
                        :substitutions:
 
+                       sudo dnf update
                        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
                        sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
                        sudo dnf install dnf-plugin-config-manager
@@ -77,6 +78,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                    .. code-block:: bash
                        :substitutions:
 
+                       sudo zypper update
                        sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
                        sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/ Education
                        sudo zypper install kernel-default-devel
