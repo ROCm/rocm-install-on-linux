@@ -220,3 +220,11 @@ recommend using the video group for all ROCm-supported operating systems.
 .. tip::
 
     On systems with multiple users, if ROCm is installed system wide, each individual user should be added to the ``render`` and ``video`` groups. 
+
+Disable integrated graphics (IGP), if applicable
+================================================================
+
+  ROCm doesn't currently support integrated graphics. Should your system have an
+  AMD IGP installed, disable it in the BIOS prior to using ROCm. If the driver can
+  enumerate the IGP, the ROCm runtime may crash the system, even if told to omit
+  it via `HIP_VISIBLE_DEVICES <https://rocm.docs.amd.com/en/latest/conceptual/gpu-isolation.html#hip-visible-devices>`_.
