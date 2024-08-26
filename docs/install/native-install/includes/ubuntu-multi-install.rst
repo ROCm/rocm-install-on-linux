@@ -16,7 +16,11 @@
                .. code-block:: bash
                    :substitutions:
 
+                   {% if os_version == '24.04' %}
+                   for ver in 6.2.0; do
+                   {% else %}
                    for ver in |rocm_multi_versions|; do
+                   {% endif %}
                    echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/$ver/ubuntu {{ os_release }} main" \
                        | sudo tee /etc/apt/sources.list.d/amdgpu.list
                    done
@@ -39,7 +43,11 @@
               .. code-block:: bash
                   :substitutions:
   
+                  {% if os_version == '24.04' %}
+                  for ver in 6.2.0; do
+                  {% else %}
                   for ver in |rocm_multi_versions|; do
+                  {% endif %}
                   echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/$ver {{ os_release }} main" \
                       | sudo tee --append /etc/apt/sources.list.d/rocm.list
                   done
