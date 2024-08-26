@@ -12,6 +12,7 @@ FWDEV
 hostname
 hotplug
 IFWI
+IGP
 IIO
 IRQs
 MACVTAP
