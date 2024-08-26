@@ -17,7 +17,7 @@
                    :substitutions:
 
                    {% if os_version == '24.04' %}
-                   for ver in 6.2.0; do
+                   for ver in 6.2; do
                    {% else %}
                    for ver in |rocm_multi_versions|; do
                    {% endif %}
@@ -44,7 +44,7 @@
                   :substitutions:
   
                   {% if os_version == '24.04' %}
-                  for ver in 6.2.0; do
+                  for ver in 6.2; do
                   {% else %}
                   for ver in |rocm_multi_versions|; do
                   {% endif %}
@@ -70,7 +70,7 @@
       .. code-block:: bash
          :substitutions:
 
-         for ver in |rocm_multi_versions|; do
+         for ver in |rocm_multi_versions_package_versions|; do
              sudo apt install rocm$ver
          done
 
