@@ -10,21 +10,22 @@
 
        .. tab-set::
            {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
+           {% if os_version == '24.04' %}
+               
+           {% else %}
            .. tab-item:: Ubuntu {{ os_version }}
                :sync: ubuntu-{{ os_version}}
 
                .. code-block:: bash
                    :substitutions:
 
-                   {% if os_version == '24.04' %}
-                   for ver in 6.2; do
-                   {% else %}
                    for ver in |rocm_multi_versions|; do
-                   {% endif %}
                    echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/$ver/ubuntu {{ os_release }} main" \
                        | sudo tee /etc/apt/sources.list.d/amdgpu.list
                    done
                    sudo apt update
+
+           {% endif %}
            {% endfor %}
 
 .. _ubuntu-multi-register-rocm:
@@ -37,23 +38,23 @@
 
       .. tab-set::
           {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
+          {% if os_version == '24.04' %}
+               
+          {% else %}
           .. tab-item:: Ubuntu {{ os_version }}
               :sync: ubuntu-{{ os_version}}
   
               .. code-block:: bash
                   :substitutions:
   
-                  {% if os_version == '24.04' %}
-                  for ver in 6.2; do
-                  {% else %}
                   for ver in |rocm_multi_versions|; do
-                  {% endif %}
                   echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/$ver {{ os_release }} main" \
                       | sudo tee --append /etc/apt/sources.list.d/rocm.list
                   done
                   echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
                       | sudo tee /etc/apt/preferences.d/rocm-pin-600
                   sudo apt update
+          {% endif %}
           {% endfor %}
 
 4. Install ROCm.
@@ -75,6 +76,12 @@
          done
 
 5. Complete the :doc:`../post-install`.
+
+.. note::
+
+   Since Ubuntu 24.04 is newly supported with ROCm 6.2, we only have one package to 
+   install on Ubutnu 24.04.  This means that multi-version is not supported on 
+   Ubutnu 24.04 since multiple versions do not currently exist.
 
 .. tip::
 
