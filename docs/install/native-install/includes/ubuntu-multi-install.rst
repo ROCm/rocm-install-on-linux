@@ -80,7 +80,7 @@
 .. note::
 
    Since Ubuntu 24.04 is newly supported with ROCm 6.2, we only have one package to 
-   install on Ubutnu 24.04. As a result, multi-version support is not available for
+   install on Ubuntu 24.04. As a result, multi-version support is not available for
    Ubuntu 24.04 as there are no additional versions at this time.
 
 .. tip::
