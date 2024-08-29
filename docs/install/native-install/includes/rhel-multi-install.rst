@@ -69,7 +69,7 @@
       .. code-block:: bash
          :substitutions:
 
-         for ver in |rocm_multi_versions|; do
+         for ver in |rocm_multi_versions_package_versions|; do
              sudo dnf install rocm$ver
          done
 

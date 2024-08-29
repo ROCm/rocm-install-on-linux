@@ -10,6 +10,9 @@
 
        .. tab-set::
            {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
+           {% if os_version == '24.04' %}
+               
+           {% else %}
            .. tab-item:: Ubuntu {{ os_version }}
                :sync: ubuntu-{{ os_version}}
 
@@ -21,6 +24,8 @@
                        | sudo tee /etc/apt/sources.list.d/amdgpu.list
                    done
                    sudo apt update
+
+           {% endif %}
            {% endfor %}
 
 .. _ubuntu-multi-register-rocm:
@@ -33,6 +38,9 @@
 
       .. tab-set::
           {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
+          {% if os_version == '24.04' %}
+               
+          {% else %}
           .. tab-item:: Ubuntu {{ os_version }}
               :sync: ubuntu-{{ os_version}}
   
@@ -46,6 +54,7 @@
                   echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
                       | sudo tee /etc/apt/preferences.d/rocm-pin-600
                   sudo apt update
+          {% endif %}
           {% endfor %}
 
 4. Install ROCm.
@@ -62,11 +71,17 @@
       .. code-block:: bash
          :substitutions:
 
-         for ver in |rocm_multi_versions|; do
+         for ver in |rocm_multi_versions_package_versions|; do
              sudo apt install rocm$ver
          done
 
 5. Complete the :doc:`../post-install`.
+
+.. note::
+
+   Since Ubuntu 24.04 is newly supported with ROCm 6.2, we only have one package to 
+   install on Ubuntu 24.04. As a result, multi-version support is not available for
+   Ubuntu 24.04 as there are no additional versions at this time.
 
 .. tip::
 
