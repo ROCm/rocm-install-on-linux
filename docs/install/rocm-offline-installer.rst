@@ -816,7 +816,13 @@ In addition to the preconfigured CTest utilities, you can manually configure you
 Creator tests. This configuration option bypasses the user interface and runs 
 the ``create-offline.sh`` script as described in the :ref:`running-the-tests` section above. 
 To manually test the creation of an offline installer without the user interface, run the
-Offline Installer Creator with the ``config`` parameter:
+Offline Installer Creator with the ``config`` parameter.
+
+.. caution::
+
+   For normal Offline Installer Creator usage, the user interface is recommended. 
+   The user interface validates the various configuration file inputs and guides you through the
+   configuration process.
 
 .. code-block:: shell 
 
@@ -826,9 +832,3 @@ Set the ``config`` parameter to the absolute path to a configuration file. The f
 the ``.config`` file extension. The file follows the format defined by the Offline Installer Creator
 user interface. Example configuration files, which are used for running the CTest utilities,
 are available in the ``tests`` directory of the ``offline-installer`` repository.
-
-.. caution::
-
-   For normal Offline Installer Creator usage, the user interface is recommended. 
-   The user interface validates the various configuration file inputs and guides you through the
-   configuration process.
