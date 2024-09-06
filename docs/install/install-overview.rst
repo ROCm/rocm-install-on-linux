@@ -24,7 +24,7 @@ Installation methods
 
 * :ref:`package_manager_versus_amdgpu`
 * :ref:`Multi version installation (Optional) <multi-version-install-overview>`
-* :ref:`ROCM Offline Installer Creator <rocm-offline-installer-creator>`
+* :ref:`ROCm Offline Installer Creator <rocm-offline-installer-creator>`
 
 .. _package_manager_versus_amdgpu:
 
