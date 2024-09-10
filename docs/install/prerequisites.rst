@@ -79,8 +79,7 @@ your operating system to ensure you're able to download and install packages.
 
                        subscription-manager register --username <username> --password <password>
                        subscription-manager attach --auto
-                       subscription-manager repos --enable codeready-builder-for-rhel-{{ os_release }}-x86_64-rpms
-
+                       
            {% endfor %}
 
            More details about `registering for RHEL <https://access.redhat.com/solutions/253273>`_
@@ -103,7 +102,7 @@ your operating system to ensure you're able to download and install packages.
                    .. code-block:: shell
 
                       SUSEConnect -r <REGCODE>
-                      SUSEConnect -p sle-module-desktop-application/{{ os_version }}/x86_64
+                      SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
                       SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
                       SUSEConnect -p PackageHub/{{ os_version }}/x86_64
 
