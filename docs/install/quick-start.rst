@@ -10,7 +10,7 @@ Quick start installation guide
 
 This topic provides basic installation instructions for ROCm on Linux using your distribution’s native package manager. Before you begin, you should confirm your :ref:`kernel version <verify_kernel_version>` matches the :ref:`ROCm system requirements <supported_distributions>`.  
 
-Once you do, review your required installation instructions by selecting your operating system and version, and then run the provided commands in your terminal.
+Once you do, review your required installation instructions by selecting your operating system and version, and then run the provided commands in your terminal. The commands include the installation of the prerequisites, along with installing ROCm.
 
 For more in-depth installation instructions, refer to :ref:`detailed-install-overview`.
 
@@ -79,6 +79,9 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                        :substitutions:
 
                        sudo zypper update
+                       SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
+                       SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
+                       SUSEConnect -p PackageHub/{{ os_version }}/x86_64
                        sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
                        sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/ Education
                        sudo zypper install kernel-default-devel
