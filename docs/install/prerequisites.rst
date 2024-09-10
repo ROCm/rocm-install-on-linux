@@ -80,7 +80,6 @@ your operating system to ensure you're able to download and install packages.
                        subscription-manager register --username <username> --password <password>
                        subscription-manager attach --auto
                        
-
            {% endfor %}
 
            More details about `registering for RHEL <https://access.redhat.com/solutions/253273>`_
