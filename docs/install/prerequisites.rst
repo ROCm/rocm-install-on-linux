@@ -79,7 +79,7 @@ your operating system to ensure you're able to download and install packages.
 
                        subscription-manager register --username <username> --password <password>
                        subscription-manager attach --auto
-                       subscription-manager repos --enable codeready-builder-for-rhel-{{ os_release }}-x86_64-rpms
+                       
 
            {% endfor %}
 
