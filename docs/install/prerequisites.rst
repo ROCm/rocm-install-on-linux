@@ -103,7 +103,7 @@ your operating system to ensure you're able to download and install packages.
                    .. code-block:: shell
 
                       SUSEConnect -r <REGCODE>
-                      SUSEConnect -p sle-module-desktop-application/{{ os_version }}/x86_64
+                      SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
                       SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
                       SUSEConnect -p PackageHub/{{ os_version }}/x86_64
 
