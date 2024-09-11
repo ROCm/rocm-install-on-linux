@@ -75,38 +75,38 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
 
           * - Base OS
             - Docker Image
-          * - Ubuntu 20.04
-            - `rocm/dev-ubuntu-20.04 <https://hub.docker.com/r/rocm/dev-ubuntu-20.04>`_
           * - Ubuntu 22.04
             - `rocm/dev-ubuntu-22.04 <https://hub.docker.com/r/rocm/dev-ubuntu-22.04>`_
+          * - Ubuntu 24.04
+            - `rocm/dev-ubuntu-24.04 <https://hub.docker.com/r/rocm/dev-ubuntu-24.04>`_
 
    b. Pull the selected image.
 
    .. code-block:: bash
 
-       docker pull rocm/dev-ubuntu-20.04:latest
+       docker pull rocm/dev-ubuntu-22.04:latest
 
    c. Start a Docker container using the downloaded image.
 
    .. code-block:: bash
 
-       docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/dev-ubuntu-20.04:latest
+       docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/dev-ubuntu-22.04:latest
 
    **Option 2:**
 
    Select a base OS Docker image (Check :ref:`system-requirements`)
 
-   Pull selected base OS image (Ubuntu 20.04 for example)
+   Pull selected base OS image (Ubuntu 22.04 for example)
 
    .. code-block:: bash
 
-       docker pull ubuntu:20.04
+       docker pull ubuntu:22.04
 
    Start a Docker container using the downloaded image
 
    .. code-block:: bash
 
-       docker run -it --device=/dev/kfd --device=/dev/dri --group-add video ubuntu:20.04
+       docker run -it --device=/dev/kfd --device=/dev/dri --group-add video ubuntu:22.04
 
    Install ROCm using the directions in the :ref:`rocm-install-overview` section.
 
@@ -128,12 +128,12 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
 
    .. note::
 
-       The following command uses the ROCm 6.1 PyTorch wheel. If you want a different version of ROCm,
+       The following command uses the ROCm 6.2 PyTorch wheel. If you want a different version of ROCm,
        modify the command accordingly.
 
    .. code-block:: bash
 
-       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.1/
+       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.2/
 
 4. (Optional) Use MIOpen kdb files with ROCm PyTorch wheels.
 
