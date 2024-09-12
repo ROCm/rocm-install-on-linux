@@ -171,7 +171,7 @@ instructions specific to your distribution to add the necessary repositories.
                     .. code-block:: shell
 
                         sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/{{ os_version }}/devel:languages:perl.repo
-                        sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/ Education
+                        sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
 
                 {% endfor %}
 

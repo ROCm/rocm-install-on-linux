@@ -83,7 +83,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                        SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
                        SUSEConnect -p PackageHub/{{ os_version }}/x86_64
                        sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
-                       sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/ Education
+                       sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
                        sudo zypper install kernel-default-devel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
