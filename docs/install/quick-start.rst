@@ -91,7 +91,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                        sudo zypper install amdgpu-dkms rocm
                 {% endfor %}
 
-.. note::
+.. important::
 
     To apply all settings, reboot your system.
 
