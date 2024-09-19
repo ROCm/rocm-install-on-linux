@@ -105,6 +105,9 @@ support for ROCm devices.
     * - ROCm version
       - UCC version
 
+    * - >= 6.1.0
+      - >= 1.3.0
+
     * - >= 5.6.0
       - >= 1.2.0
 

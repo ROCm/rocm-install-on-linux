@@ -67,13 +67,22 @@ your operating system to ensure you're able to download and install packages.
         Typically you can register by following the step-by-step user interface.
         If you need to register by command line, use the following commands:
 
-        .. code-block:: shell
+        .. datatemplate:nodata::
+            
+           .. tab-set::
 
-            subscription-manager register --username <username> --password <password>
-            subscription-manager attach --auto
-            subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+              {% for os_release in config.html_context['rhel_release_version_numbers']  %}
 
-        More details about `registering for RHEL <https://access.redhat.com/solutions/253273>`_
+                .. tab-item:: RHEL {{ os_release }}
+        
+                    .. code-block:: shell
+
+                       subscription-manager register --username <username> --password <password>
+                       subscription-manager attach --auto
+
+           {% endfor %}
+
+           More details about `registering for RHEL <https://access.redhat.com/solutions/253273>`_
 
   .. tab-item:: SUSE Linux Enterprise Server
         :sync: sle-tab
@@ -81,14 +90,25 @@ your operating system to ensure you're able to download and install packages.
         Typically you can register by following the step-by-step user interface.
         If you need to register by command line, use the following commands:
 
-        .. code-block:: shell
+        .. datatemplate:nodata::
 
-            SUSEConnect -r <REGCODE>
-            SUSEConnect -p sle-module-desktop-application/15.4/x86_64
-            SUSEConnect -p sle-module-development-tools/15.4/x86_64
-            SUSEConnect -p PackageHub/15.4/x86_64
+            .. tab-set::
 
-        More details about `registering for SLES <https://www.suse.com/support/kb/doc/?id=000018564>`_
+                {% for os_version in config.html_context['sles_version_numbers'] %}
+                {% set os_release, os_sp  = os_version.split('.') %}
+
+                .. tab-item:: SLES {{ os_version }}
+                   
+                   .. code-block:: shell
+
+                      SUSEConnect -r <REGCODE>
+                      SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
+                      SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
+                      SUSEConnect -p PackageHub/{{ os_version }}/x86_64
+
+                {% endfor %}
+
+            More details about `registering for SLES <https://www.suse.com/support/kb/doc/?id=000018564>`_
 
 
 Additional package repositories
@@ -220,3 +240,11 @@ recommend using the video group for all ROCm-supported operating systems.
 .. tip::
 
     On systems with multiple users, if ROCm is installed system wide, each individual user should be added to the ``render`` and ``video`` groups. 
+
+Disable integrated graphics (IGP), if applicable
+================================================================
+
+ROCm doesn't currently support integrated graphics. Should your system have an
+AMD IGP installed, disable it in the BIOS prior to using ROCm. If the driver can
+enumerate the IGP, the ROCm runtime may crash the system, even if told to omit
+it via `HIP_VISIBLE_DEVICES <https://rocm.docs.amd.com/en/latest/conceptual/gpu-isolation.html#hip-visible-devices>`_.
