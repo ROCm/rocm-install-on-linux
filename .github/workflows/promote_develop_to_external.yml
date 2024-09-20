@@ -1,3 +1,9 @@
 name: Promote develop to external
 on:
   workflow_dispatch:
+jobs:
+  Noop:
+    runs-on: ubuntu-latest
+    steps:
+    - name: echo Hello world
+      run: echo "hello world"
