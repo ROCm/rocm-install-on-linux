@@ -19,6 +19,10 @@ To install PyTorch for ROCm, you have the following options:
 * :ref:`using-pytorch-rocm-docker-image`
 * :ref:`using-pytorch-upstream-docker-image`
 
+.. |br| raw:: html
+
+   <br/>
+
 For hardware, software, and third-party framework compatibility between ROCm and PyTorch, refer to:
 
 * :ref:`system-requirements`
@@ -36,7 +40,19 @@ Using a Docker image with PyTorch pre-installed
        docker pull rocm/pytorch:latest
 
    You can also download a specific and supported configuration with different user-space ROCm
-   versions, PyTorch versions, and operating systems.
+   versions, PyTorch versions, and operating systems by filtering through the `tags <https://hub.docker.com/r/rocm/pytorch/tags>`_.
+
+   .. important::
+
+      As of ROCm 6.2.1, ``rocm/pytorch:latest`` points to a docker image with the latest ROCm tested release version of PyTorch (for example, version 2.3), similar to ``rocm/pytorch:latest-release`` tag.
+      Before ROCm 6.2.1, ``rocm/pytorch:latest`` pointed to a development version of PyTorch, which didn't correspond to a specific PyTorch release.
+
+      .. csv-table::
+        :header: "Description", "6.2.1 and later", "6.2.0 and earlier"
+
+        "Latest PyTorch tested release", **rocm/pytorch:latest** |br| rocm/pytorch:latest-release, rocm/pytorch:latest-release
+        "Latest PyTorch dev version", rocm/pytorch:latest-internal, **rocm/pytorch:latest**
+        
 
 2. Start a Docker container using the image.
 
