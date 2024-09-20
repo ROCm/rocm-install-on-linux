@@ -1,3 +1,9 @@
 name: Promote mainline into develop
 on:
   workflow_dispatch:
+jobs:
+  Noop:
+    runs-on: ubuntu-latest
+    steps:
+    - name: echo Hello world
+      run: echo "hello world"

@@ -1,4 +1,4 @@
-name: Promote develop-install into mainline
+name: Promote rocm-rel branch to external repo
 on:
   workflow_dispatch:
 jobs:

@@ -595,6 +595,13 @@ Follow these steps to create an offline installer:
          You can run the installer with both the ``dryrun`` and ``prompt`` options. 
          This simulates the offline installation and prompts you during the process.
 
+Log files
+-----------------------------------
+
+By default, the ROCm Offline Installer Creator records its output in log files 
+in the ``/var/log/offline_creator`` directory. The output of both creation and installation 
+processes is logged to this directory.
+
 .. _building-label:
 
 Building
@@ -721,8 +728,8 @@ Tests are available for these ROCm versions:
 
 *  5.7.3
 *  6.0.2
-*  6.1, 6.1.1, 6.1.2, 6.1.3
-*  6.2
+*  6.1.0, 6.1.1, 6.1.2, 6.1.3
+*  6.2.0, 6.2.1
 
 Tests are available for the following component combinations:
 
@@ -770,7 +777,7 @@ From the build location of the offline tool, run the following command:
 
    ctest
 
-This suite runs 70 tests.
+This suite runs 75 tests.
 
 The following tests are available, depending on the ROCm version:
 
@@ -778,8 +785,8 @@ The following tests are available, depending on the ROCm version:
    :header: "ROCm version", "Test Suite Support"
    :widths: 26, 80
 
-   "6.2", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
-   "6.1, 6.1.1, 6.1.2, 6.1.3", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
+   "6.2.0, 6.2.1", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
+   "6.1.0, 6.1.1, 6.1.2, 6.1.3", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "6.0.2", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "5.7.3", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
 
@@ -799,8 +806,8 @@ From the build location of the offline tool, run the following command:
 
    ctest -L <rocm-version> 
 
-where ``<rocm-version>`` is one of ``5.7.3``, ``6.0.2``, ``6.1``, ``6.1.1``, 
-``6.1.2``, ``6.1.3``, or ``6.2``.
+where ``<rocm-version>`` is one of ``5.7.3``, ``6.0.2``, ``6.1.0``, ``6.1.1``, 
+``6.1.2``, ``6.1.3``, ``6.2.0``, or ``6.2.1``.
  
 Running manual tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -809,7 +816,13 @@ In addition to the preconfigured CTest utilities, you can manually configure you
 Creator tests. This configuration option bypasses the user interface and runs 
 the ``create-offline.sh`` script as described in the :ref:`running-the-tests` section above. 
 To manually test the creation of an offline installer without the user interface, run the
-Offline Installer Creator with the ``config`` parameter:
+Offline Installer Creator with the ``config`` parameter.
+
+.. caution::
+
+   For normal Offline Installer Creator usage, the user interface is recommended. 
+   The user interface validates the various configuration file inputs and guides you through the
+   configuration process.
 
 .. code-block:: shell 
 
@@ -819,9 +832,3 @@ Set the ``config`` parameter to the absolute path to a configuration file. The f
 the ``.config`` file extension. The file follows the format defined by the Offline Installer Creator
 user interface. Example configuration files, which are used for running the CTest utilities,
 are available in the ``tests`` directory of the ``offline-installer`` repository.
-
-.. caution::
-
-   For normal Offline Installer Creator usage, the user interface is recommended. 
-   The user interface validates the various configuration file inputs and guides you through the
-   configuration process.
