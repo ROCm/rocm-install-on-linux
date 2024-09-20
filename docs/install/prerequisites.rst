@@ -67,48 +67,24 @@ your operating system to ensure you're able to download and install packages.
         Typically you can register by following the step-by-step user interface.
         If you need to register by command line, use the following commands:
 
-        .. datatemplate:nodata::
-            
-           .. tab-set::
+        .. code-block:: shell
 
-              {% for os_release in config.html_context['rhel_release_version_numbers']  %}
+            subscription-manager register --username <username> --password <password>
+            subscription-manager attach --auto
 
-                .. tab-item:: RHEL {{ os_release }}
-        
-                    .. code-block:: shell
-
-                       subscription-manager register --username <username> --password <password>
-                       subscription-manager attach --auto
-
-           {% endfor %}
-
-           More details about `registering for RHEL <https://access.redhat.com/solutions/253273>`_
+        More details about `registering for RHEL <https://access.redhat.com/solutions/253273>`_
 
   .. tab-item:: SUSE Linux Enterprise Server
         :sync: sle-tab
 
         Typically you can register by following the step-by-step user interface.
         If you need to register by command line, use the following commands:
+            
+        .. code-block:: shell
 
-        .. datatemplate:nodata::
+            SUSEConnect -r <REGCODE>
 
-            .. tab-set::
-
-                {% for os_version in config.html_context['sles_version_numbers'] %}
-                {% set os_release, os_sp  = os_version.split('.') %}
-
-                .. tab-item:: SLES {{ os_version }}
-                   
-                   .. code-block:: shell
-
-                      SUSEConnect -r <REGCODE>
-                      SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
-                      SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
-                      SUSEConnect -p PackageHub/{{ os_version }}/x86_64
-
-                {% endfor %}
-
-            More details about `registering for SLES <https://www.suse.com/support/kb/doc/?id=000018564>`_
+        More details about `registering for SLES <https://www.suse.com/support/kb/doc/?id=000018564>`_
 
 
 Additional package repositories
@@ -157,7 +133,7 @@ instructions specific to your distribution to add the necessary repositories.
     .. tab-item:: SUSE Linux Enterprise Server
         :sync: sle-tab
 
-        Add the Perl language and Education repositories.
+        Add a few modules with SUSEConnect, along with the Perl language and Education repositories.
 
         .. datatemplate:nodata::
 
@@ -170,6 +146,9 @@ instructions specific to your distribution to add the necessary repositories.
 
                     .. code-block:: shell
 
+                        SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
+                        SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
+                        SUSEConnect -p PackageHub/{{ os_version }}/x86_64
                         sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/{{ os_version }}/devel:languages:perl.repo
                         sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
 
