@@ -243,6 +243,7 @@ void do_driver_menu(MENU_DATA *pMenuData)
 {
     MENU *pMenu = pMenuData->pMenu;
 
+    wclear(pMenuData->pMenuWindow);
 
     driver_menu_toggle_grey_items(pMenuData);
 

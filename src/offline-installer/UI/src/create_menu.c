@@ -23,6 +23,7 @@
 #include "help_menu.h"
 #include "utils.h"
 
+#include <time.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <pwd.h>
@@ -50,7 +51,7 @@ char *createMenuDesc[] = {
     CREATE_MENU_ITEM_DEP_DOWNLOAD_FULL_DESC,
     " ",
     "Output name for the created offline installer. A .run extension will be added to   the filename.",
-    "Output location for the created offline installer",
+    "Output location for the created offline installer.",
     " ",
     DEFAULT_VERBOSE_HELP_WINDOW_MSG,
     "Exit to Main Menu",
@@ -168,6 +169,7 @@ void create_config_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, OFFLIN
     pCreateConfig->currentInstallDLType = eDL_TYPE_FULL;
     sprintf(pCreateConfig->installer_name, "%s", CREATE_MENU_DEFAULT_INSTALLER_NAME);
     sprintf(pCreateConfig->installer_name_with_extension, "%s.run", CREATE_MENU_DEFAULT_INSTALLER_NAME);
+    sprintf(pCreateConfig->installer_creation_log_out_location, "%s/create_%lu.log", CREATE_MENU_INSTALLER_LOG_OUT_PATH, time(NULL));
 
     sprintf(pCreateConfig->installer_out_location, "%s", get_home_directory());
     pCreateConfig->is_installer_loc_valid = true;   // home directory is valid
@@ -253,7 +255,7 @@ void create_menu_draw(MENU_DATA *pMenuData)
     wattron(pMenuWindow, COLOR_PAIR(4));
     mvwprintw(pMenuWindow, CREATE_MENU_ITEM_DEP_DOWNLOAD_ROW, CREATE_MENU_FORM_COL, "%s", createMenuDLTypes[pCreateConfig->currentInstallDLType].download_dep_name);
     wattroff(pMenuWindow, COLOR_PAIR(4));
-
+    
     // draw the main create menu
     menu_draw(pMenuData);
 }
@@ -285,6 +287,8 @@ void create_menu_update_state(MENU_DATA *pMenuData)
 void do_create_menu(MENU_DATA *pMenuData)
 {
     MENU *pMenu = pMenuData->pMenu;
+
+    wclear(pMenuData->pMenuWindow);
 
     // draw the create menu contents
     create_menu_draw(pMenuData);

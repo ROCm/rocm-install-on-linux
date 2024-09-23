@@ -71,7 +71,7 @@ MENU_PROP mainMenuProperties = {
     .numLines = ARRAY_SIZE(mainMenuOps) - 1,
     .numCols = MAX_MENU_ITEM_COLS,
     .startx = 1,
-    .starty = 6,
+    .starty = 8,
     .numItems = ARRAY_SIZE(mainMenuOps)
 };
 
@@ -181,10 +181,14 @@ void main_menu_draw(MENU_DATA *pMenuData, OFFLINE_INSTALL_CONFIG *pConfig)
     // size in case user resized terminal window
     resize_and_reposition_window_and_subwindow(pMenuData, WIN_NUM_LINES, WIN_WIDTH_COLS);
 
-    sprintf(systemInfo, "Target Installer: %s : %s", pConfig->distroName, pConfig->kernelVersion);
+    wattron(pMenuData->pMenuWindow, COLOR_PAIR(9) | A_UNDERLINE);
+    mvwprintw(pMenuData->pMenuWindow, ITEM_TITLE_Y, ITEM_TITLE_X, "Target Installer");
+    wattroff(pMenuData->pMenuWindow, COLOR_PAIR(9) | A_UNDERLINE);
+    
+    sprintf(systemInfo, "    OS     : %s\n       Kernel : %s", pConfig->distroName, pConfig->kernelVersion);
 
     print_menu_title(pMenuData, MENU_TITLE_Y, MENU_TITLE_X, WIN_WIDTH_COLS, "ROCm Offline Installer Creator", COLOR_PAIR(2));
-    print_menu_item_title(pMenuData, ITEM_TITLE_Y, ITEM_TITLE_X,  systemInfo, COLOR_PAIR(9));
+    print_menu_item_title(pMenuData, ITEM_TITLE_Y + 1, ITEM_TITLE_X,  systemInfo, COLOR_PAIR(9));
 
     print_menu_control_msg(pMenuData);
 
@@ -489,11 +493,14 @@ int main(int argc, char *argv[])
     // call the creator script
     if (status == 0)
     {
-        char cmd[256];
+        char cmd[800];
         clear_str(cmd);
-        sprintf(cmd, "./create-offline.sh %s", createArgs);
-        
+        printf("Create directory: /var/log/offline_creator\n");
+        fflush(stdout);
+        system("sudo mkdir -p /var/log/offline_creator");
+        sprintf(cmd, "./create-offline.sh %s 2>&1 | sudo tee %s", createArgs, offlineConfig.create_confg.installer_creation_log_out_location);
         system(cmd);
+        printf("Creation log stored in: %s\n", offlineConfig.create_confg.installer_creation_log_out_location);
     }
 
     return 0;

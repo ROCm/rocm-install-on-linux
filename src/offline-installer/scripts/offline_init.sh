@@ -43,26 +43,78 @@ Usage: $PROG [options]
 END_USAGE
 }
 
-print_version() {
+get_version() {
     i=0
     
     while IFS= read -r line; do
         case $i in
-            0) VERSION="$line" ;;
+            0) CREATOR_VERSION="$line" ;;
             1) ROCM_VERSION="$line" ;;
             2) PACKAGE="$line" ;;
         esac
         
         i=$((i+1))
     done < "./VERSION"
-    
-    echo ROCm Offline Creator Version : $VERSION-$ROCM_VERSION
+}
+
+print_version() {
+    echo ROCm Offline Creator Version : $CREATOR_VERSION-$ROCM_VERSION
     echo ROCm Offline Creator Package : $PACKAGE
+}
+
+os_release() {
+    get_version
+    
+    if [[ -r  /etc/os-release ]]; then
+        . /etc/os-release
+
+        DISTRO_NAME=$ID
+        DISTRO_VER=$(awk -F= '/^VERSION_ID=/{print $2}' /etc/os-release | tr -d '"')
+
+        case "$ID" in
+        ubuntu)
+	    PACKAGE_VER=${PACKAGE##*~}
+	    PACKAGE_VER=${PACKAGE_VER%.run}
+	    ;;
+        rhel)
+	    PACKAGE_VER=${PACKAGE##*el}
+	    PACKAGE_VER=${PACKAGE_VER%%.*}
+	    
+	    DISTRO_VER=${DISTRO_VER%%.*}
+            ;;
+        sles)
+	    PACKAGE_VER=${PACKAGE##*sles}
+	    PACKAGE_VER=${PACKAGE_VER%%.*}
+	    
+	    DISTRO_VER=${DISTRO_VER/./}
+            ;;
+        *)
+            echo "$ID is Unsupported OS"
+            exit 1
+            ;;
+        esac
+    else
+        echo "Unsupported OS"
+        exit 1
+    fi
+    
+    # For non-local builds, verify package version matches for the running host distribution
+    if [[ $PACKAGE != *"local"* ]]; then
+        if [ $PACKAGE_VER != $DISTRO_VER ]; then
+            echo -e "\e[31m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
+            echo -e "\e[31mError: ROCm Offline Creator Package mismatch:\e[0m"
+            echo -e "\e[31m       ${DISTRO_NAME} ${DISTRO_VER} != ${DISTRO_NAME} ${PACKAGE_VER} (Package)\e[0m"
+            echo -e "\e[31m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
+            exit 1
+        fi
+    fi
 }
 
 ####### Main script ###############################################################
 
 PROG=${0##*/}
+
+os_release
 
 # parse args
 while (($#))

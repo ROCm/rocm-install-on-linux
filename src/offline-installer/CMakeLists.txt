@@ -176,6 +176,7 @@ set(IS_ROCM_611_DISABLED 0)
 set(IS_ROCM_612_DISABLED 0)
 set(IS_ROCM_613_DISABLED 0)
 set(IS_ROCM_62_DISABLED 0)
+set(IS_ROCM_621_DISABLED 0)
 
 # Disable ROCm tests older than 6.2 for sles 15.6, rhel 8.10, rhel 9.4 and ubuntu 24.04
 if (IS_SLES_156 OR IS_RHEL_810 OR IS_RHEL_94 OR IS_UBUNTU_2404)
@@ -218,7 +219,7 @@ add_custom_target(rocm_offline_creator ALL
                   COMMAND echo "Copy the help_menus directory"
                   COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/UI/help_menus ${SCRIPT_DIRECTORY}/help_menus/
                   COMMAND echo "Building rocm_offline_creator"
-                  COMMAND makeself ${MAKESELF_OPTIONS} ${SCRIPT_DIRECTORY} ${PACKAGE_NAME}.run "ROCm Offline Install Creator" ./offline_init.sh)
+                  COMMAND makeself ${MAKESELF_OPTIONS} --nox11 ${SCRIPT_DIRECTORY} ${PACKAGE_NAME}.run "ROCm Offline Install Creator" ./offline_init.sh)
 
 # UI
 add_subdirectory(UI)

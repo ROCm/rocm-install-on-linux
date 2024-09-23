@@ -25,7 +25,9 @@
 #include "install_types.h"
 
 // Menus default installer type
-#define DEFAULT_INSTALLER_TYPE    eINSTALL_TYPE_REPO_PUBLIC
+#define DEFAULT_INSTALLER_TYPE              eINSTALL_TYPE_REPO_PUBLIC
+
+#define INSTALLER_CREATION_LOG_SIZE         50    // /var/log/offline_creator/create_[UNIX_TIME].log
 
 
 /* Create Menu Configuration ************************************************************************/
@@ -61,6 +63,7 @@ typedef struct _CREATE_MENU_CONFIG
 
     char installer_name[256];
     char installer_name_with_extension[260];
+    char installer_creation_log_out_location[INSTALLER_CREATION_LOG_SIZE];
     
     char installer_out_location[256];
     bool is_installer_loc_valid;

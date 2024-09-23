@@ -32,18 +32,22 @@ The offline tool is designed to support the follow list of Linux Distros:
 
 ROCm versions enabled for each distro.
 
-| OS Name        | 5.7.3  | 6.0    | 6.0.1  | 6.0.2  | 6.0.3  | 6.1    | 6.1.1  | 6.1.2  | 6.1.3  | 6.2    |
-| :---           | :----: | :----: | :----: | :----: |  :----:| :----: | :----: | :----: | :----: | :----: |
-| Ubuntu 20.04   | Yes    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
-| Ubuntu 22.04   | Yes    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
-| Ubuntu 24.04   | No     |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  Yes   |
-| Rhel 8.9       | No     |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
-| Rhel 8.10      | No     |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  Yes   |
-| Rhel 9.2       | Yes    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
-| Rhel 9.3       | No     |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
-| Rhel 9.4       | No     |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  Yes   |
-| Suse 15.5      | Yes    |  No    |  No    |  No    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
-| Suse 15.6      | No     |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  Yes   |
+| OS Name        | 5.7.3  | 6.0    | 6.0.1  | 6.0.2  | 6.0.3  | 6.1    | 6.1.1  | 6.1.2  | 6.1.3  | 6.2    | 6.2.1  |
+| :---           | :----: | :----: | :----: | :----: |  :----:| :----: | :----: | :----: | :----: | :----: | :----: |
+| Ubuntu 20.04   | Yes    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
+| Ubuntu 22.04   | Yes    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
+| Ubuntu 24.04   | No     |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  Yes   |  Yes   |
+| Rhel 8.9       | No     |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
+| Rhel 8.10      | No     |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  Yes   |  Yes   |
+| Rhel 9.2       | Yes    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
+| Rhel 9.3       | No     |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
+| Rhel 9.4       | No     |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  Yes   |  Yes   |
+| Suse 15.5      | Yes    |  No    |  No    |  No    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
+| Suse 15.6      | No     |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  Yes   |  Yes   |
+
+## ROCm Usecases Support Notes
+
+`multimediasdk` is not supported on ROCm 5.7.3 and on 6.2+
 
 ## Building
 
@@ -188,20 +192,24 @@ The installer package may also be run with the following options:
 * prompt   : enables user prompts during installion process.
 * dryrun   : simulates the installation process without installing associated packages.
 
+### Log Files
+
+By default, the Offline Installer creator will record it's execution output to log files located in the /var/log/offline_creator directory.  The output of both creation and installation processes will written out to this directory.
+
 ## Testing
 
 Testing of the offline creator tool has pre-set tests that maybe run to validate some of common installer configurations simulating and testing the creation of the target offline installer and running of the outputted installer.
 
 Tests are based on the ROCm version and on the usecase being installed:
 
-* ROCm Version: `5.7.3, 6.0.2, 6.1, 6.1.1, 6.1.2, 6.1.3, and 6.2`
+* ROCm Version: `5.7.3, 6.0.2, 6.1, 6.1.1, 6.1.2, 6.1.3, 6.2, and 6.2.1`
 
 * Usecases    : `ROCm only, Driver only, ROCm + Driver, rocm + graphics, hip + hiplibsdk`
 
-  * ROCm only     = Create an installer for the ROCm usecase only.
-  * Driver only   = Create an installer for the amdgpu driver only.
-  * ROCm + Driver = Create an installer for both the ROCm usecase and the amdgpu driver.
-  * ROCm,graphics = Create an installer for the rocm,graphics usecase.
+  * ROCm only      = Create an installer for the ROCm usecase only.
+  * Driver only    = Create an installer for the amdgpu driver only.
+  * ROCm + Driver  = Create an installer for both the ROCm usecase and the amdgpu driver.
+  * ROCm,graphics  = Create an installer for the rocm,graphics usecase.
   * Hip, Hiplibsdk = Create an installer for the hip,hiplibsdk usescase.
 
 ### Test Build
@@ -226,11 +234,11 @@ From the build location of the offline tool, run the following:
 ctest
 ```
 
-A total of 70 tests will be run:
+A total of 75 tests will be run:
 
 ROCm Version
 
-* 6.2  : ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk
+* 6.2.x: ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk
 * 6.1.x: ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk
 * 6.0.2: ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk
 * 5.7.3: ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk
@@ -244,7 +252,7 @@ From the build location of the offline tool, run the following:
 ctest -L <rocm-version> 
 ```
 
-rocm-version = 5.7.3, 6.0.2, 6.1, 6.1.1, 6.1.2, 6.1.3, or 6.2
+rocm-version = 5.7.3, 6.0.2, 6.1.x (6.1.0, 6.1.1, 6.1.2, 6.1.3), or 6.2.x (6.2.0, 6.2.1)
 
 #### CI Test
 
@@ -260,18 +268,18 @@ ctest -L ci
 A matrix describing what ROCm ctests are enabled for each distro.
 NOTE: There are no ctests for rocm versions 6.0.0, 6.0.1 and 6.0.3
 
-| OS Name        | 5.7.3  | 6.0.2  | 6.1    | 6.1.1  | 6.1.2  | 6.1.3  | 6.2    |
-| :---           | :----: |  :----:| :----: | :----: | :----: | :----: | :----: |
-| Ubuntu 20.04   | Yes    |  Yes   | Yes    | Yes    | Yes    | Yes    | Yes    |
-| Ubuntu 22.04   | Yes    |  Yes   | Yes    | Yes    | Yes    | Yes    | Yes    |
-| Ubuntu 24.04   | No     |  No    | No     | No     | No     | No     | Yes    |
-| Rhel 8.9       | No     |  Yes   | Yes    | Yes    | Yes    | Yes    | Yes    |
-| Rhel 8.10      | No     |  No    | No     | No     | No     | No     | Yes    |
-| Rhel 9.2       | Yes    |  Yes   | Yes    | Yes    | Yes    | Yes    | Yes    |
-| Rhel 9.3       | No     |  Yes   | Yes    | Yes    | Yes    | Yes    | Yes    |
-| Rhel 9.4       | No     |  No    | No     | No     | No     | No     | Yes    |
-| Suse 15.5      | Yes    |  Yes   | Yes    | Yes    | Yes    | Yes    | Yes    |
-| Suse 15.6      | No     |  No    | No     | No     | No     | No     | Yes    |
+| OS Name        | 5.7.3  | 6.0.2  | 6.1.0  | 6.1.1  | 6.1.2  | 6.1.3  | 6.2.0  | 6.2.1  |
+| :---           | :----: |  :----:| :----: | :----: | :----: | :----: | :----: | :----: |
+| Ubuntu 20.04   | Yes    |  Yes   | Yes    | Yes    | Yes    | Yes    | Yes    | Yes    |
+| Ubuntu 22.04   | Yes    |  Yes   | Yes    | Yes    | Yes    | Yes    | Yes    | Yes    |
+| Ubuntu 24.04   | No     |  No    | No     | No     | No     | No     | Yes    | Yes    |
+| Rhel 8.9       | No     |  Yes   | Yes    | Yes    | Yes    | Yes    | Yes    | Yes    |
+| Rhel 8.10      | No     |  No    | No     | No     | No     | No     | Yes    | Yes    |
+| Rhel 9.2       | Yes    |  Yes   | Yes    | Yes    | Yes    | Yes    | Yes    | Yes    |
+| Rhel 9.3       | No     |  Yes   | Yes    | Yes    | Yes    | Yes    | Yes    | Yes    |
+| Rhel 9.4       | No     |  No    | No     | No     | No     | No     | Yes    | Yes    |
+| Suse 15.5      | Yes    |  Yes   | Yes    | Yes    | Yes    | Yes    | Yes    | Yes    |
+| Suse 15.6      | No     |  No    | No     | No     | No     | No     | Yes    | Yes    |
 
 ### Test Run using .config
 

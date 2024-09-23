@@ -52,6 +52,8 @@
 
 #define CREATE_MENU_DEFAULT_INSTALLER_NAME                              "rocm-offline-install"
 
+#define CREATE_MENU_INSTALLER_LOG_OUT_PATH                              "/var/log/offline_creator"
+
 
 // item descriptions for options within specific menu items
 #define CREATE_MENU_ITEM_INSTALLER_INPUT_PUBLIC_DESC                    "Input source for packages used in offline installer creation. 'repo-public'        provides packages from repo.radeon.com"

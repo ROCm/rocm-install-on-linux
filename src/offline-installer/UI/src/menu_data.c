@@ -372,7 +372,6 @@ void menu_loop(MENU_DATA *pMenuData)
                 break;
         }
 
-        print_version(pMenuData);
         wrefresh(pMenuWindow);
     }
 }
@@ -410,9 +409,10 @@ void menu_draw(MENU_DATA *pMenuData)
                 set_item_value(items[i], true);
                 add_menu_item_selection_mark(pMenuData, items[i]);
             }
-
         }
     }
+
+    print_version(pMenuData);
 }
 
 void menu_info_draw_bool(MENU_DATA *pMenuData, int starty, int startx, bool val)

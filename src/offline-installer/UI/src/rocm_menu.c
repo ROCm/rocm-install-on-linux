@@ -158,6 +158,7 @@ char *rocmVersionsNameIndexMapping[] = {
     "6.1.2",
     "6.1.3",
     "6.2",
+    "6.2.1",
     (char*)NULL,
 };
 
@@ -172,6 +173,7 @@ char *rocmVersionsDescIndexMapping[] = {
     "Install ROCm 6.1.2",
     "Install ROCm 6.1.3",
     "Install ROCm 6.2",
+    "Install ROCm 6.2.1",
     (char*)NULL,
 };
 
@@ -192,16 +194,16 @@ char *distroOSVersionsIndexMapping[] = {
 
 // Each column corresponds to a specific rocm version specified in array rocmVersionsDescIndexMapping
 int rocmVersionsMatrix[ROCM_VERS_ROWS][ROCM_VERS_COLS] = {
-    {1,1,1,1,1,1,1,1,1,1}, // Ubuntu 20.04 
-    {1,1,1,1,1,1,1,1,1,1}, // Ubuntu 22.04 
-    {0,0,0,0,0,0,0,0,0,1}, // Ubuntu 24.04 
-    {0,1,1,1,1,1,1,1,1,1}, // rhel 8.9
-    {0,0,0,0,0,0,0,0,0,1}, // rhel 8.10
-    {1,1,1,1,1,1,1,1,1,1}, // rhel 9.2
-    {0,1,1,1,1,1,1,1,1,1}, // rhel 9.3
-    {0,0,0,0,0,0,0,0,0,1}, // rhel 9.4
-    {1,1,1,1,1,1,1,1,1,1}, // sles 15.5
-    {0,0,0,0,0,0,0,0,0,1}, // sles 15.6
+    {1,1,1,1,1,1,1,1,1,1,1}, // Ubuntu 20.04 
+    {1,1,1,1,1,1,1,1,1,1,1}, // Ubuntu 22.04 
+    {0,0,0,0,0,0,0,0,0,1,1}, // Ubuntu 24.04 
+    {0,1,1,1,1,1,1,1,1,1,1}, // rhel 8.9
+    {0,0,0,0,0,0,0,0,0,1,1}, // rhel 8.10
+    {1,1,1,1,1,1,1,1,1,1,1}, // rhel 9.2
+    {0,1,1,1,1,1,1,1,1,1,1}, // rhel 9.3
+    {0,0,0,0,0,0,0,0,0,1,1}, // rhel 9.4
+    {1,1,1,1,1,1,1,1,1,1,1}, // sles 15.5
+    {0,0,0,0,0,0,0,0,0,1,1}, // sles 15.6 
 };
 
 char **rocmVersions = NULL;
@@ -333,6 +335,7 @@ void rocm_menu_draw(MENU_DATA *pMenuData)
 {
     WINDOW *pMenuWindow = pMenuData->pMenuWindow;
     ROCM_MENU_CONFIG *pConfig = &(pMenuData->pConfig)->rocm_config;
+    
     if (pConfig->rocm_version_selected && pConfig->install_rocm)
     {
         menu_set_item_select(pMenuData, ROCM_MENU_ITEM_USECASES_INDEX, true);
@@ -364,7 +367,6 @@ void rocm_menu_submenu_draw(MENU_DATA *pMenuData)
 {
     wclear(pMenuData->pMenuWindow);
     menu_draw(pMenuData);
-    print_version(pMenuData);
 }
 
 void rocm_menu_toggle_grey_items(MENU_DATA *pMenuData, bool enable)
@@ -430,6 +432,8 @@ void rocm_menu_update_state(MENU_DATA *pMenuData)
 void do_rocm_menu(MENU_DATA *pMenuData)
 {  
     MENU *pMenu = pMenuData->pMenu;
+
+    wclear(pMenuData->pMenuWindow);
 
     bool isRocmStackSelected = is_specific_usecase_selected(pMenuData, ROCM_USECASE);
 
@@ -833,9 +837,17 @@ bool is_ubuntu_2004(MENU_DATA *pMenuData)
     return is_distro_id_and_distro_version(pMenuData, "ubuntu", "20.04");
 }
 
+// multimedia supported on all rocm versions except 5.7.3 and 6.2+
 bool is_mutlimediasdk_enabled(const char *ROCMVersion)
 {
-    return strcmp(ROCMVersion, "5.7.3") == 0 ? false : true;
+    bool is_supported = true;
+    if ( strcmp(ROCMVersion, "5.7.3") == 0 || 
+        strcmp(ROCMVersion, "6.2") > 0 || strcmp(ROCMVersion, "6.2") == 0 )
+    {
+        is_supported = false;
+    }
+    
+    return is_supported;
 }
 
 bool is_rocm_version_empty(MENU_DATA *pMenuData)
