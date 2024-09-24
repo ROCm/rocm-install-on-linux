@@ -84,6 +84,7 @@ AMD ROCm software supports the following Linux distributions.
     :header: "Operating system", "Kernel", "Support"
     :escape: \
 
+    "Ubuntu 24.04.1", "6.8 [GA]", "✅"
     "Ubuntu 24.04", "6.8 [GA]", "✅"
     "Ubuntu 22.04.5", "5.15 [GA], 6.8 [HWE]", "✅ [#Ubuntu22045]_"
     "Ubuntu 22.04.4", "5.15 [GA], 6.5 [HWE]", "✅"
