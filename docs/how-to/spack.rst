@@ -82,7 +82,7 @@ Building ROCm components using Spack
    .. code-block:: shell
 
       cd spack
-      ./share/spack/setup-env.sh
+      . share/spack/setup-env.sh
 
    Spack commands are available once the above steps are completed. To list the available commands, use ``help``.
 
