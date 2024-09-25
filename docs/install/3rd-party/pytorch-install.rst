@@ -64,8 +64,7 @@ Using a Docker image with PyTorch pre-installed
 
    .. note::
 
-       This will automatically download the image if it does not exist on the host. You can also pass the ``-v``
-       argument to mount any data directories from the host onto the container.
+       This will automatically download the image if it does not exist on the host. You can also pass the ``-v`` argument to mount any data directories from the host onto the container.
 
 .. _install_pytorch_wheels:
 .. _using-wheels-package:
@@ -502,3 +501,47 @@ ImageNet PyTorch example
    .. code-block:: bash
 
        python3 main.py
+
+.. _troubleshooting-pytorch:
+
+Troubleshooting
+===============
+
+* What to do if you get the following error when trying to run PyTorch: 
+
+    .. code-block:: shell
+
+        hipErrorNoBinaryForGPU: Unable to find code object for all current devices!
+
+  The error denotes that the installation of PyTorch and/or other dependencies or libraries do not support the current GPU. To workaround this issue, use the following steps:
+
+  1. Confirm that the hardware supports the ROCm stack. Refer to :ref:`linux-support` and :ref:`windows-support`.
+
+  2. Determine the gfx target.
+
+  .. code-block:: shell
+
+      rocminfo | grep gfx
+
+  3. Check if PyTorch is compiled with the correct gfx target.
+
+  .. code-block:: shell
+
+      TORCHDIR=$( dirname $( python3 -c 'import torch; print(torch.__file__)' ) )
+      roc-obj-ls -v $TORCHDIR/lib/libtorch_hip.so # check for gfx target
+
+  .. note:: 
+      Recompile PyTorch with the right gfx target if compiling from the source if
+      the hardware is not supported. 
+
+* What if you are unable to access Docker or GPU in user accounts?
+
+    Ensure that the user is added to docker, video, and render Linux groups as described in :ref:`group_permissions`.
+
+* Can you install PyTorch directly on bare metal?
+
+    Bare-metal installation of PyTorch is supported through wheels. For more information, see :ref:`using-wheels-package`. 
+
+* How do you profile PyTorch workloads?
+
+    Use the PyTorch Profiler as described in :ref:`mi300x-pytorch-profiler` to profile GPU kernels on ROCm. 

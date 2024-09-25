@@ -211,6 +211,8 @@ To install for the currently active kernel run the command corresponding to your
 
             sudo zypper install kernel-default-devel
 
+.. _group_permissions:
+
 Setting permissions for groups
 ================================================================
 
