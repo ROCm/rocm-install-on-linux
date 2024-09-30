@@ -42,6 +42,8 @@ Using a Docker image with PyTorch pre-installed
    You can also download a specific and supported configuration with different user-space ROCm
    versions, PyTorch versions, and operating systems by filtering through the `tags <https://hub.docker.com/r/rocm/pytorch/tags>`_.
 
+.. _pytorch-docker-latest-note:
+
    .. important::
 
       As of ROCm 6.2.1, ``rocm/pytorch:latest`` points to a docker image with the latest ROCm tested release version of PyTorch (for example, version 2.3), similar to ``rocm/pytorch:latest-release`` tag.
@@ -65,6 +67,9 @@ Using a Docker image with PyTorch pre-installed
    .. note::
 
        This will automatically download the image if it does not exist on the host. You can also pass the ``-v`` argument to mount any data directories from the host onto the container.
+
+Refer to the :doc:`Docker image support matrix </reference/docker-image-support-matrix>` for a list of prebuilt
+Docker image tags for PyTorch with ROCm.
 
 .. _install_pytorch_wheels:
 .. _using-wheels-package:
