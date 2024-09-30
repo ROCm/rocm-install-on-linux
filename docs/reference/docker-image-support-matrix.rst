@@ -25,7 +25,7 @@ The following Docker image tags and associated inventories are validated for ROC
             .. tab-item:: Ubuntu 22.04
 
                Tag
-                 `rocm/pytorch:rocm6.2.1_ubuntu22.04_py3.10_pytorch_release_2.1.2 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2.1_ubuntu22.04_py3.10_pytorch_release_2.1.2/images/sha256-1a497364d1541ca4ff97dcd69ffb49b3ad0d82d73bba90095089002e3a8a64a2>`_ (latest)
+                 `rocm/pytorch:rocm6.2.1_ubuntu22.04_py3.10_pytorch_release_2.1.2 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2.1_ubuntu22.04_py3.10_pytorch_release_2.1.2/images/sha256-1a497364d1541ca4ff97dcd69ffb49b3ad0d82d73bba90095089002e3a8a64a2>`_
 
                Inventory
                  * `ROCm 6.2.1 <https://repo.radeon.com/rocm/apt/6.2.1/>`_
@@ -93,7 +93,7 @@ The following Docker image tags and associated inventories are validated for ROC
             .. tab-item:: Ubuntu 20.04
 
                Tag
-                 `rocm/pytorch:rocm6.2.1_ubuntu20.04_py3.9_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2.1_ubuntu20.04_py3.9_pytorch_release_2.3.0/images/sha256-8ffc2fcde77c54800057b385bc95f1481fc5300dccff192afa865b29a5d00201>`_
+                 `rocm/pytorch:rocm6.2.1_ubuntu20.04_py3.9_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2.1_ubuntu20.04_py3.9_pytorch_release_2.3.0/images/sha256-8ffc2fcde77c54800057b385bc95f1481fc5300dccff192afa865b29a5d00201>`_ (`latest <https://hub.docker.com/layers/rocm/pytorch/latest/images/sha256-63f46c1bd0db29c74238efa72778b4fabc614e180b8e9e3bcf8d457d9b34b610>`_)
 
                Inventory
                  * `ROCm 6.2.1 <https://repo.radeon.com/rocm/apt/6.2.1/>`_
@@ -216,7 +216,7 @@ The following Docker image tags and associated inventories are validated for ROC
             .. tab-item:: Ubuntu 20.04
 
                Tag
-                 `rocm/tensorflow:rocm6.2.1-py3.9-tf2.16.1-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.2.1-py3.9-tf2.16.1-dev/images/sha256-55b5f75180cc8be17d6d5d4fab0f35f2f20d240ca9c4c6828af18cf81bba68c6>`_ (latest)
+                 `rocm/tensorflow:rocm6.2.1-py3.9-tf2.16.1-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.2.1-py3.9-tf2.16.1-dev/images/sha256-55b5f75180cc8be17d6d5d4fab0f35f2f20d240ca9c4c6828af18cf81bba68c6>`_ (`latest <https://hub.docker.com/layers/rocm/tensorflow/latest/images/sha256-3d5ba86a2cc3b6a4c2e160f6bffc7c5503e14e2fbb8d9712bc70ec8708f72d8c>`_)
 
                Inventory
                  * `ROCm 6.2.1 <https://repo.radeon.com/rocm/apt/6.2.1/>`_
