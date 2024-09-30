@@ -9,7 +9,7 @@ Red Hat Enterprise Linux native installation
 
 .. _rhel-register-repo:
 
-Registering repositories
+Registering ROCm repositories
 =====================================================
 
 Register kernel-mode driver
@@ -69,6 +69,10 @@ Register ROCm packages
 
 Installing
 =====================================================
+
+.. important::
+
+    Make sure that the :doc:`/install/prerequisites` are met before installing.
 
 Install kernel driver
 ----------------------------------------------------------------------------------------------------------
