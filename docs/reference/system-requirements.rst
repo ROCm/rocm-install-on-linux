@@ -9,6 +9,10 @@
 System requirements (Linux)
 **************************************************************************************
 
+.. |br| raw:: html
+
+   <br>
+
 Supported GPUs
 =============================================
 
@@ -107,12 +111,11 @@ Virtualization support
 ROCm supports virtualization for select GPUs only as shown below.
 
 .. csv-table::
-    :widths: 50, 25, 25, 50
+    :widths: 25, 25, 25, 50
     :header: "Hypervisor", "Version", "GPU", "Validated guest OS (kernel)"
 
-    "VMWare", "ESXI 8", "MI250", "Ubuntu 20.04 (5.15 [HWE])"
-    "VMWare", "ESXI 8", "MI210", "Ubuntu 20.04 (5.15 [HWE]), SLES 15 SP4 (5.14.21)"
-    "VMWare", "ESXI 7", "MI210", "Ubuntu 20.04 (5.15 [HWE]), SLES 15 SP4 (5.14.21)"
+    "VMWare", "ESXI 8", "MI210", "Ubuntu 22.04.4 (6.8 [HWE]), |br| SLES 15 SP5 (5.14.21), |br| RHEL 8.10 (5.14.0)"
+    "VMWare", "ESXI 7", "MI210", "Ubuntu 22.04.4 (6.8 [HWE]), |br| RHEL 8.10 (5.14.0)"
 
 CPU support
 =============================================
