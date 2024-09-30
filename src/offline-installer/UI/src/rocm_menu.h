@@ -57,9 +57,9 @@
 
 // definitions for rocm verions matrix
 #define ROCM_VERS_ROWS                                      10
-#define ROCM_VERS_COLS                                      10
+#define ROCM_VERS_COLS                                      12       // Number of rocm versions displayed in variable rocmVersionsNameIndexMapping
 
-#define ROCM_VERS_MENU_MAX_SIZE                             13
+#define ROCM_VERS_MENU_MAX_SIZE                             14
 
 
 void create_rocm_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, OFFLINE_INSTALL_CONFIG *pConfig);

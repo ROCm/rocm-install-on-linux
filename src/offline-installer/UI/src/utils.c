@@ -20,11 +20,13 @@
  *
  * ************************************************************************ */
 #include "utils.h"
+
 #include <string.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <dirent.h>
 
 int calculate_text_height(char *desc, int width)
 {
@@ -70,7 +72,7 @@ bool is_field_empty(char *text)
 
 int get_field_length(char *text, int field_width)
 {
-    char temp[256];
+    char temp[DEFAULT_CHAR_SIZE];
     int i;
 
     strcpy(temp, text);
@@ -88,7 +90,7 @@ void field_trim(char *src, char *dst, int max)
 {
     int field_len = get_field_length(src, max);
     
-    memset(dst, '\0', 256);
+    memset(dst, '\0', DEFAULT_CHAR_SIZE);
     strncpy(dst, src, (max-3));
     if (field_len > (max -3) )
     {
@@ -98,7 +100,7 @@ void field_trim(char *src, char *dst, int max)
 
 int check_url(char *url) 
 {
-    char command[256];
+    char command[DEFAULT_CHAR_SIZE];
 
     sprintf(command, "wget -q --spider %s", url);
     
@@ -134,9 +136,9 @@ void remove_end_spaces(char *str, int max)
 {
     int field_len = get_field_length(str, max);
 
-    char temp[256];
+    char temp[DEFAULT_CHAR_SIZE];
 
-    memset(temp, '\0', 256);
+    memset(temp, '\0', DEFAULT_CHAR_SIZE);
     strncpy(temp, str, field_len);
     
     strcpy(str, temp);
@@ -152,4 +154,55 @@ int clear_str(char *str)
     memset(str, '\0', strlen(str));
 
     return 0;
+}
+
+bool is_dir_exist(char *path)
+{
+    DIR* dir = opendir(path);
+    if (dir) 
+    {
+        /* Directory exists. */
+        closedir(dir);
+        return true;
+    } 
+    else 
+    {
+        return false;
+    }
+
+}
+
+bool is_rocm_installed()
+{
+    DIR* dir = opendir("/opt/rocm");
+    if (dir) 
+    {
+        /* Directory exists. */
+        closedir(dir);
+        return true;
+    } 
+    else 
+    {
+        return false;
+    }
+}
+
+bool get_value_of_wconfig(char *src, char *dst)
+{
+    char *p = strtok (src, "=");
+    if (p == NULL)
+    {
+        return false;
+    } 
+    else 
+    {
+        p = strtok(NULL, "=");
+        if (p == NULL)
+        {
+            return false;
+        }
+    }
+
+    strncpy(dst, p, strlen(p) + 1);
+    return true;
 }

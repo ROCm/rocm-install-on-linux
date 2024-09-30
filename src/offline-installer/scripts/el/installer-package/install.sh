@@ -22,6 +22,12 @@
 # THE SOFTWARE.
 # #############################################################################
 
+# Logs
+RUN_INSTALLER_LOGS=/var/log/offline_creator
+RUN_INSTALLER_CURRENT_LOG="$RUN_INSTALLER_LOGS/install_$(date +%s).log"
+
+{ 
+
 # Debug Settings
 DEBUG_INSTALL=no
 DEBUG_CONFIG=no
@@ -262,8 +268,9 @@ config_install() {
 }
 
 
+# User must pass in the exit_status as a parameter when calling this function
 install_check() {
-    local exit_status=$?
+    local exit_status=$1
     
     if [[ $exit_status -ne 0 ]] && [[ $INSTALLER_DRYRUN == 0 ]]; then
         print_err "Packages failed to install.  exit_status $exit_status"
@@ -284,10 +291,12 @@ install_rocm_full() {
     # install the kernel packages
     echo Install kernel packages... $KERNEL_PACKAGES
     $SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $KERNEL_PACKAGES
+    local exit_status=$?
     if [[ $INSTALLER_DRYRUN == 1 ]]; then
         errorCheck=$($SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $KERNEL_PACKAGES)
     fi
-    install_check
+    
+    install_check "$exit_status"
     echo Install kernel packages...Complete
     
     # install the rocm packages (if required)
@@ -295,10 +304,11 @@ install_rocm_full() {
         echo Install ROCm packages... $ROCM_USECASES_PACKAGES
         
         $SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $ROCM_USECASES_PACKAGES
+        local exit_status=$?
         if [[ $INSTALLER_DRYRUN == 1 ]]; then
             errorCheck=$($SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $ROCM_USECASES_PACKAGES)
         fi
-        install_check
+        install_check "$exit_status"
         
         echo Install ROCm packages...Complete
     fi
@@ -308,10 +318,11 @@ install_rocm_full() {
         echo Install amdgpu packages... $AMDGPU_PACKAGES $AMDGPU_KERNEL_PACKAGES
         
         $SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $AMDGPU_PACKAGES $AMDGPU_KERNEL_PACKAGES
+        local exit_status=$?
         if [[ $INSTALLER_DRYRUN == 1 ]]; then
             errorCheck=$($SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $AMDGPU_PACKAGES $AMDGPU_KERNEL_PACKAGES)
         fi
-        install_check
+        install_check "$exit_status"
         
         echo Install amdgpu packages...Complete
     fi
@@ -322,10 +333,11 @@ install_rocm_min() {
     echo Install packages... $KERNEL_PACKAGES $ROCM_USECASES_PACKAGES $AMDGPU_PACKAGES $AMDGPU_KERNEL_PACKAGES
     
     $SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $KERNEL_PACKAGES $ROCM_USECASES_PACKAGES $AMDGPU_PACKAGES $AMDGPU_KERNEL_PACKAGES
+    local exit_status=$?
     if [[ $INSTALLER_DRYRUN == 1 ]]; then
         errorCheck=$($SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $KERNEL_PACKAGES $ROCM_USECASES_PACKAGES $AMDGPU_PACKAGES $AMDGPU_KERNEL_PACKAGES)
     fi
-    install_check
+    install_check "$exit_status"
     
     echo Install packages...Complete
 }
@@ -681,4 +693,8 @@ if [[ $option == "Y" || $option == "y" ]]; then
 fi
 
 echo Cleaning up...Complete
+
+} 2>&1 | $SUDO tee $RUN_INSTALLER_CURRENT_LOG
+
+echo "Install log stored in: $RUN_INSTALLER_CURRENT_LOG"
 

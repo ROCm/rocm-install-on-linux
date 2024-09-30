@@ -76,7 +76,7 @@ VALIDATE_DOWNLOAD=yes
 PROMPT_USER=0
 
 # Cleanup repos
-CREATE_CLEAN_ZYP_REPOS_AMD=(repo-tar-offline.repo repo-offline.repo amdgpu.repo amdgpu-proprietary.repo amdgpu-build.repo amdgpu-local.repo amdgpu.repo.rpmsave rocm-build.repo rocm.repo rocm.repo.rpmsave oss.repo)
+CREATE_CLEAN_ZYP_REPOS_AMD=(repo-tar-offline.repo repo-offline.repo amdgpu.repo amdgpu-proprietary.repo amdgpu-build.repo amdgpu-local.repo amdgpu.repo.rpmsave rocm-build.repo rocm.repo rocm.repo.rpmsave Education.repo)
 
 
 ###### Functions ###############################################################
@@ -191,23 +191,23 @@ os_release() {
     echo "   ${KERNEL_VER}"
 }
 
-setup_oss_repo() {    
-    # Create a .repo file for the OSS repo
-    echo Setting up OSS repo..
+setup_edu_repo() {    
+    # Create a .repo file for the Education repo
+    echo Setting up Education repo..
         
     if [[ $DISTRO_VER == 15.4 ]]; then
-        $SUDO zypper addrepo http://download.opensuse.org/distribution/leap/15.4/repo/oss/ oss
+        $SUDO zypper addrepo http://download.opensuse.org/repositories/Education/15.4/ Education
     elif [[ $DISTRO_VER == 15.5 ]]; then
-        $SUDO zypper addrepo http://download.opensuse.org/distribution/leap/15.5/repo/oss/ oss
+        $SUDO zypper addrepo http://download.opensuse.org/repositories/Education/15.5/ Education
     elif [[ $DISTRO_VER == 15.6 ]]; then
-        $SUDO zypper addrepo http://download.opensuse.org/distribution/leap/15.6/repo/oss/ oss
+        $SUDO zypper addrepo http://download.opensuse.org/repositories/Education/15.6/ Education
     else
-        echo "Unsupported version for OSS."
+        echo "Unsupported version for Education."
     fi
     
     $SUDO zypper --gpg-auto-import-keys ref
     
-    echo Setting up OSS repo..Complete
+    echo Setting up Education repo..Complete
 }
 
 install_prereqs() {
@@ -232,13 +232,13 @@ install_prereqs() {
         echo "Perl language repo already added."
     fi
     
-    # Add the oss repo if ROCm 6.2+
+    # Add the Education repo if ROCm 6.2+
     if [[ "${ROCM_VERSIONS:0:1}" -eq 6 ]] && [[ "${ROCM_VERSIONS:2:1}" -ge 2 ]]; then
-        setup_oss_repo
+        setup_edu_repo
     elif [[ "${ROCM_VERSIONS:0:1}" -ge 7 ]]; then
-        setup_oss_repo
+        setup_edu_repo
     else
-        OSS Repo not required.
+        Education Repo not required.
     fi
 }
 
@@ -697,44 +697,43 @@ config_create() {
     
     # Check for a URL config file
     if [[ -n $URL_CONFIG ]]; then
-        if [[ ! -f $URL_CONFIG ]]; then
-            print_err "URL configuration file not found."
-            exit 1
+        if [[ -f $URL_CONFIG ]]; then
+            echo "Using URL Configuration file   : $URL_CONFIG"
+            source $URL_CONFIG
+        
+            echo Checking URL for $DISTRO_VER
+            if [[ "$AMDGPU_INSTALL_URL" != *"$DISTRO_VER"* ]]; then
+                echo amdgpu-install distro version in URL file does not match.
+                exit 1
+            fi
+        
+            if [[ "$AMDGPU_URL" != *"$DISTRO_VER"* ]]; then
+                echo amdgpu distro version in URL file does not match.
+                exit 1
+            fi
+        
+            echo Checking URL for $ROCM_VERSIONS
+            if [[ "$AMDGPU_INSTALL_URL" != *"$ROCM_VERSIONS"* ]]; then
+                echo ROCm version in URL file does not match.
+                exit 1
+            fi
+        
+            if [[ "$ROCM_URL" != *"$ROCM_VERSIONS"* ]]; then
+                echo ROCm version in URL file does not match.
+                exit 1
+            fi
+        
+            if [[ "$AMDGPU_URL" != *"$ROCM_VERSIONS"* ]]; then
+                echo ROCm version in URL file does not match.
+                exit 1
+            fi
+            
+            echo "AMDGPU_INSTALL_URL = $AMDGPU_INSTALL_URL"
+            echo "ROCM_URL           = $ROCM_URL"
+            echo "AMDGPU_URL         = $AMDGPU_URL"
+        else
+            echo -e "\e[93mWaring: URL configuration file not found.  Using defaults.\e[0m"
         fi
-        
-        echo "Using URL Configuration file   : $URL_CONFIG"
-        source $URL_CONFIG
-        
-        echo Checking URL for $DISTRO_VER
-        if [[ "$AMDGPU_INSTALL_URL" != *"$DISTRO_VER"* ]]; then
-            echo amdgpu-install distro version in URL file does not match.
-            exit 1
-        fi
-        
-        if [[ "$AMDGPU_URL" != *"$DISTRO_VER"* ]]; then
-            echo amdgpu distro version in URL file does not match.
-            exit 1
-        fi
-        
-        echo Checking URL for $ROCM_VERSIONS
-        if [[ "$AMDGPU_INSTALL_URL" != *"$ROCM_VERSIONS"* ]]; then
-            echo ROCm version in URL file does not match.
-            exit 1
-        fi
-        
-        if [[ "$ROCM_URL" != *"$ROCM_VERSIONS"* ]]; then
-            echo ROCm version in URL file does not match.
-            exit 1
-        fi
-        
-        if [[ "$AMDGPU_URL" != *"$ROCM_VERSIONS"* ]]; then
-            echo ROCm version in URL file does not match.
-            exit 1
-        fi
-        
-        echo "AMDGPU_INSTALL_URL = $AMDGPU_INSTALL_URL"
-        echo "ROCM_URL           = $ROCM_URL"
-        echo "AMDGPU_URL         = $AMDGPU_URL"
     fi
       
     # Check for the installer package generation type
@@ -804,7 +803,7 @@ build_installer() {
     write_install_config
     
     # Create the .run for the installer
-    makeself $INSTALL_MAKESELF_OPTIONS ./$CREATE_INSTALLER_DIR "./$INSTALL_PACKAGE_NAME" "ROCm Offline Install" ./install.sh
+    makeself $INSTALL_MAKESELF_OPTIONS --nox11 ./$CREATE_INSTALLER_DIR "./$INSTALL_PACKAGE_NAME" "ROCm Offline Install" ./install.sh
     cp -Rp "$INSTALL_PACKAGE_NAME" $INSTALL_PACKAGE_DIR
 
     echo Building Offline Installer .run...Complete

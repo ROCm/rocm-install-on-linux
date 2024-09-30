@@ -22,6 +22,12 @@
 # THE SOFTWARE.
 # #############################################################################
 
+# Logs
+RUN_INSTALLER_LOGS=/var/log/offline_creator
+RUN_INSTALLER_CURRENT_LOG="$RUN_INSTALLER_LOGS/install_$(date +%s).log"
+
+{
+
 # Debug Settings
 DEBUG_INSTALL=no
 DEBUG_CONFIG=no
@@ -682,4 +688,8 @@ if [[ $option == "Y" || $option == "y" ]]; then
 fi
 
 echo Cleaning up...Complete
+
+} 2>&1 | $SUDO tee $RUN_INSTALLER_CURRENT_LOG
+
+echo "Install log stored in: $RUN_INSTALLER_CURRENT_LOG"
 

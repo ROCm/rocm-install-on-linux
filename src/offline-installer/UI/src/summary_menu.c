@@ -21,10 +21,23 @@
  * ************************************************************************ */
 #include "summary_menu.h"
 #include "help_menu.h"
+#include "create_menu.h"
 #include <math.h>
 #include "utils.h"
 #include <string.h>
 
+
+char *targetSystemInfoOps[] = {
+    "OS",
+    "Kernel",
+    (char *)NULL
+};
+
+char *targetSystemInfoValues[] = {
+    "",
+    "",
+    (char *)NULL
+};
 
 char *summaryConfigOps[] = {
     "Installer Input",
@@ -121,8 +134,8 @@ ITEMLIST_PARAMS summaryMenuItems = {
     .pItemListDesp      = summaryMenuDesc
 };
 
-char install_name_trim[256];
-char install_loc_trim[256];
+char install_name_trim[DEFAULT_CHAR_SIZE];
+char install_loc_trim[DEFAULT_CHAR_SIZE];
 
 void process_summary_menu(MENU_DATA *pMenuData);
 void process_summary_item(MENU_DATA *pMenuData);
@@ -190,10 +203,12 @@ void destroy_summary_menu_window(MENU_DATA *pMenuData)
 
 void summary_menu_draw(MENU_DATA *pMenuData)
 {
+    wclear(pMenuData->pMenuWindow);
+
     // Flip order because we want to overwrite the default menu item title name w/
     // that menu_draw writes w/ the text "Target: pMenuData->pConfig->distroName"
     // from draw_summary_page
-    menu_draw(pMenuData);
+    menu_draw(pMenuData);   
     draw_summary_page(pMenuData);
 }
 
@@ -436,15 +451,22 @@ int draw_create_config_summary_page(MENU_DATA *pMenuData)
 
     wclear(pMenuData->pMenuSubWindow);
 
-    starty = draw_target_option_summary_page(pMenuData);
-
+    // Target Installer
+    targetSystemInfoValues[0] = pOfflineConfigs->distroName;
+    targetSystemInfoValues[1] = pOfflineConfigs->kernelVersion;
+    starty = print_sub_menu_summary_options(pMenuData,pMenuSubWindow,targetSystemInfoOps, "Target Installer", targetSystemInfoValues, COL1_SUMMARY_MENU_OP_STARTX, COLS_SUMMARY_MENU_STARTY, COL2_SUMMARY_MENU_VALUE_STARTX, COL2_SUMMARY_MENU_VALUE_WIDTH);
+    
+    // Create Configuration
     summaryConfigValues[0] = createMenuInstallTypes[pOfflineConfigs->installerType].installer_input;
     summaryConfigValues[1] = createMenuRepoTypes[pOfflineConfigs->installerRepoType].repo_name;
     summaryConfigValues[2] = createMenuDLTypes[pOfflineConfigs->create_confg.currentInstallDLType].download_dep_name;
     summaryConfigValues[3] = pOfflineConfigs->create_confg.installer_name_with_extension;
     summaryConfigValues[4] = pOfflineConfigs->create_confg.installer_out_location;
 
-    
+
+    // Add a line between target installer and create configration info
+    starty++;
+
     int endy = print_sub_menu_summary_options(pMenuData,pMenuSubWindow,summaryConfigOps, "Create Configuration", summaryConfigValues, COL1_SUMMARY_MENU_OP_STARTX, starty, COL2_SUMMARY_MENU_VALUE_STARTX, COL2_SUMMARY_MENU_VALUE_WIDTH);
     draw_page_number(pMenuData);
 
@@ -460,6 +482,7 @@ void draw_driver_summary_page(MENU_DATA *pMenuData)
 
     wclear(pMenuData->pMenuSubWindow);
 
+    // Driver
     summaryDriverValues[0] = bool_to_yes_no(pOfflineConfigs->driver_config.install_driver);
     if (pOfflineConfigs->driver_config.install_driver)
     {
@@ -487,6 +510,7 @@ void draw_rocm_and_extras_summary_page(MENU_DATA *pMenuData)
 
     wclear(pMenuData->pMenuSubWindow);
     
+    // ROCm
     if (is_repo_public(pMenuData))
     {
         summaryRocmOps[0] = "ROCm Version";
@@ -518,6 +542,7 @@ void draw_rocm_and_extras_summary_page(MENU_DATA *pMenuData)
 
     starty += 2;
 
+    // Extra
     summaryExtraValues[0] = bool_to_yes_no(pOfflineConfigs->extras_config.rocminfo_install);
     summaryExtraValues[1] = bool_to_yes_no(pOfflineConfigs->extras_config.rocmsmi_install);
     

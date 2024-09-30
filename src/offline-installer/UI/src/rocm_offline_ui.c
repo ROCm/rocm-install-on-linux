@@ -27,8 +27,11 @@
 #include "config.h"
 #include "utils.h"
 
+#include <libgen.h>
 #include <sys/utsname.h>
+#include <stdio.h>
 
+#define SYSTEM_INFO_CHAR_SIZE                   512
 
 // Structure defining the menus (menu data) objects making up the offline installer UI
 typedef struct _OFFLINE_INSTALL_MENUS
@@ -41,6 +44,12 @@ typedef struct _OFFLINE_INSTALL_MENUS
     MENU_DATA menuSummary;
 }OFFLINE_INSTALL_MENUS;
 
+typedef struct _ARGS_INFO
+{
+    char wconfig[DEFAULT_CHAR_SIZE];
+    bool isWconfig;
+    char createArgs[DEFAULT_CHAR_SIZE];
+}ARGS_INFO;
 
 // Main Menu Setup
 char *mainMenuOps[] = {
@@ -71,7 +80,7 @@ MENU_PROP mainMenuProperties = {
     .numLines = ARRAY_SIZE(mainMenuOps) - 1,
     .numCols = MAX_MENU_ITEM_COLS,
     .startx = 1,
-    .starty = 6,
+    .starty = 8,
     .numItems = ARRAY_SIZE(mainMenuOps)
 };
 
@@ -173,7 +182,7 @@ int get_os_info(OFFLINE_INSTALL_CONFIG *pConfig)
 
 void main_menu_draw(MENU_DATA *pMenuData, OFFLINE_INSTALL_CONFIG *pConfig)
 {   
-    char systemInfo[512] = {0};
+    char systemInfo[SYSTEM_INFO_CHAR_SIZE] = {0};
 
     wclear(pMenuData->pMenuWindow);
 
@@ -181,10 +190,14 @@ void main_menu_draw(MENU_DATA *pMenuData, OFFLINE_INSTALL_CONFIG *pConfig)
     // size in case user resized terminal window
     resize_and_reposition_window_and_subwindow(pMenuData, WIN_NUM_LINES, WIN_WIDTH_COLS);
 
-    sprintf(systemInfo, "Target Installer: %s : %s", pConfig->distroName, pConfig->kernelVersion);
+    wattron(pMenuData->pMenuWindow, COLOR_PAIR(9) | A_UNDERLINE);
+    mvwprintw(pMenuData->pMenuWindow, ITEM_TITLE_Y, ITEM_TITLE_X, "Target Installer");
+    wattroff(pMenuData->pMenuWindow, COLOR_PAIR(9) | A_UNDERLINE);
+    
+    sprintf(systemInfo, "    OS     : %s\n       Kernel : %s", pConfig->distroName, pConfig->kernelVersion);
 
     print_menu_title(pMenuData, MENU_TITLE_Y, MENU_TITLE_X, WIN_WIDTH_COLS, "ROCm Offline Installer Creator", COLOR_PAIR(2));
-    print_menu_item_title(pMenuData, ITEM_TITLE_Y, ITEM_TITLE_X,  systemInfo, COLOR_PAIR(9));
+    print_menu_item_title(pMenuData, ITEM_TITLE_Y + 1, ITEM_TITLE_X,  systemInfo, COLOR_PAIR(9));
 
     print_menu_control_msg(pMenuData);
 
@@ -207,11 +220,11 @@ void update_menu_states(OFFLINE_INSTALL_MENUS *pOfflineMenus)
     summary_menu_update_state(&pOfflineMenus->menuSummary);
 }
 
-void write_offline_configuration(OFFLINE_INSTALL_CONFIG *pConfig)
+void write_offline_configuration(OFFLINE_INSTALL_CONFIG *pConfig, char *wconfig)
 {
     int len;
 
-    FILE *file = fopen("create.config", "w");
+    FILE *file = fopen(wconfig, "w");
     if (file == NULL)  
     {
         // Print an error message to the console if opening the file fails.
@@ -253,7 +266,7 @@ void write_offline_configuration(OFFLINE_INSTALL_CONFIG *pConfig)
     fprintf(file, "%s\n", "# Extra Package Options");
     fprintf(file, "%s\n", "###############################");
 
-    char extra_packages[256];
+    char extra_packages[DEFAULT_CHAR_SIZE];
     extra_packages[0] = '\0';
 
     // set the extra packages according to the rocm usecase
@@ -285,36 +298,58 @@ void write_offline_configuration(OFFLINE_INSTALL_CONFIG *pConfig)
     fclose(file);
 }
 
-int create_offline_installer(OFFLINE_INSTALL_CONFIG *pConfig)
+int create_offline_installer(OFFLINE_INSTALL_CONFIG *pConfig, char *wconfig)
 {
     // Write out all configuration setting to the configuration file
-    write_offline_configuration(pConfig);
+    write_offline_configuration(pConfig, wconfig);
 
     return 0;
 }
 
-void parse_args(char* argv[], int argc, char* arglist, int arglist_size) 
+void parse_args(char* argv[], int argc, int arglist_size, ARGS_INFO *argsInfo) 
 {
     int len = 0;
-
     // Concatenate args into a single string
     for (int i = 1; i < argc; i++) 
     {
+
         len += strlen(argv[i]);
         if (len > arglist_size)break;
 
-        strcat(arglist, argv[i]);
+        strcat(argsInfo->createArgs, argv[i]);
         if (i < argc - 1) 
         {
             len++;
             if (len > arglist_size) break;
-            strcat(arglist, " ");
+            strcat(argsInfo->createArgs, " ");
+        }
+
+        if (strstr(argv[i], "wconfig=") != NULL)
+        {
+            if (!get_value_of_wconfig(argv[i], argsInfo->wconfig))
+            {
+                printf("\nIncorrect value passed to wconfig. The correct format is wconfig=<PATH_TO_CONFIG_FILE_TO_SAVE>");
+                exit(1);
+            } 
+            argsInfo->isWconfig = true;
+
+            char *wconfigcopy = strdup(argsInfo->wconfig);
+            char *wconfigDir = dirname(wconfigcopy);
+            
+            if (!is_dir_exist(wconfigDir))
+            {
+                printf("\nPath passed via wconfig '%s' is not valid because directory '%s' does not exist\n", argsInfo->wconfig, wconfigDir);
+                exit(1);
+            } 
+
+            printf("\nWrite config file only: %s\n", argsInfo->wconfig);
         }
     }
 }
 
 int main(int argc, char *argv[])
 {
+    ARGS_INFO argsInfo = {0};
     WINDOW *menuWindow;
     MENU *pMenu;
     ITEM *pCurrentItem;
@@ -326,11 +361,11 @@ int main(int argc, char *argv[])
     int done = 0;
     int status = -1;
 
-    char createArgs[200];
-    clear_str(createArgs);
+    // set default value for wconfig
+    strcpy(argsInfo.wconfig, "create.config");
 
     // parse any args for create script
-    parse_args(argv,argc, createArgs, 200);
+    parse_args(argv,argc, DEFAULT_CHAR_SIZE, &argsInfo);
 
     // Get distro/kernel info on the host system
     get_os_info(&offlineConfig);
@@ -342,7 +377,7 @@ int main(int argc, char *argv[])
     noecho();
     keypad(stdscr, TRUE);
     curs_set(0);
-
+    
     // init colors
     init_pair(1, COLOR_RED, COLOR_BLACK);
     init_pair(2, COLOR_CYAN, COLOR_BLACK);
@@ -448,7 +483,7 @@ int main(int argc, char *argv[])
                     
                     if (offlineMenus.menuSummary.isCreateInstaller)
                     {
-                        status = create_offline_installer(&offlineConfig);
+                        status = create_offline_installer(&offlineConfig, argsInfo.wconfig);
                         done = 1;
                     }
                 }
@@ -489,11 +524,28 @@ int main(int argc, char *argv[])
     // call the creator script
     if (status == 0)
     {
-        char cmd[256];
+        if (argsInfo.isWconfig)
+        {
+            return 0;
+        }
+        char cmd[LARGE_CHAR_SIZE];
+        char createCreatorDir[LARGE_CHAR_SIZE];
         clear_str(cmd);
-        sprintf(cmd, "./create-offline.sh %s", createArgs);
         
+        // Only run below 2 commands with sudo if current user isn't a root user
+        char sudo[SMALL_CHAR_SIZE] = {'\0'};
+        if (getuid() != 0)
+        {
+            sprintf(sudo, "sudo");
+        }
+
+        printf("Create directory: /var/log/offline_creator\n");
+        fflush(stdout);
+        sprintf(createCreatorDir, "%s mkdir -p /var/log/offline_creator", sudo);
+        system(createCreatorDir);
+        sprintf(cmd, "./create-offline.sh %s 2>&1 | %s tee %s", argsInfo.createArgs, sudo, offlineConfig.create_confg.installer_creation_log_out_location);
         system(cmd);
+        printf("Creation log stored in: %s\n", offlineConfig.create_confg.installer_creation_log_out_location);
     }
 
     return 0;

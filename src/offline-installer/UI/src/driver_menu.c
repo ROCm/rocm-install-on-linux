@@ -243,6 +243,7 @@ void do_driver_menu(MENU_DATA *pMenuData)
 {
     MENU *pMenu = pMenuData->pMenu;
 
+    wclear(pMenuData->pMenuWindow);
 
     driver_menu_toggle_grey_items(pMenuData);
 
@@ -281,7 +282,7 @@ void process_driver_menu(MENU_DATA *pMenuData)
         menu_info_draw_bool(pMenuData, DRIVER_MENU_ITEM_INSTALL_DRIVER_ROW, DRIVER_MENU_FORM_COL, pDriverConfig->install_driver);
         if (!pDriverConfig->install_driver && is_specific_usecase_selected(pMenuData, "workstation"))
         {
-            print_menu_warning_msg(pMenuData, "workstation is not supported when install driver is set to no");
+            print_menu_warning_msg(pMenuData, WARN_ERR_START_Y, WARN_ERR_START_X, "workstation is not supported when install driver is set to no");
         }
         else 
         {

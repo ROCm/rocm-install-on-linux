@@ -65,6 +65,8 @@
 #define CTRL(x) ((x) & 0x1F)
 #define UNUSED(x) (void)(x)
 
+#define DISPLAY_SCROLL_WINDOW_QUERY_SIZE                    16
+
 
 // Structure defining propertie for a menu
 typedef struct _MENU_PROP
@@ -173,7 +175,7 @@ void print_version(MENU_DATA *pMenuData);
 void print_menu_err_msg(MENU_DATA *pMenuData, const char *fmt, ...);
 void clear_menu_err_msg(MENU_DATA *pMenuData);
 void print_menu_dbg_msg(MENU_DATA *pMenuData, const char *fmt, ...);
-void print_menu_warning_msg(MENU_DATA *pMenuData, const char *fmt, ...);
+void print_menu_warning_msg(MENU_DATA *pMenuData, int y, int x, const char *fmt, ...);
 void print_menu_control_msg(MENU_DATA *pMenuData);
 bool print_url_check(MENU_DATA *pMenuData, char *url);
 void remove_menu_item_selection_description(MENU_DATA *pMenuData, int starty, int startx);
