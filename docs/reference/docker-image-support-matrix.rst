@@ -93,7 +93,13 @@ The following Docker image tags and associated inventories are validated for ROC
             .. tab-item:: Ubuntu 20.04
 
                Tag
-                 `rocm/pytorch:rocm6.2.1_ubuntu20.04_py3.9_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2.1_ubuntu20.04_py3.9_pytorch_release_2.3.0/images/sha256-8ffc2fcde77c54800057b385bc95f1481fc5300dccff192afa865b29a5d00201>`_ (`latest <https://hub.docker.com/layers/rocm/pytorch/latest/images/sha256-63f46c1bd0db29c74238efa72778b4fabc614e180b8e9e3bcf8d457d9b34b610>`_)[#PyTorch-latest]_
+                 `rocm/pytorch:rocm6.2.1_ubuntu20.04_py3.9_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2.1_ubuntu20.04_py3.9_pytorch_release_2.3.0/images/sha256-8ffc2fcde77c54800057b385bc95f1481fc5300dccff192afa865b29a5d00201>`_ (`latest <https://hub.docker.com/layers/rocm/pytorch/latest/images/sha256-63f46c1bd0db29c74238efa72778b4fabc614e180b8e9e3bcf8d457d9b34b610>`_)
+
+                 .. note::
+
+                    As of ROCm 6.2.1, ``rocm/pytorch:latest`` points to a Docker image with the latest ROCm tested
+                    release version of PyTorch (for example, version 2.3), similar to ``rocm/pytorch:latest-release`` tag. See
+                    :ref:`Using a Docker image with PyTorch pre-installed <pytorch-docker-latest-note>` for more information.
 
                Inventory
                  * `ROCm 6.2.1 <https://repo.radeon.com/rocm/apt/6.2.1/>`_
@@ -311,9 +317,3 @@ The following Docker image tags and associated inventories are validated for ROC
                  * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
                  * `tensorflow-rocm 2.14.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.2/>`_
                  * `TensorBoard 2.14.1 <https://github.com/tensorflow/tensorboard/tree/2.15.2>`_
-
-.. rubric:: Footnotes
-
-.. [#PyTorch-latest] As of ROCm 6.2.1, ``rocm/pytorch:latest`` points to a Docker image with the latest ROCm tested
-   release version of PyTorch (for example, version 2.3), similar to ``rocm/pytorch:latest-release`` tag. See
-   :ref:`Using a Docker image with PyTorch pre-installed <pytorch-docker-latest-note>` for more information.
