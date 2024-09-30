@@ -9,7 +9,7 @@ Red Hat Enterprise Linux native installation
 
 .. _rhel-register-repo:
 
-Register repositories
+Registering repositories
 =====================================================
 
 Register kernel-mode driver
@@ -67,11 +67,29 @@ Register ROCm packages
 
 .. _rhel-install:
 
-.. include:: install-rocm-template.rst
+Installing
+=====================================================
+
+Install kernel driver
+----------------------------------------------------------------------------------------------------------
+
+.. code-block:: bash
+
+    sudo dnf install amdgpu-dkms
+    sudo reboot
+
+Install ROCm packages
+----------------------------------------------------------------------------------------------------------
+
+.. code-block:: bash
+
+    sudo dnf install rocm
+
+Complete the :doc:`../post-install`.
 
 .. _rhel-upgrade:
 
-Upgrade
+Upgrading
 =====================================================
 
 To upgrade an existing ROCm installation to a newer version, follow the steps in
