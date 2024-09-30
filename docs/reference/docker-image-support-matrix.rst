@@ -12,6 +12,9 @@ AMD validates and publishes ready-made `PyTorch <https://hub.docker.com/r/rocm/p
 `TensorFlow <https://hub.docker.com/r/rocm/tensorflow>`_ images with ROCm backends on Docker Hub.
 The following Docker image tags and associated inventories are validated for ROCm 6.2.
 
+Refer to :ref:`using-docker-with-pytorch-pre-installed` and :ref:`install-tensorflow-prebuilt-docker`
+for installation instructions.
+
 .. |hr| raw:: html
 
    <hr>
