@@ -69,6 +69,9 @@ Follow these steps:
        --ipc=host --shm-size 16G --group-add video --cap-add=SYS_PTRACE \
        --security-opt seccomp=unconfined rocm/tensorflow:latest
 
+Refer to the :doc:`Docker image support matrix </reference/docker-image-support-matrix>` for a list of prebuilt
+Docker image tags for TensorFlow with ROCm.
+
 .. _install-tensorflow-wheels:
 
 Using a wheels package
