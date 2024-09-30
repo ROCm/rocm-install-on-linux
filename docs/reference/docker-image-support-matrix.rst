@@ -216,6 +216,39 @@ The following Docker image tags and associated inventories are validated for ROC
             .. tab-item:: Ubuntu 20.04
 
                Tag
+                 `rocm/tensorflow:rocm6.2.1-py3.9-tf2.16.1-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.2.1-py3.9-tf2.16.1-dev/images/sha256-55b5f75180cc8be17d6d5d4fab0f35f2f20d240ca9c4c6828af18cf81bba68c6>`_
+
+               Inventory
+                 * `ROCm 6.2.1 <https://repo.radeon.com/rocm/apt/6.2.1/>`_
+                 * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                 * `tensorflow-rocm 2.16.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.2/>`_
+                 * `TensorBoard 2.16.2 <https://github.com/tensorflow/tensorboard/tree/2.16.2>`_
+
+               |hr|
+
+               Tag
+                 `rocm/tensorflow:rocm6.2.1-py3.9-tf2.15.1-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.2.1-py3.9-tf2.15.1-dev/images/sha256-c2feef869374f8eccfad77d210457160a3019df6b15ffc226c27acddb5d03462>`_
+
+               Inventory
+                 * `ROCm 6.2 <https://repo.radeon.com/rocm/apt/6.2/>`_
+                 * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                 * `tensorflow-rocm 2.15.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.2/>`_
+                 * `TensorBoard 2.15.2 <https://github.com/tensorflow/tensorboard/tree/2.15.2>`_
+
+               |hr|
+
+               Tag
+                 `rocm/tensorflow:rocm6.2.1-py3.9-tf2.14.1-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.2.1-py3.9-tf2.14.1-dev/images/sha256-99f8560aea6d4cd7bc030c0f7e32651abbaf5f118e1aa119288b3eace1421659>`_
+
+               Inventory
+                 * `ROCm 6.2 <https://repo.radeon.com/rocm/apt/6.2/>`_
+                 * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                 * `tensorflow-rocm 2.14.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.2/>`_
+                 * `TensorBoard 2.14.1 <https://github.com/tensorflow/tensorboard/tree/2.15.2>`_
+
+               |hr|
+
+               Tag
                  `rocm/tensorflow:rocm6.2-py3.9-tf2.16-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.2-py3.9-tf2.16-dev/images/sha256-dcdeafe0dcb5b5160c7ab7ef860dc29a95f2d2dd691946497ab6fb549cde8497>`_
 
                Inventory
