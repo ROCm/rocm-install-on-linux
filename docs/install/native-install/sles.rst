@@ -7,6 +7,10 @@
 SUSE Linux Enterprise native installation
 *********************************************************************************************
 
+.. important::
+
+    Make sure that the :doc:`/install/prerequisites` are met before installing.
+
 .. _sles-register-rocm:
 
 Registering ROCm repositories
