@@ -22,7 +22,7 @@ PLX
 preconfigured
 Repo
 rocHPL
-ROCmVersionWithoutCommas
+ROCmVersion
 SBR
 SMCi
 SVM
