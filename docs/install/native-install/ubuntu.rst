@@ -6,6 +6,10 @@
 Ubuntu native installation
 ****************************************************************************
 
+.. important::
+
+    Make sure that the :doc:`/install/prerequisites` are met before installing.
+
 .. _ubuntu-register-repo:
 
 Registering ROCm repositories
@@ -85,10 +89,6 @@ Add the ROCm repository.
 
 Installing
 ================================================
-
-.. important::
-
-    Make sure that the :doc:`/install/prerequisites` are met before installing.
 
 Install kernel driver
 ---------------------------------------------------------------------------
