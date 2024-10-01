@@ -11,9 +11,10 @@ ROCm installation for Linux
 This section describes the ROCm for Linux installation options.
 
 .. note::
-    If you're using a Radeon GPU with graphical applications, refer to the
-    `Radeon installation instructions <https://rocm.docs.amd.com/projects/radeon/en/latest/index.html>`_.
+
+    AMD Radeon and Radeon Pro GPUs can be used for graphics-related purposes or in headless environments for compute purposes (no graphics components). If you’re not using Radeon or Radeon Pro GPUs in a headless environment, review the `Radeon installation instructions <https://rocm.docs.amd.com/projects/radeon/en/latest/index.html>`_ in the Use ROCm on Radeon GPU documentation.
     
+
 .. grid:: 2
     :gutter: 3
 
