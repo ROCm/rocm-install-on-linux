@@ -170,5 +170,3 @@ Remove ROCm and AMDGPU repositories
 
     # Restart the system.
     sudo reboot
-
-
