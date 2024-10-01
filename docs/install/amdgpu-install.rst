@@ -22,7 +22,9 @@ Installation
 
 Installation of ``amdgpu-install`` differs slightly depending on the OS and its package manager.
 
-Make sure that the :doc:`/install/prerequisites` are met before installing.
+.. important::
+
+    Make sure that the :doc:`/install/prerequisites` are met before installing.
 
 Ubuntu
 --------------------------------------------------------------------
