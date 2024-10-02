@@ -103,7 +103,7 @@ The ``<options>`` parameter can either be left empty or set to these options:
 *  ``prompt``: enables user prompts during offline installer creation
 *  ``config=``: specifies the full path to a ``.config`` file that contains a configuration for creating an offline installer.
    This parameter is used for testing purposes. See the :ref:`testing` section for more information.
-*  ``wconfig=``: specifies the full path to a ``.config`` file that is created using the current configuration settings when the user exits the UI.
+*  ``wconfig=``: specifies the full path to a ``.config`` file that is created using the current configuration settings when the user exits the user interface.
    When this option is specified, the ROCm Offline Installer Creator does not create an installer package. This option is used for testing purposes.
 
 .. note::
