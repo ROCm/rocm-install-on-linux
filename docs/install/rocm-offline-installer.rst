@@ -103,6 +103,8 @@ The ``<options>`` parameter can either be left empty or set to these options:
 *  ``prompt``: enables user prompts during offline installer creation
 *  ``config=``: specifies the full path to a ``.config`` file that contains a configuration for creating an offline installer.
    This parameter is used for testing purposes. See the :ref:`testing` section for more information.
+*  ``wconfig=``: specifies the full path to a ``.config`` file that is created using the current configuration settings when the user exits the user interface.
+   When this option is specified, the ROCm Offline Installer Creator does not create an installer package. This option is used for testing purposes.
 
 .. note::
 
@@ -728,8 +730,8 @@ Tests are available for these ROCm versions:
 
 *  5.7.3
 *  6.0.2
-*  6.1.0, 6.1.1, 6.1.2, 6.1.3
-*  6.2.0, 6.2.1
+*  6.1.x
+*  6.2.x
 
 Tests are available for the following component combinations:
 
@@ -777,7 +779,7 @@ From the build location of the offline tool, run the following command:
 
    ctest
 
-This suite runs 75 tests.
+This suite runs 90 tests.
 
 The following tests are available, depending on the ROCm version:
 
@@ -785,8 +787,8 @@ The following tests are available, depending on the ROCm version:
    :header: "ROCm version", "Test Suite Support"
    :widths: 26, 80
 
-   "6.2.0, 6.2.1", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
-   "6.1.0, 6.1.1, 6.1.2, 6.1.3", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
+   "6.2.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
+   "6.1.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "6.0.2", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "5.7.3", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
 
@@ -806,8 +808,7 @@ From the build location of the offline tool, run the following command:
 
    ctest -L <rocm-version> 
 
-where ``<rocm-version>`` is one of ``5.7.3``, ``6.0.2``, ``6.1.0``, ``6.1.1``, 
-``6.1.2``, ``6.1.3``, ``6.2.0``, or ``6.2.1``.
+where ``<rocm-version>`` is one of ``5.7.3``, ``6.0.2``, ``6.1.x``, or ``6.2.x``.
  
 Running manual tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
