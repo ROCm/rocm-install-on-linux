@@ -15,8 +15,8 @@ Once you do, review your required installation instructions by selecting your op
 For more in-depth installation instructions, refer to :ref:`detailed-install-overview`.
 
 .. note::
-    If you're using a Radeon GPU with graphical applications, refer to the
-    `Radeon installation instructions <https://rocm.docs.amd.com/projects/radeon/en/latest/index.html>`_.
+
+    Like AMD Instinct accelerators, AMD Radeon and Radeon Pro GPUs can be used in environments for compute purposes (no display information or graphics). If using AMD Radeon or Radeon Pro GPUs with ROCm for graphics-related purposes (for example, display connected), review the `Radeon installation instructions <https://rocm.docs.amd.com/projects/radeon/en/latest/index.html>`_ in the Use ROCm on Radeon GPU documentation to confirm system requirements.
 
 .. datatemplate:nodata::
 

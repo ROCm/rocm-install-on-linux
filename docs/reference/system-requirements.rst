@@ -15,6 +15,10 @@ Supported GPUs
 The following table shows the supported AMD Instinct™ accelerators, and Radeon™ PRO
 and Radeon GPUs. If a GPU is not listed on this table, it's not officially supported by AMD.
 
+.. note::
+
+   Like AMD Instinct accelerators, AMD Radeon and Radeon Pro GPUs can be used in environments for compute purposes (no display information or graphics). If using AMD Radeon or Radeon Pro GPUs with ROCm for graphics-related purposes (for example, display connected), review the `Compatibility matrices <https://rocm.docs.amd.com/projects/radeon/en/latest/docs/compatibility.html>`_ in the Use ROCm on Radeon GPU documentation to confirm system requirements.
+
 .. tab-set::
 
   .. tab-item:: AMD Instinct
