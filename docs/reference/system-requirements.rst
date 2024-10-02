@@ -1,5 +1,5 @@
 .. meta::
-  :description: Linux GPU and OS support
+  :description: System requirements for AMD ROCm
   :keywords: Linux support, ROCm distributions, system requirements, supported GPUs,  Instinct,
     Radeon PRO, Radeon, AMD, ROCm
 
@@ -8,6 +8,10 @@
 **************************************************************************************
 System requirements (Linux)
 **************************************************************************************
+
+.. |br| raw:: html
+
+   <br>
 
 Supported GPUs
 =============================================
@@ -106,12 +110,11 @@ Virtualization support
 ROCm supports virtualization for select GPUs only as shown below.
 
 .. csv-table::
-    :widths: 50, 25, 25, 50
+    :widths: 20, 20, 20, 40
     :header: "Hypervisor", "Version", "GPU", "Validated guest OS (kernel)"
 
-    "VMWare", "ESXI 8", "MI250", "Ubuntu 20.04 (5.15 [HWE])"
-    "VMWare", "ESXI 8", "MI210", "Ubuntu 20.04 (5.15 [HWE]), SLES 15 SP4 (5.14.21)"
-    "VMWare", "ESXI 7", "MI210", "Ubuntu 20.04 (5.15 [HWE]), SLES 15 SP4 (5.14.21)"
+    "VMWare", "ESXi 8.0.3", "MI210", "Ubuntu 22.04.4 (6.8 [HWE]), |br| SLES 15 SP5 (5.14.21), |br| RHEL 9.4 (5.14.0)"
+    "VMWare", "ESXi 7.0.3", "MI210", "Ubuntu 22.04.4 (6.8 [HWE]), |br| RHEL 9.4 (5.14.0)"
 
 CPU support
 =============================================
