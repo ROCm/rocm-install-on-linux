@@ -15,8 +15,8 @@ Once you do, review your required installation instructions by selecting your op
 For more in-depth installation instructions, refer to :ref:`detailed-install-overview`.
 
 .. note::
-    If you're using a Radeon GPU with graphical applications, refer to the
-    `Radeon installation instructions <https://rocm.docs.amd.com/projects/radeon/en/latest/index.html>`_.
+
+    If you’re using ROCm with AMD Radeon or Radeon Pro GPUs for graphics workloads, see the `Use ROCm on Radeon GPU <https://rocm.docs.amd.com/projects/radeon/en/latest/docs/install/native_linux/install-radeon.html>`_ documentation for installation instructions . 
 
 .. datatemplate:nodata::
 
