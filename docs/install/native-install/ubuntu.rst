@@ -6,9 +6,13 @@
 Ubuntu native installation
 ****************************************************************************
 
+.. important::
+
+    Make sure that the :doc:`/install/prerequisites` are met before installing.
+
 .. _ubuntu-register-repo:
 
-Registering repositories
+Registering ROCm repositories
 =================================================
 
 .. _ubuntu-package-key:
@@ -166,5 +170,3 @@ Remove ROCm and AMDGPU repositories
 
     # Restart the system.
     sudo reboot
-
-

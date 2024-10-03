@@ -13,8 +13,7 @@ ROCm™ supports a variety of third-party libraries and frameworks. The supporte
 Deep learning
 ================================================
 
-ROCm releases support the most recent and two prior releases of PyTorch and
-TensorFlow. For TensorFlow the exact version follows the ``<TensorFlowVersion>.<ROCmVersionWithoutCommas>`` format.
+ROCm releases support the most recent and two prior releases of PyTorch and TensorFlow.
 
 .. list-table::
     :header-rows: 1
