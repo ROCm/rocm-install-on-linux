@@ -42,8 +42,6 @@ ol_version_numbers = [('8', '8.8')]
 
 exclude_patterns = [
     'temp', 
-    'install/native-install/install-rocm-template.rst', 
-    'install/native-install/uninstall-rocm-template.rst',
     'install/native-install/includes/rhel-multi-install.rst',
     'install/native-install/includes/sles-multi-install.rst',
     'install/native-install/includes/ubuntu-multi-install.rst'

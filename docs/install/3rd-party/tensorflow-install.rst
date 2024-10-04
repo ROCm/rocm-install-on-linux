@@ -90,8 +90,7 @@ To install TensorFlow using the wheels package, use the following command.
 
 .. note::
 
-   For details on ``tensorflow-rocm`` wheels and ROCm version compatibility, refer to
-   `<https://github.com/ROCm/tensorflow-upstream/blob/develop-upstream/rocm_docs/tensorflow-rocm-release.md>`__.
+   Prior to ROCm 6.1, ``[wheel-version]`` followed the ``<TensorFlowVersion>.<ROCmVersion>`` format.
 
 .. _test-tensorflow-installation:
 
