@@ -195,10 +195,9 @@ To install for the currently active kernel run the command corresponding to your
 Configuring permissions for GPU access
 ================================================================
 
-ROCm requires users to have access to GPU resources. There are two primary methods to 
-configure GPU access for ROCm: using udev rules or managing group membership. Each method has 
-its own advantages, and the choice depends on your specific requirements and system management 
-preferences.
+There are two primary methods to configure GPU access for ROCm: using udev rules 
+or managing group membership. Each method has its own advantages, and the choice 
+depends on your specific requirements and system management preferences.
 
 Using udev Rules (Recommended)
 --------------------------------------------------------------------
