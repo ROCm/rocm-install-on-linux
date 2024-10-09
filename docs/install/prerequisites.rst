@@ -192,11 +192,86 @@ To install for the currently active kernel run the command corresponding to your
 
 .. _group_permissions:
 
-Setting permissions for groups
+Configuring permissions for GPU access
 ================================================================
 
-This section provides steps to add any current user to a video group to access GPU resources. We
-recommend using the video group for all ROCm-supported operating systems.
+ROCm requires users to have access to GPU resources. Proper configuration ensures that 
+users can utilize the full capabilities of AMD GPUs while maintaining system security. 
+There are multiple ways to configure this access, each with its own advantages.
+
+The ``video`` and ``render`` groups are system groups in Linux used to manage access 
+to graphics hardware and related functionality. Traditionally, the ``video`` group is used 
+to control access to video devices, including graphics cards and video capture devices. 
+The ``render`` group is more recent and specifically controls access to GPU rendering capabilities 
+through Direct Rendering Manager (DRM) render nodes.
+
+There are two primary methods to configure GPU access for ROCm: using udev rules or managing group membership. 
+Each method has its own advantages, and the choice depends on your specific requirements 
+and system management preferences.
+
+Using udev Rules (Recommended)
+--------------------------------------------------------------------
+Udev rules offer a flexible way to manage device permissions. They apply system-wide, can be 
+easily deployed via configuration management tools, and eliminate the need for user group management. 
+This method provides more granular control over GPU access.
+
+Grant GPU access to all users on the system
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Create a new file ``/etc/udev/rules.d/70-amdgpu.rules`` with the following content:
+
+   .. code-block:: bash
+
+      KERNEL=="kfd", MODE="0666"
+      SUBSYSTEM=="drm", KERNEL=="renderD*", MODE="0666"
+
+2. Reload the udev rules:
+
+   .. code-block:: bash
+
+      sudo udevadm control --reload-rules && sudo udevadm trigger
+
+This configuration grants all users read and write access to AMD GPU resources, 
+including the AMD Kernel Fusion Driver (KFD) and Direct Rendering Manager (DRM) devices.
+
+Grant GPU access to a custom group
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Create a new group (e.g., ``devteam``):
+
+   .. code-block:: bash
+
+      sudo groupadd devteam
+
+2. Add users to the new group:
+
+   .. code-block:: bash
+
+      sudo usermod -a -G devteam dev1
+      sudo usermod -a -G devteam dev2
+
+3. Create udev rules to assign GPU devices to this group:
+
+   Create a file ``/etc/udev/rules.d/70-amdgpu.rules`` with:
+
+   .. code-block:: bash
+
+      KERNEL=="kfd", GROUP="devteam", MODE="0660"
+      SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="devteam", MODE="0660"
+
+4. Reload the udev rules:
+
+   .. code-block:: bash
+
+      sudo udevadm control --reload-rules && sudo udevadm trigger
+
+This configuration grants all users in the ``devteam`` group read and write access to AMD GPU resources, 
+including the Kernel Fusion Driver (KFD) and Direct Rendering Manager (DRM) devices.
+
+Using Group Membership
+--------------------------------------------------------------------
+
+Alternatively, you can manage GPU access through membership in the ``video`` and ``render`` groups.
 
 1. To check the groups in your system, issue the following command:
 
@@ -204,23 +279,26 @@ recommend using the video group for all ROCm-supported operating systems.
 
        groups
 
-2. Add yourself to the ``render`` and ``video`` group using the command:
+2. Add yourself to the ``video`` and ``render`` groups:
 
-   .. code-block:: shell
+   .. code-block:: bash
 
-        sudo usermod -a -G render,video $LOGNAME
+      sudo usermod -a -G video,render $LOGNAME
 
-   To add all future users to the ``render`` and ``video`` groups by default, run the following commands:
+3. Optionally, add other users to the ``video`` and ``render`` groups:
 
-   .. code-block:: shell
+   .. code-block:: bash
 
-        echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
-        echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
-        echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
+      sudo usermod -a -G video,render user1
+      sudo usermod -a -G video,render user2
 
-.. tip::
+4. To add all future users to the render and video groups by default, run the following commands:
 
-    On systems with multiple users, if ROCm is installed system wide, each individual user should be added to the ``render`` and ``video`` groups. 
+   .. code-block:: bash
+
+      echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
+      echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
+      echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
 
 Disable integrated graphics (IGP), if applicable
 ================================================================
