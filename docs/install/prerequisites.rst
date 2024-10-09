@@ -195,19 +195,10 @@ To install for the currently active kernel run the command corresponding to your
 Configuring permissions for GPU access
 ================================================================
 
-ROCm requires users to have access to GPU resources. Proper configuration ensures that 
-users can utilize the full capabilities of AMD GPUs while maintaining system security. 
-There are multiple ways to configure this access, each with its own advantages.
-
-The ``video`` and ``render`` groups are system groups in Linux used to manage access 
-to graphics hardware and related functionality. Traditionally, the ``video`` group is used 
-to control access to video devices, including graphics cards and video capture devices. 
-The ``render`` group is more recent and specifically controls access to GPU rendering capabilities 
-through Direct Rendering Manager (DRM) render nodes.
-
-There are two primary methods to configure GPU access for ROCm: using udev rules or managing group membership. 
-Each method has its own advantages, and the choice depends on your specific requirements 
-and system management preferences.
+ROCm requires users to have access to GPU resources. There are two primary methods to 
+configure GPU access for ROCm: using udev rules or managing group membership. Each method has 
+its own advantages, and the choice depends on your specific requirements and system management 
+preferences.
 
 Using udev Rules (Recommended)
 --------------------------------------------------------------------
@@ -272,6 +263,11 @@ Using Group Membership
 --------------------------------------------------------------------
 
 Alternatively, you can manage GPU access through membership in the ``video`` and ``render`` groups.
+The ``video`` and ``render`` groups are system groups in Linux used to manage access 
+to graphics hardware and related functionality. Traditionally, the ``video`` group is used 
+to control access to video devices, including graphics cards and video capture devices. 
+The ``render`` group is more recent and specifically controls access to GPU rendering capabilities 
+through Direct Rendering Manager (DRM) render nodes.
 
 1. To check the groups in your system, issue the following command:
 
