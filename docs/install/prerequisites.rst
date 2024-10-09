@@ -210,14 +210,14 @@ Grant GPU access to all users on the system
 
 1. Create a new file ``/etc/udev/rules.d/70-amdgpu.rules`` with the following content:
 
-   .. code-block:: bash
+   .. code-block:: shell
 
       KERNEL=="kfd", MODE="0666"
       SUBSYSTEM=="drm", KERNEL=="renderD*", MODE="0666"
 
 2. Reload the udev rules:
 
-   .. code-block:: bash
+   .. code-block:: shell
 
       sudo udevadm control --reload-rules && sudo udevadm trigger
 
@@ -229,13 +229,13 @@ Grant GPU access to a custom group
 
 1. Create a new group (e.g., ``devteam``):
 
-   .. code-block:: bash
+   .. code-block:: shell
 
       sudo groupadd devteam
 
 2. Add users to the new group:
 
-   .. code-block:: bash
+   .. code-block:: shell
 
       sudo usermod -a -G devteam dev1
       sudo usermod -a -G devteam dev2
@@ -244,14 +244,14 @@ Grant GPU access to a custom group
 
    Create a file ``/etc/udev/rules.d/70-amdgpu.rules`` with:
 
-   .. code-block:: bash
+   .. code-block:: shell
 
       KERNEL=="kfd", GROUP="devteam", MODE="0660"
       SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="devteam", MODE="0660"
 
 4. Reload the udev rules:
 
-   .. code-block:: bash
+   .. code-block:: shell
 
       sudo udevadm control --reload-rules && sudo udevadm trigger
 
@@ -276,20 +276,20 @@ through Direct Rendering Manager (DRM) render nodes.
 
 2. Add yourself to the ``video`` and ``render`` groups:
 
-   .. code-block:: bash
+   .. code-block:: shell
 
       sudo usermod -a -G video,render $LOGNAME
 
 3. Optionally, add other users to the ``video`` and ``render`` groups:
 
-   .. code-block:: bash
+   .. code-block:: shell
 
       sudo usermod -a -G video,render user1
       sudo usermod -a -G video,render user2
 
 4. To add all future users to the render and video groups by default, run the following commands:
 
-   .. code-block:: bash
+   .. code-block:: shell
 
       echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
       echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
