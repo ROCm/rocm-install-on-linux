@@ -779,7 +779,7 @@ From the build location of the offline tool, run the following command:
 
    ctest
 
-This suite runs 90 tests.
+This suite runs 100 tests.
 
 The following tests are available, depending on the ROCm version:
 
