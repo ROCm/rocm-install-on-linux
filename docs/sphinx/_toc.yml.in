@@ -64,5 +64,7 @@ subtrees:
       title: Third-party support
     - file: reference/install-faq
       title: Troubleshooting
+    - file: reference/frequently-asked-questions
+      title: FAQ
     - file: reference/user-kernel-space-compat-matrix
       title: User & Kernel-space support
