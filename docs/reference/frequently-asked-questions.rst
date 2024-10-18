@@ -41,11 +41,11 @@ see :doc:`../install/amdgpu-install`.
 
    sudo amdgpu-install --help
 
-**Can a single-version ROCm package be installed alongside a multiversion packages?**
+**Can a single-version ROCm package be installed alongside a multi-version packages?**
 
-Installing single-version and multiversion ROCm packages together on the same machine is not supported. 
+Installing single-version and multi-version ROCm packages together on the same machine is not supported. 
 The conflicting package versions can result in unpredictable behavior. For more information on
-multiversion installation and a comparison between single-version and multiversion install,
+multi-version installation and a comparison between single-version and multi-version install,
 see :doc:`../install/native-install/multi-version-install`.
 
 **Which GPUs and AMD Instinct accelerators does ROCm support?**
