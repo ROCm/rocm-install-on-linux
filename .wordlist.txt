@@ -6,6 +6,7 @@ CTest
 DHCP
 dkms
 dmesg
+DRM
 fw
 FW
 FWDEV
@@ -32,3 +33,5 @@ vCPU
 vfio
 VFIO
 vhost
+udev
+Udev
