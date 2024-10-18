@@ -87,7 +87,7 @@ use the following command:
 Application options and support
 ===============================
 
-**Is membership in the video or rende` group mandatory?**
+**Is membership in the video or render group mandatory?**
 
 Yes, you must be part of the ``video`` or ``render`` group to access the AMD GPU or accelerator.
 To add a user to these groups, use this command:
