@@ -54,7 +54,6 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo dnf update
                        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
                        sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
                        sudo dnf install dnf-plugin-config-manager
