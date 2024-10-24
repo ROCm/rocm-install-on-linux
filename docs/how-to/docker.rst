@@ -66,8 +66,8 @@ remember all the CLI arguments. Here is a docker-compose file, which is equivale
     services:
       my-service:
         image: <image>
-        device:
-          - /dev/fdk
+        devices:
+          - /dev/kfd
           - /dev/dri
         security_opt:
           - seccomp:unconfined
