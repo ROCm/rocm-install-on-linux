@@ -195,11 +195,48 @@ To install for the currently active kernel run the command corresponding to your
 Configuring permissions for GPU access
 ================================================================
 
-There are two primary methods to configure GPU access for ROCm: using udev rules 
-or managing group membership. Each method has its own advantages, and the choice 
-depends on your specific requirements and system management preferences.
+There are two primary methods to configure GPU access for ROCm: group membership or
+udev rules. Each method has its own advantages, and the choice depends on your 
+specific requirements and system management preferences.
 
-Using udev Rules (Recommended)
+Using Group Membership
+--------------------------------------------------------------------
+
+By default, GPU access is managed through membership in the ``video`` and ``render`` groups.
+The ``video`` and ``render`` groups are system groups in Linux used to manage access 
+to graphics hardware and related functionality. Traditionally, the ``video`` group is used 
+to control access to video devices, including graphics cards and video capture devices. 
+The ``render`` group is more recent and specifically controls access to GPU rendering capabilities 
+through Direct Rendering Manager (DRM) render nodes.
+
+1. To check the groups in your system, issue the following command:
+
+   .. code-block:: shell
+
+       groups
+
+2. Add yourself to the ``video`` and ``render`` groups:
+
+   .. code-block:: shell
+
+      sudo usermod -a -G video,render $LOGNAME
+
+3. Optionally, add other users to the ``video`` and ``render`` groups:
+
+   .. code-block:: shell
+
+      sudo usermod -a -G video,render user1
+      sudo usermod -a -G video,render user2
+
+4. To add all future users to the render and video groups by default, run the following commands:
+
+   .. code-block:: shell
+
+      echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
+      echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
+      echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
+
+Using udev Rules
 --------------------------------------------------------------------
 Udev rules offer a flexible way to manage device permissions. They apply system-wide, can be 
 easily deployed via configuration management tools, and eliminate the need for user group management. 
@@ -257,43 +294,6 @@ Grant GPU access to a custom group
 
 This configuration grants all users in the ``devteam`` group read and write access to AMD GPU resources, 
 including the Kernel Fusion Driver (KFD) and Direct Rendering Manager (DRM) devices.
-
-Using Group Membership
---------------------------------------------------------------------
-
-Alternatively, you can manage GPU access through membership in the ``video`` and ``render`` groups.
-The ``video`` and ``render`` groups are system groups in Linux used to manage access 
-to graphics hardware and related functionality. Traditionally, the ``video`` group is used 
-to control access to video devices, including graphics cards and video capture devices. 
-The ``render`` group is more recent and specifically controls access to GPU rendering capabilities 
-through Direct Rendering Manager (DRM) render nodes.
-
-1. To check the groups in your system, issue the following command:
-
-   .. code-block:: shell
-
-       groups
-
-2. Add yourself to the ``video`` and ``render`` groups:
-
-   .. code-block:: shell
-
-      sudo usermod -a -G video,render $LOGNAME
-
-3. Optionally, add other users to the ``video`` and ``render`` groups:
-
-   .. code-block:: shell
-
-      sudo usermod -a -G video,render user1
-      sudo usermod -a -G video,render user2
-
-4. To add all future users to the render and video groups by default, run the following commands:
-
-   .. code-block:: shell
-
-      echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
-      echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
-      echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
 
 Disable integrated graphics (IGP), if applicable
 ================================================================
