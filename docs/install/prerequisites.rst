@@ -236,7 +236,7 @@ through Direct Rendering Manager (DRM) render nodes.
       echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
       echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
 
-Using udev Rules
+Using udev rules
 --------------------------------------------------------------------
 Udev rules offer a flexible way to manage device permissions. They apply system-wide, can be 
 easily deployed via configuration management tools, and eliminate the need for user group management. 
