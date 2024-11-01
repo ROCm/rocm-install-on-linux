@@ -199,7 +199,7 @@ There are two primary methods to configure GPU access for ROCm: group membership
 udev rules. Each method has its own advantages, and the choice depends on your 
 specific requirements and system management preferences.
 
-Using Group Membership
+Using group membership
 --------------------------------------------------------------------
 
 By default, GPU access is managed through membership in the ``video`` and ``render`` groups.
