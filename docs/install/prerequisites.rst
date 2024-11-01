@@ -238,7 +238,7 @@ through Direct Rendering Manager (DRM) render nodes.
 
 Using udev rules
 --------------------------------------------------------------------
-Udev rules offer a flexible way to manage device permissions. They apply system-wide, can be 
+A flexible way to manage device permissions is to use udev rules. They apply system-wide, can be 
 easily deployed via configuration management tools, and eliminate the need for user group management. 
 This method provides more granular control over GPU access.
 
