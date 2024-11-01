@@ -6,9 +6,9 @@
 Post-installation instructions
 *************************************************************************
 
-1. Configure the system linker.
+After installing ROCm, follow these steps to finalize and validate the installation.
 
-   Instruct the system linker where to find shared objects (``.so`` files) for ROCm applications.
+1. Configure the system linker by indicating where to find the shared objects (``.so`` files) for the ROCm applications.
 
    .. code-block:: bash
 
@@ -18,32 +18,79 @@ Post-installation instructions
        EOF
        sudo ldconfig
 
-2. Configure ``PATH``.
+2. Configure the path to the ROCm binary using either the ``update-alternatives`` or ``environment-modules`` Linux utilities.
+   The ROCm installation process adds the ROCm executables to these systems, provided they are
+   installed on the system.
 
-   Add binary paths to the ``PATH`` environment variable.
+   *  ``update-alternatives``:
 
-   .. code-block:: bash
-       :substitutions:
+      The ``update-alternatives`` utility is available on most Linux distributions. It helps 
+      manage multiple versions of a command or program.
+      For more information about ``update-alternatives``, see 
+      `the Linux man page <https://man7.org/linux/man-pages/man1/update-alternatives.1.html>`_.
+      
+      To use ``update-alternatives``, follow these steps:
 
-       export PATH=$PATH:/opt/rocm-|rocm_directory_version|/bin
+      #. List all the ROCm commands that are supported:
+
+         .. code-block:: shell
+
+            update-alternatives --list rocm
+
+      #. If you have installed multiple ROCm versions, ``update-alternatives`` is automatically configured to use the
+         latest version. To switch between installed versions, use this command:
+
+         .. code-block:: shell
+
+            update-alternatives --config rocm
+
+   *  ``environment-modules``:
+
+      The ``environment-modules`` tool simplifies shell initialization. It lets you modify 
+      your session environment using module files. For more information, see the 
+      `Environment Modules documentation <https://modules.readthedocs.io/en/latest/>`_.
+
+      To use ``environment-modules``, follow these instructions:
+
+      #. List the ROCm versions that are available:
+
+         .. code-block:: shell
+
+            module avail
+
+      #. If multiple ROCm versions are installed, switch between them using this command:
+
+         .. code-block:: shell
+
+            module load rocm/<version>
+
+   .. note::
+
+      The ROCm module file is located at ``/opt/rocm-<ver>/lib/rocmmod``.
+
+      If ``update-alternatives`` isn't available on the system, set the ``PATH`` variable to ``/opt/rocm-<ver>/bin``.
+
+      .. code-block:: bash
+         :substitutions:
+
+         export PATH=$PATH:/opt/rocm-|rocm_directory_version|/bin
 
 .. _verify-dkms:
 
-3. Verify kernel-mode driver installation.
+3. Verify the kernel-mode driver installation.
 
    .. code-block:: bash
 
        dkms status
 
-4. Verify ROCm installation.
+4. Verify the ROCm installation.
 
    .. code-block:: bash
-       :substitutions:
 
-       /opt/rocm-|rocm_directory_version|/bin/rocminfo
-       /opt/rocm-|rocm_directory_version|/bin/clinfo
+       rocminfo
+       clinfo
 
-5. Verify package installation.
+5. Verify the package installation.
 
    .. tab-set::
 
@@ -51,16 +98,16 @@ Post-installation instructions
 
            .. code-block:: bash
 
-               sudo apt list --installed
+               apt list --installed
 
        .. tab-item:: RHEL
 
            .. code-block:: bash
 
-               sudo dnf list installed
+               dnf list installed
 
        .. tab-item:: SLES
 
            .. code-block:: bash
 
-               sudo zypper search --installed-only
+               zypper search --installed-only
