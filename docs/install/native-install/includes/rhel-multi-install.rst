@@ -13,7 +13,7 @@
               .. code-block:: bash
                   :substitutions:
 
-                  for ver in |rocm_multi_versions|; do
+                  ver = |amdgpu_version|
                   sudo tee /etc/yum.repos.d/amdgpu.repo <<EOF
                   [amdgpu]
                   name=amdgpu
@@ -23,7 +23,6 @@
                   gpgcheck=1
                   gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
                   EOF
-                  done
                   sudo dnf clean all
           {% endfor %}
 
@@ -44,7 +43,7 @@
                  for ver in |rocm_multi_versions|; do
                  sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
                  [ROCm-$ver]
-                 name=ROCm|rocm_version|
+                 name=ROCm$ver
                  baseurl=https://repo.radeon.com/rocm/el{{ os_release }}/$ver/main
                  enabled=1
                  priority=50
