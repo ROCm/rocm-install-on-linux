@@ -372,7 +372,6 @@ void menu_loop(MENU_DATA *pMenuData)
                 break;
         }
 
-        print_version(pMenuData);
         wrefresh(pMenuWindow);
     }
 }
@@ -410,9 +409,10 @@ void menu_draw(MENU_DATA *pMenuData)
                 set_item_value(items[i], true);
                 add_menu_item_selection_mark(pMenuData, items[i]);
             }
-
         }
     }
+
+    print_version(pMenuData);
 }
 
 void menu_info_draw_bool(MENU_DATA *pMenuData, int starty, int startx, bool val)
@@ -554,7 +554,7 @@ void print_menu_item_selection(MENU_DATA *pMenuData, int starty, int startx)
 
 void print_menu_selections(MENU_DATA *pMenuData)
 {
-    char temp[200];
+    char temp[DEFAULT_CHAR_SIZE];
     ITEM **items;
     int i;
 
@@ -581,12 +581,9 @@ void print_version(MENU_DATA *pMenuData)
     mvwprintw(pMenuData->pMenuWindow, 28, 72, "v%s-%s", OFFLINE_VERSION, ROCM_VERSION);
 }
 
-void print_menu_warning_msg(MENU_DATA *pMenuData, const char *fmt, ...)
+void print_menu_warning_msg(MENU_DATA *pMenuData, int y, int x, const char *fmt, ...)
 {
-     WINDOW *pMenuWindow = pMenuData->pMenuWindow;
-
-    int x = WARN_ERR_START_X;
-    int y = WARN_ERR_START_Y;
+    WINDOW *pMenuWindow = pMenuData->pMenuWindow;
 
     va_list args;
     va_start(args, fmt);
@@ -908,7 +905,7 @@ bool is_specific_usecase_selected(MENU_DATA *pMenuData, char *usecase)
     char *p = strtok (copy, ",");
 
     // split rocm_usecases char string into a string array using , as delimiter
-    char *rocm_usecases_array[256];
+    char *rocm_usecases_array[DEFAULT_CHAR_SIZE];
     int i = 0;
 
     while (p != NULL)
@@ -964,7 +961,7 @@ int display_scroll_window(char *filename, char *query_string, char *query_pass, 
     int max_win_lines = WIN_NUM_LINES - 3;
 
     int query_line = max_win_lines + 1;
-    char query[16];
+    char query[DISPLAY_SCROLL_WINDOW_QUERY_SIZE];
     memset(query, '\0', sizeof(query));
 
     FILE *file = fopen(filename, "r");

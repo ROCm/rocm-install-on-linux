@@ -304,9 +304,9 @@ cleanup_create() {
     if [ $? -eq 0 ]; then
         echo amdgpu-install package is already installed. Cleaning up for new install
         
-        $SUDO apt purge -y amdgpu-install
+        $SUDO apt-get purge -y amdgpu-install
     	
-        $SUDO apt autoremove -y
+        $SUDO apt-get autoremove -y
         $SUDO apt-get update > /dev/null 2>&1
     else
         if [ -f /usr/bin/amdgpu-install ]; then
@@ -471,7 +471,7 @@ download_validate_resolve() {
     $SUDO apt-get clean
     
     # simulate/dryrun the install
-    $SUDO apt install --dry-run $PACKAGES
+    $SUDO apt-get install --dry-run $PACKAGES
     if [ $? -eq 0 ]; then
         print_no_err "Valid package dependencies."
     else
@@ -670,33 +670,32 @@ config_create() {
     
     # Check for a URL config file
     if [[ -n $URL_CONFIG ]]; then
-        if [[ ! -f $URL_CONFIG ]]; then
-            print_err "URL configuration file not found."
-            exit 1
+        if [[ -f $URL_CONFIG ]]; then
+            echo "Using URL Configuration file   : $URL_CONFIG"
+            source $URL_CONFIG
+        
+            echo Checking URL for $ROCM_VERSIONS
+            if [[ "$AMDGPU_INSTALL_URL" != *"$ROCM_VERSIONS"* ]]; then
+                echo ROCm version in URL file does not match.
+                exit 1
+            fi
+        
+            if [[ "$ROCM_URL" != *"$ROCM_VERSIONS"* ]]; then
+                echo ROCm version in URL file does not match.
+                exit 1
+            fi
+        
+            if [[ "$AMDGPU_URL" != *"$ROCM_VERSIONS"* ]]; then
+                echo ROCm version in URL file does not match.
+                exit 1
+            fi
+            
+            echo "AMDGPU_INSTALL_URL = $AMDGPU_INSTALL_URL"
+            echo "ROCM_URL           = $ROCM_URL"
+            echo "AMDGPU_URL         = $AMDGPU_URL"
+        else
+            echo -e "\e[93mWaring: URL configuration file not found.  Using defaults.\e[0m"
         fi
-        
-        echo "Using URL Configuration file   : $URL_CONFIG"
-        source $URL_CONFIG
-        
-        echo Checking URL for $ROCM_VERSIONS
-        if [[ "$AMDGPU_INSTALL_URL" != *"$ROCM_VERSIONS"* ]]; then
-            echo ROCm version in URL file does not match.
-            exit 1
-        fi
-        
-        if [[ "$ROCM_URL" != *"$ROCM_VERSIONS"* ]]; then
-            echo ROCm version in URL file does not match.
-            exit 1
-        fi
-        
-        if [[ "$AMDGPU_URL" != *"$ROCM_VERSIONS"* ]]; then
-            echo ROCm version in URL file does not match.
-            exit 1
-        fi
-        
-        echo "AMDGPU_INSTALL_URL = $AMDGPU_INSTALL_URL"
-        echo "ROCM_URL           = $ROCM_URL"
-        echo "AMDGPU_URL         = $AMDGPU_URL"
     fi
       
     # Check for the installer package generation type
@@ -766,7 +765,7 @@ build_installer() {
     write_install_config
     
     # Create the .run for the installer
-    makeself $INSTALL_MAKESELF_OPTIONS ./$CREATE_INSTALLER_DIR "./$INSTALL_PACKAGE_NAME" "ROCm Offline Install" ./install.sh
+    makeself $INSTALL_MAKESELF_OPTIONS --nox11 ./$CREATE_INSTALLER_DIR "./$INSTALL_PACKAGE_NAME" "ROCm Offline Install" ./install.sh
     cp -Rp "$INSTALL_PACKAGE_NAME" $INSTALL_PACKAGE_DIR
 
     echo Building Offline Installer .run...Complete

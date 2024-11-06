@@ -35,14 +35,22 @@ After installing ROCm, follow these steps to finalize and validate the installat
 
          .. code-block:: shell
 
+<<<<<<< HEAD
             update-alternatives --list rocm
+=======
+            update-alternatives --list
+>>>>>>> internal/develop
 
       #. If you have installed multiple ROCm versions, ``update-alternatives`` is automatically configured to use the
          latest version. To switch between installed versions, use this command:
 
          .. code-block:: shell
 
+<<<<<<< HEAD
             update-alternatives --config rocm
+=======
+            update-alternative --config rocm
+>>>>>>> internal/develop
 
    *  ``environment-modules``:
 

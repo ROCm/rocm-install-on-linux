@@ -174,6 +174,8 @@ void do_extras_menu(MENU_DATA *pMenuData)
 {
     MENU *pMenu = pMenuData->pMenu;
 
+    wclear(pMenuData->pMenuWindow);
+
     // draw the extras menu contents
     extras_menu_draw(pMenuData);
 
