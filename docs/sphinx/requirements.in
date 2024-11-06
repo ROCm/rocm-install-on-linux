@@ -1,8 +1,3 @@
-<<<<<<< HEAD
 rocm-docs-core==1.8.3
 Sphinx-Substitution-Extensions==2024.10.17
-=======
-rocm-docs-core==1.8.2
-Sphinx-Substitution-Extensions==2024.8.6
->>>>>>> internal/develop
 sphinxcontrib.datatemplates==0.11.0
