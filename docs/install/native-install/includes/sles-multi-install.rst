@@ -17,7 +17,7 @@
                   sudo tee /etc/zypp/repos.d/amdgpu.repo <<EOF
                   [amdgpu]
                   name=amdgpu
-                  baseurl=https://repo.radeon.com/amdgpu/$ver/sle/15.6/main/x86_64/
+                  baseurl=https://repo.radeon.com/amdgpu/$ver/sle/{{ os_version }}/main/x86_64/
                   enabled=1
                   gpgcheck=1
                   gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
