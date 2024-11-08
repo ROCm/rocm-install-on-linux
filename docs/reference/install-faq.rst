@@ -136,7 +136,7 @@ After installing these packages and :ref:`registering using your license for Ent
 
 .. _troubleshooting-symlinks:
 
-Issue #7: Installations using Python wheels (``.whl`` files) do not support soft links
+Issue #7: Installations using Python wheels (.whl files) do not support soft links
 ======================================================================================
 
 If you have installed ROCm or any ROCm component using a Python wheel (``.whl`` file), running
@@ -158,3 +158,28 @@ or
   python3 /opt/rocm-6.2.0/libexec/rocm_smi/rocm_smi.py
 
 See `Symbolic links in wheels <https://discuss.python.org/t/symbolic-links-in-wheels/1945>`_ for more information.
+
+.. _troubleshooting-denylist:
+
+Issue #8: The AMDGPU driver is not loaded after installation
+======================================================================================
+
+Ensure the AMDGPU driver is not on a denylist such as ``/etc/modprobe.d/blacklist-amdgpu.conf``.
+The location of this file might vary depending on the system distribution and version.
+To verify whether the driver is on a denylist, use the following command:
+
+.. code-block:: shell
+
+   grep amdgpu /etc/modprobe.d/*
+
+.. _troubleshooting-group-membership:
+
+Issue #9: Cannot access the AMD GPU or accelerator after installation
+======================================================================================
+
+You must be part of the ``video`` and ``render`` groups to access the AMD GPU or accelerator.
+To add an account to these groups, use this command:
+
+.. code-block:: shell
+
+   sudo usermod -a -G render,video $LOGNAME # Adds the current user to the render and video groups
