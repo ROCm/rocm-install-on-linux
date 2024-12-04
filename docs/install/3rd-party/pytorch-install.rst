@@ -367,12 +367,12 @@ wheels command, you must select **Linux**, **Python**, **pip**, and **ROCm** in 
 
    .. note::
 
-       The following command uses the ROCm 6.3 PyTorch wheel. If you want a different version of ROCm,
+       The following command uses the ROCm 6.2 PyTorch wheel. If you want a different version of ROCm,
        modify the command accordingly.
 
    .. code-block:: bash
 
-       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.3/
+       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.2/
 
 4. (Optional) Use MIOpen kdb files with ROCm PyTorch wheels.
 
@@ -396,11 +396,11 @@ wheels command, you must select **Linux**, **Python**, **pip**, and **ROCm** in 
 
    .. code-block:: bash
 
-       #Optional: replace 'gfx90a' with your architecture and 6.3 with your preferred ROCm version
+       #Optional: replace 'gfx90a' with your architecture and 6.2 with your preferred ROCm version
        export GFX_ARCH=gfx90a
 
        #Optional
-       export ROCM_VERSION=6.3
+       export ROCM_VERSION=6.2
 
        ./install_kdb_files_for_pytorch_wheels.sh
 
@@ -523,7 +523,7 @@ maintainers and installs all the required dependencies, including:
    Where:
 
    * ``<os-version>`` = ``ubuntu20.04`` (or ``focal``), ``ubuntu22.04`` (or ``jammy``)
-   * ``<rocm-version>`` = ``6.0``, ``6.1``, ``6.2``, ``6.3``
+   * ``<rocm-version>`` = ``6.0``, ``6.1``, ``6.2``
    * ``<python-version>`` = ``3.8`` - ``3.11``
 
    To verify that your image was successfully created, run:
