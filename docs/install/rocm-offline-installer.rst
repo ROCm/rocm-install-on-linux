@@ -58,7 +58,7 @@ Supported Linux distributions
 The ROCm Offline Installer Creator tool supports the following Linux distributions and versions:
 
 * Ubuntu: 20.04, 22.04, 24.04
-* RHEL: 8.9, 8.10, 9.2, 9.3, 9.4
+* RHEL: 8.10, 9.4
 * SLES: 15.5, 15.6
 
 Getting started
@@ -355,7 +355,7 @@ the components, see :doc:`What is ROCm <rocm:what-is-rocm>`.
 
 .. _driver-options-label:
 
-Driver Options Menu
+Driver Options menu
 -------------------------------------------------------------------------
 
 Use the **Driver Options** menu to optionally include the AMDGPU driver in the 
@@ -433,12 +433,12 @@ of the following post-installation driver options:
 
 .. _extra-packages-label:
 
-Extra Packages Menu
+Extra Packages menu
 -------------------------------------------------------------------------
 
 The **Extra Packages** menu provides a list of optional packages for inclusion
-in the offline installer. You can select the :doc:`rocminfo <rocminfo:index>` and 
-:doc:`rocm-smi <rocm_smi_lib:index>` packages 
+in the offline installer. You can select the :doc:`rocminfo <rocminfo:index>`,
+:doc:`rocm-smi <rocm_smi_lib:index>`, and :doc:`rocm-validation-suite <rocmvalidationsuite:index>` packages 
 as extra packages for the installer, provided they are not already included 
 as part of a given ROCm component.
 
@@ -448,12 +448,12 @@ as part of a given ROCm component.
 
 .. note::
 
-   If a selected ROCm component already includes rocminfo or rocm-smi, the fields are set to ``yes`` and
+   If a selected ROCm component includes rocminfo or rocm-smi, the fields are set to ``yes`` and
    can't be modified.
 
 .. _create-offline-installer-label:
 
-Create Offline Installer Menu
+Create Offline Installer menu
 -------------------------------------------------------------------------
 
 The **Create Offline Installer** menu summarizes the current configuration. The 
@@ -531,7 +531,7 @@ Follow these steps to create an offline installer:
 
 #. Set the extra packages:
 
-   In the **Extra Packages** menu, optionally include one or both of the rocminfo and rocm-smi packages
+   In the **Extra Packages** menu, optionally include rocminfo, rocm-smi, and rocm-validation-suite
    in the offline installer.
 
    .. note::
@@ -545,7 +545,7 @@ Follow these steps to create an offline installer:
    After completing the previous steps, you can create the offline installer.
 
    a. Enter the **Create Offline Installer** menu.
-   b. Review the current installer configuration by using the review summary interface, pressing **<Next Page>** to cycle 
+   b. Review the current installer configuration by using the review summary interface, clicking **<Next Page>** to cycle 
       through the pages.
    c. If there are any errors or missing requirements in the configuration, press **<RETURN>** to display 
       the main menu and make any required changes. Any errors or missing requirements are indicated in red.
@@ -571,7 +571,8 @@ Follow these steps to create an offline installer:
 
          ./rocm-offline-install.run <option>
 
-      The ``option`` parameter can either be omitted or optionally set to ``prompt`` or ``dryrun``.
+      The ``option`` parameter can be omitted or optionally set to ``prompt``, ``dryrun``, or ``uninstall``. 
+      (See the section below for more information on the ``uninstall`` option.)
       The ``prompt`` option enables user prompts 
       during the offline installation process. If the ``prompt`` parameter is appended,
       the installer halts at critical points during the installation process, prompting the user
@@ -596,6 +597,26 @@ Follow these steps to create an offline installer:
 
          You can run the installer with both the ``dryrun`` and ``prompt`` options. 
          This simulates the offline installation and prompts you during the process.
+
+#. Offline Uninstall:
+
+   If ROCm is already installed on your system, you must first uninstall it before 
+   running the installation package. If you try to install ROCm when another version is 
+   installed on the system, the new installation will fail. 
+   If you are using the Ubuntu distribution, you can use the installation package you created to uninstall ROCm.  
+
+   To uninstall ROCm, run the installer from the terminal command line with the ``uninstall`` parameter:
+
+   .. code-block:: shell 
+
+      ./rocm-offline-install.run uninstall
+
+   After the installation is complete, reboot your system. You can then run the offline installer 
+   to install the new version.
+
+   .. note::
+
+      The uninstall feature is only enabled for the Ubuntu distribution.
 
 Log files
 -----------------------------------
@@ -732,12 +753,13 @@ Tests are available for these ROCm versions:
 *  6.0.2
 *  6.1.x
 *  6.2.x
+*  6.3.x
 
 Tests are available for the following component combinations:
 
-*  ROCm only: Creates an installer for the rocm component only.
+*  ROCm only: Creates an installer for the ``rocm`` component only.
 *  Driver only: Creates an installer for the amdgpu driver only.
-*  ROCm and driver: Creates an installer for both the rocm component and the amdgpu driver.
+*  ROCm and driver: Creates an installer for both the ``rocm`` component and the amdgpu driver.
 *  ROCm and graphics: Creates an installer for the ``rocm,graphics`` component.
 *  ``hip`` and ``hiplibsdk``: Creates an installer for the ``hip,hiplibsdk`` component.
 
@@ -779,7 +801,7 @@ From the build location of the offline tool, run the following command:
 
    ctest
 
-This suite runs 100 tests.
+This suite runs 111 tests.
 
 The following tests are available, depending on the ROCm version:
 
@@ -787,10 +809,11 @@ The following tests are available, depending on the ROCm version:
    :header: "ROCm version", "Test Suite Support"
    :widths: 26, 80
 
-   "6.2.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
-   "6.1.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
-   "6.0.2", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "5.7.3", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
+   "6.0.2", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
+   "6.1.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
+   "6.2.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
+   "6.3.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
 
 .. note::
    
@@ -808,7 +831,7 @@ From the build location of the offline tool, run the following command:
 
    ctest -L <rocm-version> 
 
-where ``<rocm-version>`` is one of ``5.7.3``, ``6.0.2``, ``6.1.x``, or ``6.2.x``.
+where ``<rocm-version>`` is one of ``5.7.3``, ``6.0.2``, ``6.1.x``, ``6.2.x``, or ``6.3.x``.
  
 Running manual tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

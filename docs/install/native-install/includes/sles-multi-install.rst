@@ -1,24 +1,56 @@
 .. _sles-multi-install:
 
-1. Register the kernel-mode driver following the steps in :ref:`sles-register-driver`.
+1. Register the kernel-mode driver.
+
+   .. datatemplate:nodata::
+
+      .. tab-set::
+          {% for os_version in config.html_context['sles_version_numbers'] %}
+          {% set os_major, _  = os_version.split('.') %}
+          .. tab-item:: SLES {{ os_version }}
+              :sync: sles-{{ os_version }} sles-{{ os_major }}
+
+              .. code-block:: bash
+                  :substitutions:
+
+                  ver = |amdgpu_version|
+                  sudo tee /etc/zypp/repos.d/amdgpu.repo <<EOF
+                  [amdgpu]
+                  name=amdgpu
+                  baseurl=https://repo.radeon.com/amdgpu/$ver/sle/{{ os_version }}/main/x86_64/
+                  enabled=1
+                  gpgcheck=1
+                  gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+                  EOF
+                  sudo zypper ref
+          {% endfor %}
+
+.. _sles-multi-register-rocm:
 
 2. Register ROCm packages.
 
-   .. code-block:: bash
-      :substitutions:
+   .. datatemplate:nodata::
 
-      for ver in |rocm_multi_versions|; do
-      sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
-      [ROCm-$ver]
-      name=ROCm$ver
-      baseurl=https://repo.radeon.com/rocm/zyp/$ver/main
-      enabled=1
-      gpgcheck=1
-      gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
-      EOF
-      done
+      .. tab-set::
+         {% for os_release in config.html_context['sles_release_version_numbers']  %}
+         .. tab-item:: SLES {{ os_release }}
+             :sync: sles-{{ os_release }}
 
-      sudo zypper ref
+             .. code-block:: bash
+                 :substitutions:
+
+                 for ver in |rocm_multi_versions|; do
+                 sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
+                 [ROCm-$ver]
+                 name=ROCm$ver
+                 baseurl=https://repo.radeon.com/rocm/zyp/$ver/main
+                 enabled=1
+                 gpgcheck=1
+                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+                 EOF
+                 done
+                 sudo zypper ref
+         {% endfor %}
 
 3. Install ROCm.
 

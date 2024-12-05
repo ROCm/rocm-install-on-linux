@@ -160,6 +160,7 @@ char *rocmVersionsNameIndexMapping[] = {
     "6.2",
     "6.2.1",
     "6.2.2",
+    "6.2.4",
     (char*)NULL,
 };
 
@@ -176,6 +177,7 @@ char *rocmVersionsDescIndexMapping[] = {
     "Install ROCm 6.2",
     "Install ROCm 6.2.1",
     "Install ROCm 6.2.2",
+    "Install ROCm 6.2.4",
     (char*)NULL,
 };
 
@@ -195,18 +197,19 @@ char *distroOSVersionsIndexMapping[] = {
 
 
 // Each column corresponds to a specific rocm version specified in array rocmVersionsDescIndexMapping
-// First column maps to 5.7.3, second maps to 6.0,..., last column maps to 6.2.2
+// First column maps to 5.7.3, second maps to 6.0,..., third to 6.0.1 and so on...
 int rocmVersionsMatrix[ROCM_VERS_ROWS][ROCM_VERS_COLS] = {
-    {1,1,1,1,1,1,1,1,1,1,1,1}, // Ubuntu 20.04 
-    {1,1,1,1,1,1,1,1,1,1,1,1}, // Ubuntu 22.04 
-    {0,0,0,0,0,0,0,0,0,1,1,1}, // Ubuntu 24.04 
-    {0,1,1,1,1,1,1,1,1,1,1,1}, // rhel 8.9
-    {0,0,0,0,0,0,0,0,0,1,1,1}, // rhel 8.10
-    {1,1,1,1,1,1,1,1,1,1,1,1}, // rhel 9.2
-    {0,1,1,1,1,1,1,1,1,1,1,1}, // rhel 9.3
-    {0,0,0,0,0,0,0,0,0,1,1,1}, // rhel 9.4
-    {1,1,1,1,1,1,1,1,1,1,1,1}, // sles 15.5
-    {0,0,0,0,0,0,0,0,0,1,1,1}, // sles 15.6 
+    {1,1,1,1,1,1,1,1,1,1,1,1,1}, // Ubuntu 20.04 
+    {1,1,1,1,1,1,1,1,1,1,1,1,1}, // Ubuntu 22.04 
+    {0,0,0,0,0,0,0,0,0,1,1,1,1}, // Ubuntu 24.04 
+    {0,1,1,1,1,1,1,1,1,1,1,1,1}, // rhel 8.9
+    {0,0,0,0,0,0,0,0,0,1,1,1,1}, // rhel 8.10
+    {1,1,1,1,1,1,1,1,1,1,1,1,1}, // rhel 9.2
+    {0,1,1,1,1,1,1,1,1,1,1,1,1}, // rhel 9.3    
+    {0,0,0,0,0,0,0,0,0,1,1,1,1}, // rhel 9.4
+    {0,0,0,0,0,0,0,0,0,1,1,1,1}, // rhel 9.4
+    {1,1,1,1,1,1,1,1,1,1,1,1,1}, // sles 15.5
+    {0,0,0,0,0,0,0,0,0,1,1,1,1}, // sles 15.6 
 };
 
 char **rocmVersions = NULL;

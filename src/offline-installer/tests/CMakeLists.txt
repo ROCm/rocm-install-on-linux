@@ -42,13 +42,21 @@ message(STATUS "TEST: URL_CONFIG = " ${URL_CONFIG})
 ############ rocm only ############
 
 
+# 6.2.4
+add_test(NAME rocm-only-6.2.4
+         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-rocm-only-6.2.4.config url=${URL_CONFIG})
+set_tests_properties(rocm-only-6.2.4 PROPERTIES TIMEOUT ${TIMEOUT_VALUE} FAIL_REGULAR_EXPRESSION "amdgpu-dkms" LABELS "6.2.4")
+
+add_test(NAME rocm-only-6.2.4-install-dryrun COMMAND ${INSTALLER_TEST_PATH}/${INSTALLER_TEST_NAME} dryrun)
+set_tests_properties(rocm-only-6.2.4-install-dryrun PROPERTIES TIMEOUT ${TIMEOUT_VALUE} LABELS "6.2.4")
+
 # 6.2.2
 add_test(NAME rocm-only-6.2.2
-         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-rocm-only-6.2.2.config url=${URL_CONFIG})
+         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-rocm-only-6.2.2.config)
 set_tests_properties(rocm-only-6.2.2 PROPERTIES DISABLED ${IS_ROCM_622_DISABLED} TIMEOUT ${TIMEOUT_VALUE} FAIL_REGULAR_EXPRESSION "amdgpu-dkms" LABELS "6.2.2")
 
 add_test(NAME rocm-only-6.2.2-install-dryrun COMMAND ${INSTALLER_TEST_PATH}/${INSTALLER_TEST_NAME} dryrun)
-set_tests_properties(rocm-only-6.2.2-install-dryrun PROPERTIES DISABLED ${IS_ROCM_622_DISABLED}  TIMEOUT ${TIMEOUT_VALUE} LABELS "6.2.2")
+set_tests_properties(rocm-only-6.2.2-install-dryrun PROPERTIES DISABLED ${IS_ROCM_622_DISABLED} TIMEOUT ${TIMEOUT_VALUE} LABELS "6.2.2")
 
 # 6.2.1
 add_test(NAME rocm-only-6.2.1
@@ -116,9 +124,17 @@ set_tests_properties(rocm-only-5.7.3-install-dryrun PROPERTIES DISABLED ${IS_ROC
 
 ############ driver only ############
 
+# 6.2.4
+add_test(NAME driver-only-6.2.4
+         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-driver-only-6.2.4.config url=${URL_CONFIG})
+set_tests_properties(driver-only-6.2.4 PROPERTIES TIMEOUT ${TIMEOUT_VALUE} LABELS "6.2.4")
+
+add_test(NAME driver-only-6.2.4-install-dryrun COMMAND ${INSTALLER_TEST_PATH}/${INSTALLER_TEST_NAME} dryrun)
+set_tests_properties(driver-only-6.2.4-install-dryrun PROPERTIES TIMEOUT ${TIMEOUT_VALUE} LABELS "6.2.4")
+
 # 6.2.2
 add_test(NAME driver-only-6.2.2
-         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-driver-only-6.2.2.config url=${URL_CONFIG})
+         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-driver-only-6.2.2.config)
 set_tests_properties(driver-only-6.2.2 PROPERTIES DISABLED ${IS_ROCM_622_DISABLED}  TIMEOUT ${TIMEOUT_VALUE} LABELS "6.2.2")
 
 add_test(NAME driver-only-6.2.2-install-dryrun COMMAND ${INSTALLER_TEST_PATH}/${INSTALLER_TEST_NAME} dryrun)
@@ -190,9 +206,17 @@ set_tests_properties(driver-only-5.7.3-install-dryrun PROPERTIES DISABLED ${IS_R
 
 ############ rocm + driver ############
 
+# 6.2.4
+add_test(NAME rocm-driver-6.2.4
+         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-rocm-driver-6.2.4.config url=${URL_CONFIG})
+set_tests_properties(rocm-driver-6.2.4 PROPERTIES TIMEOUT ${TIMEOUT_VALUE} LABELS "ci;6.2.4")
+
+add_test(NAME rocm-driver-6.2.4-install-dryrun COMMAND ${INSTALLER_TEST_PATH}/${INSTALLER_TEST_NAME} dryrun)
+set_tests_properties(rocm-driver-6.2.4-install-dryrun PROPERTIES TIMEOUT ${TIMEOUT_VALUE} LABELS "ci;6.2.4")
+
 # 6.2.2
 add_test(NAME rocm-driver-6.2.2
-         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-rocm-driver-6.2.2.config url=${URL_CONFIG})
+         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-rocm-driver-6.2.2.config)
 set_tests_properties(rocm-driver-6.2.2 PROPERTIES DISABLED ${IS_ROCM_622_DISABLED}  TIMEOUT ${TIMEOUT_VALUE} LABELS "ci;6.2.2")
 
 add_test(NAME rocm-driver-6.2.2-install-dryrun COMMAND ${INSTALLER_TEST_PATH}/${INSTALLER_TEST_NAME} dryrun)
@@ -264,9 +288,17 @@ set_tests_properties(rocm-driver-5.7.3-install-dryrun PROPERTIES DISABLED ${IS_R
 
 ############ rocm,graphics ############
 
+# 6.2.4
+add_test(NAME rocm-graphics-6.2.4
+         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-rocm-graphics-6.2.4.config url=${URL_CONFIG})
+set_tests_properties(rocm-graphics-6.2.4 PROPERTIES TIMEOUT ${TIMEOUT_VALUE} LABELS "6.2.4")
+
+add_test(NAME rocm-graphics-6.2.4-install-dryrun COMMAND ${INSTALLER_TEST_PATH}/${INSTALLER_TEST_NAME} dryrun)
+set_tests_properties(rocm-graphics-6.2.4-install-dryrun PROPERTIES TIMEOUT ${TIMEOUT_VALUE} LABELS "6.2.4")
+
 # 6.2.2
 add_test(NAME rocm-graphics-6.2.2
-         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-rocm-graphics-6.2.2.config url=${URL_CONFIG})
+         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-rocm-graphics-6.2.2.config)
 set_tests_properties(rocm-graphics-6.2.2 PROPERTIES DISABLED ${IS_ROCM_622_DISABLED} TIMEOUT ${TIMEOUT_VALUE} LABELS "6.2.2")
 
 add_test(NAME rocm-graphics-6.2.2-install-dryrun COMMAND ${INSTALLER_TEST_PATH}/${INSTALLER_TEST_NAME} dryrun)
@@ -338,9 +370,17 @@ set_tests_properties(rocm-graphics-5.7.3-install-dryrun PROPERTIES DISABLED ${IS
 
 ############ hip,hipsdk ############
 
+# 6.2.4
+add_test(NAME hip-hiplibsdk-6.2.4
+         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-hip-hiplibsdk-6.2.4.config url=${URL_CONFIG})
+set_tests_properties(hip-hiplibsdk-6.2.4 PROPERTIES TIMEOUT ${TIMEOUT_VALUE} LABELS "6.2.4")
+
+add_test(NAME hip-hiplibsdk-6.2.4-install-dryrun COMMAND ${INSTALLER_TEST_PATH}/${INSTALLER_TEST_NAME} dryrun)
+set_tests_properties(hip-hiplibsdk-6.2.4-install-dryrun PROPERTIES TIMEOUT ${TIMEOUT_VALUE} LABELS "6.2.4")
+
 # 6.2.2
 add_test(NAME hip-hiplibsdk-6.2.2
-         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-hip-hiplibsdk-6.2.2.config url=${URL_CONFIG})
+         COMMAND ${CMAKE_BINARY_DIR}/${PACKAGE_NAME}.run config=${CMAKE_SOURCE_DIR}/tests/create-test-hip-hiplibsdk-6.2.2.config)
 set_tests_properties(hip-hiplibsdk-6.2.2 PROPERTIES DISABLED ${IS_ROCM_622_DISABLED} TIMEOUT ${TIMEOUT_VALUE} LABELS "6.2.2")
 
 add_test(NAME hip-hiplibsdk-6.2.2-install-dryrun COMMAND ${INSTALLER_TEST_PATH}/${INSTALLER_TEST_NAME} dryrun)

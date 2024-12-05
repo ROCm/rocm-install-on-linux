@@ -2,6 +2,8 @@
   :description: Install multiple ROCm versions
   :keywords: installation instructions, AMD, ROCm, multiple versions
 
+.. _multi-version_install:
+
 *********************************
 Installing multiple ROCm versions
 *********************************
@@ -62,6 +64,10 @@ installation to avoid conflicts.
    .. tab-item:: RHEL
 
       .. include:: ./includes/rhel-multi-install.rst
+
+   .. tab-item:: OL
+
+      .. include:: ./includes/ol-multi-install.rst
 
    .. tab-item:: SLES
 

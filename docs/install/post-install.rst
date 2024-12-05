@@ -83,14 +83,24 @@ After installing ROCm, follow these steps to finalize and validate the installat
 
        dkms status
 
-4. Verify the ROCm installation.
+4. Export LD_LIBRARY_PATH as needed
+
+   .. important::
+
+      This step is required for version specific or :doc:`multi-version installations <./native-install/multi-version-install>`. 
+
+   .. code-block:: shell
+
+      export LD_LIBRARY_PATH=/opt/rocm-6.3.0/lib
+
+5. Verify the ROCm installation.
 
    .. code-block:: bash
 
        rocminfo
        clinfo
 
-5. Verify the package installation.
+6. Verify the package installation.
 
    .. tab-set::
 
@@ -101,6 +111,12 @@ After installing ROCm, follow these steps to finalize and validate the installat
                apt list --installed
 
        .. tab-item:: RHEL
+
+           .. code-block:: bash
+
+               dnf list installed
+      
+       .. tab-item:: OL
 
            .. code-block:: bash
 

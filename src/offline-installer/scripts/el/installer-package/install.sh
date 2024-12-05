@@ -26,6 +26,7 @@
 RUN_INSTALLER_LOGS=/var/log/offline_creator
 RUN_INSTALLER_CURRENT_LOG="$RUN_INSTALLER_LOGS/install_$(date +%s).log"
 
+SUDO=$([[ $(id -u) -ne 0 ]] && echo "sudo" ||:)
 { 
 
 # Debug Settings
@@ -551,7 +552,6 @@ INSTALLER=${0##*/}
 INSTALL_DIR=$(cd ${0%/*} && pwd -P)
 echo Installer $INSTALLER running from: $INSTALL_DIR
 
-SUDO=$([[ $(id -u) -ne 0 ]] && echo "sudo" ||:)
 echo SUDO: $SUDO
 
 # parse args

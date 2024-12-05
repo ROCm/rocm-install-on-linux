@@ -166,7 +166,8 @@ Remove ROCm and AMDGPU repositories
 
     # Clear the cache and clean the system.
     sudo rm -rf /var/cache/apt/*
-    sudo apt-get clean all
+    sudo apt clean all
+    sudo apt update
 
     # Restart the system.
     sudo reboot

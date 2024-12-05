@@ -5,12 +5,12 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # ROCm version numbers
-rocm_version = '6.2.4'
-rocm_multi_versions = '6.2.4 6.2.2' # in 6.2, the folder names on repo.radeon.com use 6.2 for minor releases
-rocm_multi_versions_package_versions = '6.2.4 6.2.2' # however, in multi, the packages use 6.2.0
-rocm_directory_version = '6.2.4' # in 6.0 rocm was located in /opt/rocm-6.0.0
-amdgpu_version = '6.2.4' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '6.2.60204-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+rocm_version = '6.3'
+rocm_multi_versions = '6.3 6.2.4' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_multi_versions_package_versions = '6.3.0 6.2.4' # however, in multi, the packages use 6.3.0
+rocm_directory_version = '6.3.0' # in 6.0 rocm was located in /opt/rocm-6.0.0
+amdgpu_version = '6.3' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '6.3.60300-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
 
 
 latex_engine = "xelatex"
@@ -26,8 +26,8 @@ latex_elements = {
 project = "ROCm installation on Linux"
 author = "Advanced Micro Devices, Inc."
 copyright = "Copyright (c) 2024 Advanced Micro Devices, Inc. All rights reserved."
-version = "6.2.4"
-release = "6.2.4"
+version = "6.3.0"
+release = "6.3.0"
 setting_all_article_info = True
 all_article_info_os = ["linux"]
 all_article_info_author = ""
@@ -35,16 +35,17 @@ all_article_info_author = ""
 # Supported linux version numbers
 ubuntu_version_numbers = [('24.04', 'noble'), ('22.04', 'jammy')]
 rhel_release_version_numbers = ['9', '8']
-rhel_version_numbers = ['9.4', '9.3', '8.10', '8.9']
+rhel_version_numbers = ['9.5', '9.4', '8.10']
 sles_version_numbers = ['15.6', '15.5']
 ol_release_version_numbers = ['8']
-ol_version_numbers = [('8', '8.8')]
+ol_version_numbers = [('8.10')]
 
 exclude_patterns = [
     'temp', 
     'install/native-install/includes/rhel-multi-install.rst',
     'install/native-install/includes/sles-multi-install.rst',
     'install/native-install/includes/ubuntu-multi-install.rst'
+    'install/native-install/includes/ol-multi-install.rst'
 ]
 
 external_toc_path = "./sphinx/_toc.yml"

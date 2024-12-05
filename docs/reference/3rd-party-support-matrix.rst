@@ -22,6 +22,10 @@ ROCm releases support the most recent and two prior releases of PyTorch and Tens
       - `PyTorch <https://github.com/pytorch/pytorch/releases/>`_
       - `TensorFlow <https://github.com/tensorflow/tensorflow/releases/>`_
 
+    * - 6.3.x
+      - 1.13, 2.0, 2.1, 2.2, 2.3, 2.4
+      - 2.15.1, 2.16.2, 2.17.0
+  
     * - 6.2.x
       - 1.13, 2.0, 2.1, 2.2, 2.3
       - 2.14.1, 2.15.1, 2.16.1
@@ -134,17 +138,21 @@ CUDA/NVIDIA HPC SDK alternatives.
       - Thrust / CUB
       - HPC SDK
 
+    * - 6.3.x
+      - 2.3.2
+      - 24.5
+
     * - 6.2.x
       - 2.2.0
-      - 22.9
+      - 24.3
     
     * - 6.1.x
       - 2.1.0
-      - 22.9
+      - 23.9
 
     * - 6.0.x
       - 2.0.1
-      - 22.9
+      - 23.9
 
     * - 5.7.x
       - 1.17.2

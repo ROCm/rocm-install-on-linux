@@ -235,7 +235,7 @@ From the build location of the offline tool, run the following:
 ctest
 ```
 
-A total of 90 tests will be run:
+A total of 100 tests will be run:
 
 ROCm Version
 

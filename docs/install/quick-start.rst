@@ -58,9 +58,35 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                        sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
                        sudo dnf install dnf-plugin-config-manager
                        sudo crb enable
+                       {% if os_major == '9' -%}
+                       sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)" "kernel-devel-matched-$(uname -r)"
+                       {%- else -%}
                        sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
+                       {%- endif %}
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+                       sudo dnf clean all
+                       sudo dnf install amdgpu-dkms rocm
+                {% endfor %}
+
+        .. tab-item:: Oracle Linux
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['ol_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
+                       sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
+                       sudo dnf install dnf-plugin-config-manager
+                       sudo crb enable
+                       sudo dnf install "kernel-uek-devel-$(uname -r)"
+                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
+                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        sudo dnf clean all
                        sudo dnf install amdgpu-dkms rocm
                 {% endfor %}
@@ -83,6 +109,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                        SUSEConnect -p PackageHub/{{ os_version }}/x86_64
                        sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
                        sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
+                       sudo zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo  # Once SLE_15_SP6 is created, change the static folder "SLE_15_SP5" to dynamic
                        sudo zypper install kernel-default-devel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm

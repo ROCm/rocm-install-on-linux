@@ -16,10 +16,9 @@
                .. code-block:: bash
                    :substitutions:
 
-                   for ver in |rocm_multi_versions|; do
+                   ver = |amdgpu_version|
                    echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/$ver/ubuntu {{ os_release }} main" \
                        | sudo tee /etc/apt/sources.list.d/amdgpu.list
-                   done
                    sudo apt update
 
            {% endfor %}

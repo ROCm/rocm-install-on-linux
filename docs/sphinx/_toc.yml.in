@@ -25,6 +25,8 @@ subtrees:
                   title: Ubuntu
                 - file: install/native-install/rhel
                   title: RHEL
+                - file: install/native-install/ol
+                  title: OL
                 - file: install/native-install/sles
                   title: SLES
             - file: install/amdgpu-install
@@ -54,8 +56,6 @@ subtrees:
 
 - caption: Reference
   entries:
-    - file: reference/docker-image-support-matrix
-      title: Docker image support
     - file: reference/package-manager-integration
       title: Package manager integration
     - file: reference/system-requirements
@@ -65,4 +65,4 @@ subtrees:
     - file: reference/install-faq
       title: Troubleshooting
     - file: reference/user-kernel-space-compat-matrix
-      title: User & Kernel-space support
+      title: User & kernel-space support

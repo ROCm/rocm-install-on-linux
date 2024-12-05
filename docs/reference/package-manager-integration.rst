@@ -228,7 +228,6 @@ The following table shows the meta-packages and their associated (meta-)packages
   |                            | Packages:                       |
   |                            |                                 |
   |                            | ``hsa-rocr-devel``,             |
-  |                            | ``hsamk-roct-devel``,           |
   |                            | ``rocm-core``,                  |
   |                            | ``rocm-opencl-devel``           |
   +----------------------------+---------------------------------+
@@ -251,7 +250,6 @@ The following table shows the meta-packages and their associated (meta-)packages
   |                            | ``hip-devel``,                  |
   |                            | ``hipify-cclang``,              |
   |                            | ``hsa-rocr-devel``,             |
-  |                            | ``hsakmt-roct-devel``,          |
   |                            | ``rocm-cmake``,                 |
   |                            | ``rocm-core``,                  |
   |                            | ``rocm-llvm``                   |

@@ -13,10 +13,14 @@ ROCm provides mixed-precision and large-scale training using our
 
 To install PyTorch for ROCm, you have the following options:
 
-* :ref:`using-docker-with-pytorch-pre-installed`
-  (recommended)
+* :ref:`using-docker-with-pytorch-pre-installed` (*recommended*)
+
+  * :ref:`pytorch-docker-support`
+
 * :ref:`using-wheels-package`
+
 * :ref:`using-pytorch-rocm-docker-image`
+
 * :ref:`using-pytorch-upstream-docker-image`
 
 .. |br| raw:: html
@@ -32,6 +36,14 @@ For hardware, software, and third-party framework compatibility between ROCm and
 
 Using a Docker image with PyTorch pre-installed
 ===============================================================
+
+To install ROCm on bare metal, follow :doc:`/install/install-overview`. The recommended option to
+get a PyTorch environment is through Docker.
+
+Using Docker provides portability and access to a prebuilt Docker image that
+has been rigorously tested within AMD. This can also save compilation time and
+should perform as tested and mitigate potential installation issues. See
+:ref:`pytorch-docker-support`
 
 1. Download the latest public `PyTorch Docker image <https://hub.docker.com/r/rocm/pytorch>`_.
 
@@ -54,7 +66,7 @@ Using a Docker image with PyTorch pre-installed
 
         "Latest PyTorch tested release", **rocm/pytorch:latest** |br| rocm/pytorch:latest-release, rocm/pytorch:latest-release
         "Latest PyTorch dev version", rocm/pytorch:latest-internal, **rocm/pytorch:latest**
-        
+
 
 2. Start a Docker container using the image.
 
@@ -68,21 +80,266 @@ Using a Docker image with PyTorch pre-installed
 
        This will automatically download the image if it does not exist on the host. You can also pass the ``-v`` argument to mount any data directories from the host onto the container.
 
-Refer to the :doc:`Docker image support matrix </reference/docker-image-support-matrix>` for a list of prebuilt
-Docker image tags for PyTorch with ROCm.
+.. _pytorch-docker-support:
+
+Docker image support
+--------------------
+
+AMD validates and publishes ready-made `PyTorch <https://hub.docker.com/r/rocm/pytorch>`_ images
+with ROCm backends on Docker Hub. The following Docker image tags and associated inventories are
+validated for ROCm 6.2.
+
+.. tab-set::
+
+   .. tab-item:: ROCm 6.2.1
+
+      .. tab-set::
+
+         .. tab-item:: PyTorch 2.3.0
+
+            .. tab-set::
+
+               .. tab-item:: Ubuntu 20.04
+
+                  Tag
+                    `rocm/pytorch:rocm6.2.1_ubuntu20.04_py3.9_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2.1_ubuntu20.04_py3.9_pytorch_release_2.3.0/images/sha256-8ffc2fcde77c54800057b385bc95f1481fc5300dccff192afa865b29a5d00201>`_ (`latest <https://hub.docker.com/layers/rocm/pytorch/latest/images/sha256-63f46c1bd0db29c74238efa72778b4fabc614e180b8e9e3bcf8d457d9b34b610>`_)
+
+                    .. note::
+
+                       As of ROCm 6.2.1, ``rocm/pytorch:latest`` points to a Docker image with the latest ROCm tested
+                       release version of PyTorch (for example, version 2.3), similar to ``rocm/pytorch:latest-release`` tag. See
+                       :ref:`Using a Docker image with PyTorch pre-installed <pytorch-docker-latest-note>` for more information.
+
+                  Inventory
+                    * `ROCm 6.2.1 <https://repo.radeon.com/rocm/apt/6.2.1/>`_
+                    * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                    * `PyTorch 2.3.0 <https://github.com/ROCm/pytorch/tree/release/2.3>`_
+                    * `Apex 1.3.0 <https://github.com/ROCm/apex/tree/release/1.3.0>`_
+                    * `torchvision 0.18.0 <https://github.com/pytorch/vision/tree/v0.18.0>`_
+                    * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+                    * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
+                    * `UCX 1.10.1 <https://github.com/openucx/ucx/tree/v1.10.0>`_
+                    * `OMPI 4.0.3 <https://github.com/open-mpi/ompi/tree/v4.0.3>`_
+                    * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
+
+         .. tab-item:: PyTorch 2.2.1
+
+            .. tab-set::
+
+               .. tab-item:: Ubuntu 20.04
+
+                  Tag
+                    `rocm/pytorch:rocm6.2.1_ubuntu20.04_py3.9_pytorch_release_2.2.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2.1_ubuntu20.04_py3.9_pytorch_release_2.2.1/images/sha256-b655f032e13fa05051b7e447b83735be88dd8286888d7d242d0337106bae1547>`_
+
+                  Inventory
+                    * `ROCm 6.2.1 <https://repo.radeon.com/rocm/apt/6.2.1/>`_
+                    * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                    * `PyTorch 2.2.1 <https://github.com/ROCm/pytorch/tree/release/2.3>`_
+                    * `Apex 1.2.0 <https://github.com/ROCm/apex/tree/release/1.2.0>`_
+                    * `torchvision 0.17.1 <https://github.com/pytorch/vision/tree/v0.17.1>`_
+                    * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+                    * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
+                    * `UCX 1.10.1 <https://github.com/openucx/ucx/tree/v1.10.0>`_
+                    * `OMPI 4.0.3 <https://github.com/open-mpi/ompi/tree/v4.0.3>`_
+                    * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
+
+         .. tab-item:: PyTorch 2.1.2
+
+            .. tab-set::
+
+               .. tab-item:: Ubuntu 22.04
+
+                  Tag
+                    `rocm/pytorch:rocm6.2.1_ubuntu22.04_py3.10_pytorch_release_2.1.2 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2.1_ubuntu22.04_py3.10_pytorch_release_2.1.2/images/sha256-1a497364d1541ca4ff97dcd69ffb49b3ad0d82d73bba90095089002e3a8a64a2>`_
+
+                  Inventory
+                    * `ROCm 6.2.1 <https://repo.radeon.com/rocm/apt/6.2.1/>`_
+                    * `Python 3.10 <https://www.python.org/downloads/release/python-31013/>`_
+                    * `PyTorch 2.1.2 <https://github.com/ROCm/pytorch/tree/release/2.1>`_
+                    * `Apex 1.1.0 <https://github.com/ROCm/apex/tree/release/1.1.0>`_
+                    * `torchvision 0.16.1 <https://github.com/pytorch/vision/tree/release/0.16>`_
+                    * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+                    * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
+                    * `UCX 1.14.1 <https://github.com/openucx/ucx/tree/v1.14.1>`_
+                    * `OMPI 4.1.5 <https://github.com/open-mpi/ompi/tree/v4.1.5>`_
+                    * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
+
+         .. tab-item:: PyTorch 1.13.1
+
+            .. tab-set::
+
+               .. tab-item:: Ubuntu 20.04
+
+                  Tag
+                    `rocm/pytorch:rocm6.2.1_ubuntu20.04_py3.9_pytorch_release_1.13.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2.1_ubuntu20.04_py3.9_pytorch_release_1.13.1/images/sha256-eed24dd5534d996155e646f69e61181c8f63ecf02d100a98c657936849756c6b>`_
+
+                  Inventory
+                    * `ROCm 6.2.1 <https://repo.radeon.com/rocm/apt/6.2.1/>`_
+                    * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                    * `PyTorch 1.13.1 <https://github.com/ROCm/pytorch/tree/release/1.13>`_
+                    * `Apex 1.0.0 <https://github.com/ROCm/apex/tree/release/1.0.0>`_
+                    * `torchvision 0.14.0 <https://github.com/pytorch/vision/tree/v0.14.0>`_
+                    * `TensorBoard 2.17.0 <https://github.com/tensorflow/tensorboard/tree/2.17.0>`_
+                    * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
+                    * `UCX 1.10.0 <https://github.com/openucx/ucx/tree/v1.10.0>`_
+                    * `OMPI 4.0.3 <https://github.com/open-mpi/ompi/tree/v4.0.3>`_
+                    * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
+
+
+   .. tab-item:: ROCm 6.2.0
+
+      .. tab-set::
+
+         .. tab-item:: PyTorch 2.3.0
+
+            .. tab-set::
+
+               .. tab-item:: Ubuntu 22.04
+
+                  Tag
+                    `rocm/pytorch:rocm6.2_ubuntu22.04_py3.10_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2_ubuntu22.04_py3.10_pytorch_release_2.3.0/images/sha256-931d3e3dcebe6c6fab84adf16cfca3e1d1449100df7c881a46fccd06f6c9bc1c>`_
+
+                  Inventory
+                    * `ROCm 6.2 <https://repo.radeon.com/rocm/apt/6.2/>`_
+                    * `Python 3.10 <https://www.python.org/downloads/release/python-31013/>`_
+                    * `PyTorch 2.3.0 <https://github.com/ROCm/pytorch/tree/release/2.3>`_
+                    * `Apex 1.3.0 <https://github.com/ROCm/apex/tree/release/1.3.0>`_
+                    * `torchvision 0.18.0 <https://github.com/pytorch/vision/tree/v0.18.0>`_
+                    * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+                    * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
+                    * `UCX 1.14.1 <https://github.com/openucx/ucx/tree/v1.14.1>`_
+                    * `OMPI 4.1.5 <https://github.com/open-mpi/ompi/tree/v4.1.5>`_
+                    * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
+
+               .. tab-item:: Ubuntu 20.04
+
+                  Tag
+                    `rocm/pytorch:rocm6.2_ubuntu20.04_py3.9_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2_ubuntu20.04_py3.9_pytorch_release_2.3.0/images/sha256-a1b2be0e705b02c25a3cf7fdaa991afea68deaebcafa58ef1872ce961713617c>`_
+
+                  Inventory
+                    * `ROCm 6.2 <https://repo.radeon.com/rocm/apt/6.2/>`_
+                    * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                    * `PyTorch 2.3.0 <https://github.com/ROCm/pytorch/tree/release/2.3>`_
+                    * `Apex 1.3.0 <https://github.com/ROCm/apex/tree/release/1.3.0>`_
+                    * `torchvision 0.18.0 <https://github.com/pytorch/vision/tree/v0.18.0>`_
+                    * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+                    * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
+                    * `UCX 1.10.1 <https://github.com/openucx/ucx/tree/v1.10.0>`_
+                    * `OMPI 4.0.3 <https://github.com/open-mpi/ompi/tree/v4.0.3>`_
+                    * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
+
+         .. tab-item:: PyTorch 2.2.1
+
+            .. tab-set::
+
+               .. tab-item:: Ubuntu 22.04
+
+                  Tag
+                    `rocm/pytorch:rocm6.2_ubuntu22.04_py3.9_pytorch_release_2.2.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2_ubuntu22.04_py3.9_pytorch_release_2.2.1/images/sha256-86b214d2e4b380c3a6fdc8e161d5cc0a154a567880a2377f636ebf80611dfff7>`_
+
+                  Inventory
+                    * `ROCm 6.2 <https://repo.radeon.com/rocm/apt/6.2/>`_
+                    * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                    * `PyTorch 2.2.1 <https://github.com/ROCm/pytorch/tree/release/2.2>`_
+                    * `Apex 1.2.0 <https://github.com/ROCm/apex/tree/release/1.2.0>`_
+                    * `torchvision 0.17.1 <https://github.com/pytorch/vision/tree/v0.17.1>`_
+                    * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+                    * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
+                    * `UCX 1.14.1 <https://github.com/openucx/ucx/tree/v1.14.1>`_
+                    * `OMPI 4.1.5 <https://github.com/open-mpi/ompi/tree/v4.1.5>`_
+                    * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
+
+               .. tab-item:: Ubuntu 20.04
+
+                  Tag
+                    `rocm/pytorch:rocm6.2_ubuntu20.04_py3.9_pytorch_2.2.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2_ubuntu20.04_py3.9_pytorch_release_2.2.1/images/sha256-83ee72d83356c36df640133d088189f16c8f119ec9c6569a873dfaa8de161f01>`_
+
+                  Inventory
+                    * `ROCm 6.2 <https://repo.radeon.com/rocm/apt/6.2/>`_
+                    * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                    * `PyTorch 2.2.1 <https://github.com/ROCm/pytorch/tree/release/2.2>`_
+                    * `Apex 1.2.0 <https://github.com/ROCm/apex/tree/release/1.2.0>`_
+                    * `torchvision 0.17.1 <https://github.com/pytorch/vision/tree/v0.17.1>`_
+                    * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+                    * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
+                    * `UCX 1.10.0 <https://github.com/openucx/ucx/tree/v1.10.0>`_
+                    * `OMPI 4.0.3 <https://github.com/open-mpi/ompi/tree/v4.0.3>`_
+                    * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
+
+         .. tab-item:: PyTorch 2.1.2
+
+            .. tab-set::
+
+               .. tab-item:: Ubuntu 20.04
+
+                  Tag
+                    `rocm/pytorch:rocm6.2_ubuntu20.04_py3.9_pytorch_release_2.1.2 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2_ubuntu20.04_py3.9_pytorch_release_2.1.2/images/sha256-58186da550e3d83c5b598ce0c1f581206eabd82c85bd77d22b34f5695d749762>`_
+
+                  Inventory
+                    * `ROCm 6.2 <https://repo.radeon.com/rocm/apt/6.2/>`_
+                    * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                    * `PyTorch 2.1.2 <https://github.com/ROCm/pytorch/tree/release/2.1>`_
+                    * `Apex 1.1.0 <https://github.com/ROCm/apex/tree/release/1.1.0>`_
+                    * `torchvision 0.16.1 <https://github.com/pytorch/vision/tree/release/0.16>`_
+                    * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+                    * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
+                    * `UCX 1.10.0 <https://github.com/openucx/ucx/tree/v1.10.0>`_
+                    * `OMPI 4.0.3 <https://github.com/open-mpi/ompi/tree/v4.0.3>`_
+                    * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
+
+         .. tab-item:: PyTorch 1.13.1
+
+            .. tab-set::
+
+               .. tab-item:: Ubuntu 22.04
+
+                  Tag
+                    `rocm/pytorch:rocm6.2_ubuntu22.04_py3.9_pytorch_1.13.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2_ubuntu22.04_py3.9_pytorch_release_1.13.1/images/sha256-fe417e67704625038ed782bf48ac892a1451721d86eef5f8b28b5fe16d320e0d>`_
+
+                  Inventory
+                    * `ROCm 6.2 <https://repo.radeon.com/rocm/apt/6.2/>`_
+                    * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                    * `PyTorch 1.13.1 <https://github.com/ROCm/pytorch/tree/release/1.13>`_
+                    * `Apex 1.0.0 <https://github.com/ROCm/apex/tree/release/1.0.0>`_
+                    * `torchvision 0.14.0 <https://github.com/pytorch/vision/tree/v0.14.0>`_
+                    * `TensorBoard 2.17.0 <https://github.com/tensorflow/tensorboard/tree/2.17>`_
+                    * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
+                    * `UCX 1.14.1 <https://github.com/openucx/ucx/tree/v1.14.1>`_
+                    * `OMPI 4.1.5 <https://github.com/open-mpi/ompi/tree/v4.1.5>`_
+                    * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
+
+
+               .. tab-item:: Ubuntu 20.04
+
+                  Tag
+                    `rocm/pytorch:rocm6.2_ubuntu20.04_py3.9_pytorch_1.13.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.2_ubuntu20.04_py3.9_pytorch_release_1.13.1/images/sha256-9338a4fb9cac31fa25f1c7c8907e6ab1bbf8b57f4e04b7af2ae4dbf7c7d36dae>`_
+
+                  Inventory
+                    * `ROCm 6.2 <https://repo.radeon.com/rocm/apt/6.2/>`_
+                    * `Python 3.9 <https://www.python.org/downloads/release/python-3918/>`_
+                    * `PyTorch 1.13.1 <https://github.com/ROCm/pytorch/tree/release/1.13>`_
+                    * `Apex 1.0.0 <https://github.com/ROCm/apex/tree/release/1.0.0>`_
+                    * `torchvision 0.14.0 <https://github.com/pytorch/vision/tree/v0.14.0>`_
+                    * `TensorBoard 2.17.0 <https://github.com/tensorflow/tensorboard/tree/2.17.0>`_
+                    * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
+                    * `UCX 1.10.0 <https://github.com/openucx/ucx/tree/v1.10.0>`_
+                    * `OMPI 4.0.3 <https://github.com/open-mpi/ompi/tree/v4.0.3>`_
+                    * `OFED 5.4.3 <https://content.mellanox.com/ofed/MLNX_OFED-5.3-1.0.5.0/MLNX_OFED_LINUX-5.3-1.0.5.0-ubuntu20.04-x86_64.tgz>`_
 
 .. _install_pytorch_wheels:
 .. _using-wheels-package:
 
 Using a wheels package
-===============================================================
+======================
 
 PyTorch supports the ROCm platform by providing tested wheels packages. To access this feature, go
 to `pytorch.org/get-started/locally/ <https://pytorch.org/get-started/locally/>`_. For the correct
-wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matrix.
+wheels command, you must select **Linux**, **Python**, **pip**, and **ROCm** in the matrix.
 
 .. note::
-    The available ROCm release varies between the 'PyTorch Build' of ``Stable`` or ``Nightly``.  More recent releases are generally available through the Nightly builds.
+
+   The available ROCm release varies between the **PyTorch Build** of ``Stable`` or ``Nightly``.
+   More recent releases are generally available through the Nightly builds.
 
 1. Choose one of the following three options:
 
@@ -102,33 +359,33 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
 
    b. Pull the selected image.
 
-   .. code-block:: bash
+      .. code-block:: bash
 
-       docker pull rocm/dev-ubuntu-22.04:latest
+          docker pull rocm/dev-ubuntu-22.04:latest
 
    c. Start a Docker container using the downloaded image.
 
-   .. code-block:: bash
+      .. code-block:: bash
 
-       docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/dev-ubuntu-22.04:latest
+          docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/dev-ubuntu-22.04:latest
 
    **Option 2:**
 
-   Select a base OS Docker image (Check :ref:`system-requirements`)
+   a. Select a base OS Docker image. Check :ref:`system-requirements`.
 
-   Pull selected base OS image (Ubuntu 22.04 for example)
+   b. Pull selected base OS image (Ubuntu 22.04, for example).
 
-   .. code-block:: bash
+      .. code-block:: bash
 
-       docker pull ubuntu:22.04
+          docker pull ubuntu:22.04
 
-   Start a Docker container using the downloaded image
+   c. Start a Docker container using the downloaded image.
 
-   .. code-block:: bash
+      .. code-block:: bash
 
-       docker run -it --device=/dev/kfd --device=/dev/dri --group-add video ubuntu:22.04
+          docker run -it --device=/dev/kfd --device=/dev/dri --group-add video ubuntu:22.04
 
-   Install ROCm using the directions in the :ref:`rocm-install-overview` section.
+   d. Install ROCm using the directions in the :ref:`rocm-install-overview` section.
 
    **Option 3:**
 
@@ -164,7 +421,7 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
 
    MIOpen kdb files can be used with ROCm PyTorch wheels. However, the kdb files need to be placed in
    a specific location with respect to the PyTorch installation path. A helper script simplifies this task by
-   taking the ROCm version and GPU architecture as inputs. This works for Ubuntu and CentOS.
+   taking the ROCm version and GPU architecture as inputs. This works for Ubuntu.
 
    You can download the helper script here:
    `install_kdb_files_for_pytorch_wheels.sh <https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh>`_, or use:
@@ -177,18 +434,18 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
 
    .. code-block:: bash
 
-       #Optional; replace 'gfx90a' with your architecture and 6.1 with your preferred ROCm version
+       #Optional: replace 'gfx90a' with your architecture and 6.2 with your preferred ROCm version
        export GFX_ARCH=gfx90a
 
        #Optional
-       export ROCM_VERSION=6.1
+       export ROCM_VERSION=6.2
 
        ./install_kdb_files_for_pytorch_wheels.sh
 
 .. _using-pytorch-rocm-docker-image:
 
 Using the PyTorch ROCm base Docker image
-===============================================================
+========================================
 
 The pre-built base Docker image has all dependencies installed, including:
 
@@ -273,8 +530,8 @@ Inside the docker container, run the following steps:
 
 .. _using-pytorch-upstream-docker-image:
 
-Using the PyTorch upstream Docker file
-===============================================================
+Using the PyTorch upstream Dockerfile
+=====================================
 
 If you don't want to use a prebuilt base Docker image, you can build a custom base Docker image
 using scripts from the PyTorch repository. This uses a standard Docker image from operating system
@@ -303,8 +560,8 @@ maintainers and installs all the required dependencies, including:
 
    Where:
 
-   * ``<os-version>`` = ``ubuntu20.04`` (or ``focal``), ``ubuntu22.04`` (or ``jammy``), ``centos7.5``, or ``centos9``
-   * ``<rocm-version>`` = ``6.0``, ``6.1``, or ``6.2``
+   * ``<os-version>`` = ``ubuntu20.04`` (or ``focal``), ``ubuntu22.04`` (or ``jammy``)
+   * ``<rocm-version>`` = ``6.0``, ``6.1``, ``6.2``
    * ``<python-version>`` = ``3.8`` - ``3.11``
 
    To verify that your image was successfully created, run:
@@ -380,7 +637,7 @@ maintainers and installs all the required dependencies, including:
 .. _test-pytorch-installation:
 
 Testing the PyTorch installation
-===============================================================
+================================
 
 You can use PyTorch unit tests to validate your PyTorch installation. If you used a
 **prebuilt PyTorch Docker image from AMD ROCm Docker Hub** or installed an
@@ -441,7 +698,7 @@ If you want to manually run unit tests to validate your PyTorch installation ful
    You can replace ``test_nn.py`` with any other test set.
 
 Running a basic PyTorch example
-===============================================================
+===============================
 
 The PyTorch examples repository provides basic examples that exercise the functionality of your
 framework.
@@ -454,7 +711,7 @@ Two of our favorite testing databases are:
   **visual object recognition**.
 
 MNIST PyTorch example
----------------------------------------------------------------------------------------------------------
+---------------------
 
 1. Clone the PyTorch examples repository.
 

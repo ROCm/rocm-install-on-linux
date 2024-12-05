@@ -51,7 +51,7 @@ Before installing ROCm, complete the following prerequisites.
 Register your Enterprise Linux
 ==========================================================
 
-If you're using Red Hat Enterprise Linux (RHEL) or SUSE Linux Enterprise Server (SLES), register
+If you're using Red Hat Enterprise Linux (RHEL), Oracle Linux (OL) or SUSE Linux Enterprise Server (SLES), register
 your operating system to ensure you're able to download and install packages.
 
 .. tab-set::
@@ -66,13 +66,18 @@ your operating system to ensure you're able to download and install packages.
 
         Typically you can register by following the step-by-step user interface.
         If you need to register by command line, use the following commands:
-
+        
         .. code-block:: shell
 
             subscription-manager register --username <username> --password <password>
             subscription-manager attach --auto
 
         More details about `registering for RHEL <https://access.redhat.com/solutions/253273>`_
+
+  .. tab-item:: Oracle Linux
+        :sync: ol-tab
+
+        There is no registration required for Oracle Linux.
 
   .. tab-item:: SUSE Linux Enterprise Server
         :sync: sle-tab
@@ -82,7 +87,7 @@ your operating system to ensure you're able to download and install packages.
             
         .. code-block:: shell
 
-            SUSEConnect -r <REGCODE>
+            sudo SUSEConnect -r <REGCODE>
 
         More details about `registering for SLES <https://www.suse.com/support/kb/doc/?id=000018564>`_
 
@@ -130,10 +135,39 @@ instructions specific to your distribution to add the necessary repositories.
                sudo dnf install dnf-plugin-config-manager
                sudo crb enable
 
+    .. tab-item:: Oracle Linux
+        :sync: ol-tab
+
+        1. Add the EPEL repository.
+
+           .. datatemplate:nodata::
+
+               .. tab-set::
+
+                  {% for os_release in config.html_context['ol_release_version_numbers']  %}
+
+                      .. tab-item:: OL {{ os_release }}
+
+                        .. code-block:: shell
+
+                            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_release }}.noarch.rpm
+                            sudo rpm -ivh epel-release-latest-{{ os_release }}.noarch.rpm
+
+                  {% endfor %}
+
+        2. Enable the CodeReady Linux Builder (CRB) repository.
+
+           In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
+
+           .. code-block:: shell
+
+               sudo dnf install dnf-plugin-config-manager
+               sudo crb enable
+
     .. tab-item:: SUSE Linux Enterprise Server
         :sync: sle-tab
 
-        Add a few modules with SUSEConnect, along with the Perl language and Education repositories.
+        Add a few modules with SUSEConnect, along with the Perl language, Education and science repositories.
 
         .. datatemplate:nodata::
 
@@ -146,11 +180,12 @@ instructions specific to your distribution to add the necessary repositories.
 
                     .. code-block:: shell
 
-                        SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
-                        SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
-                        SUSEConnect -p PackageHub/{{ os_version }}/x86_64
+                        sudo SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
+                        sudo SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
+                        sudo SUSEConnect -p PackageHub/{{ os_version }}/x86_64
                         sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/{{ os_version }}/devel:languages:perl.repo
                         sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
+                        sudo zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo # Once SLE_15_SP6 is created, change the static folder "SLE_15_SP5" to dynamic
 
                 {% endfor %}
 
@@ -178,10 +213,30 @@ To install for the currently active kernel run the command corresponding to your
     .. tab-item:: Red Hat Enterprise Linux
         :sync: rhel-tab
 
+        .. datatemplate:nodata::
+
+            .. tab-set::
+
+              {% for os_release in config.html_context['rhel_release_version_numbers']  %}
+
+                  .. tab-item:: RHEL {{ os_release }}
+
+                    .. code-block:: shell
+
+                        {% if os_release == '9' %}
+                        sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)" "kernel-devel-matched-$(uname -r)"
+                        {% else %}
+                        sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
+                        {% endif %}
+
+              {% endfor %}
+
+    .. tab-item:: Oracle Linux
+        :sync: ol-tab
+
         .. code-block:: shell
 
-            sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
-
+            sudo dnf install "kernel-uek-devel-$(uname -r)"
 
     .. tab-item:: SUSE Linux Enterprise Server
         :sync: sle-tab
@@ -192,11 +247,22 @@ To install for the currently active kernel run the command corresponding to your
 
 .. _group_permissions:
 
-Setting permissions for groups
+Configuring permissions for GPU access
 ================================================================
 
-This section provides steps to add any current user to a video group to access GPU resources. We
-recommend using the video group for all ROCm-supported operating systems.
+There are two primary methods to configure GPU access for ROCm: group membership or
+udev rules. Each method has its own advantages, and the choice depends on your 
+specific requirements and system management preferences.
+
+Using group membership
+--------------------------------------------------------------------
+
+By default, GPU access is managed through membership in the ``video`` and ``render`` groups.
+The ``video`` and ``render`` groups are system groups in Linux used to manage access 
+to graphics hardware and related functionality. Traditionally, the ``video`` group is used 
+to control access to video devices, including graphics cards and video capture devices. 
+The ``render`` group is more recent and specifically controls access to GPU rendering capabilities 
+through Direct Rendering Manager (DRM) render nodes.
 
 1. To check the groups in your system, issue the following command:
 
@@ -204,23 +270,85 @@ recommend using the video group for all ROCm-supported operating systems.
 
        groups
 
-2. Add yourself to the ``render`` and ``video`` group using the command:
+2. Add yourself to the ``video`` and ``render`` groups:
 
    .. code-block:: shell
 
-        sudo usermod -a -G render,video $LOGNAME
+      sudo usermod -a -G video,render $LOGNAME
 
-   To add all future users to the ``render`` and ``video`` groups by default, run the following commands:
+3. Optionally, add other users to the ``video`` and ``render`` groups:
 
    .. code-block:: shell
 
-        echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
-        echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
-        echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
+      sudo usermod -a -G video,render user1
+      sudo usermod -a -G video,render user2
 
-.. tip::
+4. To add all future users to the render and video groups by default, run the following commands:
 
-    On systems with multiple users, if ROCm is installed system wide, each individual user should be added to the ``render`` and ``video`` groups. 
+   .. code-block:: shell
+
+      echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
+      echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
+      echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
+
+Using udev rules
+--------------------------------------------------------------------
+A flexible way to manage device permissions is to use udev rules. They apply system-wide, can be 
+easily deployed via configuration management tools, and eliminate the need for user group management. 
+This method provides more granular control over GPU access.
+
+Grant GPU access to all users on the system
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Create a new file ``/etc/udev/rules.d/70-amdgpu.rules`` with the following content:
+
+   .. code-block:: shell
+
+      KERNEL=="kfd", MODE="0666"
+      SUBSYSTEM=="drm", KERNEL=="renderD*", MODE="0666"
+
+2. Reload the udev rules:
+
+   .. code-block:: shell
+
+      sudo udevadm control --reload-rules && sudo udevadm trigger
+
+This configuration grants all users read and write access to AMD GPU resources, 
+including the AMD Kernel Fusion Driver (KFD) and Direct Rendering Manager (DRM) devices.
+
+Grant GPU access to a custom group
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Create a new group (e.g., ``devteam``):
+
+   .. code-block:: shell
+
+      sudo groupadd devteam
+
+2. Add users to the new group:
+
+   .. code-block:: shell
+
+      sudo usermod -a -G devteam dev1
+      sudo usermod -a -G devteam dev2
+
+3. Create udev rules to assign GPU devices to this group:
+
+   Create a file ``/etc/udev/rules.d/70-amdgpu.rules`` with:
+
+   .. code-block:: shell
+
+      KERNEL=="kfd", GROUP="devteam", MODE="0660"
+      SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="devteam", MODE="0660"
+
+4. Reload the udev rules:
+
+   .. code-block:: shell
+
+      sudo udevadm control --reload-rules && sudo udevadm trigger
+
+This configuration grants all users in the ``devteam`` group read and write access to AMD GPU resources, 
+including the Kernel Fusion Driver (KFD) and Direct Rendering Manager (DRM) devices.
 
 Disable integrated graphics (IGP), if applicable
 ================================================================

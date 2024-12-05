@@ -10,18 +10,20 @@ Installation via native package manager
 Select the install instructions for your operating system
 
 .. grid:: 2
-    :gutter: 3
+    :gutter: 4
 
     .. grid-item-card:: Install
 
         * :doc:`Ubuntu <./ubuntu>`
         * :doc:`RHEL <./rhel>`
+        * :doc:`OL <./ol>`
         * :doc:`SLES <./sles>`
 
     .. grid-item-card:: Uninstall
 
         * :ref:`Ubuntu <ubuntu-uninstall>`
         * :ref:`RHEL <rhel-uninstall>`
+        * :ref:`OL <ol-uninstall>`
         * :ref:`SLES <sles-uninstall>`
 
     
