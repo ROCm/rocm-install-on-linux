@@ -186,6 +186,19 @@ access, use the ``dkms`` use case:
 
    amdgpu-install --usecase=dkms
 
+To verify the kernel installation, use this command:
+
+.. code-block:: shell
+
+   sudo dkms status
+
+If the installation of the kernel module was successful, the command displays the output
+in the following format:
+
+.. code-block:: shell
+
+   amdgpu, 4.3-52.el7, 3.10.0-1160.11.1.el7.x86_64, x86_64: installed (original_module exists)
+
 Upgrading ROCm
 =================================================
 
@@ -227,6 +240,18 @@ To install use cases specific to your requirements, use the installer (``amdgpu-
   .. code-block:: bash
 
     sudo amdgpu-install --usecase=rocm,asan
+
+* To list all possible use cases, use the ``--list-usecase`` option:
+
+  .. code-block:: bash
+
+    sudo amdgpu-install --list-usecase
+
+* The ``--help`` option displays all available options for the ``amdgpu-install`` script:
+
+  .. code-block:: bash
+
+    sudo amdgpu-install --help
 
 Uninstalling ROCm
 =================================================
