@@ -1,15 +1,13 @@
 .. meta::
   :description: User and kernel-space support matrix
-
-  :keywords: Linux support, support matrix, system requirements, user space versions, Kernel Fusion
-    Driver , AMD, ROCm
+  :keywords: Linux support, support matrix, system requirements, user space versions, kernel-mode GPU compute driver, AMD, ROCm
 
 *****************************************************************************************
 User and kernel-space support matrix
 *****************************************************************************************
 
-ROCm™ provides forward and backward compatibility between the Kernel Fusion
-Driver (KFD) and its user space software for +/- 2 releases. This table shows
+ROCm™ provides forward and backward compatibility between the kernel-mode GPU compute driver
+and its user space software for +/- 2 releases. This table shows
 the compatibility combinations that are currently supported.
 
 .. csv-table::
