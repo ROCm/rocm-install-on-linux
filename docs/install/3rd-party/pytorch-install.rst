@@ -65,8 +65,8 @@ should perform as tested and mitigate potential installation issues. See
         :header: "Description", "6.3.0 and later", "6.2.1 and later", "6.2.0 and earlier"
 
         "Latest PyTorch tested release", **rocm/pytorch:latest** |br| rocm/pytorch:latest-release, **rocm/pytorch:latest** |br| rocm/pytorch:latest-release, rocm/pytorch:latest-release
+        "Latest PyTorch preview release [Limited testing]", rocm/pytorch:latest-release-preview, ,
         "Latest PyTorch dev version", rocm/pytorch:latest-internal, rocm/pytorch:latest-internal, **rocm/pytorch:latest**
-        "Recent PyTorch preview release [Limited testing]", rocm/pytorch:latest-release-preview, ,
 
 
 2. Start a Docker container using the image.
