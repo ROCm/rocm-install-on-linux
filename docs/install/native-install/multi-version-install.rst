@@ -32,6 +32,11 @@ A single-version ROCm installation involves the following.
 See :doc:`../../install/quick-start` or :doc:`../../install/detailed-install` for
 a standard single-version installation.
 
+.. note::
+
+   You cannot install single-version and multi-version ROCm packages together on the same machine.
+   The conflicting package versions might result in unpredictable behavior.
+
 The following diagram illustrates the difference between single-version and
 multi-version ROCm installations.
 

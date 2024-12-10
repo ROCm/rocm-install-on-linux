@@ -3,6 +3,7 @@ BARs
 br
 Broadcom
 CTest
+denylist
 DHCP
 dkms
 dmesg
@@ -34,5 +35,6 @@ vCPU
 vfio
 VFIO
 vhost
+whl
 udev
 Udev
