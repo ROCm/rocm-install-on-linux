@@ -86,7 +86,7 @@ Docker image support
 
 AMD validates and publishes ready-made `TensorFlow <https://hub.docker.com/r/rocm/pytorch>`_ images
 with ROCm backends on Docker Hub. The following Docker image tags and associated inventories are
-validated for ROCm 6.2.
+validated for ROCm 6.3.
 
 .. tab-set::
 
