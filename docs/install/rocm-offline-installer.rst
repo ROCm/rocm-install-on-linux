@@ -275,7 +275,7 @@ the components, see :doc:`What is ROCm <rocm:what-is-rocm>`.
 * ``rocm``
   
   * For users and developers requiring the full ROCm stack
-  * OpenCL (ROCr/KFD based) runtime
+  * OpenCL (ROCr/KMD based) runtime
   * HIP runtimes
   * Machine-learning framework
   * All ROCm libraries and applications
