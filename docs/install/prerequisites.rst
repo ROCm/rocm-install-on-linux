@@ -314,7 +314,7 @@ Grant GPU access to all users on the system
       sudo udevadm control --reload-rules && sudo udevadm trigger
 
 This configuration grants all users read and write access to AMD GPU resources, 
-including the AMD Kernel Fusion Driver (KFD) and Direct Rendering Manager (DRM) devices.
+including the AMD Kernel-mode GPU Driver (KMD) and Direct Rendering Manager (DRM) devices.
 
 Grant GPU access to a custom group
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -348,7 +348,7 @@ Grant GPU access to a custom group
       sudo udevadm control --reload-rules && sudo udevadm trigger
 
 This configuration grants all users in the ``devteam`` group read and write access to AMD GPU resources, 
-including the Kernel Fusion Driver (KFD) and Direct Rendering Manager (DRM) devices.
+including the AMD Kernel-mode GPU Driver (KMD) and Direct Rendering Manager (DRM) devices.
 
 Disable integrated graphics (IGP), if applicable
 ================================================================
