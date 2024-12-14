@@ -127,7 +127,7 @@ The available use-cases are printed in a format similar to:
       - Open source multimedia libraries
       - Closed source (legacy) OpenGL
     rocm            (for users and developers requiring full ROCm stack)
-      - OpenCL (ROCr/KFD based) runtime
+      - OpenCL (ROCr/KMD based) runtime
       - HIP runtimes
       - Machine learning framework
       - All ROCm libraries and applications
@@ -168,7 +168,7 @@ The available use-cases are printed in a format similar to:
       - Clang OpenCL development libraries
       - MIOpen kernels
     asan            (for users of ASAN enabled ROCm packages)
-      - ASAN enabled OpenCL (ROCr/KFD based) runtime
+      - ASAN enabled OpenCL (ROCr/KMD based) runtime
       - ASAN enabled HIP runtimes
       - ASAN enabled Machine learning framework
       - ASAN enabled ROCm libraries
