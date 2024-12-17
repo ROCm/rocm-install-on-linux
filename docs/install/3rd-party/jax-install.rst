@@ -1,10 +1,10 @@
 .. meta::
-  :description: Installing JAX for ROCm
+  :description: Installing and building JAX for ROCm
   :keywords: installation instructions, JAX, AMD, ROCm
 
-***********************
-Installing JAX for ROCm
-***********************
+***********
+JAX on ROCm
+***********
 
 This directory provides setup instructions and necessary files to build, test, and run JAX with ROCm support in a Docker environment, suitable for both runtime and CI workflows. Explore the following methods to use or build JAX on ROCm.
 

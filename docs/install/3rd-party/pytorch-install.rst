@@ -2,9 +2,9 @@
   :description: Installing PyTorch for ROCm
   :keywords: installation instructions, PyTorch, AMD, ROCm
 
-**********************************************************************************
-Installing PyTorch for ROCm
-**********************************************************************************
+***************
+PyTorch on ROCm
+***************
 
 `PyTorch <https://pytorch.org/>`_ is an open-source tensor library designed for deep learning. PyTorch on
 ROCm provides mixed-precision and large-scale training using our
