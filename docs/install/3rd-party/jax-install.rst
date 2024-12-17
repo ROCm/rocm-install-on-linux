@@ -1,6 +1,6 @@
 .. meta::
-  :description: Installing and building JAX for ROCm
-  :keywords: installation instructions, JAX, AMD, ROCm
+  :description: JAX on ROCm
+  :keywords: installation instructions, building, JAX, AMD, ROCm
 
 ***********
 JAX on ROCm
