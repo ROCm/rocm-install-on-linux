@@ -107,13 +107,15 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                        SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
                        SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
                        SUSEConnect -p PackageHub/{{ os_version }}/x86_64
+                       sudo zypper install zypper
                        sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
                        sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
                        sudo zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo  # Once SLE_15_SP6 is created, change the static folder "SLE_15_SP5" to dynamic
+                       sudo zypper --gpg-auto-import-keys refresh
                        sudo zypper install kernel-default-devel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
-                       sudo zypper refresh
+                       sudo zypper --gpg-auto-import-keys refresh
                        sudo zypper install amdgpu-dkms rocm
                 {% endfor %}
 
