@@ -149,6 +149,7 @@ instructions specific to your distribution to add the necessary repositories.
                         sudo SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
                         sudo SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
                         sudo SUSEConnect -p PackageHub/{{ os_version }}/x86_64
+                        sudo zypper install zypper
                         sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/{{ os_version }}/devel:languages:perl.repo
                         sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
 
