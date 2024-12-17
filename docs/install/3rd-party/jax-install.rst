@@ -1,114 +1,222 @@
 .. meta::
-  :description: Installing JAX for ROCm
-  :keywords: installation instructions, JAX, AMD, ROCm
+  :description: JAX on ROCm
+  :keywords: installation instructions, building, JAX, AMD, ROCm
 
-*******************************************************************************************
-Installing JAX for ROCm
-*******************************************************************************************
+***********
+JAX on ROCm
+***********
 
-JAX provides a NumPy-like API, which combines automatic differentiation and the Accelerated Linear
-Algebra (XLA) compiler to achieve high-performance machine learning at scale.
+This directory provides setup instructions and necessary files to build, test, and run JAX with ROCm support in a Docker environment, suitable for both runtime and CI workflows. Explore the following methods to use or build JAX on ROCm.
 
-JAX uses composable transformations of Python+NumPy through just-in-time (JIT) compilation,
-automatic vectorization, and parallelization.
+Using a prebuilt Docker image
+===========================================
 
-To learn about JAX, including profiling and optimizations, refer to the
-`JAX documentation <https://jax.readthedocs.io/en/latest/notebooks/quickstart.html>`_.
+The ROCm JAX team provides prebuilt Docker images, which is the simplest way to use JAX on ROCm. These images are available on Docker Hub and come with JAX configured for ROCm.
 
-Compatibility
-======================================
+1. To pull the latest ROCm JAX Docker image, run:
 
-You can currently use JAX with the following hardware and software:
+   .. code-block:: bash
 
-* GPUs: MI250 and MI300
-* OS: Ubuntu 20.04
-* Python: 3.9, 3.10, 3.11
-* ROCm: 6.0.0, 6.1.0
+      docker pull rocm/jax-community:latest
 
-.. _install-jax-prebuilt-docker:
+   .. note::
 
-Installing JAX
-========================================
+      For older versions, review the periodically pushed Docker images at:
+      `ROCm JAX Community on Docker Hub <https://hub.docker.com/r/rocm/jax-community/tags>`_.
 
-JAX wheels and Docker images are released through the GitHub
-`ROCm JAX fork <https://github.com/ROCm/jax/releases>`_.
+2. Once the image is downloaded, launch a container using the following command:
 
-.. tip::
+   .. code-block:: bash
 
-  To build JAX from source files, refer to the `JAX developer documentation <https://jax.readthedocs.io/en/latest/developer.html>`_
-  or use the `ROCm build script <https://github.com/google/jax/blob/main/build/rocm/build_rocm.sh>`_.
+      docker run -it -d --network=host --device=/dev/kfd --device=/dev/dri --ipc=host --shm-size 64G \
+      --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -v $(pwd):/jax_dir \
+      --name rocm_jax rocm/jax-community:latest /bin/bash
 
-1.  Pull the latest public JAX Docker image.
+      docker attach rocm_jax
 
-    .. code-block:: shell
+   .. tip::
 
-      docker pull rocm/jax:latest
+      * The ``--shm-size`` parameter allocates shared memory for the container. Adjust it based on your system's resources if needed.
+      * Replace ``$(pwd)`` with the absolute path to the directory you want to mount inside the container.
 
-2.  Start Docker container.
+3. Verify the installation of ROCm JAX. See :ref:`jax-verify-installation`.
 
-    .. code-block:: shell
+Using a ROCm base Docker image and installing JAX
+=================================================
 
-      docker run -it -w /workspace --device=/dev/kfd --device=/dev/dri --group-add video \
-      --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --shm-size 16G rocm/jax:latest
+If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu container, follow these steps to install JAX in the container.
 
-.. _test-jax-installation:
+1. Pull the ROCm Ubuntu Docker image. For example, use the following command to pull the ROCm Ubuntu image:
 
-3.  Verify the installation.
+   .. code-block:: bash
 
-    .. code-block:: shell
+      docker pull rocm/dev-ubuntu-22.04:6.3-complete
 
-      python3 -c 'import jax' 2> /dev/null && echo 'Success' || echo 'Failure'
+2. Launch the Docker container. After pulling the image, launch a container using this command:
 
-4.  Verify that the GPU is accessible from JAX.
+   .. code-block:: bash
 
-    .. code-block:: shell
+      docker run -it -d --network=host --device=/dev/kfd --device=/dev/dri --ipc=host --shm-size 64G \
+      --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -v $(pwd):/jax_dir \
+      --name rocm_jax rocm/dev-ubuntu-22.04:6.3-complete /bin/bash
+      docker attach rocm_jax
 
-      python3 -c 'import jax; print(jax.devices())'
+3. Install the latest version of JAX. Inside the running container, install the required version of JAX with ROCm support using pip:
 
-5.  Run a basic example to ensure installation is successful.
+   .. code-block:: bash
 
+      pip3 install jax[rocm]
 
-    .. code-block:: shell
+4. Verify the installed JAX version. Check whether the correct version of JAX and its ROCm plugins are installed.
 
-      git clone https://github.com/google/jax.git jax
-      cp jax/examples/datasets.py .
-      cp jax/examples/mnist_classifier.py .
-      sed -i -e 's/from examples //' mnist_classifier.py
-      export PYTHONPATH=.:$PYTHONPATH
-      python3 mnist_classifier.py
+   .. code-block:: bash
 
-    Your output should look similar to this:
+      pip3 freeze | grep jax
 
-    .. code-block:: text
+   Expected output:
 
-      Starting training...
-      Epoch 0 in 10.97 sec
-      Training set accuracy 0.871916651725769
-      Test set accuracy 0.880299985408783
-      Epoch 1 in 0.34 sec
-      Training set accuracy 0.8979166746139526
-      Test set accuracy 0.9030999541282654
-      Epoch 2 in 0.33 sec
-      Training set accuracy 0.9092333316802979
-      Test set accuracy 0.9142999649047852
-      Epoch 3 in 0.33 sec
-      Training set accuracy 0.9170833230018616
-      Test set accuracy 0.9220999479293823
-      Epoch 4 in 0.33 sec
-      Training set accuracy 0.9226333498954773
-      Test set accuracy 0.9279999732971191
-      Epoch 5 in 0.33 sec
-      Training set accuracy 0.9271667003631592
-      Test set accuracy 0.9297999739646912
-      Epoch 6 in 0.34 sec
-      Training set accuracy 0.9323500394821167
-      Test set accuracy 0.9328999519348145
-      Epoch 7 in 0.34 sec
-      Training set accuracy 0.935699999332428
-      Test set accuracy 0.9364999532699585
-      Epoch 8 in 0.33 sec
-      Training set accuracy 0.938800036907196
-      Test set accuracy 0.9393999576568604
-      Epoch 9 in 0.33 sec
-      Training set accuracy 0.9425833225250244
-      Test set accuracy 0.9418999552726746
+   .. code-block::
+
+      jax==0.4.35
+      jax-rocm60-pjrt==0.4.35
+      jax-rocm60-plugin==0.4.35
+      jaxlib==0.4.35
+
+5. Explicitly set the ``LLVM_PATH`` environment variable. This helps XLA find ``ld.lld`` in the PATH at runtime.
+
+   .. code-block:: bash
+
+      export LLVM_PATH=/opt/rocm/llvm
+
+6. Verify the installation of ROCm JAX. See :ref:`jax-verify-installation`.
+
+Install JAX on bare-metal or a custom container
+===============================================
+
+Follow these steps if you prefer to install ROCm manually on your host system or in a custom container.
+
+1. Install ROCm. Follow the `ROCm installation guide <https://rocm.docs.amd.com/en/latest/deploy/linux/quick_start.html>`_ to install ROCm on your system.
+
+   Once installed, verify your ROCm installation using:
+
+   .. code-block:: bash
+
+      rocm-smi
+
+   .. code-block:: bash
+
+      ========================================== ROCm System Management Interface ==========================================
+      ==================================================== Concise Info ====================================================
+     Device  [Model : Revision]    Temp        Power     Partitions      SCLK     MCLK     Fan  Perf  PwrCap  VRAM%  GPU%
+               Name (20 chars)       (Junction)  (Socket)  (Mem, Compute)
+       ======================================================================================================================
+       0       [0x74a1 : 0x00]       50.0°C      170.0W    NPS1, SPX       131Mhz   900Mhz   0%   auto  750.0W    0%   0%
+               AMD Instinct MI300X
+       1       [0x74a1 : 0x00]       51.0°C      176.0W    NPS1, SPX       132Mhz   900Mhz   0%   auto  750.0W    0%   0%
+               AMD Instinct MI300X
+       2       [0x74a1 : 0x00]       50.0°C      177.0W    NPS1, SPX       132Mhz   900Mhz   0%   auto  750.0W    0%   0%
+               AMD Instinct MI300X
+       3       [0x74a1 : 0x00]       53.0°C      176.0W    NPS1, SPX       132Mhz   900Mhz   0%   auto  750.0W    0%   0%
+               AMD Instinct MI300X
+       ======================================================================================================================
+       ================================================ End of ROCm SMI Log =================================================
+
+2. Install the required version of JAX with ROCm support using pip:
+
+   .. code-block:: bash
+
+      pip3 install jax[rocm]
+
+3. Verify the installed JAX version. Check whether the correct version of JAX and its ROCm plugins are installed.
+
+   .. code-block:: bash
+
+      pip3 freeze | grep jax
+
+4. Explicitly set the ``LLVM_PATH`` environment variable.
+
+   .. code-block:: bash
+
+      export LLVM_PATH=/opt/rocm/llvm
+
+5. Verify the installation of ROCm JAX.
+
+   Run the following commands to verify that ROCm JAX is installed correctly:
+
+   .. code-block:: bash
+
+      python3 -c "import jax; print(jax.devices())"
+      python3 -c "import jax.numpy as jnp; x = jnp.arange(5); print(x)"
+
+   Expected output:
+
+   .. code-block::
+
+      [RocmDevice(id=0), RocmDevice(id=1), RocmDevice(id=2), RocmDevice(id=3)]
+
+   .. code-block::
+
+      [0 1 2 3 4]
+
+Build ROCm JAX from source
+==========================
+
+Follow these steps to build JAX with ROCm support from source.
+
+1. Clone the ROCm-specific fork of JAX with the desired branch:
+
+   .. code-block:: bash
+
+      git clone https://github.com/ROCm/jax -b <branch_name>
+      cd jax
+
+.. _build-jax-wheels:
+
+2. Run the following command to build the necessary wheels:
+
+   .. code-block:: bash
+
+      python3 ./build/build.py build --wheels=jaxlib,jax-rocm-plugin,jax-rocm-pjrt \
+          --rocm_version=60 --rocm_path=/opt/rocm-[version]
+
+   This will generate three wheels in the ``dist/`` directory:
+
+   - ``jaxlib`` (generic, device agnostic library)
+   - ``jax-rocm-plugin`` (ROCm-specific plugin)
+   - ``jax-rocm-pjrt`` (ROCm-specific runtime)
+
+3. Install the custom JAX wheels.
+
+   .. code-block:: bash
+
+      python3 setup.py develop --user && pip3 -m pip install dist/*.whl
+
+Simplified build script
+-----------------------
+
+For a streamlined build process, consider using the ``jax/build/rocm/dev_build_rocm.py`` script. See
+`<https://github.com/rocm/jax/tree/main/build/rocm>`__ for more information.
+
+.. _jax-verify-installation:
+
+Testing your JAX installation with ROCm
+=======================================
+
+After launching the container, test whether JAX detects ROCm devices as expected:
+
+.. code-block:: bash
+
+   python -c "import jax; print(jax.devices())"
+   python3 -c "import jax.numpy as jnp; x = jnp.arange(5); print(x)"
+
+If the setup is successful, the output should list all available ROCm devices.
+
+Expected output:
+
+.. code-block:: shell-session
+
+   [RocmDevice(id=0), RocmDevice(id=1), RocmDevice(id=2), RocmDevice(id=3)]
+
+.. code-block::
+
+   [0 1 2 3 4]

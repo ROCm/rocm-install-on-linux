@@ -2,9 +2,9 @@
   :description: Installing TensorFlow for ROCm
   :keywords: installation instructions, TensorFlow, AMD, ROCm
 
-****************************************************************************************
-Installing TensorFlow for ROCm
-****************************************************************************************
+******************
+TensorFlow on ROCm
+******************
 
 `TensorFlow <https://tensorflow.org>`_ is an open-source library for solving machine learning,
 deep learning, and AI problems. It can solve many
