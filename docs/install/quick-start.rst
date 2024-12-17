@@ -34,6 +34,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
 
                        sudo apt update
                        sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
+                       sudo apt install python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
@@ -63,6 +64,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                        {%- else -%}
                        sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
                        {%- endif %}
+                       sudo dnf install python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        sudo dnf clean all
@@ -85,6 +87,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                        sudo dnf install dnf-plugin-config-manager
                        sudo crb enable
                        sudo dnf install "kernel-uek-devel-$(uname -r)"
+                       sudo dnf install python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        sudo dnf clean all
@@ -113,6 +116,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                        sudo zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo  # Once SLE_15_SP6 is created, change the static folder "SLE_15_SP5" to dynamic
                        sudo zypper --gpg-auto-import-keys refresh
                        sudo zypper install kernel-default-devel
+                       sudo zypper install python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
                        sudo zypper --gpg-auto-import-keys refresh
