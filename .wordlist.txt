@@ -3,6 +3,7 @@ BARs
 br
 Broadcom
 CTest
+debian
 denylist
 DHCP
 dkms
@@ -21,12 +22,14 @@ KMD
 MACVTAP
 MSRs
 OL
+Packageless
 pci
 PLX
 preconfigured
 Repo
 rocHPL
 ROCmVersion
+Runfile
 SBR
 SMCi
 SVM
@@ -37,5 +40,6 @@ vfio
 VFIO
 vhost
 whl
+ub
 udev
 Udev

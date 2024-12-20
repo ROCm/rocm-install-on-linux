@@ -42,10 +42,8 @@ The documentation is structured as follows:
 
     .. grid-item-card:: Reference
 
-        * :doc:`reference/docker-image-support-matrix`
         * :doc:`reference/package-manager-integration`
         * :doc:`reference/system-requirements`
         * :doc:`reference/3rd-party-support-matrix`
         * :doc:`Troubleshooting <reference/install-faq>`
         * :doc:`reference/user-kernel-space-compat-matrix`
-        

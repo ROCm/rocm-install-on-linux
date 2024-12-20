@@ -23,6 +23,8 @@ subtrees:
               - entries:
                 - file: install/native-install/ubuntu
                   title: Ubuntu
+                - file: install/native-install/debian
+                  title: Debian
                 - file: install/native-install/rhel
                   title: RHEL
                 - file: install/native-install/ol
@@ -35,6 +37,8 @@ subtrees:
               title: Multi version install
             - file: install/rocm-offline-installer
               title: ROCm Offline Installer Creator
+            - file: install/rocm-runfile-installer
+              title: ROCm Runfile Installer
         - file: install/post-install
           title: Post-install instructions
 

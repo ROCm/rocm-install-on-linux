@@ -23,7 +23,7 @@ ROCm releases support the most recent and two prior releases of PyTorch and Tens
       - `TensorFlow <https://github.com/tensorflow/tensorflow/releases/>`_
 
     * - 6.3.x
-      - 1.13, 2.0, 2.1, 2.2, 2.3, 2.4
+      - 1.13, 2.2, 2.3, 2.4
       - 2.15.1, 2.16.2, 2.17.0
   
     * - 6.2.x

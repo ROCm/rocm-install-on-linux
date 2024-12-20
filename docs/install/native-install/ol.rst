@@ -9,7 +9,7 @@ Oracle Linux native installation
 
 .. important::
 
-    Make sure that the :doc:`/install/prerequisites` are met before installing.
+    Ensure that the :doc:`/install/prerequisites` are met before installing.
 
 .. _ol-register-repo:
 

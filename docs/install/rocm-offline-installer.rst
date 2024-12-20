@@ -58,7 +58,7 @@ Supported Linux distributions
 The ROCm Offline Installer Creator tool supports the following Linux distributions and versions:
 
 * Ubuntu: 20.04, 22.04, 24.04
-* RHEL: 8.10, 9.4
+* RHEL: 8.10, 9.4, 9.5
 * SLES: 15.5, 15.6
 
 Getting started

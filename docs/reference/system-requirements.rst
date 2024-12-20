@@ -29,6 +29,7 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       :widths: 50, 25, 25, 10
       :header: "Accelerator", "Architecture", "LLVM target", "Support"
 
+      "AMD Instinct MI325X", "CDNA3", "gfx942", "✅ [#ub2204]_"
       "AMD Instinct MI300X", "CDNA3", "gfx942", "✅"
       "AMD Instinct MI300A", "CDNA3", "gfx942", "✅"
       "AMD Instinct MI250X", "CDNA2", "gfx90a", "✅"
@@ -98,7 +99,8 @@ AMD ROCm software supports the following Linux distributions.
     "RHEL 8.10", "4.18.0", "✅"
     "SLES 15 SP6", "6.4.0", "✅"
     "SLES 15 SP5", "5.14.21", "✅"
-    "Oracle Linux 8.10", "5.15.0", "✅ [#oracle810]_"
+    "Oracle Linux 8.10", "5.15.0", "✅ [#mi300x]_"
+    "Debian 12", "6.1", "✅ [#mi300x]_"
 
 .. note::
 
@@ -125,4 +127,5 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 
 .. rubric:: Footnotes
 
-.. [#oracle810] Oracle Linux 8.10 is supported only on AMD Instinct MI300X.
+.. [#ub2204] AMD Instinct MI325X is supported only on Ubuntu 22.04.5 [5.15 GA].
+.. [#mi300x] Oracle Linux 8.10 and Debian 12 are supported only on AMD Instinct MI300X.

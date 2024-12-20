@@ -21,8 +21,13 @@ The ROCm JAX team provides prebuilt Docker images, which is the simplest way to 
 
    .. note::
 
-      For older versions, review the periodically pushed Docker images at:
-      `ROCm JAX Community on Docker Hub <https://hub.docker.com/r/rocm/jax-community/tags>`_.
+      For specific versions of JAX, review the periodically pushed Docker images at `ROCm JAX Community on
+      Docker Hub <https://hub.docker.com/r/rocm/jax-community/tags>`_.
+
+      Additional Docker images are available at `ROCm JAX on Docker Hub <https://hub.docker.com/r/rocm/jax/tags>`_.
+      These contain the latest ROCm version but might use an older version of JAX.
+
+   .. note::
 
 2. Once the image is downloaded, launch a container using the following command:
 
@@ -38,6 +43,7 @@ The ROCm JAX team provides prebuilt Docker images, which is the simplest way to 
 
       * The ``--shm-size`` parameter allocates shared memory for the container. Adjust it based on your system's resources if needed.
       * Replace ``$(pwd)`` with the absolute path to the directory you want to mount inside the container.
+      * If you prefer to use ``rocm/jax``, remember to replace ``rocm/jax-community`` with ``rocm/jax``.
 
 3. Verify the installation of ROCm JAX. See :ref:`jax-verify-installation`.
 

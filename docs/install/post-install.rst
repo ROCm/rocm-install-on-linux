@@ -110,6 +110,12 @@ After installing ROCm, follow these steps to finalize and validate the installat
 
                apt list --installed
 
+       .. tab-item:: Debian
+
+           .. code-block:: bash
+
+               apt list --installed
+
        .. tab-item:: RHEL
 
            .. code-block:: bash

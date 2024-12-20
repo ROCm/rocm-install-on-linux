@@ -23,8 +23,9 @@ Installation methods
 ######################
 
 * :ref:`package_manager_versus_amdgpu`
-* :ref:`Multi version installation (Optional) <multi-version-install-overview>`
+* :ref:`Multi-version installation <multi-version-install-overview>`
 * :ref:`ROCm Offline Installer Creator <rocm-offline-installer-creator>`
+* :ref:`ROCm Runfile Installer <rocm-runfile-installer>`
 
 .. _package_manager_versus_amdgpu:
 
@@ -54,11 +55,13 @@ installation.
 
 .. _multi-version-install-overview:
 
-Multi version installation (Optional)
+Multi-version installation
 ===========================================================
 
-A select few users may want to install multiple versions of ROCm. Multi version installation covers situations where you need multiple versions of ROCm on the same machine. 
-Follow :doc:`installing multiple ROCm versions<../install/native-install/multi-version-install>` for instructions.
+A multi-version ROCm installation handles situations where users need multiple
+versions of ROCm on the same machine for compatibility with different
+applications and hardware, testing, and other use cases.
+For instructions, see :doc:`installing multiple ROCm versions<../install/native-install/multi-version-install>`.
 
 .. _rocm-offline-installer-creator:
 
@@ -69,3 +72,12 @@ The ROCm Offline Installer Creator creates an
 installation package for a preconfigured setup of ROCm, the AMDGPU driver, or a combination
 of the two on a target system without network or internet access.
 See :doc:`ROCm Offline Installer Creator <../install/rocm-offline-installer>` for instructions.
+
+.. _rocm-runfile-installer:
+
+ROCm Runfile Installer
+===========================================================
+
+The ROCm Runfile Installer lets you install ROCm without using a native Linux package management system.
+It can be used with or without network or internet access.
+See :doc:`ROCm Runfile Installer <../install/rocm-runfile-installer>` for instructions.

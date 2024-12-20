@@ -61,6 +61,10 @@ installation to avoid conflicts.
 
       .. include:: ./includes/ubuntu-multi-install.rst
 
+   .. tab-item:: Debian
+
+      .. include:: ./includes/debian-multi-install.rst
+
    .. tab-item:: RHEL
 
       .. include:: ./includes/rhel-multi-install.rst

@@ -51,7 +51,7 @@ Before installing ROCm, complete the following prerequisites.
 Register your Enterprise Linux
 ==========================================================
 
-If you're using Red Hat Enterprise Linux (RHEL), Oracle Linux (OL) or SUSE Linux Enterprise Server (SLES), register
+If you're using Red Hat Enterprise Linux (RHEL) or SUSE Linux Enterprise Server (SLES), register
 your operating system to ensure you're able to download and install packages.
 
 .. tab-set::
@@ -60,6 +60,11 @@ your operating system to ensure you're able to download and install packages.
         :sync: ubuntu-tab
 
         There is no registration required for Ubuntu.
+
+  .. tab-item:: Debian
+        :sync: debian-tab
+
+        There is no registration required for Debian.
 
   .. tab-item:: Red Hat Enterprise Linux
         :sync: rhel-tab
@@ -105,6 +110,11 @@ instructions specific to your distribution to add the necessary repositories.
         :sync: ubuntu-tab
 
         All ROCm installation packages are available in the default Ubuntu repositories.
+
+    .. tab-item:: Debian
+        :sync: debian-tab
+
+        All ROCm installation packages are available in the default Debian repositories.
 
     .. tab-item:: Red Hat Enterprise Linux
         :sync: rhel-tab
@@ -186,7 +196,7 @@ instructions specific to your distribution to add the necessary repositories.
                         sudo zypper install zypper
                         sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/{{ os_version }}/devel:languages:perl.repo
                         sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
-                        sudo zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo # Once SLE_15_SP6 is created, change the static folder "SLE_15_SP5" to dynamic
+                        sudo zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo
 
                 {% endfor %}
 
@@ -207,10 +217,32 @@ To install for the currently active kernel run the command corresponding to your
     .. tab-item:: Ubuntu
         :sync: ubuntu-tab
 
+        .. datatemplate:nodata::
+
+            .. tab-set::
+
+              {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers']  %}
+
+                  .. tab-item:: Ubuntu {{ os_version }}
+
+                    .. code-block:: shell
+                        
+                        sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
+                        {% if os_version == '24.04' -%}
+                        sudo apt install python3-setuptools python3-wheel libpython3.12
+                        {%- else -%}
+                        sudo apt install python3-setuptools python3-wheel libpython3.10
+                        {%- endif %}
+
+              {% endfor %}
+
+    .. tab-item:: Debian
+        :sync: debian-tab
+
         .. code-block:: shell
 
-            sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
-            sudo apt install python3-setuptools python3-wheel
+            sudo apt install "linux-headers-$(uname -r)"
+            sudo apt install python3-setuptools python3-wheel libpython3.10
 
     .. tab-item:: Red Hat Enterprise Linux
         :sync: rhel-tab
@@ -225,11 +257,11 @@ To install for the currently active kernel run the command corresponding to your
 
                     .. code-block:: shell
 
-                        {% if os_release == '9' %}
+                        {% if os_release == '9' -%}
                         sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)" "kernel-devel-matched-$(uname -r)"
-                        {% else %}
+                        {%- else -%}
                         sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
-                        {% endif %}
+                        {%- endif %}
                         sudo dnf install python3-setuptools python3-wheel
 
               {% endfor %}

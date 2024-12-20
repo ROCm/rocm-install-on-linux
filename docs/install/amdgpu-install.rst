@@ -42,6 +42,26 @@ Ubuntu
                 sudo apt update
                 wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                 sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
+                sudo apt update
+        {% endfor %}
+
+Debian
+--------------------------------------------------------------------
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+        {% for (os_version, os_release) in config.html_context['debian_version_numbers'] %}
+        .. tab-item:: Debian {{ os_version }}
+            :sync: debian-{{ os_version}}
+
+            .. code-block:: bash
+                :substitutions:
+
+                sudo apt update
+                wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
+                sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
+                sudo apt update
         {% endfor %}
 
 Red Hat Enterprise Linux
@@ -282,13 +302,22 @@ Uninstalling amdgpu-install
 
 After uninstalling ROCm, remove the amdgpu-install package from system.
 
-Ubuntu
---------------------------------------------------------------------
+.. tab-set::
 
-.. code-block:: bash
+    .. tab-item:: Ubuntu
 
-    sudo apt purge amdgpu-install
-    sudo apt autoremove
+        .. code-block:: bash
+
+          sudo apt purge amdgpu-install
+          sudo apt autoremove
+  
+    .. tab-item:: Debian
+
+        .. code-block:: bash
+
+          sudo apt purge amdgpu-install
+          sudo apt autoremove
+  
 
 Additional options
 =================================================
