@@ -64,7 +64,7 @@ MENU_PROP createMenuProps = {
     .numLines = ARRAY_SIZE(createMenuOps) - 1,
     .numCols = MAX_MENU_ITEM_COLS,
     .starty = CREATE_MENU_ITEM_START_Y,
-    .startx = CREATE_MENU_ITEM_START_X, 
+    .startx = CREATE_MENU_ITEM_START_X,
     .numItems = ARRAY_SIZE(createMenuOps)
 };
 
@@ -94,7 +94,7 @@ INSTALL_REPO_PROP createMenuRepoTypes[eREPO_TYPE_MAX] = {
 char *createMenuHelpOps[] = {
     "Installer Input",
     "Repo Type",
-    "Dependency       Download Type",
+    "Dependency Download  Type",
     "Installer Name",
     "Installer Path",
     "",
@@ -117,7 +117,7 @@ MENU_PROP createMenuHelpProps = {
     .numLines = 0,
     .numCols = MAX_MENU_ITEM_COLS,
     .starty = CREATE_MENU_ITEM_START_Y,
-    .startx = CREATE_MENU_ITEM_START_X, 
+    .startx = CREATE_MENU_ITEM_START_X,
     .numItems = 0
 };
 
@@ -176,8 +176,8 @@ void create_config_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, OFFLIN
 
     ITEM **items = menu_items(pMenuData->pMenu);
     // Prints item description for option user selects for dependency download type
-    set_item_userptr(items[CREATE_MENU_ITEM_DEP_DOWNLOAD_INDEX], process_create_menu_item);    
-   
+    set_item_userptr(items[CREATE_MENU_ITEM_DEP_DOWNLOAD_INDEX], process_create_menu_item);
+
     // set items to non-selectable
     set_menu_grey(pMenuData->pMenu, COLOR_PAIR(5));
     menu_set_item_select(pMenuData, CREATE_MENU_ITEM_INSTALLER_INPUT_INDEX, false);  // installer input
@@ -188,7 +188,7 @@ void create_config_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, OFFLIN
     menu_set_item_select(pMenuData, pMenuData->itemList[0].numItems - 4, false);  // space before <HELP>
 
     // create a form for user input
-    create_form(pMenuData, pMenuWindow, CREATE_MENU_NUM_FORM_FIELDS, CREATE_MENU_FORM_FIELD_WIDTH, CREATE_MENU_FORM_FIELD_HEIGHT, 
+    create_form(pMenuData, pMenuWindow, CREATE_MENU_NUM_FORM_FIELDS, CREATE_MENU_FORM_FIELD_WIDTH, CREATE_MENU_FORM_FIELD_HEIGHT,
             CREATE_MENU_FORM_ROW, CREATE_MENU_FORM_COL);
 
     strcpy(pMenuData->pFormList.formControlMsg, DEFAULT_FORM_CONTROL_MSG);
@@ -198,7 +198,7 @@ void create_config_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, OFFLIN
 
     set_field_buffer(pMenuData->pFormList.field[0], 0, CREATE_MENU_DEFAULT_INSTALLER_NAME);
     set_field_buffer(pMenuData->pFormList.field[1], 0, pCreateConfig->installer_out_location);
-    
+
 
     pMenuData->clearErrMsgAfterUpOrDownKeyPress = true;
 }
@@ -224,7 +224,7 @@ void create_menu_draw(MENU_DATA *pMenuData)
     wattron(pMenuWindow, COLOR_PAIR(4));
     mvwprintw(pMenuWindow, CREATE_MENU_ITEM_INSTALLER_INPUT_ROW, CREATE_MENU_FORM_COL, "%s", createMenuInstallTypes[pConfig->installerType].installer_input);
     wattroff(pMenuWindow, COLOR_PAIR(4));
-    
+
     // draw the repo type
     wmove(pMenuWindow, CREATE_MENU_ITEM_REPO_TYPE_ROW, CREATE_MENU_FORM_COL);
     wclrtoeol(pMenuWindow);
@@ -258,7 +258,7 @@ void create_menu_draw(MENU_DATA *pMenuData)
     wattron(pMenuWindow, COLOR_PAIR(4));
     mvwprintw(pMenuWindow, CREATE_MENU_ITEM_DEP_DOWNLOAD_ROW, CREATE_MENU_FORM_COL, "%s", createMenuDLTypes[pCreateConfig->currentInstallDLType].download_dep_name);
     wattroff(pMenuWindow, COLOR_PAIR(4));
-    
+
     // draw the main create menu
     menu_draw(pMenuData);
 }
@@ -267,7 +267,7 @@ char *get_home_directory()
 {
     char *homeDir = getenv("HOME");
 
-    if (homeDir == NULL) 
+    if (homeDir == NULL)
     {
         homeDir = getpwuid(getuid())->pw_dir;
     }
@@ -336,7 +336,7 @@ void process_create_menu(MENU_DATA *pMenuData)
 
         // state change to the config
         pConfig->configChg = true;
-        
+
         create_menu_toggle_grey_items(pMenuData, false);
     }
     else if (curMenuItemIndex == CREATE_MENU_ITEM_REPO_TYPE_INDEX)
@@ -370,7 +370,7 @@ void process_create_menu(MENU_DATA *pMenuData)
     {
 
     }
-    
+
     create_menu_draw(pMenuData);
 }
 
@@ -395,7 +395,7 @@ void process_create_menu_item(MENU_DATA *pMenuData)
      // dependency download type
     else if (curMenuItemIndex == 3)
     {
-        if (is_rocm_installed()) 
+        if (is_rocm_installed())
         {
             print_menu_warning_msg(pMenuData, DOWNLOAD_DEP_WARN_ERR_START_Y, DOWNLOAD_DEP_WARN_ERR_START_X, "'minimum' unavailable when ROCm is installed on host.");
         }
@@ -448,7 +448,7 @@ void process_create_menu_form(MENU_DATA *pMenuData, int fieldNum)
                 // print_menu_dbg_msg(pMenuData, "Value of c: %c, index is : %d", c, i);
                 end = i;
                 break;
-                
+
             }
             //pConfig->installer_name_with_extension[i] = c;
         }
@@ -459,7 +459,7 @@ void process_create_menu_form(MENU_DATA *pMenuData, int fieldNum)
         //print_menu_dbg_msg(pMenuData, "Value of end: %d and string before run: %s", end, pConfig->installer_name_with_extension);
         strcat(pConfig->installer_name_with_extension, ".run");
     }
-    else if (fieldNum == 1) 
+    else if (fieldNum == 1)
     {
         strcpy(pConfig->installer_out_location, field_buffer(pForm->field[1], 0));
 
@@ -491,5 +491,5 @@ void create_config_help_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow)
     menu_opts_off(pMenuData->pMenu, O_SHOWDESC);
 
     // create form that displays verbose help menu
-    create_help_form(pMenuData, pMenuWindow, HELP_MENU_DESC_STARTX, HELP_MENU_DESC_STARTY, HELP_MENU_DESC_WIDTH, HELP_MENU_OP_STARTX, HELP_MENU_OP_WIDTH, createMenuHelpOps, createMenuHelpDesc); 
+    create_help_form(pMenuData, pMenuWindow, HELP_MENU_DESC_STARTX, HELP_MENU_DESC_STARTY, HELP_MENU_DESC_WIDTH, HELP_MENU_OP_STARTX, HELP_MENU_OP_WIDTH, createMenuHelpOps, createMenuHelpDesc);
 }

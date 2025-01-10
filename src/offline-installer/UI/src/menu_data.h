@@ -210,5 +210,8 @@ bool is_repo_public(MENU_DATA *pMenuData);
 bool is_specific_usecase_selected(MENU_DATA *pMenuData, char *usecase);
 bool is_ubuntu_2004(MENU_DATA *pMenuData);
 
+int print_multiline_string(WINDOW *pMenuWindow, char *text, int startx, int starty, int width);
+void clear_text(MENU_DATA *pMenuData, int starty, int startx, int endy);
+
 #endif // _MENU_DATA_H
 

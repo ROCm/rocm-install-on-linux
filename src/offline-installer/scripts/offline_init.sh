@@ -88,7 +88,13 @@ os_release() {
 	    PACKAGE_VER=${PACKAGE_VER%%.*}
 	    
 	    DISTRO_VER=${DISTRO_VER/./}
-            ;;
+        ;;
+        ol)
+	    PACKAGE_VER=${PACKAGE##*ol}
+	    PACKAGE_VER=${PACKAGE_VER%%.*}
+	    
+	    DISTRO_VER=${DISTRO_VER%%.*}
+        ;;
         *)
             echo "$ID is Unsupported OS"
             exit 1

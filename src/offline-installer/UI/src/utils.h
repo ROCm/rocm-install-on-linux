@@ -27,11 +27,6 @@
 #define TOGGLE_BIT(val, bitIndx) val ^= (1 << bitIndx)
 #define TOGGLE_FALSE(val, bitIndx) val &= ~(1 << bitIndx) 
 
-
-#define DEFAULT_CHAR_SIZE      256
-#define LARGE_CHAR_SIZE        1024
-#define SMALL_CHAR_SIZE        32
-
 int calculate_text_height(char *desc, int width);
 int get_char_array_size(char *array[]);
 bool is_field_empty(char *text);

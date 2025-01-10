@@ -20,6 +20,7 @@
  *
  * ************************************************************************ */
 #include "utils.h"
+#include "install_types.h"
 
 #include <string.h>
 #include <math.h>

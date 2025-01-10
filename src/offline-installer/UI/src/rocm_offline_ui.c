@@ -291,6 +291,11 @@ void write_offline_configuration(OFFLINE_INSTALL_CONFIG *pConfig, char *wconfig)
             }
         }
     }
+    
+    if (pConfig->extras_config.rocm_validation_suite_install)
+    {
+        sprintf(extra_packages + strlen(extra_packages), "rocm-validation-suite ");
+    }
 
     fprintf(file, "%s\n", "EXTRA_PACKAGES_ONLY=no");
     fprintf(file, "%s%s%s\n\n", "EXTRA_PACKAGES=\"", extra_packages, "\"");
@@ -543,9 +548,8 @@ int main(int argc, char *argv[])
         fflush(stdout);
         sprintf(createCreatorDir, "%s mkdir -p /var/log/offline_creator", sudo);
         system(createCreatorDir);
-        sprintf(cmd, "./create-offline.sh %s 2>&1 | %s tee %s", argsInfo.createArgs, sudo, offlineConfig.create_confg.installer_creation_log_out_location);
+        sprintf(cmd, "./create-offline.sh %s", argsInfo.createArgs);
         system(cmd);
-        printf("Creation log stored in: %s\n", offlineConfig.create_confg.installer_creation_log_out_location);
     }
 
     return 0;

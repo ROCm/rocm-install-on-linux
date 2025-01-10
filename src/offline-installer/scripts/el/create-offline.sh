@@ -22,6 +22,14 @@
 # THE SOFTWARE.
 # #############################################################################
 
+# Logs
+CREATE_INSTALLER_LOGS=/var/log/offline_creator
+CREATE_INSTALLER_CURRENT_LOG="$CREATE_INSTALLER_LOGS/create_$(date +%s).log"
+
+SUDO=$([[ $(id -u) -ne 0 ]] && echo "sudo" ||:)
+$SUDO mkdir -p /var/log/offline_creator
+{
+
 # Creates a install .run using AMD repos as a source and adds dependent packages
 WGET_RETRY_COUNT=5
 
@@ -40,6 +48,9 @@ KERNEL_VER=
 KERNEL_PACKAGES_VER=
 KERNEL_PACKAGES=
 KERNEL_PACKAGES_AMDGPU=
+
+# Prereq packages to include
+PREREQ_PACKAGES=
 
 # ROCm Packages Config
 ROCM_USECASES=
@@ -83,6 +94,7 @@ PROMPT_USER=0
 # Cleanup repos
 CREATE_CLEAN_YUM_REPOS_AMD=(repo-tar-offline.repo repo-offline.repo amdgpu.repo amdgpu-proprietary.repo amdgpu-build.repo amdgpu-local.repo rocm-build.repo rocm.repo)
 
+GCC_TOOLSET_PACKAGES_OL=(gcc-toolset-11-gcc gcc-toolset-11-gcc-c++ gcc-toolset-11-gcc-gfortran gcc-toolset-11-libquadmath-devel gcc-toolset-11-libstdc++-devel gcc-toolset-11-gcc-gdb-plugin)
 
 ###### Functions ###############################################################
 
@@ -92,10 +104,10 @@ Usage: $PROG [options]
 
 [options}:
     help               = Displays this help information.
-    version            = Displays the ROCm Offline Creater Tool version. 
+    version            = Displays the ROCm Offline Creater Tool version.
     prompt             = Run the creator with user prompts.
     config=<file_path> = <file_path> Full path to a .config file with create settings in the format of create-default.config.
-    
+
     ie. $PROG
         $PROG version
         $PROG prompt
@@ -149,7 +161,7 @@ pkg_installed() {
     rpm -q $package_name &> /dev/null
 }
 
-os_release() {	
+os_release() {
     if [[ -r  /etc/os-release ]]; then
         . /etc/os-release
 
@@ -157,7 +169,7 @@ os_release() {
 	DISTRO_VER=$(awk -F= '/^VERSION_ID=/{print $2}' /etc/os-release | tr -d '"')
 
 	case "$ID" in
-	fedora|rhel|centos|almalinux|rocky)
+	fedora|rhel|centos|almalinux|rocky|ol)
 	    OS_TYPE=rpm
 	    ;;
 	*)
@@ -169,10 +181,10 @@ os_release() {
         echo "Unsupported OS"
         exit 1
     fi
-    
+
     echo Distro:
     echo "   ${DISTRO_NAME} ${DISTRO_VER} : type = $OS_TYPE"
-    
+
     KERNEL_VER=$(uname -r)
     echo Kernel:
     echo "   ${KERNEL_VER}"
@@ -191,7 +203,7 @@ update_dnf_conf() {
 
 restore_dnf_conf() {
     # restore the dnf.conf file from the backup file
-    
+
     if [ -f /etc/yum.repos.d/epel.repo ]; then
         echo Restoring dnf.conf
         if [ -f /etc/dnf/dnf.conf.bak ]; then
@@ -217,11 +229,11 @@ install_prereqs() {
             echo "Unsupported version for EPEL."
         fi
     fi
-    
+
     $SUDO dnf install -y dnf-plugin-config-manager
-    
+
     $SUDO crb enable
-    
+
     # Update the dnf.conf for faster mirrors etc.
     update_dnf_conf
 }
@@ -230,63 +242,67 @@ install_prereqs() {
 setup_installer_public_repos() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Install Package Type = public : Install amdgpu-install...
-        
+
     if [[ -z $AMDGPU_INSTALL_URL ]]; then
         echo using default URL for amdgpu-install
-        
+
         local VER_MAJ=${ROCM_VERSIONS:0:1}
         local VER_MIN=${ROCM_VERSIONS:2:1}
         local VER_MIN_MIN=${ROCM_VERSIONS:4:1}
-	
+
         if [[ -z $VER_MIN_MIN ]]; then
             VER_MIN_MIN=0
         fi
-        
+
         if [[ $DISTRO_VER == 8* ]]; then
             local RHEL_BASE_VER=el8
         else
             local RHEL_BASE_VER=el9
         fi
-        
+
         AMDGPU_INSTALL_NAME=amdgpu-install-$VER_MAJ.$VER_MIN.$VER_MAJ"0"$VER_MIN"0"$VER_MIN_MIN-1.$RHEL_BASE_VER.noarch.rpm
-        AMDGPU_INSTALL_URL=https://repo.radeon.com/amdgpu-install/$ROCM_VERSIONS/rhel/$DISTRO_VER/$AMDGPU_INSTALL_NAME
+        if [ $DISTRO_NAME = "rhel" ]; then
+            AMDGPU_INSTALL_URL=https://repo.radeon.com/amdgpu-install/$ROCM_VERSIONS/rhel/$DISTRO_VER/$AMDGPU_INSTALL_NAME
+        else
+            AMDGPU_INSTALL_URL=https://repo.radeon.com/amdgpu-install/$ROCM_VERSIONS/el/$DISTRO_VER/$AMDGPU_INSTALL_NAME
+        fi
     else
         AMDGPU_INSTALL_NAME=$(basename $AMDGPU_INSTALL_URL)
     fi
-    
+
     echo install: $AMDGPU_INSTALL_NAME
-        
+
     # Download the amdgpu-install package and associated dependencies
     wget --tries $WGET_RETRY_COUNT $AMDGPU_INSTALL_URL
-        
+
     check_error "Successfully downloaded amdgpu-install." "Failed amdgpu-install download."
 
     $SUDO chmod 644 ./$AMDGPU_INSTALL_NAME
-        
+
     $SUDO dnf download --downloadonly --resolve --downloaddir="./$CREATE_INSTALLER_PACKAGE_DIR" ./$AMDGPU_INSTALL_NAME
 
     # Install amdgpu-install for host installer creation
     $SUDO dnf clean all
     $SUDO dnf install -y ./$AMDGPU_INSTALL_NAME
-    
+
     # Update the amdgpu.repo (if required)
     if [[ -n $AMDGPU_URL ]]; then
         echo Updating amdgpu url...
-        
+
         # Find the URL in the file and replace it
         $SUDO sed -i "s#https[^ ]*#$AMDGPU_URL#g" "/etc/yum.repos.d/amdgpu.repo"
     fi
-    
+
     # Update the rocm.repo (if required)
     if [[ -n $ROCM_URL ]]; then
         echo Updating rocm url...
-        
+
         # Find the URL in the file and replace it
         $SUDO sed -i "s#https[^ ]*#$ROCM_URL#g" "/etc/yum.repos.d/rocm.repo"
     fi
 
     echo Install amdgpu-install...Complete
-        
+
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Copying amdgpu-install
 
@@ -298,40 +314,40 @@ setup_installer_public_repos() {
 create_installer_package_dir() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Creating directory for installer...
-    
+
     debugCreate create_installer_package_dir
-    
+
     # Create the installer packages directory for package download
     mkdir -p -m755 ./$CREATE_INSTALLER_PACKAGE_DIR
-    
+
     echo Creating directory for installer: $CREATE_INSTALLER_PACKAGE_DIR ...Complete
 }
 
 setup_installer_repos() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Setup Package Source Repos...
-    
+
     debugCreate setup_installer_repos
-    
+
     if [[ $INSTALL_PACKAGE_TYPE == $INSTALL_PACKAGE_TYPE_PUBLIC ]]; then
         setup_installer_public_repos
     else
         echo Unsupport installer package type.  Exiting.
-    	exit 1; 
+    	exit 1;
     fi
 }
 
 cleanup_create() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Cleaning up installation...
-    
+
     debugCreate cleanup_create
-    
+
     # check that amdgpu-install isn't installed already
     pkg_installed "amdgpu-install"
     if [ $? -eq 0 ]; then
         echo amdgpu-install package is already installed. Cleaning up for new install
-        
+
         $SUDO dnf remove -y amdgpu-install
         $SUDO dnf autoremove -y
     else
@@ -342,12 +358,12 @@ cleanup_create() {
             echo amdgpu-install not installed
         fi
     fi
-    
+
     # check and remove the amdgpu-uninstall link
     if [ -f /usr/bin/amdgpu-uninstall ]; then
         $SUDO rm /usr/bin/amdgpu-uninstall
     fi
-    
+
     # Remove any creator .repo files
     for index in ${CREATE_CLEAN_YUM_REPOS_AMD[@]}; do
         if [ -f /etc/yum.repos.d/$index ]; then
@@ -355,27 +371,27 @@ cleanup_create() {
             $SUDO rm /etc/yum.repos.d/$index
         fi
     done
-   
+
     # cleanup dnf cache
     $SUDO dnf clean all
     $SUDO rm -r /var/cache/dnf/*
-   
+
     # restore the dnf.conf
     restore_dnf_conf
-   
+
     echo Cleaning up installation...Complete
 }
 
 install_tools() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Installing tools...
-    
+
     # Install createrepo for repo creation
     $SUDO dnf install --assumeyes createrepo
-    
+
     # Install makself for .run creation
     $SUDO dnf install --assumeyes makeself
-    
+
     # Check the version of makself and enable cleanup script support if >= 2.4.2
     makeself_version_min=2.4.2
     makeself_version=$(makeself --version)
@@ -385,29 +401,35 @@ install_tools() {
         INSTALL_MAKESELF_OPTIONS+="--cleanup ./cleanup-install.sh"
         echo Enabling cleanup script support.
     fi
-    
+
     echo Installing tools...Complete
 }
 
 get_installer_package_list() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Creating packages list...
-        
+
     debugCreate get_installer_package_list
-        
+
     amdgpu_install_out=$($CREATE_CONFIG_AMDGPU_INSTALL $CREATE_CONFIG_AMDGPU_INSTALL_PARAMS --usecase=$ROCM_USECASES)
-    
+
     # Remove text 'dnf install' or 'sudo dnf install' from amdgpu_install_out
     # docker doesn't have 'sudo' output but barel metal does
     PACKAGES=$(echo "${amdgpu_install_out}" | sed -E 's/(sudo )?dnf install//')
     PACKAGES=${PACKAGES%%kernel*}
     PACKAGES=${PACKAGES%%sudo ln*}
-    
+
     # set the ROCm usecase
     ROCM_USECASES_PACKAGES="${PACKAGES//amdgpu-dkms/}"
     
+    if [ $DISTRO_NAME = "ol" ]; then
+        kernel_to_check="kernel-uek-devel-$KERNEL_VER"
+    else
+        kernel_to_check="kernel-headers-$KERNEL_VER"
+    fi
+
     # set the kernel packages
-    $SUDO dnf list "kernel-headers-$KERNEL_VER" &> /dev/null
+    $SUDO dnf list "$kernel_to_check" &> /dev/null
     if [ $? -eq 0 ]; then
         echo "Kernel Packages for $KERNEL_VER are available in the repositories."
         KERNEL_PACKAGES_VER="-$KERNEL_VER"
@@ -415,30 +437,64 @@ get_installer_package_list() {
         echo "Kernel Packages not available in the repositories.  Using defaults."
     fi
     
-    KERNEL_PACKAGES="kernel-headers$KERNEL_PACKAGES_VER kernel-devel$KERNEL_PACKAGES_VER kernel-modules$KERNEL_PACKAGES_VER "
-    
-    if [[ $DISTRO_VER == 9* ]]; then
-        echo Adding rhel9 kernel packages
-        if [ $DOWNLOAD_PKG_CONFIG_NUM == $DOWNLOAD_PKG_FULL ]; then
-            echo "Adding extra kernel packages for full dep mode"
-            KERNEL_PACKAGES+="glibc-all-langpacks glibc-langpack-en "
-        fi
-         
+    if [ $DISTRO_NAME = "ol" ]; then
+        KERNEL_PACKAGES="kernel-uek-devel$KERNEL_PACKAGES_VER "
+        
+        # Get gcc version that's identical to the one that UEK was built from.
+        # gcc version on system and gcc version UEK was built from must be identical
+        # before building driver using dkms, otherwise you get an error.
         if [ $AMDGPU_INSTALL_DRIVER == "yes" ]; then
-             echo Adding amdgpu kernel packages
-             KERNEL_PACKAGES_AMDGPU="kernel-devel-matched$KERNEL_PACKAGES_VER "
+            # Expect KERNEL_GCC_VERSION to be in the format [MAJOR]0[MINOR]0[PATCH]
+            # Example: 110401
+            KERNEL_GCC_VERSION=$(sudo cat /boot/config-$(uname -r)| grep CONFIG_GCC_VERSION | cut -d '=' -f2)
+            # Expect TARGET_GCC_VERSION to be in the format [MAJOR].[MINOR].[PATCH]
+            # Example: 11.4.1
+            TARGET_GCC_VERSION=${KERNEL_GCC_VERSION//0/\.}
+
+            for gcc_package in ${GCC_TOOLSET_PACKAGES_OL[@]}; do
+                # Expect full package name we want to install
+                # Example: gcc-toolset-11-gcc-11.4.1-3.0.1.el8_6
+                gcc_package_ver=$(sudo dnf --disablerepo="*" --enablerepo="ol8_appstream" repoquery --all --nvr | grep "$gcc_package-$TARGET_GCC_VERSION" | awk '{print $NF}' | sort | uniq | tail -1)
+                if [ ! -z "$gcc_package_ver" ]; then
+                    echo "Install $gcc_package version $gcc_package_ver"
+                    KERNEL_PACKAGES+="$gcc_package_ver "
+                else
+                    echo "Unable to gcc version $TARGET_GCC_VERSION for package $gcc_package_ver in repo ol8_appstream"
+                fi
+            done
         fi
     else
-        echo Adding rhel8 kernel packages
-        if [ $AMDGPU_INSTALL_DRIVER == "yes" ]; then
-             echo Adding amdgpu kernel packages
-             KERNEL_PACKAGES_AMDGPU="annobin gcc-plugin-annobin "
-        fi
+        KERNEL_PACKAGES="kernel-headers$KERNEL_PACKAGES_VER kernel-devel$KERNEL_PACKAGES_VER kernel-modules$KERNEL_PACKAGES_VER "
     fi
     
+    if [ $DISTRO_NAME == "ol" ]; then
+        if [ ! -z "$ROCM_USECASES_PACKAGES" ]; then
+            KERNEL_PACKAGES+="perl-devel annobin gcc-plugin-annobin "
+        fi
+    else
+        if [[ $DISTRO_VER == 9* ]]; then
+            echo Adding rhel9 kernel packages
+            if [ $DOWNLOAD_PKG_CONFIG_NUM == $DOWNLOAD_PKG_FULL ]; then
+                echo "Adding extra kernel packages for full dep mode"
+                KERNEL_PACKAGES+="glibc-all-langpacks glibc-langpack-en "
+            fi
+            
+            if [ $AMDGPU_INSTALL_DRIVER == "yes" ]; then
+                echo Adding amdgpu kernel packages
+                KERNEL_PACKAGES_AMDGPU="kernel-devel-matched$KERNEL_PACKAGES_VER "
+            fi
+        else
+            echo Adding rhel8 kernel packages
+            if [ $AMDGPU_INSTALL_DRIVER == "yes" ]; then
+                echo Adding amdgpu kernel packages
+                KERNEL_PACKAGES_AMDGPU="annobin gcc-plugin-annobin "
+            fi
+        fi
+    fi
+
     PACKAGES+=${KERNEL_PACKAGES}
     PACKAGES+=${KERNEL_PACKAGES_AMDGPU}
-    
+
     # remove amdgpu if not installing the driver
     if [ $AMDGPU_INSTALL_DRIVER == "yes" ]; then
         echo Adding amdgpu
@@ -447,36 +503,41 @@ get_installer_package_list() {
         echo Removing amdgpu
         PACKAGES="${PACKAGES//amdgpu-dkms/}"
     fi
-    
+
+    # Add required prereq packages for ROCm
+    PREREQ_PACKAGES="python3-setuptools python3-wheel "
+    PACKAGES+=${PREREQ_PACKAGES}
+
     # Add any extra packages
     PACKAGES+=${EXTRA_PACKAGES}
-    
+
     # If only extra packages are require - only download those
     if [ $EXTRA_PACKAGES_ONLY == "yes" ]; then
         echo Only Downloading Extra Packages for Installer.
         PACKAGES=$EXTRA_PACKAGES
-    fi 
+    fi
 
     echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     echo "KERNEL_PACKAGES        = $KERNEL_PACKAGES"
+    # echo "GCC_TOOLSET_TO_INSTALL = $GCC_TOOLSET_TO_INSTALL"
     echo "KERNEL_PACKAGES_AMDGPU = $KERNEL_PACKAGES_AMDGPU"
     echo "ROCM_USECASES_PACKAGES = $ROCM_USECASES_PACKAGES"
     echo "AMDGPU_PACKAGES        = $AMDGPU_PACKAGES"
     echo "PACKAGES               = $PACKAGES"
     echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
+
     if [[ -z "$PACKAGES" ]]; then
         echo "ERROR: No packages found"
         exit 1
     fi
-    
+
     echo Creating packages list...Complete
 }
 
 download_validate_resolve() {
     echo ++++++++++++++++++++++++++++++++
     echo Validating Downloaded packages for install...
-    
+
     # create the repo
     createrepo ./$CREATE_INSTALLER_PACKAGE_DIR
 
@@ -485,45 +546,46 @@ cat <<EOT | $SUDO tee /etc/yum.repos.d/repo-offline.repo
 [repo-offline]
 name=ROCm-amdgpu offline repository validation
 baseurl=file://$(pwd)/$CREATE_INSTALLER_PACKAGE_DIR
-enabled=0    
+enabled=0
 EOT
     # cleanup the dnf cache
     $SUDO dnf clean all
     $SUDO rm -rf /var/cache/dnf/*
-    
+
     # simulate/dryrun the install
-    errorCheck=$($SUDO dnf --nogpg --assumeno --disablerepo=* --enablerepo=repo-offline --allowerasing install $PACKAGES)
+    exec 3>&1
+    errorCheck=$($SUDO dnf --nogpg --assumeno --disablerepo=* --enablerepo=repo-offline --allowerasing install $PACKAGES 2>&1 | tee /dev/fd/3)
     if  [[ $errorCheck == *"Error"* ]] || [[ $errorCheck == *"uninstallable"* ]]; then
         echo Error occurred.  Repo validation failed.  Attempting to resolve...
-        
+
         # attempt to determine what package dependencies are missing
         output_dryrun=$($SUDO dnf --nogpg --assumeno --allowerasing --disablerepo=* --enablerepo=repo-offline install $PACKAGES)
-        
+
         missing_packages=${output_dryrun#*Removing dependent packages:}
         missing_packages=${missing_packages%%Transaction*}
         missing_packages=$(echo "$missing_packages" | awk '{print $1}' | awk -F'.' '{print $1}')
         missing_packages=$(echo "$missing_packages" | sort | uniq)
-        
+
         echo "<><><><><><><><><><><><><>"
         echo The following packages may need to be added to extras to resolve dependencies:
         echo $missing_packages
         echo "<><><><><><><><><><><><><>"
-        
+
         # delete the currently downloaded packages and download again
         $SUDO rm -r ./$CREATE_INSTALLER_PACKAGE_DIR/*
-    	$SUDO dnf clean all 
+    	$SUDO dnf clean all
     	$SUDO rm -rf /var/cache/dnf/*
-    	
+
     	# download again and include the missing packages
     	pushd ./$CREATE_INSTALLER_PACKAGE_DIR
-    	    $SUDO dnf download --downloadonly --resolve --skip-broken --alldeps --downloaddir="./" $PACKAGES $missing_packages
+            $SUDO dnf download --downloadonly --resolve --skip-broken --alldeps --downloaddir="./" $PACKAGES $missing_packages
     	    $SUDO chmod 644 *
     	popd
-    	
+
         createrepo ./$CREATE_INSTALLER_PACKAGE_DIR
-        
+
         # simulate the install again to see if there are any errors
-        errorCheck=$($SUDO dnf --nogpg --assumeno --disablerepo=* --enablerepo=repo-offline install $PACKAGES  $missing_packages)
+        errorCheck=$($SUDO dnf --nogpg --assumeno --disablerepo=* --enablerepo=repo-offline install $PACKAGES  $missing_packages 2>&1 | tee /dev/fd/3)
         if  [[ $errorCheck == *"Error"* ]] || [[ $errorCheck == *"uninstallable"* ]]; then
             print_err "Repo validation failed."
             exit 1
@@ -533,11 +595,11 @@ EOT
     else
         print_no_err "Valid package dependencies."
     fi
-    
+
     # cleanup the temp repo
     $SUDO rm -r ./$CREATE_INSTALLER_PACKAGE_DIR/repodata
     $SUDO rm /etc/yum.repos.d/repo-offline.repo
-    
+
     echo Validating Downloaded packages for install...Complete
 }
 
@@ -546,23 +608,23 @@ download_installer_packages() {
     echo Downloading...
     echo PACKAGES= ${PACKAGES}
     echo ++++++++++++++++++++++++++
-    
+
     debugCreate download_installer_packages
 
     # Download packages for selected usecases
     pushd ./$CREATE_INSTALLER_PACKAGE_DIR
-    
+
         $SUDO dnf clean all
         $SUDO rm -rf /var/cache/dnf/*
-        
+
         echo Source repos:
         dnf repolist
 
         echo =-=-=-= download packages =-=-=-=
         prompt_user "Start Download (y/n): "
         if [[ $option == "Y" || $option == "y" ]]; then
-        
-            # check the download mode     
+
+            # check the download mode
             if [ $DOWNLOAD_PKG_CONFIG_NUM == $DOWNLOAD_PKG_FULL ]; then
                 # full download - normal full dep mode
                 $SUDO dnf download --resolve --alldeps --downloaddir="./" $PACKAGES
@@ -570,20 +632,20 @@ download_installer_packages() {
                 # simple download - minimum dep mode
                 $SUDO dnf download --resolve --downloaddir="./" $PACKAGES
             fi
-            
+
             # check for any errors during download
             check_error "Package download successful." "Package download failed."
-            
+
             $SUDO chmod 644 *
         else
             echo Cancelling Download.  Exiting.
             exit 1
         fi
-        
+
     popd
-    
+
     echo Downloading...Complete
-    
+
     # Check if downloading only
     if [[ $DOWNLOAD_ONLY == "yes" ]]; then
         echo ++++++++++++++++++++++++++++++++
@@ -594,50 +656,50 @@ download_installer_packages() {
         echo ++++++++++++++++++++++++++++++++
         exit 1
     fi
-    
+
     # Verify the repo and attempt to resolve any missing dependencies (if option is enabled)
     if [[ $VALIDATE_DOWNLOAD == "yes" ]]; then
-    	download_validate_resolve
+        download_validate_resolve
     fi
 }
 
 create_install_repo() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Creating Installer Repo Setup...
-    
+
     debugCreate create_install_repo
-    
+
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Creating Packages list...
-    
+
     CREATE_BUILD_PKG_COUNT=$(ls ./$CREATE_INSTALLER_PACKAGE_DIR | wc -l)
 
     # Create the Packages index for the offline repo
     pushd ./$CREATE_INSTALLER_PACKAGE_DIR
         createrepo .
     popd
-    
+
     echo Creating Packages list...Complete : Total $CREATE_BUILD_PKG_COUNT packages
     echo Creating Installer Repo Setup...Complete
 }
 
 parse_package_config() {
     echo ^^^^ Parsing dependency config = $DOWNLOAD_PKG_CONFIG_NUM.
-    
+
     local download_config=
-    
+
     if [ $DOWNLOAD_PKG_CONFIG_NUM == $DOWNLOAD_PKG_FULL ]; then
         download_config=-full
     else
         download_config=-minimum
     fi
-    
+
     CREATE_BUILD_TAG+=$download_config
 }
 
 parse_rocm_config() {
     echo ^^^^ Parsing ROCm usecase config.
-    
+
     if [ $INSTALL_PACKAGE_TYPE == $INSTALL_PACKAGE_TYPE_PUBLIC ]; then
     	if [ -z $ROCM_VERSIONS ]; then
             echo ERROR: No ROCm Version number set.  Exiting.
@@ -669,9 +731,9 @@ parse_extras_config() {
 
 parse_build_config() {
     echo ^^^^ Parsing Build config.
-    
+
     CREATE_BUILD_DATE=$(date)
-    
+
     if [ $INSTALL_MAKESELF_LOCAL == "yes" ]; then
         INSTALL_MAKESELF_OPTIONS=--current
     fi
@@ -679,17 +741,17 @@ parse_build_config() {
 
 parse_version() {
     i=0
-    
+
     while IFS= read -r line; do
         case $i in
             0) CREATE_VERSION="$line" ;;
             1) CREATE_ROCM_VERSION="$line" ;;
             2) CREATE_PACKAGE="$line" ;;
         esac
-        
+
         i=$((i+1))
     done < "./VERSION"
-    
+
     echo Creator Version : $CREATE_VERSION-$CREATE_ROCM_VERSION
     echo Creator Package : $CREATE_PACKAGE
 }
@@ -697,9 +759,9 @@ parse_version() {
 config_create() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Create Configure...
-    
+
     local CREATE_CONFIG_FILE=
-    
+
     # Check for user-modified config file (input .config to create script)
     if [[ ${CONFIG_FILE_PATH##*.} == "config" ]] && [[ -f $CONFIG_FILE_PATH ]]; then
          CREATE_CONFIG_FILE=$CONFIG_FILE_PATH
@@ -709,43 +771,43 @@ config_create() {
         print_err "Create configuration file not found."
         exit 1
     fi
-    
+
     echo "Using Create Configuration file: $CREATE_CONFIG_FILE"
     source $CREATE_CONFIG_FILE
-    
+
     # Check for a URL config file
     if [[ -n $URL_CONFIG ]]; then
         if [[ -f $URL_CONFIG ]]; then
             echo "Using URL Configuration file   : $URL_CONFIG"
             source $URL_CONFIG
-        
+
             echo Checking URL for $DISTRO_VER
             if [[ "$AMDGPU_INSTALL_URL" != *"$DISTRO_VER"* ]]; then
                 echo amdgpu-install distro version in URL file does not match.
                 exit 1
             fi
-        
+
             if [[ "$AMDGPU_URL" != *"$DISTRO_VER"* ]]; then
                 echo amdgpu distro version in URL file does not match.
                 exit 1
             fi
-        
+
             echo Checking URL for $ROCM_VERSIONS
             if [[ "$AMDGPU_INSTALL_URL" != *"$ROCM_VERSIONS"* ]]; then
                 echo ROCm version in URL file does not match.
                 exit 1
             fi
-        
+
             if [[ "$ROCM_URL" != *"$ROCM_VERSIONS"* ]]; then
                 echo ROCm version in URL file does not match.
                 exit 1
             fi
-        
+
             if [[ "$AMDGPU_URL" != *"$ROCM_VERSIONS"* ]]; then
                 echo ROCm version in URL file does not match.
                 exit 1
             fi
-            
+
             echo "AMDGPU_INSTALL_URL = $AMDGPU_INSTALL_URL"
             echo "ROCM_URL           = $ROCM_URL"
             echo "AMDGPU_URL         = $AMDGPU_URL"
@@ -753,7 +815,7 @@ config_create() {
             echo -e "\e[93mWaring: URL configuration file not found.  Using defaults.\e[0m"
         fi
     fi
-      
+
     # Check for the installer package generation type
     if [ $INSTALL_PACKAGE_TYPE == $INSTALL_PACKAGE_TYPE_PUBLIC ]; then
     	CREATE_BUILD_TAG=repo-public
@@ -761,18 +823,18 @@ config_create() {
     	echo "No supported installer package type. Exiting."
    	exit 1
     fi
-    
+
     # Parse any additional changes to each config type
     parse_package_config
-    
+
     parse_rocm_config
     parse_driver_config
     parse_extras_config
-    
+
     parse_build_config
-    
+
     parse_version
-    
+
     echo Create Configure...Complete
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 }
@@ -781,7 +843,7 @@ config_create() {
 write_install_config() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Writing install config: $INSTALLER_CONFIG_FILE
-    
+
     if [ -f $INSTALLER_CONFIG_FILE ]; then
         echo Warning Config file exists!
     else
@@ -795,16 +857,18 @@ write_install_config() {
         echo CREATE_BUILD_DATE=\"$CREATE_BUILD_DATE\" >> $INSTALLER_CONFIG_FILE
         echo INSTALL_MAKESELF_LOCAL=$INSTALL_MAKESELF_LOCAL >> $INSTALLER_CONFIG_FILE
         echo DOWNLOAD_PKG_CONFIG_NUM=$DOWNLOAD_PKG_CONFIG_NUM >> $INSTALLER_CONFIG_FILE
-        
+
         echo KERNEL_PACKAGES=\"$KERNEL_PACKAGES\" >> $INSTALLER_CONFIG_FILE
-        
+
+        echo PREREQ_PACKAGES=\"$PREREQ_PACKAGES\" >> $INSTALLER_CONFIG_FILE
+
         echo ROCM_VERSIONS=$ROCM_VERSIONS >> $INSTALLER_CONFIG_FILE
         echo ROCM_USECASES=$ROCM_USECASES >> $INSTALLER_CONFIG_FILE
         echo ROCM_USECASES_PACKAGES=\"$ROCM_USECASES_PACKAGES\" >> $INSTALLER_CONFIG_FILE
         echo ROCM_BUILD=$ROCM_BUILD >> $INSTALLER_CONFIG_FILE
-        
+
         echo EXTRA_PACKAGES=\"$EXTRA_PACKAGES\" >> $INSTALLER_CONFIG_FILE
-        
+
         echo AMDGPU_INSTALL_DRIVER=$AMDGPU_INSTALL_DRIVER >> $INSTALLER_CONFIG_FILE
         echo AMDGPU_BUILD=$AMDGPU_BUILD >> $INSTALLER_CONFIG_FILE
         echo AMDGPU_PACKAGES=\"$AMDGPU_PACKAGES\" >> $INSTALLER_CONFIG_FILE
@@ -812,19 +876,19 @@ write_install_config() {
         echo AMDGPU_POST_INSTALL_VIDEO_RENDER_GRP=$AMDGPU_POST_INSTALL_VIDEO_RENDER_GRP >> $INSTALLER_CONFIG_FILE
         echo AMDGPU_POST_INSTALL_BLACKLIST=$AMDGPU_POST_INSTALL_BLACKLIST >> $INSTALLER_CONFIG_FILE
         echo AMDGPU_POST_INSTALL_START=$AMDGPU_POST_INSTALL_START >> $INSTALLER_CONFIG_FILE
-    fi 
+    fi
 }
 
 build_installer() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Building Offline Installer .run...
     echo Using options: $INSTALL_MAKESELF_OPTIONS
-    
+
     debugCreate build_installer
-    
+
     # Write out the installer config file
     write_install_config
-    
+
     # Create the .run for the installer
     makeself $INSTALL_MAKESELF_OPTIONS --nox11 ./$CREATE_INSTALLER_DIR "./$INSTALL_PACKAGE_NAME" "ROCm Offline Install" ./install.sh
     cp -Rp "$INSTALL_PACKAGE_NAME" $INSTALL_PACKAGE_DIR
@@ -841,7 +905,6 @@ echo ----------------------------------
 
 PROG=${0##*/}
 
-SUDO=$([[ $(id -u) -ne 0 ]] && echo "sudo" ||:)
 echo SUDO: $SUDO
 
 # parse args
@@ -996,4 +1059,8 @@ INSTALLER_INFO="${INSTALLER_INFO//G/GB}"
 echo -e "\e[32m========================================================================================\e[0m"
 echo -e "\e[32mLocation: $INSTALLER_INFO : $CREATE_BUILD_PKG_COUNT Packages\e[0m"
 echo -e "\e[32m========================================================================================\e[0m"
+
+} 2>&1 | $SUDO tee $CREATE_INSTALLER_CURRENT_LOG
+
+echo "Create install log stored in: $CREATE_INSTALLER_CURRENT_LOG"
 

@@ -75,11 +75,11 @@ ITEMLIST_PARAMS driverMenuItems = {
 // Spaces added/deleted from HelpOps and HelpDesc to ensure whole words aren't
 // cut off between lines when displaying help menu.
 char *driverMenuHelpOps[] = {
-    "amdgpu Install   Driver",
-    "amdgpu Driver    ROCm Version",
-    "Set Video,Render Group",
-    "Blacklist amdgpu driver",
-    "Start amdgpu     driver on install",
+    "amdgpu Install Driver",
+    "amdgpu Driver ROCm   Version",
+    "Set Video,Render     Group",
+    "Blacklist amdgpu     Driver",
+    "Start amdgpu         Driver on install",
     "",
     (char*)NULL
 };

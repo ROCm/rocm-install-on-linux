@@ -9,7 +9,7 @@ rocm_offline_ui
 # Ignore any packages we download when running the actual .run offline installer.
 */packages/*
 */installer-package/*
-
+src/offline-installer/VERSION
 
 
 # documentation artifacts

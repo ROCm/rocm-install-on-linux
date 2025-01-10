@@ -38,11 +38,11 @@ find_program(MAKESELF makeself)
 if(MAKESELF)
     # Execute makeself to get its version
     execute_process(COMMAND ${MAKESELF} --version OUTPUT_VARIABLE MAKESELF_VERSION_OUTPUT)
-    
+
     # Extract the version number
     string(REGEX MATCH "Makeself version [0-9]+\\.[0-9]+\\.[0-9]+" MAKESELF_VERSION_STRING ${MAKESELF_VERSION_OUTPUT})
     string(REGEX REPLACE "Makeself version " "" MAKESELF_VERSION ${MAKESELF_VERSION_STRING})
-    
+
     # Check if the makeself version >= 2.4.2 for supporting cleanup scripts
     if(${MAKESELF_VERSION} VERSION_GREATER_EQUAL "2.4.2")
         message(STATUS "makeself version is ${MAKESELF_VERSION}, which is >= 2.4.2")
@@ -62,7 +62,8 @@ message(STATUS "MAKESELF_VERSION    = " ${MAKESELF_VERSION})
 message(STATUS "MAKESELF_OPTIONS    = " ${MAKESELF_OPTIONS})
 
 enable_testing()
-
+set(URL_CONFIG_624 /mnt/url624.config)
+message(STATUS "Set value of URL_CONFIG_624: '${URL_CONFIG_624}'")
 # URL configs but only used if you're running ctests
 if(DEFINED URL_CONFIG)
     set(URL_CONFIG ${URL_CONFIG}/url.config)
@@ -91,17 +92,42 @@ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
         OUTPUT_VARIABLE distro
     )
 
+    # Ubuntu 20.04
+    execute_process (
+        COMMAND bash -c "grep '20.04' /etc/os-release"
+        OUTPUT_VARIABLE IS_UBUNTU_2004
+    )
+
+    # Ubuntu 22.04
+    execute_process (
+        COMMAND bash -c "grep '22.04' /etc/os-release"
+        OUTPUT_VARIABLE IS_UBUNTU_2204
+    )
+
     # Ubuntu 24.04
     execute_process (
         COMMAND bash -c "grep '24.04' /etc/os-release"
         OUTPUT_VARIABLE IS_UBUNTU_2404
     )
-    
+
     # Suse 15.5
     execute_process (
         COMMAND bash -c "grep '15.6' /etc/os-release"
         OUTPUT_VARIABLE IS_SLES_156
     )
+
+    # Suse 15.5
+    execute_process (
+        COMMAND bash -c "grep '15.5' /etc/os-release"
+        OUTPUT_VARIABLE IS_SLES_155
+    )
+
+     # Rhel 9.5
+     execute_process (
+        COMMAND bash -c "grep 'Red Hat Enterprise Linux 9.5' /etc/os-release"
+        OUTPUT_VARIABLE IS_RHEL_95
+    )
+
     # Rhel 9.4
     execute_process (
         COMMAND bash -c "grep '9.4' /etc/os-release"
@@ -109,29 +135,45 @@ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
     )
     # Rhel 9.3
     execute_process (
+        COMMAND bash -c "grep '9.2' /etc/os-release"
+        OUTPUT_VARIABLE IS_RHEL_92
+    )
+    # Rhel 9.2
+    execute_process (
         COMMAND bash -c "grep '9.3' /etc/os-release"
         OUTPUT_VARIABLE IS_RHEL_93
     )
     # Rhel 8.10
     execute_process (
-        COMMAND bash -c "grep '8.10' /etc/os-release"
+        COMMAND bash -c "grep 'Red Hat Enterprise Linux 8.10' /etc/os-release"
         OUTPUT_VARIABLE IS_RHEL_810
     )
     # Rhel 8.9
     execute_process (
-        COMMAND bash -c "grep '8.9' /etc/os-release"
+        COMMAND bash -c "grep 'Red Hat Enterprise Linux 8.9' /etc/os-release"
         OUTPUT_VARIABLE IS_RHEL_89
     )
-    
+
+    # Oracle Linux 8.10
+    execute_process (
+        COMMAND bash -c "grep 'Oracle Linux Server 8.10' /etc/os-release"
+        OUTPUT_VARIABLE IS_OL_810
+    )
+
     message(STATUS "Linux distro: ${distro}")
     message(STATUS "IS_SLES_156: ${IS_SLES_156}")
 
+    message(STATUS "IS_RHEL_95: ${IS_RHEL_95}")
     message(STATUS "IS_RHEL_94: ${IS_RHEL_94}")
     message(STATUS "IS_RHEL_93: ${IS_RHEL_93}")
+    message(STATUS "IS_RHEL_92: ${IS_RHEL_92}")
     message(STATUS "IS_RHEL_810: ${IS_RHEL_810}")
     message(STATUS "IS_RHEL_89: ${IS_RHEL_89}")
 
+    message(STATUS "IS_UBUNTU_2204: ${IS_UBUNTU_2204}")
     message(STATUS "IS_UBUNTU_2404: ${IS_UBUNTU_2404}")
+
+    message(STATUS "IS_OL_810: ${IS_OL_810}")
 else()
     message(FATAL_ERROR "No OS detected!")
 endif()
@@ -140,7 +182,7 @@ endif()
 if(${distro} STREQUAL "ubuntu")
     message(STATUS "Building for Ubuntu")
     set(SCRIPT_DIRECTORY ${CMAKE_SOURCE_DIR}/scripts/deb)
-elseif(${distro} STREQUAL "rocky" OR ${distro} STREQUAL "rhel")
+elseif(${distro} STREQUAL "rocky" OR ${distro} STREQUAL "rhel" OR ${distro} STREQUAL "ol")
     message(STATUS "Building for RHEL")
     set(SCRIPT_DIRECTORY ${CMAKE_SOURCE_DIR}/scripts/el)
 elseif(${distro} STREQUAL "opensuse-leap" OR ${distro} STREQUAL "sles")
@@ -167,8 +209,15 @@ else()
     set(PACKAGE_NAME "${PACKAGE_NAME}local")
 endif()
 
+set(IS_DOCKER_CONTAINER 0)
+if(DEFINED ENV{container})
+    set(IS_DOCKER_CONTAINER 1)
+endif()
 
-# All tests enabled by default
+message(STATUS: "Value of IS_DOCKER_CONTAINER: ${IS_DOCKER_CONTAINER}")
+
+
+# All ROCm tests enabled by default
 set(IS_ROCM_573_DISABLED 0)
 set(IS_ROCM_602_DISABLED 0)
 set(IS_ROCM_61_DISABLED 0)
@@ -178,6 +227,34 @@ set(IS_ROCM_613_DISABLED 0)
 set(IS_ROCM_62_DISABLED 0)
 set(IS_ROCM_621_DISABLED 0)
 set(IS_ROCM_622_DISABLED 0)
+set(IS_ROCM_624_DISABLED 0)
+set(IS_ROCM_63_DISABLED 0)
+set(IS_ROCM_631_DISABLED 0)
+
+# ROCm only 6.2.4 installation test
+set(IS_LATEST_RELEASE_ROCM_INSTALL_DISABLED 1)
+
+# ROCm 6.2.4 dryrun test
+# only want to run this if we're not running rocm 6.2.4 installation
+# if IS_LATEST_RELEASE_ROCM_INSTALL_DISABLED is set to true, then this is set to false and vice versa
+set(IS_LATEST_RELEASE_ROCM_INSTALL_DRYRUN_DISABLED 0)
+
+    
+# Only enabled ROCm only 6.2 installation test on these distros in docker containers only
+if ((IS_SLES_155 OR IS_SLES_156 OR IS_RHEL_810 OR IS_RHEL_94 OR IS_RHEL_95
+OR IS_UBUNTU_2004 OR IS_UBUNTU_2204 OR IS_UBUNTU_2404 OR IS_OL_810) AND IS_DOCKER_CONTAINER EQUAL 1)
+    message(STATUS "Enable installation test for rocm only for ROCm 6.3")
+    set(IS_LATEST_RELEASE_ROCM_INSTALL_DISABLED 0)
+    set(IS_LATEST_RELEASE_ROCM_INSTALL_DRYRUN_DISABLED 1)
+endif()
+
+# Can't run rocm-only-6.2.4-install on rhel 93 docker because it's using dracut
+# causing the test to fail.
+# Latest rocm 6.3 not supported on rhel 8.9, 9.2 and 9.3
+if (IS_RHEL_93 OR IS_RHEL_92 OR IS_RHEL_89)
+    set(IS_LATEST_RELEASE_ROCM_INSTALL_DISABLED 1)
+    set(IS_LATEST_RELEASE_ROCM_INSTALL_DRYRUN_DISABLED 1)
+endif()
 
 # Disable ROCm tests older than 6.2 for sles 15.6, rhel 8.10, rhel 9.4 and ubuntu 24.04
 if (IS_SLES_156 OR IS_RHEL_810 OR IS_RHEL_94 OR IS_UBUNTU_2404)
@@ -188,11 +265,45 @@ if (IS_SLES_156 OR IS_RHEL_810 OR IS_RHEL_94 OR IS_UBUNTU_2404)
     set(IS_ROCM_611_DISABLED 1)
     set(IS_ROCM_612_DISABLED 1)
     set(IS_ROCM_613_DISABLED 1)
-# Disable ROCm tests older than 6.0 for rhel 9.3 and rhel 8.9
 elseif (IS_RHEL_93 OR IS_RHEL_89)
-    message(STATUS "Disable all ROCm tests older than 6.0")
+    message(STATUS "Disable all ROCm tests older than 6.0 and newer than 6.3 for RHEL 8.9, 9.3")
     set(IS_ROCM_573_DISABLED 1)
+    set(IS_ROCM_63_DISABLED 1)
+    set(IS_ROCM_631_DISABLED 1)
+elseif (IS_RHEL_92) 
+    message(STATUS "Disable all ROCm tests 6.2 or newer for RHEL 9.2")
+    set(IS_LATEST_RELEASE_ROCM_INSTALL_DRYRUN_DISABLED 1)
+    set(IS_ROCM_62_DISABLED 1)
+    set(IS_ROCM_621_DISABLED 1)
+    set(IS_ROCM_622_DISABLED 1)
+    set(IS_ROCM_624_DISABLED 1)
+    set(IS_ROCM_63_DISABLED 1)
+    set(IS_ROCM_63_DISABLED 1)
+    set(IS_ROCM_631_DISABLED 1)
+    set(IS_LATEST_RELEASE_ROCM_INSTALL_DISABLED 1)
+    set(IS_LATEST_RELEASE_ROCM_INSTALL_DRYRUN_DISABLED 1)
+elseif (IS_OL_810 OR IS_RHEL_95)
+    message(STATUS "Disable all ROCm tests older than 6.3 for oracle linux 8.10")
+    set(IS_ROCM_573_DISABLED 1)
+    set(IS_ROCM_602_DISABLED 1)
+    set(IS_ROCM_61_DISABLED 1)
+    set(IS_ROCM_611_DISABLED 1)
+    set(IS_ROCM_612_DISABLED 1)
+    set(IS_ROCM_613_DISABLED 1)
+    set(IS_ROCM_62_DISABLED 1)
+    set(IS_ROCM_621_DISABLED 1)
+    set(IS_ROCM_622_DISABLED 1)
+    set(IS_ROCM_624_DISABLED 1)
+    # set(IS_LATEST_RELEASE_ROCM_INSTALL_DISABLED 1)
+    # set(IS_LATEST_RELEASE_ROCM_INSTALL_DRYRUN_DISABLED 1)
 endif()
+
+# if (IS_RHEL_89 OR IS_RHEL_810 OR IS_RHEL_93 OR IS_RHEL_94)
+#     message("Temporarily disable 6.2.4 tests on all the RHELS as the repo for 6.2.4 in repo.radeon.com is broken")
+#     set(IS_ROCM_624_DISABLED 1)
+#     set(IS_LATEST_RELEASE_ROCM_INSTALL_DRYRUN_DISABLED 1)
+#     set(IS_LATEST_RELEASE_ROCM_INSTALL_DISABLED 1)
+# endif()
 
 
 
@@ -203,7 +314,7 @@ message(STATUS "PACKAGE_NAME     = " ${PACKAGE_NAME})
 message(STATUS "run command: makeself ${SCRIPT_DIRECTORY} ${PACKAGE_NAME}.run \"ROCm Offline Install Creator\" ./offline_init.sh")
 
 # Update the VERSION file for the PACKAGE name
-file(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/VERSION 
+file(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/VERSION
 "${VERSION_STRING}
 ${ROCM_VERSION_STRING}
 ${PACKAGE_NAME}

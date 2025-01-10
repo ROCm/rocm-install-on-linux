@@ -27,6 +27,7 @@
 char *extrasMenuOps[] = {
     "rocminfo",
     "rocm-smi",
+    "rocm-validation-suite",
     SKIPPABLE_MENU_ITEM,
     "<HELP>",
     "<DONE>",
@@ -36,6 +37,7 @@ char *extrasMenuOps[] = {
 char *extrasMenuDesc[] = {
     "Add rocminfo as extra installer package",
     "Add rocm-smi as extra installer package",
+    "Add rocm-validation-suite as extra installer package",
     " ",
     DEFAULT_VERBOSE_HELP_WINDOW_MSG,
     "Exit to Main Menu",
@@ -66,6 +68,7 @@ ITEMLIST_PARAMS extrasMenuItems = {
 char *extrasMenuHelpOps[] = {
     "rocminfo",
     "rocm-smi",
+    "rocm-validation-suite",
     SKIPPABLE_MENU_ITEM,
     (char*)NULL,
 };
@@ -73,6 +76,7 @@ char *extrasMenuHelpOps[] = {
 char *extrasMenuHelpDesc[] = {
     "rocminfo gives information about the HSA system        attributes and agents.",
     "rocm-smi acts as a command line interface for          manipulating and monitoring the amdgpu kernel.",
+    "rocm-validation-suite is a tool for validation         of ROCm.",
     " ",
     (char*)NULL,
 };
@@ -140,6 +144,7 @@ void extras_menu_draw(MENU_DATA *pMenuData)
 
     menu_info_draw_bool(pMenuData, 5, EXTRAS_MENU_FORM_COL, pConfig->rocminfo_install);
     menu_info_draw_bool(pMenuData, 6, EXTRAS_MENU_FORM_COL, pConfig->rocmsmi_install);
+    menu_info_draw_bool(pMenuData, 7, EXTRAS_MENU_FORM_COL, pConfig->rocm_validation_suite_install);
 }
 
 void extras_menu_update_state(MENU_DATA *pMenuData)
@@ -165,9 +170,22 @@ void extras_menu_update_state(MENU_DATA *pMenuData)
         // Need to reset back to false
         pRocmConfig->is_rocm_usecase_deselected = false;
     }
+    
+    // check for rvs support (6.0+)
+    if ( strcmp(pRocmConfig->rocm_versions, "5.7.3") == 0 )
+    {
+        pConfig->rocm_validation_suite_install = false;
+        menu_set_item_select(pMenuData, 2, false);
+    }
+    else
+    {
+        pConfig->rocm_validation_suite_install = false;
+        menu_set_item_select(pMenuData, 2, true);
+    }
 
     menu_info_draw_bool(pMenuData, 5, EXTRAS_MENU_FORM_COL, pConfig->rocminfo_install);
     menu_info_draw_bool(pMenuData, 6, EXTRAS_MENU_FORM_COL, pConfig->rocmsmi_install);
+    menu_info_draw_bool(pMenuData, 7, EXTRAS_MENU_FORM_COL, pConfig->rocm_validation_suite_install);
 }
 
 void do_extras_menu(MENU_DATA *pMenuData)
@@ -209,7 +227,12 @@ void process_extras_menu(MENU_DATA *pMenuData)
         else if (index == 1)
         {
             pConfig->rocmsmi_install = !pConfig->rocmsmi_install;
-            menu_info_draw_bool(pMenuData, 6, EXTRAS_MENU_FORM_COL,pConfig->rocmsmi_install);
+            menu_info_draw_bool(pMenuData, 6, EXTRAS_MENU_FORM_COL, pConfig->rocmsmi_install);
+        }
+        else if (index == 2)
+        {
+            pConfig->rocm_validation_suite_install = !pConfig->rocm_validation_suite_install;
+            menu_info_draw_bool(pMenuData, 7, EXTRAS_MENU_FORM_COL, pConfig->rocm_validation_suite_install);
         }
     }
 
