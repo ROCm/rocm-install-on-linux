@@ -109,7 +109,7 @@ For example, use this command to download ROCm version 6.3.1 of the ROCm Runfile
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-6.3.1/ubuntu/22.04/rocm-installer_1.0.0.60301-1-22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-6.3.1/ubuntu/22.04/rocm-installer_1.0.0.60301-1~22.04.run
 
 Running the ROCm Runfile Installer
 ----------------------------------
@@ -417,7 +417,7 @@ to ``udev``, and with the post-install setup:
 
 .. code-block:: shell
 
-   ./rocm-installer.run deps=install target=”/myrocm” rocm gpu-access=all postrocm
+   ./rocm-installer.run deps=install target="/myrocm" rocm gpu-access=all postrocm
 
 Command line interface
 -----------------------
@@ -555,14 +555,14 @@ which can be installed in a specific location.
 
    .. code-block:: shell
 
-      ./rocm-installer.run target=”/” rocm
+      ./rocm-installer.run target="/" rocm
 
    To install ROCm to a directory called ``amd/myrocm`` in the ``$USER`` directory,
    the command line is as follows:
 
    .. code-block:: shell
 
-      ./rocm-installer.run target=”/home/amd/myrocm” rocm
+      ./rocm-installer.run target="/home/amd/myrocm rocm"
 
 Post-install options
 ^^^^^^^^^^^^^^^^^^^^
@@ -584,7 +584,7 @@ At the command line, add one or more of the post-installation options to the ``<
 
    .. code-block:: shell
 
-      ./rocm-installer.run target=”/” rocm postrocm
+      ./rocm-installer.run target="/" rocm postrocm
 
    .. note::
 
@@ -642,7 +642,7 @@ This option configures the ROCm Runfile Installer to uninstall a previous ROCm i
 
       .. code-block:: shell
 
-         ./rocm-installer.run uninstall target=”/home/amd/myrocm”
+         ./rocm-installer.run uninstall target="/home/amd/myrocm"
 
    .. note::
 
@@ -678,7 +678,7 @@ The ROCm Runfile Installer command line interface includes options for informati
 
    .. code-block:: shell
 
-      ./rocm-installer.run target=”/” rocm prompt verbose
+      ./rocm-installer.run target="/" rocm prompt verbose
 
 .. _log-files:
 
