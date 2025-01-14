@@ -228,11 +228,7 @@ To install for the currently active kernel run the command corresponding to your
                     .. code-block:: shell
                         
                         sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
-                        {% if os_version == '24.04' -%}
-                        sudo apt install python3-setuptools python3-wheel libpython3.12
-                        {%- else -%}
-                        sudo apt install python3-setuptools python3-wheel libpython3.10
-                        {%- endif %}
+                        sudo apt install python3-setuptools python3-wheel
 
               {% endfor %}
 
@@ -242,7 +238,7 @@ To install for the currently active kernel run the command corresponding to your
         .. code-block:: shell
 
             sudo apt install "linux-headers-$(uname -r)"
-            sudo apt install -y python3-setuptools python3-wheel libpython3.11
+            sudo apt install -y python3-setuptools python3-wheel
 
     .. tab-item:: Red Hat Enterprise Linux
         :sync: rhel-tab

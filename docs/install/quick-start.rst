@@ -34,11 +34,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
 
                        sudo apt update
                        sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
-                       {% if os_version == '24.04' -%}
-                       sudo apt install python3-setuptools python3-wheel libpython3.12
-                       {%- else -%}
-                       sudo apt install python3-setuptools python3-wheel libpython3.10
-                       {%- endif %}
+                       sudo apt install python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
@@ -58,7 +54,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
 
                        sudo apt update
                        sudo apt install "linux-headers-$(uname -r)"
-                       sudo apt install -y python3-setuptools python3-wheel libpython3.11
+                       sudo apt install -y python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
