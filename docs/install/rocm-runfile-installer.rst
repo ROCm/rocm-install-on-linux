@@ -121,8 +121,8 @@ You can obtain help or version information using the following installer ``.run`
 
 .. code-block:: shell
 
-   ./rocm-installer.run help
-   ./rocm-installer.run version
+   bash rocm-installer.run help
+   bash rocm-installer.run version
 
 .. note::
 
@@ -163,7 +163,7 @@ Launch the GUI-based installation of the ROCm Runfile Installer from the termina
 
 .. code-block:: shell
 
-   ./rocm-installer.run
+   bash rocm-installer.run
 
 GUI
 ---
@@ -357,7 +357,7 @@ Run the ROCm Runfile Installer from the terminal command line as follows:
 
 .. code-block:: shell
 
-   ./rocm-installer.run <options>
+   bash rocm-installer.run <options>
 
 The ``<options>`` parameter can be set to these options:
 
@@ -417,7 +417,7 @@ to ``udev``, and with the post-install setup:
 
 .. code-block:: shell
 
-   ./rocm-installer.run deps=install target="/myrocm" rocm gpu-access=all postrocm
+   bash rocm-installer.run deps=install target="/myrocm" rocm gpu-access=all postrocm
 
 Command line interface
 -----------------------
@@ -445,7 +445,7 @@ list of ``<options>`` for the ``.run`` file.
 
    .. code-block:: shell
 
-      ./rocm-installer.run deps=list rocm
+      bash rocm-installer.run deps=list rocm
 
    .. note::
 
@@ -465,7 +465,7 @@ list of ``<options>`` for the ``.run`` file.
 
    .. code-block:: shell
 
-      ./rocm-installer.run deps=validate rocm
+      bash rocm-installer.run deps=validate rocm
 
    .. note::
 
@@ -483,7 +483,7 @@ list of ``<options>`` for the ``.run`` file.
 
    .. code-block:: shell
 
-      ./rocm-installer.run deps=install rocm
+      bash rocm-installer.run deps=install rocm
 
    .. note::
 
@@ -492,7 +492,7 @@ list of ``<options>`` for the ``.run`` file.
 
       .. code-block:: shell
 
-         ./rocm-installer.run deps=install-only rocm
+         bash rocm-installer.run deps=install-only rocm
 
 *  ``deps=file <file-path>``
 
@@ -506,7 +506,7 @@ list of ``<options>`` for the ``.run`` file.
 
    .. code-block:: shell
 
-      ./rocm-installer.run deps=file /home/amd/mydeps.txt
+      bash rocm-installer.run deps=file /home/amd/mydeps.txt
 
    .. note::
 
@@ -515,7 +515,7 @@ list of ``<options>`` for the ``.run`` file.
 
       .. code-block:: shell
 
-         ./rocm-installer.run deps=file-only /home/amd/mydeps.txt
+         bash rocm-installer.run deps=file-only /home/amd/mydeps.txt
 
 Install options
 ^^^^^^^^^^^^^^^
@@ -535,7 +535,7 @@ which can be installed in a specific location.
 
    .. code-block:: shell
 
-      ./rocm-installer.run rocm
+      bash rocm-installer.run rocm
 
 *  ``target=<directory>``
 
@@ -555,14 +555,14 @@ which can be installed in a specific location.
 
    .. code-block:: shell
 
-      ./rocm-installer.run target="/" rocm
+      bash rocm-installer.run target="/" rocm
 
    To install ROCm to a directory called ``amd/myrocm`` in the ``$USER`` directory,
    the command line is as follows:
 
    .. code-block:: shell
 
-      ./rocm-installer.run target="/home/amd/myrocm rocm"
+      bash rocm-installer.run target="/home/amd/myrocm rocm"
 
 Post-install options
 ^^^^^^^^^^^^^^^^^^^^
@@ -584,7 +584,7 @@ At the command line, add one or more of the post-installation options to the ``<
 
    .. code-block:: shell
 
-      ./rocm-installer.run target="/" rocm postrocm
+      bash rocm-installer.run target="/" rocm postrocm
 
    .. note::
 
@@ -604,14 +604,14 @@ At the command line, add one or more of the post-installation options to the ``<
 
    .. code-block:: shell
 
-      ./rocm-installer.run rocm gpu-access=user
+      bash rocm-installer.run rocm gpu-access=user
 
    In cases where a system administrator is installing ROCm for multiple users, they might want to enable
    GPU access permission for all users. For this case, set the ``<access_type>`` for the ``gpu-access`` option to ``all``:
 
    .. code-block:: shell
 
-         ./rocm-installer.run rocm gpu-access=all
+         bash rocm-installer.run rocm gpu-access=all
 
    .. note::
 
@@ -632,7 +632,7 @@ This option configures the ROCm Runfile Installer to uninstall a previous ROCm i
 
    .. code-block:: shell
 
-      ./rocm-installer.run uninstall
+      bash rocm-installer.run uninstall
 
    .. note::
 
@@ -642,7 +642,7 @@ This option configures the ROCm Runfile Installer to uninstall a previous ROCm i
 
       .. code-block:: shell
 
-         ./rocm-installer.run uninstall target="/home/amd/myrocm"
+         bash rocm-installer.run uninstall target="/home/amd/myrocm"
 
    .. note::
 
@@ -663,7 +663,7 @@ The ROCm Runfile Installer command line interface includes options for informati
 
    .. code-block:: shell
 
-      ./rocm-installer.run complist
+      bash rocm-installer.run complist
 
 *  ``prompt``
 
@@ -678,7 +678,7 @@ The ROCm Runfile Installer command line interface includes options for informati
 
    .. code-block:: shell
 
-      ./rocm-installer.run target="/" rocm prompt verbose
+      bash rocm-installer.run target="/" rocm prompt verbose
 
 .. _log-files:
 
