@@ -147,4 +147,8 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
 
     To apply all settings, reboot your system.
 
+.. note::
+
+    Quick Start enables GPU access for the current user only. To grant GPU access to all users, see :ref:`Configuring permissions for GPU access <group_permissions>`.
+
 After completing the installation, review the :doc:`post-install`. If you have issues with your installation, see :doc:`Troubleshooting <../reference/install-faq>`.
