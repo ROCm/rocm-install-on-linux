@@ -94,7 +94,7 @@ On the host system, run the ROCm Offline Installer Creator from the terminal com
 
 .. code-block:: shell
 
-   ./rocm-offline-creator_1.0.0-local.run <options>
+   bash ./rocm-offline-creator_1.0.0-local.run <options>
 
 The ``<options>`` parameter can either be left empty or set to these options:
 
@@ -114,7 +114,7 @@ This example demonstrates how to use the ``prompt`` option when running the Offl
 
 .. code-block:: shell
 
-   ./rocm-offline-creator_1.0.0-local.run prompt
+   bash ./rocm-offline-creator_1.0.0-local.run prompt
 
 The optional ``prompt`` parameter stops the Offline Installer Creator
 at critical checkpoints in the creation process and prompts the user. At these checkpoints, 
@@ -850,7 +850,7 @@ Offline Installer Creator with the ``config`` parameter.
 
 .. code-block:: shell 
 
-   ./rocm-offline-creator_1.0.0-local.run config=[path-to-config-file]
+   bash ./rocm-offline-creator_1.0.0-local.run config=[path-to-config-file]
 
 Set the ``config`` parameter to the absolute path to a configuration file. The file name must include 
 the ``.config`` file extension. The file follows the format defined by the Offline Installer Creator
