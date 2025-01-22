@@ -27,8 +27,6 @@ The ROCm JAX team provides prebuilt Docker images, which is the simplest way to 
       Additional Docker images are available at `ROCm JAX on Docker Hub <https://hub.docker.com/r/rocm/jax/tags>`_.
       These contain the latest ROCm version but might use an older version of JAX.
 
-   .. note::
-
 2. Once the image is downloaded, launch a container using the following command:
 
    .. code-block:: bash

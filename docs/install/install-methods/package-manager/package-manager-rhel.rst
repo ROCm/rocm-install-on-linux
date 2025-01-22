@@ -89,7 +89,7 @@ Install ROCm packages
 
     sudo dnf install rocm
 
-Complete the :doc:`../post-install`.
+Complete the :doc:`../../post-install`.
 
 .. _rhel-upgrade:
 
@@ -104,7 +104,7 @@ To upgrade an existing ROCm installation to a newer version, follow the steps in
     Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
     system reboot to take effect.
 
-.. _rhel-uninstall:
+.. _rhel-package-manager-uninstall:
 
 Uninstalling
 =====================================================
