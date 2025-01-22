@@ -226,6 +226,26 @@ instructions specific to your distribution to add the necessary repositories.
 
                 {% endfor %}
 
+    .. tab-item:: Azure Linux
+        :sync: azl-tab
+
+        Enable the the config repository for additional packages. In order to enable config, you may need to install ``dnf-plugin-config-manager`` first.
+
+        .. datatemplate:nodata::
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['azl_version_numbers'] %}
+
+                .. tab-item:: AZL {{ os_version }}
+
+                    .. code-block:: shell
+
+                        sudo tdnf install dnf-plugin-config-manager
+                        sudo curl -o /etc/yum.repos.d/azurelinux-extended.repo https://packages.microsoft.com/azurelinux/{{ os_version }}/prod/extended/x86_64/config.repo
+
+                {% endfor %}
+
 Kernel headers and development packages
 ================================================================
 
