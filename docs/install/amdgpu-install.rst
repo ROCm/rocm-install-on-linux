@@ -385,6 +385,9 @@ Remove ROCm and AMDGPU repositories
           sudo rm -rf /var/cache/dnf
           sudo dnf clean all
 
+          # Reboot
+          sudo reboot
+
     .. tab-item:: OL
 
         .. code-block:: bash
