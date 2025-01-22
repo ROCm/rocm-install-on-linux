@@ -105,7 +105,7 @@ Install ROCm packages
 
     sudo apt install rocm
 
-Complete the :doc:`../post-install`.
+Complete the :doc:`../../post-install`.
 
 
 .. _ubuntu-upgrade:
@@ -121,7 +121,7 @@ To upgrade an existing ROCm installation to a newer version, follow the steps in
     Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
     system reboot to take effect.
 
-.. _ubuntu-uninstall:
+.. _ubuntu-package-manager-uninstall:
 
 Uninstalling
 ================================================
