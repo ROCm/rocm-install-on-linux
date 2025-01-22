@@ -336,7 +336,7 @@ After uninstalling ROCm, remove the amdgpu-install package from system.
 
           sudo zypper remove amdgpu-install
 
-Remove ROCm and AMGPU repositories
+Remove ROCm and AMDGPU repositories
 =================================================
 
 .. tab-set::
