@@ -146,7 +146,7 @@ Remove ROCm and AMDGPU repositories
     # Remove the repositories
     sudo rm /etc/yum.repos.d/rocm.repo*
     sudo rm /etc/yum.repos.d/amdgpu.repo*
-    
+
     # Clear the cache and clean the system
     sudo rm -rf /var/cache/dnf
     sudo dnf clean all
