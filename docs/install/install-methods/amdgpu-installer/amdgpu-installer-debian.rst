@@ -8,7 +8,7 @@ Debian AMDGPU installer installation
 
 ``amdgpu-install`` is a tool that helps you install and update AMDGPU, ROCm, and ROCm components.
 
-.. warning::
+.. note::
 
   ROCm doesn't support integrated graphics. If your system has an
   AMD IGP installed, disable it in the BIOS prior to using ROCm. If the driver can

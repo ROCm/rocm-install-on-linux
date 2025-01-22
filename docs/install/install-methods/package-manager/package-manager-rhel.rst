@@ -7,7 +7,7 @@
 Red Hat Enterprise Linux native installation
 **********************************************************************************************
 
-.. important::
+.. caution::
 
     Ensure that the :doc:`/install/prerequisites` are met before installing.
 
