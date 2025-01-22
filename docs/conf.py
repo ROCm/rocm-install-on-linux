@@ -40,14 +40,17 @@ rhel_version_numbers = ['9.5', '9.4', '8.10']
 sles_version_numbers = ['15.6', '15.5']
 ol_release_version_numbers = ['8']
 ol_version_numbers = [('8.10')]
+azl_version_numbers = ['3.0']
 
 exclude_patterns = [
     'temp', 
-    'install/native-install/includes/rhel-multi-install.rst',
-    'install/native-install/includes/sles-multi-install.rst',
-    'install/native-install/includes/ubuntu-multi-install.rst'
-    'install/native-install/includes/debian-multi-install.rst'
-    'install/native-install/includes/ol-multi-install.rst'
+    'install/install-methods/includes/rhel-multi-install.rst',
+    'install/install-methods/includes/sles-multi-install.rst',
+    'install/install-methods/includes/ubuntu-multi-install.rst',
+    'install/install-methods/includes/debian-multi-install.rst',
+    'install/install-methods/includes/ol-multi-install.rst',
+    'install/install-methods/includes/azl-multi-install.rst',
+    'install/install-methods/includes/amdgpu-installer-common.rst'
 ]
 
 external_toc_path = "./sphinx/_toc.yml"
@@ -86,7 +89,8 @@ html_context = {
     "rhel_release_version_numbers" : rhel_release_version_numbers,
     "rhel_version_numbers" : rhel_version_numbers,
     "ol_release_version_numbers" : ol_release_version_numbers,
-    "ol_version_numbers" : ol_version_numbers
+    "ol_version_numbers" : ol_version_numbers,
+    "azl_version_numbers": azl_version_numbers
 }
 
 footnote_backlinks = False
