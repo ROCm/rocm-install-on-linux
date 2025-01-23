@@ -121,6 +121,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
                        sudo zypper --gpg-auto-import-keys refresh
                        sudo zypper install amdgpu-dkms rocm
+
                 {% endfor %}
 
 .. important::

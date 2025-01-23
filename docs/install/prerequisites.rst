@@ -188,6 +188,7 @@ instructions specific to your distribution to add the necessary repositories.
                         sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
                         sudo zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo # Once SLE_15_SP6 is created, change the static folder "SLE_15_SP5" to dynamic
 
+
                 {% endfor %}
 
 Kernel headers and development packages
@@ -211,6 +212,7 @@ To install for the currently active kernel run the command corresponding to your
 
             sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
             sudo apt install python3-setuptools python3-wheel
+
 
     .. tab-item:: Red Hat Enterprise Linux
         :sync: rhel-tab
@@ -249,6 +251,7 @@ To install for the currently active kernel run the command corresponding to your
 
             sudo zypper install kernel-default-devel
             sudo zypper install python3-setuptools python3-wheel
+
 
 .. _group_permissions:
 
