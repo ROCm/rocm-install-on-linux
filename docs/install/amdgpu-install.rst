@@ -248,21 +248,8 @@ After uninstalling ROCm, remove the amdgpu-install package from system.
 
           sudo apt purge amdgpu-install
           sudo apt autoremove
-  
-    .. tab-item:: Debian
-
-        .. code-block:: bash
-
-          sudo apt purge amdgpu-install
-          sudo apt autoremove
     
     .. tab-item:: RHEL
-
-        .. code-block:: bash
-
-          sudo dnf remove amdgpu-install
-
-    .. tab-item:: OL
 
         .. code-block:: bash
 
