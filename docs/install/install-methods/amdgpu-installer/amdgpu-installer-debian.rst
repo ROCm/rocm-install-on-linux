@@ -87,12 +87,12 @@ Remove ROCm and AMDGPU repositories
     sudo rm /etc/apt/sources.list.d/amdgpu.list
     sudo rm /etc/apt/sources.list.d/rocm.list
     
-    # Clear cache and clean system
+    # Clear the cache and clean the system
     sudo rm -rf /var/cache/apt/*
     sudo apt clean all
     sudo apt update
     
-    # Reboot
+    # Restart the system
     sudo reboot
 
 Additional options

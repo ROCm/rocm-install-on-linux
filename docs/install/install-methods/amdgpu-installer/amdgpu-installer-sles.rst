@@ -83,11 +83,11 @@ Remove ROCm and AMDGPU repositories
     sudo rm /etc/zypp/repos.d/rocm.repo*
     sudo rm /etc/zypp/repos.d/amdgpu.repo*
     
-    # Clear cache and clean system
+    # Clear the cache and clean the system
     sudo zypper clean --all
     sudo zypper refresh
     
-    # Reboot
+    # Restart the system
     sudo reboot
 
 Additional options

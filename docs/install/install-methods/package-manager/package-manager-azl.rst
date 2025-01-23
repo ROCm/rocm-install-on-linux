@@ -115,5 +115,5 @@ Remove ROCm and AMDGPU repositories
     sudo rm -rf /var/cache/tdnf
     sudo tdnf clean all
 
-    # Restart the system.
+    # Restart the system
     sudo reboot

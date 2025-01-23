@@ -136,12 +136,12 @@ Remove ROCm and AMDGPU repositories
     :substitutions:
 
     # Remove the repositories
-    sudo zypper removerepo "ROCm-6.3.2"
+    sudo zypper removerepo "ROCm-|rocm_version|"
     sudo zypper removerepo "amdgpu"
     
     # Clear cache and clean system
     sudo zypper clean --all
     sudo zypper refresh
     
-    # Reboot
+    # Restart the system
     sudo reboot
