@@ -41,6 +41,7 @@ Register kernel-mode driver
                 EOF
 
                 sudo zypper ref
+
         {% endfor %}
 
 Register ROCm packages
@@ -60,6 +61,7 @@ Register ROCm packages
 
     sudo zypper ref
 
+
 .. _sles-install:
 
 Installing
@@ -72,6 +74,7 @@ Install kernel driver
 
     sudo zypper --gpg-auto-import-keys install amdgpu-dkms
     sudo reboot
+
 
 Install ROCm packages
 --------------------------------------------------------------------------------------
@@ -151,3 +154,4 @@ Remove ROCm and AMDGPU repositories
 
     # Restart the system.
     sudo reboot
+
