@@ -127,7 +127,7 @@ Uninstall kernel-mode driver
 
 .. code-block:: bash
 
-    sudo zypper remove --clean-deps amdgpu-dkms
+    sudo zypper remove amdgpu-dkms amdgpu-core
 
 Remove ROCm and AMDGPU repositories
 ---------------------------------------------------------------------------
@@ -135,19 +135,13 @@ Remove ROCm and AMDGPU repositories
 .. code-block:: bash
     :substitutions:
 
-    # Remove the repositories.
-    # sudo zypper removerepo <rocm*/amdgpu>
-    #
-    # The name of the repositories can be listed with:
-    sudo zypper repos
-
-    # Then remove the 'ROCm' and 'amdgpu' repositories.
-    # For example:
-    sudo zypper removerepo ROCm-|rocm_version|
-    sudo zypper removerepo amdgpu
-
-    # Clear the cache and clean the system.
+    # Remove the repositories
+    sudo zypper removerepo "ROCm-6.3.2"
+    sudo zypper removerepo "amdgpu"
+    
+    # Clear cache and clean system
     sudo zypper clean --all
-
-    # Restart the system.
+    sudo zypper refresh
+    
+    # Reboot
     sudo reboot

@@ -66,6 +66,31 @@ To uninstall all ROCm packages and the kernel-mode driver, use the following com
 
     sudo amdgpu-install --uninstall --rocmrelease=all
 
+Uninstalling amdgpu-install
+=================================================
+
+After uninstalling ROCm, remove the amdgpu-install package from system.
+
+.. code-block:: bash
+
+    sudo dnf remove amdgpu-install
+
+Remove ROCm and AMDGPU repositories
+=================================================
+
+.. code-block:: bash
+
+    # Remove the repositories
+    sudo rm /etc/yum.repos.d/rocm.repo*
+    sudo rm /etc/yum.repos.d/amdgpu.repo*
+    
+    # Clear the cache and clean the system
+    sudo rm -rf /var/cache/dnf
+    sudo dnf clean all
+
+    # Reboot
+    sudo reboot
+
 Additional options
 =================================================
 

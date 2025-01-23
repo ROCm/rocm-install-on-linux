@@ -144,7 +144,7 @@ Uninstall ROCm packages
 .. code-block:: bash
     :substitutions:
 
-    sudo apt autoremove rocm-core amdgpu-core
+    sudo apt autoremove rocm-core
     # Or for version specific packages:
     sudo apt autoremove rocm-core|rocm_version|
 

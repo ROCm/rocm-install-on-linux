@@ -78,6 +78,23 @@ After uninstalling ROCm, remove the amdgpu-install package from system.
     sudo apt purge amdgpu-install
     sudo apt autoremove
 
+Remove ROCm and AMDGPU repositories
+=================================================
+
+.. code-block:: bash
+
+    # Remove the repositories
+    sudo rm /etc/apt/sources.list.d/amdgpu.list
+    sudo rm /etc/apt/sources.list.d/rocm.list
+    
+    # Clear cache and clean system
+    sudo rm -rf /var/cache/apt/*
+    sudo apt clean all
+    sudo apt update
+    
+    # Reboot
+    sudo reboot
+
 Additional options
 =================================================
 
