@@ -40,7 +40,7 @@ Register kernel-mode driver
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
                 EOF
 
-                sudo zypper ref
+                sudo zypper refresh
 
         {% endfor %}
 
@@ -59,7 +59,7 @@ Register ROCm packages
     gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
     EOF
 
-    sudo zypper ref
+    sudo zypper refresh
 
 
 .. _sles-install:
