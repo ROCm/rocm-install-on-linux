@@ -235,6 +235,96 @@ To uninstall all ROCm packages and the kernel-mode driver, use the following com
 
     sudo amdgpu-install --uninstall --rocmrelease=all
 
+Uninstalling amdgpu-install
+=================================================
+
+After uninstalling ROCm, remove the amdgpu-install package from system.
+
+.. tab-set::
+
+    .. tab-item:: Ubuntu
+
+        .. code-block:: bash
+
+          sudo apt purge amdgpu-install
+          sudo apt autoremove
+  
+    .. tab-item:: Debian
+
+        .. code-block:: bash
+
+          sudo apt purge amdgpu-install
+          sudo apt autoremove
+    
+    .. tab-item:: RHEL
+
+        .. code-block:: bash
+
+          sudo dnf remove amdgpu-install
+
+    .. tab-item:: OL
+
+        .. code-block:: bash
+
+          sudo dnf remove amdgpu-install
+
+    .. tab-item:: SLES
+
+        .. code-block:: bash
+
+          sudo zypper remove amdgpu-install
+
+Remove ROCm and AMDGPU repositories
+=================================================
+
+.. tab-set::
+
+    .. tab-item:: Ubuntu
+
+        .. code-block:: bash
+
+          # Remove the repositories
+          sudo rm /etc/apt/sources.list.d/amdgpu.list
+          sudo rm /etc/apt/sources.list.d/rocm.list
+          
+          # Clear cache and clean system
+          sudo rm -rf /var/cache/apt/*
+          sudo apt clean all
+          sudo apt update
+          
+          # Restart the system
+          sudo reboot
+
+    .. tab-item:: RHEL
+
+        .. code-block:: bash
+
+          # Remove the repositories
+          sudo rm /etc/yum.repos.d/rocm.repo*
+          sudo rm /etc/yum.repos.d/amdgpu.repo*
+          
+          # Clear the cache and clean the system
+          sudo rm -rf /var/cache/dnf
+          sudo dnf clean all
+
+          # Restart the system
+          sudo reboot
+
+    .. tab-item:: SLES
+
+        .. code-block:: bash
+
+          # Remove the repository rpmsave files
+          sudo rm /etc/zypp/repos.d/rocm.repo*
+          sudo rm /etc/zypp/repos.d/amdgpu.repo*
+          
+          # Clear cache and clean system
+          sudo zypper clean --all
+          sudo zypper refresh
+          
+          # Restart the system
+          sudo reboot
+
 Additional options
 =================================================
 
