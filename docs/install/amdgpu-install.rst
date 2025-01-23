@@ -354,7 +354,7 @@ Remove ROCm and AMDGPU repositories
           sudo apt clean all
           sudo apt update
           
-          # Reboot
+          # Restart the system
           sudo reboot
   
     .. tab-item:: Debian
@@ -370,7 +370,7 @@ Remove ROCm and AMDGPU repositories
           sudo apt clean all
           sudo apt update
           
-          # Reboot
+          # Restart the system
           sudo reboot
     
     .. tab-item:: RHEL
@@ -385,7 +385,7 @@ Remove ROCm and AMDGPU repositories
           sudo rm -rf /var/cache/dnf
           sudo dnf clean all
 
-          # Reboot
+          # Restart the system
           sudo reboot
 
     .. tab-item:: OL
@@ -415,7 +415,7 @@ Remove ROCm and AMDGPU repositories
           sudo zypper clean --all
           sudo zypper refresh
           
-          # Reboot
+          # Restart the system
           sudo reboot
 
 Additional options
