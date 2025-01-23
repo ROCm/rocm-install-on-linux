@@ -91,6 +91,85 @@ your operating system to ensure you're able to download and install packages.
 
         More details about `registering for SLES <https://www.suse.com/support/kb/doc/?id=000018564>`_
 
+  .. tab-item:: Azure Linux
+        :sync: azl-tab
+
+        There is no registration required for Azure Linux.
+
+.. _update-enterprise-linux:
+
+Update your Enterprise Linux
+==========================================================
+
+If you are using Red Hat Enterprise Linux (RHEL) or SUSE Linux Enterprise Servers (SLES), or Oracle Linux, 
+it is recommended that you update your operating system to the latest packages from the Linux distribution.
+This is a requirement for newer hardware on older versions of RHEL, SLES or OL.
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+
+        .. tab-item:: Ubuntu
+            :sync: ubuntu-tab
+
+            There is no update required for Ubuntu.
+        
+        .. tab-item:: Debian
+            :sync: debian-tab
+
+            There is no update required for Debian.
+
+        .. tab-item:: Red Hat Enterprise Linux
+            :sync: rhel-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['rhel_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf update --releasever={{ os_version }} --exclude=\*release\*
+                {% endfor %}
+
+        .. tab-item:: Oracle Linux
+            :sync: ol-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['ol_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf update --releasever={{ os_version }} --exclude=\*release\*
+                {% endfor %}
+
+        .. tab-item:: SUSE Linux Enterprise Server
+            :sync: sle-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['sles_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+
+                        sudo zypper update
+                {% endfor %}
+
+        .. tab-item:: Azure Linux
+            :sync: azl-tab
+
+            There is no update required for Azure Linux.
+
+.. important::
+
+    To apply all settings, reboot your system.
 
 Additional package repositories
 ==========================================================

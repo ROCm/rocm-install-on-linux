@@ -16,7 +16,12 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
 
 .. note::
 
-    If you’re using ROCm with AMD Radeon or Radeon Pro GPUs for graphics workloads, see the `Use ROCm on Radeon GPU <https://rocm.docs.amd.com/projects/radeon/en/latest/docs/install/native_linux/install-radeon.html>`_ documentation for installation instructions . 
+    If you’re using ROCm with AMD Radeon or Radeon Pro GPUs for graphics workloads, see the `Use ROCm on Radeon GPU <https://rocm.docs.amd.com/projects/radeon/en/latest/docs/install/native_linux/install-radeon.html>`_ documentation for installation instructions .
+
+.. note::
+
+    Before installing ROCm on Red Hat Enterprise Linux, SUSE Linux Enterprise Server or Oracle Linux, 
+    it is recommended that you first :ref:`update the OS installation <update-enterprise-linux>`.
 
 .. datatemplate:nodata::
 
@@ -106,10 +111,9 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo zypper update
-                       SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
-                       SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
-                       SUSEConnect -p PackageHub/{{ os_version }}/x86_64
+                       sudo SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
+                       sudo SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
+                       sudo SUSEConnect -p PackageHub/{{ os_version }}/x86_64
                        sudo zypper install zypper
                        sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
                        sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
