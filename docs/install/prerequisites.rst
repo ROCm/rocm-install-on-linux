@@ -277,6 +277,7 @@ instructions specific to your distribution to add the necessary repositories.
                         sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
                         sudo zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo
 
+
                 {% endfor %}
 
     .. tab-item:: Azure Linux
@@ -328,6 +329,7 @@ To install for the currently active kernel run the command corresponding to your
 
             sudo apt install "linux-headers-$(uname -r)"
             sudo apt install -y python3-setuptools python3-wheel
+
 
     .. tab-item:: Red Hat Enterprise Linux
         :sync: rhel-tab
