@@ -21,7 +21,7 @@ To install TensorFlow for ROCm, you have the following options:
 
 * :ref:`install-tensorflow-wheels`
 
-For hardware, software, and third-party framework compatibility between ROCm and TensorFlow, refer to:
+For hardware, software, and third-party framework compatibility between ROCm and TensorFlow, see the following resources:
 
 * :ref:`system-requirements`
 

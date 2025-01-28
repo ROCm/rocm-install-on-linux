@@ -27,7 +27,7 @@ To install PyTorch for ROCm, you have the following options:
 
    <br/>
 
-For hardware, software, and third-party framework compatibility between ROCm and PyTorch, refer to:
+For hardware, software, and third-party framework compatibility between ROCm and PyTorch, see the following resources:
 
 * :ref:`system-requirements`
 
