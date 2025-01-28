@@ -209,6 +209,11 @@ ROCm packages in Spack
      - 5.5.0
      - 6.3.1
 
+   * - Omnitrace
+     - ``omnitrace``
+     - rocm-6.2.0
+     - rocm-6.3.0
+
    * - OpenCL
      - ``rocm-opencl``
      - 5.5.0
@@ -393,6 +398,11 @@ ROCm packages in Spack
      - ``rocm-clang-ocl``
      - 5.5.0
      - 6.1.2 (final)
+
+   * - mlirmiopen
+     - ``mlirmiopen``
+     - 5.3.0
+     - 5.4.0 (deprecated)
 
    * - MIOpen (GEMM)
      - ``miopengemm``
