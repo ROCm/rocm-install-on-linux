@@ -80,8 +80,6 @@ subtrees:
       title: Package manager integration
     - file: reference/system-requirements
       title: System requirements
-    - file: reference/3rd-party-support-matrix
-      title: Third-party support
     - file: reference/install-faq
       title: Troubleshooting
     - file: reference/user-kernel-space-compat-matrix
