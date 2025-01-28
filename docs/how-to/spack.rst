@@ -209,6 +209,11 @@ ROCm packages in Spack
      - 5.5.0
      - 6.3.1
 
+   * - Omnitrace
+     - ``omnitrace``
+     - rocm-6.2.0
+     - rocm-6.3.0
+
    * - OpenCL
      - ``rocm-opencl``
      - 5.5.0
@@ -345,7 +350,7 @@ ROCm packages in Spack
      - 6.3.1
 
    * - rocSOLVER
-     - ``rocalution``
+     - ``rocsolver``
      - 5.5.0
      - 6.3.1
 
@@ -393,6 +398,11 @@ ROCm packages in Spack
      - ``rocm-clang-ocl``
      - 5.5.0
      - 6.1.2 (final)
+
+   * - mlirmiopen
+     - ``mlirmiopen``
+     - 5.3.0
+     - 5.4.0 (deprecated)
 
    * - MIOpen (GEMM)
      - ``miopengemm``
@@ -581,9 +591,9 @@ You can create an environment with all the required components of your version.
       specs:
       - matrix:
       - ['%gcc@8.5.0\^cmake@3.19.7']
-      - [rocm-cmake@6.3.1, rocm-dbgapi@6.3.1, rocm-debug-agent@6.3.1, rocm-gdb@6.3.1,
-        rocminfo@6.3.1, rocm-opencl@6.3.1, rocm-smi-lib@6.3.1, rocm-tensile@6.3.1, rocm-validation-suite@6.3.1,
-        rocprim@6.3.1, rocprofiler-dev@6.3.1, rocrand@6.3.1, rocsolver@6.3.1, rocsparse@6.3.1,
+      - [rocm-cmake@6.3.1, rocm-dbgapi@6.3.1, rocm-debug-agent@6.3.1, rocm-gdb@6.3.1,
+        rocminfo@6.3.1, rocm-opencl@6.3.1, rocm-smi-lib@6.3.1, rocm-tensile@6.3.1, rocm-validation-suite@6.3.1,
+        rocprim@6.3.1, rocprofiler-dev@6.3.1, rocrand@6.3.1, rocsolver@6.3.1, rocsparse@6.3.1,
         rocthrust@6.3.1, roctracer-dev@6.3.1]
       view: true
 
