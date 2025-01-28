@@ -345,7 +345,7 @@ ROCm packages in Spack
      - 6.3.1
 
    * - rocSOLVER
-     - ``rocalution``
+     - ``rocsolver``
      - 5.5.0
      - 6.3.1
 
