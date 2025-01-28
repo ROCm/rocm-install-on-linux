@@ -8,6 +8,12 @@ JAX on ROCm
 
 This directory provides setup instructions and necessary files to build, test, and run JAX with ROCm support in a Docker environment, suitable for both runtime and CI workflows. Explore the following methods to use or build JAX on ROCm.
 
+For hardware, software, and third-party framework compatibility between ROCm and PyTorch, refer to:
+
+* :ref:`system-requirements`
+
+* :doc:`rocm:compatibility/ml-compatibility/jax-compatibility`
+
 Using a prebuilt Docker image
 ===========================================
 

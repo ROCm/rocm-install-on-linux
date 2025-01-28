@@ -30,7 +30,8 @@ To install PyTorch for ROCm, you have the following options:
 For hardware, software, and third-party framework compatibility between ROCm and PyTorch, refer to:
 
 * :ref:`system-requirements`
-* :ref:`3rd-party-support-matrix`
+
+* :doc:`rocm:compatibility/ml-compatibility/pytorch-compatibility`
 
 .. _using-docker-with-pytorch-pre-installed:
 
