@@ -118,7 +118,6 @@ ROCm supports virtualization for select GPUs only as shown below.
     :header: "Hypervisor", "Version", "GPU", "Validated guest OS (kernel)"
 
     "VMWare", "ESXi 8.0.3", "MI210", "Ubuntu 22.04.5 (6.8 [HWE]), |br| SLES 15 SP5 (5.14.21), |br| RHEL 9.4 (5.14.0)"
-    "VMWare", "ESXi 7.0.3", "MI210", "Ubuntu 22.04.5 (6.8 [HWE]), |br| RHEL 9.4 (5.14.0)"
 
 CPU support
 =============================================
