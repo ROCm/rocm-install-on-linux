@@ -101,6 +101,7 @@ AMD ROCm software supports the following Linux distributions.
     "SLES 15 SP5", "5.14.21", "✅"
     "Oracle Linux 8.10", "5.15.0", "✅ [#mi300x]_"
     "Debian 12", "6.1", "✅ [#mi300x]_"
+    "Azure Linux 3.0", "6.6", "✅ [#mi300x]_"
 
 .. note::
 
@@ -117,7 +118,6 @@ ROCm supports virtualization for select GPUs only as shown below.
     :header: "Hypervisor", "Version", "GPU", "Validated guest OS (kernel)"
 
     "VMWare", "ESXi 8.0.3", "MI210", "Ubuntu 22.04.5 (6.8 [HWE]), |br| SLES 15 SP5 (5.14.21), |br| RHEL 9.4 (5.14.0)"
-    "VMWare", "ESXi 7.0.3", "MI210", "Ubuntu 22.04.5 (6.8 [HWE]), |br| RHEL 9.4 (5.14.0)"
 
 CPU support
 =============================================
@@ -128,4 +128,4 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 .. rubric:: Footnotes
 
 .. [#ub2204] AMD Instinct MI325X is supported only on Ubuntu 22.04.5 [5.15 GA].
-.. [#mi300x] Oracle Linux 8.10 and Debian 12 are supported only on AMD Instinct MI300X.
+.. [#mi300x] Oracle Linux 8.10, Debian 12, and Azure Linux 3.0 are supported only on AMD Instinct MI300X.

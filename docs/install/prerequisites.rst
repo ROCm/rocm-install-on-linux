@@ -96,6 +96,85 @@ your operating system to ensure you're able to download and install packages.
 
         More details about `registering for SLES <https://www.suse.com/support/kb/doc/?id=000018564>`_
 
+  .. tab-item:: Azure Linux
+        :sync: azl-tab
+
+        There is no registration required for Azure Linux.
+
+.. _update-enterprise-linux:
+
+Update your Enterprise Linux
+==========================================================
+
+If you are using Red Hat Enterprise Linux (RHEL) or SUSE Linux Enterprise Servers (SLES), or Oracle Linux, 
+it is recommended that you update your operating system to the latest packages from the Linux distribution.
+This is a requirement for newer hardware on older versions of RHEL, SLES or OL.
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+
+        .. tab-item:: Ubuntu
+            :sync: ubuntu-tab
+
+            There is no update required for Ubuntu.
+        
+        .. tab-item:: Debian
+            :sync: debian-tab
+
+            There is no update required for Debian.
+
+        .. tab-item:: Red Hat Enterprise Linux
+            :sync: rhel-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['rhel_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf update --releasever={{ os_version }} --exclude=\*release\*
+                {% endfor %}
+
+        .. tab-item:: Oracle Linux
+            :sync: ol-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['ol_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf update --releasever={{ os_version }} --exclude=\*release\*
+                {% endfor %}
+
+        .. tab-item:: SUSE Linux Enterprise Server
+            :sync: sle-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['sles_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+
+                        sudo zypper update
+                {% endfor %}
+
+        .. tab-item:: Azure Linux
+            :sync: azl-tab
+
+            There is no update required for Azure Linux.
+
+.. important::
+
+    To apply all settings, reboot your system.
 
 Additional package repositories
 ==========================================================
@@ -201,6 +280,26 @@ instructions specific to your distribution to add the necessary repositories.
 
                 {% endfor %}
 
+    .. tab-item:: Azure Linux
+        :sync: azl-tab
+
+        Enable the the config repository for additional packages. In order to enable config, you may need to install ``dnf-plugin-config-manager`` first.
+
+        .. datatemplate:nodata::
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['azl_version_numbers'] %}
+
+                .. tab-item:: AZL {{ os_version }}
+
+                    .. code-block:: shell
+
+                        sudo tdnf install dnf-plugin-config-manager
+                        sudo curl -o /etc/yum.repos.d/azurelinux-extended.repo https://packages.microsoft.com/azurelinux/{{ os_version }}/prod/extended/x86_64/config.repo
+
+                {% endfor %}
+
 Kernel headers and development packages
 ================================================================
 
@@ -218,24 +317,10 @@ To install for the currently active kernel run the command corresponding to your
     .. tab-item:: Ubuntu
         :sync: ubuntu-tab
 
-        .. datatemplate:nodata::
+        .. code-block:: shell
 
-            .. tab-set::
-
-              {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers']  %}
-
-                  .. tab-item:: Ubuntu {{ os_version }}
-
-                    .. code-block:: shell
-                        
-                        sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
-                        {% if os_version == '24.04' -%}
-                        sudo apt install python3-setuptools python3-wheel libpython3.12
-                        {%- else -%}
-                        sudo apt install python3-setuptools python3-wheel libpython3.10
-                        {%- endif %}
-
-              {% endfor %}
+            sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
+            sudo apt install python3-setuptools python3-wheel
 
     .. tab-item:: Debian
         :sync: debian-tab
@@ -243,7 +328,7 @@ To install for the currently active kernel run the command corresponding to your
         .. code-block:: shell
 
             sudo apt install "linux-headers-$(uname -r)"
-            sudo apt install -y python3-setuptools python3-wheel libpython3.11
+            sudo apt install -y python3-setuptools python3-wheel
 
 
     .. tab-item:: Red Hat Enterprise Linux
@@ -284,6 +369,13 @@ To install for the currently active kernel run the command corresponding to your
             sudo zypper install kernel-default-devel
             sudo zypper install python3-setuptools python3-wheel
 
+    .. tab-item:: Azure Linux
+        :sync: azl-tab
+
+        .. code-block:: shell
+
+            sudo tdnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
+            sudo tdnf install python3-setuptools python3-wheel
 
 .. _group_permissions:
 

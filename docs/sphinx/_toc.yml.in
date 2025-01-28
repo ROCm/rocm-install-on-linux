@@ -17,24 +17,40 @@ subtrees:
           title: Installation methods
           subtrees:
           - entries:
-            - file: install/native-install/index
+            - file: install/install-methods/package-manager-index
               title: Package manager
               subtrees:
               - entries:
-                - file: install/native-install/ubuntu
+                - file: install/install-methods/package-manager/package-manager-ubuntu
                   title: Ubuntu
-                - file: install/native-install/debian
+                - file: install/install-methods/package-manager/package-manager-debian
                   title: Debian
-                - file: install/native-install/rhel
-                  title: RHEL
-                - file: install/native-install/ol
-                  title: OL
-                - file: install/native-install/sles
-                  title: SLES
-            - file: install/amdgpu-install
+                - file: install/install-methods/package-manager/package-manager-rhel
+                  title: Red Hat Enterprise Linux
+                - file: install/install-methods/package-manager/package-manager-ol
+                  title: Oracle Linux
+                - file: install/install-methods/package-manager/package-manager-sles
+                  title: SUSE Linux Enterprise Server
+                - file: install/install-methods/package-manager/package-manager-azl
+                  title: Azure Linux
+            - file: install/install-methods/amdgpu-installer-index
               title: AMDGPU installer
-            - file: install/native-install/multi-version-install
-              title: Multi version install
+              subtrees:
+              - entries:
+                - file: install/install-methods/amdgpu-installer/amdgpu-installer-ubuntu
+                  title: Ubuntu
+                - file: install/install-methods/amdgpu-installer/amdgpu-installer-debian
+                  title: Debian
+                - file: install/install-methods/amdgpu-installer/amdgpu-installer-rhel
+                  title: Red Hat Enterprise Linux
+                - file: install/install-methods/amdgpu-installer/amdgpu-installer-ol
+                  title: Oracle Linux
+                - file: install/install-methods/amdgpu-installer/amdgpu-installer-sles
+                  title: SUSE Linux Enterprise Server
+                - file: install/install-methods/amdgpu-installer/amdgpu-installer-azl
+                  title: Azure Linux
+            - file: install/install-methods/multi-version-install
+              title: Multi-version install
             - file: install/rocm-offline-installer
               title: ROCm Offline Installer Creator
             - file: install/rocm-runfile-installer
@@ -64,8 +80,6 @@ subtrees:
       title: Package manager integration
     - file: reference/system-requirements
       title: System requirements
-    - file: reference/3rd-party-support-matrix
-      title: Third-party support
     - file: reference/install-faq
       title: Troubleshooting
     - file: reference/user-kernel-space-compat-matrix

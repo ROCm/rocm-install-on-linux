@@ -16,7 +16,12 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
 
 .. note::
 
-    If you’re using ROCm with AMD Radeon or Radeon Pro GPUs for graphics workloads, see the `Use ROCm on Radeon GPU <https://rocm.docs.amd.com/projects/radeon/en/latest/docs/install/native_linux/install-radeon.html>`_ documentation for installation instructions . 
+    If you’re using ROCm with AMD Radeon or Radeon Pro GPUs for graphics workloads, see the `Use ROCm on Radeon GPU <https://rocm.docs.amd.com/projects/radeon/en/latest/docs/install/native_linux/install-radeon.html>`_ documentation for installation instructions .
+
+.. note::
+
+    Before installing ROCm on Red Hat Enterprise Linux, SUSE Linux Enterprise Server or Oracle Linux, 
+    it is recommended that you first :ref:`update the OS installation <update-enterprise-linux>`.
 
 .. datatemplate:nodata::
 
@@ -34,11 +39,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
 
                        sudo apt update
                        sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
-                       {% if os_version == '24.04' -%}
-                       sudo apt install python3-setuptools python3-wheel libpython3.12
-                       {%- else -%}
-                       sudo apt install python3-setuptools python3-wheel libpython3.10
-                       {%- endif %}
+                       sudo apt install python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
@@ -58,7 +59,7 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
 
                        sudo apt update
                        sudo apt install "linux-headers-$(uname -r)"
-                       sudo apt install -y python3-setuptools python3-wheel libpython3.11
+                       sudo apt install -y python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
@@ -130,10 +131,9 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo zypper update
-                       SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
-                       SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
-                       SUSEConnect -p PackageHub/{{ os_version }}/x86_64
+                       sudo SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
+                       sudo SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
+                       sudo SUSEConnect -p PackageHub/{{ os_version }}/x86_64
                        sudo zypper install zypper
                        sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
                        sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
@@ -148,8 +148,37 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
 
                 {% endfor %}
 
+        .. tab-item:: Azure Linux
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['azl_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo tdnf install dnf-plugin-config-manager
+                       sudo curl -o /etc/yum.repos.d/azurelinux-extended.repo https://packages.microsoft.com/azurelinux/{{ os_version }}/prod/extended/x86_64/config.repo
+                       sudo tdnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
+                       sudo tdnf install python3-setuptools python3-wheel
+                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
+                       sudo tdnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/azurelinux/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.azl{{ os_major }}.noarch.rpm --nogpgcheck
+                       sudo tdnf install azurelinux-repos-amd
+                       sudo tdnf repolist --refresh
+                       sudo tdnf install amdgpu
+                       sudo modprobe amdgpu
+                       sudo tdnf clean all
+                       sudo tdnf install rocm
+                {% endfor %}
+
 .. important::
 
     To apply all settings, reboot your system.
+
+.. note::
+
+    Quick Start enables GPU access for the current user only. To grant GPU access to all users, see :ref:`Configuring permissions for GPU access <group_permissions>`.
 
 After completing the installation, review the :doc:`post-install`. If you have issues with your installation, see :doc:`Troubleshooting <../reference/install-faq>`.
