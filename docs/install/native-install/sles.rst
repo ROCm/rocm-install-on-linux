@@ -40,7 +40,8 @@ Register kernel-mode driver
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
                 EOF
 
-                sudo zypper ref
+                sudo zypper refresh
+
         {% endfor %}
 
 Register ROCm packages
@@ -58,7 +59,8 @@ Register ROCm packages
     gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
     EOF
 
-    sudo zypper ref
+    sudo zypper refresh
+
 
 .. _sles-install:
 
@@ -72,6 +74,7 @@ Install kernel driver
 
     sudo zypper --gpg-auto-import-keys install amdgpu-dkms
     sudo reboot
+
 
 Install ROCm packages
 --------------------------------------------------------------------------------------
@@ -151,3 +154,4 @@ Remove ROCm and AMDGPU repositories
 
     # Restart the system.
     sudo reboot
+

@@ -23,6 +23,7 @@
                   gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
                   EOF
                   sudo zypper ref
+
           {% endfor %}
 
 .. _sles-multi-register-rocm:
@@ -50,6 +51,7 @@
                  EOF
                  done
                  sudo zypper ref
+
          {% endfor %}
 
 3. Install ROCm.
@@ -69,6 +71,7 @@
          for ver in |rocm_multi_versions_package_versions|; do
              sudo zypper --gpg-auto-import-keys install rocm$ver
          done
+
 
 4. Complete the :doc:`../post-install`.
 
