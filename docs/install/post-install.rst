@@ -79,15 +79,49 @@ After installing ROCm, follow these steps to finalize and validate the installat
 
 3. Verify the kernel-mode driver installation.
 
-   .. code-block:: bash
+   .. tab-set::
 
-       dkms status
+       .. tab-item:: Ubuntu
+
+           .. code-block:: bash
+
+               dkms status
+
+       .. tab-item:: Debian
+
+           .. code-block:: bash
+
+               dkms status
+
+       .. tab-item:: RHEL
+
+           .. code-block:: bash
+
+               dkms status
+
+       .. tab-item:: OL
+
+           .. code-block:: bash
+
+               dkms status
+
+       .. tab-item:: SLES
+
+           .. code-block:: bash
+
+               dkms status
+
+       .. tab-item:: AZL
+
+           .. code-block:: bash
+
+               modinfo amdgpu | grep -w "version:"
 
 4. Export LD_LIBRARY_PATH as needed
 
    .. important::
 
-      This step is required for version specific or :doc:`multi-version installations <./native-install/multi-version-install>`. 
+      This step is required for version specific or :doc:`multi-version installations <./install-methods/multi-version-install>`. 
 
    .. code-block:: shell
       :substitutions:
@@ -134,3 +168,9 @@ After installing ROCm, follow these steps to finalize and validate the installat
            .. code-block:: bash
 
                zypper search --installed-only
+
+       .. tab-item:: AZL
+
+           .. code-block:: bash
+
+               tdnf list installed

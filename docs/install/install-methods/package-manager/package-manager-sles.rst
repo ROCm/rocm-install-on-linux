@@ -7,7 +7,7 @@
 SUSE Linux Enterprise native installation
 *********************************************************************************************
 
-.. important::
+.. caution::
 
     Ensure that the :doc:`/install/prerequisites` are met before installing.
 
@@ -83,7 +83,7 @@ Install ROCm packages
 
     sudo zypper --gpg-auto-import-keys install rocm
 
-Complete the :doc:`../post-install`.
+Complete the :doc:`../../post-install`.
 
 .. _sles-upgrade:
 
@@ -98,7 +98,7 @@ To upgrade an existing ROCm installation to a newer version, follow the steps in
     Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
     system reboot to take effect.
 
-.. _sles-uninstall:
+.. _sles-package-manager-uninstall:
 
 Uninstalling
 ================================================
@@ -130,7 +130,7 @@ Uninstall kernel-mode driver
 
 .. code-block:: bash
 
-    sudo zypper remove --clean-deps amdgpu-dkms
+    sudo zypper remove amdgpu-dkms amdgpu-core
 
 Remove ROCm and AMDGPU repositories
 ---------------------------------------------------------------------------
@@ -138,20 +138,14 @@ Remove ROCm and AMDGPU repositories
 .. code-block:: bash
     :substitutions:
 
-    # Remove the repositories.
-    # sudo zypper removerepo <rocm*/amdgpu>
-    #
-    # The name of the repositories can be listed with:
-    sudo zypper repos
-
-    # Then remove the 'ROCm' and 'amdgpu' repositories.
-    # For example:
-    sudo zypper removerepo ROCm-|rocm_version|
-    sudo zypper removerepo amdgpu
-
-    # Clear the cache and clean the system.
+    # Remove the repositories
+    sudo zypper removerepo "ROCm-|rocm_version|"
+    sudo zypper removerepo "amdgpu"
+    
+    # Clear cache and clean system
     sudo zypper clean --all
-
-    # Restart the system.
+    sudo zypper refresh
+    
+    # Restart the system
     sudo reboot
 

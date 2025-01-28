@@ -7,7 +7,7 @@
 Oracle Linux native installation
 **********************************************************************************************
 
-.. important::
+.. caution::
 
     Ensure that the :doc:`/install/prerequisites` are met before installing.
 
@@ -89,7 +89,7 @@ Install ROCm packages
 
     sudo dnf install rocm
 
-Complete the :doc:`../post-install`.
+Complete the :doc:`../../post-install`.
 
 .. _ol-upgrade:
 
@@ -104,7 +104,7 @@ To upgrade an existing ROCm installation to a newer version, follow the steps in
     Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
     system reboot to take effect.
 
-.. _ol-uninstall:
+.. _ol-package-manager-uninstall:
 
 Uninstalling
 =====================================================
@@ -136,21 +136,21 @@ Uninstall kernel-mode driver
 
 .. code-block:: bash
 
-    sudo dnf remove amdgpu-dkms
+    sudo dnf remove amdgpu-dkms amdgpu-core
 
 Remove ROCm and AMDGPU repositories
 ---------------------------------------------------------------------------
 
 .. code-block:: bash
 
-    # Remove the repositories.
-    sudo rm /etc/yum.repos.d/rocm.list
-    sudo rm /etc/yum.repos.d/amdgpu.list
-
-    # Clear the cache and clean the system.
-    sudo rm -rf /var/cache/yum
+    # Remove the repositories
+    sudo rm /etc/yum.repos.d/rocm.repo*
+    sudo rm /etc/yum.repos.d/amdgpu.repo*
+    
+    # Clear the cache and clean the system
+    sudo rm -rf /var/cache/dnf
     sudo dnf clean all
-
-    # Restart the system.
+    
+    # Restart the system
     sudo reboot
 
