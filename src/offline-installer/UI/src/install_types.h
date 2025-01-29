@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,6 @@
 #include <string.h>
 #include <unistd.h>
 
-#define BUILD_INTERNAL  0
 
 #ifndef OFFLINE_VERSION
 #define OFFLINE_VERSION "custom"
@@ -74,6 +73,9 @@ typedef enum _REPO_TYPE
 }REPO_TYPE;
 
 
+#define DEFAULT_CHAR_SIZE                   256
+#define LARGE_CHAR_SIZE                     1024
+#define SMALL_CHAR_SIZE                     32
 
 
 #endif // _INSTALL_TYPES_H

@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -91,10 +91,12 @@ char *summaryDriverValues[] = {
 char *summaryExtraOps[] = {
     "rocminfo",
     "rocm-smi",
+    "rocm-validation-suite",
     (char *)NULL
 };
 
 char *summaryExtraValues[] = {
+    "",
     "",
     "",
     (char *)NULL
@@ -144,7 +146,6 @@ void process_summary_item(MENU_DATA *pMenuData);
 void draw_summary_page(MENU_DATA *pMenuData);
 void summary_menu_draw(MENU_DATA *pMenuData);
 char* bool_to_yes_no(bool value);
-int print_multiline_string(WINDOW *pMenuWindow, char *text, int startx, int starty, int width);
 void resize_and_reposition_summary_subwindow(MENU_DATA *pMenuData);
 
 // page draw
@@ -223,49 +224,6 @@ void do_summary_menu(MENU_DATA *pMenuData)
     menu_loop(pMenuData);
 
     unpost_menu(pMenu);
-}
-
-// return value is last row used for printing the string text
-int print_multiline_string(WINDOW *pMenuWindow, char *text, int startx, int starty, int width)
-{
-    if (strlen(text) <= (size_t)width)
-    {
-        mvwprintw(pMenuWindow, starty, startx, "%s", text);
-        return starty + 1;
-    }
-    else 
-    {
-        char *substring = calloc(1, sizeof(char *) * (width + 1));
-        if (!substring)
-        {
-            return starty;
-        }
-
-        int height = calculate_text_height(text, width);
-        int startIndex = 0;
-        int lineWidth = width;
-
-        for (int i = 0; i < height; i++)
-        {   
-            strncpy(substring, text + startIndex, lineWidth);
-            
-            // if we have < width characters left to print, then readjust
-            // lineWidth to be value of the remaining characters left to print
-            if (startIndex + width > (int)strlen(text))
-            {
-                lineWidth = (int)strlen(text) - startIndex;
-            }
-            startIndex += lineWidth;
-            mvwprintw(pMenuWindow, starty, startx, "%s", substring);
-            
-            memset(substring, 0, (size_t)width);
-            starty++;
-        }
-        
-        free(substring);
-    }
-
-    return starty;
 }
 
 int print_sub_menu_summary_options(MENU_DATA *pMenuData, WINDOW *pMenuWindow, char **menuSummaryOp, char *menuSummaryTitle, char **menuSummaryValue, int opStartx, int starty, int valueStartx, int valueWidth)
@@ -455,7 +413,7 @@ int draw_create_config_summary_page(MENU_DATA *pMenuData)
     targetSystemInfoValues[0] = pOfflineConfigs->distroName;
     targetSystemInfoValues[1] = pOfflineConfigs->kernelVersion;
     starty = print_sub_menu_summary_options(pMenuData,pMenuSubWindow,targetSystemInfoOps, "Target Installer", targetSystemInfoValues, COL1_SUMMARY_MENU_OP_STARTX, COLS_SUMMARY_MENU_STARTY, COL2_SUMMARY_MENU_VALUE_STARTX, COL2_SUMMARY_MENU_VALUE_WIDTH);
-    
+
     // Create Configuration
     summaryConfigValues[0] = createMenuInstallTypes[pOfflineConfigs->installerType].installer_input;
     summaryConfigValues[1] = createMenuRepoTypes[pOfflineConfigs->installerRepoType].repo_name;
@@ -545,6 +503,7 @@ void draw_rocm_and_extras_summary_page(MENU_DATA *pMenuData)
     // Extra
     summaryExtraValues[0] = bool_to_yes_no(pOfflineConfigs->extras_config.rocminfo_install);
     summaryExtraValues[1] = bool_to_yes_no(pOfflineConfigs->extras_config.rocmsmi_install);
+    summaryExtraValues[2] = bool_to_yes_no(pOfflineConfigs->extras_config.rocm_validation_suite_install);
     
     print_sub_menu_summary_options(pMenuData, pMenuSubWindow,summaryExtraOps, "Extra", summaryExtraValues, COL1_SUMMARY_MENU_OP_STARTX, starty, COL2_SUMMARY_MENU_VALUE_STARTX, COL2_SUMMARY_MENU_VALUE_WIDTH);
     draw_page_number(pMenuData);

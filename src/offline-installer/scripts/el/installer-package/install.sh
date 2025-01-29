@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # #############################################################################
-# Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+# Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,8 @@ RUN_INSTALLER_LOGS=/var/log/offline_creator
 RUN_INSTALLER_CURRENT_LOG="$RUN_INSTALLER_LOGS/install_$(date +%s).log"
 
 SUDO=$([[ $(id -u) -ne 0 ]] && echo "sudo" ||:)
-{ 
+$SUDO mkdir -m 777 -p /var/log/offline_creator
+{
 
 # Debug Settings
 DEBUG_INSTALL=no
@@ -53,7 +54,6 @@ INSTALLER_CONFIG_FILE=./install.config
 INSTALL_REPO=/tmp/offline-repo
 INSTALL_REPO_LIST=repo-offline.repo
 
-UNINSTALL_PREV_ROCM=no
 ROCM_POST_INSTALL=no
 
 INSTALLER=
@@ -119,7 +119,7 @@ pkg_installed() {
     rpm -q $package_name &> /dev/null
 }
 
-os_release() {	
+os_release() {
     if [[ -r  /etc/os-release ]]; then
         . /etc/os-release
 
@@ -127,7 +127,7 @@ os_release() {
 	DISTRO_VER=$(awk -F= '/^VERSION_ID=/{print $2}' /etc/os-release | tr -d '"')
 
 	case "$ID" in
-	fedora|rhel|centos|almalinux|rocky)
+	fedora|rhel|centos|almalinux|rocky|ol)
 	    OS_TYPE=rpm
 	    ;;
 	*)
@@ -139,14 +139,14 @@ os_release() {
         echo "Unsupported OS"
         exit 1
     fi
-    
+
     echo Distro:
     echo "   ${DISTRO_NAME} ${DISTRO_VER} : type = $OS_TYPE"
-    
+
     KERNEL_VER=$(uname -r)
     echo Kernel:
     echo "   ${KERNEL_VER}"
-    
+
     pkg_installed "mokutil"
     if [ $? -eq 0 ]; then
         echo Secure Boot: $($SUDO mokutil --sb-state)
@@ -156,21 +156,21 @@ os_release() {
 create_repos() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Creating repo directories...
-    
+
     debugInstall create_repos
-    
+
     echo Creating Offline Install repo: $INSTALL_REPO
     mkdir -m775 $INSTALL_REPO
-    
+
     echo Creating repo directories...Complete
 }
 
 setup_repos() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Copying Packages...
-    
+
     debugInstall setup_repos
-    
+
     # Copy ROCm packages to the new location
     cp -Rp ./packages/* $INSTALL_REPO
 
@@ -178,21 +178,21 @@ setup_repos() {
 
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Setting offline repos...
-    
+
     # Copy the .repo files to /etc/yum.repos.d
     echo ^^^^ Copying .repo files to /etc/yum.repos.d...
     $SUDO cp -Rp ./$INSTALL_REPO_LIST /etc/yum.repos.d
     echo ^^^^ Copying .repo files to /etc/yum.repos.d...Complete
-    
+
     echo Setting offline repos...Complete
 }
 
 cleanup_repos() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Cleaning up repos...
-    
+
     debugInstall cleanup_repos
-    
+
     # Remove any AMD .repo files
     for index in ${INSTALL_CLEAN_YUM_REPOS_AMD[@]}; do
         if [ -f /etc/yum.repos.d/$index ]; then
@@ -211,14 +211,14 @@ cleanup_repos() {
      # cleanup dnf cache
     $SUDO dnf clean all
     $SUDO rm -r /var/cache/dnf/*
-    
+
     echo Cleaning up repos...Complete
 }
 
 config_install() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Install Configure...
-    
+
     if [ -f $INSTALLER_CONFIG_FILE ]; then
         echo Using create configuration file: $INSTALLER_CONFIG_FILE
         source $INSTALLER_CONFIG_FILE
@@ -227,12 +227,12 @@ config_install() {
         ROCM_USECASES=rocm
         ROCM_USECASES_PACKAGES="rocm-developer-tools rocm-utils rocm-openmp-sdk rocm-opencl-sdk rocm-ml-sdk amdgpu-dkms"
     fi
-    
+
     if [ $AMDGPU_INSTALL_DRIVER == "no" ]; then
         echo amdgpu driver will not be installed.
         ROCM_USECASES_PACKAGES="${ROCM_USECASES_PACKAGES/amdgpu-dkms/}"
     fi
-    
+
     # Check that the installer was created for the same distro
     if [[ $CREATE_DISTRO_NAME == $DISTRO_NAME && $CREATE_DISTRO_VER == $DISTRO_VER ]]; then
         print_no_err "Installer Version Match: $CREATE_DISTRO_NAME $CREATE_DISTRO_VER"
@@ -240,7 +240,7 @@ config_install() {
         print_err "Installer Version Mismatch: $CREATE_DISTRO_NAME $CREATE_DISTRO_VER != $DISTRO_NAME $DISTRO_VER"
         exit 1
     fi
-    
+
     # Check that the installer was created for the same kernel version
     if [[ $CREATE_DISTRO_KERNEL_VER == $KERNEL_VER ]]; then
         print_no_err "Installer Kernel Version Match: $CREATE_DISTRO_KERNEL_VER"
@@ -248,17 +248,17 @@ config_install() {
         print_err "Installer Kernel Version Mismatch: $CREATE_DISTRO_KERNEL_VER != $KERNEL_VER"
         exit 1
     fi
-    
+
     # Parse the ROCm version
     ROCM_VERSION_MAJOR=${ROCM_VERSIONS:0:1}
     ROCM_VERSION_MINOR=${ROCM_VERSIONS:2:1}
     ROCM_VERSION_PATCH=${ROCM_VERSIONS:4:1}
-    
+
     if [ -z $ROCM_VERSION_PATCH ]; then
         ROCM_VERSION_PATCH=0
     fi
     ROCM_INSTALL_VERSION=$ROCM_VERSION_MAJOR.$ROCM_VERSION_MINOR.$ROCM_VERSION_PATCH
-    
+
     # Add ROCm post installation for non-driver only install
     if [[ ! $ROCM_USECASES == "dkms" ]]; then
         ROCM_POST_INSTALL=yes
@@ -272,7 +272,7 @@ config_install() {
 # User must pass in the exit_status as a parameter when calling this function
 install_check() {
     local exit_status=$1
-    
+
     if [[ $exit_status -ne 0 ]] && [[ $INSTALLER_DRYRUN == 0 ]]; then
         print_err "Packages failed to install.  exit_status $exit_status"
         cleanup_repos
@@ -288,7 +288,7 @@ install_check() {
 
 install_rocm_full() {
     echo Installing for Full.
-    
+
     # install the kernel packages
     echo Install kernel packages... $KERNEL_PACKAGES
     $SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $KERNEL_PACKAGES
@@ -296,35 +296,34 @@ install_rocm_full() {
     if [[ $INSTALLER_DRYRUN == 1 ]]; then
         errorCheck=$($SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $KERNEL_PACKAGES)
     fi
-    
+
     install_check "$exit_status"
     echo Install kernel packages...Complete
-    
+
     # install the rocm packages (if required)
     if [[ $ROCM_USECASES != "dkms" ]]; then
         echo Install ROCm packages... $ROCM_USECASES_PACKAGES
-        
         $SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $ROCM_USECASES_PACKAGES
         local exit_status=$?
         if [[ $INSTALLER_DRYRUN == 1 ]]; then
             errorCheck=$($SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $ROCM_USECASES_PACKAGES)
         fi
         install_check "$exit_status"
-        
+
         echo Install ROCm packages...Complete
     fi
-    
+
     # install the driver (if required)
     if [ $AMDGPU_INSTALL_DRIVER == "yes" ]; then
         echo Install amdgpu packages... $AMDGPU_PACKAGES $AMDGPU_KERNEL_PACKAGES
-        
+
         $SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $AMDGPU_PACKAGES $AMDGPU_KERNEL_PACKAGES
         local exit_status=$?
         if [[ $INSTALLER_DRYRUN == 1 ]]; then
             errorCheck=$($SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $AMDGPU_PACKAGES $AMDGPU_KERNEL_PACKAGES)
         fi
         install_check "$exit_status"
-        
+
         echo Install amdgpu packages...Complete
     fi
 }
@@ -332,14 +331,14 @@ install_rocm_full() {
 install_rocm_min() {
     echo Installing for Min.
     echo Install packages... $KERNEL_PACKAGES $ROCM_USECASES_PACKAGES $AMDGPU_PACKAGES $AMDGPU_KERNEL_PACKAGES
-    
+
     $SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $KERNEL_PACKAGES $ROCM_USECASES_PACKAGES $AMDGPU_PACKAGES $AMDGPU_KERNEL_PACKAGES
     local exit_status=$?
     if [[ $INSTALLER_DRYRUN == 1 ]]; then
         errorCheck=$($SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $KERNEL_PACKAGES $ROCM_USECASES_PACKAGES $AMDGPU_PACKAGES $AMDGPU_KERNEL_PACKAGES)
     fi
     install_check "$exit_status"
-    
+
     echo Install packages...Complete
 }
 
@@ -347,19 +346,27 @@ install_rocm() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Installing ROCm from: $(pwd)
     echo ---------------------------------------------
-    
+
     debugInstall install_rocm
-    
+
     # cleanup dnf cache
     $SUDO dnf clean all
     $SUDO rm -r /var/cache/dnf/*
-     
+
     if [[ $INSTALL_REPO_ONLY == "yes" ]]; then
         echo Installed only packages to offline repo.
         echo Install Complete.
         exit 1
     fi
-    
+
+    # install any prereq packages
+    if [ -n "$PREREQ_PACKAGES" ]; then
+        echo ^^^^ Installing prereq packages...
+        $SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $PREREQ_PACKAGES
+        install_check
+        echo ^^^^ Installing prereq packages...Complete
+    fi
+
     echo ^^^^ Installing packages...
     if [ $DOWNLOAD_PKG_CONFIG_NUM == $DOWNLOAD_PKG_FULL ]; then
         install_rocm_full
@@ -367,7 +374,7 @@ install_rocm() {
         install_rocm_min
     fi
     echo ^^^^ Installing packages...Complete
-    
+
     # install extra packages (if required)
     if [ -n "$EXTRA_PACKAGES" ]; then
         echo ---------------------------------------------
@@ -375,53 +382,33 @@ install_rocm() {
         $SUDO dnf --nogpg $INSTALLER_OPTS --disablerepo=* --enablerepo=repo-offline --allowerasing install $EXTRA_PACKAGES
         echo Installing Extra packages...Complete
     fi
-    
+
     echo ---------------------------------------------
     echo Setting up amdgpu-install...
-    
+
     $SUDO cp ./amdgpu-install /usr/bin
     $SUDO chmod 755 /usr/bin/amdgpu-install
-    
+
     echo Creating amdgpu-uninstall...
     $SUDO ln -sf ./amdgpu-install /usr/bin/amdgpu-uninstall
-    
+
     echo Setting amdgpu-install...Complete
 }
 
 uninstall_rocm() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Uninstalling previous ROCm...
-    
+
     debugInstall uninstall_rocm
-    
-    # check that amdgpu-install isn't installed already
-    pkg_installed "amdgpu-install"
-    if [ $? -eq 0 ]; then
-        echo amdgpu-install package is already installed. Cleaning up for new install
-        
-        $SUDO amdgpu-uninstall
-        
-        $SUDO dnf remove -y amdgpu-install
-        $SUDO dnf autoremove -y
-    else
-        echo amdgpu-install package not installed - using the bin if avaiable
-        if [ -f /usr/bin/amdgpu-install ]; then
-            $SUDO amdgpu-install --uninstall
-            $SUDO rm /usr/bin/amdgpu-install
-            $SUDO rm /usr/bin/amdgpu-uninstall
-        else
-            echo Unable to uninstall previous ROCm
-        fi
-    fi
     
     echo Cleaning up installation...Complete
 }
 
 install_extra_links() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    
+
     echo Installing Extra Symbolic Links for $ROCM_INSTALL_PATH-$ROCM_INSTALL_VERSION
-    
+
     if [ -f $ROCM_INSTALL_PATH-$ROCM_INSTALL_VERSION/bin/rocminfo ]; then
         echo Creating link for rocminfo
 
@@ -437,10 +424,10 @@ install_extra_links() {
     else
         echo rocminfo not found.
     fi
-    
+
     if [ -f $ROCM_INSTALL_PATH-$ROCM_INSTALL_VERSION/bin/rocm-smi ]; then
         echo Creating link for rocm-smi
-    
+
         # /etc/alternatives symlinks
         if [ ! -f /etc/alternatives/rocm-smi ]; then
             $SUDO ln -s $ROCM_INSTALL_PATH-$ROCM_INSTALL_VERSION/bin/rocm-smi /etc/alternatives/rocm-smi
@@ -458,7 +445,7 @@ install_extra_links() {
 install_post_rocm() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Installing ROCm post-install config
-    
+
     # Configure the system linker
     # Instruct the system linker where to find shared objects (.so files) for ROCm applications.S
     echo Configuring linker for ROCm...
@@ -470,9 +457,9 @@ $SUDO ldconfig
 
     # Configure PATH.  Add binary paths to the PATH environment variable.
     echo Adding ROCm $ROCM_INSTALL_VERSION to PATH...
-    
+
     export PATH=$PATH:$ROCM_INSTALL_PATH-$ROCM_INSTALL_VERSION/bin
-    
+
     echo ROCm PATH added: $PATH
 }
 
@@ -480,31 +467,31 @@ install_post_user_group() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Setting Render/Video group...
     echo Current User = $USER
-        
+
     $SUDO usermod -aG render,video $USER
     #exec $SUDO su -l $USER
-        
+
     echo -e "\e[31m< System reboot may be required >\e[0m"
-         
+
     echo Setting Render/Video group...Complete
 }
 
 install_post_amdgpu_blacklist() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Blacklisting amdgpu driver...
-    
+
     echo "blacklist amdgpu" | $SUDO tee -a /etc/modprobe.d/blacklist.conf
     $SUDO dracut --force /boot/initramfs-$(uname -r).img
-    
+
     echo Blacklisting amdgpu driver...Complete
 }
 
 install_post_start_amdgpu() {
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     echo Starting amdgpu driver...
-    
+
     $SUDO modprobe amdgpu
-    
+
     echo Starting amdgpu driver...Complete
 }
 
@@ -512,10 +499,10 @@ install_post_config() {
     # Update the rocm install version info
     if [ -d $ROCM_INSTALL_PATH ]; then
         echo ROCM directory found.
-    
+
         ROCM_INSTALL_VERSION_FULL=$(cat $ROCM_INSTALL_PATH/.info/version)
         echo ROCM_INSTALL_VERSION_FULL = $ROCM_INSTALL_VERSION_FULL
-    
+
         ROCM_INSTALL_VERSION=${ROCM_INSTALL_VERSION_FULL%-*}
         echo ROCM_INSTALL_VERSION = $ROCM_INSTALL_VERSION
     fi
@@ -529,12 +516,12 @@ install_post_config() {
     if [ $AMDGPU_POST_INSTALL_VIDEO_RENDER_GRP == "yes" ]; then
          install_post_user_group
     fi
-    
+
     # Blacklist the amdgpu driver if required
     if [ $AMDGPU_POST_INSTALL_BLACKLIST == "yes" ]; then
         install_post_amdgpu_blacklist
     fi
-    
+
     # Init/Start the amdgpu driver after install if required
     if [ $AMDGPU_POST_INSTALL_START == "yes" ]; then
         install_post_start_amdgpu
@@ -550,6 +537,7 @@ echo ========================
 PROG=${0##*/}
 INSTALLER=${0##*/}
 INSTALL_DIR=$(cd ${0%/*} && pwd -P)
+ROCM_UNINSTALL=0
 echo Installer $INSTALLER running from: $INSTALL_DIR
 
 echo SUDO: $SUDO
@@ -573,6 +561,11 @@ do
         PROMPT_USER=1
         shift
         ;;
+    uninstall)
+        echo "Uninstall previously installed ROCm."
+        ROCM_UNINSTALL=1
+        shift
+        ;;
     *)
         shift
         ;;
@@ -583,6 +576,8 @@ os_release
 
 config_install
 
+echo Prerequisities:
+echo "    $PREREQ_PACKAGES"
 echo Usecases:
 echo "    $ROCM_USECASES"
 echo Usecase Packages:
@@ -617,7 +612,6 @@ echo --------------------------------------------------
 echo "INSTALL_REPO_ONLY      = $INSTALL_REPO_ONLY"
 echo "INSTALL_REPO           = $INSTALL_REPO"
 echo "INSTALL_REPO_LIST      = $INSTALL_REPO_LIST"
-echo "UNINSTALL_PREV_ROCM    = $UNINSTALL_PREV_ROCM"
 echo "ROCM_POST_INSTALL      = $ROCM_POST_INSTALL"
 echo --------------------------------------------------
 echo "DEBUG_INSTALL          = $DEBUG_INSTALL"
@@ -626,16 +620,9 @@ echo "INSTALLER_DRYRUN       = $INSTALLER_DRYRUN"
 echo "INSTALLER_OPTS         = $INSTALLER_OPTS"
 echo --------------------------------------------------
 
-if [ $UNINSTALL_PREV_ROCM == "yes" ]; then
-    echo ====================================================
-    prompt_user "UnInstall previous ROCm (y/n): "
-    if [[ $option == "Y" || $option == "y" ]]; then
-        echo Uninstalling Previous ROCm install...
-        
-        uninstall_rocm
-        
-        echo Uninstalling Previous ROCm install...Complete
-    fi
+if [ $ROCM_UNINSTALL -eq 1 ]; then
+    print_err "Uninstall not supported."
+    exit 1
 fi
 
 prompt_user "Install Offline ROCm .run (y/n): "

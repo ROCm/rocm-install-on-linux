@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # #############################################################################
-# Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+# Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ RUN_INSTALLER_LOGS=/var/log/offline_creator
 RUN_INSTALLER_CURRENT_LOG="$RUN_INSTALLER_LOGS/install_$(date +%s).log"
 
 SUDO=$([[ $(id -u) -ne 0 ]] && echo "sudo" ||:)
+$SUDO mkdir -m 777 -p /var/log/offline_creator
 {
 
 # Debug Settings
@@ -50,7 +51,6 @@ INSTALLER_CONFIG_FILE=./install.config
 INSTALL_REPO=/tmp/offline-repo
 INSTALL_REPO_LIST=repo-offline.repo
 
-UNINSTALL_PREV_ROCM=no
 ROCM_POST_INSTALL=no
 
 INSTALLER=
@@ -298,11 +298,20 @@ install_rocm() {
         exit 1
     fi
     
+    # install any prereq packages
+    if [ -n "$PREREQ_PACKAGES" ]; then
+        echo ^^^^ Installing prereq packages...
+        $SUDO zypper --no-gpg-checks install -y $INSTALLER_OPTS --repo repo-offline $PREREQ_PACKAGES
+        install_check
+        echo ^^^^ Installing prereq packages...Complete
+    fi
+    
     echo ^^^^ Installing packages...
     $SUDO zypper --no-gpg-checks install -y $INSTALLER_OPTS --repo repo-offline $ROCM_USECASES_PACKAGES
     install_check
     echo ^^^^ Installing packages...Complete
     
+    # install any extra packages
     if [ -n "$EXTRA_PACKAGES" ]; then
         echo ---------------------------------------------
         echo Installing Extra packages... $EXTRA_PACKAGES
@@ -327,25 +336,6 @@ uninstall_rocm() {
     echo Uninstalling previous ROCm...
     
     debugInstall uninstall_rocm
-    
-    # check that amdgpu-install isn't installed already
-    pkg_installed "amdgpu-install"
-    if [ $? -eq 0 ]; then
-        echo amdgpu-install package is already installed. Cleaning up for new install
-        
-        $SUDO amdgpu-uninstall
-        
-        $SUDO zypper remove --clean-deps -y amdgpu-install
-    else
-        echo amdgpu-install package not installed - using the bin if avaiable
-        if [ -f /usr/bin/amdgpu-install ]; then
-            $SUDO amdgpu-install --uninstall
-            $SUDO rm /usr/bin/amdgpu-install
-            $SUDO rm /usr/bin/amdgpu-uninstall
-        else
-            echo Unable to uninstall previous ROCm
-        fi
-    fi
     
     echo Cleaning up installation...Complete
 }
@@ -483,6 +473,7 @@ echo ========================
 PROG=${0##*/}
 INSTALLER=${0##*/}
 INSTALL_DIR=$(cd ${0%/*} && pwd -P)
+ROCM_UNINSTALL=0
 echo Installer $INSTALLER running from: $INSTALL_DIR
 
 echo SUDO: $SUDO
@@ -506,6 +497,11 @@ do
         PROMPT_USER=1
         shift
         ;;
+    uninstall)
+        echo "Uninstall previously installed ROCm."
+        ROCM_UNINSTALL=1
+        shift
+        ;;
     *)
         shift
         ;;
@@ -516,6 +512,8 @@ os_release
 
 config_install
 
+echo Prerequisities:
+echo "    $PREREQ_PACKAGES"
 echo Usecases:
 echo "    $ROCM_USECASES"
 echo Usecase Packages:
@@ -546,7 +544,6 @@ echo --------------------------------------------------
 echo "INSTALL_REPO_ONLY      = $INSTALL_REPO_ONLY"
 echo "INSTALL_REPO           = $INSTALL_REPO"
 echo "INSTALL_REPO_LIST      = $INSTALL_REPO_LIST"
-echo "UNINSTALL_PREV_ROCM    = $UNINSTALL_PREV_ROCM"
 echo "ROCM_POST_INSTALL      = $ROCM_POST_INSTALL"
 echo --------------------------------------------------
 echo "DEBUG_INSTALL          = $DEBUG_INSTALL"
@@ -555,16 +552,9 @@ echo "INSTALLER_DRYRUN       = $INSTALLER_DRYRUN"
 echo "INSTALLER_OPTS         = $INSTALLER_OPTS"
 echo --------------------------------------------------
 
-if [ $UNINSTALL_PREV_ROCM == "yes" ]; then
-    echo ====================================================
-    prompt_user "UnInstall previous ROCm (y/n): "
-    if [[ $option == "Y" || $option == "y" ]]; then
-        echo Uninstalling Previous ROCm install...
-        
-        uninstall_rocm
-        
-        echo Uninstalling Previous ROCm install...Complete
-    fi
+if [ $ROCM_UNINSTALL -eq 1 ]; then
+    print_err "Uninstall not supported."
+    exit 1
 fi
 
 prompt_user "Install Offline ROCm .run (y/n): "
