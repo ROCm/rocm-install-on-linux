@@ -83,7 +83,7 @@ Install ROCm packages
 
     sudo zypper --gpg-auto-import-keys install rocm
 
-Complete the :doc:`../post-install`.
+Complete the :doc:`../../post-install`.
 
 .. _sles-upgrade:
 
@@ -98,7 +98,7 @@ To upgrade an existing ROCm installation to a newer version, follow the steps in
     Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
     system reboot to take effect.
 
-.. _sles-uninstall:
+.. _sles-package-manager-uninstall:
 
 Uninstalling
 ================================================

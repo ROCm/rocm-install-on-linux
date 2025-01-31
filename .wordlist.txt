@@ -43,3 +43,4 @@ whl
 ub
 udev
 Udev
+sudo

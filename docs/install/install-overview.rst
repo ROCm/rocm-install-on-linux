@@ -34,8 +34,8 @@ Package manager versus AMDGPU installer
 
 ROCm supports two methods for installation:
 
-* :doc:`Using the Linux distribution package manager <../install/native-install/index>`
-* :doc:`Running the amdgpu-install script <../install/amdgpu-install>`
+* :doc:`Using the Linux distribution package manager <../install/install-methods/package-manager-index>`
+* :doc:`Running the amdgpu-install script <../install/install-methods/amdgpu-installer-index>`
 
 There is no difference in the final installation between these two methods.
 
@@ -61,7 +61,7 @@ Multi-version installation
 A multi-version ROCm installation handles situations where users need multiple
 versions of ROCm on the same machine for compatibility with different
 applications and hardware, testing, and other use cases.
-For instructions, see :doc:`installing multiple ROCm versions<../install/native-install/multi-version-install>`.
+For instructions, see :doc:`installing multiple ROCm versions<../install/install-methods/multi-version-install>`.
 
 .. _rocm-offline-installer-creator:
 
