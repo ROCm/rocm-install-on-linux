@@ -128,4 +128,4 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 .. rubric:: Footnotes
 
 .. [#ub2204] AMD Instinct MI325X is supported only on Ubuntu 22.04.5 [5.15 GA].
-.. [#mi300x] Oracle Linux 8.10 and Debian 12 are supported only on AMD Instinct MI300X.
+.. [#mi300x] Oracle Linux 8.10, Debian 12, and Azure Linux 3.0 are supported only on AMD Instinct MI300X.
