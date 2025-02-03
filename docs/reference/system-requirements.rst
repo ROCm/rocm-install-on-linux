@@ -101,6 +101,7 @@ AMD ROCm software supports the following Linux distributions.
     "SLES 15 SP5", "5.14.21", "✅"
     "Oracle Linux 8.10", "5.15.0", "✅ [#mi300x]_"
     "Debian 12", "6.1", "✅ [#mi300x]_"
+    "Azure Linux 3.0", "6.6", "✅ [#mi300x]_"
 
 .. note::
 
