@@ -248,7 +248,7 @@ The following table shows the meta-packages and their associated (meta-)packages
   |                            | Packages:                       |
   |                            |                                 |
   |                            | ``hip-devel``,                  |
-  |                            | ``hipify-cclang``,              |
+  |                            | ``hipify-clang``,               |
   |                            | ``hsa-rocr-devel``,             |
   |                            | ``rocm-cmake``,                 |
   |                            | ``rocm-core``,                  |
