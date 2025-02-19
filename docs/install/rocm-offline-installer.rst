@@ -149,6 +149,7 @@ menu items:
 * :ref:`ROCm Options <rocm-options-label>`
 * :ref:`Driver Options <driver-options-label>`
 * :ref:`Extra Packages <extra-packages-label>`
+* :ref:`Post-Install Options <post-install-options-label>`
 * :ref:`Create Offline Installer <create-offline-installer-label>`
 
 .. _main-label:
@@ -391,17 +392,6 @@ Post-install driver options
 If you are including the AMDGPU driver in the offline installer, you can apply one or more
 of the following post-installation driver options:
 
-* **Set Video,Render Group**
-
-  When this setting is enabled, the resulting offline installer adds the current user (``$USER``) to the ``render`` 
-  and ``video`` groups on the target system after installing AMDGPU. In most cases, you
-  must belong to both groups before any ROCm 
-  components can use the AMDGPU driver or access GPU resources.
-
-  .. note::
-
-     Enabling this post-installation option is recommended.
-
 * **Blacklist amdgpu driver**
 
   When this setting is enabled, the resulting offline installer immediately 
@@ -451,6 +441,40 @@ as part of a given ROCm component.
    If a selected ROCm component includes rocminfo or rocm-smi, the fields are set to ``yes`` and
    can't be modified.
 
+.. _post-install-options-label:
+
+Post-Install Options menu
+-------------------------------------------------------------------------
+
+Use the **Post-Install Options** menu to enable additional setup and configuration items
+after the initial ROCm installation.
+
+.. image:: ../data/how-to/rocm-offline-installer-6-post-install.png
+   :width: 800
+   :alt: The Post-Install Options menu for the Offline Installer Creator 
+
+* **Set GPU access permissions**
+  
+  This section configures the GPU access permissions after the ROCm installation.
+  Typically, any ROCm component using the GPU and requiring access to GPU resources must
+  set the GPU access permissions. For ROCm, GPU access is controlled by membership in the
+  ``video`` and ``render`` groups. Group membership and access to GPU resources can be configured using one of these
+  two methods.
+
+  * **Add video,render group**
+
+    If the **Add video,render group** field is enabled, the current user (``$USER``) is added to the
+    groups and granted GPU access.
+
+  * **Add udev rule**
+
+    If the **Add udev rule** field is enabled, GPU access is granted to all users on the system.
+
+  .. note::
+
+     It's recommended that you enable one of the GPU access options to use ROCm.
+     Only one method for adding GPU access permissions can be selected.
+
 .. _create-offline-installer-label:
 
 Create Offline Installer menu
@@ -466,15 +490,15 @@ before proceeding.
 The following illustrations show the three menu pages required to 
 create the offline installer.
 
-.. image:: ../data/how-to/rocm-offline-installer-6-offline-installer-configuration-1.png
+.. image:: ../data/how-to/rocm-offline-installer-7-configuration-1.png
    :width: 800
    :alt: The first page of the Create Offline Installer menu for the Offline Installer Creator 
 
-.. image:: ../data/how-to/rocm-offline-installer-7-offline-installer-configuration-2.png
+.. image:: ../data/how-to/rocm-offline-installer-8-configuration-2.png
    :width: 800
    :alt: The second page of the Create Offline Installer menu for the Offline Installer Creator 
 
-.. image:: ../data/how-to/rocm-offline-installer-8-offline-installer-configuration-3.png
+.. image:: ../data/how-to/rocm-offline-installer-9-configuration-3.png
    :width: 800
    :alt: The third page of the Create Offline Installer menu for the Offline Installer Creator 
 
@@ -519,15 +543,13 @@ Follow these steps to create an offline installer:
    b. Set **Install amdgpu Driver** to ``yes`` to include the amdgpu driver in the offline installer.
    c. If the **amdgpu Driver ROCm Version** field is not already populated,
       select the ROCm release version from the sub-menu.
-   d. Configure the post-installation driver options, including **Set Video,Render Group**, **Blacklist 
-      amdgpu driver**, and **Start amdgpu driver on install**.
+   d. Configure the post-installation driver options, including **Blacklist 
+      amdgpu driver** and **Start amdgpu driver on install**.
 
    .. note::
 
-       *  Enabling the **Set Video,Render Group** option is recommended. 
-          However, the post-installation options aren't required to create or use the installer.
-       *  The **amdgpu Driver ROCm Version** field is the same field as the **ROCm Version** field in the **ROCm Options** menu. 
-          You can set the ROCm release version from either menu.
+      The **amdgpu Driver ROCm Version** field is the same field as the **ROCm Version** field in the **ROCm Options** menu. 
+      You can set the ROCm release version from either menu.
 
 #. Set the extra packages:
 
@@ -539,6 +561,10 @@ Follow these steps to create an offline installer:
       Some ROCm components already include the rocminfo and rocm-smi packages, which are
       automatically added to the offline installer by default. If so, the user interface 
       sets the **rocminfo** and **rocm-smi** fields to ``yes`` and ensures they can't be edited. 
+
+#. Set the post-install options:
+
+   In the **Post-Install Options** menu, set the method of enabling GPU access permissions to **Add video,render group** or **Add udev rule**.
 
 #. Create the installer:
 
