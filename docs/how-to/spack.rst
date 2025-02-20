@@ -523,12 +523,13 @@ Installing ROCm components using Spack
                 CMake interprocedural optimization
 
       Build Dependencies:
-          cmake   gmake  libjpeg-turbo  migraphx    miopen-opencl  ninja   openssl   py-future                    py-numpy     py-pybind11  py-setuptools  python     rocm-core    rpp
-          ffmpeg  hip    lmdb           miopen-hip  miopengemm     opencv  protobuf  py-google-api-python-client  py-protobuf  py-pytz      py-wheel       rapidjson  rocm-opencl
+          cmake   hip            migraphx       miopengemm  openssl    py-google-api-python-client  py-pybind11    py-wheel   rocm-core
+          ffmpeg  libjpeg-turbo  miopen-hip     ninja       protobuf   py-numpy                     py-pytz        python     rocm-opencl
+          gmake   lmdb           miopen-opencl  opencv      py-future  py-protobuf                  py-setuptools  rapidjson  rpp
 
       Link Dependencies:
           hip   migraphx    miopen-opencl  openssl    py-google-api-python-client  py-pybind11  py-setuptools  rapidjson  rocm-opencl
-          lmdb  miopen-hip  miopengemm     py-future  py-numpy                     py-pytz      py-wheel       rocm-core  rp
+          lmdb  miopen-hip  miopengemm     py-future  py-numpy                     py-pytz      py-wheel       rocm-core  rpp
 
       Run Dependencies:
           py-protobuf
