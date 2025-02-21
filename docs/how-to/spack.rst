@@ -274,7 +274,8 @@ ROCm packages in Spack
      - 5.5.0
      - 6.3.2
 
-   * - ROCm Compute Profiler (rocprofiler-compute)
+   * - ROCm Compute Profiler
+
      - ``rocprofiler-compute``
      - 6.3.2
      - 6.3.2
@@ -304,7 +305,8 @@ ROCm packages in Spack
      - 5.5.0
      - 6.3.2
 
-   * - ROCm Systems Profiler (rocprofiler-systems)
+   * - ROCm Systems Profiler
+
      - ``rocprofiler-systems``
      - 6.3.0
      - 6.3.2
