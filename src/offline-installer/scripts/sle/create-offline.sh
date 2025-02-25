@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # #############################################################################
-# Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+# Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 # #############################################################################
+
+# Logs
+CREATE_INSTALLER_LOGS=/var/log/offline_creator
+CREATE_INSTALLER_CURRENT_LOG="$CREATE_INSTALLER_LOGS/create_$(date +%s).log"
+
+SUDO=$([[ $(id -u) -ne 0 ]] && echo "sudo" ||:)
+$SUDO mkdir -m 777 -p /var/log/offline_creator
+{
 
 # Creates a install .run using AMD repos as a source and adds dependent packages
 
@@ -56,6 +64,9 @@ CREATE_BUILD_PKG_COUNT=
 KERNEL_PACKAGE_VER=
 KERNEL_PACKAGES=
 
+# Prereq packages to include
+PREREQ_PACKAGES=
+
 # Installer Package Config/Build
 INSTALL_PACKAGE_TYPE_PUBLIC=0
 INSTALLER_CONFIG_FILE=$CREATE_INSTALLER_DIR/install.config
@@ -76,7 +87,7 @@ VALIDATE_DOWNLOAD=yes
 PROMPT_USER=0
 
 # Cleanup repos
-CREATE_CLEAN_ZYP_REPOS_AMD=(repo-tar-offline.repo repo-offline.repo amdgpu.repo amdgpu-proprietary.repo amdgpu-build.repo amdgpu-local.repo amdgpu.repo.rpmsave rocm-build.repo rocm.repo rocm.repo.rpmsave Education.repo)
+CREATE_CLEAN_ZYP_REPOS_AMD=(repo-tar-offline.repo repo-offline.repo amdgpu.repo amdgpu-proprietary.repo amdgpu-build.repo amdgpu-local.repo amdgpu.repo.rpmsave rocm-build.repo rocm.repo rocm.repo.rpmsave Education.repo science.repo)
 
 
 ###### Functions ###############################################################
@@ -210,6 +221,25 @@ setup_edu_repo() {
     echo Setting up Education repo..Complete
 }
 
+setup_sci_repo() {    
+    # Create a .repo file for the Science repo
+    echo Setting up Science repo..
+        
+    if [[ $DISTRO_VER == 15.4 ]]; then
+        $SUDO zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP4/science.repo
+    elif [[ $DISTRO_VER == 15.5 ]]; then
+        $SUDO zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo
+    elif [[ $DISTRO_VER == 15.6 ]]; then
+        $SUDO zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo   # set to 15.5 for 15.6
+    else
+        echo "Unsupported version for Science."
+    fi
+    
+    $SUDO zypper --gpg-auto-import-keys ref
+    
+    echo Setting up Science repo..Complete
+}
+
 install_prereqs() {
     # Add the perl repo
     zypper repos | grep -q devel_languages_perl
@@ -232,13 +262,17 @@ install_prereqs() {
         echo "Perl language repo already added."
     fi
     
-    # Add the Education repo if ROCm 6.2+
-    if [[ "${ROCM_VERSIONS:0:1}" -eq 6 ]] && [[ "${ROCM_VERSIONS:2:1}" -ge 2 ]]; then
+    # Add the Education and science repo if ROCm 6.2+
+    if [[ "${ROCM_VERSIONS:0:1}" -eq 6 ]] && [[ "${ROCM_VERSIONS:2:1}" -eq 2 ]]; then
         setup_edu_repo
+    elif [[ "${ROCM_VERSIONS:0:1}" -eq 6 ]] && [[ "${ROCM_VERSIONS:2:1}" -ge 3 ]]; then
+        setup_edu_repo
+        setup_sci_repo
     elif [[ "${ROCM_VERSIONS:0:1}" -ge 7 ]]; then
         setup_edu_repo
+        setup_sci_repo
     else
-        Education Repo not required.
+        Education or science Repo not required.
     fi
 }
 
@@ -389,7 +423,7 @@ install_tools() {
     makeself_version=${makeself_version#Makeself version }
 
     if [[ "$(printf '%s\n' "$makeself_version_min" "$makeself_version" | sort -V | head -n1)" = "$makeself_version_min" ]]; then
-        INSTALL_MAKESELF_OPTIONS+="--cleanup ./cleanup-install.sh"
+        INSTALL_MAKESELF_OPTIONS+="--cleanup ./cleanup-install.sh --header ./rocm-makeself-header-install.sh --help-header ./VERSION"
         echo Enabling cleanup script support.
     fi
     
@@ -449,6 +483,10 @@ get_installer_package_list() {
         PACKAGES="${PACKAGES//amdgpu-dkms/}"
         echo "PACKAGES = $PACKAGES"
     fi
+    
+    # Add required prereq packages for ROCm
+    PREREQ_PACKAGES="python3-setuptools python3-wheel "
+    PACKAGES+=${PREREQ_PACKAGES}
     
     # Add any extra packages
     PACKAGES+=${EXTRA_PACKAGES}
@@ -777,6 +815,8 @@ write_install_config() {
         echo CREATE_BUILD_DATE=\"$CREATE_BUILD_DATE\" >> $INSTALLER_CONFIG_FILE
         echo INSTALL_MAKESELF_LOCAL=$INSTALL_MAKESELF_LOCAL >> $INSTALLER_CONFIG_FILE
         
+        echo PREREQ_PACKAGES=\"$PREREQ_PACKAGES\" >> $INSTALLER_CONFIG_FILE
+        
         echo ROCM_VERSIONS=$ROCM_VERSIONS >> $INSTALLER_CONFIG_FILE
         echo ROCM_USECASES=$ROCM_USECASES >> $INSTALLER_CONFIG_FILE
         echo ROCM_USECASES_PACKAGES=\"$ROCM_USECASES_PACKAGES\" >> $INSTALLER_CONFIG_FILE
@@ -786,9 +826,11 @@ write_install_config() {
         
         echo AMDGPU_INSTALL_DRIVER=$AMDGPU_INSTALL_DRIVER >> $INSTALLER_CONFIG_FILE
         echo AMDGPU_BUILD=$AMDGPU_BUILD >> $INSTALLER_CONFIG_FILE
-        echo AMDGPU_POST_INSTALL_VIDEO_RENDER_GRP=$AMDGPU_POST_INSTALL_VIDEO_RENDER_GRP >> $INSTALLER_CONFIG_FILE
         echo AMDGPU_POST_INSTALL_BLACKLIST=$AMDGPU_POST_INSTALL_BLACKLIST >> $INSTALLER_CONFIG_FILE
         echo AMDGPU_POST_INSTALL_START=$AMDGPU_POST_INSTALL_START >> $INSTALLER_CONFIG_FILE
+
+        echo AMDGPU_POST_GPU_ACCESS_CURRENT_USER=$AMDGPU_POST_GPU_ACCESS_CURRENT_USER >> $INSTALLER_CONFIG_FILE
+        echo AMDGPU_POST_GPU_ACCESS_ALL_USERS=$AMDGPU_POST_GPU_ACCESS_ALL_USERS >> $INSTALLER_CONFIG_FILE
     fi 
 }
 
@@ -876,13 +918,17 @@ echo -------------------------------
 echo amdgpu Options:
 echo ---------------
 echo "Install amdgpu              = $AMDGPU_INSTALL_DRIVER"
-echo "Video,Render Group Add      = $AMDGPU_POST_INSTALL_VIDEO_RENDER_GRP"
 echo "Blacklist amdgpu on install = $AMDGPU_POST_INSTALL_BLACKLIST"
 echo "Start amdgpu on install     = $AMDGPU_POST_INSTALL_START"
 echo -------------------------------
 echo Extra Package Options:
 echo ----------------------
 echo "Extra Packages Only    = $EXTRA_PACKAGES_ONLY"
+echo -------------------------------
+echo Post Install Options:
+echo ----------------------
+echo "Video,Render Group Add      = $AMDGPU_POST_GPU_ACCESS_CURRENT_USER"
+echo "Add udev rule               = $AMDGPU_POST_GPU_ACCESS_ALL_USERS" 
 echo -------------------------------
 echo Config Options:
 echo ---------------
@@ -974,3 +1020,6 @@ echo -e "\e[32m=================================================================
 echo -e "\e[32mLocation: $INSTALLER_INFO : $CREATE_BUILD_PKG_COUNT Packages\e[0m"
 echo -e "\e[32m========================================================================================\e[0m"
 
+} 2>&1 | $SUDO tee $CREATE_INSTALLER_CURRENT_LOG
+
+echo "Create install log stored in: $CREATE_INSTALLER_CURRENT_LOG"

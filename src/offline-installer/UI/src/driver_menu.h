@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,16 +39,14 @@
 // menu item indicies
 #define DRIVER_MENU_ITEM_INSTALL_DRIVER_INDEX   0
 #define DRIVER_MENU_ITEM_DRIVER_VER_INDEX       2
-#define DRIVER_MENU_ITEM_GRP_INDEX              4
-#define DRIVER_MENU_ITEM_BLACKLIST_INDEX        5
-#define DRIVER_MENU_ITEM_START_DRIVER_INDEX     6
+#define DRIVER_MENU_ITEM_BLACKLIST_INDEX        4
+#define DRIVER_MENU_ITEM_START_DRIVER_INDEX     5
 
 // menu item rows
 #define DRIVER_MENU_ITEM_INSTALL_DRIVER_ROW     5
 #define DRIVER_MENU_ITEM_DRIVER_VER_ROW         7
-#define DRIVER_MENU_ITEM_GRP_ROW                9
-#define DRIVER_MENU_ITEM_BLACKLIST_ROW          10
-#define DRIVER_MENU_ITEM_START_DRIVER_ROW       11
+#define DRIVER_MENU_ITEM_BLACKLIST_ROW          9
+#define DRIVER_MENU_ITEM_START_DRIVER_ROW       10
 
 
 void create_driver_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, OFFLINE_INSTALL_CONFIG *pConfig);

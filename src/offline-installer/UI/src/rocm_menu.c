@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -116,9 +116,9 @@ MENU_PROP rocmMenuMainProps  = {
     .pMenuTitle = "ROCm Options",
     .pMenuControlMsg = "<DONE> to exit",
     .numLines = ARRAY_SIZE(rocmMenuMainOp) - 1,
-    .numCols = MAX_MENU_ITEM_COLS, 
-    .starty = ROCM_MENU_ITEM_START_Y, 
-    .startx = ROCM_MENU_ITEM_START_X, 
+    .numCols = MAX_MENU_ITEM_COLS,
+    .starty = ROCM_MENU_ITEM_START_Y,
+    .startx = ROCM_MENU_ITEM_START_X,
     .numItems = ARRAY_SIZE(rocmMenuMainOp)
 };
 
@@ -134,9 +134,9 @@ MENU_PROP rocmMenuUsecaseProps  = {
     .pMenuTitle = "ROCm Component Configuration",
     .pMenuControlMsg = "<DONE> to exit : Space key to select/unselect usecase",
     .numLines = ARRAY_SIZE(rocmMenuUsecaseOps) - 1,
-    .numCols = MAX_MENU_ITEM_COLS, 
-    .starty = ROCM_MENU_ITEM_START_Y, 
-    .startx = ROCM_MENU_USECASES_ITEM_START_X, 
+    .numCols = MAX_MENU_ITEM_COLS,
+    .starty = ROCM_MENU_ITEM_START_Y,
+    .startx = ROCM_MENU_USECASES_ITEM_START_X,
     .numItems = ARRAY_SIZE(rocmMenuUsecaseOps)
 };
 
@@ -161,6 +161,10 @@ char *rocmVersionsNameIndexMapping[] = {
     "6.2.1",
     "6.2.2",
     "6.2.4",
+    "6.3",
+    "6.3.1",
+    "6.3.2",
+    "6.3.3",
     (char*)NULL,
 };
 
@@ -178,6 +182,10 @@ char *rocmVersionsDescIndexMapping[] = {
     "Install ROCm 6.2.1",
     "Install ROCm 6.2.2",
     "Install ROCm 6.2.4",
+    "Install ROCm 6.3",
+    "Install ROCm 6.3.1",
+    "Install ROCm 6.3.2",
+    "Install ROCm 6.3.3",
     (char*)NULL,
 };
 
@@ -190,8 +198,10 @@ char *distroOSVersionsIndexMapping[] = {
     "rhel9.2",
     "rhel9.3",
     "rhel9.4",
+    "rhel9.5",
     "sles15.5",
     "sles15.6",
+    "ol8.10",
     (char*)NULL,
 };
 
@@ -199,17 +209,18 @@ char *distroOSVersionsIndexMapping[] = {
 // Each column corresponds to a specific rocm version specified in array rocmVersionsDescIndexMapping
 // First column maps to 5.7.3, second maps to 6.0,..., third to 6.0.1 and so on...
 int rocmVersionsMatrix[ROCM_VERS_ROWS][ROCM_VERS_COLS] = {
-    {1,1,1,1,1,1,1,1,1,1,1,1,1}, // Ubuntu 20.04 
-    {1,1,1,1,1,1,1,1,1,1,1,1,1}, // Ubuntu 22.04 
-    {0,0,0,0,0,0,0,0,0,1,1,1,1}, // Ubuntu 24.04 
-    {0,1,1,1,1,1,1,1,1,1,1,1,1}, // rhel 8.9
-    {0,0,0,0,0,0,0,0,0,1,1,1,1}, // rhel 8.10
-    {1,1,1,1,1,1,1,1,1,1,1,1,1}, // rhel 9.2
-    {0,1,1,1,1,1,1,1,1,1,1,1,1}, // rhel 9.3    
-    {0,0,0,0,0,0,0,0,0,1,1,1,1}, // rhel 9.4
-    {0,0,0,0,0,0,0,0,0,1,1,1,1}, // rhel 9.4
-    {1,1,1,1,1,1,1,1,1,1,1,1,1}, // sles 15.5
-    {0,0,0,0,0,0,0,0,0,1,1,1,1}, // sles 15.6 
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, // Ubuntu 20.04 
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, // Ubuntu 22.04 
+    {0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1}, // Ubuntu 24.04 
+    {0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0}, // rhel 8.9
+    {0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1}, // rhel 8.10
+    {1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0}, // rhel 9.2
+    {0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0}, // rhel 9.3    
+    {0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1}, // rhel 9.4
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1}, // rhel 9.5
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, // sles 15.5
+    {0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1}, // sles 15.6
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1}, // oracle linux 8.10 
 };
 
 char **rocmVersions = NULL;
@@ -222,9 +233,9 @@ MENU_PROP rocmHelpMenuMainProps  = {
     .pMenuTitle = "ROCm Options Help",
     .pMenuControlMsg = DEFAULT_VERBOSE_HELP_CONTROL_MSG,
     .numLines = 0,
-    .numCols = MAX_MENU_ITEM_COLS, 
-    .starty = ROCM_MENU_ITEM_START_Y, 
-    .startx = ROCM_MENU_ITEM_START_X, 
+    .numCols = MAX_MENU_ITEM_COLS,
+    .starty = ROCM_MENU_ITEM_START_Y,
+    .startx = ROCM_MENU_ITEM_START_X,
     .numItems = 0
 };
 
@@ -239,9 +250,9 @@ MENU_PROP rocmUsecasesHelpMenuMainProps  = {
     .pMenuTitle = "ROCm Components Help",
     .pMenuControlMsg = DEFAULT_SCROLLABLE_VERBOSE_HELP_CONTROL_MSG,
     .numLines = 0,
-    .numCols = MAX_MENU_ITEM_COLS, 
-    .starty = ROCM_MENU_ITEM_START_Y, 
-    .startx = ROCM_MENU_ITEM_START_X, 
+    .numCols = MAX_MENU_ITEM_COLS,
+    .starty = ROCM_MENU_ITEM_START_Y,
+    .startx = ROCM_MENU_ITEM_START_X,
     .numItems = 0
 };
 
@@ -285,7 +296,7 @@ void update_rocm_usecase_config();
 bool is_rocm_version_empty(MENU_DATA *pMenuData);
 
 // enable/disable rocm versions depending on OS distro
-int getRocmVersionOpsArray(MENU_DATA *pMenuData, char *rocmMenuVersionOps[], char *rocmMenuVersionDesc[], OFFLINE_INSTALL_CONFIG *pConfig);
+int getRocmVersionOpsArray(char *rocmMenuVersionOps[], char *rocmMenuVersionDesc[], OFFLINE_INSTALL_CONFIG *pConfig);
 
 MENU_DATA menuROCMUsecase = {0};
 MENU_DATA menuROCMVersion = {0};
@@ -341,7 +352,7 @@ void rocm_menu_draw(MENU_DATA *pMenuData)
 {
     WINDOW *pMenuWindow = pMenuData->pMenuWindow;
     ROCM_MENU_CONFIG *pConfig = &(pMenuData->pConfig)->rocm_config;
-    
+
     if (pConfig->rocm_version_selected && pConfig->install_rocm)
     {
         menu_set_item_select(pMenuData, ROCM_MENU_ITEM_USECASES_INDEX, true);
@@ -350,7 +361,7 @@ void rocm_menu_draw(MENU_DATA *pMenuData)
     char drawName[DEFAULT_CHAR_SIZE];
 
     menu_info_draw_bool(pMenuData, ROCM_MENU_ITEM_INSTALL_ROCM_ROW, ROCM_MENU_FORM_COL, pConfig->install_rocm);
-    
+
     if (pConfig->install_rocm)
     {
         mvwprintw(pMenuWindow, ROCM_MENU_ITEM_VERSION_ROW, ROCM_MENU_FORM_COL, "%s", pConfig->rocm_versions);
@@ -362,7 +373,7 @@ void rocm_menu_draw(MENU_DATA *pMenuData)
         wmove(pMenuWindow, ROCM_MENU_ITEM_VERSION_ROW, ROCM_MENU_FORM_COL);
         wclrtoeol(pMenuWindow);
     }
-    
+
     field_trim(pConfig->rocm_usescases, drawName, ROCM_MENU_USECASES_WIDTH);
     mvwprintw(pMenuWindow, ROCM_MENU_ITEM_USECASES_ROW, ROCM_MENU_FORM_COL, "%s", drawName);
 
@@ -403,7 +414,7 @@ void rocm_menu_toggle_grey_items(MENU_DATA *pMenuData, bool enable)
 }
 
 void rocm_menu_update_state(MENU_DATA *pMenuData)
-{   
+{
     // Check global state and update the rocm menu
     OFFLINE_INSTALL_CONFIG *pConfig = pMenuData->pConfig;
     ROCM_MENU_CONFIG *pRocmConfig = &pConfig->rocm_config;
@@ -415,7 +426,7 @@ void rocm_menu_update_state(MENU_DATA *pMenuData)
     }
 
     // only update if installing the rocm
-    if (!pRocmConfig->install_rocm) 
+    if (!pRocmConfig->install_rocm)
     {
         return;
     }
@@ -436,7 +447,7 @@ void rocm_menu_update_state(MENU_DATA *pMenuData)
 }
 
 void do_rocm_menu(MENU_DATA *pMenuData)
-{  
+{
     MENU *pMenu = pMenuData->pMenu;
 
     wclear(pMenuData->pMenuWindow);
@@ -498,7 +509,7 @@ void process_rocm_menu(MENU_DATA *pMenuData)
         if (pRocmConfig->install_rocm)
         {
             if (isSelectable)
-            {   
+            {
                 // switch to the usecases sub-menu
                 unpost_menu(pMenu);
 
@@ -554,7 +565,7 @@ void update_rocm_usecase_config()
 {
     MENU_DATA *pMenuData = &menuROCMUsecase;
     int i;
-    
+
     MENU *pMenu = pMenuData->pMenu;
     ITEM **items = pMenuData->itemList[0].items;
 
@@ -590,10 +601,10 @@ void update_is_rocm_deselected_status(MENU_DATA *pMenuData, bool isRocmStackSele
 void do_rocm_menu_usecase(MENU_DATA *pMenuData)
 {
     MENU *pMenu = pMenuData->pMenu;
-    
+
     disable_rocm_usecases_for_rocm_version_selected();
     rocm_menu_submenu_draw(pMenuData);
-    
+
     // ROCm menu loop
     menu_loop(pMenuData);
 
@@ -648,10 +659,10 @@ void reset_rocm_usecases_menu(ROCM_MENU_CONFIG *pRocmConfig)
 {
     // reset the usecase item selections
     ITEM **items = menu_items(menuROCMUsecase.pMenu);
-                   
-    for (int i = 0; i < item_count(menuROCMUsecase.pMenu); i++) 
+
+    for (int i = 0; i < item_count(menuROCMUsecase.pMenu); i++)
     {
-        if (item_value(items[i]) == TRUE) 
+        if (item_value(items[i]) == TRUE)
         {
             set_item_value(items[i], false);
         }
@@ -676,20 +687,20 @@ void clear_rocm_usecases_menu(MENU_DATA *pMenuData)
 /**************** ROCM VERSION MENU ***************************************************************************/
 
 void create_rocm_menu_version_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, OFFLINE_INSTALL_CONFIG *pConfig)
-{   
-    // Create dynamic rocm versions sub menu   
+{
+    // Create dynamic rocm versions sub menu
     rocmVersions = calloc(ROCM_VERS_MENU_MAX_SIZE, sizeof(char*));
     rocmVersionsDesc = calloc(ROCM_VERS_MENU_MAX_SIZE, sizeof(char*));
     
-    int numItems = getRocmVersionOpsArray(pMenuData, rocmVersions, rocmVersionsDesc, pConfig) + 1;
+    int numItems = getRocmVersionOpsArray(rocmVersions, rocmVersionsDesc, pConfig) + 1;
 
     rocmMenuVersionProps = (MENU_PROP) {
         .pMenuTitle = "ROCm Version Configuration",
         .pMenuControlMsg = "<DONE> to exit : Space key to select/unselect version",
         .numLines = numItems - 1,
-        .numCols = MAX_MENU_ITEM_COLS, 
-        .starty = ROCM_MENU_ITEM_START_Y, 
-        .startx = ROCM_MENU_USECASES_ITEM_START_X, 
+        .numCols = MAX_MENU_ITEM_COLS,
+        .starty = ROCM_MENU_ITEM_START_Y,
+        .startx = ROCM_MENU_USECASES_ITEM_START_X,
         .numItems = numItems
     };
 
@@ -699,8 +710,8 @@ void create_rocm_menu_version_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, 
         .pItemListChoices   = rocmVersions,
         .pItemListDesp      = rocmVersionsDesc
     };
-    
-    
+
+
     // Create the ROCm Version Sub-Menu
     create_menu(pMenuData, pMenuWindow, &rocmMenuVersionProps, &rocmMenuVersionItems, pConfig);
     pMenuData->enableMultiSelection = false;
@@ -731,7 +742,7 @@ void destroy_rocm_menu_version_window(MENU_DATA *pMenuData)
 void update_rocm_version_config(MENU_DATA *pMenuData)
 {
     int i;
-    
+
     MENU *pMenu = pMenuData->pMenu;
     ITEM **items = pMenuData->itemList[0].items;
 
@@ -776,7 +787,7 @@ void do_rocm_menu_version()
     // rocm versions
     disable_rocm_usecases_for_rocm_version_selected();
     update_rocm_usecase_config();
-    
+
     unpost_menu(pMenu);
 
     // Need this to clear the X that's added when user selects rocm version
@@ -788,10 +799,10 @@ void reset_rocm_version_menu(ROCM_MENU_CONFIG *pRocmConfig)
 {
     // reset the version item selections
     ITEM **items = menu_items(menuROCMVersion.pMenu);
-                   
-    for (int i = 0; i < item_count(menuROCMVersion.pMenu); i++) 
+
+    for (int i = 0; i < item_count(menuROCMVersion.pMenu); i++)
     {
-        if (item_value(items[i]) == TRUE) 
+        if (item_value(items[i]) == TRUE)
         {
             set_item_value(items[i], false);
         }
@@ -847,12 +858,12 @@ bool is_ubuntu_2004(MENU_DATA *pMenuData)
 bool is_mutlimediasdk_enabled(const char *ROCMVersion)
 {
     bool is_supported = true;
-    if ( strcmp(ROCMVersion, "5.7.3") == 0 || 
+    if ( strcmp(ROCMVersion, "5.7.3") == 0 ||
         strcmp(ROCMVersion, "6.2") > 0 || strcmp(ROCMVersion, "6.2") == 0 )
     {
         is_supported = false;
     }
-    
+
     return is_supported;
 }
 
@@ -861,23 +872,23 @@ bool is_rocm_version_empty(MENU_DATA *pMenuData)
     ROCM_MENU_CONFIG *pConfig = &(pMenuData->pConfig)->rocm_config;
 
     return strlen(pConfig->rocm_versions) == 0;
-    
+
 }
 
 
 // Example of param *usecase value is: "multimediasdk,"
 
-// This function is used to concatenate a string of the names of all 
+// This function is used to concatenate a string of the names of all
 // usecases user has selected that is disabled for a rocm version
 // user wants to select.
 
 // Eg. User selects rocm 6.1 and then selects usecases asan and multimediasdk.
 // User then selects rocm version 5.7.3. When user does that, we display
-// a warning message saying 
-// WARNING: multimediasdk,asan are not supported on 5.7.3. 
+// a warning message saying
+// WARNING: multimediasdk,asan are not supported on 5.7.3.
 
 // This function generates the "multimediasdk,asan," part
-int concatenate_disabled_rocm_usecase_string(bool isUsecaseSelected, const char *usecase, 
+int concatenate_disabled_rocm_usecase_string(bool isUsecaseSelected, const char *usecase,
                                              bool isUsecaseEnabled, char *disabledUsecases, int disableUsecasesCount)
 {
     if (isUsecaseSelected && !isUsecaseEnabled)
@@ -906,11 +917,11 @@ void process_rocm_version_menu(MENU_DATA *pMenuData)
 
     bool isMultimediasdkEnabled = is_mutlimediasdk_enabled(selectedROCMVersion);
 
-    disabledUsecasesCount = concatenate_disabled_rocm_usecase_string(isMultimediasdkSelected,"multimediasdk,", 
+    disabledUsecasesCount = concatenate_disabled_rocm_usecase_string(isMultimediasdkSelected,"multimediasdk,",
                                               isMultimediasdkEnabled,disabledUsecases, disabledUsecasesCount );
 
     if (strlen(disabledUsecases) > 0)
-    {   
+    {
         strncpy(printDisabledUsecases, disabledUsecases, strlen(disabledUsecases)-1);
         const char *verb = (disabledUsecasesCount > 1) ? "are" : "is";
         print_menu_warning_msg(pMenuData, WARN_ERR_START_Y, WARN_ERR_START_X, "%s %s not supported on %s.", printDisabledUsecases, verb, selectedROCMVersion);
@@ -927,7 +938,7 @@ void disable_rocm_usecases_for_rocm_version_selected()
     char *selectedROCMVersion = rocm_config->rocm_versions;
 
     clear_rocm_usecases_menu(pMenuData);
-    
+
     bool isMultimediasdkEnabled = is_mutlimediasdk_enabled(selectedROCMVersion);
 
     if (!isMultimediasdkEnabled)
@@ -947,7 +958,7 @@ void create_rocm_help_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow)
     menu_opts_off(pMenuData->pMenu, O_SHOWDESC);
 
     // create form that displays verbose help menu
-    create_help_form(pMenuData, pMenuWindow, HELP_MENU_DESC_STARTX, HELP_MENU_DESC_STARTY, HELP_MENU_DESC_WIDTH, HELP_MENU_OP_STARTX, HELP_MENU_OP_WIDTH, rocmHelpMenuMainOp, rocmHelpMenuMainDesc); 
+    create_help_form(pMenuData, pMenuWindow, HELP_MENU_DESC_STARTX, HELP_MENU_DESC_STARTY, HELP_MENU_DESC_WIDTH, HELP_MENU_OP_STARTX, HELP_MENU_OP_WIDTH, rocmHelpMenuMainOp, rocmHelpMenuMainDesc);
 }
 
 void create_rocm_usecases_help_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow)
@@ -960,7 +971,8 @@ void create_rocm_usecases_help_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWi
 
 int getDistroOSVerionIndex(char *distroOSVersion)
 {
-    for (int i = 0; (int) ARRAY_SIZE(distroOSVersionsIndexMapping); i++)
+    int size = (int) ARRAY_SIZE(distroOSVersionsIndexMapping) - 1;
+    for (int i = 0; i < size; i++)
     {
         if (strcmp(distroOSVersion, distroOSVersionsIndexMapping[i]) == 0)
         {
@@ -971,11 +983,11 @@ int getDistroOSVerionIndex(char *distroOSVersion)
     return -1;
 }
 
-int getRocmVersionOpsArray(MENU_DATA *pMenuData, char *rocmMenuVersionOps[], char *rocmMenuVersionDesc[], OFFLINE_INSTALL_CONFIG *pConfig)
+int getRocmVersionOpsArray(char *rocmMenuVersionOps[], char *rocmMenuVersionDesc[], OFFLINE_INSTALL_CONFIG *pConfig)
 {
     int index = 0;
     char distroOSVersion[DEFAULT_CHAR_SIZE];
-    
+
     sprintf(distroOSVersion, "%s%s",pConfig->distroID, pConfig->distroVersion);
 
     int rocmVersionIndex = getDistroOSVerionIndex(distroOSVersion);
@@ -983,10 +995,10 @@ int getRocmVersionOpsArray(MENU_DATA *pMenuData, char *rocmMenuVersionOps[], cha
     // the array distroOSVersionsIndexMapping
     if (rocmVersionIndex == -1)
     {
-        print_menu_err_msg(pMenuData, "Unable to get rocm version index for current distro: %s", distroOSVersion);
+        printf("Unable to get rocm version index for current distro: %s\n", distroOSVersion);
         return -1;
     }
-    
+
     for (int i = 0; i < (int) ARRAY_SIZE(rocmVersionsMatrix[rocmVersionIndex]); i++)
     {
         if (rocmVersionsMatrix[rocmVersionIndex][i] == 1)
@@ -1002,12 +1014,12 @@ int getRocmVersionOpsArray(MENU_DATA *pMenuData, char *rocmMenuVersionOps[], cha
     // the <DONE> button, the <DONE> button and the NULL ending character.
     rocmMenuVersionOps[index] = SKIPPABLE_MENU_ITEM;
     rocmMenuVersionDesc[index] = SKIPPABLE_MENU_ITEM;
-    
+
     index++;
-    
+
     rocmMenuVersionOps[index] = "<DONE>";
     rocmMenuVersionDesc[index] = "Exit to main ROCm options menu";
-    
+
     index++;
     rocmMenuVersionOps[index] = (char*)NULL;
 

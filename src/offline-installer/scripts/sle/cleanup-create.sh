@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # #############################################################################
-# Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+# Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
 # THE SOFTWARE.
 # #############################################################################
 
-CREATE_CLEAN_ZYP_REPOS_AMD=(repo-tar-offline.repo repo-offline.repo amdgpu.repo amdgpu-proprietary.repo amdgpu-build.repo amdgpu-local.repo amdgpu.repo.rpmsave rocm-build.repo rocm.repo rocm.repo.rpmsave Education.repo)
+CREATE_CLEAN_ZYP_REPOS_AMD=(repo-tar-offline.repo repo-offline.repo amdgpu.repo amdgpu-proprietary.repo amdgpu-build.repo amdgpu-local.repo amdgpu.repo.rpmsave rocm-build.repo rocm.repo rocm.repo.rpmsave Education.repo science.repo)
 CLEAN_REPO=0
 
 
