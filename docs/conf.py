@@ -5,11 +5,11 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # ROCm version numbers
-rocm_version = '6.1.2'
-rocm_multi_versions = '6.1.2 6.1.1'
-rocm_directory_version = '6.1.2' # in 6.0 rocm was located in /opt/rocm-6.0.0
-amdgpu_version = '6.1.2' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '6.1.60102-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+rocm_version = '6.1.5'
+rocm_multi_versions = '6.1.5 6.1.2'
+rocm_directory_version = '6.1.5' # in 6.0 rocm was located in /opt/rocm-6.0.0
+amdgpu_version = '6.1.5' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '6.1.60105-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
 
 latex_engine = "xelatex"
 latex_elements = {
@@ -24,8 +24,8 @@ latex_elements = {
 project = "ROCm installation on Linux"
 author = "Advanced Micro Devices, Inc."
 copyright = "Copyright (c) 2024 Advanced Micro Devices, Inc. All rights reserved."
-version = "6.1.2"
-release = "6.1.2"
+version = "6.1.5"
+release = "6.1.5"
 setting_all_article_info = True
 all_article_info_os = ["linux"]
 all_article_info_author = ""
