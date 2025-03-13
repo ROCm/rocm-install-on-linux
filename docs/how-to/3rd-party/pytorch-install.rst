@@ -81,8 +81,6 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
             - `rocm/dev-ubuntu-20.04 <https://hub.docker.com/r/rocm/dev-ubuntu-20.04>`_
           * - Ubuntu 22.04
             - `rocm/dev-ubuntu-22.04 <https://hub.docker.com/r/rocm/dev-ubuntu-22.04>`_
-          * - CentOS 7
-            - `rocm/dev-centos-7 <https://hub.docker.com/r/rocm/dev-centos-7>`_
 
    b. Pull the selected image.
 
@@ -148,7 +146,7 @@ wheels command, you must select 'Linux', 'Python', 'pip', and 'ROCm' in the matr
 
    MIOpen kdb files can be used with ROCm PyTorch wheels. However, the kdb files need to be placed in
    a specific location with respect to the PyTorch installation path. A helper script simplifies this task by
-   taking the ROCm version and GPU architecture as inputs. This works for Ubuntu and CentOS.
+   taking the ROCm version and GPU architecture as inputs. This works for Ubuntu.
 
    You can download the helper script here:
    `install_kdb_files_for_pytorch_wheels.sh <https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh>`_, or use:
@@ -287,7 +285,7 @@ maintainers and installs all the required dependencies, including:
 
    Where:
 
-   * ``<os-version>`` = ``ubuntu20.04`` (or ``focal``), ``ubuntu22.04`` (or ``jammy``), ``centos7.5``, or ``centos9``
+   * ``<os-version>`` = ``ubuntu20.04`` (or ``focal``), ``ubuntu22.04`` (or ``jammy``)
    * ``<rocm-version>`` = ``5.7``, ``6.0``, or ``6.1``
    * ``<python-version>`` = ``3.8`` - ``3.11``
 

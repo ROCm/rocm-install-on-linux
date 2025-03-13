@@ -86,7 +86,6 @@ AMD ROCm™ Software supports the following Linux distributions.
     "RHEL 9.2", "5.14.0-362", "✅"
     "RHEL 8.9", "4.18-513", "✅"
     "RHEL 8.8", "4.18-513", "✅"
-    "CentOS 7.9", "3.10", "✅"
     "SLES 15 SP5", "5.14.21-150500", "✅"
     "SLES 15 SP4", "5.14.21-150500", "✅"
     "Oracle Linux 8.9", "5.15.0", "✅ [#oracle89]_"
