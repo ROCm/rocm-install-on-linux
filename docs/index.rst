@@ -8,21 +8,12 @@
 ROCm installation for Linux
 ****************************************************************
 
-If you're new to ROCm, we recommend using the :ref:`rocm-install-quick`. If you want more
-complete instructions, refer to the following sections.
-
 .. note::
     If you're using a Radeon GPU with graphical applications, refer to the
     `Radeon installation instructions <https://rocm.docs.amd.com/projects/radeon/en/latest/index.html>`_.
     
 .. grid:: 2
     :gutter: 1
-
-    .. grid-item-card:: Quick start
-        :link: tutorial/quick-start
-        :link-type: doc
-
-        ROCm quick start installation guide.
 
     .. grid-item-card:: Prerequisites
         :link: how-to/prerequisites
@@ -48,12 +39,6 @@ Choose your install method
         :link-type: doc
 
         Directly use your distribution's package manager to install ROCm.
-
-    .. grid-item-card:: AMDGPU installer
-        :link: how-to/amdgpu-install
-        :link-type: doc
-
-        Use an installer tool that orchestrates changes via the package manager.
 
 Additional resources
 ========================================

@@ -29,7 +29,7 @@ Register kernel-mode driver
                 sudo tee /etc/yum.repos.d/amdgpu.repo <<EOF
                 [amdgpu]
                 name=amdgpu
-                baseurl=https://repo.radeon.com/amdgpu/|rocm_version|/rhel/{{ os_version }}/main/x86_64/
+                baseurl=https://repo.radeon.com/amdgpu/6.1.2/rhel/{{ os_version }}/main/x86_64/
                 enabled=1
                 priority=50
                 gpgcheck=1
@@ -85,37 +85,9 @@ on the same machine, not just the newest. If you just want to install the latest
 the steps in :ref:`rhel-register-repo` and :ref:`rhel-install`.
 
 Register kernel-mode driver
-----------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 
-.. datatemplate:nodata::
-
-    .. tab-set::
-        {% for os_version in config.html_context['rhel_version_numbers'] %}
-        {% set os_major, _  = os_version.split('.') %}
-        .. tab-item:: RHEL {{ os_version }}
-            :sync: rhel-{{ os_version }} rhel-{{ os_major }}
-
-            .. code-block:: bash
-                :substitutions:
-
-                for ver in |rocm_multi_versions|; do
-                sudo tee /etc/yum.repos.d/amdgpu.repo <<EOF
-                [amdgpu]
-                name=amdgpu
-                baseurl=https://repo.radeon.com/amdgpu/$ver/rhel/{{ os_version }}/main/x86_64/
-                enabled=1
-                priority=50
-                gpgcheck=1
-                gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
-                EOF
-                done
-                sudo yum clean all
-        {% if os_version == '9.4' %}
-            .. note::
-
-                RHEL 9.4 is only supported on AMD Instinct MI300A.
-        {% endif %}
-        {% endfor %}
+This step is the same as previously described, follow the steps in :ref:`rhel-register-repo`.
 
 .. _rhel-multi-register-rocm:
 

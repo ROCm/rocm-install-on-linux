@@ -17,9 +17,7 @@ As an example, the latest version of ROCm is 6.0.2, but the installation instruc
 
 **Solution:** You may have used the quick-start installation method which only installs the latest major release. Use one of the other available installation methods:
 
-* :doc:`Quick-start installation <../../tutorial/quick-start>` - Installs only the latest **major** release (i.e. 6.0.0, or 6.1.0)
 * :doc:`Native package manager install method <./index>` - Installs the specified *major and minor* release version (i.e. 6.0.0, 6.0.2)
-* :doc:`amdgpu-install method <../amdgpu-install>` - Installs the specified *major and minor* release version (i.e. 6.0.0, 6.0.2)
 
 Refer to `ROCm Issue #2422 <https://github.com/ROCm/ROCm/issues/2422>`_ for additional details.
 
@@ -129,7 +127,7 @@ Docker images often come with minimal installations, meaning some essential pack
       SUSEConnect -p PackageHub/15.4/x86_64
 
 
-After installing these packages and :ref:`registering using your license for Enterprise Linux <register-enterprise-linux>` (if applicable), install ROCm following the :doc:`Quick start installation guide <../../tutorial/quick-start>` in your Docker container.
+After installing these packages and :ref:`registering using your license for Enterprise Linux <register-enterprise-linux>` (if applicable), install ROCm following the :doc:`package manager installation guide <./index>` in your Docker container.
 
 
 

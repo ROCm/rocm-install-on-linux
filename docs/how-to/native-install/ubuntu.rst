@@ -52,7 +52,7 @@ Add the AMDGPU repository for the driver.
             .. code-block:: bash
                 :substitutions:
 
-                echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/|rocm_version|/ubuntu {{ os_release }} main" \
+                echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/6.1.2/ubuntu {{ os_release }} main" \
                     | sudo tee /etc/apt/sources.list.d/amdgpu.list
                 sudo apt update
         {% endfor %}
@@ -118,26 +118,9 @@ Package signing key
 This step is the same as previously described, follow the steps in :ref:`ubuntu-package-key`..
 
 Register kernel-mode driver
----------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 
-Add the AMDGPU repository for the driver.
-
-.. datatemplate:nodata::
-
-    .. tab-set::
-        {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
-        .. tab-item:: Ubuntu {{ os_version }}
-            :sync: ubuntu-{{ os_version}}
-
-            .. code-block:: bash
-                :substitutions:
-
-                for ver in |rocm_multi_versions|; do
-                echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/$ver/ubuntu {{ os_release }} main" \
-                    | sudo tee /etc/apt/sources.list.d/amdgpu.list
-                done
-                sudo apt update
-        {% endfor %}
+This step is the same as previously described, follow the steps in :ref:`ubuntu-register-driver`.
 
 .. _ubuntu-multi-register-rocm:
 
