@@ -117,19 +117,6 @@ The available use-cases are printed in a format similar to:
       - ASAN enabled Machine learning framework
       - ASAN enabled ROCm libraries
 
-
-.. _azl-amdgpu-install-dkms:
-
-Install kernel driver
--------------------------------------------------
-
-.. code-block:: bash
-
-    sudo tdnf install azurelinux-repos-amd
-    sudo tdnf repolist --refresh
-    sudo tdnf install amdgpu
-    sudo modprobe amdgpu
-
 Upgrading ROCm
 =================================================
 
@@ -152,6 +139,9 @@ To install use cases specific to your requirements, use the installer (``amdgpu-
 
     sudo amdgpu-install --help
 
+.. note::
+
+    For information about the AMDGPU driver installation, see the `Install AMDGPU driver <https://advanced-micro-devices-dcgpu-documentation--16.com.readthedocs.build/projects/amdgpu-docs/en/16/install/package-manager-index.html>`_ in the AMD Instinct Data Center GPU Documentation. 
 
 .. _azl-amdgpu-install-uninstall:
 
@@ -165,13 +155,6 @@ Uninstalling ROCm
 
   sudo amdgpu-install --uninstall
 
-Uninstall kernel driver
----------------------------------------------------------------------------
-
-.. code-block:: bash
-
-  sudo tdnf remove amdgpu amdgpu-firmware kernel-drivers-gpu
-
 Uninstalling amdgpu-install
 ---------------------------------------------------------------------------
 
@@ -181,15 +164,13 @@ After uninstalling ROCm and kernel driver, remove the amdgpu-install package fro
 
     sudo tdnf remove amdgpu-install
 
-Remove ROCm and AMDGPU repositories
+Remove ROCm repositories
 ---------------------------------------------------------------------------
 
 .. code-block:: bash
 
     # Remove the repositories
-    sudo tdnf remove azurelinux-repos-amd
     sudo rm /etc/yum.repos.d/rocm.repo*
-    sudo rm /etc/yum.repos.d/amdgpu.repo*
 
     # Clear the cache and clean the system
     sudo rm -rf /var/cache/tdnf

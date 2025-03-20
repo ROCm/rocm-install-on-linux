@@ -89,7 +89,7 @@ Oracle Linux
     .. tab-set::
         {% for os_version in config.html_context['ol_version_numbers'] %}
         {% set os_major, _  = os_version.split('.') %}
-        .. tab-item:: OL {{ os_version }}
+        .. tab-item:: OL {{ os_major }}
             :sync: ol-{{ os_version }} ol-{{ os_major }}
 
             .. code-block:: bash

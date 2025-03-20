@@ -29,7 +29,7 @@ Installation
   .. tab-set::
       {% for os_version in config.html_context['ol_version_numbers'] %}
       {% set os_major, _  = os_version.split('.') %}
-      .. tab-item:: OL {{ os_version }}
+      .. tab-item:: OL {{ os_major }}
 
           .. code-block:: bash
               :substitutions:
@@ -75,14 +75,13 @@ After uninstalling ROCm, remove the amdgpu-install package from system.
 
     sudo dnf remove amdgpu-install
 
-Remove ROCm and AMDGPU repositories
+Remove ROCm repositories
 =================================================
 
 .. code-block:: bash
 
     # Remove the repositories
     sudo rm /etc/yum.repos.d/rocm.repo*
-    sudo rm /etc/yum.repos.d/amdgpu.repo*
     
     # Clear the cache and clean the system
     sudo rm -rf /var/cache/dnf

@@ -74,14 +74,13 @@ After uninstalling ROCm, remove the amdgpu-install package from system.
 
     sudo dnf remove amdgpu-install
 
-Remove ROCm and AMDGPU repositories
+Remove ROCm repositories
 =================================================
 
 .. code-block:: bash
 
     # Remove the repositories
     sudo rm /etc/yum.repos.d/rocm.repo*
-    sudo rm /etc/yum.repos.d/amdgpu.repo*
     
     # Clear the cache and clean the system
     sudo rm -rf /var/cache/dnf
