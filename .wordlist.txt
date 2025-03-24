@@ -4,6 +4,7 @@ BARs
 br
 Broadcom
 CTest
+checkboxes
 debian
 denylist
 DHCP
@@ -32,6 +33,7 @@ rocHPL
 ROCmVersion
 Runfile
 SBR
+selectable
 SMCi
 SVM
 SuperMicro
