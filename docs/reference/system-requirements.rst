@@ -110,6 +110,62 @@ AMD ROCm software supports the following Linux distributions.
   * See `List of SUSE Linux Enterprise Server kernel <https://www.suse.com/support/kb/doc/?id=000019587>`_ to learn about the specific kernel version supported on SUSE Linux Enterprise Server (SLES).
   * See the :doc:`rocm:compatibility/compatibility-matrix` for an overview of OS support across ROCm releases.
 
+Virtualization support
+======================
+
+ROCm supports virtualization for certain Instinct accelerators as listed in the following table.
+
+.. list-table::
+   :header-rows: 1
+
+   * - GPU
+     - Hypervisor
+     - Virtualization technology
+     - Host OS
+     - Guest OS
+
+   * - MI325X
+     - KVM
+     - SRIOV
+     - Ubuntu 22.04
+     - Ubuntu 22.04
+
+   * - MI300X
+     - Hyper-V
+     - SRIOV
+     - Azure Host 2021
+     - Ubuntu 22.04
+
+   * - MI300X
+     - KVM
+     - SRIOV
+     - Ubuntu 22.04
+     - Ubuntu 22.04
+
+   * - MI300X
+     - KVM
+     - Passthrough
+     - Ubuntu 22.04
+     - Ubuntu 22.04
+
+   * - MI250
+     - Hyper-V
+     - DDA
+     - Azure Host 2021
+     - Ubuntu 22.04
+
+   * - MI210
+     - KVM
+     - SRIOV
+     - RHEL 9.4
+     - Ubuntu 22.04, RHEL 9.4
+
+.. note::
+
+   These virtualization technologies are designed to dedicate entire GPUs to
+   individual virtual machines (VMs), rather than allowing a single GPU to be
+   shared across multiple VMs.
+
 CPU support
 =============================================
 
