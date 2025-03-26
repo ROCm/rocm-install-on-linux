@@ -26,6 +26,8 @@ development.
 
     * - ROCm version
       - TensorFlow version
+    * - 6.4.x
+      - 2.16.2, 2.17.1, 2.18.1
     * - 6.3.x
       - 2.15.1, 2.16.2, 2.17.0
     * - 6.2.x
