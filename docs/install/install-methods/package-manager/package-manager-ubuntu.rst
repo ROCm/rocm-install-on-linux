@@ -43,10 +43,8 @@ Download and convert the package signing key.
 
 .. _ubuntu-register-rocm:
 
-Register ROCm packages
+Register packages
 ---------------------------------------------------------------------------
-
-Add the ROCm repository.
 
 .. datatemplate:nodata::
 
@@ -58,11 +56,18 @@ Add the ROCm repository.
             .. code-block:: bash
                 :substitutions:
 
+                # Register kernel-mode driver
+                echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/|rocm_version|/ubuntu jammy main" \
+                    | sudo tee /etc/apt/sources.list.d/amdgpu.list
+                sudo apt update
+
+                # Register ROCm packages
                 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/|rocm_version| {{ os_release }} main" \
                     | sudo tee --append /etc/apt/sources.list.d/rocm.list
                 echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
                     | sudo tee /etc/apt/preferences.d/rocm-pin-600
                 sudo apt update
+
         {% endfor %}
 
 .. _ubuntu-install:

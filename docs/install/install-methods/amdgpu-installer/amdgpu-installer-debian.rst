@@ -44,47 +44,43 @@ Installation
 
 .. _debian-amdgpu-install-uninstall:
 
-Uninstalling ROCm
+Uninstalling
 =================================================
-
-To uninstall all ROCm packages and the kernel-mode driver, use the following commands.
-
-* Uninstalling single-version install
-
-  .. code-block:: bash
-
-    sudo amdgpu-install --uninstall
-
-* Uninstalling a specific ROCm release
-
-  .. code-block:: bash
-
-    sudo amdgpu-install --uninstall --rocmrelease=<release-number>
-
-
-* Uninstalling all ROCm releases
-
-  .. code-block:: bash
-
-    sudo amdgpu-install --uninstall --rocmrelease=all
 
 Uninstalling amdgpu-install
-=================================================
-
-After uninstalling ROCm, remove the amdgpu-install package from system.
+---------------------------------------------------------------------------
 
 .. code-block:: bash
 
     sudo apt purge amdgpu-install
     sudo apt autoremove
 
-Remove ROCm repositories
-=================================================
+Uninstall specific meta packages
+---------------------------------------------------------------------------
 
 .. code-block:: bash
+    :substitutions:
 
-    # Remove the repositories
-    sudo rm /etc/apt/sources.list.d/rocm.list
+    # sudo apt autoremove <package-name>
+    # For example:
+    sudo apt autoremove rocm
+    # Or for version specific packages:
+    sudo apt autoremove rocm|rocm_version|
+
+Uninstall ROCm packages
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+    :substitutions:
+
+    sudo apt autoremove rocm-core
+    # Or for version specific packages:
+    sudo apt autoremove rocm-core|rocm_version|
+
+Remove ROCm repositories
+---------------------------------------------------------------------------
+
+.. code-block:: bash
     
     # Clear the cache and clean the system
     sudo rm -rf /var/cache/apt/*

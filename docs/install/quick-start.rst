@@ -18,11 +18,6 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
 
     If you’re using ROCm with AMD Radeon or Radeon Pro GPUs for graphics workloads, see the `Use ROCm on Radeon GPU <https://rocm.docs.amd.com/projects/radeon/en/latest/docs/install/native_linux/install-radeon.html>`_ documentation for installation instructions .
 
-.. note::
-
-    Before installing ROCm on Red Hat Enterprise Linux, SUSE Linux Enterprise Server or Oracle Linux, 
-    it is recommended that you first :ref:`update the OS installation <update-enterprise-linux>`.
-
 ROCm installation
 =================================================
 
@@ -31,6 +26,7 @@ ROCm installation
     .. tab-set::
 
         .. tab-item:: Ubuntu
+            :sync: ubuntu-tab
 
             .. tab-set::
 
@@ -49,6 +45,7 @@ ROCm installation
                 {% endfor %}
         
         .. tab-item:: Debian
+            :sync: debian-tab
 
             .. tab-set::
 
@@ -68,6 +65,7 @@ ROCm installation
                 {% endfor %}
 
         .. tab-item:: Red Hat Enterprise Linux
+            :sync: rhel-tab
 
             .. tab-set::
 
@@ -75,7 +73,7 @@ ROCm installation
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
 
-                   Before installing ROCm on RHEL, :ref:`register your Enterprise Linux <register-enterprise-linux>`.
+                   Before installing ROCm on RHEL, :ref:`register your Enterprise Linux and update the OS installation <register-enterprise-linux>`.
 
                    .. code-block:: bash
                        :substitutions:
@@ -93,12 +91,15 @@ ROCm installation
                 {% endfor %}
 
         .. tab-item:: Oracle Linux
+            :sync: ol-tab
 
             .. tab-set::
 
                 {% for os_version in config.html_context['ol_version_numbers'] %}
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_major }}
+
+                   Before installing ROCm on OL, :ref:`update the OS installation <update-enterprise-linux>`.
 
                    .. code-block:: bash
                        :substitutions:
@@ -116,13 +117,14 @@ ROCm installation
                 {% endfor %}
 
         .. tab-item:: SUSE Linux Enterprise Server
+            :sync: sle-tab
 
             .. tab-set::
 
                 {% for os_version in config.html_context['sles_version_numbers'] %}
                 .. tab-item:: {{ os_version }}
 
-                   Before installing ROCm on SLES, :ref:`register your Enterprise Linux <register-enterprise-linux>`.
+                   Before installing ROCm on SLES, :ref:`register your Enterprise Linux update the OS installation <register-enterprise-linux>`.
 
                    .. code-block:: bash
                        :substitutions:
@@ -144,6 +146,7 @@ ROCm installation
                 {% endfor %}
 
         .. tab-item:: Azure Linux
+            :sync: azl-tab
 
             .. tab-set::
 
@@ -172,6 +175,7 @@ AMDGPU driver installation
     .. tab-set::
 
         .. tab-item:: Ubuntu
+            :sync: ubuntu-tab
 
             .. tab-set::
 
@@ -190,6 +194,7 @@ AMDGPU driver installation
                 {% endfor %}
         
         .. tab-item:: Debian
+            :sync: debian-tab
 
             .. tab-set::
 
@@ -208,6 +213,7 @@ AMDGPU driver installation
                 {% endfor %}
 
         .. tab-item:: Red Hat Enterprise Linux
+            :sync: rhel-tab
 
             .. tab-set::
 
@@ -215,7 +221,7 @@ AMDGPU driver installation
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
 
-                   Before installing ROCm on RHEL, :ref:`register your Enterprise Linux <register-enterprise-linux>`.
+                   Before installing AMDGPU driver on RHEL, :ref:`register your Enterprise Linux and update the OS installation <register-enterprise-linux>`.
 
                    .. code-block:: bash
                        :substitutions:
@@ -232,12 +238,15 @@ AMDGPU driver installation
                 {% endfor %}
 
         .. tab-item:: Oracle Linux
+            :sync: ol-tab
 
             .. tab-set::
 
                 {% for os_version in config.html_context['ol_version_numbers'] %}
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_major }}
+
+                   Before installing AMDGPU driver on OL, :ref:`update the OS installation <update-enterprise-linux>`.
 
                    .. code-block:: bash
                        :substitutions:
@@ -250,13 +259,14 @@ AMDGPU driver installation
                 {% endfor %}
 
         .. tab-item:: SUSE Linux Enterprise Server
+            :sync: sle-tab
 
             .. tab-set::
 
                 {% for os_version in config.html_context['sles_version_numbers'] %}
                 .. tab-item:: {{ os_version }}
 
-                   Before installing ROCm on SLES, :ref:`register your Enterprise Linux <register-enterprise-linux>`.
+                   Before installing AMDGPU driver on SLES, :ref:`register your Enterprise Linux and update the OS installation <register-enterprise-linux>`.
 
                    .. code-block:: bash
                        :substitutions:
@@ -273,6 +283,7 @@ AMDGPU driver installation
                 {% endfor %}
 
         .. tab-item:: Azure Linux
+            :sync: azl-tab
 
             .. tab-set::
 
@@ -287,7 +298,6 @@ AMDGPU driver installation
                        sudo tdnf install azurelinux-repos-amd
                        sudo tdnf repolist --refresh
                        sudo tdnf install amdgpu
-                       sudo modprobe amdgpu
 
                 {% endfor %}
 

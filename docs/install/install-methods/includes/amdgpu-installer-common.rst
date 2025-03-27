@@ -96,26 +96,26 @@ To install use cases specific to your requirements, use the installer (``amdgpu-
 
   .. code-block:: bash
 
-    sudo amdgpu-install --usecase=hiplibsdk,rocm
+    sudo amdgpu-install --usecase=hiplibsdk,rocm --no-dkms
 
 * For graphical workloads using the open-source driver, add ``graphics``. For example:
 
   .. code-block:: bash
 
-    sudo amdgpu-install --usecase=graphics,rocm
+    sudo amdgpu-install --usecase=graphics,rocm --no-dkms
 
 * For graphical workloads using the proprietary driver, add ``workstation``. For example:
 
   .. code-block:: bash
 
-    sudo amdgpu-install --usecase=workstation,rocm
+    sudo amdgpu-install --usecase=workstation,rocm --no-dkms
 
 * To install LLVM AddressSanitizer (ASAN) instrumented binaries (for packages that support it), add
   ``asan``. For example:
 
   .. code-block:: bash
 
-    sudo amdgpu-install --usecase=rocm,asan
+    sudo amdgpu-install --usecase=rocm,asan --no-dkms
 
 * To list all possible use cases, use the ``--list-usecase`` option:
 

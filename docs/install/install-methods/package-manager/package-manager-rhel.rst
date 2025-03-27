@@ -97,9 +97,9 @@ Uninstall ROCm packages
 .. code-block:: bash
     :substitutions:
 
-    sudo dnf remove rocm-core
+    sudo dnf remove rocm-core amdgpu-core
     # Or for version specific packages:
-    sudo dnf remove rocm-core|rocm_version|
+    sudo dnf remove rocm-core|rocm_version| amdgpu-core
 
 Remove ROCm repositories
 ---------------------------------------------------------------------------

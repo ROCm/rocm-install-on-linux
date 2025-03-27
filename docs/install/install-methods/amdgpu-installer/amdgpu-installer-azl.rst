@@ -148,29 +148,39 @@ To install use cases specific to your requirements, use the installer (``amdgpu-
 Uninstalling
 =====================================================
 
-Uninstalling ROCm
----------------------------------------------------------------------------
-
-.. code-block:: bash
-
-  sudo amdgpu-install --uninstall
-
 Uninstalling amdgpu-install
 ---------------------------------------------------------------------------
-
-After uninstalling ROCm and kernel driver, remove the amdgpu-install package from the system.
 
 .. code-block:: bash
 
     sudo tdnf remove amdgpu-install
 
+Uninstall specific meta packages
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+    :substitutions:
+
+    # sudo apt autoremove <package-name>
+    # For example:
+    sudo tdnf remove rocm
+    # Or for version specific packages:
+    sudo tdnf remove rocm|rocm_version|
+
+Uninstall ROCm packages
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+    :substitutions:
+
+    sudo tdnf remove rocm-core
+    # Or for version specific packages:
+    sudo tdnf remove rocm-core|rocm_version|
+
 Remove ROCm repositories
 ---------------------------------------------------------------------------
 
 .. code-block:: bash
-
-    # Remove the repositories
-    sudo rm /etc/yum.repos.d/rocm.repo*
 
     # Clear the cache and clean the system
     sudo rm -rf /var/cache/tdnf

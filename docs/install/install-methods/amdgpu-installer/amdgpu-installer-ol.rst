@@ -42,38 +42,37 @@ Installation
 
 .. _ol-amdgpu-install-uninstall:
 
-Uninstalling ROCm
+Uninstalling
 =================================================
-
-To uninstall all ROCm packages and the kernel-mode driver, use the following commands.
-
-* Uninstalling single-version install
-
-  .. code-block:: bash
-
-    sudo amdgpu-install --uninstall
-
-* Uninstalling a specific ROCm release
-
-  .. code-block:: bash
-
-    sudo amdgpu-install --uninstall --rocmrelease=<release-number>
-
-
-* Uninstalling all ROCm releases
-
-  .. code-block:: bash
-
-    sudo amdgpu-install --uninstall --rocmrelease=all
 
 Uninstalling amdgpu-install
-=================================================
-
-After uninstalling ROCm, remove the amdgpu-install package from system.
+---------------------------------------------------------------------------
 
 .. code-block:: bash
 
     sudo dnf remove amdgpu-install
+
+Uninstall specific meta packages
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+    :substitutions:
+
+    # sudo apt autoremove <package-name>
+    # For example:
+    sudo dnf remove rocm
+    # Or for version specific packages:
+    sudo dnf remove rocm|rocm_version|
+
+Uninstall ROCm packages
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+    :substitutions:
+
+    sudo dnf remove rocm-core amdgpu-core
+    # Or for version specific packages:
+    sudo dnf remove rocm-core|rocm_version| amdgpu-core
 
 Remove ROCm repositories
 =================================================
