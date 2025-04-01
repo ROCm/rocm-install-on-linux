@@ -48,6 +48,7 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       "AMD Radeon PRO V710", "RDNA3", "gfx1101", "✅"
       "AMD Radeon PRO W7900 Dual Slot", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W7900", "RDNA3", "gfx1100", "✅"
+      "AMD Radeon PRO W7800 48GB", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W7800", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W6800", "RDNA2", "gfx1030", "✅"
       "AMD Radeon PRO V620", "RDNA2", "gfx1030", "✅"
