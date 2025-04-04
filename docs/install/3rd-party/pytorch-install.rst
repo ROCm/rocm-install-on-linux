@@ -513,8 +513,7 @@ maintainers and installs all the required dependencies, including:
 
        .ci/pytorch/build.sh
 
-   This converts PyTorch sources for
-   `HIP compatibility <https://www.amd.com/en/developer/rocm-hub/hip-sdk.html>`_ and builds the
+   This converts PyTorch CUDA sources to :doc:`HIP <hip:index>` and builds the
    PyTorch framework.
 
    To check if your build is successful, run:
