@@ -11,38 +11,12 @@ SUSE Linux Enterprise native installation
 
     Ensure that the :doc:`/install/prerequisites` are met before installing.
 
-.. _sles-register-rocm:
+.. _sles-register-repo:
 
 Registering ROCm repositories
 ===============================================
 
-.. _sles-register-driver:
-
-Register kernel-mode driver
---------------------------------------------------------------------------------------
-
-
-.. datatemplate:nodata::
-
-    .. tab-set::
-        {% for os_version in config.html_context['sles_version_numbers'] %}
-        .. tab-item:: SLES {{ os_version }}
-
-            .. code-block:: bash
-                :substitutions:
-
-                sudo tee /etc/zypp/repos.d/amdgpu.repo <<EOF
-                [amdgpu]
-                name=amdgpu
-                baseurl=https://repo.radeon.com/amdgpu/|rocm_version|/sle/{{ os_version }}/main/x86_64/
-                enabled=1
-                gpgcheck=1
-                gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
-                EOF
-
-                sudo zypper refresh
-
-        {% endfor %}
+.. _sles-register-rocm:
 
 Register ROCm packages
 --------------------------------------------------------------------------------------
@@ -67,14 +41,6 @@ Register ROCm packages
 Installing
 ===============================================
 
-Install kernel driver
---------------------------------------------------------------------------------------
-
-.. code-block:: bash
-
-    sudo zypper --gpg-auto-import-keys install amdgpu-dkms
-    sudo reboot
-
 
 Install ROCm packages
 --------------------------------------------------------------------------------------
@@ -84,6 +50,10 @@ Install ROCm packages
     sudo zypper --gpg-auto-import-keys install rocm
 
 Complete the :doc:`../../post-install`.
+
+.. note::
+
+    For information about the AMDGPU driver installation, see the `Install AMDGPU driver <https://advanced-micro-devices-dcgpu-documentation--16.com.readthedocs.build/projects/amdgpu-docs/en/16/install/package-manager-index.html>`_ in the AMD Instinct Data Center GPU Documentation.
 
 .. _sles-upgrade:
 
@@ -121,18 +91,11 @@ Uninstall ROCm packages
 .. code-block:: bash
     :substitutions:
 
-    sudo zypper remove rocm-core
+    sudo zypper remove rocm-core amdgpu-core
     # Or for version specific packages:
-    sudo zypper remove rocm-core|rocm_version|
+    sudo zypper remove rocm-core|rocm_version| amdgpu-core
 
-Uninstall kernel-mode driver
----------------------------------------------------------------------------
-
-.. code-block:: bash
-
-    sudo zypper remove amdgpu-dkms amdgpu-core
-
-Remove ROCm and AMDGPU repositories
+Remove ROCm repositories
 ---------------------------------------------------------------------------
 
 .. code-block:: bash
@@ -140,7 +103,6 @@ Remove ROCm and AMDGPU repositories
 
     # Remove the repositories
     sudo zypper removerepo "ROCm-|rocm_version|"
-    sudo zypper removerepo "amdgpu"
     
     # Clear cache and clean system
     sudo zypper clean --all

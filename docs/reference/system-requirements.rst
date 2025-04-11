@@ -36,7 +36,7 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       "AMD Instinct MI250", "CDNA2", "gfx90a", "✅"
       "AMD Instinct MI210", "CDNA2", "gfx90a", "✅"
       "AMD Instinct MI100", "CDNA", "gfx908", "✅"
-      "AMD Instinct MI50", "GCN5.1", "gfx906", "⚠️"
+      "AMD Instinct MI50", "GCN5.1", "gfx906", "❌"
       "AMD Instinct MI25", "GCN5.0", "gfx900", "❌"
 
   .. tab-item:: AMD Radeon PRO
@@ -48,6 +48,7 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       "AMD Radeon PRO V710", "RDNA3", "gfx1101", "✅"
       "AMD Radeon PRO W7900 Dual Slot", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W7900", "RDNA3", "gfx1100", "✅"
+      "AMD Radeon PRO W7800 48GB", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W7800", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W6800", "RDNA2", "gfx1030", "✅"
       "AMD Radeon PRO V620", "RDNA2", "gfx1030", "✅"
@@ -88,37 +89,217 @@ Supported operating systems
 AMD ROCm software supports the following Linux distributions.
 
 .. csv-table::
-    :widths: 50, 50, 25
-    :header: "Operating system", "Kernel", "Support"
+    :widths: 50, 50, 25, 25
+    :header: "Operating system", "Kernel", "Glibc", "Support"
     :escape: \
 
-    "Ubuntu 24.04.2", "6.8 [GA], 6.11 [HWE]", "✅"
-    "Ubuntu 22.04.5", "5.15 [GA], 6.8 [HWE]", "✅"
-    "RHEL 9.5", "5.14.0", "✅"
-    "RHEL 9.4", "5.14.0", "✅"
-    "RHEL 8.10", "4.18.0", "✅"
-    "SLES 15 SP6", "6.4.0", "✅"
-    "SLES 15 SP5", "5.14.21", "✅"
-    "Oracle Linux 8.10", "5.15.0", "✅ [#mi300x]_"
-    "Azure Linux 3.0", "6.6", "✅ [#mi300x]_"
-    "Debian 12", "6.1", "✅ [#single-node]_"
+    "Ubuntu 24.04.2", "6.8 [GA], 6.11 [HWE]", "2.39", "✅"
+    "Ubuntu 22.04.5", "5.15 [GA], 6.8 [HWE]", "2.35", "✅"
+    "RHEL 9.5", "5.14+", "2.34", "✅"
+    "RHEL 9.4", "5.14+", "2.34", "✅"
+    "RHEL 8.10", "4.18.0+", "2.28", "✅"
+    "SLES 15 SP6", "6.5.0+", "2.38", "✅"
+    "Oracle Linux 9", "5.15.0 (UEK)", "2.35", "✅ [#mi300x]_"
+    "Oracle Linux 8", "5.15.0 (UEK)", "2.28", "✅ [#mi300x]_"
+    "Azure Linux 3.0", "6.6.60", "2.38", "✅ [#azurelinux]_"
+    "Debian 12", "6.1", "2.36", "✅ [#single-node]_"
     
 
 .. note::
 
-   See the :doc:`rocm:compatibility/compatibility-matrix` for an overview
-   of OS support across ROCm releases.
+  * See `Red Hat Enterprise Linux Release Dates <https://access.redhat.com/articles/3078>`_ to learn about the specific kernel versions supported on Red Hat Enterprise Linux (RHEL).
+  * See `List of SUSE Linux Enterprise Server kernel <https://www.suse.com/support/kb/doc/?id=000019587>`_ to learn about the specific kernel version supported on SUSE Linux Enterprise Server (SLES).
+  * See the :doc:`rocm:compatibility/compatibility-matrix` for an overview of OS support across ROCm releases.
 
 Virtualization support
-=============================================
+======================
 
-ROCm supports virtualization for select GPUs only as shown below.
+ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs listed in the following table.
 
-.. csv-table::
-    :widths: 20, 20, 20, 40
-    :header: "Hypervisor", "Version", "GPU", "Validated guest OS (kernel)"
+.. raw:: html
 
-    "VMWare", "ESXi 8.0.3", "MI210", "Ubuntu 22.04.5 (6.8 [HWE]), |br| SLES 15 SP5 (5.14.21), |br| RHEL 9.4 (5.14.0)"
+   <div class="pst-scrollable-table-container">
+     <table class="table">
+       <thead>
+         <tr class="row-odd">
+           <th class="head">
+             <p>GPU</p>
+           </th>
+           <th class="head">
+             <p>Hypervisor</p>
+           </th>
+           <th class="head">
+             <p>Virtualization technology</p>
+           </th>
+           <th class="head">
+             <p>Host OS and version</p>
+           </th>
+           <th class="head">
+             <p>Guest OS</p>
+           </th>
+         </tr>
+       </thead>
+       <style>
+         tbody#virtualization-support-instinct tr:last-child {
+           border-bottom: 2px solid var(--pst-color-primary);
+         }
+       </style>
+       <tbody id="virtualization-support-instinct">
+         <tr class="row-even">
+           <td>
+             <p>MI325X</p>
+           </td>
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+         </tr>
+         <tr class="row-odd">
+           <td rowspan="3">
+             <p>MI300X</p>
+           </td>
+           <td>
+             <p>Hyper-V</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Azure Host 2021</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+         </tr>
+         <tr class="row-even">
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+         </tr>
+         <tr class="row-odd">
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>Passthrough</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+         </tr>
+         <tr class="row-even">
+           <td>
+             <p>MI250</p>
+           </td>
+           <td>
+             <p>Hyper-V</p>
+           </td>
+           <td>
+             <p>DDA</p>
+           </td>
+           <td>
+             <p>Azure Host 2021</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+         </tr>
+         <tr class="row-odd">
+           <td>
+             <p>MI210</p>
+           </td>
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>RHEL 9.4</p>
+           </td>
+           <td>
+             <p>RHEL 9.4</p>
+           </td>
+         </tr>
+         </tbody>
+         <tbody id="virtualization-support-radeon-pro>
+         <tr class="row-even">
+           <td rowspan="2">
+             <p>V710</p>
+           </td>
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04</p>
+           </td>
+         </tr>
+         <tr class="row-odd">
+           <td>
+             <p>Hyper-V</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Azure Host 2024</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04</p>
+           </td>
+         </tr>
+         <tr class="row-even">
+           <td>
+             <p>V620</p>
+           </td>
+           <td>
+             <p>Hyper-V</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Azure Host 2024</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04</p>
+           </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+
+.. note::
+
+   These virtualization technologies are designed to dedicate entire GPUs to
+   individual virtual machines (VMs), rather than allowing a single GPU to be
+   shared across multiple VMs.
 
 CPU support
 =============================================
@@ -128,6 +309,7 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 
 .. rubric:: Footnotes
 
-.. [#ub2204] AMD Instinct MI325X is supported only on Ubuntu 22.04.5 [5.15 GA].
-.. [#mi300x] Oracle Linux 8.10 and Azure Linux 3.0 are supported only on AMD Instinct MI300X.
+.. [#ub2204] AMD Instinct MI325X is supported only on Ubuntu 22.04 [5.15 GA].
+.. [#mi300x] Oracle Linux 8 and 9 are supported only on AMD Instinct MI300X.
+.. [#azurelinux] Azure Linux 3.0 is supported only on AMD Instinct MI300X and AMD Radeon PRO V710.
 .. [#single-node] Debian 12 is supported only on AMD Instinct MI300X for single-node functionality. 

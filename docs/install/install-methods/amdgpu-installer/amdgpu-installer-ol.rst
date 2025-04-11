@@ -29,7 +29,7 @@ Installation
   .. tab-set::
       {% for os_version in config.html_context['ol_version_numbers'] %}
       {% set os_major, _  = os_version.split('.') %}
-      .. tab-item:: OL {{ os_version }}
+      .. tab-item:: OL {{ os_major }}
 
           .. code-block:: bash
               :substitutions:
@@ -42,47 +42,45 @@ Installation
 
 .. _ol-amdgpu-install-uninstall:
 
-Uninstalling ROCm
+Uninstalling
 =================================================
-
-To uninstall all ROCm packages and the kernel-mode driver, use the following commands.
-
-* Uninstalling single-version install
-
-  .. code-block:: bash
-
-    sudo amdgpu-install --uninstall
-
-* Uninstalling a specific ROCm release
-
-  .. code-block:: bash
-
-    sudo amdgpu-install --uninstall --rocmrelease=<release-number>
-
-
-* Uninstalling all ROCm releases
-
-  .. code-block:: bash
-
-    sudo amdgpu-install --uninstall --rocmrelease=all
 
 Uninstalling amdgpu-install
-=================================================
-
-After uninstalling ROCm, remove the amdgpu-install package from system.
+---------------------------------------------------------------------------
 
 .. code-block:: bash
 
     sudo dnf remove amdgpu-install
 
-Remove ROCm and AMDGPU repositories
+Uninstall specific meta packages
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+    :substitutions:
+
+    # sudo apt autoremove <package-name>
+    # For example:
+    sudo dnf remove rocm
+    # Or for version specific packages:
+    sudo dnf remove rocm|rocm_version|
+
+Uninstall ROCm packages
+---------------------------------------------------------------------------
+
+.. code-block:: bash
+    :substitutions:
+
+    sudo dnf remove rocm-core amdgpu-core
+    # Or for version specific packages:
+    sudo dnf remove rocm-core|rocm_version| amdgpu-core
+
+Remove ROCm repositories
 =================================================
 
 .. code-block:: bash
 
     # Remove the repositories
     sudo rm /etc/yum.repos.d/rocm.repo*
-    sudo rm /etc/yum.repos.d/amdgpu.repo*
     
     # Clear the cache and clean the system
     sudo rm -rf /var/cache/dnf

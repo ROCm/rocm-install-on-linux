@@ -59,7 +59,7 @@ The ROCm Offline Installer Creator tool supports the following Linux distributio
 
 * Ubuntu: 20.04, 22.04, 24.04
 * RHEL: 8.10, 9.4, 9.5
-* SLES: 15.5, 15.6
+* SLES: 15.6
 
 Getting started
 ================================================
@@ -780,6 +780,7 @@ Tests are available for these ROCm versions:
 *  6.1.x
 *  6.2.x
 *  6.3.x
+*  6.4.x
 
 Tests are available for the following component combinations:
 
@@ -840,6 +841,7 @@ The following tests are available, depending on the ROCm version:
    "6.1.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "6.2.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "6.3.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
+   "6.4.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
 
 .. note::
    
@@ -857,7 +859,7 @@ From the build location of the offline tool, run the following command:
 
    ctest -L <rocm-version> 
 
-where ``<rocm-version>`` is one of ``5.7.3``, ``6.0.2``, ``6.1.x``, ``6.2.x``, or ``6.3.x``.
+where ``<rocm-version>`` is one of ``5.7.3``, ``6.0.2``, ``6.1.x``, ``6.2.x``, ``6.3.x``, or ``6.4.x``.
  
 Running manual tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
