@@ -43,16 +43,6 @@ Registering ROCm repositories
 Installing
 =====================================================
 
-Install kernel driver
-----------------------------------------------------------------------------------------------------------
-
-.. code-block:: bash
-
-    sudo tdnf install azurelinux-repos-amd
-    sudo tdnf repolist --refresh
-    sudo tdnf install amdgpu
-    sudo modprobe amdgpu
-
 Install ROCm packages
 ----------------------------------------------------------------------------------------------------------
 
@@ -61,6 +51,10 @@ Install ROCm packages
     sudo tdnf install rocm
 
 Complete the :doc:`../../post-install`.
+
+.. note::
+
+    For information about the AMDGPU driver installation, see the `Install AMDGPU driver <https://advanced-micro-devices-dcgpu-documentation--16.com.readthedocs.build/projects/amdgpu-docs/en/16/install/package-manager-index.html>`_ in the AMD Instinct Data Center GPU Documentation.
 
 .. _azl-upgrade:
 
@@ -94,22 +88,13 @@ Uninstall ROCm packages
 
     sudo tdnf remove rocm-core
 
-Uninstall kernel-mode driver
----------------------------------------------------------------------------
-
-.. code-block:: bash
-
-    sudo tdnf remove amdgpu amdgpu-firmware kernel-drivers-gpu
-
-Remove ROCm and AMDGPU repositories
+Remove ROCm repositories
 ---------------------------------------------------------------------------
 
 .. code-block:: bash
 
     # Remove the repositories
-    sudo tdnf remove azurelinux-repos-amd
     sudo rm /etc/yum.repos.d/rocm.repo*
-    sudo rm /etc/yum.repos.d/amdgpu.repo*
 
     # Clear the cache and clean the system
     sudo rm -rf /var/cache/tdnf

@@ -75,49 +75,7 @@ After installing ROCm, follow these steps to finalize and validate the installat
 
          export PATH=$PATH:/opt/rocm-|rocm_directory_version|/bin
 
-.. _verify-dkms:
-
-3. Verify the kernel-mode driver installation.
-
-   .. tab-set::
-
-       .. tab-item:: Ubuntu
-
-           .. code-block:: bash
-
-               dkms status
-
-       .. tab-item:: Debian
-
-           .. code-block:: bash
-
-               dkms status
-
-       .. tab-item:: RHEL
-
-           .. code-block:: bash
-
-               dkms status
-
-       .. tab-item:: OL
-
-           .. code-block:: bash
-
-               dkms status
-
-       .. tab-item:: SLES
-
-           .. code-block:: bash
-
-               dkms status
-
-       .. tab-item:: AZL
-
-           .. code-block:: bash
-
-               modinfo amdgpu | grep -w "version:"
-
-4. Export LD_LIBRARY_PATH as needed
+3. Export LD_LIBRARY_PATH as needed
 
    .. important::
 
@@ -128,14 +86,14 @@ After installing ROCm, follow these steps to finalize and validate the installat
 
       export LD_LIBRARY_PATH=/opt/rocm-|rocm_directory_version|/lib
 
-5. Verify the ROCm installation.
+4. Verify the ROCm installation.
 
    .. code-block:: bash
 
        rocminfo
        clinfo
 
-6. Verify the package installation.
+5. Verify the package installation.
 
    .. tab-set::
 
