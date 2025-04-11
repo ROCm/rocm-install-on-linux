@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -603,8 +603,9 @@ void print_menu_warning_msg(MENU_DATA *pMenuData, int y, int x, const char *fmt,
     wattron(pMenuWindow, COLOR_PAIR(10));
     mvwprintw(pMenuWindow, y, x, "WARNING: %s", string);
     wattroff(pMenuWindow, COLOR_PAIR(10));
-
+       
     print_border_around_item_description(pMenuWindow, y-1);
+    print_border_around_item_description(pMenuWindow, y);
     print_version(pMenuData);
 }
 
@@ -692,16 +693,24 @@ bool print_url_check(MENU_DATA *pMenuData, char *url)
     mvwprintw(pMenuWindow, 21, 1, "%s", url);
 #endif
 
+    int y = WARN_ERR_START_Y - 6;
+    
+    clear_text(pMenuData, y, WARN_ERR_START_X, MENU_SEL_START_Y);
+    mvwprintw(pMenuWindow, y, WARN_ERR_START_X, "Checking:");
+    y++;
+    
     if ( check_url(url) != 0 )
     {
         wattron(pMenuWindow, COLOR_PAIR(1));
-        mvwprintw(pMenuWindow, DEBUG_ERR_START_Y, DEBUG_ERR_START_X, "* Invalid URL");
+        y = print_multiline_string(pMenuWindow, url, WARN_ERR_START_X, y, (WIN_WIDTH_COLS - 2));
+        mvwprintw(pMenuWindow, y, WARN_ERR_START_X, "* Invalid URL");
         wattroff(pMenuWindow, COLOR_PAIR(1));
         return false;
     }
     
     wattron(pMenuWindow, COLOR_PAIR(4));
-    mvwprintw(pMenuWindow, DEBUG_ERR_START_Y, DEBUG_ERR_START_X, "* Valid URL  ");
+    y = print_multiline_string(pMenuWindow, url, WARN_ERR_START_X, y, (WIN_WIDTH_COLS - 2));
+    mvwprintw(pMenuWindow, y, WARN_ERR_START_X, "* Valid URL");
     wattroff(pMenuWindow, COLOR_PAIR(4));
     
     return true;
@@ -1163,4 +1172,98 @@ int display_help_scroll_window(MENU_DATA *pMenuData, char *filename)
     free(lines);
 
     return 0;
+}
+
+// return value is last row used for printing the string text
+int print_multiline_string(WINDOW *pMenuWindow, char *text, int startx, int starty, int width)
+{
+    if (strlen(text) <= (size_t)width)
+    {
+        mvwprintw(pMenuWindow, starty, startx, "%s", text);
+        return starty + 1;
+    }
+    else 
+    {
+        char *substring = calloc(1, sizeof(char *) * (width + 1));
+        if (!substring)
+        {
+            return starty;
+        }
+
+        int height = calculate_text_height(text, width);
+        int startIndex = 0;
+        int lineWidth = width;
+
+        for (int i = 0; i < height; i++)
+        {   
+            strncpy(substring, text + startIndex, lineWidth);
+            
+            // if we have < width characters left to print, then readjust
+            // lineWidth to be value of the remaining characters left to print
+            if (startIndex + width > (int)strlen(text))
+            {
+                lineWidth = (int)strlen(text) - startIndex;
+            }
+            startIndex += lineWidth;
+            mvwprintw(pMenuWindow, starty, startx, "%s", substring);
+            
+            memset(substring, 0, (size_t)width);
+            starty++;
+        }
+        
+        free(substring);
+    }
+
+    return starty;
+}
+
+void clear_text(MENU_DATA *pMenuData, int starty, int startx, int endy)
+{
+    WINDOW *pMenuWindow = pMenuData->pMenuWindow;
+    
+    for (int y = starty; y < endy; y++)
+    {
+        wmove(pMenuWindow, y, startx);
+        wclrtoeol(pMenuWindow);
+    }
+}
+
+bool is_distro(MENU_DATA *pMenuData, const char *distroID)
+{
+    char *currentDistroID = pMenuData->pConfig->distroID;
+
+    return (strcmp(currentDistroID, distroID) == 0);
+}
+
+bool is_distro_version(MENU_DATA *pMenuData, const char *distroVersion)
+{
+    char *currentDistroVersion = pMenuData->pConfig->distroVersion;
+
+    return strcmp(currentDistroVersion, distroVersion) == 0;
+}
+
+bool is_distro_id_and_distro_version(MENU_DATA *pMenuData, const char *distroID, const char *distroVersion)
+{
+
+    return is_distro(pMenuData, distroID) && is_distro_version(pMenuData, distroVersion);
+}
+
+bool is_rhel(MENU_DATA *pMenuData)
+{
+    return is_distro(pMenuData, "rhel");
+}
+
+bool is_sles(MENU_DATA *pMenuData)
+{
+    return is_distro(pMenuData, "sles");
+}
+
+bool is_ol(MENU_DATA *pMenuData)
+ {
+    return is_distro(pMenuData, "ol");
+ }
+
+bool is_ubuntu_2004(MENU_DATA *pMenuData)
+{
+    return is_distro_id_and_distro_version(pMenuData, "ubuntu", "20.04");
 }
