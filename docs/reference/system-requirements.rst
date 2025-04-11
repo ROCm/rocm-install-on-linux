@@ -114,52 +114,186 @@ AMD ROCm software supports the following Linux distributions.
 Virtualization support
 ======================
 
-ROCm supports virtualization for certain Instinct accelerators as listed in the following table.
+ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs listed in the following table.
 
-.. list-table::
-   :header-rows: 1
+.. raw:: html
 
-   * - GPU
-     - Hypervisor
-     - Virtualization technology
-     - Host OS
-     - Guest OS
-
-   * - MI325X
-     - KVM
-     - SRIOV
-     - Ubuntu 22.04
-     - Ubuntu 22.04
-
-   * - MI300X
-     - Hyper-V
-     - SRIOV
-     - Azure Host 2021
-     - Ubuntu 22.04
-
-   * - MI300X
-     - KVM
-     - SRIOV
-     - Ubuntu 22.04
-     - Ubuntu 22.04
-
-   * - MI300X
-     - KVM
-     - Passthrough
-     - Ubuntu 22.04
-     - Ubuntu 22.04
-
-   * - MI250
-     - Hyper-V
-     - DDA
-     - Azure Host 2021
-     - Ubuntu 22.04
-
-   * - MI210
-     - KVM
-     - SRIOV
-     - RHEL 9.4
-     - Ubuntu 22.04, RHEL 9.4
+   <div class="pst-scrollable-table-container">
+     <table class="table">
+       <thead>
+         <tr class="row-odd">
+           <th class="head">
+             <p>GPU</p>
+           </th>
+           <th class="head">
+             <p>Hypervisor</p>
+           </th>
+           <th class="head">
+             <p>Virtualization technology</p>
+           </th>
+           <th class="head">
+             <p>Host OS and version</p>
+           </th>
+           <th class="head">
+             <p>Guest OS</p>
+           </th>
+         </tr>
+       </thead>
+       <style>
+         tbody#virtualization-support-instinct tr:last-child {
+           border-bottom: 2px solid var(--pst-color-primary);
+         }
+       </style>
+       <tbody id="virtualization-support-instinct">
+         <tr class="row-even">
+           <td>
+             <p>MI325X</p>
+           </td>
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+         </tr>
+         <tr class="row-odd">
+           <td rowspan="3">
+             <p>MI300X</p>
+           </td>
+           <td>
+             <p>Hyper-V</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Azure Host 2021</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+         </tr>
+         <tr class="row-even">
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+         </tr>
+         <tr class="row-odd">
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>Passthrough</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+         </tr>
+         <tr class="row-even">
+           <td>
+             <p>MI250</p>
+           </td>
+           <td>
+             <p>Hyper-V</p>
+           </td>
+           <td>
+             <p>DDA</p>
+           </td>
+           <td>
+             <p>Azure Host 2021</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04</p>
+           </td>
+         </tr>
+         <tr class="row-odd">
+           <td>
+             <p>MI210</p>
+           </td>
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>RHEL 9.4</p>
+           </td>
+           <td>
+             <p>RHEL 9.4</p>
+           </td>
+         </tr>
+         </tbody>
+         <tbody id="virtualization-support-radeon-pro>
+         <tr class="row-even">
+           <td rowspan="2">
+             <p>V710</p>
+           </td>
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04</p>
+           </td>
+         </tr>
+         <tr class="row-odd">
+           <td>
+             <p>Hyper-V</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Azure Host 2024</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04</p>
+           </td>
+         </tr>
+         <tr class="row-even">
+           <td>
+             <p>V620</p>
+           </td>
+           <td>
+             <p>Hyper-V</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Azure Host 2024</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04</p>
+           </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
 
 .. note::
 
