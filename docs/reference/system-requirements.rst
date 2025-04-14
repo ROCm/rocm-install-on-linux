@@ -238,7 +238,7 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
              <p>RHEL 9.4</p>
            </td>
            <td>
-             <p>RHEL 9.4</p>
+             <p>Ubuntu 22.04, RHEL 9.4</p>
            </td>
          </tr>
          </tbody>
