@@ -6,7 +6,7 @@
 
 # ROCm version numbers
 rocm_version = '6.4'
-rocm_multi_versions = '6.4.0 6.3.3' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_multi_versions = '6.4 6.3.3' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
 rocm_multi_versions_package_versions = '6.4.0 6.3.3' # however, in multi, the packages use 6.3.0
 rocm_directory_version = '6.4.0' # in 6.0 rocm was located in /opt/rocm-6.0.0
 amdgpu_version = '6.4' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
