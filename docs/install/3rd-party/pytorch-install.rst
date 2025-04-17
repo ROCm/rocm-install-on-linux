@@ -165,7 +165,7 @@ validated for ROCm 6.4.
 
                   Inventory
                     * `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_
-                    * `Python 3.10.16 <https://www.python.org/downloads/release/python-31016/>`_
+                    * `Python 3.11.9 <https://www.python.org/downloads/release/python-3119/>`_
                     * `PyTorch 2.5.1 <https://github.com/ROCm/pytorch/tree/release/2.5>`_
                     * `Apex 1.5.0 <https://github.com/ROCm/apex/tree/release/1.5.0>`_
                     * `torchvision 0.20.1 <https://github.com/pytorch/vision/tree/v0.20.1>`_
