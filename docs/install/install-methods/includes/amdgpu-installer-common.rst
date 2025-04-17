@@ -76,29 +76,6 @@ The available use-cases are printed in a format similar to:
       - ASAN enabled Machine learning framework
       - ASAN enabled ROCm libraries
 
-Install amdgpu-dkms
--------------------------------------------------
-
-In order to install only the DKMS, which is a minimal requirement for launching containers with GPU
-access, use the ``dkms`` use case:
-
-.. code-block:: bash
-
-   amdgpu-install --usecase=dkms
-
-To verify the kernel installation, use this command:
-
-.. code-block:: shell
-
-   sudo dkms status
-
-If the installation of the kernel module was successful, the command displays the output
-in the following format:
-
-.. code-block:: shell
-
-   amdgpu, 4.3-52.el7, 3.10.0-1160.11.1.el7.x86_64, x86_64: installed (original_module exists)
-
 Upgrading ROCm
 =================================================
 
@@ -113,32 +90,32 @@ To install use cases specific to your requirements, use the installer (``amdgpu-
 
   .. code-block:: bash
 
-    sudo amdgpu-install --usecase=rocm
+    sudo amdgpu-install --usecase=rocm --no-dkms
 
 * For multiple use cases, separate them with commas:
 
   .. code-block:: bash
 
-    sudo amdgpu-install --usecase=hiplibsdk,rocm
+    sudo amdgpu-install --usecase=hiplibsdk,rocm --no-dkms
 
 * For graphical workloads using the open-source driver, add ``graphics``. For example:
 
   .. code-block:: bash
 
-    sudo amdgpu-install --usecase=graphics,rocm
+    sudo amdgpu-install --usecase=graphics,rocm --no-dkms
 
 * For graphical workloads using the proprietary driver, add ``workstation``. For example:
 
   .. code-block:: bash
 
-    sudo amdgpu-install --usecase=workstation,rocm
+    sudo amdgpu-install --usecase=workstation,rocm --no-dkms
 
 * To install LLVM AddressSanitizer (ASAN) instrumented binaries (for packages that support it), add
   ``asan``. For example:
 
   .. code-block:: bash
 
-    sudo amdgpu-install --usecase=rocm,asan
+    sudo amdgpu-install --usecase=rocm,asan --no-dkms
 
 * To list all possible use cases, use the ``--list-usecase`` option:
 
@@ -151,4 +128,8 @@ To install use cases specific to your requirements, use the installer (``amdgpu-
   .. code-block:: bash
 
     sudo amdgpu-install --help
+
+.. note::
+
+    For information about the AMDGPU driver installation, see the `Install AMDGPU driver <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`_ in the AMD Instinct Data Center GPU Documentation.
   

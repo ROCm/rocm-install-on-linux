@@ -16,32 +16,6 @@ Red Hat Enterprise Linux native installation
 Registering ROCm repositories
 =====================================================
 
-Register kernel-mode driver
-----------------------------------------------------------------------------------------------------------
-
-.. datatemplate:nodata::
-
-    .. tab-set::
-        {% for os_version in config.html_context['rhel_version_numbers'] %}
-        {% set os_major, _  = os_version.split('.') %}
-        .. tab-item:: RHEL {{ os_version }}
-            :sync: rhel-{{ os_version }} rhel-{{ os_major }}
-
-            .. code-block:: bash
-                :substitutions:
-
-                sudo tee /etc/yum.repos.d/amdgpu.repo <<EOF
-                [amdgpu]
-                name=amdgpu
-                baseurl=https://repo.radeon.com/amdgpu/|rocm_version|/el/{{ os_version }}/main/x86_64/
-                enabled=1
-                priority=50
-                gpgcheck=1
-                gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
-                EOF
-                sudo dnf clean all
-        {% endfor %}
-
 .. _rhel-register-rocm:
 
 Register ROCm packages
@@ -74,14 +48,6 @@ Register ROCm packages
 Installing
 =====================================================
 
-Install kernel driver
-----------------------------------------------------------------------------------------------------------
-
-.. code-block:: bash
-
-    sudo dnf install amdgpu-dkms
-    sudo reboot
-
 Install ROCm packages
 ----------------------------------------------------------------------------------------------------------
 
@@ -90,6 +56,10 @@ Install ROCm packages
     sudo dnf install rocm
 
 Complete the :doc:`../../post-install`.
+
+.. note::
+
+    For information about the AMDGPU driver installation, see the `Install AMDGPU driver <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`_ in the AMD Instinct Data Center GPU Documentation.
 
 .. _rhel-upgrade:
 
@@ -127,25 +97,17 @@ Uninstall ROCm packages
 .. code-block:: bash
     :substitutions:
 
-    sudo dnf remove rocm-core
+    sudo dnf remove rocm-core amdgpu-core
     # Or for version specific packages:
-    sudo dnf remove rocm-core|rocm_version|
+    sudo dnf remove rocm-core|rocm_version| amdgpu-core
 
-Uninstall kernel-mode driver
----------------------------------------------------------------------------
-
-.. code-block:: bash
-
-    sudo dnf remove amdgpu-dkms amdgpu-core
-
-Remove ROCm and AMDGPU repositories
+Remove ROCm repositories
 ---------------------------------------------------------------------------
 
 .. code-block:: bash
 
     # Remove the repositories
     sudo rm /etc/yum.repos.d/rocm.repo*
-    sudo rm /etc/yum.repos.d/amdgpu.repo*
     
     # Clear the cache and clean the system
     sudo rm -rf /var/cache/dnf

@@ -13,7 +13,7 @@ ROCm provides mixed-precision and large-scale training using our
 
 To install PyTorch for ROCm, you have the following options:
 
-* :ref:`using-docker-with-pytorch-pre-installed` (*recommended*)
+* :ref:`using-docker-with-pytorch-pre-installed` (recommended)
 
   * :ref:`pytorch-docker-support`
 
@@ -52,23 +52,19 @@ should perform as tested and mitigate potential installation issues. See
 
       docker pull rocm/pytorch:latest
 
-   You can also download a specific and supported configuration with different user-space ROCm
-   versions, PyTorch versions, and operating systems by filtering through the `tags <https://hub.docker.com/r/rocm/pytorch/tags>`_.
-
    .. _pytorch-docker-latest-note:
 
    .. important::
 
-      As of ROCm 6.2.1, ``rocm/pytorch:latest`` points to a docker image with the latest ROCm tested release version of PyTorch (for example, version 2.3), similar to ``rocm/pytorch:latest-release`` tag.
-      Before ROCm 6.2.1, ``rocm/pytorch:latest`` pointed to a development version of PyTorch, which didn't correspond to a specific PyTorch release.
+      The ``rocm/pytorch:latest`` and ``rocm/pytorch:latest-release`` tags point to
+      a Docker image with the latest ROCm-tested release of PyTorch.
 
-      .. csv-table::
-        :header: "Description", "6.3.0 and later", "6.2.1 and later", "6.2.0 and earlier"
+      The ``rocm/pytorch:latest-release-preview`` tag points to a more recent
+      PyTorch version with limited testing on ROCm.
 
-        "Latest PyTorch tested release", **rocm/pytorch:latest** |br| rocm/pytorch:latest-release, **rocm/pytorch:latest** |br| rocm/pytorch:latest-release, rocm/pytorch:latest-release
-        "Latest PyTorch preview release [Limited testing]", rocm/pytorch:latest-release-preview, ,
-        "Latest PyTorch dev version", rocm/pytorch:latest-internal, rocm/pytorch:latest-internal, **rocm/pytorch:latest**
-
+   You can download Docker images with specific ROCm, PyTorch, and operating
+   system versions. See the available tags on
+   `Docker Hub <https://hub.docker.com/r/rocm/pytorch/tags>`_.
 
 2. Start a Docker container using the image.
 
@@ -234,7 +230,7 @@ wheels command, you must select **Linux**, **Python**, **pip**, and **ROCm** in 
 
    **Option 1:**
 
-   a. Download a base Docker image with the correct user-space ROCm version.
+   a. Download a base Docker image with the correct ROCm version.
 
       .. list-table::
           :header-rows: 1
@@ -294,12 +290,13 @@ wheels command, you must select **Linux**, **Python**, **pip**, and **ROCm** in 
 
    .. note::
 
-       The following command uses the ROCm 6.2.4 PyTorch wheel. If you want a different version of ROCm,
-       modify the command accordingly.
+      The following command uses the ROCm 6.3.0 PyTorch wheel. If you want a different version of ROCm,
+      modify the command accordingly.
 
    .. code-block:: bash
+      :substitutions:
 
-       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.2.4/
+       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.3/
 
 4. (Optional) Use MIOpen kdb files with ROCm PyTorch wheels.
 
@@ -513,8 +510,7 @@ maintainers and installs all the required dependencies, including:
 
        .ci/pytorch/build.sh
 
-   This converts PyTorch sources for
-   `HIP compatibility <https://www.amd.com/en/developer/rocm-hub/hip-sdk.html>`_ and builds the
+   This converts PyTorch CUDA sources to :doc:`HIP <hip:index>` and builds the
    PyTorch framework.
 
    To check if your build is successful, run:

@@ -13,7 +13,7 @@
               .. code-block:: bash
                   :substitutions:
 
-                  ver = |amdgpu_version|
+                  ver=|amdgpu_version|
                   sudo tee /etc/zypp/repos.d/amdgpu.repo <<EOF
                   [amdgpu]
                   name=amdgpu
