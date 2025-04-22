@@ -234,7 +234,7 @@ validated for ROCm 6.4.
 
       .. tab-set::
 
-         .. tab-item:: Ubuntu 22.04
+         .. tab-item:: Ubuntu 24.04
 
             Tag
               `rocm/pytorch:rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.3.0/images/sha256-0434cbc9b07b2c26e39480d7447f676f9057a1054dcff00e0050c25a6eddbd3c>`_
