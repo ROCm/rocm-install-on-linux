@@ -33,7 +33,7 @@ all_article_info_os = ["linux"]
 all_article_info_author = ""
 
 # Supported linux version numbers
-ubuntu_version_numbers = [('24.04', 'noble'), ('22.04', 'jammy')]
+ubuntu_version_numbers = [('24.04', 'noble'), ('22.04', 'noble')]
 debian_version_numbers = [('12', 'jammy')]
 rhel_release_version_numbers = ['9', '8']
 rhel_version_numbers = ['9.5', '9.4', '8.10']
