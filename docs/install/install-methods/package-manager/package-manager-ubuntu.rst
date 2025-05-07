@@ -57,7 +57,7 @@ Register packages
                 :substitutions:
 
                 # Register kernel-mode driver
-                echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/|rocm_version| {{ os_release }} main" \
+                echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/|rocm_version|/ubuntu {{ os_release }} main" \
                     | sudo tee /etc/apt/sources.list.d/amdgpu.list
                 sudo apt update
 
@@ -134,6 +134,7 @@ Remove ROCm repositories
 .. code-block:: bash
 
     # Remove the repositories
+    sudo rm /etc/apt/sources.list.d/amdgpu.list
     sudo rm /etc/apt/sources.list.d/rocm.list
 
     # Clear the cache and clean the system
