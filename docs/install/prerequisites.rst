@@ -518,9 +518,9 @@ AMD IGP installed, disable it in the BIOS prior to using ROCm. If the driver can
 enumerate the IGP, the ROCm runtime might crash the system, even in case where omission was specified
 via `HIP_VISIBLE_DEVICES <https://rocm.docs.amd.com/en/latest/conceptual/gpu-isolation.html#hip-visible-devices>`_.
 
-Disable Secure Boot
-===================
+Secure Boot
+===========
 
-You must disable Secure Boot to install the AMDGPU driver ``amdgpu-dkms``; otherwise, the system may fail to load. 
-To keep Secure Boot enabled, you must sign ``amdgpu-dkms``. 
-For more information, see `Secure Boot Support <https://amdgpu-install.readthedocs.io/en/latest/install-installing.html#secure-boot-support>`_.
+When installing the AMDGPU driver with Secure Boot enabled, you must sign ``amdgpu-dkms`` to prevent potential system loading issues. 
+For more information, see `Secure Boot Support <https://amdgpu-install.readthedocs.io/en/latest/install-installing.html#secure-boot-support>`_. 
+If you prefer not to sign the AMDGPU driver, you can disable Secure Boot from the BIOS settings instead.
