@@ -106,7 +106,7 @@ The following table shows the meta-packages and their associated (meta-)packages
 .. note::
 
    ``rocm-utils`` is a legacy meta-package that includes ``rocminfo``, ``rocm-cmake``, and ``rocm-core``. 
-   In current ROCm installations, other meta-packages manage the installation of these components.
+   Other meta-packages manage the installation of these components.
 
 .. table::
   :widths: 30 70
