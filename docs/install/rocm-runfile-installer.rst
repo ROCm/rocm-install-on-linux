@@ -111,11 +111,11 @@ Substitute values specific to your installation for the following placeholders:
    <distro-version>  = Linux distribution version for the installer
    <install-file>    = The installer .run file
 
-For example, use this command to download ROCm version 6.4 of the ROCm Runfile Installer for Ubuntu release 22.04:
+For example, use this command to download ROCm version 6.4.1 of the ROCm Runfile Installer for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-6.4/ubuntu/22.04/rocm-installer_1.1.0.60400-5-37~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-6.4.1/ubuntu/22.04/rocm-installer_1.1.1.60401-30-83~22.04.run
 
 Running the ROCm Runfile Installer
 ----------------------------------
