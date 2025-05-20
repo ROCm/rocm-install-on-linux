@@ -52,7 +52,7 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       "AMD Radeon PRO W7800", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W6800", "RDNA2", "gfx1030", "✅"
       "AMD Radeon PRO V620", "RDNA2", "gfx1030", "✅"
-      "AMD Radeon PRO VII", "GCN5.1", "gfx906", "⚠️"
+      "AMD Radeon PRO VII", "GCN5.1", "gfx906", "❌"
 
   .. tab-item:: AMD Radeon
 
@@ -63,7 +63,7 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       "AMD Radeon RX 7900 XTX", "RDNA3", "gfx1100", "✅"
       "AMD Radeon RX 7900 XT", "RDNA3", "gfx1100", "✅"
       "AMD Radeon RX 7900 GRE", "RDNA3", "gfx1100", "✅"
-      "AMD Radeon VII", "GCN5.1", "gfx906", "⚠️"
+      "AMD Radeon VII", "GCN5.1", "gfx906", "❌"
 
 ✅: **Supported** - Official software distributions of the current ROCm release fully support this hardware.
 
