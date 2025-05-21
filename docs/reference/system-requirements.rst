@@ -19,7 +19,7 @@ Supported GPUs
 The following table shows the supported AMD Instinct™ accelerators, and Radeon™ PRO
 and Radeon GPUs. If a GPU is not listed on this table, it's not officially supported by AMD.
 
-Accelerators and GPUs listed in the following table support compute workloads (no display information or graphics). If you’re using ROCm with AMD Radeon or Radeon Pro GPUs for graphics workloads, see the `Use ROCm on Radeon GPU documentation <https://rocm.docs.amd.com/projects/radeon/en/latest/docs/compatibility.html>`_ to verify compatibility and system requirements.
+Accelerators and GPUs listed in the following table support compute workloads (no display information or graphics). If you’re using ROCm with AMD Radeon or Radeon PRO GPUs for graphics workloads, see the `Use ROCm on Radeon GPU documentation <https://rocm.docs.amd.com/projects/radeon/en/latest/docs/compatibility.html>`_ to verify compatibility and system requirements.
 
 .. tab-set::
 
@@ -45,6 +45,7 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       :widths: 50, 25, 25, 10
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
+      "AMD Radeon AI PRO R9700", "RDNA4", "gfx1201", "✅"
       "AMD Radeon PRO V710", "RDNA3", "gfx1101", "✅"
       "AMD Radeon PRO W7900 Dual Slot", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W7900", "RDNA3", "gfx1100", "✅"
@@ -60,6 +61,8 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       :widths: 50, 25, 25, 10
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
+      "AMD Radeon RX 9070 XT", "RDNA4", "gfx1201", "✅"
+      "AMD Radeon RX 9060 XT", "RDNA4", "gfx1201", "✅"
       "AMD Radeon RX 7900 XTX", "RDNA3", "gfx1100", "✅"
       "AMD Radeon RX 7900 XT", "RDNA3", "gfx1100", "✅"
       "AMD Radeon RX 7900 GRE", "RDNA3", "gfx1100", "✅"
