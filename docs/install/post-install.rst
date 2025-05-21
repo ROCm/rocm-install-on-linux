@@ -26,7 +26,7 @@ Configure the system linker by specifying where to find the shared objects (``.s
 
 .. _config_rocm_path:
 
-2. Configure ROCm PATH
+2. Configure ROCm ``PATH``
 -----------------------------------------------------
 
 Configure the path to the ROCm binary using one of the following Linux utilities or manually update the ``PATH`` variable. 
@@ -61,7 +61,7 @@ your session environment using module files. For more information, see
 
 .. note::
 
-   The ``environment-modules`` package should be installed on the system before ROCm can be configure using modules (see :ref:`prerequisites <additional_dev_packages>`).
+   The ``environment-modules`` package should be installed on the system before ROCm can be configured using modules. For more information, see :ref:`prerequisites <additional_dev_packages>`.
 
 To use ``environment-modules``, follow these instructions:
 
@@ -110,7 +110,7 @@ If ``update-alternatives`` or ``environment-modules`` are not available on the s
 
    export PATH=$PATH:/opt/rocm-|rocm_directory_version|/bin
 
-3. Configure LD_LIBRARY_PATH
+3. Configure ``LD_LIBRARY_PATH``
 -----------------------------------------------------
 
 .. important::
@@ -131,7 +131,7 @@ Once ROCm has been configured, validate the installation.
 -----------------------------------------------------
 
 Use the package manager to validate the list of ROCm component packages installed on the system. 
-If package installation was successful, the list will contain ``rocm*`` and ``hip*`` packages currently on the system.
+If package installation was successful, the list will contain ``rocm*`` and ``hip*`` packages currently installed on the system.
 
 .. tab-set::
 
@@ -181,7 +181,7 @@ Use the following ROCm tools to verify that installation was successful:
       rocminfo
       clinfo
 
-Both rocminfo and clinfo should output attributes for the ROCm system configuration if installation was successful. 
+Both ``rocminfo`` and ``clinfo`` should output attributes for the ROCm system configuration if installation was successful. 
 For additional testing of ROCm functionality, try `rocm-examples <https://github.com/ROCm/rocm-examples>`_.
 
 Troubleshooting

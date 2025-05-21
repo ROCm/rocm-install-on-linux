@@ -354,7 +354,7 @@ To install the required packages, use the following instructions specific to you
 
             sudo tdnf install python3-setuptools python3-wheel
 
-Optionally, if configuring the post-ROCm installation (see :ref:`post-installation instructions <config_rocm_path>`) using ``environment-modules``, install the following:
+Optionally, if configuring the :ref:`post-ROCm installation <config_rocm_path>` using ``environment-modules``, install the following:
 
 .. tab-set::
 
@@ -515,5 +515,5 @@ Disable integrated graphics (IGP)
 
 ROCm doesn't currently support integrated graphics. If your system has an
 AMD IGP installed, disable it in the BIOS prior to using ROCm. If the driver can
-enumerate the IGP, the ROCm runtime might crash the system, even in case where omission was specified
+enumerate the IGP, the ROCm runtime might crash the system, even when omission was specified
 via `HIP_VISIBLE_DEVICES <https://rocm.docs.amd.com/en/latest/conceptual/gpu-isolation.html#hip-visible-devices>`_.
