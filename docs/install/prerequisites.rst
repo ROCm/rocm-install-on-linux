@@ -300,17 +300,14 @@ instructions specific to your distribution to add the necessary repositories.
 
                 {% endfor %}
 
-Kernel headers and development packages
+.. _additional_dev_packages:
+
+Additional development packages
 ================================================================
 
-The driver package uses
-`Dynamic Kernel Module Support (DKMS) <https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support>`_
-to build the `amdgpu-dkms` module (driver) for the installed kernels. This requires the Linux kernel
-headers and modules to be installed for each. Usually these are automatically installed with the kernel,
-but if you have multiple kernel versions or you have downloaded the kernel images and not the kernel
-meta-packages then they must be manually installed.
+ROCm installation requires additional packages for operation and development.
 
-To install for the currently active kernel run the command corresponding to your distribution.
+To install the required packages, use the following instructions specific to your distribution:
 
 .. tab-set::
 
@@ -326,25 +323,15 @@ To install for the currently active kernel run the command corresponding to your
 
         .. code-block:: shell
 
-            sudo apt install -y python3-setuptools python3-wheel
+            sudo apt install python3-setuptools python3-wheel
 
 
     .. tab-item:: Red Hat Enterprise Linux
         :sync: rhel-tab
 
-        .. datatemplate:nodata::
+        .. code-block:: shell
 
-            .. tab-set::
-
-              {% for os_release in config.html_context['rhel_release_version_numbers']  %}
-
-                  .. tab-item:: RHEL {{ os_release }}
-
-                    .. code-block:: shell
-
-                        sudo dnf install python3-setuptools python3-wheel
-
-              {% endfor %}
+            sudo dnf install python3-setuptools python3-wheel
 
     .. tab-item:: Oracle Linux
         :sync: ol-tab
@@ -366,6 +353,57 @@ To install for the currently active kernel run the command corresponding to your
         .. code-block:: shell
 
             sudo tdnf install python3-setuptools python3-wheel
+
+Optionally, if configuring the post-ROCm installation (see :ref:`post-installation instructions <config_rocm_path>`) using ``environment-modules``, install the following:
+
+.. tab-set::
+
+    .. tab-item:: Ubuntu
+        :sync: ubuntu-tab
+
+        .. code-block:: shell
+
+            sudo apt install environment-modules
+
+    .. tab-item:: Debian
+        :sync: debian-tab
+
+        .. code-block:: shell
+
+            sudo apt install environment-modules
+
+
+    .. tab-item:: Red Hat Enterprise Linux
+        :sync: rhel-tab
+
+        .. code-block:: shell
+
+            sudo dnf install environment-modules
+
+    .. tab-item:: Oracle Linux
+        :sync: ol-tab
+
+        .. code-block:: shell
+
+            sudo dnf install environment-modules
+
+    .. tab-item:: SUSE Linux Enterprise Server
+        :sync: sle-tab
+
+        .. code-block:: shell
+
+            sudo zypper install environment-modules
+
+            # Create a link for installed modules version
+            version=$(rpm -qa | grep '^Modules-' | awk -F'-' '{print $2}')
+            sudo ln -s /usr/share/Modules/$version/modulefiles /usr/share/Modules/modulefiles
+
+    .. tab-item:: Azure Linux
+        :sync: azl-tab
+
+        .. code-block:: shell
+
+            sudo tdnf install environment-modules
 
 .. _group_permissions:
 
@@ -472,10 +510,10 @@ Grant GPU access to a custom group
 This configuration grants all users in the ``devteam`` group read and write access to AMD GPU resources, 
 including the AMD Kernel-mode GPU Driver (KMD) and Direct Rendering Manager (DRM) devices.
 
-Disable integrated graphics (IGP), if applicable
+Disable integrated graphics (IGP)
 ================================================================
 
-ROCm doesn't currently support integrated graphics. Should your system have an
+ROCm doesn't currently support integrated graphics. If your system has an
 AMD IGP installed, disable it in the BIOS prior to using ROCm. If the driver can
-enumerate the IGP, the ROCm runtime may crash the system, even if told to omit
-it via `HIP_VISIBLE_DEVICES <https://rocm.docs.amd.com/en/latest/conceptual/gpu-isolation.html#hip-visible-devices>`_.
+enumerate the IGP, the ROCm runtime might crash the system, even in case where omission was specified
+via `HIP_VISIBLE_DEVICES <https://rocm.docs.amd.com/en/latest/conceptual/gpu-isolation.html#hip-visible-devices>`_.
