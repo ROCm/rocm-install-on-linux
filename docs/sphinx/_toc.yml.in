@@ -56,7 +56,7 @@ subtrees:
             - file: install/rocm-runfile-installer
               title: ROCm Runfile Installer
         - file: install/post-install
-          title: Post-install instructions
+          title: Post-installation instructions
 
 - caption: Install deep learning frameworks
   entries:

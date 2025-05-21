@@ -56,11 +56,6 @@ Register packages
             .. code-block:: bash
                 :substitutions:
 
-                # Register kernel-mode driver
-                echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/|rocm_version| {{ os_release }} main" \
-                    | sudo tee /etc/apt/sources.list.d/amdgpu.list
-                sudo apt update
-
                 # Register ROCm packages
                 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/|rocm_version| {{ os_release }} main" \
                     | sudo tee --append /etc/apt/sources.list.d/rocm.list

@@ -60,6 +60,7 @@ The ROCm Offline Installer Creator tool supports the following Linux distributio
 * Ubuntu: 20.04, 22.04, 24.04
 * RHEL: 8.10, 9.4, 9.5
 * SLES: 15.6
+* Debian: 12
 
 Getting started
 ================================================
@@ -75,17 +76,22 @@ Download the Offline Installer Creator from ``repo.radeon.com`` using the follow
 
 Substitute your values for the following placeholders:
 
-* ``<rocm-version>``: ROCm version number for the ROCm Offline Installer Creator tool.
-* ``<distro>``: Linux distribution for the tool.
-* ``<distro-version>``: Linux distribution version for the tool.
-* ``<creator-package>``: The ROCm Offline Installer Creator package name.
+* ``<rocm-version>``: ROCm version number for the ROCm Offline Installer Creator tool, for example, ``rocm-rel-6.4`` or ``rocm-rel-6.4.1``.
+* ``<distro>``: Linux distribution for the tool, for example, ``ubuntu``, ``ol``, ``rhel``, ``sles``, or ``debian``.
+* ``<distro-version>``: Linux distribution version for the tool, for example, ``22.04`` for Ubuntu or ``9.4`` for RHEL.
+* ``<creator-package>``: The ROCm Offline Installer Creator package name, for example, ``rocm-offline-creator_1.0.0.60200-3~22.04.run``.
 
-For example, use this command to download ROCm version 6.2 of the Offline Installer Creator 
+.. note::
+
+   For releases that end in ``.0``, do not include the ``.0`` as part of the ``rocm-version`` component.
+   For example, for ROCm 6.4.0, the ``rocm-version`` is ``rocm-rel-6.4``.
+
+For example, use this command to download ROCm version 6.4.1 of the Offline Installer Creator 
 for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-6.2/ubuntu/22.04/rocm-offline-creator_1.0.0.60200-3~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-6.4.1/ubuntu/22.04/rocm-offline-creator_1.0.9.60401-2~22.04.run
 
 Installer Creation
 ================================================
