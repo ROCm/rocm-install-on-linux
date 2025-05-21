@@ -279,9 +279,9 @@ The **ROCm Options** menu can include or exclude ROCm from the installation.
    If any installation locations are present on this path, they can be selected for uninstall.
    The installer indicates the type of installation as follows:
 
-   *  **P**: (Package manager) Package manager installation that matches the ROCm version for the Runfile Installer. In this case, uninstall is not allowed.
-   *  **C**: (Runfile conflict) Runfile installation that matches the ROCm version for the Runfile Installer. The conflicting installation can be uninstalled.
-   *  **R**: (Runfile) Runfile installation that differs from the ROCm version for the Runfile Installer. The installation can be uninstalled.
+   *  **P** (Package manager): Package manager installation that matches the ROCm version for the Runfile Installer. In this case, uninstall is not allowed.
+   *  **C** (Runfile conflict): Runfile installation that matches the ROCm version for the Runfile Installer. The conflicting installation can be uninstalled.
+   *  **R** (Runfile): Runfile installation that differs from the ROCm version for the Runfile Installer. The installation can be uninstalled.
    
    **Uninstall ROCm** is for a single ROCm instance at a time and is only available for Runfile installs.
    Package manager installs of ROCm cannot be uninstalled by the Runfile installer and must be uninstalled manually
@@ -773,7 +773,7 @@ At the command line, add one or more of the post-installation options to the ``<
 
       bash rocm-installer.run target="/" rocm postrocm
 
-   In cases where the ``postrocm`` option was not included as part of the initial ROCm install command,
+   If the ``postrocm`` option was not included as part of the initial ROCm install command,
    the post-installation task can still be run separately after the installation.
    To run the ROCm post-installation operation from the command line, use the ``postrocm`` argument
    in conjunction with ``target=rocm-install-path``, where ``rocm-install-path`` is the
@@ -783,7 +783,7 @@ At the command line, add one or more of the post-installation options to the ``<
    ``rocm-install-path`` must indicate the path to a ROCm 6.4.1 Runfile installation.
    
    To use the ``postrocm`` argument separately from the initial install of ROCm 6.4.1
-   to ``/home/amd/myrocm``, the command line is as follows:
+   to ``/home/amd/myrocm``, run:
 
    .. code-block:: shell
 
@@ -814,7 +814,7 @@ At the command line, add one or more of the post-installation options to the ``<
 
    .. code-block:: shell
 
-         bash rocm-installer.run rocm gpu-access=all
+      bash rocm-installer.run rocm gpu-access=all
 
    .. note::
 
