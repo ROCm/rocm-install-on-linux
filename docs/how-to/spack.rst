@@ -104,287 +104,312 @@ ROCm packages in Spack
      - Minimum supported version
      - Latest supported version
 
+   * - AMD SMI
+     - ``amdsmi``
+     - 5.5.0
+     - 6.4.0
+
    * - aqlprofile
      - ``aqlprofile``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - comgr
      - ``comgr``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - Composable Kernel
      - ``composable-kernel``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - devicelibs
      - ``rocm-device-libs``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - HIP (hip_in_vdi)
      - ``hip``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - hipBLAS
      - ``hipblas``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - hipBLASLt
      - ``hipblaslt``
      - 6.0.0
-     - 6.3.2
+     - 6.4.0
 
    * - HIPCC
      - ``hipcc``
      - 5.7.0
-     - 6.3.2
+     - 6.4.0
 
    * - hipCUB
      - ``hipcub``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - hipFFT
      - ``hipfft``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - hipfort
      - ``hipfort``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - HIPIFY
      - ``hipify-clang``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - hipRAND
      - ``hiprand``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - hipSOLVER
      - ``hipsolver``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - hipSPARSE
      - ``hipsparse``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - hipSPARSELt
      - ``hipsparselt``
      - 6.0.0
-     - 6.3.2
+     - 6.4.0
 
    * - hipTensor
      - ``hip-tensor``
      - 5.7.0
-     - 6.3.2
+     - 6.4.0
+
+   * - HIP Tests
+     - ``hip-tests``
+     - 6.1.0
+     - 6.4.0
 
    * - lightning
      - ``llvm-amdgpu``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - MIOpen (HIP)
      - ``miopen-hip``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - MIGraphX
      - ``migraphx``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - MIVisionX
      - ``mivisionx``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - OpenCL
      - ``rocm-opencl``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - openmp-extras
      - ``rocm-openmp-extras``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - RCCL
      - ``rccl``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - rocAL
      - ``rocal``
      - 6.2.0
-     - 6.3.2
+     - 6.4.0
 
    * - rocALUTION
      - ``rocalution``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - rocBLAS
      - ``rocblas``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - ROCdbgapi
      - ``rocm-dbgapi``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - rocDecode
      - ``rocdecode``
      - 6.1.0
-     - 6.3.2
+     - 6.4.0
 
    * - rocFFT
      - ``rocfft``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
+
+   * - rocJPEG
+     - ``rocfft``
+     - 6.3.0
+     - 6.4.0
 
    * - rocm-core
      - ``rocm-core``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - rocminfo
      - ``rocminfo``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
+
+   * - rocMLIR
+     - ``rocmlir``
+     - 5.4.0
+     - 6.4.0
 
    * - ROCm Bandwidth Test
      - ``rocm-bandwidth-test``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - rocm-cmake
      - ``rocm-cmake``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - ROCm Compute Profiler
 
      - ``rocprofiler-compute``
      - 6.3.2
-     - 6.3.2
+     - 6.4.0
 
    * - ROCm Data Center Tool (RDC)
      - ``rdc``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - ROCm Debug Agent
      - ``rocm-debug-agent``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - ROCm Debugger (ROCgdb)
      - ``rocm-gdb``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
-   * - rocMLIR
-     - ``rocmlir``
-     - 5.4.0
-     - 6.3.2
+   * - ROCm Examples
+     - ``rocm-examples``
+     - 6.2.0
+     - 6.4.0
 
    * - ROCm SMI Library
      - ``rocm-smi-lib``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - ROCm Systems Profiler
 
      - ``rocprofiler-systems``
      - 6.3.0
-     - 6.3.2
+     - 6.3.3
 
    * - ROCm Validation Suite
      - ``rocm-validation-suite``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - rocPRIM
      - ``rocprim``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - ROCProfiler
      - ``rocprofiler-dev``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - rocprofiler-register
      - ``rocprofiler-register``
      - 6.1.0
-     - 6.3.2
+     - 6.4.0
+
+   * - ROCprofiler-SDK
+     - ``rocprofiler-sdk``
+     - 6.2.4
+     - 6.4.0
 
    * - rocPyDecode
      - ``rocpydecode``
      - 6.2.0
-     - 6.3.2
+     - 6.4.0
 
    * - rocRAND
      - ``rocrand``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - ROCr Runtime
      - ``hsa-rocr-dev``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - rocSOLVER
      - ``rocsolver``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - rocSPARSE
      - ``rocsparse``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - rocThrust
      - ``rocthrust``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - ROCTracer
      - ``roctracer-dev``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - roctracer-dev-api
      - ``roctracer-dev-api``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - rocWMMA
      - ``rocwmma``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - ROCm Performance Primitives (RPP)
      - ``rpp``
      - 5.7.0
-     - 6.3.2
+     - 6.4.0
 
    * - Tensile
      - ``rocm-tensile``
      - 5.5.0
-     - 6.3.2
+     - 6.4.0
 
    * - atmi
      - ``atmi``
@@ -448,7 +473,7 @@ Installing ROCm components using Spack
 
       spack install rocm-cmake@<version number>
 
-   For example, ``spack install rocm-cmake@6.3.2``
+   For example, ``spack install rocm-cmake@6.4.0``
 
 2. ``info``
 
@@ -465,19 +490,21 @@ Installing ROCm components using Spack
    .. code-block:: shell
 
       spack info mivisionx
-      CMakePackage: mivisionx
+      CMakePackage:   mivisionx
 
       Description:
-      MIVisionX toolkit is a set of comprehensive computer vision and machine
-      intelligence libraries, utilities, and applications bundled into a
-      single toolkit.
+          MIVisionX toolkit is a set of comprehensive computer vision and machine
+          intelligence libraries, utilities, and applications bundled into a
+          single toolkit.
 
-      Homepage: <https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX>
+      Homepage: https://github.com/ROCm/MIVisionX
 
-      Preferred version:
-          6.3.2    https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-6.3.2.tar.gz
+      Preferred version:  
+          6.4.0    https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-6.4.0.tar.gz
 
-      Safe versions:
+      Safe versions:  
+          6.4.0    https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-6.4.0.tar.gz
+          6.3.3    https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-6.3.3.tar.gz
           6.3.2    https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-6.3.2.tar.gz
           6.3.1    https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-6.3.1.tar.gz
           6.3.0    https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-6.3.0.tar.gz
@@ -496,7 +523,7 @@ Installing ROCm components using Spack
           5.5.1    https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-5.5.1.tar.gz
           5.5.0    https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-5.5.0.tar.gz
 
-      Deprecated versions:
+      Deprecated versions:  
           5.4.3    https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-5.4.3.tar.gz
           5.4.0    https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-5.4.0.tar.gz
           5.3.3    https://github.com/GPUOpen-ProfessionalCompute-Libraries/MIVisionX/archive/rocm-5.3.3.tar.gz
@@ -525,19 +552,61 @@ Installing ROCm components using Spack
                 CMake interprocedural optimization
 
       Build Dependencies:
-          cmake   hip            migraphx       miopengemm  openssl    py-google-api-python-client  py-pybind11    py-wheel   rocm-core
-          ffmpeg  libjpeg-turbo  miopen-hip     ninja       protobuf   py-numpy                     py-pytz        python     rocm-opencl
-          gmake   lmdb           miopen-opencl  opencv      py-future  py-protobuf                  py-setuptools  rapidjson  rpp
+          cmake
+          cxx
+          ffmpeg
+          gmake
+          hip
+          libjpeg-turbo
+          lmdb
+          migraphx
+          miopen-hip
+          miopen-opencl
+          miopengemm
+          ninja
+          opencv
+          openssl
+          protobuf
+          py-future
+          py-google-api-python-client
+          py-numpy
+          py-protobuf
+          py-pybind11
+          py-pytz
+          py-setuptools
+          py-wheel
+          python
+          rapidjson
+          rocm-core
+          rocm-opencl
+          rpp
 
       Link Dependencies:
-          hip   migraphx    miopen-opencl  openssl    py-google-api-python-client  py-pybind11  py-setuptools  rapidjson  rocm-opencl
-          lmdb  miopen-hip  miopengemm     py-future  py-numpy                     py-pytz      py-wheel       rocm-core  rpp
+          hip
+          lmdb
+          migraphx
+          miopen-hip
+          miopen-opencl
+          miopengemm
+          openssl
+          py-future
+          py-google-api-python-client
+          py-numpy
+          py-pybind11
+          py-pytz
+          py-setuptools
+          py-wheel
+          rapidjson
+          rocm-core
+          rocm-opencl
+          rpp
 
       Run Dependencies:
           py-protobuf
 
-      Licenses:
-          MIT
+      Licenses: 
+          MIT 
+
 
 Installing variants for ROCm components
 ===================================================
@@ -565,10 +634,16 @@ For example:
 
      spack spec mivisionx
 
-     mivisionx@6.3.2%gcc@13.2.0~add_tests~asan+hip~ipo~opencl build_system=cmake build_type=Release generator=make arch=linux-ubuntu24.04-skylake_avx512
-         ^cmake@3.28.3%gcc@13.2.0~doc+ncurses+ownlibs~qtgui build_system=generic build_type=Release patches=dbc3892 arch=linux-ubuntu24.04-skylake_avx512
-         ^ffmpeg@4.4.4%gcc@13.2.0~X~avresample+bzlib~doc~drawtext+gpl~libaom~libmp3lame~libopenjpeg~libopus~libsnappy~libspeex~libssh~libvorbis~libvpx~libwebp~libx264~libxml2~libzmq~lzma~nonfree~openssl~sdl2+shared+version3 build_system=autotools patches=f070ac1 arch=linux-ubuntu24.04-skylake_avx512
-             ^alsa-lib@1.2.3.2%gcc@13.2.0~python build_system=autotools arch=linux-ubuntu24.04-skylake_avx512
+ -   mivisionx@6.4.0~add_tests~asan+hip~ipo~opencl build_system=cmake build_type=Release generator=make arch=linux-ubuntu22.04-zen2
+ -       ^cmake@3.31.6~doc+ncurses+ownlibs~qtgui build_system=generic build_type=Release arch=linux-ubuntu22.04-zen2
+ -           ^curl@8.11.1~gssapi~ldap~libidn2~librtmp~libssh~libssh2+nghttp2 build_system=autotools libs:=shared,static tls:=openssl arch=linux-ubuntu22.04-zen2
+ -               ^nghttp2@1.65.0 build_system=autotools arch=linux-ubuntu22.04-zen2
+ -           ^ncurses@6.5~symlinks+termlib abi=none build_system=autotools patches:=7a351bc arch=linux-ubuntu22.04-zen2
+ -           ^zlib-ng@2.2.4+compat+new_strategies+opt+pic+shared build_system=autotools arch=linux-ubuntu22.04-zen2
+ -       ^compiler-wrapper@1.0 build_system=generic arch=linux-ubuntu22.04-zen2
+ -       ^ffmpeg@4.4.4~X~avresample+bzlib~doc~drawtext+gpl~libaom~libmp3lame~libopenjpeg~libopus~libsnappy~libspeex~libssh~libvorbis~libvpx~libwebp~libx264~libxml2~libzmq~lzma~nonfree~openssl~sdl2+shared+version3 build_system=autotools patches:=f070ac1 arch=linux-ubuntu22.04-zen2
+ -           ^alsa-lib@1.2.3.2~python build_system=autotools arch=linux-ubuntu22.04-zen2
+     ...
 
 Creating an environment
 ===================================================
@@ -595,10 +670,10 @@ You can create an environment with all the required components of your version.
       specs:
       - matrix:
       - ['%gcc@8.5.0\^cmake@3.19.7']
-      - [rocm-cmake@6.3.2, rocm-dbgapi@6.3.2, rocm-debug-agent@6.3.2, rocm-gdb@6.3.2,
-        rocminfo@6.3.2, rocm-opencl@6.3.2, rocm-smi-lib@6.3.2, rocm-tensile@6.3.2, rocm-validation-suite@6.3.2,
-        rocprim@6.3.2, rocprofiler-dev@6.3.2, rocrand@6.3.2, rocsolver@6.3.2, rocsparse@6.3.2,
-        rocthrust@6.3.2, roctracer-dev@6.3.2]
+      - [rocm-cmake@6.4.0, rocm-dbgapi@6.4.0, rocm-debug-agent@6.4.0, rocm-gdb@6.4.0,
+        rocminfo@6.4.0, rocm-opencl@6.4.0, rocm-smi-lib@6.4.0, rocm-tensile@6.4.0, rocm-validation-suite@6.4.0,
+        rocprim@6.4.0, rocprofiler-dev@6.4.0, rocrand@6.4.0, rocsolver@6.4.0, rocsparse@6.4.0,
+        rocthrust@6.4.0, roctracer-dev@6.4.0]
       view: true
 
 3. Once you've created the ``.yaml`` file, you can use it to create an environment.
@@ -653,48 +728,48 @@ To generate a patch and build with the changes:
 
    .. code-block:: shell
 
-      spack stage hip@6.3.2
-      # (This will pull the 6.3.2 release version source code of hip and display the path to spack-src directory where entire source code is available)
+      spack stage hip@6.4.0
+      # (This will pull the 6.4.0 release version source code of hip and display the path to spack-src directory where entire source code is available)
 
    You should see something like this:
 
    .. code-block:: shell-session
 
-      ==> Using cached archive: /data/root/temp/rocm-6.3/spack/var/spack/cache/_source-cache/archive/d8/d8dba8cdf05463afb7879de2833983cafa6a006ba719815a35b96d9b92fc7fc4.tar.gz
-      ==> Using cached archive: /data/root/temp/rocm-6.3/spack/var/spack/cache/_source-cache/archive/82/829e61a5c54d0c8325d02b0191c0c8254b5740e63b8bfdb05eec9e03d48f7d2c.tar.gz
-      ==> Using cached archive: /data/root/temp/rocm-6.3/spack/var/spack/cache/_source-cache/archive/80/8081d4ab1a43ffa1cebd646668d83008b799ab98c14daf7b455922355a439c8a.tar.gz
+      ==> Using cached archive: /data/root/temp/rocm-6.4/spack/var/spack/cache/_source-cache/archive/d8/d8dba8cdf05463afb7879de2833983cafa6a006ba719815a35b96d9b92fc7fc4.tar.gz
+      ==> Using cached archive: /data/root/temp/rocm-6.4/spack/var/spack/cache/_source-cache/archive/82/829e61a5c54d0c8325d02b0191c0c8254b5740e63b8bfdb05eec9e03d48f7d2c.tar.gz
+      ==> Using cached archive: /data/root/temp/rocm-6.4/spack/var/spack/cache/_source-cache/archive/80/8081d4ab1a43ffa1cebd646668d83008b799ab98c14daf7b455922355a439c8a.tar.gz
       ==> Moving resource stage
               source: /tmp/root/spack-stage/resource-clr-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src/
-              destination: /tmp/root/spack-stage/spack-stage-hip-6.3.2-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src/clr
+              destination: /tmp/root/spack-stage/spack-stage-hip-6.4.0-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src/clr
       ==> Moving resource stage
               source: /tmp/root/spack-stage/resource-hip-tests-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src/
-              destination: /tmp/root/spack-stage/spack-stage-hip-6.3.2-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src/hip-tests
-      ==> Staged hip in /tmp/root/spack-stage/spack-stage-hip-6.3.2-zo53ondw3tevsr3gmoofbhre7asvis46
+              destination: /tmp/root/spack-stage/spack-stage-hip-6.4.0-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src/hip-tests
+      ==> Staged hip in /tmp/root/spack-stage/spack-stage-hip-6.4.0-zo53ondw3tevsr3gmoofbhre7asvis46
 
 2. Change directory to ``spack-src`` inside the staged directory.
 
    .. code-block:: shell-session
 
-      root@computername:/spack$ cd /tmp/root/spack-stage/spack-stage-hip-6.3.2-zo53ondw3tevsr3gmoofbhre7asvis46
-      root@computername:/tmp/root/spack-stage/spack-stage-hip-6.3.2-zo53ondw3tevsr3gmoofbhre7asvis46$ cd spack-src/
+      root@computername:/spack$ cd /tmp/root/spack-stage/spack-stage-hip-6.4.0-zo53ondw3tevsr3gmoofbhre7asvis46
+      root@computername:/tmp/root/spack-stage/spack-stage-hip-6.4.0-zo53ondw3tevsr3gmoofbhre7asvis46$ cd spack-src/
 
 3. Create a new Git repository.
 
    .. code-block:: shell
 
-      root@computername:/tmp/root/spack-stage/spack-stage-hip-6.3.2-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src$ git init
+      root@computername:/tmp/root/spack-stage/spack-stage-hip-6.4.0-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src$ git init
 
 4. Add the entire directory to the repository.
 
    .. code-block:: shell
 
-      root@computername:/tmp/root/spack-stage/spack-stage-hip-6.3.2-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src$ git add .
+      root@computername:/tmp/root/spack-stage/spack-stage-hip-6.4.0-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src$ git add .
 
 5. Make the required changes to the source code.
 
    .. code-block:: shell
 
-      root@computername:/tmp/root/spack-stage/spack-stage-hip-6.3.2-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src# vi hipamd/CMakeLists.txt
+      root@computername:/tmp/root/spack-stage/spack-stage-hip-6.4.0-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src# vi hipamd/CMakeLists.txt
       # Make required changes in the source code
 
 6. Generate the patch using the ``git diff`` command.
@@ -702,21 +777,21 @@ To generate a patch and build with the changes:
    .. code-block:: shell
 
       diff > /spack/var/spack/repos/builtin/packages/hip/0001-modifications.patch
-      root@computername:/tmp/root/spack-stage/spack-stage-hip-6.3.2-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src$ git diff > /spack/var/spack/repos/builtin/packages/hip/0001-modifications.patch
+      root@computername:/tmp/root/spack-stage/spack-stage-hip-6.4.0-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src$ git diff > /spack/var/spack/repos/builtin/packages/hip/0001-modifications.patch
 
 7. Update the recipe with the patch file name and any conditions you want to apply.
 
    .. code-block:: shell
 
-      root@computername:/tmp/root/spack-stage/spack-stage-hip-6.3.2-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src$ spack edit hip
+      root@computername:/tmp/root/spack-stage/spack-stage-hip-6.4.0-zo53ondw3tevsr3gmoofbhre7asvis46/spack-src$ spack edit hip
 
 8. Provide the patch file name and the conditions for the patch to be applied in the ``hip`` recipe as follows.
 
    .. code-block:: shell
 
-      patch("0001-modifications.patch", when="@6.3.2")
+      patch("0001-modifications.patch", when="@6.4.0")
 
-   Spack will apply ``0001-modifications.patch`` on the 6.3.2 release code before starting the ``hip`` build.
+   Spack will apply ``0001-modifications.patch`` on the 6.4.0 release code before starting the ``hip`` build.
 
 9. After each modification, you must update the recipe. If there is no change to the recipe, run
 
