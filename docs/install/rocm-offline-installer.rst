@@ -91,7 +91,7 @@ for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-6.4.1/ubuntu/22.04/rocm-offline-creator_1.0.9.60401-2~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-6.4.1/ubuntu/22.04/rocm-offline-creator_1.0.9.60401-3~22.04.run
 
 Installer Creation
 ================================================
