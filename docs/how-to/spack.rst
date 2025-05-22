@@ -265,7 +265,7 @@ ROCm packages in Spack
      - 6.4.0
 
    * - rocJPEG
-     - ``rocfft``
+     - ``rocjpeg``
      - 6.3.0
      - 6.4.0
 
