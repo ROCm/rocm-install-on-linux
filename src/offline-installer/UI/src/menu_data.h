@@ -1,6 +1,6 @@
 
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -208,6 +208,18 @@ int display_help_scroll_window(MENU_DATA *pMenuData, char *filename);
 bool is_repo_public(MENU_DATA *pMenuData);
 
 bool is_specific_usecase_selected(MENU_DATA *pMenuData, char *usecase);
+bool is_ubuntu_2004(MENU_DATA *pMenuData);
+
+int print_multiline_string(WINDOW *pMenuWindow, char *text, int startx, int starty, int width);
+void clear_text(MENU_DATA *pMenuData, int starty, int startx, int endy);
+
+// distro version checking
+bool is_distro(MENU_DATA *pMenuData, const char *distroID);
+bool is_distro_version(MENU_DATA *pMenuData, const char *distroVersion);
+bool is_distro_id_and_distro_version(MENU_DATA *pMenuData, const char *distroID, const char *distroVersion);
+bool is_rhel(MENU_DATA *pMenuData);
+bool is_sles(MENU_DATA *pMenuData);
+bool is_ol(MENU_DATA *pMenuData);
 bool is_ubuntu_2004(MENU_DATA *pMenuData);
 
 #endif // _MENU_DATA_H

@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -56,8 +56,8 @@
 #define ROCM_USECASES_MENU_ITEM_MULTIMEDIASDK_INDEX         8
 
 // definitions for rocm verions matrix
-#define ROCM_VERS_ROWS                                      11       // Number of distros we support
-#define ROCM_VERS_COLS                                      13       // Number of rocm versions displayed in variable rocmVersionsNameIndexMapping
+#define ROCM_VERS_ROWS                                      14       // Number of distros we support
+#define ROCM_VERS_COLS                                      19       // Number of rocm versions displayed in variable rocmVersionsNameIndexMapping
 
 #define ROCM_VERS_MENU_MAX_SIZE                             ROCM_VERS_COLS + 3
 
@@ -67,7 +67,7 @@ void destroy_rocm_menu_window(MENU_DATA *pMenuData);
 void do_rocm_menu(MENU_DATA *pMenuData);
 
 void rocm_menu_update_state(MENU_DATA *pMenuData);
-bool is_specific_usecase_selected(MENU_DATA *pMenuData, char *usecase); 
+bool is_specific_usecase_selected(MENU_DATA *pMenuData, char *usecase);
 
 void do_rocm_menu_version();
 

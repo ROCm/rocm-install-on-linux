@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,6 @@ char *driverMenuOps[] = {
     SKIPPABLE_MENU_ITEM,
     "    amdgpu Driver ROCm Version",
     SKIPPABLE_MENU_ITEM,
-    "    Set Video,Render Group",
     "    Blacklist amdgpu driver",
     "    Start amdgpu driver on install",
     SKIPPABLE_MENU_ITEM,
@@ -45,7 +44,6 @@ char *driverMenuDesc[] = {
     " ",
     "Set ROCm Version of amdgpu driver for installation.",
     " ",
-    "Adds the current user to the render and video groups.",
     "Prevents amdgpu driver from loading on boot.",
     "Starts amdgpu driver immediately after installation.",
     " ",
@@ -75,11 +73,11 @@ ITEMLIST_PARAMS driverMenuItems = {
 // Spaces added/deleted from HelpOps and HelpDesc to ensure whole words aren't
 // cut off between lines when displaying help menu.
 char *driverMenuHelpOps[] = {
-    "amdgpu Install   Driver",
-    "amdgpu Driver    ROCm Version",
-    "Set Video,Render Group",
-    "Blacklist amdgpu driver",
-    "Start amdgpu     driver on install",
+    "amdgpu Install Driver",
+    "amdgpu Driver ROCm   Version",
+    "Set Video,Render     Group",
+    "Blacklist amdgpu     Driver",
+    "Start amdgpu         Driver on install",
     "",
     (char*)NULL
 };
@@ -163,7 +161,6 @@ void driver_menu_draw(MENU_DATA *pMenuData)
     WINDOW *pMenuWindow = pMenuData->pMenuWindow;
 
     menu_info_draw_bool(pMenuData, DRIVER_MENU_ITEM_INSTALL_DRIVER_ROW, DRIVER_MENU_FORM_COL, pDriverConfig->install_driver);
-    menu_info_draw_bool(pMenuData, DRIVER_MENU_ITEM_GRP_ROW, DRIVER_MENU_FORM_COL, pDriverConfig->set_group);
     menu_info_draw_bool(pMenuData, DRIVER_MENU_ITEM_BLACKLIST_ROW, DRIVER_MENU_FORM_COL, pDriverConfig->blacklist_driver);
     menu_info_draw_bool(pMenuData, DRIVER_MENU_ITEM_START_DRIVER_ROW, DRIVER_MENU_FORM_COL, pDriverConfig->start_driver);
 
@@ -202,17 +199,9 @@ void driver_menu_opts_toggle_grey_items(MENU_DATA *pMenuData)
             enable = pRocmConfig->rocm_version_selected;
         }
     }
-    
-
-    // enable/disable all driver option fields
-    menu_set_item_select(pMenuData, DRIVER_MENU_ITEM_GRP_INDEX, enable);
-    menu_set_item_select(pMenuData, DRIVER_MENU_ITEM_BLACKLIST_INDEX, enable);
-    menu_set_item_select(pMenuData, DRIVER_MENU_ITEM_START_DRIVER_INDEX, enable);
-    
-    if (!enable)
+    else if (!enable)
     {
         // reset to defaults
-        pDriverConfig->set_group = false;
         pDriverConfig->blacklist_driver = false;
         pDriverConfig->start_driver = false;
 
@@ -220,7 +209,26 @@ void driver_menu_opts_toggle_grey_items(MENU_DATA *pMenuData)
         {
             reset_rocm_version_menu(pRocmConfig);
         }
+    }
 
+    // Ensures sub options are properly set as selectable/unselectable based
+    // on user settings.
+    if (pDriverConfig->blacklist_driver || pDriverConfig->start_driver) 
+    {
+        if (pDriverConfig->blacklist_driver)
+        {
+            menu_set_item_select(pMenuData, DRIVER_MENU_ITEM_START_DRIVER_INDEX, false);
+        }
+        else if (pDriverConfig->start_driver) 
+        {
+            menu_set_item_select(pMenuData, DRIVER_MENU_ITEM_BLACKLIST_INDEX, false);
+        }
+    }
+    else
+    {   
+        // enable/disable all driver option fields
+        menu_set_item_select(pMenuData, DRIVER_MENU_ITEM_BLACKLIST_INDEX, enable);
+        menu_set_item_select(pMenuData, DRIVER_MENU_ITEM_START_DRIVER_INDEX, enable);
     }
 }
 
@@ -307,14 +315,6 @@ void process_driver_menu(MENU_DATA *pMenuData)
             driver_menu_draw(pMenuData);
         }
     }
-    else if (index == DRIVER_MENU_ITEM_GRP_INDEX)
-    {
-        if (pDriverConfig->install_driver)
-        {
-            pDriverConfig->set_group = !pDriverConfig->set_group;
-            menu_info_draw_bool(pMenuData, DRIVER_MENU_ITEM_GRP_ROW, DRIVER_MENU_FORM_COL,pDriverConfig->set_group);
-        }
-    }
     else if (index == DRIVER_MENU_ITEM_BLACKLIST_INDEX)
     {
         // only allow blacklisting if installing the driver and not start driver
@@ -348,7 +348,7 @@ void process_driver_menu(MENU_DATA *pMenuData)
             if (pDriverConfig->start_driver)
             {
                 pDriverConfig->blacklist_driver = false;
-                menu_info_draw_bool(pMenuData, DRIVER_MENU_ITEM_BLACKLIST_INDEX, DRIVER_MENU_FORM_COL, pDriverConfig->blacklist_driver);
+                menu_info_draw_bool(pMenuData, DRIVER_MENU_ITEM_BLACKLIST_ROW, DRIVER_MENU_FORM_COL, pDriverConfig->blacklist_driver);
                 menu_set_item_select(pMenuData, DRIVER_MENU_ITEM_BLACKLIST_INDEX, false);
             }
             else

@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,6 +35,15 @@
 #define EXTRAS_MENU_FORM_ROW            9       // starting row for create menu form
 #define EXTRAS_MENU_FORM_COL            27      // staring column for create menu form
 
+// menu item rows
+#define EXTRAS_MENU_ITEM_ROCMINFO_ROW         5
+#define EXTRAS_MENU_ITEM_ROCMSMI_ROW          6
+#define EXTRAS_MENU_ITEM_RVS_ROW              7
+
+// menu item indices
+#define EXTRAS_MENU_ITEM_ROCMINFO_INDEX       0
+#define EXTRAS_MENU_ITEM_ROCMSMI_INDEX        1
+#define EXTRAS_MENU_ITEM_RVS_INDEX            2
 
 void create_extras_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, OFFLINE_INSTALL_CONFIG *pConfig);
 void destroy_extras_menu_window(MENU_DATA *pMenuData);
