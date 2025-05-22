@@ -634,15 +634,15 @@ For example:
 
      spack spec mivisionx
 
- -   mivisionx@6.4.0~add_tests~asan+hip~ipo~opencl build_system=cmake build_type=Release generator=make arch=linux-ubuntu22.04-zen2
- -       ^cmake@3.31.6~doc+ncurses+ownlibs~qtgui build_system=generic build_type=Release arch=linux-ubuntu22.04-zen2
- -           ^curl@8.11.1~gssapi~ldap~libidn2~librtmp~libssh~libssh2+nghttp2 build_system=autotools libs:=shared,static tls:=openssl arch=linux-ubuntu22.04-zen2
- -               ^nghttp2@1.65.0 build_system=autotools arch=linux-ubuntu22.04-zen2
- -           ^ncurses@6.5~symlinks+termlib abi=none build_system=autotools patches:=7a351bc arch=linux-ubuntu22.04-zen2
- -           ^zlib-ng@2.2.4+compat+new_strategies+opt+pic+shared build_system=autotools arch=linux-ubuntu22.04-zen2
- -       ^compiler-wrapper@1.0 build_system=generic arch=linux-ubuntu22.04-zen2
- -       ^ffmpeg@4.4.4~X~avresample+bzlib~doc~drawtext+gpl~libaom~libmp3lame~libopenjpeg~libopus~libsnappy~libspeex~libssh~libvorbis~libvpx~libwebp~libx264~libxml2~libzmq~lzma~nonfree~openssl~sdl2+shared+version3 build_system=autotools patches:=f070ac1 arch=linux-ubuntu22.04-zen2
- -           ^alsa-lib@1.2.3.2~python build_system=autotools arch=linux-ubuntu22.04-zen2
+     -   mivisionx@6.4.0~add_tests~asan+hip~ipo~opencl build_system=cmake build_type=Release generator=make arch=linux-ubuntu22.04-zen2
+     -       ^cmake@3.31.6~doc+ncurses+ownlibs~qtgui build_system=generic build_type=Release arch=linux-ubuntu22.04-zen2
+     -           ^curl@8.11.1~gssapi~ldap~libidn2~librtmp~libssh~libssh2+nghttp2 build_system=autotools libs:=shared,static tls:=openssl arch=linux-ubuntu22.04-zen2
+     -               ^nghttp2@1.65.0 build_system=autotools arch=linux-ubuntu22.04-zen2
+     -           ^ncurses@6.5~symlinks+termlib abi=none build_system=autotools patches:=7a351bc arch=linux-ubuntu22.04-zen2
+     -           ^zlib-ng@2.2.4+compat+new_strategies+opt+pic+shared build_system=autotools arch=linux-ubuntu22.04-zen2
+     -       ^compiler-wrapper@1.0 build_system=generic arch=linux-ubuntu22.04-zen2
+     -       ^ffmpeg@4.4.4~X~avresample+bzlib~doc~drawtext+gpl~libaom~libmp3lame~libopenjpeg~libopus~libsnappy~libspeex~libssh~libvorbis~libvpx~libwebp~libx264~libxml2~libzmq~lzma~nonfree~openssl~sdl2+shared+version3 build_system=autotools patches:=f070ac1 arch=linux-ubuntu22.04-zen2
+     -           ^alsa-lib@1.2.3.2~python build_system=autotools arch=linux-ubuntu22.04-zen2
      ...
 
 Creating an environment
