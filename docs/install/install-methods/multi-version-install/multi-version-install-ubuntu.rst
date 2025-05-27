@@ -1,21 +1,21 @@
 .. meta::
-  :description: Ubuntu native installation
-  :keywords: ROCm install, installation instructions, Ubuntu, Ubuntu native installation, AMD, ROCm
+  :description: Install multiple ROCm versions
+  :keywords: installation instructions, AMD, ROCm, multiple versions, Ubuntu
 
-****************************************************************************
-Ubuntu native installation
-****************************************************************************
+.. _multi-version_install:
+
+*********************************
+Ubuntu multi-version installation
+*********************************
 
 .. caution::
 
     Ensure that the :doc:`/install/prerequisites` are met before installing.
 
-.. _ubuntu-register-repo:
+.. _ubuntu-multi-register-rocm:
 
 Registering ROCm repositories
 =================================================
-
-.. _ubuntu-package-key:
 
 Package signing key
 ---------------------------------------------------------------------------
@@ -31,15 +31,13 @@ Download and convert the package signing key.
     # Download the key, convert the signing-key to a full
     # keyring required by apt and store in the keyring directory
     wget https://repo.radeon.com/rocm/rocm.gpg.key -O - | \
-        gpg --dearmor | sudo tee /etc/apt/keyrings/rocm.gpg > /dev/null
+    gpg --dearmor | sudo tee /etc/apt/keyrings/rocm.gpg > /dev/null
 
 .. note::
 
     The GPG key may change; ensure it is updated when installing a new release.
     If the key signature verification fails while updating,
     re-add the key from the ROCm to the apt repository as mentioned above.
-
-.. _ubuntu-register-rocm:
 
 Register packages
 ---------------------------------------------------------------------------
@@ -54,47 +52,51 @@ Register packages
             .. code-block:: bash
                 :substitutions:
 
-                # Register ROCm packages
-                echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/|rocm_version| {{ os_release }} main" \
+                echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/|rocm_version|/ubuntu {{ os_release }} main" \
+                    | sudo tee /etc/apt/sources.list.d/amdgpu.list
+
+                # Note: There is NO trailing .0 in the patch version when registering repositories
+                for ver in |rocm_multi_versions|; do
+                echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/$ver {{ os_release }} main" \
                     | sudo tee --append /etc/apt/sources.list.d/rocm.list
+                done
                 echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
                     | sudo tee /etc/apt/preferences.d/rocm-pin-600
                 sudo apt update
-
         {% endfor %}
 
-.. _ubuntu-install:
+.. _debian-multi-install:
 
 Installing
-================================================
+=================================================
+
+Before proceeding with a multi-version ROCm installation, you must remove
+ROCm packages that were previously installed from a single-version
+installation to avoid conflicts.
 
 .. code-block:: bash
+    :substitutions:
 
-    sudo apt install rocm
+    # Note: There IS a trailing .0 in the patch version for packages
+    for ver in |rocm_multi_versions_package_versions|; do
+        sudo apt install rocm$ver
+    done
+
+.. note::
+
+    For versions earlier than ROCm 6.0.0, use ``rocm-hip-sdk`` instead of ``rocm`` (for example, ``rocm-hip-sdk5.7.1``).
 
 Complete the :doc:`../../post-install`.
 
-.. note::
+.. tip::
 
-    For information about the AMDGPU driver installation, see the `Install AMDGPU driver <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`_ in the AMD Instinct Data Center GPU Documentation.
+   For a single-version installation of the latest ROCm version on Ubuntu,
+   use the steps in :ref:`ubuntu-register-repo` and :ref:`ubuntu-install`.
 
-.. _ubuntu-upgrade:
-
-Upgrading
-================================================
-
-To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`ubuntu-register-repo` and :ref:`ubuntu-install`. 
-
-.. note::
-
-    Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
-    system reboot to take effect.
-
-.. _ubuntu-package-manager-uninstall:
+.. _ubuntu-multi-uninstall:
 
 Uninstalling
-================================================
+=====================================================
 
 Uninstall specific meta packages
 ---------------------------------------------------------------------------
@@ -102,7 +104,10 @@ Uninstall specific meta packages
 .. code-block:: bash
     :substitutions:
 
-    sudo apt autoremove rocm
+    # Note: There IS a trailing .0 in the patch version for packages
+    for ver in |rocm_multi_versions_package_versions|; do
+        sudo apt autoremove rocm$ver
+    done
 
 Uninstall ROCm packages
 ---------------------------------------------------------------------------
@@ -110,15 +115,19 @@ Uninstall ROCm packages
 .. code-block:: bash
     :substitutions:
 
-    sudo apt autoremove rocm-core
+    # Note: There IS a trailing .0 in the patch version for packages
+    for ver in |rocm_multi_versions_package_versions|; do
+        sudo apt autoremove rocm-core$ver
+    done
 
 Remove ROCm repositories
 ---------------------------------------------------------------------------
 
 .. code-block:: bash
 
-    # Remove the repositories
+    # Remove ROCm repositories
     sudo rm /etc/apt/sources.list.d/rocm.list
+    sudo rm /etc/apt/sources.list.d/amdgpu.list
 
     # Clear the cache and clean the system
     sudo rm -rf /var/cache/apt/*

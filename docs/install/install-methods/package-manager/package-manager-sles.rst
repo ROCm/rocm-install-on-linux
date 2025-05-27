@@ -16,11 +16,6 @@ SUSE Linux Enterprise native installation
 Registering ROCm repositories
 ===============================================
 
-.. _sles-register-rocm:
-
-Register ROCm packages
---------------------------------------------------------------------------------------
-
 .. code-block:: bash
     :substitutions:
 
@@ -40,10 +35,6 @@ Register ROCm packages
 
 Installing
 ===============================================
-
-
-Install ROCm packages
---------------------------------------------------------------------------------------
 
 .. code-block:: bash
 
@@ -79,11 +70,7 @@ Uninstall specific meta packages
 .. code-block:: bash
     :substitutions:
 
-    # sudo zypper remove <package-name>
-    # For example:
     sudo zypper remove rocm
-    # Or, for version specific packages:
-    sudo zypper remove rocm|rocm_version|
 
 Uninstall ROCm packages
 ---------------------------------------------------------------------------
@@ -92,8 +79,6 @@ Uninstall ROCm packages
     :substitutions:
 
     sudo zypper remove rocm-core amdgpu-core
-    # Or for version specific packages:
-    sudo zypper remove rocm-core|rocm_version| amdgpu-core
 
 Remove ROCm repositories
 ---------------------------------------------------------------------------
