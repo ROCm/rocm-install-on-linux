@@ -177,6 +177,12 @@ To verify whether the driver is on a denylist, use the following command:
 
    grep amdgpu /etc/modprobe.d/*
 
+.. note::
+
+   When installing the AMDGPU driver with Secure Boot enabled, you must sign ``amdgpu-dkms`` to prevent potential system loading issues. 
+   For more information, see `Secure Boot Support <https://amdgpu-install.readthedocs.io/en/latest/install-installing.html#secure-boot-support>`_. 
+   If you prefer not to sign the AMDGPU driver, you can disable Secure Boot from the BIOS settings instead.
+
 .. _troubleshooting-group-membership:
 
 Issue #9: Cannot access the AMD GPU or accelerator after installation

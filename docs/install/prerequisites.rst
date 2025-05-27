@@ -517,3 +517,10 @@ ROCm doesn't currently support integrated graphics. If your system has an
 AMD IGP installed, disable it in the BIOS prior to using ROCm. If the driver can
 enumerate the IGP, the ROCm runtime might crash the system, even when omission was specified
 via `HIP_VISIBLE_DEVICES <https://rocm.docs.amd.com/en/latest/conceptual/gpu-isolation.html#hip-visible-devices>`_.
+
+Secure Boot
+===========
+
+When installing the AMDGPU driver with Secure Boot enabled, you must sign ``amdgpu-dkms`` to prevent potential system loading issues. 
+For more information, see `Secure Boot Support <https://amdgpu-install.readthedocs.io/en/latest/install-installing.html#secure-boot-support>`_. 
+If you prefer not to sign the AMDGPU driver, you can disable Secure Boot from the BIOS settings instead.
