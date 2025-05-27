@@ -57,11 +57,7 @@ Uninstall specific meta packages
 .. code-block:: bash
     :substitutions:
 
-    # sudo apt autoremove <package-name>
-    # For example:
     sudo dnf remove rocm
-    # Or for version specific packages:
-    sudo dnf remove rocm|rocm_version|
 
 Uninstall ROCm packages
 ---------------------------------------------------------------------------
@@ -70,10 +66,8 @@ Uninstall ROCm packages
     :substitutions:
 
     sudo dnf remove rocm-core amdgpu-core
-    # Or for version specific packages:
-    sudo dnf remove rocm-core|rocm_version| amdgpu-core
 
-Remove ROCm repositories
+Cache cleanup
 ---------------------------------------------------------------------------
 
 .. code-block:: bash
@@ -95,13 +89,3 @@ Additional options
   .. code-block:: bash
 
       amdgpu-install -y --usecase=rocm
-
-* Skipping kernel mode driver installation.
-
-  The installer script tries to install the kernel mode driver and the requested use cases. This
-  might be unnecessary (as in the case of Docker containers). You might want to keep a specific version
-  when using multi-version installation, and not have the last installed version overwrite the kernel
-  mode driver.
-
-  To skip the installation of the kernel-mode driver, add the ``--no-dkms`` option when calling the
-  installer script.

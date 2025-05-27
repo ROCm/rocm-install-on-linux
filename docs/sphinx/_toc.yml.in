@@ -49,8 +49,22 @@ subtrees:
                   title: SUSE Linux Enterprise Server
                 - file: install/install-methods/amdgpu-installer/amdgpu-installer-azl
                   title: Azure Linux
-            - file: install/install-methods/multi-version-install
-              title: Multi-version install
+            - file: install/install-methods/multi-version-install-index
+              title: Multi-version installation
+              subtrees:
+              - entries:
+                - file: install/install-methods/multi-version-install/multi-version-install-ubuntu
+                  title: Ubuntu
+                - file: install/install-methods/multi-version-install/multi-version-install-debian
+                  title: Debian
+                - file: install/install-methods/multi-version-install/multi-version-install-rhel
+                  title: Red Hat Enterprise Linux
+                - file: install/install-methods/multi-version-install/multi-version-install-ol
+                  title: Oracle Linux
+                - file: install/install-methods/multi-version-install/multi-version-install-sles
+                  title: SUSE Linux Enterprise Server
+                - file: install/install-methods/multi-version-install/multi-version-install-azl
+                  title: Azure Linux
             - file: install/rocm-offline-installer
               title: ROCm Offline Installer Creator
             - file: install/rocm-runfile-installer

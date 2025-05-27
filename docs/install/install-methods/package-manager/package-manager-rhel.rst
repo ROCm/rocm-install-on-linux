@@ -16,11 +16,6 @@ Red Hat Enterprise Linux native installation
 Registering ROCm repositories
 =====================================================
 
-.. _rhel-register-rocm:
-
-Register ROCm packages
-----------------------------------------------------------------------------------------------------------
-
 .. datatemplate:nodata::
 
     .. tab-set::
@@ -47,9 +42,6 @@ Register ROCm packages
 
 Installing
 =====================================================
-
-Install ROCm packages
-----------------------------------------------------------------------------------------------------------
 
 .. code-block:: bash
 
@@ -85,11 +77,7 @@ Uninstall specific meta packages
 .. code-block:: bash
     :substitutions:
 
-    # sudo apt autoremove <package-name>
-    # For example:
     sudo dnf remove rocm
-    # Or for version specific packages:
-    sudo dnf remove rocm|rocm_version|
 
 Uninstall ROCm packages
 ---------------------------------------------------------------------------
@@ -98,8 +86,6 @@ Uninstall ROCm packages
     :substitutions:
 
     sudo dnf remove rocm-core amdgpu-core
-    # Or for version specific packages:
-    sudo dnf remove rocm-core|rocm_version| amdgpu-core
 
 Remove ROCm repositories
 ---------------------------------------------------------------------------

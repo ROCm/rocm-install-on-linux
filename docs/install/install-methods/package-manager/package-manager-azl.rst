@@ -43,9 +43,6 @@ Registering ROCm repositories
 Installing
 =====================================================
 
-Install ROCm packages
-----------------------------------------------------------------------------------------------------------
-
 .. code-block:: bash
 
     sudo tdnf install rocm
