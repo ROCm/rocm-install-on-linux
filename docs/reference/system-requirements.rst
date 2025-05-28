@@ -62,6 +62,7 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
       "AMD Radeon RX 9070 XT", "RDNA4", "gfx1201", "✅ [#RDNA4-OS]_"
+      "AMD Radeon RX 9070 GRE", "RDNA4", "gfx1201", "✅ [#RDNA4-OS]_"
       "AMD Radeon RX 9070", "RDNA4", "gfx1201", "✅ [#RDNA4-OS]_"
       "AMD Radeon RX 9060 XT", "RDNA4", "gfx1200", "✅ [#RDNA4-OS]_"
       "AMD Radeon RX 7900 XTX", "RDNA3", "gfx1100", "✅"
