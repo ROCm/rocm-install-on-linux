@@ -123,7 +123,7 @@ validated for ROCm 6.4.1.
 
             Inventory
               * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31016/>`_
+              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
               * `PyTorch 2.6.0 <https://github.com/ROCm/pytorch/tree/release/2.6>`_
               * `Apex 1.6.0 <https://github.com/ROCm/apex/tree/release/1.6.0>`_
               * `torchvision 0.21.0 <https://github.com/pytorch/vision/tree/v0.21.0>`_
@@ -161,7 +161,7 @@ validated for ROCm 6.4.1.
 
             Inventory
               * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31016/>`_
+              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
               * `PyTorch 2.5.1 <https://github.com/ROCm/pytorch/tree/release/2.5>`_
               * `Apex 1.5.0 <https://github.com/ROCm/apex/tree/release/1.5.0>`_
               * `torchvision 0.20.1 <https://github.com/pytorch/vision/tree/v0.20.1>`_
@@ -199,7 +199,7 @@ validated for ROCm 6.4.1.
 
             Inventory
               * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31016/>`_
+              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
               * `PyTorch 2.4.1 <https://github.com/ROCm/pytorch/tree/release/2.4>`_
               * `Apex 1.4.0 <https://github.com/ROCm/apex/tree/release/1.4.0>`_
               * `torchvision 0.19.0 <https://github.com/pytorch/vision/tree/v0.19.0>`_
@@ -237,7 +237,7 @@ validated for ROCm 6.4.1.
 
             Inventory
               * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31016/>`_
+              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
               * `PyTorch 2.3.0 <https://github.com/ROCm/pytorch/tree/release/2.3>`_
               * `Apex 1.3.0 <https://github.com/ROCm/apex/tree/release/1.3.0>`_
               * `torchvision 0.18.0 <https://github.com/pytorch/vision/tree/v0.18.0>`_
