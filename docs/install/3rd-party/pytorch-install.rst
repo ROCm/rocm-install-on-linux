@@ -123,7 +123,7 @@ validated for ROCm 6.4.1.
 
             Inventory
               * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31016/>`_
+              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
               * `PyTorch 2.6.0 <https://github.com/ROCm/pytorch/tree/release/2.6>`_
               * `Apex 1.6.0 <https://github.com/ROCm/apex/tree/release/1.6.0>`_
               * `torchvision 0.21.0 <https://github.com/pytorch/vision/tree/v0.21.0>`_
@@ -161,7 +161,7 @@ validated for ROCm 6.4.1.
 
             Inventory
               * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31016/>`_
+              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
               * `PyTorch 2.5.1 <https://github.com/ROCm/pytorch/tree/release/2.5>`_
               * `Apex 1.5.0 <https://github.com/ROCm/apex/tree/release/1.5.0>`_
               * `torchvision 0.20.1 <https://github.com/pytorch/vision/tree/v0.20.1>`_
@@ -199,7 +199,7 @@ validated for ROCm 6.4.1.
 
             Inventory
               * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31016/>`_
+              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
               * `PyTorch 2.4.1 <https://github.com/ROCm/pytorch/tree/release/2.4>`_
               * `Apex 1.4.0 <https://github.com/ROCm/apex/tree/release/1.4.0>`_
               * `torchvision 0.19.0 <https://github.com/pytorch/vision/tree/v0.19.0>`_
@@ -216,7 +216,7 @@ validated for ROCm 6.4.1.
          .. tab-item:: Ubuntu 24.04
 
             Tag
-              `rocm/pytorch:rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.3.0/images/sha256-0434cbc9b07b2c26e39480d7447f676f9057a1054dcff00e0050c25a6eddbd3c>`_
+              `rocm/pytorch:rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.3.0/images/sha256-eefd2ab019728f91f94c5e6a9463cb0ea900b3011458d18fe5d88e50c0b57d86>`_
 
             Inventory
               * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
@@ -233,11 +233,11 @@ validated for ROCm 6.4.1.
          .. tab-item:: Ubuntu 22.04
 
             Tag
-              `rocm/pytorch:rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.3.0/images/sha256-688b1c0073092615fb98778d78b16191e506097ee116a2d3d2628b264d5d367b>`_
+              `rocm/pytorch:rocm6.4.1_ubuntu22.04_py3.10_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.1_ubuntu22.04_py3.10_pytorch_release_2.3.0/images/sha256-473643226ab0e93a04720b256ed772619878abf9c42b9f84828cefed522696fd>`_
 
             Inventory
               * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31016/>`_
+              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
               * `PyTorch 2.3.0 <https://github.com/ROCm/pytorch/tree/release/2.3>`_
               * `Apex 1.3.0 <https://github.com/ROCm/apex/tree/release/1.3.0>`_
               * `torchvision 0.18.0 <https://github.com/pytorch/vision/tree/v0.18.0>`_
