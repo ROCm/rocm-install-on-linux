@@ -217,16 +217,16 @@ validated for ROCm 6.4.1.
 
             Inventory
               * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
-              * `Python 3.12 <https://www.python.org/downloads/release/python-31210/>`_
+              * `Python 3.10 <https://www.python.org/downloads/release/python-31210/>`_
               * `tensorflow-rocm 2.16.2 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.1/tensorflow_rocm-2.16.2-cp310-cp310-manylinux_2_28_x86_64.whl>`_
-              * `TensorBoard 2.16.2 <https://github.com/tensorflow/tensorboard/tree/2.17.1>`_
+              * `TensorBoard 2.16.2 <https://github.com/tensorflow/tensorboard/tree/2.16.2>`_
 
             Tag
               `rocm/tensorflow:rocm6.4.1-py3.10-tf2.16-runtime <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.1-py3.10-tf2.16-runtime/images/sha256-a94150ffb81365234ebfa34e764db5474bc6ab7d141b56495eac349778dafcf3>`_
 
             Inventory
               * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
-              * `Python 3.12 <https://www.python.org/downloads/release/python-31210/>`_
+              * `Python 3.10 <https://www.python.org/downloads/release/python-31210/>`_
               * `tensorflow-rocm 2.16.2 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.1/tensorflow_rocm-2.16.2-cp310-cp310-manylinux_2_28_x86_64.whl>`_
               * `TensorBoard 2.16.2 <https://github.com/tensorflow/tensorboard/tree/2.16.2>`_
 
