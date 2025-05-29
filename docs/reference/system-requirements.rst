@@ -318,4 +318,4 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 .. [#mi300x] Oracle Linux 8 and 9 are supported only on AMD Instinct MI300X.
 .. [#azurelinux] Azure Linux 3.0 is supported only on AMD Instinct MI300X and AMD Radeon PRO V710.
 .. [#single-node] Debian 12 is supported only on AMD Instinct MI300X for single-node functionality. 
-.. [#RDNA4-OS] Radeon AI PRO R9700, Radeon RX 9070, Radeon RX 9070 XT, and Radeon RX 9060 XT are supported only on Ubuntu 24.04.2, Ubuntu 22.04.5, RHEL 9.5, and RHEL 9.4.
+.. [#RDNA4-OS] Radeon AI PRO R9700, Radeon RX 9070, Radeon RX 9070 XT, and Radeon RX 9060 XT are supported only on Ubuntu 24.04.2, Ubuntu 22.04.5, RHEL 9.6, RHEL 9.5, and RHEL 9.4.
