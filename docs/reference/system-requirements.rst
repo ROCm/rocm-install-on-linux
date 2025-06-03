@@ -45,7 +45,7 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       :widths: 50, 25, 25, 10
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
-      "AMD Radeon AI PRO R9700", "RDNA4", "gfx1201", "✅ [#RDNA4-OS]_"
+      "AMD Radeon AI PRO R9700", "RDNA4", "gfx1201", "✅ [#RDNA-OS]_"
       "AMD Radeon PRO V710", "RDNA3", "gfx1101", "✅"
       "AMD Radeon PRO W7900 Dual Slot", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W7900", "RDNA3", "gfx1100", "✅"
