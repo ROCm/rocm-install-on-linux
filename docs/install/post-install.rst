@@ -35,14 +35,14 @@ After installing ROCm, follow these steps to finalize and validate the installat
 
          .. code-block:: shell
 
-            update-alternatives --display rocm
+            sudo update-alternatives --display rocm
 
       #. If you have installed multiple ROCm versions, ``update-alternatives`` is automatically configured to use the
          latest version. To switch between installed versions, use this command:
 
          .. code-block:: shell
 
-            update-alternatives --config rocm
+            sudo update-alternatives --config rocm
 
    *  ``environment-modules``:
 
