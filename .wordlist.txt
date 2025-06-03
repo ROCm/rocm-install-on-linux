@@ -3,6 +3,7 @@ azurelinux
 BARs
 br
 Broadcom
+clinfo
 CTest
 checkboxes
 DDA

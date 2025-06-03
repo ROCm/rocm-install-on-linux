@@ -84,7 +84,7 @@ Supported Linux distributions
 The ROCm Runfile Installer tool supports the following Linux distributions and versions:
 
 *  Ubuntu: 22.04, 24.04
-*  RHEL: 8.10, 9.4, 9.5
+*  RHEL: 8.10, 9.4, 9.5, 9.6
 *  SLES: 15.6
 
 Getting started
@@ -111,11 +111,11 @@ Substitute values specific to your installation for the following placeholders:
    <distro-version>  = Linux distribution version for the installer
    <install-file>    = The installer .run file
 
-For example, use this command to download ROCm version 6.4 of the ROCm Runfile Installer for Ubuntu release 22.04:
+For example, use this command to download ROCm version 6.4.1 of the ROCm Runfile Installer for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-6.4/ubuntu/22.04/rocm-installer_1.1.0.60400-5-37~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-6.4.1/ubuntu/22.04/rocm-installer_1.1.1.60401-30-83~22.04.run
 
 Running the ROCm Runfile Installer
 ----------------------------------
@@ -273,9 +273,17 @@ The **ROCm Options** menu can include or exclude ROCm from the installation.
 
 *  **Uninstall ROCm**
 
-   This field is only available if previous Runfile ROCm installations are discovered on the system where ROCm is being installed.
-   The previous installation locations are listed and can be selected for uninstall. **Uninstall ROCm**
-   is for a single ROCm instance at a time and is only available for Runfile installs.
+   This field is only available if previous Runfile ROCm installations are discovered on the system
+   where ROCm is being installed, based on the currently selected **ROCm Install Path** location.
+   The installer only lists previous installation locations that are on the current install path.
+   If any installation locations are present on this path, they can be selected for uninstall.
+   The installer indicates the type of installation as follows:
+
+   *  **P** (Package manager): Package manager installation that matches the ROCm version for the Runfile Installer. In this case, uninstall is not allowed.
+   *  **C** (Runfile conflict): Runfile installation that matches the ROCm version for the Runfile Installer. The conflicting installation can be uninstalled.
+   *  **R** (Runfile): Runfile installation that differs from the ROCm version for the Runfile Installer. The installation can be uninstalled.
+   
+   **Uninstall ROCm** is for a single ROCm instance at a time and is only available for Runfile installs.
    Package manager installs of ROCm cannot be uninstalled by the Runfile installer and must be uninstalled manually
    using the package management application.
 
@@ -765,6 +773,22 @@ At the command line, add one or more of the post-installation options to the ``<
 
       bash rocm-installer.run target="/" rocm postrocm
 
+   If the ``postrocm`` option was not included as part of the initial ROCm install command,
+   the post-installation task can still be run separately after the installation.
+   To run the ROCm post-installation operation from the command line, use the ``postrocm`` argument
+   in conjunction with ``target=rocm-install-path``, where ``rocm-install-path`` is the
+   location of the Runfile-installed ROCm installation. The ROCm installation version and 
+   the Runfile Installer version must match.
+   For example, if the current Runfile Installer is for ROCm 6.4.1, then
+   ``rocm-install-path`` must indicate the path to a ROCm 6.4.1 Runfile installation.
+   
+   To use the ``postrocm`` argument separately from the initial install of ROCm 6.4.1
+   to ``/home/amd/myrocm``, run:
+
+   .. code-block:: shell
+
+	   bash rocm-installer.run target="/home/amd/myrocm/rocm-6.4.1" postrocm
+
    .. note::
 
       Adding the ``postrocm`` option to the ``<options>`` list is highly recommended to guarantee proper functioning
@@ -790,7 +814,7 @@ At the command line, add one or more of the post-installation options to the ``<
 
    .. code-block:: shell
 
-         bash rocm-installer.run rocm gpu-access=all
+      bash rocm-installer.run rocm gpu-access=all
 
    .. note::
 

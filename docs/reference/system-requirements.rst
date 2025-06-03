@@ -19,7 +19,7 @@ Supported GPUs
 The following table shows the supported AMD Instinct™ accelerators, and Radeon™ PRO
 and Radeon GPUs. If a GPU is not listed on this table, it's not officially supported by AMD.
 
-Accelerators and GPUs listed in the following table support compute workloads (no display information or graphics). If you’re using ROCm with AMD Radeon or Radeon Pro GPUs for graphics workloads, see the `Use ROCm on Radeon GPU documentation <https://rocm.docs.amd.com/projects/radeon/en/latest/docs/compatibility.html>`_ to verify compatibility and system requirements.
+Accelerators and GPUs listed in the following table support compute workloads (no display information or graphics). If you’re using ROCm with AMD Radeon or Radeon PRO GPUs for graphics workloads, see the `Use ROCm on Radeon GPU documentation <https://rocm.docs.amd.com/projects/radeon/en/latest/docs/compatibility.html>`_ to verify compatibility and system requirements.
 
 .. tab-set::
 
@@ -45,6 +45,7 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       :widths: 50, 25, 25, 10
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
+      "AMD Radeon AI PRO R9700", "RDNA4", "gfx1201", "✅ [#RDNA4-OS]_"
       "AMD Radeon PRO V710", "RDNA3", "gfx1101", "✅"
       "AMD Radeon PRO W7900 Dual Slot", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W7900", "RDNA3", "gfx1100", "✅"
@@ -52,7 +53,7 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       "AMD Radeon PRO W7800", "RDNA3", "gfx1100", "✅"
       "AMD Radeon PRO W6800", "RDNA2", "gfx1030", "✅"
       "AMD Radeon PRO V620", "RDNA2", "gfx1030", "✅"
-      "AMD Radeon PRO VII", "GCN5.1", "gfx906", "⚠️"
+      "AMD Radeon PRO VII", "GCN5.1", "gfx906", "❌"
 
   .. tab-item:: AMD Radeon
 
@@ -60,10 +61,14 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       :widths: 50, 25, 25, 10
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
+      "AMD Radeon RX 9070 XT", "RDNA4", "gfx1201", "✅ [#RDNA4-OS]_"
+      "AMD Radeon RX 9070 GRE", "RDNA4", "gfx1201", "✅ [#RDNA4-OS]_"
+      "AMD Radeon RX 9070", "RDNA4", "gfx1201", "✅ [#RDNA4-OS]_"
+      "AMD Radeon RX 9060 XT", "RDNA4", "gfx1200", "✅ [#RDNA4-OS]_"
       "AMD Radeon RX 7900 XTX", "RDNA3", "gfx1100", "✅"
       "AMD Radeon RX 7900 XT", "RDNA3", "gfx1100", "✅"
       "AMD Radeon RX 7900 GRE", "RDNA3", "gfx1100", "✅"
-      "AMD Radeon VII", "GCN5.1", "gfx906", "⚠️"
+      "AMD Radeon VII", "GCN5.1", "gfx906", "❌"
 
 ✅: **Supported** - Official software distributions of the current ROCm release fully support this hardware.
 
@@ -95,6 +100,7 @@ AMD ROCm software supports the following Linux distributions.
 
     "Ubuntu 24.04.2", "6.8 [GA], 6.11 [HWE]", "2.39", "✅"
     "Ubuntu 22.04.5", "5.15 [GA], 6.8 [HWE]", "2.35", "✅"
+    "RHEL 9.6", "5.14+", "2.34", "✅"
     "RHEL 9.5", "5.14+", "2.34", "✅"
     "RHEL 9.4", "5.14+", "2.34", "✅"
     "RHEL 8.10", "4.18.0+", "2.28", "✅"
@@ -313,3 +319,4 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 .. [#mi300x] Oracle Linux 8 and 9 are supported only on AMD Instinct MI300X.
 .. [#azurelinux] Azure Linux 3.0 is supported only on AMD Instinct MI300X and AMD Radeon PRO V710.
 .. [#single-node] Debian 12 is supported only on AMD Instinct MI300X for single-node functionality. 
+.. [#RDNA4-OS] Radeon AI PRO R9700, Radeon RX 9070, Radeon RX 9070 GRE, Radeon RX 9070 XT, and Radeon RX 9060 XT are supported only on Ubuntu 24.04.2, Ubuntu 22.04.5, RHEL 9.6, RHEL 9.5, and RHEL 9.4.
