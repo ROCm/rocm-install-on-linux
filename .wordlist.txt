@@ -15,6 +15,7 @@ DRM
 fw
 FW
 FWDEV
+GRE
 hostname
 hotplug
 IFWI
