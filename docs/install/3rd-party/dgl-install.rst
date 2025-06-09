@@ -256,6 +256,10 @@ To run unit tests manually and validate your installation fully, follow these st
       ${SRC}/dgl/tests/scripts/task_cpp_unit_test.sh
       ${SRC}/dgl/tests/scripts/task_unit_test_rocm.sh
 
+Once the tests pass, the script will end with the number of tests ran, and those that passed.
+Prebuilt docker containers have tests from all supported features passed. 
+Those that will be skipped are unimplemented due to restrictions on the GPU, 
+either from NVIDIA CUDA or AMD ROCm.
 
 
 Running a DGL example
