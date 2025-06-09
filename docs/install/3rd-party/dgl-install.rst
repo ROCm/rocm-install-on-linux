@@ -1,22 +1,21 @@
 .. meta::
-  :description: Installing DGL for ROCm
-  :keywords: installation instructions, DGL, AMD, ROCm
+  :description: Install DGL on ROCm
+  :keywords: installation, docker, DGL, AMD, ROCm
 
-***************
+********************************************************************************
 DGL on ROCm
-***************
+********************************************************************************
 
-`DGL <https://www.dgl.ai/>`_ easy-to-use, high performance and scalable Python package for deep learning on graphs.
- DGL is framework agnostic, meaning if a deep graph model is a component of an end-to-end application, 
- the rest of the logics is implemented using Pytorch. 
+`DGL <https://www.dgl.ai/>`_ is an easy-to-use, high performance and scalable 
+Python package for deep learning on graphs. DGL is framework agnostic, meaning 
+if a deep graph model is a component in an end-to-end application, the rest of 
+the logic is implemented using Pytorch.  
 
 
-To install DGL for ROCm, you have the following options:
-* :ref:`using-docker-with-DGL-pre-installed` (recommended)
+To install DGL on ROCm, you have the following options:
 
-* :ref:`using-wheels-package`
-
-* :ref:`building-a-DGL-rocm-docker-image`
+- :ref:`Use the prebuilt Docker image <using-docker-with-DGL-pre-installed>` (recommended)
+- :ref:`Use a wheels package <using-wheels-package>` and :ref:`build your own docker image <using-pytorch-rocm-docker-image>`
 
 
 
@@ -24,25 +23,22 @@ To install DGL for ROCm, you have the following options:
 
    <br/>
 
-For hardware, software, and third-party framework compatibility between ROCm and DGL, see the following resources:
+For hardware, software, and third-party framework compatibility between ROCm and DGL, 
+see the following resources:
 
 * :ref:`system-requirements`
 
-* :doc:`rocm:compatibility/ml-compatibility/dgl-compatibility`
+* :doc:`ROCm compatibility guide <rocm:compatibility/ml-compatibility/dgl-compatibility>`
 
 .. _using-docker-with-dgl-pre-installed:
 
 Using a Docker image with DGL pre-installed
-===============================================================
+================================================================================
 
-The recommended option to get a DGL environment is through Docker. This image encompasses DGL and its dependencies,
-including Pytorch Rocm, and others. 
+The easiest way to set up a DGL environment and avoid potential installation issues is with Docker. 
+The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
 
-Using Docker provides portability and access to a prebuilt Docker image that
-has been rigorously tested within AMD. This can also save compilation time and
-should perform as tested and mitigate potential installation issues.
-
-1. Download the latest public (Not updated Yet) `DGL Docker image <https://hub.docker.com/r/rocm/dgl>`_.
+1. Download the latest public `DGL Docker image <https://hub.docker.com/r/rocm/dgl>`_.
 
    .. code-block:: bash
 
@@ -56,8 +52,8 @@ should perform as tested and mitigate potential installation issues.
       a Docker image with the latest ROCm-tested release of DGL.
 
 
-   You can download Docker images for DGL with specific ROCm, PyTorch, Python and operating
-   system versions. See the available tags on
+   You can download Docker images for DGL with specific ROCm, PyTorch, Python and operating 
+   system versions. See the available tags on 
    `Docker Hub <https://hub.docker.com/r/rocm/dgl/tags>`_.
 
 2. Start a Docker container using the image.
@@ -76,10 +72,10 @@ should perform as tested and mitigate potential installation issues.
 .. _dgl-docker-support:
 
 Docker image support
---------------------
+--------------------------------------------------------------------------------
 
-AMD validates and publishes ready-made `DGL <https://hub.docker.com/r/rocm/dgl>`_ images
-with ROCm backends on Docker Hub. The following Docker image tags and associated inventories are
+AMD validates and publishes ready-made `DGL Docker images <https://hub.docker.com/r/rocm/dgl>`_  
+with ROCm backends on Docker Hub. The following Docker image tags and associated inventories are 
 validated for ROCm 6.4.
 
 .. tab-set::
@@ -143,22 +139,23 @@ validated for ROCm 6.4.
 .. _using-wheels-package:
 
 Using a wheels package
-======================
+================================================================================
 
-DGL supports the ROCm platform by providing tested wheels packages. For the correct
-wheels package, you must select **Linux**, **Python**, **pip**, and **ROCm** in the matrix, and its corresponding link.
+DGL supports the ROCm platform by providing tested wheels packages. For the correct 
+wheels package, you must select **Linux**, **Python**, **pip**, and **ROCm** in the matrix, 
+and its corresponding link.
 
 
 .. note::
 
    The available ROCm release varies between the **PyTorch Build** of ``Stable`` or ``Nightly``.
-   More recent releases are generally available through the Nightly builds.
+   More recent releases are generally available through the ``Nightly`` builds.
 
-1. Choose one of the following two options:
+1. Choose one of the following two following options:
 
-   **Option 1:**
+   **Option 1:(Recommended)**
 
-   a. Download a base Docker image with the correct ROCm and Pytorch version.
+   a. Download a base Docker image with your specified ROCm and Pytorch version.
 
       .. list-table::
           :header-rows: 1
@@ -185,35 +182,30 @@ wheels package, you must select **Linux**, **Python**, **pip**, and **ROCm** in 
           docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/"YOURTAG"
 
 
-   **Option 2:(Not Recommended)** 
+   **Option 2: (Not recommended)** 
 
-   Install on bare metal. Check :ref:`system-requirements` and install ROCm using the
+   Install on bare metal. Check :ref:`system-requirements` and install ROCm using the 
    directions in the  :ref:`rocm-install-overview` section.
    
-   a. Install ``torch``, ``torchvision``, and ``torchaudio``, as specified in the
+   a. Install ``torch``, ``torchvision``, and ``torchaudio``, as specified in the 
    `installation matrix <https://pytorch.org/get-started/locally/>`_.
 
    .. note::
 
-      The following command uses the ROCm 6.4.0 PyTorch wheel. If you want a different version of ROCm,
+      The following command uses the ROCm 6.4.0 PyTorch wheel. For a different version of ROCm,
       modify the command accordingly.
 
    .. code-block:: bash
       :substitutions:
 
        pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.4/
-   b. (Optional) Use MIOpen kdb files with ROCm PyTorch wheels.
+   b. (Optional) Use MIOpen kernel debug (kdb) files with ROCm PyTorch wheels.
 
-   PyTorch uses `MIOpen <https://github.com/ROCm/MIOpen>`_ for machine learning
-   primitives, which are compiled into kernels at runtime. Runtime compilation causes a small warm-up
-   phase when starting PyTorch, and MIOpen kdb files contain precompiled kernels that can speed up
-   application warm-up phases.
-
-   MIOpen kdb files can be used with ROCm PyTorch wheels. However, the kdb files need to be placed in
-   a specific location with respect to the PyTorch installation path. A helper script simplifies this task by
-   taking the ROCm version and GPU architecture as inputs. This works for Ubuntu.
-
-   You can download the helper script here:
+   To speed up PyTorch startup, you can use MIOpen `MIOpen <https://github.com/ROCm/MIOpen>`_ kernel debug (kdb) files, which provide precompiled kernels. 
+   These work with ROCm PyTorch wheels but must be placed in the correct directory relative to the PyTorch install.
+   
+   A helper script is available for Ubuntu to automate this, using your ROCm version and GPU architecture as inputs.
+   Download the helper script here:
    `install_kdb_files_for_pytorch_wheels.sh <https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh>`_, or use:
 
    .. code-block:: bash
@@ -224,10 +216,10 @@ wheels package, you must select **Linux**, **Python**, **pip**, and **ROCm** in 
 
    .. code-block:: bash
 
-       #Optional: replace 'gfx90a' with your architecture and 6.2.4 with your preferred ROCm version
+       #Optional: replace 'gfx90a' with your GPU architecture
        export GFX_ARCH=gfx90a
 
-       #Optional
+       #Optional: specify ROCm version
        export ROCM_VERSION=6.2.4
 
        ./install_kdb_files_for_pytorch_wheels.sh
@@ -246,20 +238,20 @@ wheels package, you must select **Linux**, **Python**, **pip**, and **ROCm** in 
 
 
 Testing the DGL installation
-================================
+================================================================================
 
-You can use DGL unit tests to validate your DGL installation. If you used a
-**prebuilt PyTorch Docker image from AMD ROCm Docker Hub** or installed an
-**official wheels package**, validation tests are not necessary, however they can be run.
+DGL unit tests to validate your installation are optional if you used a 
+**prebuilt PyTorch Docker image from AMD ROCm Docker Hub** or installed an 
+**official wheels package**.
 
-If you want to manually run unit tests to validate your PyTorch installation fully, follow these steps:
-
-1. This is one point where I can add more info after the wheels/container is released by CICDS
+To run unit tests manually and validate your installation fully, follow these steps:
 
 
-   Tentatively , this is our procedure. Run from the dgl root
+   .. note::
 
-      .. code-block:: bash
+      Run the following from the DGL root.
+
+   .. code-block:: bash
 
       ${SRC}/dgl/tests/scripts/task_cpp_unit_test.sh
       ${SRC}/dgl/tests/scripts/task_unit_test_rocm.sh
@@ -267,27 +259,16 @@ If you want to manually run unit tests to validate your PyTorch installation ful
 
 
 Running a DGL example
-===============================
+================================================================================
 
-Our recommended and tested example is a drug discovery use_case that uses an SE3Transformer.
-The instructions to build, install and run this example is described in ROCm Blogs `DGL Blog <https://www.amd.com/en/blogs.html>`_
+Recommended example: a drug discovery pipeline using `SE3Transformer`.
+Refer to the ROCm Blog for detailed steps: `DGL Blog <https://rocm.blogs.amd.com/blog/tag/dgl.html>`_
 
-The DGL examples repository provides basic examples that exercise the functionality of your
-framework. These have not been tested, however. But scripts are provided to install and test them within the DGL ROCm repo.
 
 
 Troubleshooting
-===============
+================================================================================
 
-* What if you are unable to access Docker or GPU in user accounts?
+- **Unable to access Docker or GPU in user accounts?** Ensure the user is added to `docker`, `video`, and `render` groups. See :ref:`group_permissions`.
 
-  [NEED INPUT FROM LEADRERSHIP] Can we offer OCI like services
-
-* What if you are unable to access Docker or GPU in user accounts?
-
-  Ensure that the user is added to docker, video, and render Linux groups as described in :ref:`group_permissions`.
-
-
-* How do you profile DGL workloads?
-
-  Use the PyTorch Profiler as described in :ref:`mi300x-pytorch-profiler` to profile GPU kernels on ROCm. 
+- **Profiling DGL workloads?** Use the PyTorch Profiler as explained in :ref:`mi300x-pytorch-profiler` to profile GPU kernels on ROCm.
