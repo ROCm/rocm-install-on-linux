@@ -262,7 +262,7 @@ Running a DGL example
 ================================================================================
 
 Recommended example: a drug discovery pipeline using `SE3Transformer`.
-Refer to the ROCm Blog for detailed steps: `DGL Blog <https://rocm.blogs.amd.com/blog/tag/dgl.html>`_
+For more information, see the `DGL <https://rocm.blogs.amd.com/blog/tag/dgl.html>`_  blog.
 
 
 
