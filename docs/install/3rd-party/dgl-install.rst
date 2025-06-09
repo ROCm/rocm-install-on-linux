@@ -271,4 +271,4 @@ Troubleshooting
 
 - **Unable to access Docker or GPU in user accounts?** Ensure the user is added to `docker`, `video`, and `render` groups. See :ref:`group_permissions`.
 
-- **Profiling DGL workloads?** Use the PyTorch Profiler as explained in :ref:`mi300x-pytorch-profiler` to profile GPU kernels on ROCm.
+- **Profiling DGL workloads?** Use the PyTorch Profiler, as explained in :ref:`mi300x-pytorch-profiler` to profile GPU kernels on ROCm.
