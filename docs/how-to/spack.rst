@@ -329,7 +329,7 @@ ROCm packages in Spack
 
      - ``rocprofiler-systems``
      - 6.3.0
-     - 6.3.3
+     - 6.4.0
 
    * - ROCm Validation Suite
      - ``rocm-validation-suite``
