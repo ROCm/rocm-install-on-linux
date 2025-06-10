@@ -21,6 +21,11 @@ Prerequisites
   * If you don't have ``amdgpu-dkms``, follow the :ref:`standard install instructions<rocm-install-quick>`
     (which comes with ``amdgpu-dkms``) or :ref:`install amdgpu-dkms only<amdgpu-install-dkms>`.
 
+.. seealso::
+
+   For instructions on installing Docker, see the `official Docker
+   documentation <https://docs.docker.com/engine/install/>`_.
+
 .. _docker-access-gpus-in-container:
 
 Accessing GPUs in containers
@@ -114,6 +119,6 @@ building your own containers, leveraging ROCm. The built images are available on
 Applications
 -------------------------------------------------------------------------------------------------
 
-AMD provides pre-built images for various GPU-ready applications through
-`Infinity Hub <https://www.amd.com/en/technologies/infinity-hub>`_. There, you'll also find examples
+AMD provides pre-built images for various GPU-ready AI and HPC applications through
+`Infinity Hub <https://www.amd.com/en/developer/resources/infinity-hub.html>`_. There, you'll also find examples
 for invoking each application and suggested parameters used for benchmarking.
