@@ -6,7 +6,7 @@
 DGL on ROCm
 ********************************************************************************
 
-`Deep Graph Library (DGL) <https://www.dgl.ai/>`_ is an easy-to-use, high performance and scalable 
+Deep Graph Library `(DGL) <https://www.dgl.ai/>`_ is an easy-to-use, high-performance and scalable 
 Python package for deep learning on graphs. DGL is framework agnostic, meaning 
 if a deep graph model is a component in an end-to-end application, the rest of 
 the logic is implemented using Pytorch.  
@@ -14,7 +14,7 @@ the logic is implemented using Pytorch.
 
 To install DGL on ROCm, you have the following options:
 
-- :ref:`Use the prebuilt Docker image <using-docker-with-DGL-pre-installed>` (recommended)
+- :ref:`Use the prebuilt Docker image <using-docker-with-DGL-pre-installed>` **(recommended)**
 - :ref:`Use a wheels package <using-wheels-package>` and :ref:`build your own docker image <using-pytorch-rocm-docker-image>`
 
 
@@ -35,7 +35,7 @@ see the following resources:
 Using a Docker image with DGL pre-installed
 ================================================================================
 
-The easiest way to set up a DGL environment and avoid potential installation issues is with Docker. 
+The recommended way to set up a DGL environment and avoid potential installation issues is with Docker. 
 The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
 
 1. Download the latest public `DGL Docker image <https://hub.docker.com/r/rocm/dgl>`_.
@@ -266,7 +266,7 @@ Running a DGL example
 ================================================================================
 
 Recommended example: a drug discovery pipeline using `SE3Transformer`.
-For more information, see the `DGL <https://rocm.blogs.amd.com/blog/tag/dgl.html>`_  blog.
+For more information, see the `DGL blog <https://rocm.blogs.amd.com/blog/tag/dgl.html>`_.
 
 
 
