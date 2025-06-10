@@ -153,76 +153,78 @@ and its corresponding link.
 
 1. Choose one of the following two following options:
 
-   **Option 1:(Recommended)**
+.. tab-set::
 
-   a. Download a base Docker image with your specified ROCm and Pytorch version.
+	.. tab-item:: **Option 1: Docker (Recommended)**
 
-      .. list-table::
-          :header-rows: 1
+            a. Download a base Docker image with your specified ROCm and Pytorch version.
 
-          * - Base OS
-            - Docker Image
-          * - Ubuntu 22.04
-            - 'Python 3.10 with PyTorch 2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu22.04_py3.10.16_dgl_release_2.3.0/>'_
-            - 'Python 3.10 with PyTorch 2.4.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu22.04_py3.10.16_dgl_release_2.4.1/>'_
-          * - Ubuntu 24.04
-            - 'Python 3.12 with PyTorch 2.4.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu24.04_py3.12_dgl_release_2.4.1/>'_
-            - 'Python 3.12 with PyTorch 2.6 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu24.04_py3.12_dgl_release_2.6.0/>'_
+               .. list-table::
+                  :header-rows: 1
 
-   b. Pull the selected image.
+                  * - Base OS
+                     - Docker Image
+                  * - Ubuntu 22.04
+                     - 'Python 3.10 with PyTorch 2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu22.04_py3.10.16_dgl_release_2.3.0/>'_
+                     - 'Python 3.10 with PyTorch 2.4.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu22.04_py3.10.16_dgl_release_2.4.1/>'_
+                  * - Ubuntu 24.04
+                     - 'Python 3.12 with PyTorch 2.4.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu24.04_py3.12_dgl_release_2.4.1/>'_
+                     - 'Python 3.12 with PyTorch 2.6 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu24.04_py3.12_dgl_release_2.6.0/>'_
 
-      .. code-block:: bash
+            b. Pull the selected image.
 
-          docker pull rocm/"YOURTAG"
+               .. code-block:: bash
 
-   c. Start a Docker container using the downloaded image.
+                  docker pull rocm/"YOURTAG"
 
-      .. code-block:: bash
+            c. Start a Docker container using the downloaded image.
 
-          docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/"YOURTAG"
+               .. code-block:: bash
+
+                  docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/"YOURTAG"
 
 
-   **Option 2: (Not recommended)** 
+	.. tab-item:: Option 2: Bare metal 
 
-   Install on bare metal. Check :ref:`system-requirements` and install ROCm using the 
-   directions in the  :ref:`rocm-install-overview` section.
-   
-   a. Install ``torch``, ``torchvision``, and ``torchaudio``, as specified in the 
-   `installation matrix <https://pytorch.org/get-started/locally/>`_.
+               Install on bare metal. Check :ref:`system-requirements` and install ROCm using the 
+               directions in the  :ref:`rocm-install-overview` section.
+               
+               a. Install ``torch``, ``torchvision``, and ``torchaudio``, as specified in the 
+               `installation matrix <https://pytorch.org/get-started/locally/>`_.
 
-   .. note::
+               .. note::
 
-      The following command uses the ROCm 6.4.0 PyTorch wheel. For a different version of ROCm,
-      modify the command accordingly.
+                  The following command uses the ROCm 6.4.0 PyTorch wheel. For a different version of ROCm,
+                  modify the command accordingly.
 
-   .. code-block:: bash
-      :substitutions:
+               .. code-block:: bash
+                  :substitutions:
 
-       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.4/
-   b. (Optional) Use MIOpen kernel debug (kdb) files with ROCm PyTorch wheels.
+                  pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.4/
+               b. (Optional) Use MIOpen kernel debug (kdb) files with ROCm PyTorch wheels.
 
-   To speed up PyTorch startup, you can use MIOpen `MIOpen <https://github.com/ROCm/MIOpen>`_ kernel debug (kdb) files, which provide precompiled kernels. 
-   These work with ROCm PyTorch wheels but must be placed in the correct directory relative to the PyTorch install.
-   
-   A helper script is available for Ubuntu to automate this, using your ROCm version and GPU architecture as inputs.
-   Download the helper script here:
-   `install_kdb_files_for_pytorch_wheels.sh <https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh>`_, or use:
+               To speed up PyTorch startup, you can use MIOpen `MIOpen <https://github.com/ROCm/MIOpen>`_ kernel debug (kdb) files, which provide precompiled kernels. 
+               These work with ROCm PyTorch wheels but must be placed in the correct directory relative to the PyTorch install.
+               
+               A helper script is available for Ubuntu to automate this, using your ROCm version and GPU architecture as inputs.
+               Download the helper script here:
+               `install_kdb_files_for_pytorch_wheels.sh <https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh>`_, or use:
 
-   .. code-block:: bash
+               .. code-block:: bash
 
-       wget https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh
+                  wget https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh
 
-   After installing ROCm PyTorch wheels, run the following code:
+               After installing ROCm PyTorch wheels, run the following code:
 
-   .. code-block:: bash
+               .. code-block:: bash
 
-       #Optional: replace 'gfx90a' with your GPU architecture
-       export GFX_ARCH=gfx90a
+                  #Optional: replace 'gfx90a' with your GPU architecture
+                  export GFX_ARCH=gfx90a
 
-       #Optional: specify ROCm version
-       export ROCM_VERSION=6.2.4
+                  #Optional: specify ROCm version
+                  export ROCM_VERSION=6.2.4
 
-       ./install_kdb_files_for_pytorch_wheels.sh
+                  ./install_kdb_files_for_pytorch_wheels.sh
 
 .. _using-pytorch-rocm-docker-image:
 
