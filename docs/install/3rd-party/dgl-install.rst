@@ -15,7 +15,8 @@ the logic is implemented using Pytorch.
 To install DGL on ROCm, you have the following options:
 
 - :ref:`Use the prebuilt Docker image <using-docker-with-DGL-pre-installed>` **(recommended)**
-- :ref:`Use a wheels package <using-wheels-package>` and :ref:`build your own docker image <using-pytorch-rocm-docker-image>`
+- :ref:`Use a wheels package <using-wheels-package>` 
+- :ref:`build your own docker image <using-pytorch-rocm-docker-image>`
 
 
 
