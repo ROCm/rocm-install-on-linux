@@ -371,6 +371,11 @@ ROCm packages in Spack
      - 5.5.0
      - 6.4.0
 
+   * - rocSHMEM
+     - ``rocshmem``
+     - 6.4.0
+     - 6.4.0
+
    * - rocSOLVER
      - ``rocsolver``
      - 5.5.0
@@ -409,6 +414,11 @@ ROCm packages in Spack
    * - Tensile
      - ``rocm-tensile``
      - 5.5.0
+     - 6.4.0
+
+   * - TransferBench
+     - ``transferbench``
+     - 6.3.0
      - 6.4.0
 
    * - atmi
