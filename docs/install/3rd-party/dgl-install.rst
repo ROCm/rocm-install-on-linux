@@ -187,7 +187,7 @@ and its corresponding link.
 
 	.. tab-item:: Option 2: Bare metal 
 
-               Install on bare metal. Check :ref:`system-requirements` and install ROCm using the 
+               Install on bare metal. Check :ref:`system-requirements` and install Pytorch ROCm using the 
                directions in the  :ref:`rocm-install-overview` section.
                
                a. Install ``torch``, ``torchvision``, and ``torchaudio``, as specified in the 
@@ -244,7 +244,7 @@ Testing the DGL installation
 ================================================================================
 
 DGL unit tests to validate your installation are optional if you used a 
-**prebuilt PyTorch Docker image from AMD ROCm Docker Hub** or installed an 
+**prebuilt DGL Docker image from AMD ROCm Docker Hub** or installed an 
 **official wheels package**.
 
 To run unit tests manually and validate your installation fully, follow these steps:
@@ -268,8 +268,8 @@ either from NVIDIA CUDA or AMD ROCm.
 Running a DGL example
 ================================================================================
 
-Recommended example: a drug discovery pipeline using `SE3Transformer`.
-For more information, see the `DGL blog <https://rocm.blogs.amd.com/blog/tag/dgl.html>`_.
+While we have tested, and verified DGL on multiple use-cases, as an example we recommended a drug discovery use-case using a `SE3Transformer`.
+We have detailed the procedure, and the steps to follow in the blog for DGL. For more information, see the `DGL blog <https://rocm.blogs.amd.com/blog/tag/dgl.html>`_.
 
 
 
