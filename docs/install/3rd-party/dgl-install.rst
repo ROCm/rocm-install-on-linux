@@ -9,7 +9,7 @@ DGL on ROCm
 Deep Graph Library `(DGL) <https://www.dgl.ai/>`_ is an easy-to-use, high-performance and scalable 
 Python package for deep learning on graphs. DGL is framework agnostic, meaning 
 if a deep graph model is a component in an end-to-end application, the rest of 
-the logic is implemented using Pytorch.  
+the logic is implemented using PyTorch.  
 
 
 To install DGL on ROCm, you have the following options:
@@ -88,7 +88,7 @@ validated for ROCm 6.4.
          .. tab-item:: Ubuntu 24.04
 
             Tag
-              `rocm/pytorch:rocm6.4_ubuntu24.04_py3.12_dgl_release_2.6.0 <https://hub.docker.com/layers/rocm/dgl/rocm6.4_ubuntu24.04_py3.12_dgl_release_2.6.0/images/STUB>`_
+              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu24.04_py3.12_pytorch2.6.0 <https://hub.docker.com/layers/rocm/dgl/rocm6.4_ubuntu24.04_py3.12_dgl_release_2.6.0/images/STUB>`_
 
             Inventory
               * `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_
@@ -103,7 +103,7 @@ validated for ROCm 6.4.
          .. tab-item:: Ubuntu 24.04
 
             Tag
-              `rocm/pytorch:rocm6.4_ubuntu24.04_py3.12_dgl_release_2.4.1 <https://hub.docker.com/layers/rocm/dgl/rocm6.4_ubuntu24.04_py3.12_dgl_release_2.4.1/images/STUB>`_
+              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu24.04_py3.12_pytorch2.4.1 <https://hub.docker.com/layers/rocm/dgl/rocm6.4_ubuntu24.04_py3.12_dgl_release_2.4.1/images/STUB>`_
 
             Inventory
               * `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_
@@ -114,7 +114,7 @@ validated for ROCm 6.4.
          .. tab-item:: Ubuntu 22.04
 
             Tag
-              `rocm/pytorch:rocm6.4_ubuntu22.04_py3.10_dgl_release_2.4.1 <https://hub.docker.com/layers/rocm/dgl/rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.4.1/images/STUB>`_
+              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu22.04_py3.10_pytorch2.4.1 <https://hub.docker.com/layers/rocm/dgl/rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.4.1/images/STUB>`_
 
             Inventory
               * `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_
@@ -129,7 +129,7 @@ validated for ROCm 6.4.
          .. tab-item:: Ubuntu 22.04
 
             Tag
-              `rocm/pytorch:rocm6.4_ubuntu22.04_py3.10_dgl_release_2.3.0 <https://hub.docker.com/layers/rocm/dgl/rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.3.0/images/STUB>`_
+              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu22.04_py3.10_pytorch2.3.0 <https://hub.docker.com/layers/rocm/dgl/rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.3.0/images/STUB>`_
 
             Inventory
               * `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_
@@ -143,8 +143,8 @@ Using a wheels package
 ================================================================================
 
 DGL supports the ROCm platform by providing tested wheels packages. For the correct 
-wheels package, you must select **Linux**, **Python**, **pip**, and **ROCm** in the matrix, 
-and its corresponding link.
+wheels package, you must select your correct tag with the corresponding **Ubuntu**, **Python**, **PyTorch**, and **ROCm** 
+dependencies from the matrix above.
 
 
 .. note::
@@ -268,8 +268,9 @@ either from NVIDIA CUDA or AMD ROCm.
 Running a DGL example
 ================================================================================
 
-While we have tested, and verified DGL on multiple use-cases, as an example we recommended a drug discovery use-case using a `SE3Transformer`.
-We have detailed the procedure, and the steps to follow in the blog for DGL. For more information, see the `DGL blog <https://rocm.blogs.amd.com/blog/tag/dgl.html>`_.
+Multiple use cases of DGL have been tested and verified. 
+A recommended example is a drug discovery pipeline using the ``SE3Transformer``. 
+This detailed procedure and steps to follow are outlined in the `DGL blog <https://rocm.blogs.amd.com/blog/tag/dgl.html>`_.
 
 
 
