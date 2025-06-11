@@ -126,6 +126,7 @@ The following table shows the meta-packages and their associated (meta-)packages
   |                            | ``migraphx``,                   |
   |                            | ``migraphx-devel``,             |
   |                            | ``mivisionx``,                  |
+  |                            | ``mivisionx-devel``,            |
   |                            | ``rocm-core``,                  |
   |                            | ``rpp-devel``                   |
   +----------------------------+---------------------------------+

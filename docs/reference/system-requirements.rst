@@ -103,7 +103,6 @@ AMD ROCm software supports the following Linux distributions.
     "Ubuntu 24.04.2", "6.8 [GA], 6.11 [HWE]", "2.39", "✅"
     "Ubuntu 22.04.5", "5.15 [GA], 6.8 [HWE]", "2.35", "✅"
     "RHEL 9.6", "5.14+", "2.34", "✅"
-    "RHEL 9.5", "5.14+", "2.34", "✅"
     "RHEL 9.4", "5.14+", "2.34", "✅"
     "RHEL 8.10", "4.18.0+", "2.28", "✅"
     "SLES 15 SP6", "6.5.0+", "2.38", "✅"
