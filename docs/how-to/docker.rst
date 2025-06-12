@@ -16,7 +16,7 @@ Prerequisites
   kernel-mode driver (``amdgpu-dkms``) must be installed on the host. If you've already installed
   ROCm, you probably already have ``amdgpu-dkms``.
 
-  * :ref:`Check for amdgpu-dkms <verify-dkms>`
+  * `Check for amdgpu-dkms <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/post-install.html#verify-kernel-mode-driver-installation>`_
 
   * If you don't have ``amdgpu-dkms``, follow the :ref:`standard install instructions<rocm-install-quick>`
     (which comes with ``amdgpu-dkms``) or :ref:`install amdgpu-dkms only<amdgpu-install-dkms>`.
