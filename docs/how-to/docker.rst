@@ -71,7 +71,7 @@ Docker compose
 You can also use ``docker compose`` to launch your containers, even when launching a single
 container. This can be a convenient way to run complex Docker commands without having to
 remember all the CLI arguments.
-The following snippet is an example `compose.yaml` file, which is equivalent to
+The following snippet is an example ``compose.yaml`` file, which is equivalent to
 the preceding ``docker run`` command:
 
 .. code-block:: yaml
