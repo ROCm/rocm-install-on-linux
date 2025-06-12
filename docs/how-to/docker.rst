@@ -92,11 +92,18 @@ You can then run this using ``docker compose run my-service``.
 Restricting GPU access
 --------------------------------------------------------------------
 
-By default, passing ``--device /dev/dri`` grant access to all GPUs on the system. To limit a container to a
+By default, passing ``--device /dev/dri`` grants access to all GPUs on the system. To limit a container to a
 specific subset of GPUs, you can instead pass in their individual device nodes.
-By passing ``--device /dev/dri``, you are granting access to all GPUs on the system. In order to limit
-access to a subset of GPUs, you can pass each device individually using one or more
-``-device /dev/dri/renderD<node>``, where ``<node>`` is the card index, starting from 128.
+
+GPU device nodes are located in ``/dev/dri/`` and are typically named ``renderD128``, ``renderD129``, and so on.
+You can list the available GPUs on your host system with the following command:
+
+.. code-block:: shell
+
+   ls /dev/dri/render*
+
+To expose only the first two GPUs to the container, specify them directly in the run command.
+Note that ``/dev/kfd`` is always required for the compute interface.
 
 For example, to expose the first and second GPU:
 
@@ -117,14 +124,14 @@ Docker images in the ROCm ecosystem
 =======================================================
 
 The `ROCm Docker repository <https://github.com/ROCm/ROCm-docker>`_ hosts Dockerfiles useful for
-building your own containers, leveraging ROCm. The built images are available on
+building your own ROCm-capable containers. The built images are available on
 `Docker Hub <https://hub.docker.com/u/rocm>`_. In particular:
 
 * ``rocm/rocm-terminal`` is a small image with the prerequisites to build HIP applications, but does not
   include any libraries.
 
 * `ROCm dev images <https://hub.docker.com/search?q=rocm%2Fdev>`_ provide a variety of OS +
-  ROCm versions, and are a great starting place for building applications
+  ROCm versions, and are a great starting place for building applications.
 
 Applications
 -------------------------------------------------------------------------------------------------
