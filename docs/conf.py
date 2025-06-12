@@ -5,12 +5,12 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # ROCm version numbers
-rocm_version = '6.4.1'
-rocm_multi_versions = '6.4.1 6.4' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
-rocm_multi_versions_package_versions = '6.4.1 6.4.0' # however, in multi, the packages use 6.3.0
-rocm_directory_version = '6.4.1' # in 6.0 rocm was located in /opt/rocm-6.0.0
-amdgpu_version = '6.4.1' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '6.4.60401-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+rocm_version = '6.4.2'
+rocm_multi_versions = '6.4.2 6.4' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_multi_versions_package_versions = '6.4.2 6.4.0' # however, in multi, the packages use 6.3.0
+rocm_directory_version = '6.4.2' # in 6.0 rocm was located in /opt/rocm-6.0.0
+amdgpu_version = '6.4.2' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '6.4.60402-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
 
 
 latex_engine = "xelatex"
