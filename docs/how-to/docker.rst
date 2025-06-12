@@ -23,7 +23,7 @@ Prerequisites
 
 .. seealso::
 
-   For instructions on installing Docker, see the `official Docker
+   For instructions on installing Docker, see the `official Docker installation
    documentation <https://docs.docker.com/engine/install/>`_.
 
 .. _docker-access-gpus-in-container:
@@ -31,7 +31,9 @@ Prerequisites
 Accessing GPUs in containers
 ==========================================
 
-In order to grant access to GPUs from within a container, run your container with the following options:
+To grant a Docker container access to the host's AMD GPUs, run your container with the following options.
+See the `Docker documentation <https://docs.docker.com/reference/cli/docker/container/run/>`_ to learn
+more about the ``docker run`` command and its options.
 
 .. code-block:: shell
 
@@ -42,6 +44,10 @@ The purpose of each option is as follows:
 * ``--device /dev/kfd``
 
   This is the main compute interface, shared by all GPUs.
+  The Docker CLI's ``--device`` option enables directly exposing host devices
+  to a container. See `Add host device to container (--device)
+  <https://docs.docker.com/reference/cli/docker/container/run/#device>`_ for
+  more information.
 
 * ``--device /dev/dri``
 
@@ -52,6 +58,8 @@ The purpose of each option is as follows:
 
   This option enables memory mapping, and is recommended for containers running in HPC
   environments.
+  See `Optional security options (--security-opt)
+  <https://docs.docker.com/reference/cli/docker/container/run/#security-opt>`_.
 
   The performance of an application can vary depending on the assignment of GPUs and CPUs to the
   task. Typically, ``numactl`` is installed as part of many HPC applications to provide GPU/CPU
@@ -84,6 +92,8 @@ You can then run this using ``docker compose run my-service``.
 Restricting GPU access
 --------------------------------------------------------------------
 
+By default, passing ``--device /dev/dri`` grant access to all GPUs on the system. To limit a container to a
+specific subset of GPUs, you can instead pass in their individual device nodes.
 By passing ``--device /dev/dri``, you are granting access to all GPUs on the system. In order to limit
 access to a subset of GPUs, you can pass each device individually using one or more
 ``-device /dev/dri/renderD<node>``, where ``<node>`` is the card index, starting from 128.
@@ -98,15 +108,15 @@ Verifying the amdgpu driver has been loaded on GPUs
 --------------------------------------------------------------------
 
 ``rocminfo`` is an application for reporting information about the HSA system attributes and agents.
-``rocm-smi`` is a tool that acts as a command line interface for manipulating and monitoring the amdgpu kernel.
+``amd-smi`` is a tool that acts as a command line interface for manipulating and monitoring the amdgpu kernel.
 
-Running ``rocminfo`` and ``rocm-smi`` inside the container will only enumerate the GPUs passed into the docker container.
-Running ``rocminfo`` and ``rocm-smi`` on bare metal will enumerate all ROCm-capable GPUs on the machine.
+Running ``rocminfo`` and ``amd-smi list`` inside the container will only enumerate the GPUs passed into the docker container.
+Running ``rocminfo`` and ``amd-smi list`` on bare metal will enumerate all ROCm-capable GPUs on the machine.
 
 Docker images in the ROCm ecosystem
 =======================================================
 
-The `ROCm Docker repository <https://github.com/ROCm/ROCm-docker>`_ hosts images useful for
+The `ROCm Docker repository <https://github.com/ROCm/ROCm-docker>`_ hosts Dockerfiles useful for
 building your own containers, leveraging ROCm. The built images are available on
 `Docker Hub <https://hub.docker.com/u/rocm>`_. In particular:
 
