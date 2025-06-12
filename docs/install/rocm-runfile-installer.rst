@@ -84,7 +84,7 @@ Supported Linux distributions
 The ROCm Runfile Installer tool supports the following Linux distributions and versions:
 
 *  Ubuntu: 22.04, 24.04
-*  RHEL: 8.10, 9.4, 9.5, 9.6
+*  RHEL: 8.10, 9.4, 9.6
 *  SLES: 15.6
 
 Getting started
