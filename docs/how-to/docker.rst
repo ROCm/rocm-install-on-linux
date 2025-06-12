@@ -83,7 +83,7 @@ the preceding ``docker run`` command:
           - /dev/kfd
           - /dev/dri
         security_opt:
-          - seccomp:unconfined
+          - seccomp=unconfined
 
 You can then run this using ``docker compose run my-service``.
 
