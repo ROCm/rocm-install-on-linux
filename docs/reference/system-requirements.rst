@@ -184,11 +184,11 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
              <p>Ubuntu 22.04</p>
            </td>
          </tr>
-         <tr class="row-even">
+         <tr class="row-odd">
            <td rowspan="3">
              <p>MI300X</p>
            </td>
-           <td>
+           <td class="row-even">
              <p>Hyper-V</p>
            </td>
            <td>
