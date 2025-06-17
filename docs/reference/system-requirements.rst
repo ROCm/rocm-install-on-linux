@@ -148,12 +148,18 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
          </tr>
        </thead>
        <style>
-         tbody#virtualization-support-instinct tr:last-child {
+          .mi325x-row {
+            background-color: #FFFFFF; /* Light blue */
+            }
+          .mi300x-row {
+            background-color: #F3F4F5; /* Light orange */
+            }
+          tbody#virtualization-support-instinct tr:last-child {
            border-bottom: 2px solid var(--pst-color-primary);
          }
        </style>
        <tbody id="virtualization-support-instinct">
-         <tr class="row-even">
+         <tr class="row-even mi325x-row">
            <td rowspan="2">
              <p>MI325X</p>
            </td>
@@ -170,7 +176,7 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
              <p>Ubuntu 22.04</p>
            </td>
          </tr>
-         <tr class="row-odd">
+         <tr class="row-odd mi325x-row">
            <td>
              <p>KVM</p>
            </td>
@@ -184,11 +190,11 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
              <p>Ubuntu 22.04</p>
            </td>
          </tr>
-         <tr class="row-odd">
+         <tr class="row-even mi300x-row">
            <td rowspan="3">
              <p>MI300X</p>
            </td>
-           <td class="row-even">
+           <td>
              <p>Hyper-V</p>
            </td>
            <td>
@@ -201,7 +207,7 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
              <p>Ubuntu 22.04</p>
            </td>
          </tr>
-         <tr class="row-odd">
+         <tr class="row-odd mi300x-row">
            <td>
              <p>KVM</p>
            </td>
@@ -215,7 +221,7 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
              <p>Ubuntu 22.04</p>
            </td>
          </tr>
-         <tr class="row-even">
+         <tr class="row-even mi300x-row">
            <td>
              <p>KVM</p>
            </td>
