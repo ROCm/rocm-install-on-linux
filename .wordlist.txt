@@ -39,6 +39,7 @@ ROCmVersion
 rowspan
 Runfile
 SBR
+seealso
 selectable
 SMCi
 SRIOV
