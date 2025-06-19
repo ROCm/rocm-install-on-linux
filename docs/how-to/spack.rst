@@ -2,9 +2,9 @@
   :description: How to use Spack to install ROCm.
   :keywords: Spack, package management tool, AMD, ROCm
 
-*********
-Use Spack
-*********
+************************************
+Using Spack to install ROCm packages
+************************************
 
 Spack is a package management tool designed to support multiple software
 versions and configurations on a wide variety of platforms and environments. It
