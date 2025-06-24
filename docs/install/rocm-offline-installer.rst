@@ -59,8 +59,9 @@ The ROCm Offline Installer Creator tool supports the following Linux distributio
 
 * Ubuntu: 20.04, 22.04, 24.04
 * RHEL: 8.10, 9.4, 9.6
-* SLES: 15.6
+* SLES: 15.6, 15.7
 * Debian: 12
+* Oracle Linux: 8.10, 9.6
 
 Getting started
 ================================================
@@ -86,12 +87,12 @@ Substitute your values for the following placeholders:
    For releases that end in ``.0``, do not include the ``.0`` as part of the ``rocm-version`` component.
    For example, for ROCm 6.4.0, the ``rocm-version`` is ``rocm-rel-6.4``.
 
-For example, use this command to download ROCm version 6.4.1 of the Offline Installer Creator 
+For example, use this command to download ROCm 6.4.2 of the Offline Installer Creator 
 for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-6.4.1/ubuntu/22.04/rocm-offline-creator_1.0.9.60401-3~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-6.4.2/ubuntu/22.04/rocm-offline-creator_1.0.10.60402-1~22.04.run
 
 Installer Creation
 ================================================
@@ -256,7 +257,7 @@ components are integrated into the resulting installer.
 * **ROCm Version**
 
   If **Install ROCm** is enabled, select a specific version of ROCm using the **ROCm 
-  Version** sub-menu. ROCm version 5.7.3 and later are available for selection. 
+  Version** sub-menu. ROCm version 6.0 and later are available for selection. 
   All ROCm components are based on this version of ROCm.  
 
   .. note::
@@ -276,89 +277,27 @@ components are integrated into the resulting installer.
      * Configure the **ROCm Version** field before selecting the ROCm components.
      * Select one or more components from the **ROCm Components** list for offline installer creation.
 
-The following ROCm Components are available for offline installation. For more information on
-the components, see :doc:`What is ROCm <rocm:what-is-rocm>`.
+  Depending on the ROCm version selected, two types of ROCm components or use cases can be used:
 
-* ``rocm``
-  
-  * For users and developers requiring the full ROCm stack
-  * OpenCL (ROCr/KMD based) runtime
-  * HIP runtimes
-  * Machine-learning framework
-  * All ROCm libraries and applications
+  *  Legacy use cases (for ROCm 6.0 to 6.4.1)
+  *  Meta packages (for ROCm 6.4.2 and later)
 
-* ``rocmdev``
+  The legacy use cases are shown in the following screenshot:
 
-  * For developers requiring the ROCm runtime, with profiling and debugging tools
-  * HIP runtimes
-  * OpenCL runtime
-  * Profiler, tracer, and debugger tools
+  .. image:: ../data/how-to/rocm-offline-installer-3b-rocm-usecase.png 
+     :width: 800
+     :alt: The ROCm use cases listed within the ROCm Options menu for the Offline Installer Creator
 
-* ``rocmdevtools``
+  The meta packages are shown in the following screenshot:
 
-  * For developers requiring the ROCm profiling and debugging tools
-  * Profiler, tracer, and debugger tools
+  .. image:: ../data/how-to/rocm-offline-installer-3b-rocm-meta.png 
+     :width: 800
+     :alt: The ROCm meta packages listed within the ROCm Options menu for the Offline Installer Creator
 
-* ``lrt``
+  .. note::
 
-  * For users of applications using the ROCm runtime
-  * ROCm compiler and device libraries
-  * ROCr runtime and thunk
-
-* ``hip``
-
-  * For users of the HIP runtime on AMD products
-  * HIP runtimes
-
-* ``hiplibsdk``
-
-  * For application developers using HIP on AMD products
-  * HIP runtimes
-  * ROCm math libraries
-  * HIP development libraries
-
-* ``graphics``
-
-  * For users of graphics applications
-  * Open-source Mesa 3D graphics and multimedia libraries
-
-* ``multimediasdk``
-
-  * For developers of open-source multimedia
-  * Open-source Mesa 3D multimedia libraries
-  * Development headers for multimedia libraries
-
-* ``opencl``
-
-  * For users of applications requiring OpenCL on Vega or later products
-  * ROCr-based OpenCL
-  * ROCm language runtime
-
-* ``openclsdk``
-
-  * For application developers requiring ROCr-based OpenCL
-  * ROCr-based OpenCL
-  * ROCm language runtime
-  * Development and SDK files for ROCr-based OpenCL
-
-* ``openmpsdk``
-
-  * For users of OpenMP or Flang on AMD products
-  * OpenMP runtime and development packages
-
-* ``mllib``
-
-  * For users running machine-learning workloads
-  * MIOpen hip and tensile libraries
-  * Clang OpenCL
-  * MIOpen kernels
-
-* ``mlsdk`` 
-
-  * For developers running machine-learning workloads
-  * MIOpen development libraries
-  * Clang OpenCL development libraries
-  * MIOpen kernels
+     To reference the meta package equivalents and descriptions for each of the legacy ROCm component use cases,
+     see the :doc:`ROCm runtime and developer packages list <./install-methods/includes/meta-package-table>`.
 
 .. _driver-options-label:
 
@@ -434,7 +373,9 @@ Extra Packages menu
 
 The **Extra Packages** menu provides a list of optional packages for inclusion
 in the offline installer. You can select the :doc:`rocminfo <rocminfo:index>`,
-:doc:`rocm-smi <rocm_smi_lib:index>`, and :doc:`rocm-validation-suite <rocmvalidationsuite:index>` packages 
+:doc:`rocm-smi <rocm_smi_lib:index>`, :doc:`rocm-validation-suite <rocmvalidationsuite:index>`,
+:doc:`amd-smi <amdsmi:index>`, :doc:`rocdecode <rocdecode:index>`,
+:doc:`rocjpeg <rocjpeg:index>`, and :doc:`rdc <rdc:index>` packages 
 as extra packages for the installer, provided they are not already included 
 as part of a given ROCm component.
 
@@ -559,8 +500,8 @@ Follow these steps to create an offline installer:
 
 #. Set the extra packages:
 
-   In the **Extra Packages** menu, optionally include rocminfo, rocm-smi, and rocm-validation-suite
-   in the offline installer.
+   In the **Extra Packages** menu, optionally include ``rocminfo``, ``rocm-smi``, ``rocm-validation-suite``,
+   ``amd-smi``, ``rocdecode``, ``rocjpeg``, and ``rdc`` in the offline installer.
 
    .. note::
 
@@ -781,7 +722,6 @@ The tests are based on the ROCm version and on the components being installed.
 
 Tests are available for these ROCm versions:
 
-*  5.7.3
 *  6.0.2
 *  6.1.x
 *  6.2.x
@@ -842,7 +782,6 @@ The following tests are available, depending on the ROCm version:
    :header: "ROCm version", "Test Suite Support"
    :widths: 26, 80
 
-   "5.7.3", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "6.0.2", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "6.1.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "6.2.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
@@ -865,7 +804,7 @@ From the build location of the offline tool, run the following command:
 
    ctest -L <rocm-version> 
 
-where ``<rocm-version>`` is one of ``5.7.3``, ``6.0.2``, ``6.1.x``, ``6.2.x``, ``6.3.x``, or ``6.4.x``.
+where ``<rocm-version>`` is one of ``6.0.2``, ``6.1.x``, ``6.2.x``, ``6.3.x``, or ``6.4.x``.
  
 Running manual tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
