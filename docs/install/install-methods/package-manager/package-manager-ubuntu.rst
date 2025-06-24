@@ -10,6 +10,10 @@ Ubuntu native installation
 
     Ensure that the :doc:`/install/prerequisites` are met before installing.
 
+.. Note::
+
+    The following installation steps also apply when upgrading from a previous ROCm version.
+
 .. _ubuntu-register-repo:
 
 Registering ROCm repositories
@@ -56,7 +60,7 @@ Register packages
 
                 # Register ROCm packages
                 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/|rocm_version| {{ os_release }} main" \
-                    | sudo tee --append /etc/apt/sources.list.d/rocm.list
+                    | sudo tee /etc/apt/sources.list.d/rocm.list
                 echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
                     | sudo tee /etc/apt/preferences.d/rocm-pin-600
                 sudo apt update
@@ -72,44 +76,27 @@ Installing
 
     sudo apt install rocm
 
+.. include:: ../includes/meta-package-table.rst
+
+.. _ubuntu-post-install:
+
+Post-installation
+=====================================================
+
 Complete the :doc:`../../post-install`.
-
-.. note::
-
-    For information about the AMDGPU driver installation, see the `Install AMDGPU driver <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`_ in the AMD Instinct Data Center GPU Documentation.
-
-.. _ubuntu-upgrade:
-
-Upgrading
-================================================
-
-To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`ubuntu-register-repo` and :ref:`ubuntu-install`. 
-
-.. note::
-
-    Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
-    system reboot to take effect.
 
 .. _ubuntu-package-manager-uninstall:
 
 Uninstalling
 ================================================
 
-Uninstall specific meta packages
+Uninstall ROCm meta packages
 ---------------------------------------------------------------------------
 
 .. code-block:: bash
     :substitutions:
 
     sudo apt autoremove rocm
-
-Uninstall ROCm packages
----------------------------------------------------------------------------
-
-.. code-block:: bash
-    :substitutions:
-
     sudo apt autoremove rocm-core
 
 Remove ROCm repositories
@@ -127,3 +114,7 @@ Remove ROCm repositories
 
     # Restart the system
     sudo reboot
+
+.. note::
+
+    For information about the AMDGPU driver installation, see the `Ubuntu native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-ubuntu.html>`_ in the AMD Instinct Data Center GPU Documentation.

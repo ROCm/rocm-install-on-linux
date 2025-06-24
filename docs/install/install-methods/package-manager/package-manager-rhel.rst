@@ -11,6 +11,10 @@ Red Hat Enterprise Linux native installation
 
     Ensure that the :doc:`/install/prerequisites` are met before installing.
 
+.. Note::
+
+    The following installation steps also apply when upgrading from a previous ROCm version.
+
 .. _rhel-register-repo:
 
 Registering ROCm repositories
@@ -26,7 +30,7 @@ Registering ROCm repositories
             .. code-block:: bash
                 :substitutions:
 
-                sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
+                sudo tee /etc/yum.repos.d/rocm.repo <<EOF
                 [ROCm-|rocm_version|]
                 name=ROCm|rocm_version|
                 baseurl=https://repo.radeon.com/rocm/el{{ os_release }}/|rocm_version|/main
@@ -47,44 +51,27 @@ Installing
 
     sudo dnf install rocm
 
-Complete the :doc:`../../post-install`.
+.. include:: ../includes/meta-package-table.rst
 
-.. note::
+.. _rhel-post-install:
 
-    For information about the AMDGPU driver installation, see the `Install AMDGPU driver <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`_ in the AMD Instinct Data Center GPU Documentation.
-
-.. _rhel-upgrade:
-
-Upgrading
+Post-installation
 =====================================================
 
-To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`rhel-register-repo` and :ref:`rhel-install`.
-
-.. note::
-
-    Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
-    system reboot to take effect.
+Complete the :doc:`../../post-install`.
 
 .. _rhel-package-manager-uninstall:
 
 Uninstalling
 =====================================================
 
-Uninstall specific meta packages
+Uninstall ROCm meta packages
 ---------------------------------------------------------------------------
 
 .. code-block:: bash
     :substitutions:
 
     sudo dnf remove rocm
-
-Uninstall ROCm packages
----------------------------------------------------------------------------
-
-.. code-block:: bash
-    :substitutions:
-
     sudo dnf remove rocm-core amdgpu-core
 
 Remove ROCm repositories
@@ -101,3 +88,7 @@ Remove ROCm repositories
 
     # Restart the system
     sudo reboot
+
+.. note::
+
+    For information about the AMDGPU driver installation, see the `Red Hat Enterprise Linux native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-rhel.html>`_ in the AMD Instinct Data Center GPU Documentation.

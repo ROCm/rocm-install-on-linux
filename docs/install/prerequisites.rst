@@ -256,7 +256,7 @@ instructions specific to your distribution to add the necessary repositories.
     .. tab-item:: SUSE Linux Enterprise Server
         :sync: sle-tab
 
-        Add a few modules with SUSEConnect, along with the Perl language, Education and science repositories.
+        Add a few modules with SUSEConnect and the science repository.
 
         .. datatemplate:nodata::
 
@@ -273,8 +273,6 @@ instructions specific to your distribution to add the necessary repositories.
                         sudo SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
                         sudo SUSEConnect -p PackageHub/{{ os_version }}/x86_64
                         sudo zypper install zypper
-                        sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/{{ os_version }}/devel:languages:perl.repo
-                        sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
                         sudo zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo
 
 

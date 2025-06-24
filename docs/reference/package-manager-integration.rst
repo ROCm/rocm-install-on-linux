@@ -1,9 +1,9 @@
 .. meta::
-  :description: Package manager integration
+  :description: Package details
   :keywords: OpenCL, OpenMP, package manager, AMD, ROCm
 
 ************************************************************************************
-Package manager integration
+Package details
 ************************************************************************************
 
 This section provides information about the required meta-packages for the
@@ -78,24 +78,7 @@ All meta-packages are a combination of required packages and libraries.
 .. note::
     ``rocm-llvm`` is not a meta-package; it's a single package that installs the ROCm Clang compiler files.
 
-.. csv-table::
-  :widths: 30, 70
-  :delim: ;
-  :header: Package; Description
-
-    ``rocm``; All ROCm core packages, tools, and libraries.
-    ``rocm-language-runtime``; The ROCm runtime.
-    ``rocm-developer-tools``; Debug and profile HIP applications.
-    ``rocm-hip-runtime``; Run HIP applications writen for the AMD platform.
-    ``rocm-hip-runtime-devel``; Develop applications on HIP or port from CUDA.
-    ``rocm-opencl-runtime``; Run OpenCL-based applications on the AMD platform.
-    ``rocm-opencl-sdk``; Develop OpenCL-based applications for the AMD platform.
-    ``rocm-hip-libraries``; HIP libraries optimized for the AMD platform.
-    ``rocm-hip-sdk``; Develop or port HIP applications and libraries for the AMD platform.
-    ``rocm-ml-libraries``; Key machine learning libraries. Includes MIOpen.
-    ``rocm-ml-sdk``; Develop and run machine learning applications for AMD.
-    ``rocm-openmp-runtime``; Run OpenMP-based applications on the AMD platform.
-    ``rocm-openmp-sdk``; Develop OpenMP-based applications for the AMD software.
+.. include:: ../install/install-methods/includes/meta-package-table.rst
 
 Packages in ROCm programming models
 ============================================================
@@ -108,189 +91,84 @@ The following table shows the meta-packages and their associated (meta-)packages
    ``rocm-utils`` is a legacy meta-package that includes ``rocminfo``, ``rocm-cmake``, and ``rocm-core``. 
    Other meta-packages manage the installation of these components.
 
-.. table::
-  :widths: 30 70
+.. note::
 
-  +----------------------------+---------------------------------+
-  | Meta package               | Associated packages             |
-  +============================+=================================+
-  | ``rocm``                   | Meta packages:                  |
-  |                            |                                 |
-  |                            | ``rocm-developer-tools``,       |
-  |                            | ``rocm-ml-sdk``,                |
-  |                            | ``rocm-opencl-sdk``,            |
-  |                            | ``rocm-openmp-sdk``             |
-  |                            |                                 |
-  |                            | Packages:                       |
-  |                            |                                 |
-  |                            | ``migraphx``,                   |
-  |                            | ``migraphx-devel``,             |
-  |                            | ``mivisionx``,                  |
-  |                            | ``mivisionx-devel``,            |
-  |                            | ``rocm-core``,                  |
-  |                            | ``rpp-devel``                   |
-  +----------------------------+---------------------------------+
-  | ``rocm-developer-tools``   | Meta packages:                  |
-  |                            |                                 |
-  |                            | ``rocm-language-runtime``       |
-  |                            |                                 |
-  |                            | Packages:                       |
-  |                            |                                 |
-  |                            | ``amd-smi-lib``,                |
-  |                            | ``hsa-amd-aqlprofile``,         |
-  |                            | ``rocm-core``,                  |
-  |                            | ``rocm-dbgapi``,                |
-  |                            | ``rocm-debug-agent``,           |
-  |                            | ``rocm-gdb``,                   |
-  |                            | ``rocm-smi-lib``,               |
-  |                            | ``rocprofiler``,                |
-  |                            | ``rocprofiler-devel``,          |        
-  |                            | ``rocprofiler-compute``,        |
-  |                            | ``rocprofiler-plugins``,        |
-  |                            | ``rocprofiler-register``,       |
-  |                            | ``rocprofiler-sdk``,            |
-  |                            | ``rocprofiler-sdk-roctx``,      |
-  |                            | ``rocprofiler-systems``,        |
-  |                            | ``roctracer``,                  |
-  |                            | ``roctracer-devel``             | 
-  +----------------------------+---------------------------------+
-  | ``rocm-ml-sdk``            | Meta packages:                  |
-  |                            |                                 |
-  |                            | ``rocm-hip-sdk``,               |
-  |                            | ``rocm-ml-libraries``           |
-  |                            |                                 |
-  |                            | Packages:                       |
-  |                            |                                 |
-  |                            | ``miopen-hip-devel``,           |
-  |                            | ``rocm-core``                   |
-  +----------------------------+---------------------------------+
-  | ``rocm-ml-libraries``      | Meta packages:                  |
-  |                            |                                 |
-  |                            | ``rocm-hip-libraries``          |
-  |                            |                                 |
-  |                            | Packages:                       |
-  |                            |                                 |
-  |                            | ``miopen-hip``,                 |
-  |                            | ``rocm-core``,                  |
-  |                            | ``rocm-llvm``                   |
-  +----------------------------+---------------------------------+
-  | ``rocm-hip-sdk``           | Meta packages:                  |
-  |                            |                                 |
-  |                            | ``rocm-hip-libraries``,         |
-  |                            | ``rocm-hip-runtime-devel``      |
-  |                            |                                 |
-  |                            | Packages:                       |
-  |                            |                                 |
-  |                            | ``composablekernel-devel``,     |
-  |                            | ``hipblas-common-devel``,       |
-  |                            | ``hipblas-devel``,              |
-  |                            | ``hipblaslt-devel``,            |
-  |                            | ``hipcub-devel``,               |
-  |                            | ``hipfft-devel``,               |
-  |                            | ``hipfort-devel``,              |
-  |                            | ``hiprand-devel``,              |
-  |                            | ``hipsolver-devel``,            |
-  |                            | ``hipsparse-devel``,            |
-  |                            | ``hipsparselt-devel``,          |
-  |                            | ``hiptensor-devel``,            |
-  |                            | ``rccl-devel``,                 |
-  |                            | ``rocalution-devel``,           |
-  |                            | ``rocblas-devel``,              |
-  |                            | ``rocfft-devel``,               |
-  |                            | ``rocm-core``,                  |
-  |                            | ``rocprim-devel``,              |
-  |                            | ``rocrand-devel``,              |
-  |                            | ``rocsolver-devel``,            |
-  |                            | ``rocsparse-devel``,            |
-  |                            | ``rocthrust-devel``,            |
-  |                            | ``rocwmma-devel``               |
-  +----------------------------+---------------------------------+
-  | ``rocm-hip-libraries``     | Meta packages:                  |
-  |                            |                                 |
-  |                            | ``rocm-hip-runtime``            |
-  |                            |                                 |
-  |                            | Packages:                       |
-  |                            |                                 |
-  |                            | ``hipblas``,                    |
-  |                            | ``hipblaslt``,                  |
-  |                            | ``hipfft``,                     |
-  |                            | ``hiprand``,                    |
-  |                            | ``hipsolver``,                  |
-  |                            | ``hipsparse``,                  |
-  |                            | ``hipsparselt``,                |
-  |                            | ``hiptensor``,                  |
-  |                            | ``rccl``,                       |
-  |                            | ``rocalution``,                 |
-  |                            | ``rocblas``,                    |
-  |                            | ``rocfft``,                     |
-  |                            | ``rocm-core``,                  |
-  |                            | ``rocm-smi-lib``,               |
-  |                            | ``rocrand``,                    |
-  |                            | ``rocsolver``,                  |
-  |                            | ``rocsparse``                   |
-  +----------------------------+---------------------------------+
-  | ``rocm-hip-runtime-devel`` | Meta packages:                  |
-  |                            |                                 |
-  |                            | ``rocm-hip-runtime``            |
-  |                            |                                 |
-  |                            | Packages:                       |
-  |                            |                                 |
-  |                            | ``hipcc``,                      |
-  |                            | ``hip-doc``,                    |
-  |                            | ``hip-devel``,                  |
-  |                            | ``hip-samples``,                |
-  |                            | ``hipify-clang``,               |
-  |                            | ``hsa-rocr-devel``,             |
-  |                            | ``rocm-cmake``,                 |
-  |                            | ``rocm-core``,                  |
-  |                            | ``rocm-device-libs``,           |
-  |                            | ``rocm-llvm``                   |
-  +----------------------------+---------------------------------+
-  | ``rocm-hip-runtime``       | Meta packages:                  |
-  |                            |                                 |
-  |                            | ``rocm-language-runtime``       |
-  |                            |                                 |
-  |                            | Packages:                       |
-  |                            |                                 |
-  |                            | ``hip-runtime-amd``,            |
-  |                            | ``rocm-core``,                  |
-  |                            | ``rocminfo``                    |
-  +----------------------------+---------------------------------+
-  | ``rocm-language-runtime``  | Packages:                       |
-  |                            |                                 |
-  |                            | ``comgr``,                      |
-  |                            | ``hsa-rocr``,                   |
-  |                            | ``openmp-extras-runtime``,      |
-  |                            | ``rocm-core``                   |
-  +----------------------------+---------------------------------+
-  | ``rocm-openmp-sdk``        | Meta packages:                  |
-  |                            |                                 |
-  |                            | ``rocm-language-runtime``       |
-  |                            |                                 |
-  |                            | Packages:                       |
-  |                            |                                 |
-  |                            | ``hsa-rocr-devel``,             |
-  |                            | ``openmp-extras-devel``,        |
-  |                            | ``rocm-core``,                  |
-  |                            | ``rocm-device-libs``,           |
-  |                            | ``rocm-llvm``                   |
-  +----------------------------+---------------------------------+
-  | ``rocm-opencl-sdk``        | Meta packages:                  |
-  |                            |                                 |
-  |                            | ``rocm-opencl-runtime``         |
-  |                            |                                 |
-  |                            | Packages:                       |
-  |                            |                                 |
-  |                            | ``hsa-rocr-devel``,             |
-  |                            | ``rocm-core``,                  |
-  |                            | ``rocm-opencl-devel``           |
-  +----------------------------+---------------------------------+
-  | ``rocm-opencl-runtime``    | Meta packages:                  |
-  |                            |                                 |
-  |                            | ``rocm-language-runtime``       |
-  |                            |                                 |
-  |                            | Packages:                       |
-  |                            |                                 |
-  |                            | ``rocm-core``,                  |
-  |                            | ``rocm-opencl``                 |
-  +----------------------------+---------------------------------+
+  Some meta packages and dependencies in the tables below have names ending with ``-dev``, as they are based on Ubuntu. 
+  On RPM-based systems like RHEL, these packages use a different naming convention and typically end with ``-devel`` instead.
+
+ROCm runtime packages
+---------------------
+
+.. table::
+  :widths: 20 80
+
+  +----------------------------+----------------------------------------------------------------------------------------------------------+
+  | Meta package               | Associated meta packages or packages                                                                     |
+  +============================+==========================================================================================================+
+  | ``rocm``                   | Meta packages: ``rocm-developer-tools``, ``rocm-ml-sdk``, ``rocm-opencl-sdk``, ``rocm-openmp-sdk``       |
+  |                            |                                                                                                          |
+  |                            | Packages: ``rocm-utils``, ``mivisionx``, ``migraphx``, ``rpp``, ``rocm-core``, ``migraphx-dev``,         |
+  |                            | ``mivisionx-dev``, ``rpp-dev``                                                                           |
+  +----------------------------+----------------------------------------------------------------------------------------------------------+
+  | ``rocm-language-runtime``  | Packages: ``comgr``, ``hsa-rocr``, ``rocm-core``, ``openmp-extras-runtime``                              |
+  +----------------------------+----------------------------------------------------------------------------------------------------------+
+  | ``rocm-hip-runtime``       | Meta packages: ``rocm-language-runtime``                                                                 |
+  |                            |                                                                                                          |
+  |                            | Packages: ``hip-runtime-amd``, ``rocm-core``, ``rocminfo``                                               |
+  +----------------------------+----------------------------------------------------------------------------------------------------------+
+  | ``rocm-hip-libraries``     | Meta packages: ``rocm-hip-runtime``                                                                      |
+  |                            |                                                                                                          |
+  |                            | Packages: ``rocm-core``, ``rocm-smi-lib``, ``hipblas``, ``hipblaslt``, ``hipfft``, ``hipsparse``,        |
+  |                            | ``hipsolver``, ``hiptensor``, ``rccl``, ``rocalution``, ``rocblas``, ``rocfft``,                         |
+  |                            | ``rocrand``, ``hiprand``, ``rocsolver``, ``rocsparse``, ``hipsparselt``                                  |
+  +----------------------------+----------------------------------------------------------------------------------------------------------+
+  | ``rocm-opencl-runtime``    | Meta packages: ``rocm-language-runtime``                                                                 |
+  |                            |                                                                                                          |
+  |                            | Packages: ``rocm-core``, ``rocm-opencl``                                                                 |
+  +----------------------------+----------------------------------------------------------------------------------------------------------+
+  | ``rocm-ml-libraries``      | Meta packages: ``rocm-hip-libraries``                                                                    |
+  |                            |                                                                                                          |
+  |                            | Packages: ``miopen-hip``, ``half``, ``rocm-core``, ``rocm-llvm``                                         |
+  +----------------------------+----------------------------------------------------------------------------------------------------------+
+
+
+ROCm developer packages
+-----------------------
+
+.. table::
+  :widths: 20 80
+
+  +----------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+  | Meta package               | Associated meta packages or packages                                                                                                |
+  +============================+=====================================================================================================================================+
+  | ``rocm-developer-tools``   | Meta packages: ``rocm-language-runtime``                                                                                            |
+  |                            |                                                                                                                                     |
+  |                            | Packages: ``amd-smi-lib``, ``rocm-core``, ``rocm-dbgapi``, ``rocm-debug-agent``, ``rocm-gdb``, ``hsa-amd-aqlprofile``,              |
+  |                            | ``rocm-smi-lib``, ``rocprofiler-register``, ``rocprofiler``, ``rocprofiler-plugins``, ``roctracer``, ``rocprofiler-sdk``,           |
+  |                            | ``rocprofiler-sdk-roctx``, ``rocprofiler-compute``, ``rocprofiler-systems``, ``rocprofiler-dev``, ``roctracer-dev``                 |
+  +----------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+  | ``rocm-hip-runtime-dev``   | Meta packages: ``rocm-hip-runtime``                                                                                                 |
+  |                            |                                                                                                                                     |
+  |                            | Packages: ``rocm-core``, ``rocm-device-libs``, ``rocm-cmake``, ``rocm-llvm``, ``hipcc``, ``hipify-clang``, ``hip-doc``,             |
+  |                            | ``hip-samples``, ``hip-dev``, ``hsa-rocr-dev``                                                                                      |
+  +----------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+  | ``rocm-hip-sdk``           | Meta packages: ``rocm-hip-libraries``, ``rocm-hip-runtime-dev``                                                                     |
+  |                            |                                                                                                                                     |
+  |                            | Packages: ``rocm-core``, ``composablekernel-dev``, ``hipblas-common-dev``, ``hipblas-dev``, ``hipblaslt-dev``, ``hipcub-dev``,      |
+  |                            | ``hipfft-dev``, ``hipsparse-dev``, ``hipsolver-dev``, ``hipfort-dev``, ``hiptensor-dev``, ``rccl-dev``, ``rocalution-dev``,         |
+  |                            | ``rocblas-dev``, ``rocfft-dev``, ``rocprim-dev``, ``rocrand-dev``, ``hiprand-dev``, ``rocsolver-dev``, ``rocsparse-dev``,           |
+  |                            | ``rocthrust-dev``, ``rocwmma-dev``, ``hipsparselt-dev``                                                                             |
+  +----------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+  | ``rocm-opencl-sdk``        | Meta packages: ``rocm-opencl-runtime``                                                                                              |
+  |                            |                                                                                                                                     |
+  |                            | Packages: ``hsa-rocr-dev``, ``rocm-core``, ``rocm-opencl-dev``                                                                      |
+  +----------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+  | ``rocm-openmp-sdk``        | Meta packages: ``rocm-language-runtime``                                                                                            |
+  |                            |                                                                                                                                     |
+  |                            | Packages: ``rocm-device-libs``, ``rocm-llvm``, ``rocm-core``, ``hsa-rocr-dev``, ``openmp-extras-dev``                               |
+  +----------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+  | ``rocm-ml-sdk``            | Meta packages: ``rocm-hip-sdk``                                                                                                     |
+  |                            |                                                                                                                                     |
+  |                            | Packages: ``rocm-ml-libraries``, ``rocm-hip-sdk``, ``miopen-hip-dev``, ``rocm-core``                                                |
+  +----------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+

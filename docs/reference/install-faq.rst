@@ -21,7 +21,6 @@ As an example, the latest version of ROCm is 6.0.2, but the installation instruc
 
 * :doc:`Quick-start installation <../install/quick-start>` - Installs only the latest **major** release (i.e. 6.0.0, or 6.1.0)
 * :doc:`Native package manager install method <../install/install-methods/package-manager-index>` - Installs the specified *major and minor* release version (i.e. 6.0.0, 6.0.2)
-* :doc:`amdgpu-install method <../install/install-methods/amdgpu-installer-index>` - Installs the specified *major and minor* release version (i.e. 6.0.0, 6.0.2)
 
 Refer to `ROCm Issue #2422 <https://github.com/ROCm/ROCm/issues/2422>`_ for additional details.
 

@@ -64,6 +64,11 @@ installation to avoid conflicts.
 
       For versions earlier than ROCm 6.0.0, use ``rocm-hip-sdk`` instead of ``rocm`` (for example, ``rocm-hip-sdk5.7.1``).
 
+.. _ol-multi-post-install:
+
+Post-installation
+=====================================================
+
 Complete the :doc:`../../post-install`.
 
 .. tip::
@@ -112,3 +117,7 @@ Remove ROCm repositories
 
    # Restart the system
    sudo reboot
+
+.. note::
+
+    For information about the AMDGPU driver installation, see the `Oracle Linux native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-ol.html>`_ in the AMD Instinct Data Center GPU Documentation.
