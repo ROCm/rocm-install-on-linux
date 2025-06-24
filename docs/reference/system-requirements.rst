@@ -105,6 +105,7 @@ AMD ROCm software supports the following Linux distributions.
     "RHEL 9.6", "5.14+", "2.34", "✅"
     "RHEL 9.4", "5.14+", "2.34", "✅"
     "RHEL 8.10", "4.18.0+", "2.28", "✅"
+    "SLES 15 SP7", "6.11.0+", "2.38", "✅ [#SLES-OS]_"
     "SLES 15 SP6", "6.5.0+", "2.38", "✅"
     "Oracle Linux 9", "5.15.0 (UEK)", "2.35", "✅ [#mi300x]_"
     "Oracle Linux 8", "5.15.0 (UEK)", "2.28", "✅ [#mi300x]_"
@@ -331,6 +332,7 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 .. rubric:: Footnotes
 
 .. [#ub2204] AMD Instinct MI325X is supported only on Ubuntu 22.04 [GA Kernel 5.15].
+.. [#SLES-OS] SLES 15 SP7 is supported only on AMD Instinct MI210 and MI300X.
 .. [#mi300x] Oracle Linux 8 and 9 are supported only on AMD Instinct MI300X.
 .. [#azurelinux] Azure Linux 3.0 is supported only on AMD Instinct MI300X and AMD Radeon PRO V710.
 .. [#single-node] Debian 12 is supported only on AMD Instinct MI300X for single-node functionality. 
