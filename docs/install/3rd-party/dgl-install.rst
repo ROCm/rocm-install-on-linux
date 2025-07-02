@@ -16,7 +16,7 @@ To install DGL on ROCm, you have the following options:
 
 - :ref:`Use the prebuilt Docker image <using-docker-with-DGL-pre-installed>` **(recommended)**
 - :ref:`Use a wheels package <using-wheels-package>` 
-- :ref:`build your own docker image <using-pytorch-rocm-docker-image>`
+- :ref:`Build your own docker image <using-pytorch-rocm-docker-image>`
 
 
 
@@ -227,8 +227,6 @@ dependencies from the matrix above.
 
                   ./install_kdb_files_for_pytorch_wheels.sh
 
-.. _using-pytorch-rocm-docker-image:
-
 2. Install the required dependencies for the wheels package.
 
    .. code-block:: bash
@@ -239,7 +237,72 @@ dependencies from the matrix above.
        pip3 install dgl_STUB
 
 
+.. _using-pytorch-rocm-docker-image:
 
+Using pytorch rocm docker image
+================================================================================
+
+1. Clone the dgl repository 
+
+   .. code-block:: bash
+      # /src is where dgl repo is cloned.
+      cd /src/dgl
+
+2. Build the docker container
+   .. tab-set::
+   
+      .. tab-item:: DGL on Ubuntu 22.04 + ROCm 6.4 + Py 3.10 + PyTorch 2.4.1
+      To build the Docker container, run the following command:
+         .. code-block:: bash
+            # DGL on Ubuntu 22.04 + ROCm 6.4 + Py 3.10 + PyTorch 2.4.1
+            docker build \
+               -t dgl:dgl-2.4_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.4.1 \
+               --build-arg BASE_IMAGE=rocm/pytorch:rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.4.1 \
+               --build-arg ARG_CONDA_ENV=py_3.10 \
+               --build-arg ARG_MAX_JOBS=8 \
+               --build-arg ARG_GPU_BUILD_TARGETS="gfx90a,gfx942" \
+               -f Dockerfile.rocm \
+               .
+
+      .. tab-item:: DGL on Ubuntu 22.04 + ROCm 6.4 + Py 3.10 + PyTorch 2.3.0
+      To build the Docker container, run the following command:
+         .. code-block:: bash
+            # DGL on Ubuntu 22.04 + ROCm 6.4 + Py 3.10 + PyTorch 2.3.0
+            docker build \
+               -t dgl:dgl-2.4_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.3.0 \
+               --build-arg BASE_IMAGE=rocm/pytorch:rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.3.0 \
+               --build-arg ARG_CONDA_ENV=py_3.10 \
+               --build-arg ARG_MAX_JOBS=8 \
+               --build-arg ARG_GPU_BUILD_TARGETS="gfx90a,gfx942" \
+               -f Dockerfile.rocm \
+               .
+
+      .. tab-item:: DGL on Ubuntu 24.04 + ROCm 6.4 + Py 3.12 + PyTorch 2.4.1
+      To build the Docker container, run the following command:
+         .. code-block:: bash
+            # DGL on Ubuntu 24.04 + ROCm 6.4 + Py 3.12 + PyTorch 2.4.1
+            docker build \
+               -t dgl:dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.4.1 \
+               --build-arg BASE_IMAGE=rocm/pytorch:rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.4.1 \
+               --build-arg ARG_CONDA_ENV=py_3.12 \
+               --build-arg ARG_MAX_JOBS=8 \
+               --build-arg ARG_GPU_BUILD_TARGETS="gfx90a,gfx942" \
+               -f Dockerfile.rocm \
+               .
+
+      .. tab-item:: DGL on Ubuntu 24.04 + ROCm 6.4 + Py 3.12 + PyTorch 2.6.0
+      To build the Docker container, run the following command:
+         .. code-block:: bash
+            # DGL on Ubuntu 24.04 + ROCm 6.4 + Py 3.12 + PyTorch 2.6.0
+            docker build \
+               -t dgl:dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0 \
+               --build-arg BASE_IMAGE=rocm/pytorch:rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0 \
+               --build-arg ARG_CONDA_ENV=py_3.12 \
+               --build-arg ARG_MAX_JOBS=8 \
+               --build-arg ARG_GPU_BUILD_TARGETS="gfx90a,gfx942" \
+               -f Dockerfile.rocm \
+               .
+               
 Testing the DGL installation
 ================================================================================
 
