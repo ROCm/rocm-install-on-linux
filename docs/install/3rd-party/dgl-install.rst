@@ -187,7 +187,7 @@ dependencies from the matrix above.
 
 	.. tab-item:: Option 2: Bare metal 
 
-               Install on bare metal. Check :ref:`system-requirements` and install Pytorch ROCm using the 
+               Install on bare metal. Check :ref:`system-requirements` and install PyTorch ROCm using the 
                directions in the  :ref:`rocm-install-overview` section.
                
                a. Install ``torch``, ``torchvision``, and ``torchaudio``, as specified in the 
@@ -239,10 +239,10 @@ dependencies from the matrix above.
 
 .. _using-pytorch-rocm-docker-image:
 
-Using pytorch rocm docker image
+Using the PyTorch ROCm docker image
 ================================================================================
 
-1. Clone the dgl repository 
+1. Clone the DGL repository 
 
    .. code-block:: bash
       
