@@ -245,15 +245,20 @@ Using pytorch rocm docker image
 1. Clone the dgl repository 
 
    .. code-block:: bash
+      
       # /src is where dgl repo is cloned.
       cd /src/dgl
 
 2. Build the docker container
+   
    .. tab-set::
    
       .. tab-item:: DGL on Ubuntu 22.04 + ROCm 6.4 + Py 3.10 + PyTorch 2.4.1
-      To build the Docker container, run the following command:
+      
+         To build the Docker container, run the following command:
+         
          .. code-block:: bash
+            
             # DGL on Ubuntu 22.04 + ROCm 6.4 + Py 3.10 + PyTorch 2.4.1
             docker build \
                -t dgl:dgl-2.4_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.4.1 \
@@ -265,8 +270,11 @@ Using pytorch rocm docker image
                .
 
       .. tab-item:: DGL on Ubuntu 22.04 + ROCm 6.4 + Py 3.10 + PyTorch 2.3.0
-      To build the Docker container, run the following command:
+      
+         To build the Docker container, run the following command:
+         
          .. code-block:: bash
+            
             # DGL on Ubuntu 22.04 + ROCm 6.4 + Py 3.10 + PyTorch 2.3.0
             docker build \
                -t dgl:dgl-2.4_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.3.0 \
@@ -278,8 +286,11 @@ Using pytorch rocm docker image
                .
 
       .. tab-item:: DGL on Ubuntu 24.04 + ROCm 6.4 + Py 3.12 + PyTorch 2.4.1
-      To build the Docker container, run the following command:
+      
+         To build the Docker container, run the following command:
+         
          .. code-block:: bash
+            
             # DGL on Ubuntu 24.04 + ROCm 6.4 + Py 3.12 + PyTorch 2.4.1
             docker build \
                -t dgl:dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.4.1 \
@@ -291,8 +302,11 @@ Using pytorch rocm docker image
                .
 
       .. tab-item:: DGL on Ubuntu 24.04 + ROCm 6.4 + Py 3.12 + PyTorch 2.6.0
-      To build the Docker container, run the following command:
+      
+         To build the Docker container, run the following command:
+         
          .. code-block:: bash
+            
             # DGL on Ubuntu 24.04 + ROCm 6.4 + Py 3.12 + PyTorch 2.6.0
             docker build \
                -t dgl:dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0 \
