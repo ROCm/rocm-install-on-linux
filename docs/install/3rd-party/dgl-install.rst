@@ -12,13 +12,6 @@ if a deep graph model is a component in an end-to-end application, the rest of
 the logic is implemented using PyTorch.  
 
 
-To install DGL on ROCm, you have the following options:
-
-- :ref:`Use the prebuilt Docker image <using-docker-with-dgl-pre-installed>` **(recommended)**
-- :ref:`Build your own docker image <build-dgl-rocm-docker-image>`
-
-
-
 .. |br| raw:: html
 
    <br/>
@@ -30,10 +23,22 @@ see the following resources:
 
 * :doc:`ROCm compatibility guide <rocm:compatibility/ml-compatibility/dgl-compatibility>`
 
+
+
+Install DGL
+================================================================================
+
+
+To install DGL on ROCm, you have the following options:
+
+- :ref:`Use the prebuilt Docker image <using-docker-with-dgl-pre-installed>` **(recommended)**
+- :ref:`Build your own docker image <build-dgl-rocm-docker-image>`
+
+
 .. _using-docker-with-dgl-pre-installed:
 
 Use a prebuilt Docker image with DGL pre-installed
-================================================================================
+--------------------------------------------------------------------------------
 
 The recommended way to set up a DGL environment and avoid potential installation issues is with Docker. 
 The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
@@ -56,7 +61,7 @@ The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
    system versions. See the available tags on 
    `Docker Hub <https://hub.docker.com/r/rocm/dgl/tags>`_.
 
-2. Start a Docker container using the image
+2. Launch and connect to the Docker container using the image
 
    .. code-block:: bash
 
@@ -139,7 +144,7 @@ validated for ROCm 6.4.
 .. _build-dgl-rocm-docker-image:
 
 Build your own docker image
-================================================================================
+--------------------------------------------------------------------------------
 
 1. Clone the DGL repository 
 
