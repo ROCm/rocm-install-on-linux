@@ -136,7 +136,7 @@ validated for ROCm 6.4.
               * `PyTorch 2.3.0 <https://github.com/ROCm/pytorch/tree/release/2.3>`_
 
 
-.. _build-dgl-docker-image:
+.. _build-dgl-rocm-docker-image:
 
 Build your own docker image
 ================================================================================
