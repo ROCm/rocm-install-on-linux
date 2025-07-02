@@ -14,9 +14,8 @@ the logic is implemented using PyTorch.
 
 To install DGL on ROCm, you have the following options:
 
-- :ref:`Use the prebuilt Docker image <using-docker-with-DGL-pre-installed>` **(recommended)**
-- :ref:`Use a wheels package <using-wheels-package>` 
-- :ref:`Build your own docker image <using-pytorch-rocm-docker-image>`
+- :ref:`Use the prebuilt Docker image <using-docker-with-dgl-pre-installed>` **(recommended)**
+- :ref:`Build your own docker image <build-dgl-rocm-docker-image>`
 
 
 
@@ -33,13 +32,13 @@ see the following resources:
 
 .. _using-docker-with-dgl-pre-installed:
 
-Using a Docker image with DGL pre-installed
+Use a prebuilt Docker image with DGL pre-installed
 ================================================================================
 
 The recommended way to set up a DGL environment and avoid potential installation issues is with Docker. 
 The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
 
-1. Download the latest public `DGL Docker image <https://hub.docker.com/r/rocm/dgl>`_.
+1. Download the latest public `DGL Docker image <https://hub.docker.com/r/rocm/dgl/tags>`_
 
    .. code-block:: bash
 
@@ -57,7 +56,7 @@ The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
    system versions. See the available tags on 
    `Docker Hub <https://hub.docker.com/r/rocm/dgl/tags>`_.
 
-2. Start a Docker container using the image.
+2. Start a Docker container using the image
 
    .. code-block:: bash
 
@@ -88,7 +87,7 @@ validated for ROCm 6.4.
          .. tab-item:: Ubuntu 24.04
 
             Tag
-              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu24.04_py3.12_pytorch2.6.0 <https://hub.docker.com/layers/rocm/dgl/rocm6.4_ubuntu24.04_py3.12_dgl_release_2.6.0/images/STUB>`_
+              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0 <https://hub.docker.com/layers/rocm/dgl/dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0/images/sha256-8ce2c3bcfaa137ab94a75f9e2ea711894748980f57417739138402a542dd5564>`_
 
             Inventory
               * `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_
@@ -103,7 +102,7 @@ validated for ROCm 6.4.
          .. tab-item:: Ubuntu 24.04
 
             Tag
-              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu24.04_py3.12_pytorch2.4.1 <https://hub.docker.com/layers/rocm/dgl/rocm6.4_ubuntu24.04_py3.12_dgl_release_2.4.1/images/STUB>`_
+              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.4.1 <https://hub.docker.com/layers/rocm/dgl/dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.4.1/images/sha256-cf1683283b8eeda867b690229c8091c5bbf1edb9f52e8fb3da437c49a612ebe4>`_
 
             Inventory
               * `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_
@@ -114,7 +113,7 @@ validated for ROCm 6.4.
          .. tab-item:: Ubuntu 22.04
 
             Tag
-              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu22.04_py3.10_pytorch2.4.1 <https://hub.docker.com/layers/rocm/dgl/rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.4.1/images/STUB>`_
+              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.4.1 <https://hub.docker.com/layers/rocm/dgl/dgl-2.4_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.4.1/images/sha256-4834f178c3614e2d09e89e32041db8984c456d45dfd20286e377ca8635686554>`_
 
             Inventory
               * `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_
@@ -129,117 +128,17 @@ validated for ROCm 6.4.
          .. tab-item:: Ubuntu 22.04
 
             Tag
-              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu22.04_py3.10_pytorch2.3.0 <https://hub.docker.com/layers/rocm/dgl/rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.3.0/images/STUB>`_
+              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/dgl/dgl-2.4_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.3.0/images/sha256-88740a2c8ab4084b42b10c3c6ba984cab33dd3a044f479c6d7618e2b2cb05e69B>`_
 
             Inventory
               * `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_
               * `Python 3.10.16 <https://www.python.org/downloads/release/python-31016/>`_
               * `PyTorch 2.3.0 <https://github.com/ROCm/pytorch/tree/release/2.3>`_
 
-.. _install_pytorch_wheels:
-.. _using-wheels-package:
 
-Using a wheels package
-================================================================================
+.. _build-dgl-docker-image:
 
-DGL supports the ROCm platform by providing tested wheels packages. For the correct 
-wheels package, you must select your correct tag with the corresponding **Ubuntu**, **Python**, **PyTorch**, and **ROCm** 
-dependencies from the matrix above.
-
-
-.. note::
-
-   The available ROCm release varies between the **PyTorch Build** of ``Stable`` or ``Nightly``.
-   More recent releases are generally available through the ``Nightly`` builds.
-
-1. Choose one of the following two following options:
-
-.. tab-set::
-
-	.. tab-item:: **Option 1: Docker (Recommended)**
-
-            a. Download a base Docker image with your specified ROCm and Pytorch version.
-
-               .. list-table::
-                  :header-rows: 1
-
-                  * - Base OS
-                     - Docker Image
-                  * - Ubuntu 22.04
-                     - 'Python 3.10 with PyTorch 2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu22.04_py3.10.16_dgl_release_2.3.0/>'_
-                     - 'Python 3.10 with PyTorch 2.4.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu22.04_py3.10.16_dgl_release_2.4.1/>'_
-                  * - Ubuntu 24.04
-                     - 'Python 3.12 with PyTorch 2.4.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu24.04_py3.12_dgl_release_2.4.1/>'_
-                     - 'Python 3.12 with PyTorch 2.6 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4_ubuntu24.04_py3.12_dgl_release_2.6.0/>'_
-
-            b. Pull the selected image.
-
-               .. code-block:: bash
-
-                  docker pull rocm/"YOURTAG"
-
-            c. Start a Docker container using the downloaded image.
-
-               .. code-block:: bash
-
-                  docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/"YOURTAG"
-
-
-	.. tab-item:: Option 2: Bare metal 
-
-               Install on bare metal. Check :ref:`system-requirements` and install PyTorch ROCm using the 
-               directions in the  :ref:`rocm-install-overview` section.
-               
-               a. Install ``torch``, ``torchvision``, and ``torchaudio``, as specified in the 
-               `installation matrix <https://pytorch.org/get-started/locally/>`_.
-
-               .. note::
-
-                  The following command uses the ROCm 6.4.0 PyTorch wheel. For a different version of ROCm,
-                  modify the command accordingly.
-
-               .. code-block:: bash
-                  :substitutions:
-
-                  pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.4/
-               b. (Optional) Use MIOpen kernel debug (kdb) files with ROCm PyTorch wheels.
-
-               To speed up PyTorch startup, you can use MIOpen `MIOpen <https://github.com/ROCm/MIOpen>`_ kernel debug (kdb) files, which provide precompiled kernels. 
-               These work with ROCm PyTorch wheels but must be placed in the correct directory relative to the PyTorch install.
-               
-               A helper script is available for Ubuntu to automate this, using your ROCm version and GPU architecture as inputs.
-               Download the helper script here:
-               `install_kdb_files_for_pytorch_wheels.sh <https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh>`_, or use:
-
-               .. code-block:: bash
-
-                  wget https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh
-
-               After installing ROCm PyTorch wheels, run the following code:
-
-               .. code-block:: bash
-
-                  #Optional: replace 'gfx90a' with your GPU architecture
-                  export GFX_ARCH=gfx90a
-
-                  #Optional: specify ROCm version
-                  export ROCM_VERSION=6.2.4
-
-                  ./install_kdb_files_for_pytorch_wheels.sh
-
-2. Install the required dependencies for the wheels package.
-
-   .. code-block:: bash
-
-       sudo apt update
-       sudo apt install libjpeg-dev python3-dev python3-pip
-       pip3 install wheel setuptools
-       pip3 install dgl_STUB
-
-
-.. _using-pytorch-rocm-docker-image:
-
-Using the PyTorch ROCm docker image
+Build your own docker image
 ================================================================================
 
 1. Clone the DGL repository 
@@ -317,7 +216,7 @@ Using the PyTorch ROCm docker image
                -f Dockerfile.rocm \
                .
                
-Testing the DGL installation
+Test the DGL installation
 ================================================================================
 
 DGL unit tests to validate your installation are optional if you used a 
@@ -342,12 +241,12 @@ Those that will be skipped are unimplemented due to restrictions on the GPU,
 either from NVIDIA CUDA or AMD ROCm.
 
 
-Running a DGL example
+Run a DGL example
 ================================================================================
 
 Multiple use cases of DGL have been tested and verified. 
-A recommended example is a drug discovery pipeline using the ``SE3Transformer``. 
-This detailed procedure and steps to follow are outlined in the `DGL blog <https://rocm.blogs.amd.com/blog/tag/dgl.html>`_.
+However, a recommended example follows a drug discovery pipeline using the ``SE3Transformer``. 
+This detailed procedure and steps are outlined in the `DGL blog <https://rocm.blogs.amd.com/blog/tag/dgl.html>`_.
 
 
 
