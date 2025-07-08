@@ -47,8 +47,6 @@ subtrees:
                   title: Oracle Linux
                 - file: install/install-methods/amdgpu-installer/amdgpu-installer-sles
                   title: SUSE Linux Enterprise Server
-                - file: install/install-methods/amdgpu-installer/amdgpu-installer-azl
-                  title: Azure Linux
             - file: install/install-methods/multi-version-install-index
               title: Multi-version installation
               subtrees:
