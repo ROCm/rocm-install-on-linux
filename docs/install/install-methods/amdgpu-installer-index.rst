@@ -19,7 +19,6 @@ Select the install instructions for your operating system
         * :doc:`Red Hat Enterprise Linux <./amdgpu-installer/amdgpu-installer-rhel>`
         * :doc:`Oracle Linux <./amdgpu-installer/amdgpu-installer-ol>`
         * :doc:`SUSE Linux Enterprise Server <./amdgpu-installer/amdgpu-installer-sles>`
-        * :doc:`Azure Linux <./amdgpu-installer/amdgpu-installer-azl>`
 
     .. grid-item-card:: Uninstall
 
@@ -28,7 +27,6 @@ Select the install instructions for your operating system
         * :ref:`Red Hat Enterprise Linux <rhel-amdgpu-install-uninstall>`
         * :ref:`Oracle Linux <ol-amdgpu-install-uninstall>`
         * :ref:`SUSE Linux Enterprise Server <sles-amdgpu-install-uninstall>`
-        * :ref:`Azure Linux <azl-amdgpu-install-uninstall>`
         
 
     
