@@ -164,13 +164,21 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                        sudo tdnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
                        sudo tdnf install python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
-                       sudo tdnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/azurelinux/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.azl{{ os_major }}.noarch.rpm --nogpgcheck
+                       sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
+                       [ROCm-|amdgpu_version|]
+                       name=ROCm|amdgpu_version|
+                       baseurl=https://repo.radeon.com/rocm/azurelinux{{ os_major }}/|amdgpu_version|/main/
+                       enabled=1
+                       gpgcheck=1
+                       gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+                       EOF
                        sudo tdnf install azurelinux-repos-amd
                        sudo tdnf repolist --refresh
                        sudo tdnf install amdgpu
                        sudo modprobe amdgpu
-                       sudo tdnf clean all
                        sudo tdnf install rocm
+                       sudo tdnf clean all
+
                 {% endfor %}
 
 .. important::
