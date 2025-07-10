@@ -146,7 +146,7 @@ validated for ROCm 6.4.
 Build your own docker image
 --------------------------------------------------------------------------------
 
-1. Clone the DGL repository 
+1. Clone the `https://github.com/ROCm/dgl <https://github.com/ROCm/dgl>`_ repository 
 
    .. code-block:: bash
       
