@@ -150,8 +150,8 @@ Build your own docker image
 
    .. code-block:: bash
       
-      # /src is where dgl repo is cloned.
-      cd /src/dgl
+      cd dgl
+
 
 2. Build the docker container
    
