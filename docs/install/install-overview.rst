@@ -27,6 +27,9 @@ Installation methods
 * :ref:`ROCm Offline Installer Creator <rocm-offline-installer-creator>`
 * :ref:`ROCm Runfile Installer <rocm-runfile-installer>`
 
+.. note::
+    The AMDGPU installer documentation has been removed to encourage the use of the package manager for ROCm installation. While the package manager is the recommended method, you can still install ROCm using the AMDGPU installer by following the `legacy process <https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.4.1/install/install-methods/amdgpu-installer-index.html>`_. Ensure to update the command with the intended ROCm version before running it.
+
 .. _package_manager:
 
 Package manager
@@ -34,7 +37,7 @@ Package manager
 
 The distribution's package manager lets the user install,
 upgrade and uninstall using familiar commands and workflows. Third party
-ecosystem support is the same as your OS package manager.
+ecosystem support is the same as your OS package manager. See :doc:`Installation via native package manager<../install/install-methods/package-manager-index>` for instructions based on the operating system.
 
 .. _multi-version-install-overview:
 
@@ -44,7 +47,7 @@ Multi-version installation
 A multi-version ROCm installation handles situations where users need multiple
 versions of ROCm on the same machine for compatibility with different
 applications and hardware, testing, and other use cases.
-For instructions, see :doc:`installing multiple ROCm versions<../install/install-methods/multi-version-install>`.
+For instructions, see :doc:`Installing multiple ROCm versions<../install/install-methods/multi-version-install-index>`.
 
 .. _rocm-offline-installer-creator:
 
