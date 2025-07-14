@@ -157,15 +157,9 @@ This is a requirement for newer hardware on older versions of RHEL, SLES or OL.
         .. tab-item:: SUSE Linux Enterprise Server
             :sync: sle-tab
 
-            .. tab-set::
+            .. code-block:: bash
 
-                {% for os_version in config.html_context['sles_version_numbers'] %}
-                .. tab-item:: {{ os_version }}
-
-                   .. code-block:: bash
-
-                        sudo zypper update
-                {% endfor %}
+                sudo zypper update
 
         .. tab-item:: Azure Linux
             :sync: azl-tab
