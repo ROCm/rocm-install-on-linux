@@ -47,19 +47,15 @@ The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
 
    .. code-block:: bash
 
-      docker pull rocm/dgl:latest
+       docker pull rocm/dgl:<TAG>
 
-   .. _pytorch-docker-latest-note:
+   
+   .. note::
 
-   .. important::
+       Input your chosen tag into ``<TAG>``. Example: ``dgl2.4.0_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0``.
 
-      The ``rocm/dgl:latest`` tags point to
-      a Docker image with the latest ROCm-tested release of DGL.
-
-
-   You can download Docker images for DGL with specific ROCm, PyTorch, Python and operating 
-   system versions. See the available tags on 
-   `Docker Hub <https://hub.docker.com/r/rocm/dgl/tags>`_.
+       You can download Docker images for DGL with specific ROCm, PyTorch, Python and operating system versions. 
+       See the available tags on `Docker Hub <https://hub.docker.com/r/rocm/dgl/tags>`_ and see :ref:`docker image support <dgl-docker-support>` below.
 
 2. Launch and connect to the Docker container using the image
 
@@ -67,7 +63,7 @@ The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
 
        docker run -it --cap-add=SYS_PTRACE --security-opt seccomp=unconfined \
        --device=/dev/kfd --device=/dev/dri --group-add video \
-       --ipc=host --shm-size 8G rocm/dgl:latest
+       --ipc=host --shm-size 8G rocm/dgl:<TAG>
 
    .. note::
 
