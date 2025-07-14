@@ -12,8 +12,8 @@ ROCm installation overview
 If you're new to ROCm, we recommend using the :ref:`rocm-install-quick`.
 
 .. note::
-    If you're using a Radeon GPU with graphical applications, refer to the
-    `Radeon installation instructions <https://rocm.docs.amd.com/projects/radeon/en/latest/index.html>`_.
+  * If you're using a Radeon GPU with graphical applications, refer to the `Radeon installation instructions <https://rocm.docs.amd.com/projects/radeon/en/latest/index.html>`_.
+  * The AMDGPU installer documentation has been removed to encourage the use of the package manager for ROCm installation. While the package manager is the recommended method, you can still install ROCm using the AMDGPU installer by following the `legacy process <https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.4.1/install/install-methods/amdgpu-installer-index.html>`_. Ensure to update the command with the intended ROCm version before running it.
 
 To install ROCm, you can use the package manager. You can also opt for
 single-version or multi-version installation. These topics are described in detail in the following
@@ -26,9 +26,6 @@ Installation methods
 * :ref:`Multi-version installation <multi-version-install-overview>`
 * :ref:`ROCm Offline Installer Creator <rocm-offline-installer-creator>`
 * :ref:`ROCm Runfile Installer <rocm-runfile-installer>`
-
-.. note::
-    The AMDGPU installer documentation has been removed to encourage the use of the package manager for ROCm installation. While the package manager is the recommended method, you can still install ROCm using the AMDGPU installer by following the `legacy process <https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.4.1/install/install-methods/amdgpu-installer-index.html>`_. Ensure to update the command with the intended ROCm version before running it.
 
 .. _package_manager:
 
