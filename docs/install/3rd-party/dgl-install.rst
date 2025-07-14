@@ -43,19 +43,19 @@ Use a prebuilt Docker image with DGL pre-installed
 The recommended way to set up a DGL environment and avoid potential installation issues is with Docker. 
 The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
 
+.. important::
+
+   To follow these instructions, input your chosen tag into ``<TAG>``. Example: ``dgl2.4.0_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0``.
+
+   You can download Docker images for DGL with specific ROCm, PyTorch, Python and operating system versions. 
+   See the available tags on `Docker Hub <https://hub.docker.com/r/rocm/dgl/tags>`_ and see :ref:`docker image support <dgl-docker-support>` below.
+
+
 1. Download the latest public `DGL Docker image <https://hub.docker.com/r/rocm/dgl/tags>`_
 
    .. code-block:: bash
 
        docker pull rocm/dgl:<TAG>
-
-   
-   .. note::
-
-       Input your chosen tag into ``<TAG>``. Example: ``dgl2.4.0_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0``.
-
-       You can download Docker images for DGL with specific ROCm, PyTorch, Python and operating system versions. 
-       See the available tags on `Docker Hub <https://hub.docker.com/r/rocm/dgl/tags>`_ and see :ref:`docker image support <dgl-docker-support>` below.
 
 2. Launch and connect to the Docker container using the image
 
@@ -69,6 +69,7 @@ The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
 
        This will automatically download the image if it does not exist on the host. You can also pass 
        the '-v' argument to mount any data directories from the host onto the container.
+
 
 .. _dgl-docker-support:
 
