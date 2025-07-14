@@ -45,13 +45,13 @@ The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
 
 .. important::
 
-   To follow these instructions, input your chosen tag into ``<TAG>``. Example: ``dgl2.4.0_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0``.
+   To follow these instructions, input your chosen tag into ``<TAG>``. Example: ``dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0``.
 
    You can download Docker images for DGL with specific ROCm, PyTorch, Python and operating system versions. 
    See the available tags on `Docker Hub <https://hub.docker.com/r/rocm/dgl/tags>`_ and see :ref:`docker image support <dgl-docker-support>` below.
 
 
-1. Download the latest public `DGL Docker image <https://hub.docker.com/r/rocm/dgl/tags>`_
+1. Download your required public `DGL Docker image <https://hub.docker.com/r/rocm/dgl/tags>`_
 
    .. code-block:: bash
 
@@ -89,7 +89,7 @@ validated for ROCm 6.4.
          .. tab-item:: Ubuntu 24.04
 
             Tag
-              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0 <https://hub.docker.com/layers/rocm/dgl/dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0/images/sha256-8ce2c3bcfaa137ab94a75f9e2ea711894748980f57417739138402a542dd5564>`_
+              `rocm/dgl:dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0 <https://hub.docker.com/layers/rocm/dgl/dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0/images/sha256-8ce2c3bcfaa137ab94a75f9e2ea711894748980f57417739138402a542dd5564>`_
 
             Inventory
               * `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_
@@ -104,7 +104,7 @@ validated for ROCm 6.4.
          .. tab-item:: Ubuntu 24.04
 
             Tag
-              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.4.1 <https://hub.docker.com/layers/rocm/dgl/dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.4.1/images/sha256-cf1683283b8eeda867b690229c8091c5bbf1edb9f52e8fb3da437c49a612ebe4>`_
+              `rocm/dgl:dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.4.1 <https://hub.docker.com/layers/rocm/dgl/dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.4.1/images/sha256-cf1683283b8eeda867b690229c8091c5bbf1edb9f52e8fb3da437c49a612ebe4>`_
 
             Inventory
               * `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_
@@ -115,7 +115,7 @@ validated for ROCm 6.4.
          .. tab-item:: Ubuntu 22.04
 
             Tag
-              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.4.1 <https://hub.docker.com/layers/rocm/dgl/dgl-2.4_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.4.1/images/sha256-4834f178c3614e2d09e89e32041db8984c456d45dfd20286e377ca8635686554>`_
+              `rocm/dgl:dgl-2.4_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.4.1 <https://hub.docker.com/layers/rocm/dgl/dgl-2.4_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.4.1/images/sha256-4834f178c3614e2d09e89e32041db8984c456d45dfd20286e377ca8635686554>`_
 
             Inventory
               * `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_
@@ -130,7 +130,7 @@ validated for ROCm 6.4.
          .. tab-item:: Ubuntu 22.04
 
             Tag
-              `rocm/dgl:dgl2.4.0_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/dgl/dgl-2.4_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.3.0/images/sha256-88740a2c8ab4084b42b10c3c6ba984cab33dd3a044f479c6d7618e2b2cb05e69B>`_
+              `rocm/dgl:dgl-2.4_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/dgl/dgl-2.4_rocm6.4_ubuntu22.04_py3.10_pytorch_release_2.3.0/images/sha256-88740a2c8ab4084b42b10c3c6ba984cab33dd3a044f479c6d7618e2b2cb05e69B>`_
 
             Inventory
               * `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_
