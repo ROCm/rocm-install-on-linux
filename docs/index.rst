@@ -28,6 +28,7 @@ This section describes the ROCm for Linux installation options.
        * :doc:`PyTorch <install/3rd-party/pytorch-install>`
        * :doc:`TensorFlow <install/3rd-party/tensorflow-install>`
        * :doc:`JAX <install/3rd-party/jax-install>`
+       * :doc:`Stanford Megatron-LM <install/3rd-party/stanford-megatron-lm-install>`
        * :doc:`DGL <install/3rd-party/dgl-install>`
 
 
