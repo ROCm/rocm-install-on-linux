@@ -147,7 +147,8 @@ Build your own docker image
 
    .. code-block:: bash
       
-      cd dgl
+       git clone --recurse-submodules https://github.com/ROCm/dgl
+       cd dgl
 
 
 2. Build the docker container
