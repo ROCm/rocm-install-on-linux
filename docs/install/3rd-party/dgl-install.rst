@@ -248,7 +248,7 @@ Run a DGL example
 
 Multiple use cases of DGL have been tested and verified. 
 However, a recommended example follows a drug discovery pipeline using the ``SE3Transformer``. 
-This detailed procedure and steps are outlined in the `DGL blog <https://rocm.blogs.amd.com/blog/tag/dgl.html>`_.
+This detailed procedure and steps will be outlined in the `AMD ROCm blog <https://rocm.blogs.amd.com/>`_, where you can search for DGL examples.
 
 
 
