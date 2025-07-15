@@ -9,6 +9,7 @@ checkboxes
 DDA
 debian
 denylist
+DGL
 DHCP
 dkms
 dmesg
@@ -33,6 +34,7 @@ PLX
 preconfigured
 pst
 px
+Pytorch
 radeon
 Repo
 rocHPL
