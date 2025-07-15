@@ -222,26 +222,25 @@ Build your own docker image
 Test the DGL installation
 ================================================================================
 
-DGL unit tests to validate your installation are optional if you used a 
-**prebuilt DGL Docker image from AMD ROCm Docker Hub** or installed an 
-**official wheels package**.
+To verify that DGL has been successfully installed, run the Docker container as described in the :ref:`installing DGL section <using-docker-with-dgl-pre-installed>`. 
+Once inside the container, ensure you have access to the Bash shell.
 
-To run unit tests manually and validate your installation fully, follow these steps:
-
-
-   .. note::
-
-      Run the following from the DGL root.
+To check for a shared library
 
    .. code-block:: bash
 
-      ${SRC}/dgl/tests/scripts/task_cpp_unit_test.sh
-      ${SRC}/dgl/tests/scripts/task_unit_test_rocm.sh
+      find / -name libdgl.so -print -quit 2>/dev/null && echo "libdgl.so found" || echo "libdgl.so NOT found"
 
-Once the tests pass, the script will end with the number of tests ran, and those that passed.
-Prebuilt docker containers have tests from all supported features passed. 
-Those that will be skipped are unimplemented due to restrictions on the GPU, 
-either from NVIDIA CUDA or AMD ROCm.
+To check for Python import
+
+   .. code-block:: shell
+
+      conda activate py_<python version> #You can check this with conda info --envs
+
+      export DGLBACKEND=pytorch
+
+      python -c "import dgl; print('dgl import successful, version:', dgl.__version__)" || echo "Failed to import DGL"
+
 
 
 Run a DGL example
