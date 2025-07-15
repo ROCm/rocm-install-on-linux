@@ -17,6 +17,7 @@ DRM
 fw
 FW
 FWDEV
+gpt
 GRE
 hostname
 hotplug
@@ -24,8 +25,10 @@ IFWI
 IGP
 IIO
 IRQs
+json
 KMD
 MACVTAP
+megablocks
 MSRs
 OL
 Packageless
