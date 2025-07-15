@@ -19,6 +19,7 @@ FW
 FWDEV
 gpt
 GRE
+GRPO
 hostname
 hotplug
 IFWI
@@ -56,6 +57,7 @@ td
 thead
 TensorFlowVersion
 vCPU
+verl
 vfio
 VFIO
 vhost
