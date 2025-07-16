@@ -15,7 +15,7 @@ see the following resources:
 
 * :ref:`system-requirements`
 
-* :doc:`ROCm compatibility guide <rocm:compatibility/ml-compatibility/verl-compatibility>`
+* :doc:`<rocm:compatibility/ml-compatibility/verl-compatibility>`
 
 
 .. note::
