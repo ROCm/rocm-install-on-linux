@@ -21,7 +21,7 @@ see the following resources:
 
 * :ref:`system-requirements`
 
-* :doc:`ROCm compatibility guide <rocm:compatibility/ml-compatibility/dgl-compatibility>`
+* :doc:`<rocm:compatibility/ml-compatibility/dgl-compatibility>`
 
 
 
