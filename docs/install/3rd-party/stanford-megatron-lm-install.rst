@@ -25,7 +25,7 @@ Install Stanford Megatron-LM
 To install Stanford Megatron-LM on ROCm, you have the following options:
 
 - :ref:`Use the prebuilt Docker image <using-docker-with-stanford-megatron-lm-pre-installed>` **(recommended)**
-- :ref:`Build your own docker image <build-stanford-megatron-lm-rocm-docker-image>`
+- :ref:`Build your own Docker image <build-stanford-megatron-lm-rocm-docker-image>`
 
 .. _using-docker-with-stanford-megatron-lm-pre-installed:
 
@@ -59,7 +59,7 @@ Prebuilt Docker images with Stanford Megatron-LM configured for ROCm 6.3.0 are a
 
 .. _build-stanford-megatron-lm-rocm-docker-image:
 
-Build your own docker image
+Build your own Docker image
 --------------------------------------------------------------------------------------
 
 1. Download a base Docker image with the correct ROCm and PyTorch version
