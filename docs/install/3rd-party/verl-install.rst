@@ -13,8 +13,7 @@ For hardware, software, and third-party framework compatibility between ROCm and
 see the following resources:
 
 * :ref:`system-requirements`
-
-* :doc:`<rocm:compatibility/ml-compatibility/verl-compatibility>`
+* :doc:`rocm:compatibility/ml-compatibility/verl-compatibility`
 
 .. note::
 
