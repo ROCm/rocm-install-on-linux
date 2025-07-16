@@ -23,7 +23,6 @@ ROCm runtime packages
     ;;
     **Other packages**;
     ``amdgpu-lib``; For users of graphics applications which require the open source Mesa 3D graphics and multimedia libraries. This package is primarily used for Radeon GPUs.; ``graphics``
-    ``amdgpu-pro``; For users of legacy workstation (WS) applications including open source multimedia libraries and closed source (legacy) OpenGL.; ``workstation``
     ``hsa-runtime-rocr4wsl-amdgpu``; For users of ROCm in a Windows Subsystem for Linux (WSL) context. This package is only supported for Ubuntu.; ``wsl``
 
 .. _rocm-dev:
@@ -45,4 +44,4 @@ ROCm developer packages
 
 .. rubric:: Footnotes
 
-.. [#legacy] Starting from ROCm 6.4.2, "Legacy use cases" in ``amdgpu-install`` are replaced by the equivalent meta package. In addition, the following amdgpu-install use cases: ``asan``, ``rocmdev``, ``multimedia``, ``multimediasdk``, and ``amf`` are deprecated.
+.. [#legacy] Starting from ROCm 6.4.2, "Legacy use cases" in ``amdgpu-install`` are replaced by the equivalent meta package. In addition, the following amdgpu-install use cases: ``asan``, ``rocmdev``, ``multimedia``, ``multimediasdk``, ``amf``, and ``workstation`` are deprecated.
