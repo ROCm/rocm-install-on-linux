@@ -13,7 +13,7 @@ designed to train massive transformer-based language models efficiently by model
 For hardware, software, and third-party framework compatibility between ROCm and Stanford-Megatron-LM, see:
 
 * :ref:`system-requirements` 
-* :doc:`Stanford Megatron-LM compatibility guide <rocm:compatibility/ml-compatibility/stanford-megatron-lm-compatibility>`
+* :doc:`<rocm:compatibility/ml-compatibility/stanford-megatron-lm-compatibility>`
 
 .. note::
 
