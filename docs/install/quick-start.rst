@@ -161,9 +161,16 @@ ROCm installation
                        sudo curl -o /etc/yum.repos.d/azurelinux-extended.repo https://packages.microsoft.com/azurelinux/{{ os_version }}/prod/extended/x86_64/config.repo
                        sudo tdnf install python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
-                       sudo tdnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/azurelinux/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.azl{{ os_major }}.noarch.rpm --nogpgcheck
-                       sudo tdnf clean all
+                       sudo tee /etc/yum.repos.d/rocm.repo <<EOF
+                       [ROCm-|amdgpu_version|]
+                       name=ROCm|amdgpu_version|
+                       baseurl=https://repo.radeon.com/rocm/azurelinux{{ os_major }}/|amdgpu_version|/main/
+                       enabled=1
+                       gpgcheck=1
+                       gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+                       EOF
                        sudo tdnf install rocm
+                       sudo tdnf clean all
 
                 {% endfor %}
 

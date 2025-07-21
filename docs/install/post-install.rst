@@ -115,7 +115,7 @@ If ``update-alternatives`` or ``environment-modules`` are not available on the s
 
 .. important::
 
-   This step is required for version-specific or :doc:`multi-version installations <./install-methods/multi-version-install>`. 
+   This step is required for version-specific or :doc:`multi-version installations <./install-methods/multi-version-install-index>`. 
 
 .. code-block:: shell
    :substitutions:

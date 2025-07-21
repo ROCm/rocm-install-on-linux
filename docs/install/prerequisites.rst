@@ -157,15 +157,9 @@ This is a requirement for newer hardware on older versions of RHEL, SLES or OL.
         .. tab-item:: SUSE Linux Enterprise Server
             :sync: sle-tab
 
-            .. tab-set::
+            .. code-block:: bash
 
-                {% for os_version in config.html_context['sles_version_numbers'] %}
-                .. tab-item:: {{ os_version }}
-
-                   .. code-block:: bash
-
-                        sudo zypper update
-                {% endfor %}
+                sudo zypper update
 
         .. tab-item:: Azure Linux
             :sync: azl-tab
@@ -256,7 +250,7 @@ instructions specific to your distribution to add the necessary repositories.
     .. tab-item:: SUSE Linux Enterprise Server
         :sync: sle-tab
 
-        Add a few modules with SUSEConnect, along with the Perl language, Education and science repositories.
+        Add a few modules with SUSEConnect and the science repository.
 
         .. datatemplate:nodata::
 
@@ -273,8 +267,6 @@ instructions specific to your distribution to add the necessary repositories.
                         sudo SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
                         sudo SUSEConnect -p PackageHub/{{ os_version }}/x86_64
                         sudo zypper install zypper
-                        sudo zypper addrepo https://download.opensuse.org/repositories/devel:/languages:/perl/{{ os_version }}/devel:languages:perl.repo
-                        sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
                         sudo zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo
 
 

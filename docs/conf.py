@@ -5,12 +5,12 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # ROCm version numbers
-rocm_version = '6.4.1'
-rocm_multi_versions = '6.4.1 6.4' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
-rocm_multi_versions_package_versions = '6.4.1 6.4.0' # however, in multi, the packages use 6.3.0
-rocm_directory_version = '6.4.1' # in 6.0 rocm was located in /opt/rocm-6.0.0
-amdgpu_version = '6.4.1' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '6.4.60401-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+rocm_version = '6.4.2'
+rocm_multi_versions = '6.4.2 6.4' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_multi_versions_package_versions = '6.4.2 6.4.0' # however, in multi, the packages use 6.3.0
+rocm_directory_version = '6.4.2' # in 6.0 rocm was located in /opt/rocm-6.0.0
+amdgpu_version = '6.4.2' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '6.4.60402-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
 
 
 latex_engine = "xelatex"
@@ -25,9 +25,9 @@ latex_elements = {
 # configurations for PDF output by Read the Docs
 project = "ROCm installation on Linux"
 author = "Advanced Micro Devices, Inc."
-copyright = "Copyright (c) 2024 Advanced Micro Devices, Inc. All rights reserved."
-version = "6.4.1"
-release = "6.4.1"
+copyright = "Copyright (c) 2025 Advanced Micro Devices, Inc. All rights reserved."
+version = "6.4.2"
+release = "6.4.2"
 setting_all_article_info = True
 all_article_info_os = ["linux"]
 all_article_info_author = ""
@@ -36,8 +36,8 @@ all_article_info_author = ""
 ubuntu_version_numbers = [('24.04', 'noble'), ('22.04', 'jammy')]
 debian_version_numbers = [('12', 'jammy')]
 rhel_release_version_numbers = ['9', '8']
-rhel_version_numbers = ['9.6', '9.5', '9.4', '8.10']
-sles_version_numbers = ['15.6']
+rhel_version_numbers = ['9.6', '9.4', '8.10']
+sles_version_numbers = ['15.7', '15.6']
 ol_release_version_numbers = ['9', '8']
 ol_version_numbers = [('9.5'), ('8.10')]
 azl_version_numbers = ['3.0']

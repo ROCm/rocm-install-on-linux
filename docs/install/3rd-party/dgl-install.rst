@@ -208,7 +208,6 @@ Build your own Docker image
                --build-arg ARG_GPU_BUILD_TARGETS="gfx90a,gfx942" \
                -f Dockerfile.rocm \
                .
-
 Test the DGL installation
 ================================================================================
 
