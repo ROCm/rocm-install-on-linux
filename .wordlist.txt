@@ -9,6 +9,7 @@ checkboxes
 DDA
 debian
 denylist
+DGL
 DHCP
 dkms
 dmesg
@@ -16,15 +17,19 @@ DRM
 fw
 FW
 FWDEV
+gpt
 GRE
+GRPO
 hostname
 hotplug
 IFWI
 IGP
 IIO
 IRQs
+json
 KMD
 MACVTAP
+megablocks
 MSRs
 OL
 Packageless
@@ -33,6 +38,7 @@ PLX
 preconfigured
 pst
 px
+Pytorch
 radeon
 Repo
 rocHPL
@@ -51,6 +57,7 @@ td
 thead
 TensorFlowVersion
 vCPU
+verl
 vfio
 VFIO
 vhost

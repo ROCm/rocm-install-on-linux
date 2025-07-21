@@ -2,7 +2,7 @@
   :description: Install multiple ROCm versions
   :keywords: installation instructions, AMD, ROCm, multiple versions, Ubuntu
 
-.. _multi-version_install:
+.. _ubuntu-multi-version_install:
 
 *********************************
 Ubuntu multi-version installation
@@ -65,7 +65,7 @@ Register packages
                 sudo apt update
         {% endfor %}
 
-.. _debian-multi-install:
+.. _ubuntu-multi-install:
 
 Installing
 =================================================
@@ -85,6 +85,11 @@ installation to avoid conflicts.
 .. note::
 
     For versions earlier than ROCm 6.0.0, use ``rocm-hip-sdk`` instead of ``rocm`` (for example, ``rocm-hip-sdk5.7.1``).
+
+.. _ubuntu-multi-post-install:
+
+Post-installation
+=====================================================
 
 Complete the :doc:`../../post-install`.
 
@@ -136,3 +141,7 @@ Remove ROCm repositories
 
     # Restart the system
     sudo reboot
+
+.. note::
+
+    For information about the AMDGPU driver installation, see the `Ubuntu native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-ubuntu.html>`_ in the AMD Instinct Data Center GPU Documentation.

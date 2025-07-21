@@ -21,7 +21,6 @@ As an example, the latest version of ROCm is 6.0.2, but the installation instruc
 
 * :doc:`Quick-start installation <../install/quick-start>` - Installs only the latest **major** release (i.e. 6.0.0, or 6.1.0)
 * :doc:`Native package manager install method <../install/install-methods/package-manager-index>` - Installs the specified *major and minor* release version (i.e. 6.0.0, 6.0.2)
-* :doc:`amdgpu-install method <../install/install-methods/amdgpu-installer-index>` - Installs the specified *major and minor* release version (i.e. 6.0.0, 6.0.2)
 
 Refer to `ROCm Issue #2422 <https://github.com/ROCm/ROCm/issues/2422>`_ for additional details.
 
@@ -58,9 +57,9 @@ When compiling HIP programs, I get a linking error for ``-lstdc++``, or ``fatal 
 
 .. code-block:: bash
 
-  sudo apt-get install libstdc++-12-dev
+  sudo apt-get install libstdc++-<gcc-version>-dev
 
-Refer to `ROCm Issue #2031 <https://github.com/ROCm/ROCm/issues/2031>`_.
+For more information on how to determine the relevant ``gcc-version``, refer to `ROCm Issue #1843 <https://github.com/ROCm/ROCm/issues/1843#issuecomment-1813746898>`_.
 
 .. _multi-gpu:
 

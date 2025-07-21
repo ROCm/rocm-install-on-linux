@@ -70,6 +70,7 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       "AMD Radeon RX 7900 XT", "RDNA3", "gfx1100", "✅"
       "AMD Radeon RX 7900 GRE", "RDNA3", "gfx1100", "✅ [#RDNA-OS]_"
       "AMD Radeon RX 7800 XT", "RDNA3", "gfx1101", "✅  [#RDNA-OS]_"
+      "AMD Radeon RX 7700 XT", "RDNA3", "gfx1101", "✅  [#7700XT-OS]_"
       "AMD Radeon VII", "GCN5.1", "gfx906", "❌"
 
 ✅: **Supported** - Official software distributions of the current ROCm release fully support this hardware.
@@ -103,9 +104,9 @@ AMD ROCm software supports the following Linux distributions.
     "Ubuntu 24.04.2", "6.8 [GA], 6.11 [HWE]", "2.39", "✅"
     "Ubuntu 22.04.5", "5.15 [GA], 6.8 [HWE]", "2.35", "✅"
     "RHEL 9.6", "5.14+", "2.34", "✅"
-    "RHEL 9.5", "5.14+", "2.34", "✅"
     "RHEL 9.4", "5.14+", "2.34", "✅"
     "RHEL 8.10", "4.18.0+", "2.28", "✅"
+    "SLES 15 SP7", "6.11.0+", "2.38", "✅"
     "SLES 15 SP6", "6.5.0+", "2.38", "✅"
     "Oracle Linux 9", "5.15.0 (UEK)", "2.35", "✅ [#mi300x]_"
     "Oracle Linux 8", "5.15.0 (UEK)", "2.28", "✅ [#mi300x]_"
@@ -335,4 +336,5 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 .. [#mi300x] Oracle Linux 8 and 9 are supported only on AMD Instinct MI300X.
 .. [#azurelinux] Azure Linux 3.0 is supported only on AMD Instinct MI300X and AMD Radeon PRO V710.
 .. [#single-node] Debian 12 is supported only on AMD Instinct MI300X for single-node functionality. 
-.. [#RDNA-OS] Radeon AI PRO R9700, Radeon RX 9070, Radeon RX 9070 GRE, Radeon RX 9070 XT, Radeon RX 9060 XT, Radeon PRO W7700, and Radeon RX 7800 XT are supported only on Ubuntu 24.04.2, Ubuntu 22.04.5, RHEL 9.6, RHEL 9.5, and RHEL 9.4.
+.. [#RDNA-OS] Radeon AI PRO R9700, Radeon RX 9070, Radeon RX 9070 GRE, Radeon RX 9070 XT, Radeon RX 9060 XT, Radeon PRO W7700, and Radeon RX 7800 XT are supported only on Ubuntu 24.04.2, Ubuntu 22.04.5, RHEL 9.6, and RHEL 9.4.
+.. [#7700XT-OS] Radeon RX 7700 XT is supported only on Ubuntu 24.04.2 and RHEL 9.6.

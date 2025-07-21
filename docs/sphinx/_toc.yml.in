@@ -33,22 +33,6 @@ subtrees:
                   title: SUSE Linux Enterprise Server
                 - file: install/install-methods/package-manager/package-manager-azl
                   title: Azure Linux
-            - file: install/install-methods/amdgpu-installer-index
-              title: AMDGPU installer
-              subtrees:
-              - entries:
-                - file: install/install-methods/amdgpu-installer/amdgpu-installer-ubuntu
-                  title: Ubuntu
-                - file: install/install-methods/amdgpu-installer/amdgpu-installer-debian
-                  title: Debian
-                - file: install/install-methods/amdgpu-installer/amdgpu-installer-rhel
-                  title: Red Hat Enterprise Linux
-                - file: install/install-methods/amdgpu-installer/amdgpu-installer-ol
-                  title: Oracle Linux
-                - file: install/install-methods/amdgpu-installer/amdgpu-installer-sles
-                  title: SUSE Linux Enterprise Server
-                - file: install/install-methods/amdgpu-installer/amdgpu-installer-azl
-                  title: Azure Linux
             - file: install/install-methods/multi-version-install-index
               title: Multi-version installation
               subtrees:
@@ -80,7 +64,13 @@ subtrees:
       title: TensorFlow
     - file: install/3rd-party/jax-install
       title: JAX
-    
+    - file: install/3rd-party/verl-install
+      title: verl
+    - file: install/3rd-party/stanford-megatron-lm-install
+      title: Stanford Megatron-LM    
+    - file: install/3rd-party/dgl-install
+      title: DGL
+
 - caption: How to
   entries:
   - file: how-to/docker
@@ -91,7 +81,7 @@ subtrees:
 - caption: Reference
   entries:
     - file: reference/package-manager-integration
-      title: Package manager integration
+      title: Package details
     - file: reference/system-requirements
       title: System requirements
     - file: reference/install-faq
