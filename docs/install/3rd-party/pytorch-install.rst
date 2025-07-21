@@ -6,7 +6,7 @@
 PyTorch on ROCm
 ***************
 
-`PyTorch <https://pytorch.org/>`_ is an open-source tensor library designed for deep learning. PyTorch on
+`PyTorch <https://pytorch.org/>`__ is an open-source tensor library designed for deep learning. PyTorch on
 ROCm provides mixed-precision and large-scale training using our
 `MIOpen <https://github.com/ROCm/MIOpen>`_ and
 `RCCL <https://github.com/ROCm/rccl>`_ libraries.

@@ -2,11 +2,11 @@
   :description: Install multiple ROCm versions
   :keywords: installation instructions, AMD, ROCm, multiple versions, RHEL, Red Had Enterprise Linux
 
-.. _multi-version_install:
+.. _rhel-multi-version_install:
 
-*********************************
+*******************************************************
 Red Hat Enterprise Linux multi-version installation
-*********************************
+*******************************************************
 
 .. caution::
 

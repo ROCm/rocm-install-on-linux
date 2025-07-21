@@ -2,11 +2,11 @@
   :description: Install multiple ROCm versions
   :keywords: installation instructions, AMD, ROCm, multiple versions, AZL, Azure Linux
 
-.. _multi-version_install:
+.. _azl-multi-version_install:
 
-*********************************
+*****************************************
 Azure Linux multi-version installation
-*********************************
+*****************************************
 
 .. caution::
 

@@ -2,7 +2,7 @@
   :description: Install multiple ROCm versions
   :keywords: installation instructions, AMD, ROCm, multiple versions, Debian
 
-.. _multi-version_install:
+.. _debian-multi-version_install:
 
 *********************************
 Debian multi-version installation

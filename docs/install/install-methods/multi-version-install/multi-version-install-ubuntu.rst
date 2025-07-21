@@ -2,7 +2,7 @@
   :description: Install multiple ROCm versions
   :keywords: installation instructions, AMD, ROCm, multiple versions, Ubuntu
 
-.. _multi-version_install:
+.. _ubuntu-multi-version_install:
 
 *********************************
 Ubuntu multi-version installation
@@ -65,7 +65,7 @@ Register packages
                 sudo apt update
         {% endfor %}
 
-.. _debian-multi-install:
+.. _ubuntu-multi-install:
 
 Installing
 =================================================
@@ -86,7 +86,7 @@ installation to avoid conflicts.
 
     For versions earlier than ROCm 6.0.0, use ``rocm-hip-sdk`` instead of ``rocm`` (for example, ``rocm-hip-sdk5.7.1``).
 
-.. _debian-multi-post-install:
+.. _ubuntu-multi-post-install:
 
 Post-installation
 =====================================================
