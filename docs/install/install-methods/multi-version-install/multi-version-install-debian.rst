@@ -2,7 +2,7 @@
   :description: Install multiple ROCm versions
   :keywords: installation instructions, AMD, ROCm, multiple versions, Debian
 
-.. _multi-version_install:
+.. _debian-multi-version_install:
 
 *********************************
 Debian multi-version installation
@@ -89,6 +89,11 @@ installation to avoid conflicts.
 
     For versions earlier than ROCm 6.0.0, use ``rocm-hip-sdk`` instead of ``rocm`` (for example, ``rocm-hip-sdk5.7.1``).
 
+.. _debian-multi-post-install:
+
+Post-installation
+=====================================================
+
 Complete the :doc:`../../post-install`.
 
 .. tip::
@@ -139,3 +144,7 @@ Remove ROCm repositories
 
     # Restart the system
     sudo reboot
+
+.. note::
+
+    For information about the AMDGPU driver installation, see the `Debian native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-debian.html>`_ in the AMD Instinct Data Center GPU Documentation.

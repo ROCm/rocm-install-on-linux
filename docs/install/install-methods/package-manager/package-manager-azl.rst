@@ -11,6 +11,10 @@ Azure Linux native installation
 
     Ensure that the :doc:`/install/prerequisites` are met before installing.
 
+.. Note::
+
+    The following installation steps also apply when upgrading from a previous ROCm version.
+
 .. _azl-register-repo:
 
 Registering ROCm repositories
@@ -27,7 +31,7 @@ Registering ROCm repositories
             .. code-block:: bash
                 :substitutions:
 
-                sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
+                sudo tee /etc/yum.repos.d/rocm.repo <<EOF
                 [ROCm-|rocm_version|]
                 name=ROCm|rocm_version|
                 baseurl=https://repo.radeon.com/rocm/azurelinux{{ os_major }}/|rocm_version|/main/
@@ -47,42 +51,27 @@ Installing
 
     sudo tdnf install rocm
 
-Complete the :doc:`../../post-install`.
+.. include:: ../includes/meta-package-table.rst
 
-.. note::
 
-    For information about the AMDGPU driver installation, see the `Install AMDGPU driver <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`_ in the AMD Instinct Data Center GPU Documentation.
+.. _azl-post-install:
 
-.. _azl-upgrade:
-
-Upgrading
+Post-installation
 =====================================================
 
-To upgrade an existing ROCm installation to a newer version, follow the steps in
-:ref:`rhel-register-repo` and :ref:`rhel-install`.
-
-.. note::
-
-    Upgrading the kernel driver may also upgrade the GPU firmware, which requires a
-    system reboot to take effect.
+Complete the :doc:`../../post-install`.
 
 .. _azl-package-manager-uninstall:
 
 Uninstalling
 =====================================================
 
-Uninstall specific meta packages
+Uninstall ROCm meta packages
 ---------------------------------------------------------------------------
 
 .. code-block:: bash
 
     sudo tdnf remove rocm
-
-Uninstall ROCm packages
----------------------------------------------------------------------------
-
-.. code-block:: bash
-
     sudo tdnf remove rocm-core
 
 Remove ROCm repositories
@@ -99,3 +88,7 @@ Remove ROCm repositories
 
     # Restart the system
     sudo reboot
+
+.. note::
+
+    For information about the AMDGPU driver installation, see the `Azure Linux native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-azl.html>`_ in the AMD Instinct Data Center GPU Documentation.
