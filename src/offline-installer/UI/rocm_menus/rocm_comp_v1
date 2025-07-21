@@ -1,0 +1,13 @@
+rocm
+rocmdev
+rocmdevtools
+lrt
+hip
+hiplibsdk
+graphics
+multimediasdk
+opencl
+openclsdk
+openmpsdk
+mllib
+mlsdk

@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,8 @@
 
 int create_menu(MENU_DATA *pMenuData,  WINDOW *pMenuWin, MENU_PROP *pProperties, ITEMLIST_PARAMS *pItemListParams, OFFLINE_INSTALL_CONFIG *pConfig)
 {
+    int subwin_numlines;
+
     // Set the menu window
     pMenuData->pMenuWindow = pMenuWin;
     
@@ -44,7 +46,10 @@ int create_menu(MENU_DATA *pMenuData,  WINDOW *pMenuWin, MENU_PROP *pProperties,
     pMenuData->curItemListIndex = 0;
 
     // set the menu format
-    set_menu_format(pMenuData->pMenu, MAX_MENU_ITEMS, 1);
+    subwin_numlines = MAX_MENU_ITEMS_DISPLAY - pProperties->starty;   // number of win lines minus control/status minus start row
+    set_menu_format(pMenuData->pMenu, subwin_numlines, 1);
+    pMenuData->startListIndex = 0;
+    pMenuData->endListIndex = subwin_numlines;
 
     // Create menu for the primary item list (0)
     pMenuData->pMenu = new_menu((ITEM**)pMenuData->itemList[0].items);
@@ -60,7 +65,7 @@ int create_menu(MENU_DATA *pMenuData,  WINDOW *pMenuWin, MENU_PROP *pProperties,
 
     // Set main window and sub window
     set_menu_win(pMenuData->pMenu, pMenuWin);
-    set_menu_sub(pMenuData->pMenu, derwin(pMenuWin, pProperties->numLines, pProperties->numCols,  pProperties->starty,  pProperties->startx));
+    set_menu_sub(pMenuData->pMenu, derwin(pMenuWin, subwin_numlines, pProperties->numCols,  pProperties->starty,  pProperties->startx));
     
     return 0;
 }
@@ -112,6 +117,43 @@ int add_menu_items(MENU_DATA *pMenuData, int itemListIndex, ITEMLIST_PARAMS *pIt
     return 0;
 }
 
+int read_file_for_items(const char *filename, char lines[MAX_MENU_ITEMS][MAX_MENU_ITEM_NAME])
+{
+    FILE *file = fopen(filename, "r");
+    if (file == NULL)
+    {
+        fprintf(stderr, "Error: failed to open file %s", filename);
+        return -1;
+    }
+
+    char buffer[MAX_MENU_ITEM_NAME];
+    int line_count = 0;
+
+    // Read the file line by line
+    while (fgets(buffer, sizeof(buffer), file))
+    {
+        // Check if we've reached the maximum number of lines
+        if (line_count >= MAX_MENU_ITEMS)
+        {
+            fprintf(stderr, "Error: Exceeded maximum number of lines (%d).\n", MAX_MENU_ITEMS);
+            fclose(file);
+            return -1;
+        }
+
+        // Remove the newline character, if present
+        buffer[strcspn(buffer, "\n")] = '\0';
+
+        // Copy the line into the pre-allocated array
+        strncpy(lines[line_count], buffer, MAX_MENU_ITEM_NAME - 1);
+        lines[line_count][MAX_MENU_ITEM_NAME - 1] = '\0'; // Ensure null termination
+
+        line_count++;
+    }
+
+    fclose(file);
+    return line_count; // Return the number of lines read
+}
+
 void destroy_menu(MENU_DATA *pMenuData)
 {
     int i;
@@ -141,20 +183,26 @@ bool is_skippable_menu_item(ITEM* item)
     return (strcmp(name, SKIPPABLE_MENU_ITEM) == 0) ? true : false;
 }
 
-void skip_menu_item_down_if_skippable(MENU *pMenu)
+bool skip_menu_item_down_if_skippable(MENU *pMenu)
 {
     if (is_skippable_menu_item(current_item(pMenu)))
     {
         menu_driver(pMenu, REQ_DOWN_ITEM);
+        return true;
     }
+
+    return false;
 }
 
-void skip_menu_item_up_if_skippable(MENU *pMenu)
+bool skip_menu_item_up_if_skippable(MENU *pMenu)
 {
     if (is_skippable_menu_item(current_item(pMenu)))
     {
         menu_driver(pMenu, REQ_UP_ITEM);
+        return true;
     }
+
+    return false;
 }
 
 bool is_menu_item_help_item_index(MENU_DATA *pMenuData, int listIndex, ITEM *item)
@@ -167,11 +215,111 @@ bool is_menu_item_done_item_index(MENU_DATA *pMenuData, int listIndex, ITEM *ite
     return pMenuData->itemList[listIndex].doneItemIndex == item_index(item);
 }
 
+// Used when user selects item in menu via spacebar or enter.
+void menu_item_select(MENU_DATA *pMenuData, ITEM *pCurrentItem)
+{
+    MENU *pMenu = pMenuData->pMenu;
+
+    // Clears warning messages at the very bottom of the window.
+    clear_menu_err_msg(pMenuData);
+
+    // Deselect all other items if multiselection is disabled and the 
+    // new item is not currently selected.
+    if ( (!pMenuData->enableMultiSelection) && ((item_value(pCurrentItem) == FALSE)) )
+    {
+        ITEM **items = menu_items(pMenu);
+        
+        for (int i = 0; i < item_count(pMenu); i++) 
+        {
+            if (item_value(items[i]) == TRUE) 
+            {
+                set_item_value(items[i], false);
+            }
+
+            delete_menu_item_selection_mark(pMenuData, items[i]);
+        }
+
+        pMenuData->itemSelections = 0;
+    }           
+
+    // update the item selection bitfield
+    TOGGLE_BIT( (pMenuData->itemSelections), (item_index(pCurrentItem)) );
+
+    menu_driver(pMenu, REQ_TOGGLE_ITEM);
+
+    if (item_value(pCurrentItem))
+    {
+        add_menu_item_selection_mark(pMenuData, pCurrentItem);
+    }
+    else
+    {
+        delete_menu_item_selection_mark(pMenuData, pCurrentItem);
+    }
+}
+
+void menu_scroll_update(MENU_DATA *pMenuData, int current_index, bool is_skipped)
+{
+    MENU *pMenu = pMenuData->pMenu;
+    ITEM **items = menu_items(pMenu);
+    
+    if (current_index >= pMenuData->endListIndex)
+    {
+        // delete all marked selections on the menu
+        for (int i = 0; i < item_count(pMenu); i++) delete_menu_item_selection_mark(pMenuData, items[i]);
+
+        // scroll down
+         if (is_skipped)
+        {
+            pMenuData->startListIndex += 2;
+            pMenuData->endListIndex += 2;
+        }
+        else
+        {
+            pMenuData->startListIndex += 1;
+            pMenuData->endListIndex += 1;
+        }
+
+        // add all marked selections for the updated locations
+        for (int i = 0; i < item_count(pMenu); i++) 
+        {
+            if (item_value(items[i])) add_menu_item_selection_mark(pMenuData, items[i]);
+        }
+    }
+    else if (current_index < pMenuData->startListIndex)
+    {
+        // delete all marked selections on the menu
+        for (int i = 0; i < item_count(pMenu); i++) delete_menu_item_selection_mark(pMenuData, items[i]);
+
+        // scroll up
+        if (is_skipped)
+        {
+            pMenuData->startListIndex -= 2;
+            pMenuData->endListIndex -= 2;
+        }
+        else
+        {
+            pMenuData->startListIndex -= 1;
+            pMenuData->endListIndex -= 1;
+        }
+
+        // add all marked selections for the updated locations
+        for (int i = 0; i < item_count(pMenu); i++) 
+        {
+            if (item_value(items[i])) add_menu_item_selection_mark(pMenuData, items[i]);
+        }
+    }
+
+    print_menu_scroll_info(pMenuData);
+    
+    DEBUG_UI_MSG(pMenuData, "%d) start %d, end %d : numItems %d", current_index, pMenuData->startListIndex, pMenuData->endListIndex, pMenuData->itemList[0].numItems);            
+}
+
 void menu_loop(MENU_DATA *pMenuData)
 {
     int c;
     int done = 0;
     int listIndex = pMenuData->curItemListIndex;
+    bool is_skipped;
 
     WINDOW *pMenuWindow = pMenuData->pMenuWindow;
     MENU *pMenu = pMenuData->pMenu;
@@ -208,7 +356,7 @@ void menu_loop(MENU_DATA *pMenuData)
             case KEY_DOWN:
                 menu_driver(pMenu, REQ_DOWN_ITEM);
 
-                skip_menu_item_down_if_skippable(pMenu);
+                is_skipped = skip_menu_item_down_if_skippable(pMenu);
                 
                 pCurrentItem = current_item(pMenu);
 
@@ -218,6 +366,9 @@ void menu_loop(MENU_DATA *pMenuData)
                 }
 
                 print_menu_item_selection(pMenuData, MENU_SEL_START_Y, MENU_SEL_START_X);
+
+                // update menu scrolling position
+                menu_scroll_update(pMenuData, item_index(pCurrentItem), is_skipped);
 
                 // Don't want to run userptr function when user navigates to 
                 // <HELP> menu item in rocm components menu.
@@ -234,7 +385,7 @@ void menu_loop(MENU_DATA *pMenuData)
             case KEY_UP:
                 menu_driver(pMenu, REQ_UP_ITEM);
 
-                skip_menu_item_up_if_skippable(pMenu);
+                is_skipped = skip_menu_item_up_if_skippable(pMenu);
 
                 pCurrentItem = current_item(pMenu);
 
@@ -244,6 +395,9 @@ void menu_loop(MENU_DATA *pMenuData)
                 }
 
                 print_menu_item_selection(pMenuData, MENU_SEL_START_Y, MENU_SEL_START_X);
+
+                // update menu scrolling position
+                menu_scroll_update(pMenuData, item_index(pCurrentItem), is_skipped);
 
                 // Don't want to run userptr function when user navigates to 
                 // <HELP> menu item in rocm components menu.
@@ -272,47 +426,13 @@ void menu_loop(MENU_DATA *pMenuData)
                     continue;   
                 }
 
-                // Clears warning messages at the very bottom of the window.
-                clear_menu_err_msg(pMenuData);
-
-                // Deselect all other items if multiselection is disabled and the 
-                // new item is not currently selected.
-                if ( (!pMenuData->enableMultiSelection) && ((item_value(pCurrentItem) == FALSE)) )
-                {
-                    ITEM **items = menu_items(pMenu);
-                    
-                    for (int i = 0; i < item_count(pMenu); i++) 
-                    {
-                        if (item_value(items[i]) == TRUE) 
-                        {
-                            set_item_value(items[i], false);
-                        }
-
-                        delete_menu_item_selection_mark(pMenuData, items[i]);
-                    }
-
-                    pMenuData->itemSelections = 0;
-                }           
-
-                // update the item selection bitfield
-                TOGGLE_BIT( (pMenuData->itemSelections), (item_index(pCurrentItem)) );
-
-                menu_driver(pMenu, REQ_TOGGLE_ITEM);
-
-                if (item_value(pCurrentItem))
-                {
-                    add_menu_item_selection_mark(pMenuData, pCurrentItem);
-                }
-                else
-                {
-                    delete_menu_item_selection_mark(pMenuData, pCurrentItem);
-                }
+                menu_item_select(pMenuData, pCurrentItem);
 
                 p = menu_userptr(pMenu);
                 if (NULL != p)
                 {
                     p((MENU_DATA*)pMenuData);
-                }                
+                }         
                 
                 break;
 
@@ -341,8 +461,7 @@ void menu_loop(MENU_DATA *pMenuData)
                             continue;
                         }
                     }
-
-                    if (is_menu_item_help_item_index(pMenuData, 0, pCurrentItem))
+                    else if (is_menu_item_help_item_index(pMenuData, 0, pCurrentItem))
                     {
                         if (pMenuData->pHelpMenu)
                         {
@@ -351,8 +470,13 @@ void menu_loop(MENU_DATA *pMenuData)
                             do_help_menu(helpMenu);
                         }
                     }
+                    else if (pMenuData->isMenuItemsSelectable && // rocm usecases or rocm versions menu
+                            !is_menu_item_done_item_index(pMenuData, listIndex, pCurrentItem) &&
+                            item_opts(pCurrentItem) == O_SELECTABLE ) { 
 
-                    // call the menu data processor
+                            menu_item_select(pMenuData, pCurrentItem);
+                    }
+                                
                     p = menu_userptr(pMenu);
                     if (NULL != p)
                     {
@@ -411,6 +535,8 @@ void menu_draw(MENU_DATA *pMenuData)
             }
         }
     }
+
+    print_menu_scroll_info(pMenuData);
 
     print_version(pMenuData);
 }
@@ -576,9 +702,31 @@ void print_menu_selections(MENU_DATA *pMenuData)
     DEBUG_UI_MSG(pMenuData, "Selections = %s : itemSelections 0x%x", temp, pMenuData->itemSelections);
 }
 
+void print_menu_scroll_info(MENU_DATA *pMenuData)
+{
+    WINDOW *pMenuWindow = pMenuData->pMenuWindow;
+    MENU_PROP *pProperties = pMenuData->pMenuProps;
+
+    int numItemsInMenu =  pMenuData->endListIndex - pMenuData->startListIndex;
+    int starty = pProperties->starty + pMenuData->endListIndex - pMenuData->startListIndex;
+    int startx = pProperties->startx + 3;
+
+    if ( (pMenuData->itemList[0].numItems-2) >= numItemsInMenu)
+    {
+        if (pMenuData->endListIndex <= (pMenuData->itemList[0].numItems-2))
+        {
+            mvwprintw(pMenuWindow, starty, startx, "%s", "...");
+        }
+        else
+        {
+            mvwprintw(pMenuWindow, starty, startx, "%s", "   ");
+        }
+    }
+}
+
 void print_version(MENU_DATA *pMenuData)
 {
-    mvwprintw(pMenuData->pMenuWindow, 28, 72, "v%s-%s", OFFLINE_VERSION, ROCM_VERSION);
+    mvwprintw(pMenuData->pMenuWindow, 28, 71, "v%s-%s", OFFLINE_VERSION, ROCM_VERSION);
 }
 
 void print_menu_warning_msg(MENU_DATA *pMenuData, int y, int x, const char *fmt, ...)
@@ -603,8 +751,9 @@ void print_menu_warning_msg(MENU_DATA *pMenuData, int y, int x, const char *fmt,
     wattron(pMenuWindow, COLOR_PAIR(10));
     mvwprintw(pMenuWindow, y, x, "WARNING: %s", string);
     wattroff(pMenuWindow, COLOR_PAIR(10));
-
+       
     print_border_around_item_description(pMenuWindow, y-1);
+    print_border_around_item_description(pMenuWindow, y);
     print_version(pMenuData);
 }
 
@@ -692,16 +841,24 @@ bool print_url_check(MENU_DATA *pMenuData, char *url)
     mvwprintw(pMenuWindow, 21, 1, "%s", url);
 #endif
 
+    int y = WARN_ERR_START_Y - 6;
+    
+    clear_text(pMenuData, y, WARN_ERR_START_X, MENU_SEL_START_Y);
+    mvwprintw(pMenuWindow, y, WARN_ERR_START_X, "Checking:");
+    y++;
+    
     if ( check_url(url) != 0 )
     {
         wattron(pMenuWindow, COLOR_PAIR(1));
-        mvwprintw(pMenuWindow, DEBUG_ERR_START_Y, DEBUG_ERR_START_X, "* Invalid URL");
+        y = print_multiline_string(pMenuWindow, url, WARN_ERR_START_X, y, (WIN_WIDTH_COLS - 2));
+        mvwprintw(pMenuWindow, y, WARN_ERR_START_X, "* Invalid URL");
         wattroff(pMenuWindow, COLOR_PAIR(1));
         return false;
     }
     
     wattron(pMenuWindow, COLOR_PAIR(4));
-    mvwprintw(pMenuWindow, DEBUG_ERR_START_Y, DEBUG_ERR_START_X, "* Valid URL  ");
+    y = print_multiline_string(pMenuWindow, url, WARN_ERR_START_X, y, (WIN_WIDTH_COLS - 2));
+    mvwprintw(pMenuWindow, y, WARN_ERR_START_X, "* Valid URL");
     wattroff(pMenuWindow, COLOR_PAIR(4));
     
     return true;
@@ -932,14 +1089,27 @@ bool is_specific_usecase_selected(MENU_DATA *pMenuData, char *usecase)
 
 void add_menu_item_selection_mark(MENU_DATA *pMenuData, ITEM *pCurrentItem)
 {
-    WINDOW *pSubMenuWindow = menu_sub(pMenuData->pMenu); 
-    mvwprintw(pMenuData->pMenuWindow, getpary(pSubMenuWindow) + item_index(pCurrentItem), 2, "X");
+    WINDOW *pSubMenuWindow = menu_sub(pMenuData->pMenu);
+
+    int itemIndex = item_index(pCurrentItem);
+    int index = itemIndex - pMenuData->startListIndex;
+    int y = getpary(pSubMenuWindow);
+
+    if (itemIndex >= pMenuData->startListIndex && itemIndex < pMenuData->endListIndex)
+    {
+        mvwprintw(pMenuData->pMenuWindow, y + index, 2, "X");
+    }
 }
 
 void delete_menu_item_selection_mark(MENU_DATA *pMenuData, ITEM *pCurrentItem)
 {
     WINDOW *pSubMenuWindow = menu_sub(pMenuData->pMenu);
-    mvwprintw(pMenuData->pMenuWindow, getpary(pSubMenuWindow) + item_index(pCurrentItem), 2, " ");
+
+    int itemIndex = item_index(pCurrentItem);
+    int index = itemIndex - pMenuData->startListIndex;
+    int y = getpary(pSubMenuWindow);
+
+    mvwprintw(pMenuData->pMenuWindow, y + index, 2, " ");
 }
 
 int display_scroll_window(char *filename, char *query_string, char *query_pass, char *query_fail)
@@ -1164,3 +1334,108 @@ int display_help_scroll_window(MENU_DATA *pMenuData, char *filename)
 
     return 0;
 }
+
+// return value is last row used for printing the string text
+int print_multiline_string(WINDOW *pMenuWindow, char *text, int startx, int starty, int width)
+{
+    if (strlen(text) <= (size_t)width)
+    {
+        mvwprintw(pMenuWindow, starty, startx, "%s", text);
+        return starty + 1;
+    }
+    else 
+    {
+        char *substring = calloc(1, sizeof(char *) * (width + 1));
+        if (!substring)
+        {
+            return starty;
+        }
+
+        int height = calculate_text_height(text, width);
+        int startIndex = 0;
+        int lineWidth = width;
+
+        for (int i = 0; i < height; i++)
+        {   
+            strncpy(substring, text + startIndex, lineWidth);
+            
+            // if we have < width characters left to print, then readjust
+            // lineWidth to be value of the remaining characters left to print
+            if (startIndex + width > (int)strlen(text))
+            {
+                lineWidth = (int)strlen(text) - startIndex;
+            }
+            startIndex += lineWidth;
+            mvwprintw(pMenuWindow, starty, startx, "%s", substring);
+            
+            memset(substring, 0, (size_t)width);
+            starty++;
+        }
+        
+        free(substring);
+    }
+
+    return starty;
+}
+
+void clear_text(MENU_DATA *pMenuData, int starty, int startx, int endy)
+{
+    WINDOW *pMenuWindow = pMenuData->pMenuWindow;
+    
+    for (int y = starty; y < endy; y++)
+    {
+        wmove(pMenuWindow, y, startx);
+        wclrtoeol(pMenuWindow);
+    }
+}
+
+bool is_distro(MENU_DATA *pMenuData, const char *distroID)
+{
+    char *currentDistroID = pMenuData->pConfig->distroID;
+
+    return (strcmp(currentDistroID, distroID) == 0);
+}
+
+bool is_distro_version(MENU_DATA *pMenuData, const char *distroVersion)
+{
+    char *currentDistroVersion = pMenuData->pConfig->distroVersion;
+
+    return strcmp(currentDistroVersion, distroVersion) == 0;
+}
+
+bool is_distro_id_and_distro_version(MENU_DATA *pMenuData, const char *distroID, const char *distroVersion)
+{
+
+    return is_distro(pMenuData, distroID) && is_distro_version(pMenuData, distroVersion);
+}
+
+bool is_rhel(MENU_DATA *pMenuData)
+{
+    return is_distro(pMenuData, "rhel");
+}
+
+bool is_sles(MENU_DATA *pMenuData)
+{
+    return is_distro(pMenuData, "sles");
+}
+
+bool is_ol(MENU_DATA *pMenuData)
+{
+    return is_distro(pMenuData, "ol");
+}
+
+bool is_ubuntu(MENU_DATA *pMenuData)
+{
+    return is_distro(pMenuData, "ubuntu");
+}
+
+bool is_debian(MENU_DATA *pMenuData)
+{
+    return is_distro(pMenuData, "debian");
+}
+
+bool is_ubuntu_2004(MENU_DATA *pMenuData)
+{
+    return is_distro_id_and_distro_version(pMenuData, "ubuntu", "20.04");
+}
+

@@ -1,6 +1,6 @@
 
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,7 +40,9 @@
 // Menu Item Settings
 #define MAX_NUM_ITEM_LIST       5   // max number of items list per menu
 #define MAX_MENU_ITEM_COLS      80
-#define MAX_MENU_ITEMS          23
+#define MAX_MENU_ITEMS          50
+#define MAX_MENU_ITEMS_DISPLAY  23  // max number of items displayed (scroll limit)
+#define MAX_MENU_ITEM_NAME      MAX_MENU_ITEM_COLS - 1
 
 // Menu Item/list region coordinates
 #define ITEM_TITLE_Y            3   // item list title row
@@ -123,6 +125,8 @@ typedef struct _MENU_DATA
     int         curItemListIndex;
     ITEM_DATA   itemList[MAX_NUM_ITEM_LIST];
     uint32_t    itemSelections;
+    int         startListIndex;
+    int         endListIndex;
 
     // forms (one for now)
     FORM_DATA   pFormList;
@@ -158,6 +162,7 @@ int create_menu(MENU_DATA *pMenuData,  WINDOW *pMenuWin, MENU_PROP *pProperties,
 void destroy_menu(MENU_DATA *pMenuData);
 
 int add_menu_items(MENU_DATA *pMenuData, int itemListIndex, ITEMLIST_PARAMS *pItemListParams);
+int read_file_for_items(const char *filename, char lines[MAX_MENU_ITEMS][MAX_MENU_ITEM_NAME]);
 
 void menu_loop(MENU_DATA *pMenuData);
 void menu_draw(MENU_DATA *pMenuData);
@@ -169,6 +174,7 @@ void print_menu_item_title(MENU_DATA *pMenuData, int starty, int startx, char *s
 void print_menu_item_selection(MENU_DATA *pMenuData, int starty, int startx);
 void print_menu_item_selection_opt(MENU_DATA *pMenuData, int starty, int startx, const char *description);
 void print_menu_selections(MENU_DATA *pMenuData);
+void print_menu_scroll_info(MENU_DATA *pMenuData);
 void print_version(MENU_DATA *pMenuData);
 
 // Menu message handling
@@ -180,8 +186,8 @@ void print_menu_control_msg(MENU_DATA *pMenuData);
 bool print_url_check(MENU_DATA *pMenuData, char *url);
 void remove_menu_item_selection_description(MENU_DATA *pMenuData, int starty, int startx);
 
-void skip_menu_item_down_if_skippable(MENU *pMenu);
-void skip_menu_item_up_if_skippable(MENU *pMenu);
+bool skip_menu_item_down_if_skippable(MENU *pMenu);
+bool skip_menu_item_up_if_skippable(MENU *pMenu);
 
 // Functions to add/delete selection mark that gives user instant feedback
 // if a menu item has been selected/deselected
@@ -208,7 +214,20 @@ int display_help_scroll_window(MENU_DATA *pMenuData, char *filename);
 bool is_repo_public(MENU_DATA *pMenuData);
 
 bool is_specific_usecase_selected(MENU_DATA *pMenuData, char *usecase);
+
+int print_multiline_string(WINDOW *pMenuWindow, char *text, int startx, int starty, int width);
+void clear_text(MENU_DATA *pMenuData, int starty, int startx, int endy);
+
+// distro version checking
+bool is_distro(MENU_DATA *pMenuData, const char *distroID);
+bool is_distro_version(MENU_DATA *pMenuData, const char *distroVersion);
+bool is_distro_id_and_distro_version(MENU_DATA *pMenuData, const char *distroID, const char *distroVersion);
+bool is_rhel(MENU_DATA *pMenuData);
+bool is_sles(MENU_DATA *pMenuData);
+bool is_ol(MENU_DATA *pMenuData);
 bool is_ubuntu_2004(MENU_DATA *pMenuData);
+bool is_ubuntu(MENU_DATA *pMenuData);
+bool is_debian(MENU_DATA *pMenuData);
 
 #endif // _MENU_DATA_H
 

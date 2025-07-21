@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,24 +29,23 @@
 
 #define INSTALLER_CREATION_LOG_SIZE         50    // /var/log/offline_creator/create_[UNIX_TIME].log
 
-
 /* Create Menu Configuration ************************************************************************/
 typedef struct _INSTALL_TYPE_PROP
 {
     INSTALL_TYPE    installer_input_type;
-    char            installer_input[32];
+    char            installer_input[SMALL_CHAR_SIZE];
 }INSTALL_TYPE_PROP;
 
 typedef struct _INSTALL_DL_PROP
 {
     DEP_DL_TYPE download_dep_type;
-    char        download_dep_name[32];
+    char        download_dep_name[SMALL_CHAR_SIZE];
 }INSTALL_DL_PROP;
 
 typedef struct _INSTALL_REPO_PROP
 {
     REPO_TYPE repo_type;
-    char      repo_name[32];
+    char      repo_name[SMALL_CHAR_SIZE];
 }INSTALL_REPO_PROP;
 
 // Have to define these variables as extern so we can use them in
@@ -61,11 +60,11 @@ typedef struct _CREATE_MENU_CONFIG
 {
     DEP_DL_TYPE currentInstallDLType;
 
-    char installer_name[256];
-    char installer_name_with_extension[260];
+    char installer_name[DEFAULT_CHAR_SIZE];
+    char installer_name_with_extension[DEFAULT_CHAR_SIZE + 4];
     char installer_creation_log_out_location[INSTALLER_CREATION_LOG_SIZE];
     
-    char installer_out_location[256];
+    char installer_out_location[DEFAULT_CHAR_SIZE];
     bool is_installer_loc_valid;
 }CREATE_MENU_CONFIG;
 
@@ -76,10 +75,11 @@ typedef struct _ROCM_MENU_CONFIG
 {
     bool install_rocm;
 
-    // tracks when user unselects 'rocm' after selecting it
-    bool is_rocm_usecase_deselected; 
-    char rocm_usescases[256];
-    char rocm_versions[256];
+    bool is_rocm_usecase_deselected;                 // tracks when user unselects 'rocm' after selecting it
+    char rocm_usescases[LARGE_CHAR_SIZE];
+    ROCM_USECASES_TYPE rocm_usecases_type;
+
+    char rocm_versions[DEFAULT_CHAR_SIZE];
     bool rocm_version_selected;
 }ROCM_MENU_CONFIG;
 
@@ -103,8 +103,21 @@ typedef struct _EXTRAS_MENU_CONFIG
 {
     bool rocminfo_install;
     bool rocmsmi_install;
+    bool amdsmi_install;
+    bool rocm_validation_suite_install;
+    bool rocdecode_install;
+    bool rocjpeg_install;
+    bool rdc_install;
 }EXTRAS_MENU_CONFIG;
 
+/* Post Install Menu Configuration **************************************************************/
+
+// Structure for all extra packages menu configuration settings
+typedef struct _POST_MENU_CONFIG
+{
+    bool current_user_grp;
+    bool all_user_grp;
+}POST_MENU_CONFIG;
 
 /* Global Configuration ************************************************************************/
 
@@ -127,6 +140,7 @@ typedef struct _OFFLINE_INSTALL_CONFIG
     ROCM_MENU_CONFIG    rocm_config;
     DRIVER_MENU_CONFIG  driver_config;
     EXTRAS_MENU_CONFIG  extras_config;
+    POST_MENU_CONFIG    post_config;
 }OFFLINE_INSTALL_CONFIG;
 
 

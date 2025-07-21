@@ -4,7 +4,7 @@
 
 A tool for creating a pre-configured ROCm component offline installer using OS package management.
 
-The ROCm Offline Installer Creator is a tool which allows a user to create an installer package that can be used to install a pre-configured setup of ROCm and/or the amdgpu driver on a target system without network or internal access.
+The ROCm Offline Installer Creator is a tool which allows a user to create an installer package that can be used to install a pre-configured setup of ROCm and/or the amdgpu driver on a target system without network or internet access.
 
 ## Prerequisites
 
@@ -24,26 +24,35 @@ The system running the creator tool (Host) must match the Linux Distribution Ver
 
 The offline tool is designed to support the follow list of Linux Distros:
 
-* Ubuntu: `20.04, 22.04, 24.04`
-* RHEL  : `8.9, 8.10, 9.2, 9.3, 9.4`
-* SLSE  : `15.5, 15.6`
+* Ubuntu        : `20.04, 22.04, 24.04`
+* Debian        : `12`
+* RHEL          : `8.10, 9.4, 9.6`
+* SLES          : `15.6, 15.7`
+* Oracle Linux  : `8.10, 9.6`
 
 ## Linux Distros ROCm Versions Support Matrix
 
 ROCm versions enabled for each distro.
 
-| OS Name        | 5.7.3  | 6.0    | 6.0.1  | 6.0.2  | 6.0.3  | 6.1.x  | 6.2.x  |
-| :---           | :----: | :----: | :----: | :----: |  :----:| :----: | :----: |
-| Ubuntu 20.04   | Yes    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
-| Ubuntu 22.04   | Yes    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
-| Ubuntu 24.04   | No     |  No    |  No    |  No    |  No    |  No    |  Yes   |
-| Rhel 8.9       | No     |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
-| Rhel 8.10      | No     |  No    |  No    |  No    |  No    |  No    |  Yes   |
-| Rhel 9.2       | Yes    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
-| Rhel 9.3       | No     |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
-| Rhel 9.4       | No     |  No    |  No    |  No    |  No    |  No    |  Yes   |
-| Suse 15.5      | Yes    |  No    |  No    |  No    |  Yes   |  Yes   |  Yes   |
-| Suse 15.6      | No     |  No    |  No    |  No    |  No    |  No    |  Yes   |
+| OS Name               | 5.7.3  | 6.0    | 6.0.1  | 6.0.2  | 6.0.3  | 6.1.x  | 6.2.x  | 6.3.x  | 6.4.0  | 6.4.1  | 6.4.2  |
+| :---                  | :----: | :----: | :----: | :----: |  :----:| :----: | :----: | :----: | :----: | :----: | :----: |
+| Ubuntu 20.04          | Yes    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
+| Ubuntu 22.04          | Yes    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
+| Ubuntu 24.04          | No     |  No    |  No    |  No    |  No    |  No    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
+| Debian 12             | No     |  No    |  No    |  No    |  No    |  No    |  No    |  Yes   |  Yes   |  Yes   |  Yes   |
+| Rhel 8.9              | No     |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  No    |  No    |  No    |  No    |
+| Rhel 8.10             | No     |  No    |  No    |  No    |  No    |  No    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
+| Rhel 9.2              | Yes    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  No    |  No    |  No    |  No    |  No    |
+| Rhel 9.3              | No     |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |  No    |  No    |  No    |  No    |
+| Rhel 9.4              | No     |  No    |  No    |  No    |  No    |  No    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
+| Rhel 9.5              | No     |  No    |  No    |  No    |  No    |  No    |  No    |  Yes   |  Yes   |  Yes   |  No    |
+| Rhel 9.6              | No     |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  Yes   |  Yes   |
+| Suse 15.5             | Yes    |  No    |  No    |  No    |  Yes   |  Yes   |  Yes   |  Yes   |  No    |  No    |  No    |
+| Suse 15.6             | No     |  No    |  No    |  No    |  No    |  No    |  Yes   |  Yes   |  Yes   |  Yes   |  Yes   |
+| Suse 15.7             | No     |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  No    |
+| Oracle Linux 8.10     | No     |  No    |  No    |  No    |  No    |  No    |  No    |  Yes   |  Yes   |  Yes   |  Yes   |
+| Oracle Linux 9.5      | No     |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  Yes   |  Yes   |  No    |
+| Oracle Linux 9.6      | No     |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  No    |  Yes   |  Yes   |
 
 ## ROCm Usecases Support Notes
 
@@ -55,7 +64,7 @@ ROCm versions enabled for each distro.
 
 The following packages require installation prior to building the Offline installer creator from source.
 
-#### Ubuntu
+#### Ubuntu/Debian
 
 ``` shell
     sudo apt install cmake
@@ -96,21 +105,21 @@ Install the generic RHEL x.x prerequisites
     sudo dnf install makeself
 ```
 
-#### SLSE
+#### SLES
 
-Install the following for SLSE 15.5:
+Install the following for SLES 15.5:
 
 ``` shell
     sudo SUSEConnect -p PackageHub/15.5/x86_64
 ```
 
-Install the following for SLSE 15.6:
+Install the following for SLES 15.6:
 
 ``` shell
     sudo SUSEConnect -p PackageHub/15.6/x86_64
 ```
 
-Install the following for SLSE 15.x:
+Install the following for SLES 15.x:
 
 ``` shell
     sudo zypper install cmake
@@ -190,8 +199,9 @@ When run, the installer package will automatically install all ROCm and/or amdgp
 
 The installer package may also be run with the following options:
 
-* prompt   : enables user prompts during installion process.
-* dryrun   : simulates the installation process without installing associated packages.
+* prompt    : enables user prompts during installion process.
+* dryrun    : simulates the installation process without installing associated packages.
+* uninstall : uninstalls rocm if a previous version is installed.
 
 ### Log Files
 
@@ -235,10 +245,11 @@ From the build location of the offline tool, run the following:
 ctest
 ```
 
-A total of 100 tests will be run:
+A total of 111 tests will be run:
 
 ROCm Version
 
+* 6.3.x: ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk
 * 6.2.x: ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk
 * 6.1.x: ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk
 * 6.0.2: ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk
@@ -253,7 +264,7 @@ From the build location of the offline tool, run the following:
 ctest -L <rocm-version> 
 ```
 
-rocm-version = 5.7.3, 6.0.2, 6.1.x, or 6.2.x
+rocm-version = 5.7.3, 6.0.2, 6.1.x, 6.2.x or 6.3.x
 
 #### CI Test
 
@@ -268,19 +279,28 @@ ctest -L ci
 
 A matrix describing what ROCm ctests are enabled for each distro.
 NOTE: There are no ctests for rocm versions 6.0.0, 6.0.1 and 6.0.3
+NOTE: Ctests for 6.2.4 for Rhel 8.9 and 8.10 have been temporarily disabled due
+problems with repo.radeon.com
 
-| OS Name        | 5.7.3  | 6.0.2  | 6.1.x  | 6.2.x  |
-| :---           | :----: | :----: | :----: | :----: |
-| Ubuntu 20.04   | Yes    |  Yes   | Yes    | Yes    |
-| Ubuntu 22.04   | Yes    |  Yes   | Yes    | Yes    |
-| Ubuntu 24.04   | No     |  No    | No     | Yes    |
-| Rhel 8.9       | No     |  Yes   | Yes    | Yes    |
-| Rhel 8.10      | No     |  No    | No     | Yes    |
-| Rhel 9.2       | Yes    |  Yes   | Yes    | Yes    |
-| Rhel 9.3       | No     |  Yes   | Yes    | Yes    |
-| Rhel 9.4       | No     |  No    | No     | Yes    |
-| Suse 15.5      | Yes    |  Yes   | Yes    | Yes    |
-| Suse 15.6      | No     |  No    | No     | Yes    |
+| OS Name               | 5.7.3  | 6.0.2  | 6.1.x  | 6.2.x  | 6.3.x  | 6.4.0  | 6.4.1  | 6.4.2  |
+| :---                  | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
+| Ubuntu 20.04          | Yes    |  Yes   | Yes    | Yes    | Yes    |  Yes   |  Yes   |  Yes   |
+| Ubuntu 22.04          | Yes    |  Yes   | Yes    | Yes    | Yes    |  Yes   |  Yes   |  Yes   |
+| Ubuntu 24.04          | No     |  No    | No     | Yes    | Yes    |  Yes   |  Yes   |  Yes   |
+| Debian 12             | No     |  No    | No     | No     | Yes    |  Yes   |  Yes   |  Yes   |
+| Rhel 8.9              | No     |  Yes   | Yes    | Yes    | No     |  No    |  No    |  No    |
+| Rhel 8.10             | No     |  No    | No     | Yes    | Yes    |  Yes   |  Yes   |  Yes   |
+| Rhel 9.2              | Yes    |  Yes   | Yes    | No     | No     |  No    |  No    |  No    |
+| Rhel 9.3              | No     |  Yes   | Yes    | Yes    | No     |  No    |  No    |  No    |
+| Rhel 9.4              | No     |  No    | No     | Yes    | Yes    |  Yes   |  Yes   |  Yes   |
+| Rhel 9.5              | No     |  No    | No     | No     | Yes    |  Yes   |  Yes   |  No    |
+| Rhel 9.6              | No     |  No    | No     | No     | No     |  No    |  Yes   |  Yes   |
+| Suse 15.5             | Yes    |  Yes   | Yes    | Yes    | Yes    |  No    |  No    |  No    |
+| Suse 15.6             | No     |  No    | No     | Yes    | Yes    |  Yes   |  Yes   |  Yes   |
+| Suse 15.7             | No     |  No    | No     | No     | No     |  No    |  No    |  No    |
+| Oracle Linux 8.10     | No     |  No    | No     | No     | Yes    |  Yes   |  Yes   |  Yes   |
+| Oracle Linux 9.5      | No     |  No    | No     | No     | No     |  Yes   |  Yes   |  No    |
+| Oracle Linux 9.6      | No     |  No    | No     | No     | No     |  No    |  Yes   |  Yes   |
 
 ### Test Run using .config
 

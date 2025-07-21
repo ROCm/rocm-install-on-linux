@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,7 @@
  *
  * ************************************************************************ */
 #include "utils.h"
+#include "install_types.h"
 
 #include <string.h>
 #include <math.h>
@@ -117,6 +118,21 @@ int check_path_exists(char *path, int max)
     ret = stat(path, &buffer);
 
     return ret;
+}
+
+bool check_file_exists(char *path, int max)
+{
+    struct stat buffer;
+    printf("%d", max);
+
+    remove_end_spaces(path, max);
+
+    if (stat(path, &buffer) != -1)
+    {
+        return S_ISREG(buffer.st_mode) != 0;
+    }
+
+    return false; // file doesn't exist.
 }
 
 void remove_slash(char *str)

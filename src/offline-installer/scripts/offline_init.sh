@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # #############################################################################
-# Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+# Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ usage() {
 cat <<END_USAGE
 Usage: $PROG [options]
 
-[options}:
+[options]:
     help               = Displays this help information.
     version            = Displays the ROCm Offline Creater Tool version. 
     prompt             = Run the creator with user prompts.
@@ -74,21 +74,33 @@ os_release() {
 
         case "$ID" in
         ubuntu)
-	    PACKAGE_VER=${PACKAGE##*~}
-	    PACKAGE_VER=${PACKAGE_VER%.run}
-	    ;;
+        PACKAGE_VER=${PACKAGE##*~}
+        PACKAGE_VER=${PACKAGE_VER%.run}
+        ;;
+        debian)
+        PACKAGE_VER=${PACKAGE##*debian}
+        PACKAGE_VER=${PACKAGE_VER%%.*}
+        
+        DISTRO_VER=${DISTRO_VER%%.*}
+        ;;
         rhel)
-	    PACKAGE_VER=${PACKAGE##*el}
-	    PACKAGE_VER=${PACKAGE_VER%%.*}
-	    
-	    DISTRO_VER=${DISTRO_VER%%.*}
+        PACKAGE_VER=${PACKAGE##*el}
+        PACKAGE_VER=${PACKAGE_VER%%.*}
+        
+        DISTRO_VER=${DISTRO_VER%%.*}
             ;;
         sles)
-	    PACKAGE_VER=${PACKAGE##*sles}
-	    PACKAGE_VER=${PACKAGE_VER%%.*}
-	    
-	    DISTRO_VER=${DISTRO_VER/./}
-            ;;
+        PACKAGE_VER=${PACKAGE##*sles}
+        PACKAGE_VER=${PACKAGE_VER%%.*}
+        
+        DISTRO_VER=${DISTRO_VER/./}
+        ;;
+        ol)
+        PACKAGE_VER=${PACKAGE##*ol}
+        PACKAGE_VER=${PACKAGE_VER%%.*}
+        
+        DISTRO_VER=${DISTRO_VER%%.*}
+        ;;
         *)
             echo "$ID is Unsupported OS"
             exit 1
