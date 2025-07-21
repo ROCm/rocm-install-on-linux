@@ -87,9 +87,9 @@ Build your own docker image
             -v $HOME:$HOME --shm-size 128G -w $PWD --name rocm_verl \
             my-rocm-verl /bin/bash
 
-            .. note::
+      .. note::
 
-                  The ``--shm-size`` parameter allocates shared memory for the container. It can be adjusted based on your system's resources.
+            The ``--shm-size`` parameter allocates shared memory for the container. It can be adjusted based on your system's resources.
 
 
 Test the verl installation

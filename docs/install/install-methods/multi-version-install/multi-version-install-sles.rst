@@ -2,11 +2,11 @@
   :description: Install multiple ROCm versions
   :keywords: installation instructions, AMD, ROCm, multiple versions, SLES, SUSE Linux Enterprise
 
-.. _multi-version_install:
+.. _sles-multi-version_install:
 
-*********************************
+***************************************************
 SUSE Linux Enterprise multi-version installation
-*********************************
+***************************************************
 
 .. caution::
 
@@ -67,7 +67,7 @@ Complete the :doc:`../../post-install`.
 .. tip::
 
    For a single-version installation of the latest ROCm version on SLES,
-   use the steps in :ref:`sles-register-rocm` and :ref:`sles-install`.
+   use the steps in :ref:`sles-register-repo` and :ref:`sles-install`.
 
 .. _sles-multi-uninstall:
 

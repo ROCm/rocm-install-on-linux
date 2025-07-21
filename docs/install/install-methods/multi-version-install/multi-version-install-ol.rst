@@ -2,11 +2,11 @@
   :description: Install multiple ROCm versions
   :keywords: installation instructions, AMD, ROCm, multiple versions, OL, Oracle Linux
 
-.. _multi-version_install:
+.. _ol-multi-version_install:
 
-*********************************
+*****************************************
 Oracle Linux multi-version installation
-*********************************
+*****************************************
 
 .. caution::
 
