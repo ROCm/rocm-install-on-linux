@@ -57,9 +57,9 @@ When compiling HIP programs, I get a linking error for ``-lstdc++``, or ``fatal 
 
 .. code-block:: bash
 
-  sudo apt-get install libstdc++-12-dev
+  sudo apt-get install libstdc++-<gcc-version>-dev
 
-Refer to `ROCm Issue #2031 <https://github.com/ROCm/ROCm/issues/2031>`_.
+For more information on how to determine the relevant ``gcc-version``, refer to `ROCm Issue #1843 <https://github.com/ROCm/ROCm/issues/1843#issuecomment-1813746898>`_.
 
 .. _multi-gpu:
 
