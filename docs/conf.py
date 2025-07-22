@@ -50,7 +50,9 @@ exclude_patterns = [
     'install/install-methods/includes/debian-multi-install.rst',
     'install/install-methods/includes/ol-multi-install.rst',
     'install/install-methods/includes/azl-multi-install.rst',
-    'install/install-methods/includes/amdgpu-installer-common.rst'
+    'install/install-methods/includes/amdgpu-installer-common.rst',
+    'install/install-methods/includes/meta-package-table.rst,
+    'install/amdgpu-install.rst'
 ]
 
 external_toc_path = "./sphinx/_toc.yml"
