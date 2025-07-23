@@ -12,6 +12,10 @@ SUSE Linux Enterprise multi-version installation
 
     Ensure that the :doc:`/install/prerequisites` are met before installing.
 
+.. Note::
+
+    Multi-version installation is only supported for SLES 15.6.
+
 .. _sles-multi-register-rocm:
 
 Registering ROCm repositories
