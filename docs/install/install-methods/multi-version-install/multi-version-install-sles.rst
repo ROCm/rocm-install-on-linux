@@ -14,7 +14,7 @@ SUSE Linux Enterprise multi-version installation
 
 .. Note::
 
-    SLES 15.7 is only supported for ROCm 6.4.2.
+    Multi-version installation is only supported for SLES 15.6.
 
 .. _sles-multi-register-rocm:
 
