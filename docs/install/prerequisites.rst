@@ -229,7 +229,7 @@ instructions specific to your distribution to add the necessary repositories.
 
                   {% for os_release in config.html_context['ol_version_numbers']  %}
 
-                      .. tab-item:: {{ os_release }}
+                      .. tab-item:: OL {{ os_release }}
 
                         .. code-block:: shell
 
