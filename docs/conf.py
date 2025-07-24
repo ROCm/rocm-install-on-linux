@@ -39,7 +39,7 @@ rhel_release_version_numbers = ['9', '8']
 rhel_version_numbers = ['9.6', '9.4', '8.10']
 sles_version_numbers = ['15.7', '15.6']
 ol_release_version_numbers = ['9', '8']
-ol_version_numbers = [('9.5'), ('8.10')]
+ol_version_numbers = [('9.6'), ('8.10')]
 azl_version_numbers = ['3.0']
 
 exclude_patterns = [
