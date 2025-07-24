@@ -227,7 +227,7 @@ instructions specific to your distribution to add the necessary repositories.
 
                .. tab-set::
 
-                  {% for os_release in config.html_context['ol_version_numbers']  %}
+                  {% for os_release in config.html_context['ol_release_version_numbers']  %}
 
                       .. tab-item:: OL {{ os_release }}
 
