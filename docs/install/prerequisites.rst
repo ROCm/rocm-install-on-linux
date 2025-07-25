@@ -200,7 +200,7 @@ instructions specific to your distribution to add the necessary repositories.
 
                   {% for os_release in config.html_context['rhel_release_version_numbers']  %}
 
-                      .. tab-item:: RHEL {{ os_release }}
+                      .. tab-item:: {{ os_release }}
 
                         .. code-block:: shell
 
@@ -229,7 +229,7 @@ instructions specific to your distribution to add the necessary repositories.
 
                   {% for os_release in config.html_context['ol_release_version_numbers']  %}
 
-                      .. tab-item:: OL {{ os_release }}
+                      .. tab-item:: {{ os_release }}
 
                         .. code-block:: shell
 
@@ -259,7 +259,7 @@ instructions specific to your distribution to add the necessary repositories.
                 {% for os_version in config.html_context['sles_version_numbers'] %}
                 {% set os_release, os_sp  = os_version.split('.') %}
 
-                .. tab-item:: SLES {{ os_version }}
+                .. tab-item:: {{ os_version }}
 
                     .. code-block:: shell
 
@@ -283,7 +283,7 @@ instructions specific to your distribution to add the necessary repositories.
 
                 {% for os_version in config.html_context['azl_version_numbers'] %}
 
-                .. tab-item:: AZL {{ os_version }}
+                .. tab-item:: {{ os_version }}
 
                     .. code-block:: shell
 
