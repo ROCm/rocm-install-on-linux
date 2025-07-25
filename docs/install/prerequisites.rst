@@ -146,7 +146,7 @@ This is a requirement for newer hardware on older versions of RHEL, SLES or OL.
 
                 {% for os_version in config.html_context['ol_version_numbers'] %}
                 {% set os_major, _  = os_version.split('.') %}
-                .. tab-item:: {{ os_major }}
+                .. tab-item:: {{ os_version }}
 
                    .. code-block:: bash
                        :substitutions:
@@ -200,7 +200,7 @@ instructions specific to your distribution to add the necessary repositories.
 
                   {% for os_release in config.html_context['rhel_release_version_numbers']  %}
 
-                      .. tab-item:: RHEL {{ os_release }}
+                      .. tab-item:: {{ os_release }}
 
                         .. code-block:: shell
 
@@ -259,7 +259,7 @@ instructions specific to your distribution to add the necessary repositories.
                 {% for os_version in config.html_context['sles_version_numbers'] %}
                 {% set os_release, os_sp  = os_version.split('.') %}
 
-                .. tab-item:: SLES {{ os_version }}
+                .. tab-item:: {{ os_version }}
 
                     .. code-block:: shell
 
@@ -283,7 +283,7 @@ instructions specific to your distribution to add the necessary repositories.
 
                 {% for os_version in config.html_context['azl_version_numbers'] %}
 
-                .. tab-item:: AZL {{ os_version }}
+                .. tab-item:: {{ os_version }}
 
                     .. code-block:: shell
 

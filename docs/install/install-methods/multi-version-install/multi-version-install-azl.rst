@@ -22,8 +22,8 @@ Registering ROCm repositories
    .. tab-set::
       {% for os_version in config.html_context['azl_version_numbers'] %}
       {% set os_major, _  = os_version.split('.') %}
-      .. tab-item:: AZL {{ os_release }}
-            :sync: azl-{{ os_release }}
+      .. tab-item:: AZL {{ os_version }}
+            :sync: azl-{{ os_version }}
 
             .. code-block:: bash
                :substitutions:
