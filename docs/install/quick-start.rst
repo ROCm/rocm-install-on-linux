@@ -97,7 +97,7 @@ ROCm installation
 
                 {% for os_version in config.html_context['ol_version_numbers'] %}
                 {% set os_major, _  = os_version.split('.') %}
-                .. tab-item:: {{ os_major }}
+                .. tab-item:: {{ os_version }}
 
                    Before installing ROCm on OL, :ref:`update the OS installation <update-enterprise-linux>`.
 
