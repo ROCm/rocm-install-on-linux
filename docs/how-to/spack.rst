@@ -96,6 +96,10 @@ Building ROCm components using Spack
 ROCm packages in Spack
 ===================================================
 
+.. note::
+  The supported ROCm components and their versions listed below were accurate as of the time of initial ROCm release. For the most up-to-date information, see the latest version of this information at `ROCm packages in Spack <https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/spack.html#rocm-packages-in-spack>`_.
+
+
 .. list-table::
    :header-rows: 1
 
