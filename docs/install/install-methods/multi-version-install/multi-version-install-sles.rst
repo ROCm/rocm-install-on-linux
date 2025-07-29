@@ -23,21 +23,26 @@ Registering ROCm repositories
 
 .. datatemplate:nodata::
 
-   .. code-block:: bash
-      :substitutions:
+   .. tab-set::
+      {% for os_version in config.html_context['sles_version_numbers'] %}
+      .. tab-item:: SLES {{ os_version }}
+            :sync: sles-{{ os_version }}
 
-      # Note: There is NO trailing .0 in the patch version for repositories
-      for ver in |rocm_multi_versions|; do
-      sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
-      [ROCm-$ver]
-      name=ROCm$ver
-      baseurl=https://repo.radeon.com/rocm/zyp/$ver/main
-      enabled=1
-      gpgcheck=1
-      gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
-      EOF
-      done
-      sudo zypper refresh
+            .. code-block:: bash
+               :substitutions:
+               # Note: There is NO trailing .0 in the patch version for repositories
+               for ver in |rocm_multi_versions|; do
+               sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
+               [ROCm-$ver]
+               name=ROCm$ver
+               baseurl=https://repo.radeon.com/rocm/zyp/$ver/main
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+               EOF
+               done
+               sudo zypper refresh
+      {% endfor %}
 
 .. _sles-multi-install:
 
