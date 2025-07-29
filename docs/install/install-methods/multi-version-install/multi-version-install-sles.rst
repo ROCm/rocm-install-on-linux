@@ -30,6 +30,7 @@ Registering ROCm repositories
 
             .. code-block:: bash
                :substitutions:
+               
                # Note: There is NO trailing .0 in the patch version for repositories
                for ver in |rocm_multi_versions|; do
                sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
