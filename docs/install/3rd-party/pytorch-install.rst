@@ -249,22 +249,6 @@ validated for ROCm 6.4.2.
               * `UCX 1.16.0+ds-5ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/libucx0_1.16.0%2bds-5ubuntu1_amd64.deb>`_
               * `OMPI 4.1.6-7ubuntu2 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/libopenmpi3t64_4.1.6-7ubuntu2_amd64.deb>`_
 
-         .. .. tab-item:: Ubuntu 22.04
-         ..
-         ..    Tag
-         ..      `rocm/pytorch:rocm6.4.1_ubuntu22.04_py3.10_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.1_ubuntu22.04_py3.10_pytorch_release_2.3.0/images/sha256-473643226ab0e93a04720b256ed772619878abf9c42b9f84828cefed522696fd>`_
-         ..
-         ..    Inventory
-         ..      * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
-         ..      * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
-         ..      * `PyTorch 2.3.0 <https://github.com/ROCm/pytorch/tree/release/2.3>`_
-         ..      * `Apex 1.3.0 <https://github.com/ROCm/apex/tree/release/1.3.0>`_
-         ..      * `torchvision 0.18.0 <https://github.com/pytorch/vision/tree/v0.18.0>`_
-         ..      * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
-         ..      * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
-         ..      * `UCX 1.12.1~rc2-1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/libucx0_1.12.1%7erc2-1_amd64.deb>`_
-         ..      * `OMPI 4.1.2-2ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/libopenmpi3_4.1.2-2ubuntu1_amd64.deb>`_
-
 .. _install_pytorch_wheels:
 .. _using-wheels-package:
 
