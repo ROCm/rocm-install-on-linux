@@ -79,9 +79,16 @@ Follow these steps:
 
    .. code-block:: shell
 
-       docker run -it --network=host --device=/dev/kfd --device=/dev/dri \
-       --ipc=host --shm-size 16G --group-add video --cap-add=SYS_PTRACE \
-       --security-opt seccomp=unconfined rocm/tensorflow:latest
+       docker run -it 
+           --network=host \
+           --device=/dev/kfd \
+           --device=/dev/dri \
+           --ipc=host \
+           --shm-size 16G \
+           --group-add video \
+           --cap-add=SYS_PTRACE \
+           --security-opt seccomp=unconfined \
+           rocm/tensorflow:latest
 
 .. |hr| raw:: html
 
@@ -92,9 +99,9 @@ Follow these steps:
 Docker image support
 --------------------
 
-AMD validates and publishes ready-made `TensorFlow <https://hub.docker.com/r/rocm/pytorch>`_ images
-with ROCm backends on Docker Hub. The following Docker image tags and associated inventories are
-validated for ROCm 6.4.1.
+AMD validates and publishes ready-made TensorFlow images with ROCm backends on
+Docker Hub. The following Docker image tags and associated inventories are
+validated for ROCm 6.4.2.
 
 .. tab-set::
 
@@ -105,41 +112,23 @@ validated for ROCm 6.4.1.
          .. tab-item:: Ubuntu 24.04
 
             Tag
-              `rocm/tensorflow:rocm6.4.1-py3.12-tf2.18-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.1-py3.12-tf2.18-dev/images/sha256-b91a554a68ec1246c7f5c779c95764be78c5bf3e2fca10ddeecd90c91625d31f>`__
+              `rocm/tensorflow:rocm6.4.2-py3.12-tf2.18-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.2-py3.12-tf2.18-dev/images/sha256-96754ce2d30f729e19b497279915b5212ba33d5e408e7e5dd3f2304d87e3441e>`__
 
             Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`__
+              * `ROCm 6.4.2 <https://repo.radeon.com/rocm/apt/6.4.2/>`__
               * `Python 3.12 <https://www.python.org/downloads/release/python-31210/>`__
-              * `tensorflow-rocm 2.18.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.1/tensorflow_rocm-2.18.1-cp312-cp312-manylinux_2_28_x86_64.whl>`__
-              * `TensorBoard 2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18.0>`__
-
-            Tag
-              `rocm/tensorflow:rocm6.4.1-py3.12-tf2.18-runtime <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.1-py3.12-tf2.18-runtime/images/sha256-d14d8c4989e7c9a60f4e72461b9e349de72347c6162dcd6897e6f4f80ffbb440>`__
-
-            Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`__
-              * `Python 3.12 <https://www.python.org/downloads/release/python-31210/>`__
-              * `tensorflow-rocm 2.18.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.1/tensorflow_rocm-2.18.1-cp312-cp312-manylinux_2_28_x86_64.whl>`__
+              * `tensorflow-rocm 2.18.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.2/tensorflow_rocm-2.18.1-cp312-cp312-manylinux_2_28_x86_64.whl>`__
               * `TensorBoard 2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18.0>`__
 
          .. tab-item:: Ubuntu 22.04
 
             Tag
-              `rocm/tensorflow:rocm6.4.1-py3.10-tf2.18-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.1-py3.10-tf2.18-dev/images/sha256-081e5bd6615a5dc17247ebd2ccc26895c3feeff086720400fa39b477e60a77c0>`_
+              `rocm/tensorflow:rocm6.4.2-py3.10-tf2.18-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.2-py3.10-tf2.18-dev/images/sha256-fa741508d383858e86985a9efac85174529127408102558ae2e3a4ac894eea1e>`_
 
             Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`__
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
-              * `tensorflow-rocm 2.18.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.1/tensorflow_rocm-2.18.1-cp310-cp310-manylinux_2_28_x86_64.whl>`__
-              * `TensorBoard 2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18.0>`__
-
-            Tag
-              `rocm/tensorflow:rocm6.4.1-py3.10-tf2.18-runtime <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.1-py3.10-tf2.18-runtime/images/sha256-bf369637378264f4af6ddad5ca8b8611d3e372ffbea9ab7a06f1e122f0a0867b>`_
-
-            Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1>`__
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
-              * `tensorflow-rocm 2.18.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.1/tensorflow_rocm-2.18.1-cp310-cp310-manylinux_2_28_x86_64.whl>`__
+              * `ROCm 6.4.2 <https://repo.radeon.com/rocm/apt/6.4.2/>`__
+              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`__
+              * `tensorflow-rocm 2.18.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.2/tensorflow_rocm-2.18.1-cp310-cp310-manylinux_2_28_x86_64.whl>`__
               * `TensorBoard 2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18.0>`__
 
    .. tab-item:: TensorFlow 2.17.1
@@ -149,41 +138,23 @@ validated for ROCm 6.4.1.
          .. tab-item:: Ubuntu 24.04
 
             Tag
-              `rocm/tensorflow:rocm6.4.1-py3.12-tf2.17-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.1-py3.12-tf2.17-dev/images/sha256-5a502008c50d0b6508e6027f911bdff070a7493700ae064bed74e1d22b91ed50>`_
+              `rocm/tensorflow:rocm6.4.2-py3.12-tf2.17-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.2-py3.12-tf2.17-dev/images/sha256-3a0aef09f2a8833c2b64b85874dd9449ffc2ad257351857338ff5b706c03a418>`_
 
             Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`__
-              * `Python 3.12 <https://www.python.org/downloads/release/python-31210/>`_
-              * `tensorflow-rocm 2.17.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.1/tensorflow_rocm-2.17.1-cp312-cp312-manylinux_2_28_x86_64.whl>`__
-              * `TensorBoard 2.17.1 <https://github.com/tensorflow/tensorboard/tree/2.17.1>`__
-
-            Tag
-              `rocm/tensorflow:rocm6.4.1-py3.12-tf2.17-runtime <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.1-py3.12-tf2.17-runtime/images/sha256-1ee5dfffceb71ac66617ada33de3a10de0cb74199cc4b82441192e5e92fa2ddf>`_
-
-            Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`__
-              * `Python 3.12 <https://www.python.org/downloads/release/python-31210/>`_
-              * `tensorflow-rocm 2.17.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.1/tensorflow_rocm-2.17.1-cp312-cp312-manylinux_2_28_x86_64.whl>`__
+              * `ROCm 6.4.2 <https://repo.radeon.com/rocm/apt/6.4.2/>`__
+              * `Python 3.12 <https://www.python.org/downloads/release/python-31210/>`__
+              * `tensorflow-rocm 2.17.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.2/tensorflow_rocm-2.17.1-cp312-cp312-manylinux_2_28_x86_64.whl>`__
               * `TensorBoard 2.17.1 <https://github.com/tensorflow/tensorboard/tree/2.17.1>`__
 
          .. tab-item:: Ubuntu 22.04
 
             Tag
-              `rocm/tensorflow:rocm6.4.1-py3.10-tf2.17-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.1-py3.10-tf2.17-dev/images/sha256-109218ad92bfae83bbd2710475f7502166e1ed54ca0b9748a9cbc3f5a1d75af1>`_
+              `rocm/tensorflow:rocm6.4.2-py3.10-tf2.17-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.2-py3.10-tf2.17-dev/images/sha256-bc7341a41ebe7ab261aa100732874507c452421ef733e408ac4f05ed453b0bc5>`_
 
             Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`__
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
-              * `tensorflow-rocm 2.17.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.1/tensorflow_rocm-2.17.1-cp310-cp310-manylinux_2_28_x86_64.whl>`__
-              * `TensorBoard 2.17.1 <https://github.com/tensorflow/tensorboard/tree/2.17.1>`__
-
-            Tag
-              `rocm/tensorflow:rocm6.4.1-py3.10-tf2.17-runtime <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.1-py3.10-tf2.17-runtime/images/sha256-5d78bd5918d394f92263daa2990e88d695d27200dd90ed83ec64d20c7661c9c1>`_
-
-            Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`__
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
-              * `tensorflow-rocm 2.17.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.1/tensorflow_rocm-2.17.1-cp310-cp310-manylinux_2_28_x86_64.whl>`__
+              * `ROCm 6.4.2 <https://repo.radeon.com/rocm/apt/6.4.2/>`__
+              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`__
+              * `tensorflow-rocm 2.17.1 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.2/tensorflow_rocm-2.17.1-cp310-cp310-manylinux_2_28_x86_64.whl>`__
               * `TensorBoard 2.17.1 <https://github.com/tensorflow/tensorboard/tree/2.17.1>`__
 
    .. tab-item:: TensorFlow 2.16.2
@@ -193,41 +164,23 @@ validated for ROCm 6.4.1.
          .. tab-item:: Ubuntu 24.04
 
             Tag
-              `rocm/tensorflow:rocm6.4.1-py3.12-tf2.16-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.1-py3.12-tf2.16-dev/images/sha256-b09b1ad921c09c687b7c916141051e9fcf15539a5686e5aa67c689195a522719>`_
+              `rocm/tensorflow:rocm6.4.2-py3.12-tf2.16-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.2-py3.12-tf2.16-dev/images/sha256-4841a8df7c340dab79bf9362dad687797649a00d594e0832eb83ea6880a40d3b>`_
 
             Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`__
-              * `Python 3.12 <https://www.python.org/downloads/release/python-31210/>`_
-              * `tensorflow-rocm 2.16.2 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.1/tensorflow_rocm-2.16.2-cp312-cp312-manylinux_2_28_x86_64.whl>`__
+              * `ROCm 6.4.2 <https://repo.radeon.com/rocm/apt/6.4.2/>`__
+              * `Python 3.12 <https://www.python.org/downloads/release/python-31210/>`__
+              * `tensorflow-rocm 2.16.2 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.2/tensorflow_rocm-2.16.2-cp312-cp312-manylinux_2_28_x86_64.whl>`__
               * `TensorBoard 2.16.2 <https://github.com/tensorflow/tensorboard/tree/2.17.1>`__
-
-            Tag
-              `rocm/tensorflow:rocm6.4.1-py3.12-tf2.16-runtime <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.1-py3.12-tf2.16-runtime/images/sha256-20dbd824e85558abfe33fc9283cc547d88cde3c623fe95322743a5082f883a64>`_
-
-            Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`__
-              * `Python 3.12 <https://www.python.org/downloads/release/python-31210/>`_
-              * `tensorflow-rocm 2.16.2 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.1/tensorflow_rocm-2.16.2-cp312-cp312-manylinux_2_28_x86_64.whl>`__
-              * `TensorBoard 2.16.2 <https://github.com/tensorflow/tensorboard/tree/2.16.2>`__
 
          .. tab-item:: Ubuntu 22.04
 
             Tag
-              `rocm/tensorflow:rocm6.4.1-py3.10-tf2.16-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.1-py3.10-tf2.16-dev/images/sha256-36c4fa047c86e2470ac473ec1429aea6d4b8934b90ffeb34d1afab40e7e5b377>`_
+              `rocm/tensorflow:rocm6.4.2-py3.10-tf2.16-dev <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.2-py3.10-tf2.16-dev/images/sha256-883fa95aba960c58a3e46fceaa18f03ede2c7df89b8e9fd603ab2d47e0852897>`_
 
             Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`__
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
-              * `tensorflow-rocm 2.16.2 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.1/tensorflow_rocm-2.16.2-cp310-cp310-manylinux_2_28_x86_64.whl>`__
-              * `TensorBoard 2.16.2 <https://github.com/tensorflow/tensorboard/tree/2.16.2>`__
-
-            Tag
-              `rocm/tensorflow:rocm6.4.1-py3.10-tf2.16-runtime <https://hub.docker.com/layers/rocm/tensorflow/rocm6.4.1-py3.10-tf2.16-runtime/images/sha256-a94150ffb81365234ebfa34e764db5474bc6ab7d141b56495eac349778dafcf3>`_
-
-            Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`__
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
-              * `tensorflow-rocm 2.16.2 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.1/tensorflow_rocm-2.16.2-cp310-cp310-manylinux_2_28_x86_64.whl>`__
+              * `ROCm 6.4.2 <https://repo.radeon.com/rocm/apt/6.4.2/>`__
+              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`__
+              * `tensorflow-rocm 2.16.2 <https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4.2/tensorflow_rocm-2.16.2-cp310-cp310-manylinux_2_28_x86_64.whl>`__
               * `TensorBoard 2.16.2 <https://github.com/tensorflow/tensorboard/tree/2.16.2>`__
 
 .. _install-tensorflow-wheels:
