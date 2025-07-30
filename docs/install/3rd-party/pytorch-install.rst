@@ -70,9 +70,15 @@ should perform as tested and mitigate potential installation issues. See
 
    .. code-block:: bash
 
-       docker run -it --cap-add=SYS_PTRACE --security-opt seccomp=unconfined \
-       --device=/dev/kfd --device=/dev/dri --group-add video \
-       --ipc=host --shm-size 8G rocm/pytorch:latest
+       docker run -it \
+           --cap-add=SYS_PTRACE \
+           --security-opt seccomp=unconfined \
+           --device=/dev/kfd \
+           --device=/dev/dri \
+           --group-add video \
+           --ipc=host \
+           --shm-size 8G \
+           rocm/pytorch:latest
 
    .. note::
 
@@ -85,7 +91,7 @@ Docker image support
 
 AMD validates and publishes ready-made `PyTorch <https://hub.docker.com/r/rocm/pytorch>`_ images
 with ROCm backends on Docker Hub. The following Docker image tags and associated inventories are
-validated for ROCm 6.4.1.
+validated for ROCm 6.4.2.
 
 .. tab-set::
 
@@ -96,7 +102,7 @@ validated for ROCm 6.4.1.
          .. tab-item:: Ubuntu 24.04
 
             Tag
-              `rocm/pytorch:rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.6.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.6.0/images/sha256-c76af9bfb1c25b0f40d4c29e8652105c57250bf018d23ff595b06bd79666fdd7>`_
+              `rocm/pytorch:rocm6.4.2_ubuntu24.04_py3.12_pytorch_release_2.6.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.2_ubuntu24.04_py3.12_pytorch_release_2.6.0/images/sha256-6a287591500b4048a9556c1ecc92bc411fd3d552f6c8233bc399f18eb803e8d6>`_
 
             .. note::
 
@@ -105,33 +111,31 @@ validated for ROCm 6.4.1.
                :ref:`Using a Docker image with PyTorch pre-installed <pytorch-docker-latest-note>` for more information.
 
             Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
+              * `ROCm 6.4.2 <https://repo.radeon.com/rocm/apt/6.4.2/>`_
               * `Python 3.12 <https://www.python.org/downloads/release/python-31210/>`_
               * `PyTorch 2.6.0 <https://github.com/ROCm/pytorch/tree/release/2.6>`_
               * `Apex 1.6.0 <https://github.com/ROCm/apex/tree/release/1.6.0>`_
               * `torchvision 0.21.0 <https://github.com/pytorch/vision/tree/v0.21.0>`_
-              * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+              * `TensorBoard 2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18>`_
               * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
-              * `UCX 1.16.0 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/libucx0_1.16.0%2bds-5ubuntu1_amd64.deb>`_
+              * `UCX 1.16.0+ds-5ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/libucx0_1.16.0%2bds-5ubuntu1_amd64.deb>`_
               * `OMPI 4.1.6-7ubuntu2 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/libopenmpi3t64_4.1.6-7ubuntu2_amd64.deb>`_
-              * OFED
 
          .. tab-item:: Ubuntu 22.04
 
             Tag
-              `rocm/pytorch:rocm6.4.1_ubuntu22.04_py3.10_pytorch_release_2.6.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.1_ubuntu22.04_py3.10_pytorch_release_2.6.0/images/sha256-f9d226135d51831c810dcb1251636ec61f85c65fcdda03e188c053a5d4f6585b>`_
+              `rocm/pytorch:rocm6.4.2_ubuntu22.04_py3.10_pytorch_release_2.6.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.2_ubuntu22.04_py3.10_pytorch_release_2.6.0/images/sha256-06b967629ba6657709f04169832cd769a11e6b491e8b1394c361d42d7a0c8b43>`_
 
             Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
+              * `ROCm 6.4.2 <https://repo.radeon.com/rocm/apt/6.4.2/>`_
               * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
               * `PyTorch 2.6.0 <https://github.com/ROCm/pytorch/tree/release/2.6>`_
               * `Apex 1.6.0 <https://github.com/ROCm/apex/tree/release/1.6.0>`_
               * `torchvision 0.21.0 <https://github.com/pytorch/vision/tree/v0.21.0>`_
-              * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+              * `TensorBoard 2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18>`_
               * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
               * `UCX 1.12.1~rc2-1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/libucx0_1.12.1%7erc2-1_amd64.deb>`_
               * `OMPI 4.1.2-2ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/libopenmpi3_4.1.2-2ubuntu1_amd64.deb>`_
-              * OFED
 
    .. tab-item:: PyTorch 2.5.1
 
@@ -140,36 +144,54 @@ validated for ROCm 6.4.1.
          .. tab-item:: Ubuntu 24.04
 
             Tag
-              `rocm/pytorch:rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.5.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.5.1/images/sha256-3490e74d4f43dcdb3351dd334108d1ccd47e5a687c0523a2424ac1bcdd3dd6dd>`_
+              `rocm/pytorch:rocm6.4.2_ubuntu24.04_py3.12_pytorch_release_2.5.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.2_ubuntu24.04_py3.12_pytorch_release_2.5.1/images/sha256-62022414217ef6de33ac5b1341e57db8a48e8573fa2ace12d48aa5edd4b99ef0>`_
 
             Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
+              * `ROCm 6.4.2 <https://repo.radeon.com/rocm/apt/6.4.2/>`_
               * `Python 3.12 <https://www.python.org/downloads/release/python-31210/>`_
               * `PyTorch 2.5.1 <https://github.com/ROCm/pytorch/tree/release/2.5>`_
               * `Apex 1.5.0 <https://github.com/ROCm/apex/tree/release/1.5.0>`_
               * `torchvision 0.20.1 <https://github.com/pytorch/vision/tree/v0.20.1>`_
-              * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+              * `TensorBoard 2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18>`_
               * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
               * `UCX 1.16.0+ds-5ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/libucx0_1.16.0%2bds-5ubuntu1_amd64.deb>`_
               * `OMPI 4.1.6-7ubuntu2 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/libopenmpi3t64_4.1.6-7ubuntu2_amd64.deb>`_
-              * OFED
 
          .. tab-item:: Ubuntu 22.04
 
-            Tag
-              `rocm/pytorch:rocm6.4.1_ubuntu24.04_py3.10_pytorch_release_2.5.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.1_ubuntu22.04_py3.10_pytorch_release_2.5.1/images/sha256-26c5dfffb4a54625884abca83166940f17dd27bc75f1b24f6e80fbcb7d4e9afb>`_
+            .. tab-set::
 
-            Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
-              * `PyTorch 2.5.1 <https://github.com/ROCm/pytorch/tree/release/2.5>`_
-              * `Apex 1.5.0 <https://github.com/ROCm/apex/tree/release/1.5.0>`_
-              * `torchvision 0.20.1 <https://github.com/pytorch/vision/tree/v0.20.1>`_
-              * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
-              * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
-              * `UCX 1.12.1~rc2-1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/libucx0_1.12.1%7erc2-1_amd64.deb>`_
-              * `OMPI 4.1.2-2ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/libopenmpi3_4.1.2-2ubuntu1_amd64.deb>`_
-              * OFED
+               .. tab-item:: Python 3.11
+
+                  Tag
+                    `rocm/pytorch:rocm6.4.2_ubuntu24.04_py3.11_pytorch_release_2.5.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.2_ubuntu22.04_py3.11_pytorch_release_2.5.1/images/sha256-469a7f74fc149aff31797e011ee41978f6a190adc69fa423b3c6a718a77bd985>`_
+
+                  Inventory
+                    * `ROCm 6.4.2 <https://repo.radeon.com/rocm/apt/6.4.2/>`_
+                    * `Python 3.11 <https://www.python.org/downloads/release/python-31113>`_
+                    * `PyTorch 2.5.1 <https://github.com/ROCm/pytorch/tree/release/2.5>`_
+                    * `Apex 1.5.0 <https://github.com/ROCm/apex/tree/release/1.5.0>`_
+                    * `torchvision 0.20.1 <https://github.com/pytorch/vision/tree/v0.20.1>`_
+                    * `TensorBoard 2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18>`_
+                    * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
+                    * `UCX 1.12.1~rc2-1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/libucx0_1.12.1%7erc2-1_amd64.deb>`_
+                    * `OMPI 4.1.2-2ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/libopenmpi3_4.1.2-2ubuntu1_amd64.deb>`_
+
+               .. tab-item:: Python 3.10
+
+                  Tag
+                    `rocm/pytorch:rocm6.4.2_ubuntu24.04_py3.10_pytorch_release_2.5.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.2_ubuntu22.04_py3.10_pytorch_release_2.5.1/images/sha256-37f41a1cd94019688669a1b20d33ea74156e0c129ef6b8270076ef214a6a1a2c>`_
+
+                  Inventory
+                    * `ROCm 6.4.2 <https://repo.radeon.com/rocm/apt/6.4.2/>`_
+                    * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
+                    * `PyTorch 2.5.1 <https://github.com/ROCm/pytorch/tree/release/2.5>`_
+                    * `Apex 1.5.0 <https://github.com/ROCm/apex/tree/release/1.5.0>`_
+                    * `torchvision 0.20.1 <https://github.com/pytorch/vision/tree/v0.20.1>`_
+                    * `TensorBoard 2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18>`_
+                    * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
+                    * `UCX 1.12.1~rc2-1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/libucx0_1.12.1%7erc2-1_amd64.deb>`_
+                    * `OMPI 4.1.2-2ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/libopenmpi3_4.1.2-2ubuntu1_amd64.deb>`_
 
    .. tab-item:: PyTorch 2.4.1
 
@@ -178,36 +200,34 @@ validated for ROCm 6.4.1.
          .. tab-item:: Ubuntu 24.04
 
             Tag
-              `rocm/pytorch:rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.4.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.4.1/images/sha256-f378a24561fa6efc178b6dc93fc7d82e5b93653ecd59c89d4476674d29e1284d>`_
+              `rocm/pytorch:rocm6.4.2_ubuntu24.04_py3.12_pytorch_release_2.4.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.2_ubuntu24.04_py3.12_pytorch_release_2.4.1/images/sha256-60824ba83dc1b9d94164925af1f81c0235c105dd555091ec04c57e05177ead1b>`_
 
             Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
+              * `ROCm 6.4.2 <https://repo.radeon.com/rocm/apt/6.4.2/>`_
               * `Python 3.12 <https://www.python.org/downloads/release/python-31210/>`_
               * `PyTorch 2.4.1 <https://github.com/ROCm/pytorch/tree/release/2.4>`_
               * `Apex 1.4.0 <https://github.com/ROCm/apex/tree/release/1.4.0>`_
               * `torchvision 0.19.0 <https://github.com/pytorch/vision/tree/v0.19.0>`_
-              * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+              * `TensorBoard 2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18>`_
               * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
               * `UCX 1.16.0+ds-5ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/libucx0_1.16.0%2bds-5ubuntu1_amd64.deb>`_
               * `OMPI 4.1.6-7ubuntu2 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/libopenmpi3t64_4.1.6-7ubuntu2_amd64.deb>`_
-              * OFED
 
          .. tab-item:: Ubuntu 22.04
 
             Tag
-              `rocm/pytorch:rocm6.4.1_ubuntu22.04_py3.10_pytorch_release_2.4.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.1_ubuntu22.04_py3.10_pytorch_release_2.4.1/images/sha256-2308dbd0e650b7bf8d548575cbb6e2bdc021f9386384ce570da16d58ee684d22>`_
+              `rocm/pytorch:rocm6.4.2_ubuntu22.04_py3.10_pytorch_release_2.4.1 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.2_ubuntu22.04_py3.10_pytorch_release_2.4.1/images/sha256-fe944fe083312f901be6891ab4d3ffebf2eaf2cf4f5f0f435ef0b76ec714fabd>`_
 
             Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
+              * `ROCm 6.4.2 <https://repo.radeon.com/rocm/apt/6.4.2/>`_
               * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
               * `PyTorch 2.4.1 <https://github.com/ROCm/pytorch/tree/release/2.4>`_
               * `Apex 1.4.0 <https://github.com/ROCm/apex/tree/release/1.4.0>`_
               * `torchvision 0.19.0 <https://github.com/pytorch/vision/tree/v0.19.0>`_
-              * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+              * `TensorBoard 2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18>`_
               * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
               * `UCX 1.12.1~rc2-1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/libucx0_1.12.1%7erc2-1_amd64.deb>`_
               * `OMPI 4.1.2-2ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/libopenmpi3_4.1.2-2ubuntu1_amd64.deb>`_
-              * OFED
 
    .. tab-item:: PyTorch 2.3.0
 
@@ -216,10 +236,10 @@ validated for ROCm 6.4.1.
          .. tab-item:: Ubuntu 24.04
 
             Tag
-              `rocm/pytorch:rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.3.0/images/sha256-eefd2ab019728f91f94c5e6a9463cb0ea900b3011458d18fe5d88e50c0b57d86>`_
+              `rocm/pytorch:rocm6.4.2_ubuntu24.04_py3.12_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.2_ubuntu24.04_py3.12_pytorch_release_2.3.0/images/sha256-1d59251c47170c5b8960d1172a4dbe52f5793d8966edd778f168eaf32d56661a>`_
 
             Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
+              * `ROCm 6.4.2 <https://repo.radeon.com/rocm/apt/6.4.2/>`_
               * `Python 3.12 <https://www.python.org/downloads/release/python-31210/>`_
               * `PyTorch 2.3.0 <https://github.com/ROCm/pytorch/tree/release/2.3>`_
               * `Apex 1.3.0 <https://github.com/ROCm/apex/tree/release/1.3.0>`_
@@ -228,24 +248,22 @@ validated for ROCm 6.4.1.
               * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
               * `UCX 1.16.0+ds-5ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/libucx0_1.16.0%2bds-5ubuntu1_amd64.deb>`_
               * `OMPI 4.1.6-7ubuntu2 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/libopenmpi3t64_4.1.6-7ubuntu2_amd64.deb>`_
-              * OFED
 
-         .. tab-item:: Ubuntu 22.04
-
-            Tag
-              `rocm/pytorch:rocm6.4.1_ubuntu22.04_py3.10_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.1_ubuntu22.04_py3.10_pytorch_release_2.3.0/images/sha256-473643226ab0e93a04720b256ed772619878abf9c42b9f84828cefed522696fd>`_
-
-            Inventory
-              * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
-              * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
-              * `PyTorch 2.3.0 <https://github.com/ROCm/pytorch/tree/release/2.3>`_
-              * `Apex 1.3.0 <https://github.com/ROCm/apex/tree/release/1.3.0>`_
-              * `torchvision 0.18.0 <https://github.com/pytorch/vision/tree/v0.18.0>`_
-              * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
-              * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
-              * `UCX 1.12.1~rc2-1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/libucx0_1.12.1%7erc2-1_amd64.deb>`_
-              * `OMPI 4.1.2-2ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/libopenmpi3_4.1.2-2ubuntu1_amd64.deb>`_
-              * OFED
+         .. .. tab-item:: Ubuntu 22.04
+         ..
+         ..    Tag
+         ..      `rocm/pytorch:rocm6.4.1_ubuntu22.04_py3.10_pytorch_release_2.3.0 <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.1_ubuntu22.04_py3.10_pytorch_release_2.3.0/images/sha256-473643226ab0e93a04720b256ed772619878abf9c42b9f84828cefed522696fd>`_
+         ..
+         ..    Inventory
+         ..      * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`_
+         ..      * `Python 3.10 <https://www.python.org/downloads/release/python-31017/>`_
+         ..      * `PyTorch 2.3.0 <https://github.com/ROCm/pytorch/tree/release/2.3>`_
+         ..      * `Apex 1.3.0 <https://github.com/ROCm/apex/tree/release/1.3.0>`_
+         ..      * `torchvision 0.18.0 <https://github.com/pytorch/vision/tree/v0.18.0>`_
+         ..      * `TensorBoard 2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`_
+         ..      * `MAGMA <https://bitbucket.org/icl/magma/src/master/>`_
+         ..      * `UCX 1.12.1~rc2-1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/libucx0_1.12.1%7erc2-1_amd64.deb>`_
+         ..      * `OMPI 4.1.2-2ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/libopenmpi3_4.1.2-2ubuntu1_amd64.deb>`_
 
 .. _install_pytorch_wheels:
 .. _using-wheels-package:
