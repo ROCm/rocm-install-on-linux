@@ -8,7 +8,7 @@ Megablocks on ROCm
 
 Megablocks is a light-weight library for mixture-of-experts (MoE) training. 
 The core of the system is efficient "dropless-MoE" and standard MoE layers. 
-Megablocks is integrated with `https://github.com/stanford-futuredata/Megatron-LM <https://github.com/stanford-futuredata/Megatron-LM>`_ , 
+Megablocks is integrated with `https://github.com/stanford-futuredata/Megatron-LM <https://github.com/stanford-futuredata/Megatron-LM>`_, 
 where data and pipeline parallel training of MoEs is supported.
 
 
