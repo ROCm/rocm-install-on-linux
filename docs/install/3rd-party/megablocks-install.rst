@@ -92,7 +92,7 @@ A Dockerfile is provided in the `https://github.com/ROCm/megablocks <https://git
 Set up your datasets
 ======================================================================================
 
-You can use the ``gpt2_125m_8gpu.sh`` script to run the Megablocks training process.
+You can use the `gpt2_125m_8gpu.sh script <https://github.com/ROCm/megablocks/blob/main/exp/gpt2/gpt2_125m_8gpu.sh>`_ to run the Megablocks training process.
 If you are working with other model sizes, the process is similar, but you will need to use a different script.
 
 1. Once you are inside the Megablocks Directory, you can download the BooksCorpus dataset or Oscar dataset by utilizing the helper scripts stored in the dataset directory:
