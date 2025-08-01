@@ -64,6 +64,8 @@ This command will automatically download and install the appropriate ``.whl`` fi
 .. code-block:: bash
 
    pip install amd-taichi==1.8.0b1 --extra-index-url=https://pypi.amd.com/simple
+   sudo apt-get update
+   sudo apt-get install -y lld
 
 .. _build-taichi-rocm-docker-image:
 
@@ -136,13 +138,6 @@ If you prefer to use the ROCm Ubuntu image, or already have a ROCm Ubuntu contai
 
 Test the Taichi installation
 ================================================================================
-
-Install lld
-
-   .. code-block:: bash
-
-      sudo apt-get update
-      sudo apt-get install -y lld
 
 Clone the `https://github.com/ROCm/taichi <https://github.com/ROCm/taichi>`_ repository
 
