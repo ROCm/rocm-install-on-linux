@@ -52,18 +52,6 @@ The tested, prebuilt image includes Taichi, Python, ROCm, and other dependencies
       --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -v $(pwd):/taichi_dir \
       --name rocm_taichi rocm/taichi:taichi-1.8.0b1_rocm6.3.2_ubuntu22.04_py3.10.12
 
-3. Inside the Docker, install git
-
-   .. code-block:: bash
-
-      sudo apt-get update && apt-get install -y git
-
-4. Clone the `https://github.com/ROCm/taichi <https://github.com/ROCm/taichi>`_ repository
-
-   .. code-block:: bash
-
-      git clone --recursive https://github.com/ROCm/taichi -b amd-release/v1.8.0b1
-
 .. _taichi-wheels-package:
 
 Use a wheels package
@@ -76,6 +64,8 @@ This command will automatically download and install the appropriate ``.whl`` fi
 .. code-block:: bash
 
    pip install amd-taichi==1.8.0b1 --extra-index-url=https://pypi.amd.com/simple
+   sudo apt-get update
+   sudo apt-get install -y lld
 
 .. _build-taichi-rocm-docker-image:
 
@@ -149,11 +139,19 @@ If you prefer to use the ROCm Ubuntu image, or already have a ROCm Ubuntu contai
 Test the Taichi installation
 ================================================================================
 
+Clone the `https://github.com/ROCm/taichi <https://github.com/ROCm/taichi>`_ repository
+
+   .. code-block:: bash
+
+      sudo apt-get update
+      sudo apt-get install -y git
+      git clone --recursive https://github.com/ROCm/taichi -b amd-release/v1.8.0b1
+
 To test the Taichi installation, run the ``laplace`` example in the source code: 
 
 .. code-block:: bash
 
-   python3 <taichi-src-dir>/python/taichi/examples/algorithm/laplace.py
+   python3 taichi/python/taichi/examples/algorithm/laplace.py
 
 
 ``laplace`` example output:
