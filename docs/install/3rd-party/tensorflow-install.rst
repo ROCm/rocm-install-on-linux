@@ -79,7 +79,7 @@ Follow these steps:
 
    .. code-block:: shell
 
-       docker run -it 
+       docker run -it \
            --network=host \
            --device=/dev/kfd \
            --device=/dev/dri \
