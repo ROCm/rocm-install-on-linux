@@ -153,11 +153,11 @@ Test the Taichi installation
 
 Clone the `https://github.com/ROCm/taichi <https://github.com/ROCm/taichi>`_ repository
 
-   .. code-block:: bash
+.. code-block:: bash
 
-      sudo apt-get update
-      sudo apt-get install -y git
-      git clone --recursive https://github.com/ROCm/taichi -b amd-release/v1.8.0b1
+   sudo apt-get update
+   sudo apt-get install -y git
+   git clone --recursive https://github.com/ROCm/taichi -b amd-release/v1.8.0b1
 
 To test the Taichi installation, run the ``laplace`` example in the source code: 
 
