@@ -198,14 +198,15 @@ instructions specific to your distribution to add the necessary repositories.
 
                .. tab-set::
 
-                  {% for os_release in config.html_context['rhel_release_version_numbers']  %}
+                  {% for os_version in config.html_context['rhel_version_numbers'] %}
+                  {% set os_major, _  = os_version.split('.') %}
 
-                      .. tab-item:: {{ os_release }}
+                      .. tab-item:: {{ os_version }}
 
                         .. code-block:: shell
 
-                            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_release }}.noarch.rpm
-                            sudo rpm -ivh epel-release-latest-{{ os_release }}.noarch.rpm
+                            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
+                            sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
 
                   {% endfor %}
 
@@ -227,14 +228,14 @@ instructions specific to your distribution to add the necessary repositories.
 
                .. tab-set::
 
-                  {% for os_release in config.html_context['ol_release_version_numbers']  %}
-
-                      .. tab-item:: {{ os_release }}
+                  {% for os_version in config.html_context['ol_version_numbers'] %}
+                  {% set os_major, _  = os_version.split('.') %}
+                      .. tab-item:: {{ os_version }}
 
                         .. code-block:: shell
 
-                            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_release }}.noarch.rpm
-                            sudo rpm -ivh epel-release-latest-{{ os_release }}.noarch.rpm
+                            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
+                            sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
 
                   {% endfor %}
 
