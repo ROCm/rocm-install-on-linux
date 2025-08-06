@@ -1,5 +1,5 @@
 .. meta::
-  :description: verl on ROCm
+  :description: Install verl on ROCm
   :keywords: installation, docker, verl, AMD, ROCm
 
 ********************************************************************************
@@ -39,13 +39,13 @@ The tested, prebuilt image includes verl, PyTorch, ROCm, and other dependencies.
 
 Prebuilt Docker images with verl configured for ROCm 6.2.0 are available on `Docker Hub <https://hub.docker.com/r/rocm/verl/tags>`_.
 
-1. Pull the Docker:
+1. Pull the Docker image
 
    .. code-block:: bash
 
       docker pull rocm/verl:verl-0.3.0.post0_rocm6.2_vllm0.6.3
 
-2. Launch and connect to the Docker container:
+2. Launch and connect to the Docker container
 
    .. code-block:: bash
 
@@ -60,20 +60,20 @@ Prebuilt Docker images with verl configured for ROCm 6.2.0 are available on `Doc
 Build your own Docker image
 --------------------------------------------------------------------------------
 
-1. Clone the `https://github.com/ROCm/verl <https://github.com/ROCm/verl>`_ repository:
+1. Clone the `https://github.com/ROCm/verl <https://github.com/ROCm/verl>`_ repository
 
    .. code-block:: bash
 
       git clone https://github.com/volcengine/verl.git -b v0.3.0.post0
 
-2. Build the Docker container using the Dockerfile in the ``verl/docker`` directory:
+2. Build the Docker container using the Dockerfile in the ``verl/docker`` directory
 
    .. code-block:: bash
 
       cd verl
       docker build -f docker/Dockerfile.rocm -t my-rocm-verl .
 
-3. Launch and connect to the container:
+3. Launch and connect to the container
 
    .. code-block:: bash
 
