@@ -20,19 +20,27 @@ SUSE Linux Enterprise native installation
 Registering ROCm repositories
 ===============================================
 
-.. code-block:: bash
-    :substitutions:
+.. datatemplate:nodata::
 
-    sudo tee /etc/zypp/repos.d/rocm.repo <<EOF
-    [ROCm-|rocm_version|]
-    name=ROCm|rocm_version|
-    baseurl=https://repo.radeon.com/rocm/zyp/|rocm_version|/main
-    enabled=1
-    gpgcheck=1
-    gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
-    EOF
+   .. tab-set::
+      {% for os_version in config.html_context['sles_version_numbers'] %}
+      .. tab-item:: SLES {{ os_version }}
+            :sync: sles-{{ os_version }}
 
-    sudo zypper refresh
+            .. code-block:: bash
+                :substitutions:
+
+                sudo tee /etc/zypp/repos.d/rocm.repo <<EOF
+                [ROCm-|rocm_version|]
+                name=ROCm|rocm_version|
+                baseurl=https://repo.radeon.com/rocm/zyp/|rocm_version|/main
+                enabled=1
+                gpgcheck=1
+                gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+                EOF
+                
+                sudo zypper refresh
+      {% endfor %}
 
 
 .. _sles-install:
