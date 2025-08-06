@@ -20,9 +20,10 @@ Registering ROCm repositories
 .. datatemplate:nodata::
 
    .. tab-set::
-      {% for os_release in config.html_context['rhel_release_version_numbers']  %}
-      .. tab-item:: RHEL {{ os_release }}
-            :sync: rhel-{{ os_release }}
+      {% for os_version in config.html_context['rhel_version_numbers'] %}
+      {% set os_major, _  = os_version.split('.') %}
+      .. tab-item:: RHEL {{ os_version }}
+            :sync: rhel-{{ os_version }}
 
             .. code-block:: bash
                :substitutions:
@@ -32,7 +33,7 @@ Registering ROCm repositories
                sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
                [ROCm-$ver]
                name=ROCm$ver
-               baseurl=https://repo.radeon.com/rocm/el{{ os_release }}/$ver/main
+               baseurl=https://repo.radeon.com/rocm/el{{ os_major }}/$ver/main
                enabled=1
                priority=50
                gpgcheck=1
