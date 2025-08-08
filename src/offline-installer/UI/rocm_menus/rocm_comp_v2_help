@@ -1,0 +1,49 @@
+Runtime:
+--------
+
+Runtime packages for ROCm components including libraries and tools necessary for
+running ROCm, HIP, OpenCL, OpenMP and ML applications.
+
+
+rocm                       All core ROCm packages, tools, and libraries.
+
+rocm-language-runtime      ROCm runtime environment for running applications on
+                           the AMD platform.
+
+rocm-hip-runtime           Run HIP applications written for the AMD platform.
+
+rocm-hip-libraries         HIP libraries optimized for the AMD platform.
+
+rocm-opencl-runtime        Run OpenCL-based applications on the AMD platform.
+
+rocm-ml-libraries          Key machine learning libraries. Includes MIOpen.
+
+
+Developer:
+----------
+
+Developer packages for building, debugging and profiling applications or libraries
+for HIP, OpenCL, OpenMP and ML.
+
+
+rocm-developer-tools       Debug and profile HIP applications.
+
+rocm-hip-runtime-dev       Develop applications on HIP or port from CUDA.
+
+rocm-hip-sdk               Develop or port HIP applications and libraries for the 
+                           AMD platform.
+
+rocm-opencl-sdk            Develop OpenCL-based applications for the AMD platform.
+
+rocm-openmp-sdk            Develop OpenMP-based applications for the AMD platform.
+
+rocm-ml-sdk                Develop and run machine learning applications for AMD.
+
+
+Other:
+------
+
+amdgpu-lib                 For users of graphics applications which require the 
+                           open source Mesa 3D graphics and multimedia libraries.
+                           This package is primarily used for Radeon GPUs.
+

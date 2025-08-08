@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,11 +27,6 @@
 #define TOGGLE_BIT(val, bitIndx) val ^= (1 << bitIndx)
 #define TOGGLE_FALSE(val, bitIndx) val &= ~(1 << bitIndx) 
 
-
-#define DEFAULT_CHAR_SIZE      256
-#define LARGE_CHAR_SIZE        1024
-#define SMALL_CHAR_SIZE        32
-
 int calculate_text_height(char *desc, int width);
 int get_char_array_size(char *array[]);
 bool is_field_empty(char *text);
@@ -48,6 +43,7 @@ int clear_str(char *str);
 bool is_rocm_installed();
 bool get_value_of_wconfig(char *src, char *dst);
 bool is_dir_exist(char *path);
+bool check_file_exists(char *path, int max);
 
 
 

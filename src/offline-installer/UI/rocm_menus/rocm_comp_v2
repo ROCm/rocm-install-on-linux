@@ -1,0 +1,15 @@
+rocm
+rocm-language-runtime
+rocm-hip-runtime
+rocm-hip-libraries
+rocm-opencl-runtime
+rocm-ml-libraries
+ 
+rocm-developer-tools
+rocm-hip-runtime-dev
+rocm-hip-sdk
+rocm-opencl-sdk
+rocm-openmp-sdk
+rocm-ml-sdk
+ 
+amdgpu-lib
