@@ -87,12 +87,12 @@ Substitute your values for the following placeholders:
    For releases that end in ``.0``, do not include the ``.0`` as part of the ``rocm-version`` component.
    For example, for ROCm 6.4.0, the ``rocm-version`` is ``rocm-rel-6.4``.
 
-For example, use this command to download ROCm 6.4.2 of the Offline Installer Creator 
+For example, use this command to download ROCm 6.4.3 of the Offline Installer Creator 
 for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-6.4.2/ubuntu/22.04/rocm-offline-creator_1.0.10.60402-4~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-6.4.3/ubuntu/22.04/rocm-offline-creator_1.0.11.60403-2~22.04.run
 
 Installer Creation
 ================================================
@@ -297,7 +297,7 @@ components are integrated into the resulting installer.
   .. note::
 
      To reference the meta package equivalents and descriptions for each of the legacy ROCm component use cases,
-     see the :doc:`ROCm runtime and developer packages list <./install-methods/includes/meta-package-table>`.
+     see the :doc:`ROCm runtime and developer packages list <../reference/package-manager-integration>`.
 
 .. _driver-options-label:
 

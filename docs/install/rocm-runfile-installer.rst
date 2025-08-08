@@ -127,11 +127,11 @@ Substitute values specific to your installation for the following placeholders:
    <distro-version>  = Linux distribution version for the installer
    <install-file>    = The installer .run file
 
-For example, use this command to download ROCm 6.4.2 of the ROCm Runfile Installer for Ubuntu release 22.04:
+For example, use this command to download ROCm 6.4.3 of the ROCm Runfile Installer for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-6.4.2/ubuntu/22.04/rocm-installer_1.1.2.60402-59-120~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-6.4.3/ubuntu/22.04/rocm-installer_1.1.3.60403-63-128~22.04.run
 
 Running the ROCm Runfile Installer
 ----------------------------------
@@ -795,15 +795,15 @@ At the command line, add one or more of the post-installation options to the ``<
    in conjunction with ``target=rocm-install-path``, where ``rocm-install-path`` is the
    location of the Runfile-installed ROCm installation. The ROCm installation version and 
    the Runfile Installer version must match.
-   For example, if the current Runfile Installer is for ROCm 6.4.2, then
-   ``rocm-install-path`` must indicate the path to a ROCm 6.4.2 Runfile installation.
+   For example, if the current Runfile Installer is for ROCm 6.4.3, then
+   ``rocm-install-path`` must indicate the path to a ROCm 6.4.3 Runfile installation.
    
-   To use the ``postrocm`` argument separately from the initial install of ROCm 6.4.2
+   To use the ``postrocm`` argument separately from the initial install of ROCm 6.4.3
    to ``/home/amd/myrocm``, run:
 
    .. code-block:: shell
 
-	   bash rocm-installer.run target="/home/amd/myrocm/rocm-6.4.2" postrocm
+	   bash rocm-installer.run target="/home/amd/myrocm/rocm-6.4.3" postrocm
 
    .. note::
 
