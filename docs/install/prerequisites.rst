@@ -441,8 +441,7 @@ through Direct Rendering Manager (DRM) render nodes.
    .. code-block:: shell
 
       echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
-      echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
-      echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
+      echo 'EXTRA_GROUPS=video render' | sudo tee -a /etc/adduser.conf
 
 Using udev rules
 --------------------------------------------------------------------
