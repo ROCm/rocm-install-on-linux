@@ -95,83 +95,6 @@ validated for ROCm 6.4.2.
 
 .. tab-set::
 
-   .. tab-item:: PyTorch 2.7.1 (preview)
-
-      .. caution::
-
-         This is an untested development Docker for preview purposes. See PyTorch 2.6.0
-         for the latest stable ``rocm/pytorch`` Docker release.
-
-      .. tab-set::
-
-         .. tab-item:: Python 3.12
-
-            .. rubric:: Docker pull tag
-
-            .. code-block:: shell
-
-               docker pull rocm/pytorch:rocm6.4.2_ubuntu24.04_py3.12_pytorch_release_2.6.0
-
-            .. rubric:: Additional software components
-
-            .. list-table::
-               :header-rows: 1
-
-               * - Ubuntu
-                 - Apex
-                 - torchvision
-                 - TensorBoard
-                 - MAGMA
-                 - UCX
-                 - Open MPI
-
-               * - 24.04
-                 - `1.6.0 <https://github.com/ROCm/apex/tree/release/1.6.0>`__
-                 - `0.21.0 <https://github.com/pytorch/vision/tree/v0.21.0>`__
-                 - `2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18>`__
-                 - `master <https://bitbucket.org/icl/magma/src/master/>`__
-                 - `1.16.0+ds-5ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/>`__
-                 - `4.1.6-7ubuntu2 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/>`__
-
-            See
-            ``rocm/pytorch:rocm6.4.2_ubuntu24.04_py3.12_pytorch_release_2.6.0``
-            on `Docker Hub
-            <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.2_ubuntu24.04_py3.12_pytorch_release_2.6.0/images/sha256-6a287591500b4048a9556c1ecc92bc411fd3d552f6c8233bc399f18eb803e8d6>`__.
-
-         .. tab-item:: Python 3.10
-
-            .. rubric:: Docker pull tag
-
-            .. code-block:: shell
-
-               docker pull rocm/pytorch:rocm6.4.2_ubuntu22.04_py3.10_pytorch_release_2.6.0
-
-            .. rubric:: Additional software components
-
-            .. list-table::
-               :header-rows: 1
-
-               * - Ubuntu
-                 - Apex
-                 - torchvision
-                 - TensorBoard
-                 - MAGMA
-                 - UCX
-                 - Open MPI
-
-               * - 22.04
-                 - `1.6.0 <https://github.com/ROCm/apex/tree/release/1.6.0>`__
-                 - `0.21.0 <https://github.com/pytorch/vision/tree/v0.21.0>`__
-                 - `2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18>`__
-                 - `master <https://bitbucket.org/icl/magma/src/master/>`__
-                 - `1.12.1~rc2-1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/>`__
-                 - `4.1.2-2ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/>`__
-
-            See
-            ``rocm/pytorch:rocm6.4.2_ubuntu22.04_py3.10_pytorch_release_2.6.0``
-            on `Docker Hub
-            <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.2_ubuntu22.04_py3.10_pytorch_release_2.6.0/images/sha256-06b967629ba6657709f04169832cd769a11e6b491e8b1394c361d42d7a0c8b43>`__.
-
    .. tab-item:: PyTorch 2.6.0
       :selected:
 
@@ -460,6 +383,50 @@ validated for ROCm 6.4.2.
                ``rocm/pytorch:rocm6.4.2_ubuntu24.04_py3.12_pytorch_release_2.3.0``
                on `Docker Hub
                <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.2_ubuntu24.04_py3.12_pytorch_release_2.3.0/images/sha256-1d59251c47170c5b8960d1172a4dbe52f5793d8966edd778f168eaf32d56661a>`__.
+
+   .. tab-item:: PyTorch 2.7.1 (preview)
+
+      .. caution::
+
+         This is an untested development Docker using ROCm 6.4.1 for preview
+         purposes. See PyTorch 2.6.0 for the latest stable ``rocm/pytorch``
+         Docker release.
+
+      .. tab-set::
+
+         .. tab-item:: Python 3.12
+
+            .. rubric:: Docker pull tag
+
+            .. code-block:: shell
+
+               docker pull rocm/pytorch:rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.7.1
+
+            .. rubric:: Additional software components
+
+            .. list-table::
+               :header-rows: 1
+
+               * - Ubuntu
+                 - Apex
+                 - torchvision
+                 - TensorBoard
+                 - MAGMA
+                 - UCX
+                 - Open MPI
+
+               * - 24.04
+                 - `1.7.0 <https://github.com/ROCm/apex/tree/release/1.7.0>`__
+                 - `0.22.1 <https://github.com/pytorch/vision/tree/v0.22.1>`__
+                 - `2.13.0 <https://github.com/tensorflow/tensorboard/tree/2.13>`__
+                 - `master <https://bitbucket.org/icl/magma/src/master/>`__
+                 - `1.16.0+ds-5ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/>`__
+                 - `4.1.6-7ubuntu2 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/>`__
+
+            See
+            ``rocm/pytorch:rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.7.1``
+            on `Docker Hub
+            <https://hub.docker.com/layers/rocm/pytorch/rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.7.1/images/sha256-a416f50f431ae3063c179d11a5f933d9f0e9d35692c66502a439e8dbc85767cc>`__.
 
 .. _install_pytorch_wheels:
 .. _using-wheels-package:
