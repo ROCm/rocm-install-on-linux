@@ -29,6 +29,8 @@ Accelerators and GPUs listed in the following table support compute workloads (n
       :widths: 50, 25, 25, 10
       :header: "Accelerator", "Architecture", "LLVM target", "Support"
 
+      "AMD Instinct MI355X", "CDNA4", "gfx950", "✅"
+      "AMD Instinct MI350X", "CDNA4", "gfx950", "✅"
       "AMD Instinct MI325X", "CDNA3", "gfx942", "✅ [#ub2204]_"
       "AMD Instinct MI300X", "CDNA3", "gfx942", "✅"
       "AMD Instinct MI300A", "CDNA3", "gfx942", "✅"
@@ -101,17 +103,19 @@ AMD ROCm software supports the following Linux distributions.
     :header: "Operating system", "Kernel", "Glibc", "Support"
     :escape: \
 
-    "Ubuntu 24.04.2", "6.8 [GA], 6.11 [HWE]", "2.39", "✅"
+    "Ubuntu 24.04.3", "6.8 [GA], 6.14 [HWE]", "2.39", "✅"
     "Ubuntu 22.04.5", "5.15 [GA], 6.8 [HWE]", "2.35", "✅"
-    "RHEL 9.6", "5.14+", "2.34", "✅"
-    "RHEL 9.4", "5.14+", "2.34", "✅"
-    "RHEL 8.10", "4.18.0+", "2.28", "✅"
-    "SLES 15 SP7", "6.11.0+", "2.38", "✅"
-    "SLES 15 SP6", "6.5.0+", "2.38", "✅"
-    "Oracle Linux 9", "5.15.0 (UEK)", "2.35", "✅ [#mi300x]_"
-    "Oracle Linux 8", "5.15.0 (UEK)", "2.28", "✅ [#mi300x]_"
+    "RHEL 10", "6.12.0-55", "2.39", "✅"
+    "RHEL 9.6", "5.14.0-570", "2.34", "✅"
+    "RHEL 9.4", "5.14.0-427", "2.34", "✅"
+    "RHEL 8.10", "4.18.0-553", "2.28", "✅"
+    "SLES 15 SP7", "6.4.0-150700.51", "2.38", "✅"
+    "Debian 12", "6.1.0", "2.36", "✅"
+    "Rocky 9", "5.14.0-570", "2.34", "✅"
     "Azure Linux 3.0", "6.6.60", "2.38", "✅ [#azurelinux]_"
-    "Debian 12", "6.1", "2.36", "✅ [#single-node]_"
+    "Oracle Linux 10", "6.12.0 (UEK)", "2.39", "✅ [#ol-700-mi300x]_"
+    "Oracle Linux 9", "5.15.0 (UEK)", "2.34", "✅ [#ol-700-mi300x]_"
+    "Oracle Linux 8", "5.15.0 (UEK)", "2.28", "✅ [#mi300x]_"
     
 
 .. note::
@@ -154,9 +158,40 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
          }
        </style>
        <tbody id="virtualization-support-instinct">
-         <tr class="row-even">
-           <td rowspan="2">
-             <p>MI325X</p>
+        <tr class="row-even">
+           <td rowspan="2" style="vertical-align: middle;">
+             <p>MI355X</p>
+           </td>
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>Passthrough</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04, RHEL 9.4</p>
+           </td>
+           <td>
+             <p>Ubuntu 22.04, RHEL 9.4</p>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04, Ubuntu 22.04</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04, Ubuntu 22.04</p>
+           </td>
+         </tr>
+         <tr class="row-odd">
+           <td rowspan="2" style="vertical-align: middle;">
+             <p>MI350X</p>
            </td>
            <td>
              <p>KVM</p>
@@ -165,10 +200,10 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
              <p>SRIOV</p>
            </td>
            <td>
-             <p>Ubuntu 22.04</p>
+             <p>Ubuntu 24.04, Ubuntu 22.04</p>
            </td>
            <td>
-             <p>Ubuntu 22.04</p>
+             <p>Ubuntu 24.04, Ubuntu 22.04</p>
            </td>
          </tr>
          <tr>
@@ -179,16 +214,61 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
              <p>Passthrough</p>
            </td>
            <td>
-             <p>Ubuntu 22.04</p>
+             <p>Ubuntu 24.04, RHEL 9.6</p>
            </td>
            <td>
-             <p>Ubuntu 22.04</p>
+             <p>Ubuntu 24.04.2, RHEL 9.6</p>
+           </td>
+         </tr>
+         <tr class="row-even">
+           <td rowspan="2" style="vertical-align: middle;">
+             <p>MI325X</p>
+           </td>
+           <td>
+             <p>ESXi 8.0 Update 3</p>
+           </td>
+           <td>
+             <p>Passthrough</p>
+           </td>
+           <td>
+             <p>N/A</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04, Ubuntu 22.04</p>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>Passthrough</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04, RHEL 9.4</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04, Ubuntu 22.04, RHEL 9.4</p>
            </td>
          </tr>
          <tr class="row-odd">
-           <td rowspan="3">
+           <td rowspan="4" style="vertical-align: middle;">
              <p>MI300X</p>
            </td>
+           <td>
+             <p>ESXi 8.0 Update 3</p>
+           </td>
+           <td>
+             <p>Passthrough</p>
+           </td>
+           <td>
+             <p>N/A</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04, Ubuntu 22.04</p>
+           </td>
+         </tr>
+         <tr>
            <td>
              <p>Hyper-V</p>
            </td>
@@ -196,24 +276,10 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
              <p>SRIOV</p>
            </td>
            <td>
-             <p>Azure Host 2021</p>
-           </td>
-           <td>
-             <p>Ubuntu 22.04</p>
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <p>KVM</p>
-           </td>
-           <td>
-             <p>SRIOV</p>
-           </td>
-           <td>
              <p>Ubuntu 22.04</p>
            </td>
            <td>
-             <p>Ubuntu 22.04</p>
+             <p>Azure Linux 3.0, Ubuntu 22.04</p>
            </td>
          </tr>
          <tr>
@@ -224,10 +290,24 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
              <p>Passthrough</p>
            </td>
            <td>
-             <p>Ubuntu 22.04</p>
+             <p>Ubuntu 24.04</p>
            </td>
            <td>
-             <p>Ubuntu 22.04</p>
+             <p>Ubuntu 24.04, Ubuntu 22.04, RHEL 9.6, RHEL 9.4</p>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04, RHEL 9.4</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04, RHEL 9.4</p>
            </td>
          </tr>
          <tr class="row-odd">
@@ -241,16 +321,44 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
              <p>DDA</p>
            </td>
            <td>
-             <p>Azure Host 2021</p>
+             <p>Azure Host 2025</p>
            </td>
            <td>
              <p>Ubuntu 22.04</p>
            </td>
          </tr>
          <tr class="row-odd">
-           <td>
+           <td rowspan="3" style="vertical-align: middle;">
              <p>MI210</p>
            </td>
+           <td>
+             <p>ESXi 8.0</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>VMware ESXI 8.0</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04</p>
+           </td>
+          </tr>
+          <tr>
+           <td>
+             <p>KVM</p>
+           </td>
+           <td>
+             <p>Passthrough</p>
+           </td>
+           <td>
+             <p>RHEL 9.4</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04, Ubuntu 22.04, RHEL 9.4</p>
+           </td>
+          </tr>
+          <tr>
            <td>
              <p>KVM</p>
            </td>
@@ -267,9 +375,23 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
          </tbody>
          <tbody id="virtualization-support-radeon-pro">
          <tr class="row-even">
-           <td rowspan="2">
+           <td rowspan="2" style="vertical-align: middle;">
              <p>V710</p>
            </td>
+           <td>
+             <p>Hyper-V</p>
+           </td>
+           <td>
+             <p>SRIOV</p>
+           </td>
+           <td>
+             <p>Azure Host 2025</p>
+           </td>
+           <td>
+             <p>Ubuntu 24.04.3</p>
+           </td>
+         </tr>
+         <tr>
            <td>
              <p>KVM</p>
            </td>
@@ -280,21 +402,7 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
              <p>Ubuntu 24.04</p>
            </td>
            <td>
-             <p>Ubuntu 24.04</p>
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <p>Hyper-V</p>
-           </td>
-           <td>
-             <p>SRIOV</p>
-           </td>
-           <td>
-             <p>Azure Host 2024</p>
-           </td>
-           <td>
-             <p>Ubuntu 24.04</p>
+             <p>Ubuntu 24.04.3</p>
            </td>
          </tr>
          <tr class="row-odd">
@@ -308,10 +416,10 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
              <p>SRIOV</p>
            </td>
            <td>
-             <p>Azure Host 2024</p>
+             <p>Azure Host 2025</p>
            </td>
            <td>
-             <p>Ubuntu 24.04</p>
+             <p>Ubuntu 24.04.3</p>
            </td>
          </tr>
        </tbody>
@@ -333,8 +441,8 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 .. rubric:: Footnotes
 
 .. [#ub2204] AMD Instinct MI325X is supported only on Ubuntu 22.04 [GA Kernel 5.15].
-.. [#mi300x] Oracle Linux 8 and 9 are supported only on AMD Instinct MI300X.
+.. [#ol-700-mi300x] Oracle Linux 10 and 9 are supported only on AMD Instinct MI300X, MI350X, MI355X.
+.. [#mi300x] Oracle Linux 8 is supported only on AMD Instinct MI300X.
 .. [#azurelinux] Azure Linux 3.0 is supported only on AMD Instinct MI300X and AMD Radeon PRO V710.
-.. [#single-node] Debian 12 is supported only on AMD Instinct MI300X for single-node functionality. 
 .. [#RDNA-OS] Radeon AI PRO R9700, Radeon RX 9070, Radeon RX 9070 GRE, Radeon RX 9070 XT, Radeon RX 9060 XT, Radeon PRO W7700, and Radeon RX 7800 XT are supported only on Ubuntu 24.04.2, Ubuntu 22.04.5, RHEL 9.6, and RHEL 9.4.
 .. [#7700XT-OS] Radeon RX 7700 XT is supported only on Ubuntu 24.04.2 and RHEL 9.6.
