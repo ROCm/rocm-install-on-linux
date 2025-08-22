@@ -18,6 +18,7 @@ Select the install instructions for your operating system
         * :doc:`Debian <./package-manager/package-manager-debian>`
         * :doc:`Red Hat Enterprise Linux <./package-manager/package-manager-rhel>`
         * :doc:`Oracle Linux <./package-manager/package-manager-ol>`
+        * :doc:`Rocky Linux <./package-manager/package-manager-rl>`
         * :doc:`SUSE Linux Enterprise Server <./package-manager/package-manager-sles>`
         * :doc:`Azure Linux <./package-manager/package-manager-azl>`
 
@@ -27,11 +28,9 @@ Select the install instructions for your operating system
         * :ref:`Debian <debian-package-manager-uninstall>`
         * :ref:`Red Hat Enterprise Linux <rhel-package-manager-uninstall>`
         * :ref:`Oracle Linux <ol-package-manager-uninstall>`
+        * :ref:`Rocky Linux <rl-package-manager-uninstall>`
         * :ref:`SUSE Linux Enterprise Server <sles-package-manager-uninstall>`
         * :ref:`Azure Linux <azl-package-manager-uninstall>`
-        
-
-    
 
 See also: :doc:`/reference/system-requirements`. If you encounter install issues, you can refer to the
 :doc:`troubleshooting </reference/install-faq>` page.

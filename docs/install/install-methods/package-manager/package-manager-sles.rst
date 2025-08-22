@@ -30,15 +30,22 @@ Registering ROCm repositories
             .. code-block:: bash
                 :substitutions:
 
-                sudo tee /etc/zypp/repos.d/rocm.repo <<EOF
-                [ROCm-|rocm_version|]
-                name=ROCm|rocm_version|
-                baseurl=https://repo.radeon.com/rocm/zyp/|rocm_version|/main
+                sudo tee /etc/yum.repos.d/rocm.repo <<EOF
+                [rocm]
+                name=ROCm |rocm_major_version| repository
+                baseurl=https://repo.radeon.com/rocm/zyp/|rocm_major_version|/main
                 enabled=1
                 gpgcheck=1
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
-                EOF
-                
+
+                [amdgraphics]
+                name=AMD Graphics |rocm_major_version| repository
+                baseurl=https://repo.radeon.com/graphics/|rocm_major_version|/sle/{{ os_version }}/main/x86_64/
+                enabled=1
+                priority=50
+                gpgcheck=1
+                gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key                
+                EOF             
                 sudo zypper refresh
       {% endfor %}
 
@@ -81,15 +88,17 @@ Remove ROCm repositories
 .. code-block:: bash
     :substitutions:
 
-    # Remove the repositories
-    sudo zypper removerepo "ROCm-|rocm_version|"
+    # Remove ROCm repositories
+    sudo zypper removerepo "rocm"
+    sudo zypper removerepo "amdgraphics"
     
     # Clear cache and clean system
     sudo zypper clean --all
     sudo zypper refresh
     
-    # Restart the system
-    sudo reboot
+.. Important::
+
+    To apply all settings, reboot your system.
 
 .. note::
 

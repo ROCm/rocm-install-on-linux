@@ -58,7 +58,7 @@ ROCm installation
                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt update
-                       sudo apt install -y python3-setuptools python3-wheel
+                       sudo apt install python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        sudo apt install rocm
 
@@ -73,12 +73,12 @@ ROCm installation
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
 
-                   Before installing ROCm on RHEL, :ref:`register your Enterprise Linux and update the OS installation <register-enterprise-linux>`.
+                   Before installing ROCm on RHEL, :ref:`register and update your Enterprise Linux <register-enterprise-linux>`.
 
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        sudo dnf clean all
                        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
                        sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
@@ -99,12 +99,12 @@ ROCm installation
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
 
-                   Before installing ROCm on OL, :ref:`update the OS installation <update-enterprise-linux>`.
+                   Before installing ROCm on OL, :ref:`update your Enterprise Linux <update-enterprise-linux>`.
 
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        sudo dnf clean all
                        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
                        sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
@@ -124,7 +124,7 @@ ROCm installation
                 {% for os_version in config.html_context['sles_version_numbers'] %}
                 .. tab-item:: {{ os_version }}
 
-                   Before installing ROCm on SLES, :ref:`register your Enterprise Linux update the OS installation <register-enterprise-linux>`.
+                   Before installing ROCm on SLES, :ref:`register and update your Enterprise Linux <register-enterprise-linux>`.
 
                    .. code-block:: bash
                        :substitutions:
@@ -171,6 +171,30 @@ ROCm installation
                        EOF
                        sudo tdnf install rocm
                        sudo tdnf clean all
+
+                {% endfor %}
+
+        .. tab-item:: Rocky Linux
+            :sync: rl-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['rl_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+                       sudo dnf clean all
+                       wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
+                       sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
+                       sudo dnf install dnf-plugin-config-manager
+                       sudo crb enable
+                       sudo dnf install python3-setuptools python3-wheel
+                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
+                       sudo dnf install rocm
 
                 {% endfor %}
 
@@ -228,17 +252,21 @@ AMDGPU driver installation
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
 
-                   Before installing AMDGPU driver on RHEL, :ref:`register your Enterprise Linux and update the OS installation <register-enterprise-linux>`.
+                   Before installing AMDGPU driver on RHEL, :ref:`register and update your Enterprise Linux <register-enterprise-linux>`.
 
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
-                       sudo dnf clean all
-                       {% if os_major == '9' -%}
-                       sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)" "kernel-devel-matched-$(uname -r)"
+                       {% if os_major == '10' -%}
+                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        {%- else -%}
+                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+                       {%- endif %}
+                       sudo dnf clean all
+                       {% if os_major == '8' -%}
                        sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
+                       {%- else -%}
+                       sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)" "kernel-devel-matched-$(uname -r)"
                        {%- endif %}
                        sudo dnf install amdgpu-dkms
 
@@ -253,12 +281,16 @@ AMDGPU driver installation
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
 
-                   Before installing AMDGPU driver on OL, :ref:`update the OS installation <update-enterprise-linux>`.
+                   Before installing AMDGPU driver on OL, :ref:`update your Enterprise Linux <update-enterprise-linux>`.
 
                    .. code-block:: bash
                        :substitutions:
 
+                       {% if os_major == '10' -%}
+                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+                       {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+                       {%- endif %}
                        sudo dnf clean all
                        sudo dnf install "kernel-uek-devel-$(uname -r)"
                        sudo dnf install amdgpu-dkms
@@ -273,7 +305,7 @@ AMDGPU driver installation
                 {% for os_version in config.html_context['sles_version_numbers'] %}
                 .. tab-item:: {{ os_version }}
 
-                   Before installing AMDGPU driver on SLES, :ref:`register your Enterprise Linux and update the OS installation <register-enterprise-linux>`.
+                   Before installing AMDGPU driver on SLES, :ref:`register and update your Enterprise Linux <register-enterprise-linux>`.
 
                    .. code-block:: bash
                        :substitutions:
@@ -305,6 +337,25 @@ AMDGPU driver installation
                        sudo tdnf install azurelinux-repos-amd
                        sudo tdnf repolist --refresh
                        sudo tdnf install amdgpu
+
+                {% endfor %}
+
+        .. tab-item:: Rocky Linux
+            :sync: rl-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['rl_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+                       sudo dnf clean all
+                       sudo dnf install "kernel-headers" "kernel-devel" "kernel-devel-matched"
+                       sudo dnf install amdgpu-dkms
 
                 {% endfor %}
 

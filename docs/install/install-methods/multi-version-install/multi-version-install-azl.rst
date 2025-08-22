@@ -31,13 +31,14 @@ Registering ROCm repositories
                # Note: There is NO trailing .0 in the patch version for repositories
                for ver in |rocm_multi_versions|; do
                sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
-               [ROCm-$ver]
-               name=ROCm$ver
+               [rocm-$ver]
+               name=ROCm $ver repository
                baseurl=https://repo.radeon.com/rocm/azurelinux{{ os_major }}/$ver/main/
                enabled=1
                gpgcheck=1
                gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
                EOF
+               done
                sudo tdnf clean all
       {% endfor %}
 
@@ -72,7 +73,7 @@ Complete the :doc:`../../post-install`.
 .. tip::
 
    For a single-version installation of the latest ROCm version on AZL,
-   use the steps in :ref:`azl-register-repo` and :ref:`azl-install`.
+   follow the steps in :doc:`../package-manager/package-manager-azl` in the ROCm documentation.
 
 .. _azl-multi-uninstall:
 
@@ -113,8 +114,9 @@ Remove ROCm repositories
       sudo rm -rf /var/cache/tdnf
       sudo tdnf clean all
 
-      # Restart the system
-      sudo reboot
+.. Important::
+
+    To apply all settings, reboot your system.
 
 .. note::
 

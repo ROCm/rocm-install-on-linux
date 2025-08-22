@@ -12,10 +12,6 @@ SUSE Linux Enterprise multi-version installation
 
     Ensure that the :doc:`/install/prerequisites` are met before installing.
 
-.. Note::
-
-    Multi-version installation is only supported for SLES 15.6.
-
 .. _sles-multi-register-rocm:
 
 Registering ROCm repositories
@@ -34,8 +30,8 @@ Registering ROCm repositories
                # Note: There is NO trailing .0 in the patch version for repositories
                for ver in |rocm_multi_versions|; do
                sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
-               [ROCm-$ver]
-               name=ROCm$ver
+               [rocm-$ver]
+               name=ROCm $ver repository
                baseurl=https://repo.radeon.com/rocm/zyp/$ver/main
                enabled=1
                gpgcheck=1
@@ -77,7 +73,7 @@ Complete the :doc:`../../post-install`.
 .. tip::
 
    For a single-version installation of the latest ROCm version on SLES,
-   use the steps in :ref:`sles-register-repo` and :ref:`sles-install`.
+   follow the steps in :doc:`../package-manager/package-manager-sles` in the ROCm documentation.
 
 .. _sles-multi-uninstall:
 
@@ -112,18 +108,19 @@ Remove ROCm repositories
 .. code-block:: bash
    :substitutions:
 
-   # Remove the repositories
+   # Remove ROCm repositories
    # Note: There is NO trailing .0 in the patch version for repositories
    for ver |rocm_multi_versions|; do
-      sudo zypper removerepo "ROCm-$ver"
+      sudo zypper removerepo "rocm-$ver"
    done
    
    # Clear cache and clean system
    sudo zypper clean --all
    sudo zypper refresh
    
-   # Restart the system
-   sudo reboot
+.. Important::
+
+    To apply all settings, reboot your system.
 
 .. note::
 

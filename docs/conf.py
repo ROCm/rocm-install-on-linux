@@ -5,12 +5,13 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # ROCm version numbers
-rocm_version = '6.4.3'
-rocm_multi_versions = '6.4.3 6.4' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
-rocm_multi_versions_package_versions = '6.4.3 6.4.0' # however, in multi, the packages use 6.3.0
-rocm_directory_version = '6.4.3' # in 6.0 rocm was located in /opt/rocm-6.0.0
-amdgpu_version = '6.4.3' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '6.4.60403-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+rocm_version = '7.0.0'
+rocm_major_version = '7.0'
+rocm_multi_versions = '7.0 6.4.3' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_multi_versions_package_versions = '7.0.0 6.4.3' # however, in multi, the packages use 6.3.0
+rocm_directory_version = '7.0.0' # in 6.0 rocm was located in /opt/rocm-6.0.0
+amdgpu_version = '7.0' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '7.0.70000-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
 
 
 latex_engine = "xelatex"
@@ -26,8 +27,8 @@ latex_elements = {
 project = "ROCm installation on Linux"
 author = "Advanced Micro Devices, Inc."
 copyright = "Copyright (c) 2025 Advanced Micro Devices, Inc. All rights reserved."
-version = "6.4.3"
-release = "6.4.3"
+version = "7.0.0"
+release = "7.0.0"
 setting_all_article_info = True
 all_article_info_os = ["linux"]
 all_article_info_author = ""
@@ -35,12 +36,15 @@ all_article_info_author = ""
 # Supported linux version numbers
 ubuntu_version_numbers = [('24.04', 'noble'), ('22.04', 'jammy')]
 debian_version_numbers = [('12', 'jammy')]
-rhel_release_version_numbers = ['9', '8']
-rhel_version_numbers = ['9.6', '9.4', '8.10']
-sles_version_numbers = ['15.7', '15.6']
-ol_release_version_numbers = ['9', '8']
-ol_version_numbers = [('9.6'), ('8.10')]
+rhel_release_version_numbers = ['10', '9', '8']
+rhel_version_numbers = ['10.0', '9.6', '9.4', '8.10']
+rhel_multi_versions = ['9.6', '9.4', '8.10']
+sles_version_numbers = ['15.7']
+ol_release_version_numbers = ['10', '9', '8']
+ol_version_numbers = ['10.0', '9.6', '8.10']
+ol_multi_versions = ['9.6', '8.10']
 azl_version_numbers = ['3.0']
+rl_version_numbers = ['9.6']
 
 exclude_patterns = [
     'temp', 
@@ -73,6 +77,7 @@ external_projects_current_project = "rocm"
 # Add the following replacements to every RST file.
 rst_prolog = f"""
 .. |rocm_version| replace:: {rocm_version}
+.. |rocm_major_version| replace:: {rocm_major_version}
 .. |rocm_multi_versions| replace:: {rocm_multi_versions}
 .. |rocm_multi_versions_package_versions| replace:: {rocm_multi_versions_package_versions}
 .. |amdgpu_version| replace:: {amdgpu_version}
@@ -92,7 +97,10 @@ html_context = {
     "rhel_version_numbers" : rhel_version_numbers,
     "ol_release_version_numbers" : ol_release_version_numbers,
     "ol_version_numbers" : ol_version_numbers,
-    "azl_version_numbers": azl_version_numbers
+    "azl_version_numbers": azl_version_numbers,
+    "rl_version_numbers" : rl_version_numbers,
+    "rhel_multi_versions" : rhel_multi_versions,
+    "ol_multi_versions" : ol_multi_versions
 }
 
 footnote_backlinks = False
