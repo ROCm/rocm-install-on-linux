@@ -462,7 +462,7 @@ There are two primary methods to configure GPU access for ROCm: group membership
 udev rules. Each method has its own advantages, and the choice depends on your 
 specific requirements and system management preferences.
 
-Using group membership
+1. Using group membership
 --------------------------------------------------------------------
 
 By default, GPU access is managed through membership in the ``video`` and ``render`` groups.
@@ -482,30 +482,33 @@ through Direct Rendering Manager (DRM) render nodes.
 
    .. code-block:: shell
 
-      sudo usermod -a -G video,render $LOGNAME
+       sudo usermod -a -G video,render $LOGNAME
 
 3. Optionally, add other users to the ``video`` and ``render`` groups:
 
    .. code-block:: shell
 
-      sudo usermod -a -G video,render user1
-      sudo usermod -a -G video,render user2
+       sudo usermod -a -G video,render user1
+       sudo usermod -a -G video,render user2
 
 4. To add all future users to the render and video groups by default, run the following commands:
 
    .. code-block:: shell
 
-      echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
-      echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
-      echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
+       echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
+       echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
+       echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
 
-Using udev rules
+2. Using udev rules
 --------------------------------------------------------------------
+
 A flexible way to manage device permissions is to use udev rules. They apply system-wide, can be 
 easily deployed via configuration management tools, and eliminate the need for user group management. 
-This method provides more granular control over GPU access.
+This method provides more granular control over GPU access. 
+   
+GPU access may be granted to either all users or a custom group:
 
-Grant GPU access to all users on the system
+a. Grant GPU access to all users on the system
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To set up udev rules, install the package using the following instructions specific to your distribution: 
@@ -606,7 +609,7 @@ To set up udev rules, install the package using the following instructions speci
                        sudo dnf install https://repo.radeon.com/amdgpu/|rocm_major_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-30.10.0.0-2204008.el{{ os_major }}.noarch.rpm 
                 {% endfor %}
 
-Grant GPU access to a custom group
+b. Grant GPU access to a custom group
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Create a new group (e.g., ``devteam``):

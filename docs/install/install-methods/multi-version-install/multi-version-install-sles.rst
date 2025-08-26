@@ -1,11 +1,11 @@
 .. meta::
   :description: Install multiple ROCm versions
-  :keywords: installation instructions, AMD, ROCm, multiple versions, SLES, SUSE Linux Enterprise
+  :keywords: installation instructions, AMD, ROCm, multiple versions, SLES, SUSE Linux Enterprise Server
 
 .. _sles-multi-version_install:
 
 ***************************************************
-SUSE Linux Enterprise multi-version installation
+SUSE Linux Enterprise Server multi-version installation
 ***************************************************
 
 .. caution::
@@ -124,4 +124,4 @@ Remove ROCm repositories
 
 .. note::
 
-    For information about the AMDGPU driver installation, see the `SUSE Linux Enterprise native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-sles.html>`_ in the AMD Instinct Data Center GPU Documentation.
+    For information about the AMDGPU driver installation, see the `SUSE Linux Enterprise Server native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-sles.html>`_ in the AMD Instinct Data Center GPU Documentation.

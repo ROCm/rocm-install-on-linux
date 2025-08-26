@@ -1,10 +1,10 @@
 .. meta::
   :description: SUSE Enterprise Linux native installation
-  :keywords: ROCm install, installation instructions, SUSE, SUSE Linux Enterprise native installation,
+  :keywords: ROCm install, installation instructions, SUSE, SUSE Linux Enterprise Server native installation,
     AMD, ROCm
 
 *********************************************************************************************
-SUSE Linux Enterprise native installation
+SUSE Linux Enterprise Server native installation
 *********************************************************************************************
 
 .. caution::
@@ -102,4 +102,4 @@ Remove ROCm repositories
 
 .. note::
 
-    For information about the AMDGPU driver installation, see the `SUSE Linux Enterprise native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-sles.html>`_ in the AMD Instinct Data Center GPU Documentation.
+    For information about the AMDGPU driver installation, see the `SUSE Linux Enterprise Server native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-sles.html>`_ in the AMD Instinct Data Center GPU Documentation.
