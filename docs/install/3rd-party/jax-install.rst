@@ -60,7 +60,7 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
    .. code-block:: bash
 
-      docker pull rocm/dev-ubuntu-22.04:6.3-complete
+      docker pull rocm/dev-ubuntu-22.04:7.0-complete
 
 2. Launch the Docker container. After pulling the image, launch a container using this command:
 
@@ -68,7 +68,7 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
       docker run -it -d --network=host --device=/dev/kfd --device=/dev/dri --ipc=host --shm-size 64G \
       --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -v $(pwd):/jax_dir \
-      --name rocm_jax rocm/dev-ubuntu-22.04:6.3-complete /bin/bash
+      --name rocm_jax rocm/dev-ubuntu-22.04:7.0-complete /bin/bash
       docker attach rocm_jax
 
 3. Install the latest version of JAX. Inside the running container, install the required version of JAX with ROCm support using pip:
@@ -149,7 +149,15 @@ Follow these steps if you prefer to install ROCm manually on your host system or
 
       export LLVM_PATH=/opt/rocm/llvm
 
-5. Verify the installation of ROCm JAX.
+5. Apply the namespace patch:
+
+   .. code-block:: bash
+
+      patch -p1 \
+          -d "$(python3 -c \"import sysconfig; print(sysconfig.get_paths()['purelib'])\")" \
+          < jax_rocm_plugin/third_party/jax/namespace.patch
+
+6. Verify the installation of ROCm JAX.
 
    Run the following commands to verify that ROCm JAX is installed correctly:
 
@@ -180,14 +188,29 @@ Follow these steps to build JAX with ROCm support from source.
       git clone https://github.com/ROCm/jax -b <branch_name>
       cd jax
 
-.. _build-jax-wheels:
-
-2. Run the following command to build the necessary wheels:
+2. Install build dependencies and set up virtual environment:
 
    .. code-block:: bash
 
+      # Install build dependencies
+      pip install -r build/requirements.txt
+
+      # Create and activate virtual environment (recommended)
+      python -m venv .venv
+      source .venv/bin/activate
+
+.. _build-jax-wheels:
+
+3. Run the following command to build the necessary wheels:
+
+   .. code-block:: bash
+
+      # Method 1: Using build.py
       python3 ./build/build.py build --wheels=jaxlib,jax-rocm-plugin,jax-rocm-pjrt \
-          --rocm_version=60 --rocm_path=/opt/rocm-[version]
+          --rocm_version=70 --rocm_path=/opt/rocm-[version]
+
+      # Method 2: Using make (alternative)
+      (cd jax_rocm_plugin && make clean dist)
 
    This will generate three wheels in the ``dist/`` directory:
 
@@ -195,10 +218,12 @@ Follow these steps to build JAX with ROCm support from source.
    - ``jax-rocm-plugin`` (ROCm-specific plugin)
    - ``jax-rocm-pjrt`` (ROCm-specific runtime)
 
-3. Install the custom JAX wheels.
+4. Install the custom JAX wheels.
 
    .. code-block:: bash
 
+      # Ensure virtual environment is activated if using one
+      source .venv/bin/activate
       python3 setup.py develop --user && pip3 -m pip install dist/*.whl
 
 Simplified build script
