@@ -26,20 +26,20 @@ Accelerators and GPUs listed in the following table support compute workloads (n
   .. tab-item:: AMD Instinct
 
     .. csv-table::
-      :widths: 50, 25, 25, 10
-      :header: "Accelerator", "Architecture", "LLVM target", "Support"
+      :widths: 50, 25, 25, 25, 10
+      :header: "Accelerator", "Series", "Architecture", "LLVM target", "Support"
 
-      "AMD Instinct MI355X", "CDNA4", "gfx950", "✅"
-      "AMD Instinct MI350X", "CDNA4", "gfx950", "✅"
-      "AMD Instinct MI325X", "CDNA3", "gfx942", "✅ [#ub2204]_"
-      "AMD Instinct MI300X", "CDNA3", "gfx942", "✅"
-      "AMD Instinct MI300A", "CDNA3", "gfx942", "✅"
-      "AMD Instinct MI250X", "CDNA2", "gfx90a", "✅"
-      "AMD Instinct MI250", "CDNA2", "gfx90a", "✅"
-      "AMD Instinct MI210", "CDNA2", "gfx90a", "✅"
-      "AMD Instinct MI100", "CDNA", "gfx908", "✅"
-      "AMD Instinct MI50", "GCN5.1", "gfx906", "❌"
-      "AMD Instinct MI25", "GCN5.0", "gfx900", "❌"
+      "AMD Instinct MI355X", "MI350", "CDNA4", "gfx950", "✅"
+      "AMD Instinct MI350X", "MI350", "CDNA4", "gfx950", "✅"
+      "AMD Instinct MI325X", "MI300", "CDNA3", "gfx942", "✅ [#ub2204]_"
+      "AMD Instinct MI300X", "MI300", "CDNA3", "gfx942", "✅"
+      "AMD Instinct MI300A", "MI300", "CDNA3", "gfx942", "✅"
+      "AMD Instinct MI250X", "MI200", "CDNA2", "gfx90a", "✅"
+      "AMD Instinct MI250", "MI200", "CDNA2", "gfx90a", "✅"
+      "AMD Instinct MI210", "MI200", "CDNA2", "gfx90a", "✅"
+      "AMD Instinct MI100", "MI100", "CDNA", "gfx908", "✅"
+      "AMD Instinct MI50", "N/A", "GCN5.1", "gfx906", "❌"
+      "AMD Instinct MI25", "N/A", "GCN5.0", "gfx900", "❌"
 
   .. tab-item:: AMD Radeon PRO
 
@@ -105,15 +105,13 @@ AMD ROCm software supports the following Linux distributions.
 
     "Ubuntu 24.04.3", "6.8 [GA], 6.14 [HWE]", "2.39", "✅"
     "Ubuntu 22.04.5", "5.15 [GA], 6.8 [HWE]", "2.35", "✅"
-    "RHEL 10", "6.12.0-55", "2.39", "✅"
     "RHEL 9.6", "5.14.0-570", "2.34", "✅"
     "RHEL 9.4", "5.14.0-427", "2.34", "✅"
     "RHEL 8.10", "4.18.0-553", "2.28", "✅"
     "SLES 15 SP7", "6.4.0-150700.51", "2.38", "✅"
     "Debian 12", "6.1.0", "2.36", "✅"
-    "Rocky 9", "5.14.0-570", "2.34", "✅"
+    "Rocky Linux 9", "5.14.0-570", "2.34", "✅"
     "Azure Linux 3.0", "6.6.60", "2.38", "✅ [#azurelinux]_"
-    "Oracle Linux 10", "6.12.0 (UEK)", "2.39", "✅ [#ol-700-mi300x]_"
     "Oracle Linux 9", "5.15.0 (UEK)", "2.34", "✅ [#ol-700-mi300x]_"
     "Oracle Linux 8", "5.15.0 (UEK)", "2.28", "✅ [#mi300x]_"
     
@@ -441,7 +439,7 @@ ROCm requires CPUs that support PCIe™ atomics. Modern CPUs after the release o
 .. rubric:: Footnotes
 
 .. [#ub2204] AMD Instinct MI325X is supported only on Ubuntu 22.04 [GA Kernel 5.15].
-.. [#ol-700-mi300x] Oracle Linux 10 and 9 are supported only on AMD Instinct MI300X, MI350X, MI355X.
+.. [#ol-700-mi300x] Oracle Linux 9 is supported only on AMD Instinct MI300X, MI350X, MI355X.
 .. [#mi300x] Oracle Linux 8 is supported only on AMD Instinct MI300X.
 .. [#azurelinux] Azure Linux 3.0 is supported only on AMD Instinct MI300X and AMD Radeon PRO V710.
 .. [#RDNA-OS] Radeon AI PRO R9700, Radeon RX 9070, Radeon RX 9070 GRE, Radeon RX 9070 XT, Radeon RX 9060 XT, Radeon PRO W7700, and Radeon RX 7800 XT are supported only on Ubuntu 24.04.2, Ubuntu 22.04.5, RHEL 9.6, and RHEL 9.4.
