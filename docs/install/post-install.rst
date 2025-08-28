@@ -122,6 +122,14 @@ If ``update-alternatives`` or ``environment-modules`` are not available on the s
 
    export LD_LIBRARY_PATH=/opt/rocm-|rocm_directory_version|/lib
 
+4. Configure OpenCL
+-----------------------------------------------------
+
+.. code-block:: shell
+   :substitutions:
+
+   sudo update-alternatives --install /usr/bin/clinfo clinfo /opt/rocm-|rocm_version|/bin/clinfo 50
+
 Install verification
 =====================================================
 

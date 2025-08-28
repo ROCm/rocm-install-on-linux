@@ -594,6 +594,24 @@ To set up udev rules, install the package using the following instructions speci
 
                 {% endfor %}
 
+        .. tab-item:: Azure Linux
+            :sync: azl-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['azl_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo tee /etc/udev/rules.d/70-amdgpu.rules <<EOF
+                       KERNEL=="kfd", MODE="0666"
+                       SUBSYSTEM=="drm", KERNEL=="renderD*", MODE="0666"
+                       EOF
+                       sudo udevadm control --reload-rules && sudo udevadm trigger
+                {% endfor %}
+
         .. tab-item:: Rocky Linux
             :sync: rl-tab
 
