@@ -36,8 +36,15 @@ Prerequisites
 The ROCm Offline Installer Creator requires the following configuration:
 
 * The host must be connected to the network and internet when running the ROCm Offline Installer Creator.
-* The host system running the ROCm Offline Installer Creator and the target system running the installer 
-  must use the same Linux distribution, release version, and Linux kernel version.
+* The host system running the ROCm Offline Installer Creator and the target system running the installer must use the same
+  Linux distribution and release version.
+* The host system running the ROCm Offline Installer Creator and the target system running the installer must use the same
+  Linux kernel version for the following distributions: RHEL, Oracle Linux, Rocky Linux, SLES, and Debian.
+
+.. note::
+
+   For Ubuntu, the Linux kernel version can be set to a target system version different from the host system creating the offline installer.
+   See the :ref:`advanced-driver-label` menu for details.
 
 For example, if the host system uses 
 Ubuntu 22.04.4 with the 6.5.0-44-generic kernel, only an Ubuntu 22.04.4 target with the 6.5.0-44-generic kernel 
@@ -57,11 +64,12 @@ Supported Linux distributions
 
 The ROCm Offline Installer Creator tool supports the following Linux distributions and versions:
 
-* Ubuntu: 20.04, 22.04, 24.04
+* Ubuntu: 22.04, 24.04
 * RHEL: 8.10, 9.4, 9.6
-* SLES: 15.6, 15.7
+* SLES: 15.7
 * Debian: 12
 * Oracle Linux: 8.10, 9.6
+* Rocky Linux 9.6
 
 Getting started
 ================================================
@@ -77,22 +85,22 @@ Download the Offline Installer Creator from ``repo.radeon.com`` using the follow
 
 Substitute your values for the following placeholders:
 
-* ``<rocm-version>``: ROCm version number for the ROCm Offline Installer Creator tool, for example, ``rocm-rel-6.4`` or ``rocm-rel-6.4.1``.
-* ``<distro>``: Linux distribution for the tool, for example, ``ubuntu``, ``ol``, ``rhel``, ``sles``, or ``debian``.
-* ``<distro-version>``: Linux distribution version for the tool, for example, ``22.04`` for Ubuntu or ``9.4`` for RHEL.
+* ``<rocm-version>``: ROCm version number for the ROCm Offline Installer Creator tool, for example, ``rocm-rel-7.0``.
+* ``<distro>``: Linux distribution for the tool, for example, ``ubuntu``, ``ol``, ``rhel``, ``sles``, ``rocky``, or ``debian``.
+* ``<distro-version>``: Linux distribution version for the tool, for example, ``22.04`` for Ubuntu or ``9.6`` for RHEL.
 * ``<creator-package>``: The ROCm Offline Installer Creator package name, for example, ``rocm-offline-creator_1.0.0.60200-3~22.04.run``.
 
 .. note::
 
    For releases that end in ``.0``, do not include the ``.0`` as part of the ``rocm-version`` component.
-   For example, for ROCm 6.4.0, the ``rocm-version`` is ``rocm-rel-6.4``.
+   For example, for ROCm 7.0.0, the ``rocm-version`` is ``rocm-rel-7.0``.
 
-For example, use this command to download ROCm 6.4.3 of the Offline Installer Creator 
+For example, use this command to download ROCm 7.0 of the Offline Installer Creator 
 for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-6.4.3/ubuntu/22.04/rocm-offline-creator_1.0.11.60403-2~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-7.0/ubuntu/22.04/rocm-offline-creator_1.0.11.60403-2~22.04.run
 
 Installer Creation
 ================================================
@@ -257,7 +265,7 @@ components are integrated into the resulting installer.
 * **ROCm Version**
 
   If **Install ROCm** is enabled, select a specific version of ROCm using the **ROCm 
-  Version** sub-menu. ROCm version 6.0 and later are available for selection. 
+  Version** sub-menu. ROCm version 6.0.2 and later are available for selection. 
   All ROCm components are based on this version of ROCm.  
 
   .. note::
@@ -279,7 +287,7 @@ components are integrated into the resulting installer.
 
   Depending on the ROCm version selected, two types of ROCm components or use cases can be used:
 
-  *  Legacy use cases (for ROCm 6.0 to 6.4.1)
+  *  Legacy use cases (for ROCm 6.0.2 to 6.4.1)
   *  Meta packages (for ROCm 6.4.2 and later)
 
   The legacy use cases are shown in the following screenshot:
@@ -306,8 +314,8 @@ Driver Options menu
 
 Use the **Driver Options** menu to optionally include the AMDGPU driver in the 
 offline installer. If driver installation is included, an AMDGPU driver based on a specific ROCm version 
-is integrated into the installer. In addition, the installer can configure several post-installation driver 
-options for offline installation.
+is integrated into the installer. In addition, the installer can configure several post-installation 
+and advanced driver options for offline installation.
 
 .. image:: ../data/how-to/rocm-offline-installer-4-driver-options.png
    :width: 800
@@ -365,6 +373,33 @@ of the following post-installation driver options:
 
      If this option is selected, the **Blacklist amdgpu driver on install** option is not
      available for use in the offline installer.
+
+.. _advanced-driver-label:
+
+Advanced driver options
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+AMDGPU driver offline installer creation provides advanced options for modifying requirements
+and settings for the driver installation. The advanced options are selected using the **<ADVANCED>** sub-menu.
+
+.. image:: ../data/how-to/rocm-offline-installer-4b-driver-advanced-options.png
+   :width: 800
+   :alt: The Advanced Driver Options menu for the Offline Installer Creator 
+
+* **Kernel version** (Ubuntu only)
+  
+  Enabling driver installation for the offline installer creation requires knowing the Linux kernel version of the target system.
+  By default, the host system kernel version is used when creating a driver offline installer package.
+  However, by using the **Kernel version** option in the **Advanced Driver** options, you can manually change the kernel version 
+  and set a specific kernel version to match the target system kernel for the driver offline installation.
+  This lets you create an offline installer package for a different kernel version than the one
+  installed and running on the host system. For example, if the host system uses Ubuntu 22.04 with the ``6.8.0-40-generic`` kernel,
+  an offline installer package for Ubuntu 22.04 with the ``6.8.0-65-generic`` kernel can be created.
+  When a specific kernel version is provided in the **Kernel version** field, the offline creator checks if the kernel version is available.
+
+  .. caution::
+
+     This option is intended for advanced users familiar with Linux kernel modules.
 
 .. _extra-packages-label:
 
@@ -492,6 +527,8 @@ Follow these steps to create an offline installer:
       select the ROCm release version from the sub-menu.
    d. Configure the post-installation driver options, including **Blacklist 
       amdgpu driver** and **Start amdgpu driver on install**.
+   e. If the driver offline install requires a different target Linux kernel version from the host system creating the installer,
+      set the advanced driver options using the **<ADVANCED>** sub-menu (Ubuntu only).
 
    .. note::
 
@@ -727,6 +764,7 @@ Tests are available for these ROCm versions:
 *  6.2.x
 *  6.3.x
 *  6.4.x
+*  7.0.x
 
 Tests are available for the following component combinations:
 
@@ -774,7 +812,7 @@ From the build location of the offline tool, run the following command:
 
    ctest
 
-This suite runs 111 tests.
+This suite runs 86 tests.
 
 The following tests are available, depending on the ROCm version:
 
@@ -787,6 +825,7 @@ The following tests are available, depending on the ROCm version:
    "6.2.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "6.3.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "6.4.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
+   "7.0.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
 
 .. note::
    
@@ -804,7 +843,7 @@ From the build location of the offline tool, run the following command:
 
    ctest -L <rocm-version> 
 
-where ``<rocm-version>`` is one of ``6.0.2``, ``6.1.x``, ``6.2.x``, ``6.3.x``, or ``6.4.x``.
+where ``<rocm-version>`` is one of ``6.0.2``, ``6.1.x``, ``6.2.x``, ``6.3.x``, ``6.4.x``, or ``7.0.x``.
  
 Running manual tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
