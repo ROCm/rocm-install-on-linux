@@ -511,7 +511,8 @@ Installing ROCm components using Spack
           5.7.0    https://github.com/ROCm/MIVisionX/archive/rocm-5.7.0.tar.gz
 
       Deprecated versions:
-          None
+          5.6.1    https://github.com/ROCm/MIVisionX/archive/rocm-5.6.1.tar.gz
+          5.6.0    https://github.com/ROCm/MIVisionX/archive/rocm-5.6.0.tar.gz
 
       Variants:
           add_tests [false]           false, true
@@ -597,18 +598,18 @@ You can create an environment with all the required components of your version.
    .. code-block:: yaml
 
       spack:
-      concretization: separately
-      packages:
-      all:
-      compiler: [gcc@8.5.0]
-      specs:
-      - matrix:
-      - ['%gcc@8.5.0\^cmake@3.19.7']
-      - [rocm-cmake@6.4.3, rocm-dbgapi@6.4.3, rocm-debug-agent@6.4.3, rocm-gdb@6.4.3,
-        rocminfo@6.4.3, rocm-opencl@6.4.3, rocm-smi-lib@6.4.3, rocm-tensile@6.4.3, rocm-validation-suite@6.4.3,
-        rocprim@6.4.3, rocprofiler-dev@6.4.3, rocrand@6.4.3, rocsolver@6.4.3, rocsparse@6.4.3,
-        rocthrust@6.4.3, roctracer-dev@6.4.3]
-      view: true
+        concretization: separately
+        packages:
+          all:
+            compiler: [gcc@8.5.0]
+        specs:
+        - matrix:
+          - ['%gcc@8.5.0^cmake@3.19.7']
+          - [rocm-cmake@6.4.3, rocm-dbgapi@6.4.3, rocm-debug-agent@6.4.3, rocm-gdb@6.4.3,
+            rocminfo@6.4.3, rocm-opencl@6.4.3, rocm-smi-lib@6.4.3, rocm-tensile@6.4.3, rocm-validation-suite@6.4.3,
+            rocprim@6.4.3, rocprofiler-dev@6.4.3, rocrand@6.4.3, rocsolver@6.4.3, rocsparse@6.4.3,
+            rocthrust@6.4.3, roctracer-dev@6.4.3]
+        view: true
 
 3. Once you've created the ``.yaml`` file, you can use it to create an environment.
 
