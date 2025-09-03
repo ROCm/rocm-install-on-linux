@@ -509,10 +509,9 @@ Installing ROCm components using Spack
       Homepage: https://github.com/ROCm/MIVisionX
 
       Preferred version:
-          6.4.2    https://github.com/ROCm/MIVisionX/archive/rocm-6.4.3.tar.gz
+          6.4.2    https://github.com/ROCm/MIVisionX/archive/rocm-6.4.2.tar.gz
 
       Safe versions:
-          6.4.2    https://github.com/ROCm/MIVisionX/archive/rocm-6.4.3.tar.gz
           6.4.2    https://github.com/ROCm/MIVisionX/archive/rocm-6.4.2.tar.gz
           6.4.1    https://github.com/ROCm/MIVisionX/archive/rocm-6.4.1.tar.gz
           6.4.0    https://github.com/ROCm/MIVisionX/archive/rocm-6.4.0.tar.gz
@@ -628,10 +627,10 @@ You can create an environment with all the required components of your version.
         specs:
         - matrix:
           - ['%gcc@8.5.0^cmake@3.19.7']
-          - [rocm-cmake@6.4.2, rocm-dbgapi@6.4.3, rocm-debug-agent@6.4.3, rocm-gdb@6.4.3,
-            rocminfo@6.4.2, rocm-opencl@6.4.3, rocm-smi-lib@6.4.3, rocm-tensile@6.4.3, rocm-validation-suite@6.4.3,
-            rocprim@6.4.2, rocprofiler-dev@6.4.3, rocrand@6.4.3, rocsolver@6.4.3, rocsparse@6.4.3,
-            rocthrust@6.4.2, roctracer-dev@6.4.3]
+          - [rocm-cmake@6.4.2, rocm-dbgapi@6.4.2, rocm-debug-agent@6.4.2, rocm-gdb@6.4.2,
+            rocminfo@6.4.2, rocm-opencl@6.4.2, rocm-smi-lib@6.4.2, rocm-tensile@6.4.2, rocm-validation-suite@6.4.2,
+            rocprim@6.4.2, rocprofiler-dev@6.4.2, rocrand@6.4.2, rocsolver@6.4.2, rocsparse@6.4.2,
+            rocthrust@6.4.2, roctracer-dev@6.4.2]
         view: true
 
 3. Once you've created the ``.yaml`` file, you can use it to create an environment.
