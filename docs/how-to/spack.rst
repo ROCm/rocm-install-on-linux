@@ -96,6 +96,10 @@ Building ROCm components using Spack
 ROCm packages in Spack
 ===================================================
 
+.. note::
+  The supported ROCm components and their versions listed below were accurate as of the time of initial ROCm release. For the most up-to-date information, see the latest version of this information at `ROCm packages in Spack <https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/spack.html#rocm-packages-in-spack>`_.
+
+
 .. list-table::
    :header-rows: 1
 
@@ -106,37 +110,37 @@ ROCm packages in Spack
 
    * - AMD SMI
      - ``amdsmi``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - aqlprofile
      - ``aqlprofile``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - comgr
      - ``comgr``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - Composable Kernel
      - ``composable-kernel``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - devicelibs
      - ``rocm-device-libs``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - HIP (hip_in_vdi)
      - ``hip``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - hipBLAS
      - ``hipblas``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - hipBLASLt
@@ -151,37 +155,37 @@ ROCm packages in Spack
 
    * - hipCUB
      - ``hipcub``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - hipFFT
      - ``hipfft``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - hipfort
      - ``hipfort``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - HIPIFY
      - ``hipify-clang``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - hipRAND
      - ``hiprand``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - hipSOLVER
      - ``hipsolver``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - hipSPARSE
      - ``hipsparse``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - hipSPARSELt
@@ -201,37 +205,37 @@ ROCm packages in Spack
 
    * - lightning
      - ``llvm-amdgpu``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - MIOpen (HIP)
      - ``miopen-hip``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - MIGraphX
      - ``migraphx``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - MIVisionX
      - ``mivisionx``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - OpenCL
      - ``rocm-opencl``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - openmp-extras
      - ``rocm-openmp-extras``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - RCCL
      - ``rccl``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - rocAL
@@ -241,17 +245,17 @@ ROCm packages in Spack
 
    * - rocALUTION
      - ``rocalution``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - rocBLAS
      - ``rocblas``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - ROCdbgapi
      - ``rocm-dbgapi``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - rocDecode
@@ -261,7 +265,7 @@ ROCm packages in Spack
 
    * - rocFFT
      - ``rocfft``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - rocJPEG
@@ -271,12 +275,12 @@ ROCm packages in Spack
 
    * - rocm-core
      - ``rocm-core``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - rocminfo
      - ``rocminfo``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - rocMLIR
@@ -286,12 +290,12 @@ ROCm packages in Spack
 
    * - ROCm Bandwidth Test
      - ``rocm-bandwidth-test``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - rocm-cmake
      - ``rocm-cmake``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - ROCm Compute Profiler
@@ -302,17 +306,17 @@ ROCm packages in Spack
 
    * - ROCm Data Center Tool (RDC)
      - ``rdc``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - ROCm Debug Agent
      - ``rocm-debug-agent``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - ROCm Debugger (ROCgdb)
      - ``rocm-gdb``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - ROCm Examples
@@ -322,7 +326,7 @@ ROCm packages in Spack
 
    * - ROCm SMI Library
      - ``rocm-smi-lib``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - ROCm Systems Profiler
@@ -332,17 +336,17 @@ ROCm packages in Spack
 
    * - ROCm Validation Suite
      - ``rocm-validation-suite``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - rocPRIM
      - ``rocprim``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - ROCProfiler
      - ``rocprofiler-dev``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - rocprofiler-register
@@ -362,47 +366,47 @@ ROCm packages in Spack
 
    * - rocRAND
      - ``rocrand``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - ROCr Runtime
      - ``hsa-rocr-dev``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - rocSHMEM
      - ``rocshmem``
-     - 6.4.0
+     - 6.4.1
      - 6.4.1
 
    * - rocSOLVER
      - ``rocsolver``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - rocSPARSE
      - ``rocsparse``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - rocThrust
      - ``rocthrust``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - ROCTracer
      - ``roctracer-dev``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - roctracer-dev-api
      - ``roctracer-dev-api``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - rocWMMA
      - ``rocwmma``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - ROCm Performance Primitives (RPP)
@@ -412,7 +416,7 @@ ROCm packages in Spack
 
    * - Tensile
      - ``rocm-tensile``
-     - 5.5.0
+     - 5.6.0
      - 6.4.1
 
    * - TransferBench
@@ -420,30 +424,10 @@ ROCm packages in Spack
      - 6.3.0
      - 6.4.1
 
-   * - atmi
-     - ``atmi``
-     - 5.5.0
-     - 5.5.1 (final)
-
    * - clang-ocl
      - ``rocm-clang-ocl``
-     - 5.5.0
+     - 5.6.0
      - 6.1.2 (final)
-
-   * - mlirmiopen
-     - ``mlirmiopen``
-     - 5.3.0
-     - 5.4.0 (deprecated)
-
-   * - MIOpen (GEMM)
-     - ``miopengemm``
-     - 5.5.0
-     - 5.5.1 (final)
-
-   * - MIOpen (OpenCL)
-     - ``miopen-opencl``
-     - 5.5.0
-     - 5.5.1 (final)
 
    * - Omniperf
      - ``omniperf``
@@ -455,14 +439,9 @@ ROCm packages in Spack
      - rocm-6.2.0
      - rocm-6.3.0 (final)
 
-   * - rocclr (vdi)
-     - ``hip-rocclr``
-     - 5.5.0
-     - 5.6.1 (final)
-
    * - ROCT Thunk Interface
      - ``hsakmt-roct``
-     - 5.5.0
+     - 5.6.0
      - 6.2.4 (final)
 
 Installing ROCm components using Spack
@@ -528,16 +507,10 @@ Installing ROCm components using Spack
           6.0.0    https://github.com/ROCm/MIVisionX/archive/rocm-6.0.0.tar.gz
           5.7.1    https://github.com/ROCm/MIVisionX/archive/rocm-5.7.1.tar.gz
           5.7.0    https://github.com/ROCm/MIVisionX/archive/rocm-5.7.0.tar.gz
-          5.6.1    https://github.com/ROCm/MIVisionX/archive/rocm-5.6.1.tar.gz
-          5.6.0    https://github.com/ROCm/MIVisionX/archive/rocm-5.6.0.tar.gz
-          5.5.1    https://github.com/ROCm/MIVisionX/archive/rocm-5.5.1.tar.gz
-          5.5.0    https://github.com/ROCm/MIVisionX/archive/rocm-5.5.0.tar.gz
 
       Deprecated versions:
-          5.4.3    https://github.com/ROCm/MIVisionX/archive/rocm-5.4.3.tar.gz
-          5.4.0    https://github.com/ROCm/MIVisionX/archive/rocm-5.4.0.tar.gz
-          5.3.3    https://github.com/ROCm/MIVisionX/archive/rocm-5.3.3.tar.gz
-          5.3.0    https://github.com/ROCm/MIVisionX/archive/rocm-5.3.0.tar.gz
+          5.6.1    https://github.com/ROCm/MIVisionX/archive/rocm-5.6.1.tar.gz
+          5.6.0    https://github.com/ROCm/MIVisionX/archive/rocm-5.6.0.tar.gz
 
       Variants:
           add_tests [false]           false, true
@@ -548,8 +521,6 @@ Installing ROCm components using Spack
               Build systems supported by the package
           hip [true]                  false, true
               Use HIP as backend
-          opencl [false]              false, true
-              Use OPENCL as the backend
 
           when build_system=cmake
             build_type [Release]      Debug, MinSizeRel, RelWithDebInfo, Release
@@ -562,15 +533,13 @@ Installing ROCm components using Spack
                 CMake interprocedural optimization
 
       Build Dependencies:
-          cmake   hip            miopen-hip     opencv     py-google-api-python-client  py-pytz        rapidjson
-          cxx     libjpeg-turbo  miopen-opencl  openssl    py-numpy                     py-setuptools  rocm-core
-          ffmpeg  lmdb           miopengemm     protobuf   py-protobuf                  py-wheel       rocm-opencl
-          gmake   migraphx       ninja          py-future  py-pybind11                  python         rpp
+          cmake   gmake          lmdb        ninja    protobuf                     py-numpy     py-pytz        python     rpp
+          cxx     hip            migraphx    opencv   py-future                    py-protobuf  py-setuptools  rapidjson
+          ffmpeg  libjpeg-turbo  miopen-hip  openssl  py-google-api-python-client  py-pybind11  py-wheel       rocm-core
 
       Link Dependencies:
-          hip       miopen-hip     openssl                      py-numpy     py-setuptools  rocm-core
-          lmdb      miopen-opencl  py-future                    py-pybind11  py-wheel       rocm-opencl
-          migraphx  miopengemm     py-google-api-python-client  py-pytz      rapidjson      rpp
+          hip   migraphx    openssl    py-google-api-python-client  py-pybind11  py-setuptools  rapidjson  rpp
+          lmdb  miopen-hip  py-future  py-numpy                     py-pytz      py-wheel       rocm-core
 
       Run Dependencies:
           py-protobuf
