@@ -5,6 +5,7 @@ BooksCorpus
 br
 Broadcom
 clinfo
+conda
 CTest
 checkboxes
 DDA
