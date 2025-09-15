@@ -111,9 +111,9 @@ your operating system to ensure you're able to download and install packages.
 Update your Enterprise Linux
 ==========================================================
 
-If you are using Red Hat Enterprise Linux (RHEL) or SUSE Linux Enterprise Servers (SLES), Oracle Linux (OL), or Rocky Linux, 
+If you are using Red Hat Enterprise Linux (RHEL), SUSE Linux Enterprise Servers (SLES), or Oracle Linux (OL), 
 it is recommended that you update your operating system to the latest packages from the Linux distribution.
-This is a requirement for newer hardware on older versions of RHEL, SLES, OL, or Rocky Linux.
+This is a requirement for newer hardware on older versions of RHEL, SLES, or OL.
 
 .. datatemplate:nodata::
 
