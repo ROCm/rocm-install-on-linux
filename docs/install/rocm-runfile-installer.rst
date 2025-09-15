@@ -887,7 +887,7 @@ At the command line, add one or more of the post-installation options to the ``<
 
    .. code-block:: shell
 
-	   bash rocm-installer.run target="/home/amd/myrocm/rocm-7.0" postrocm
+	   bash rocm-installer.run target="/home/amd/myrocm/rocm-7.0.0" postrocm
 
    .. note::
 
