@@ -76,6 +76,10 @@ subtrees:
       title: Megablocks
     - file: install/3rd-party/taichi-install
       title: Taichi
+    - file: install/3rd-party/ray-install
+      title: Ray
+    - file: install/3rd-party/llama-cpp-install
+      title: llama.cpp
 
 - caption: How to
   entries:

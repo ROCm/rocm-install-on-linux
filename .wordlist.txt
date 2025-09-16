@@ -5,6 +5,8 @@ BooksCorpus
 br
 Broadcom
 clinfo
+cli
+conda
 CTest
 checkboxes
 DDA
@@ -16,13 +18,15 @@ dkms
 dmesg
 dropless
 DRM
-EZXI
+entrypoints
 fw
 FW
 FWDEV
 gpt
 GRE
 GRPO
+hipBlas
+hipBlasLt
 hostname
 hotplug
 IFWI
@@ -33,6 +37,7 @@ json
 KMD
 MACVTAP
 megablocks
+microarchitectures
 MoEs
 MSRs
 OL
