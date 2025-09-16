@@ -41,6 +41,7 @@ microarchitectures
 MoEs
 MSRs
 OL
+ol
 Packageless
 pci
 PLX
@@ -67,11 +68,13 @@ tbody
 td
 thead
 TensorFlowVersion
+untar
 vCPU
 verl
 vfio
 VFIO
 vhost
+VMware
 whl
 ub
 udev

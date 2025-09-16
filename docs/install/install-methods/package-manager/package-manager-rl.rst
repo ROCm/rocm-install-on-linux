@@ -1,10 +1,10 @@
 .. meta::
-  :description: Azure Linux native installation
-  :keywords: ROCm install, installation instructions, AZL, Azure Linux native installation,
+  :description: Rocky Linux native installation
+  :keywords: ROCm install, installation instructions, Rocky Linux, Rocky Linux native installation,
     AMD, ROCm
 
 **********************************************************************************************
-Azure Linux native installation
+Rocky Linux native installation
 **********************************************************************************************
 
 .. caution::
@@ -15,7 +15,7 @@ Azure Linux native installation
 
     The following installation steps also apply when upgrading from a previous ROCm version.
 
-.. _azl-register-repo:
+.. _rl-register-repo:
 
 Registering ROCm repositories
 =====================================================
@@ -23,10 +23,11 @@ Registering ROCm repositories
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for os_version in config.html_context['azl_version_numbers'] %}
+
+        {% for os_version in config.html_context['rl_version_numbers'] %}
         {% set os_major, _  = os_version.split('.') %}
-        .. tab-item:: AZL {{ os_version }}
-            :sync: azl-{{ os_version }}
+        .. tab-item:: Rocky {{ os_version }}
+            :sync: rl-{{ os_version }}
 
             .. code-block:: bash
                 :substitutions:
@@ -34,34 +35,42 @@ Registering ROCm repositories
                 sudo tee /etc/yum.repos.d/rocm.repo <<EOF
                 [rocm]
                 name=ROCm |rocm_major_version| repository
-                baseurl=https://repo.radeon.com/rocm/azurelinux{{ os_major }}/|rocm_major_version|/main/
+                baseurl=https://repo.radeon.com/rocm/el{{ os_major }}/|rocm_major_version|/main
                 enabled=1
+                priority=50
                 gpgcheck=1
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+
+                [amdgraphics]
+                name=AMD Graphics |rocm_major_version| repository
+                baseurl=https://repo.radeon.com/graphics/|rocm_major_version|/el/{{ os_version }}/main/x86_64/
+                enabled=1
+                priority=50
+                gpgcheck=1
+                gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key                
                 EOF
-                sudo tdnf clean all
+                sudo dnf clean all
         {% endfor %}
 
-.. _azl-install:
+.. _rl-install:
 
 Installing
 =====================================================
 
 .. code-block:: bash
 
-    sudo tdnf install rocm
+    sudo dnf install rocm
 
 .. include:: ../includes/meta-package-table.rst
 
-
-.. _azl-post-install:
+.. _rl-post-install:
 
 Post-installation
 =====================================================
 
 Complete the :doc:`../../post-install`.
 
-.. _azl-package-manager-uninstall:
+.. _rl-package-manager-uninstall:
 
 Uninstalling
 =====================================================
@@ -70,21 +79,19 @@ Uninstall ROCm meta packages
 ---------------------------------------------------------------------------
 
 .. code-block:: bash
+    :substitutions:
 
-    sudo tdnf remove rocm
-    sudo tdnf remove rocm-core
+    sudo dnf remove rocm
+    sudo dnf remove rocm-core amdgpu-core
 
 Remove ROCm repositories
 ---------------------------------------------------------------------------
 
 .. code-block:: bash
-
-    # Remove the repositories
-    sudo rm /etc/yum.repos.d/rocm.repo*
-
+    
     # Clear the cache and clean the system
-    sudo rm -rf /var/cache/tdnf
-    sudo tdnf clean all
+    sudo rm -rf /var/cache/dnf
+    sudo dnf clean all
 
 .. Important::
 
@@ -92,4 +99,4 @@ Remove ROCm repositories
 
 .. note::
 
-    For information about the AMDGPU driver installation, see the `Azure Linux native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-azl.html>`_ in the AMD Instinct Data Center GPU Documentation.
+    For information about the AMDGPU driver installation, see the `Rocky Linux native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-rl.html>`_ in the AMD Instinct Data Center GPU Documentation.

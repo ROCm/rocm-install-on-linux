@@ -33,13 +33,25 @@ Registering ROCm repositories
                 :substitutions:
 
                 sudo tee /etc/yum.repos.d/rocm.repo <<EOF
-                [ROCm-|rocm_version|]
-                name=ROCm|rocm_version|
-                baseurl=https://repo.radeon.com/rocm/el{{ os_major }}/|rocm_version|/main
+                [rocm]
+                name=ROCm |rocm_major_version| repository
+                baseurl=https://repo.radeon.com/rocm/el{{ os_major }}/|rocm_major_version|/main
                 enabled=1
                 priority=50
                 gpgcheck=1
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+
+                [amdgraphics]
+                name=AMD Graphics |rocm_major_version| repository
+                {% if os_major == '10' -%}
+                baseurl=https://repo.radeon.com/graphics/|rocm_major_version|/el/{{ os_major }}/main/x86_64/
+                {%- else -%}
+                baseurl=https://repo.radeon.com/graphics/|rocm_major_version|/el/{{ os_version }}/main/x86_64/
+                {%- endif %}
+                enabled=1
+                priority=50
+                gpgcheck=1
+                gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key                
                 EOF
                 sudo dnf clean all
         {% endfor %}
@@ -88,8 +100,9 @@ Remove ROCm repositories
     sudo rm -rf /var/cache/dnf
     sudo dnf clean all
 
-    # Restart the system
-    sudo reboot
+.. Important::
+
+    To apply all settings, reboot your system.
 
 .. note::
 

@@ -24,9 +24,9 @@ Before installing ROCm, complete the following prerequisites.
 
             x86_64
             DISTRIB_ID=Ubuntu
-            DISTRIB_RELEASE=20.04
-            DISTRIB_CODENAME=focal
-            DISTRIB_DESCRIPTION="Ubuntu 20.04.5 LTS"
+            DISTRIB_RELEASE=24.04
+            DISTRIB_CODENAME=noble
+            DISTRIB_DESCRIPTION="Ubuntu 24.04.2 LTS"
 
 .. _verify_kernel_version:
 
@@ -42,7 +42,7 @@ Before installing ROCm, complete the following prerequisites.
 
      .. code-block:: shell
 
-            Linux 5.15.0-46-generic #44~20.04.5-Ubuntu SMP Fri Jun 24 13:27:29 UTC 2022 x86_64
+            Linux 6.8.0-50-generic #51-Ubuntu SMP PREEMPT_DYNAMIC Sat Nov  9 17:58:29 UTC 2024 x86_64
 
    * Confirm that your kernel version matches the system requirements, as listed in :ref:`supported_distributions`.
 
@@ -101,14 +101,19 @@ your operating system to ensure you're able to download and install packages.
 
         There is no registration required for Azure Linux.
 
+  .. tab-item:: Rocky Linux
+        :sync: rl-tab
+
+        There is no registration required for Rocky Linux.
+
 .. _update-enterprise-linux:
 
 Update your Enterprise Linux
 ==========================================================
 
-If you are using Red Hat Enterprise Linux (RHEL) or SUSE Linux Enterprise Servers (SLES), or Oracle Linux, 
+If you are using Red Hat Enterprise Linux (RHEL), SUSE Linux Enterprise Servers (SLES), or Oracle Linux (OL), 
 it is recommended that you update your operating system to the latest packages from the Linux distribution.
-This is a requirement for newer hardware on older versions of RHEL, SLES or OL.
+This is a requirement for newer hardware on older versions of RHEL, SLES, or OL.
 
 .. datatemplate:nodata::
 
@@ -165,6 +170,11 @@ This is a requirement for newer hardware on older versions of RHEL, SLES or OL.
             :sync: azl-tab
 
             There is no update required for Azure Linux.
+
+        .. tab-item:: Rocky Linux
+            :sync: rl-tab
+
+            There is no update required for Rocky Linux.
 
 .. important::
 
@@ -293,6 +303,36 @@ instructions specific to your distribution to add the necessary repositories.
 
                 {% endfor %}
 
+    .. tab-item:: Rocky Linux
+        :sync: rl-tab
+
+        1. Add the EPEL repository.
+
+           .. datatemplate:nodata::
+
+               .. tab-set::
+
+                  {% for os_version in config.html_context['rl_version_numbers'] %}
+                  {% set os_major, _  = os_version.split('.') %}
+
+                      .. tab-item:: {{ os_version }}
+
+                        .. code-block:: shell
+
+                            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
+                            sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
+
+                  {% endfor %}
+
+        2. Enable the CodeReady Linux Builder (CRB) repository.
+
+           In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
+
+           .. code-block:: shell
+
+               sudo dnf install dnf-plugin-config-manager
+               sudo crb enable
+
 .. _additional_dev_packages:
 
 Additional development packages
@@ -347,6 +387,14 @@ To install the required packages, use the following instructions specific to you
 
             sudo tdnf install python3-setuptools python3-wheel
 
+    .. tab-item:: Rocky Linux
+        :sync: rl-tab
+
+        .. code-block:: shell
+
+            sudo dnf install python3-setuptools python3-wheel
+
+
 Optionally, if configuring the :ref:`post-ROCm installation <config_rocm_path>` using ``environment-modules``, install the following:
 
 .. tab-set::
@@ -398,6 +446,13 @@ Optionally, if configuring the :ref:`post-ROCm installation <config_rocm_path>` 
 
             sudo tdnf install environment-modules
 
+    .. tab-item:: Rocky Linux
+        :sync: rl-tab
+
+        .. code-block:: shell
+
+            sudo dnf install environment-modules
+
 .. _group_permissions:
 
 Configuring permissions for GPU access
@@ -407,7 +462,7 @@ There are two primary methods to configure GPU access for ROCm: group membership
 udev rules. Each method has its own advantages, and the choice depends on your 
 specific requirements and system management preferences.
 
-Using group membership
+1. Using group membership
 --------------------------------------------------------------------
 
 By default, GPU access is managed through membership in the ``video`` and ``render`` groups.
@@ -427,49 +482,152 @@ through Direct Rendering Manager (DRM) render nodes.
 
    .. code-block:: shell
 
-      sudo usermod -a -G video,render $LOGNAME
+       sudo usermod -a -G video,render $LOGNAME
 
 3. Optionally, add other users to the ``video`` and ``render`` groups:
 
    .. code-block:: shell
 
-      sudo usermod -a -G video,render user1
-      sudo usermod -a -G video,render user2
+       sudo usermod -a -G video,render user1
+       sudo usermod -a -G video,render user2
 
 4. To add all future users to the render and video groups by default, run the following commands:
 
    .. code-block:: shell
 
-      echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
-      echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
-      echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
+       echo 'ADD_EXTRA_GROUPS=1' | sudo tee -a /etc/adduser.conf
+       echo 'EXTRA_GROUPS=video' | sudo tee -a /etc/adduser.conf
+       echo 'EXTRA_GROUPS=render' | sudo tee -a /etc/adduser.conf
 
-Using udev rules
+2. Using udev rules
 --------------------------------------------------------------------
+
 A flexible way to manage device permissions is to use udev rules. They apply system-wide, can be 
 easily deployed via configuration management tools, and eliminate the need for user group management. 
-This method provides more granular control over GPU access.
+This method provides more granular control over GPU access. 
+   
+GPU access may be granted to either all users or a custom group:
 
-Grant GPU access to all users on the system
+a. Grant GPU access to all users on the system
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Create a new file ``/etc/udev/rules.d/70-amdgpu.rules`` with the following content:
+To set up udev rules, install the package using the following instructions specific to your distribution: 
 
-   .. code-block:: shell
+.. datatemplate:nodata::
 
-      KERNEL=="kfd", MODE="0666"
-      SUBSYSTEM=="drm", KERNEL=="renderD*", MODE="0666"
+    .. tab-set::
 
-2. Reload the udev rules:
+        .. tab-item:: Ubuntu
+            :sync: ubuntu-tab
 
-   .. code-block:: shell
+            .. tab-set::
 
-      sudo udevadm control --reload-rules && sudo udevadm trigger
+                {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
 
-This configuration grants all users read and write access to AMD GPU resources, 
-including the AMD Kernel-mode GPU Driver (KMD) and Direct Rendering Manager (DRM) devices.
+                   .. code-block:: bash
+                       :substitutions:
 
-Grant GPU access to a custom group
+                       sudo apt update 
+                       wget https://repo.radeon.com/amdgpu/|rocm_major_version|/ubuntu/pool/main/a/amdgpu-insecure-instinct-udev-rules/amdgpu-insecure-instinct-udev-rules_30.10.0.0-2204008.{{ os_version }}_all.deb 
+                       sudo apt install ./amdgpu-insecure-instinct-udev-rules_30.10.0.0-2204008.{{ os_version }}_all.deb 
+                {% endfor %}
+        
+        .. tab-item:: Debian
+            :sync: debian-tab
+
+            .. tab-set::
+
+                {% for (os_version, os_release) in config.html_context['debian_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo apt update 
+                       wget https://repo.radeon.com/amdgpu/|rocm_major_version|/ubuntu/pool/main/a/amdgpu-insecure-instinct-udev-rules/amdgpu-insecure-instinct-udev-rules_30.10.0.0-2204008.22.04_all.deb 
+                       sudo apt install ./amdgpu-insecure-instinct-udev-rules_30.10.0.0-2204008.22.04_all.deb 
+                {% endfor %}
+
+        .. tab-item:: Red Hat Enterprise Linux
+            :sync: rhel-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['rhel_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf install https://repo.radeon.com/amdgpu/|rocm_major_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-30.10.0.0-2204008.el{{ os_major }}.noarch.rpm
+                {% endfor %}
+
+        .. tab-item:: Oracle Linux
+            :sync: ol-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['ol_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf install https://repo.radeon.com/amdgpu/|rocm_major_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-30.10.0.0-2204008.el{{ os_major }}.noarch.rpm 
+                {% endfor %}
+
+        .. tab-item:: SUSE Linux Enterprise Server
+            :sync: sle-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['sles_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo zypper –-no-gpg-checks install https://repo.radeon.com/amdgpu/|rocm_major_version|/sle/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-30.10.0.0-2204008.noarch.rpm 
+
+                {% endfor %}
+
+        .. tab-item:: Azure Linux
+            :sync: azl-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['azl_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo tee /etc/udev/rules.d/70-amdgpu.rules <<EOF
+                       KERNEL=="kfd", MODE="0666"
+                       SUBSYSTEM=="drm", KERNEL=="renderD*", MODE="0666"
+                       EOF
+                       sudo udevadm control --reload-rules && sudo udevadm trigger
+                {% endfor %}
+
+        .. tab-item:: Rocky Linux
+            :sync: rl-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['rl_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf install https://repo.radeon.com/amdgpu/|rocm_major_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-30.10.0.0-2204008.el{{ os_major }}.noarch.rpm 
+                {% endfor %}
+
+b. Grant GPU access to a custom group
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Create a new group (e.g., ``devteam``):
