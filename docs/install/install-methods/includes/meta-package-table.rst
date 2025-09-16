@@ -15,11 +15,11 @@ ROCm runtime packages
   :header: Meta package; Description; Legacy use case [#legacy]_
 
     ``rocm``; All ROCm core packages, tools, and libraries.; ``rocm``
-    ``rocm-language-runtime``; ROCm runtime environment for running applications on the AMD platform.; ``lrt``
-    ``rocm-hip-runtime``; Run HIP applications written for the AMD platform.; ``hip``
     ``rocm-hip-libraries``; HIP libraries optimized for the AMD platform.; Legacy use case does not exist.
+    ``rocm-hip-runtime``; Run HIP applications written for the AMD platform.; ``hip``
+    ``rocm-language-runtime``; ROCm runtime environment for running applications on the AMD platform.; ``lrt``
+    ``rocm-ml-libraries``; Key machine learning libraries. Includes MIOpen.; ``mllib``
     ``rocm-opencl-runtime``; Run OpenCL-based applications on the AMD platform.; ``opencl``
-    ``rocm-ml-libraries``; Key machine learning libraries. Includes MIOpen.; ``mllib`` 
     ;;
     **Other packages**;
     ``amdgpu-lib``; For users of graphics applications which require the open source Mesa 3D graphics and multimedia libraries. This package is primarily used for Radeon GPUs.; ``graphics``
@@ -38,9 +38,9 @@ ROCm developer packages
     ``rocm-developer-tools``; Debug and profile HIP applications.; ``rocmdevtools``
     ``rocm-hip-runtime-devel``; Develop applications on HIP or port from CUDA.; Legacy use case does not exist.
     ``rocm-hip-sdk``; Develop or port HIP applications and libraries for the AMD platform.; ``hiplibsdk``
+    ``rocm-ml-sdk``; Develop and run machine learning applications for AMD.; ``mlsdk``
     ``rocm-opencl-sdk``; Develop OpenCL-based applications for the AMD platform.; ``openclsdk``
     ``rocm-openmp-sdk``; Develop OpenMP-based applications for the AMD software.; ``openmpsdk``
-    ``rocm-ml-sdk``; Develop and run machine learning applications for AMD.; ``mlsdk``
 
 .. rubric:: Footnotes
 

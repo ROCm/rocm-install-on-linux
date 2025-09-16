@@ -53,19 +53,19 @@ Register packages
             .. code-block:: bash
                 :substitutions:
 
-                echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/|rocm_version|/ubuntu {{ os_release }} main" \
-                    | sudo tee /etc/apt/sources.list.d/amdgpu.list
-
                 # Note: There is NO trailing .0 in the patch version for repositories
                 for ver in |rocm_multi_versions|; do
-                echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/$ver {{ os_release }} main" \
-                    | sudo tee --append /etc/apt/sources.list.d/rocm.list
+                sudo tee --append /etc/apt/sources.list.d/rocm.list << EOF
+                deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/$ver {{ os_release }} main
+                EOF
                 done
-                echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
-                    | sudo tee /etc/apt/preferences.d/rocm-pin-600
+
+                sudo tee /etc/apt/preferences.d/rocm-pin-600 << EOF
+                Package: *
+                Pin: release o=repo.radeon.com
+                Pin-Priority: 600
+                EOF
                 sudo apt update
-
-
         {% endfor %}
 
 .. _debian-multi-install:
@@ -99,7 +99,7 @@ Complete the :doc:`../../post-install`.
 .. tip::
 
    For a single-version installation of the latest ROCm version on Debian,
-   use the steps in :ref:`debian-register-repo` and :ref:`debian-install`.
+   follow the steps in :doc:`../package-manager/package-manager-debian` in the ROCm documentation.
 
 .. _debian-multi-uninstall:
 
@@ -133,17 +133,17 @@ Remove ROCm repositories
 
 .. code-block:: bash
 
-    # Remove ROCm and AMDGPU repositories
+    # Remove ROCm repositories
     sudo rm /etc/apt/sources.list.d/rocm.list
-    sudo rm /etc/apt/sources.list.d/amdgpu.list
 
     # Clear the cache and clean the system
     sudo rm -rf /var/cache/apt/*
     sudo apt clean all
     sudo apt update
 
-    # Restart the system
-    sudo reboot
+.. Important::
+
+    To apply all settings, reboot your system.
 
 .. note::
 

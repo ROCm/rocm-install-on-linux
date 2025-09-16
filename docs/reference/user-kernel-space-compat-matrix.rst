@@ -6,18 +6,19 @@
 User and kernel-space support matrix
 *****************************************************************************************
 
-Starting from ROCm™ 6.4.0, forward and backward compatibility between the AMD Kernel-mode GPU Driver (KMD) and its user space software is provided up to a year apart (assuming hardware support is available in both). For earlier ROCm releases, the compatibility is provided for +/- 2 releases. This table shows the compatibility combinations that are currently supported.
+The Instinct Driver is now distributed separately from the ROCm software stack and is stored under in its own location ``/amdgpu/`` in the package repository at `repo.radeon.com <https://repo.radeon.com/amdgpu/>`_. The first release is designated as Instinct Driver version 30.10. See the `ROCm Gets Modular: Meet the Instinct Datacenter GPU Driver <https://rocm.blogs.amd.com/ecosystems-and-partners/instinct-gpu-driver/README.html>`_ blog for more information. Starting from ROCm™ 6.4.0, forward and backward compatibility between the AMD Kernel-mode GPU Driver (KMD) and its user space software is provided up to a year apart (assuming hardware support is available in both). For earlier ROCm releases, the compatibility is provided for +/- 2 releases. This table shows the compatibility combinations that are currently supported.
 
 .. note ::
 
-  The tested user space versions in the following table are accurate as of the time of publication. For the most up-to-date information about AMD Kernel-mode GPU Driver (KMD) and tested user space versions, see the latest version of this table at `User and kernel-space support matrix <https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/user-kernel-space-compat-matrix.html>`_.
+  The supported user space versions in the following table are accurate as of the time of publication. For the most up-to-date information about AMD Kernel-mode GPU Driver (KMD) and supported user space versions, see the latest version of this table at `User and kernel-space support matrix <https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/user-kernel-space-compat-matrix.html>`_.
 
 .. csv-table::
   :widths: 30, 70
-  :header: "KMD", "Tested user space versions"
+  :header: "KMD", "Supported user space versions"
 
-    "6.4.x", "6.1.x, 6.2.x, 6.3.x, 6.4.x"
-    "6.3.x", "6.1.x, 6.2.x, 6.3.x, 6.4.x"
+    "30.10", "6.2.x, 6.3.x, 6.4.x, 7.0.x"
+    "6.4.x", "6.1.x, 6.2.x, 6.3.x, 6.4.x, 7.0.x"
+    "6.3.x", "6.1.x, 6.2.x, 6.3.x, 6.4.x, 7.0.x"
     "6.2.x", "6.0.x, 6.1.x, 6.2.x, 6.3.x, 6.4.x"
     "6.1.x", "5.7.x, 6.0.x, 6.1.x, 6.2.x, 6.3.x, 6.4.x"
     "6.0.x", "5.6.x, 5.7.x, 6.0.x, 6.1.x, 6.2.x"
