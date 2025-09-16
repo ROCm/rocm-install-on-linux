@@ -10,7 +10,7 @@ The Instinct Driver is now distributed separately from the ROCm software stack a
 
 .. note ::
 
-  The supported user space versions in the following table are accurate as of the time of publication. For the most up-to-date information about AMD Kernel-mode GPU Driver (KMD) and tested user space versions, see the latest version of this table at `User and kernel-space support matrix <https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/user-kernel-space-compat-matrix.html>`_.
+  The supported user space versions in the following table are accurate as of the time of publication. For the most up-to-date information about AMD Kernel-mode GPU Driver (KMD) and supported user space versions, see the latest version of this table at `User and kernel-space support matrix <https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/user-kernel-space-compat-matrix.html>`_.
 
 .. csv-table::
   :widths: 30, 70
