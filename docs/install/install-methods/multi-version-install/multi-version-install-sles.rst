@@ -1,20 +1,16 @@
 .. meta::
   :description: Install multiple ROCm versions
-  :keywords: installation instructions, AMD, ROCm, multiple versions, SLES, SUSE Linux Enterprise
+  :keywords: installation instructions, AMD, ROCm, multiple versions, SLES, SUSE Linux Enterprise Server
 
 .. _sles-multi-version_install:
 
-***************************************************
-SUSE Linux Enterprise multi-version installation
-***************************************************
+*********************************************************
+SUSE Linux Enterprise Server multi-version installation
+*********************************************************
 
 .. caution::
 
     Ensure that the :doc:`/install/prerequisites` are met before installing.
-
-.. Note::
-
-    Multi-version installation is only supported for SLES 15.6.
 
 .. _sles-multi-register-rocm:
 
@@ -23,21 +19,27 @@ Registering ROCm repositories
 
 .. datatemplate:nodata::
 
-   .. code-block:: bash
-      :substitutions:
+   .. tab-set::
+      {% for os_version in config.html_context['sles_version_numbers'] %}
+      .. tab-item:: SLES {{ os_version }}
+            :sync: sles-{{ os_version }}
 
-      # Note: There is NO trailing .0 in the patch version for repositories
-      for ver in |rocm_multi_versions|; do
-      sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
-      [ROCm-$ver]
-      name=ROCm$ver
-      baseurl=https://repo.radeon.com/rocm/zyp/$ver/main
-      enabled=1
-      gpgcheck=1
-      gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
-      EOF
-      done
-      sudo zypper refresh
+            .. code-block:: bash
+               :substitutions:
+               
+               # Note: There is NO trailing .0 in the patch version for repositories
+               for ver in |rocm_multi_versions|; do
+               sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
+               [rocm-$ver]
+               name=ROCm $ver repository
+               baseurl=https://repo.radeon.com/rocm/zyp/$ver/main
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+               EOF
+               done
+               sudo zypper refresh
+      {% endfor %}
 
 .. _sles-multi-install:
 
@@ -71,7 +73,7 @@ Complete the :doc:`../../post-install`.
 .. tip::
 
    For a single-version installation of the latest ROCm version on SLES,
-   use the steps in :ref:`sles-register-repo` and :ref:`sles-install`.
+   follow the steps in :doc:`../package-manager/package-manager-sles` in the ROCm documentation.
 
 .. _sles-multi-uninstall:
 
@@ -106,19 +108,20 @@ Remove ROCm repositories
 .. code-block:: bash
    :substitutions:
 
-   # Remove the repositories
+   # Remove ROCm repositories
    # Note: There is NO trailing .0 in the patch version for repositories
    for ver |rocm_multi_versions|; do
-      sudo zypper removerepo "ROCm-$ver"
+      sudo zypper removerepo "rocm-$ver"
    done
    
    # Clear cache and clean system
    sudo zypper clean --all
    sudo zypper refresh
    
-   # Restart the system
-   sudo reboot
+.. Important::
+
+    To apply all settings, reboot your system.
 
 .. note::
 
-    For information about the AMDGPU driver installation, see the `SUSE Linux Enterprise native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-sles.html>`_ in the AMD Instinct Data Center GPU Documentation.
+    For information about the AMDGPU driver installation, see the `SUSE Linux Enterprise Server native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-sles.html>`_ in the AMD Instinct Data Center GPU Documentation.

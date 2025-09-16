@@ -59,10 +59,17 @@ Register packages
                 :substitutions:
 
                 # Register ROCm packages
-                echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/|rocm_version| {{ os_release }} main" \
-                    | sudo tee /etc/apt/sources.list.d/rocm.list
-                echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
-                    | sudo tee /etc/apt/preferences.d/rocm-pin-600
+                sudo tee /etc/apt/sources.list.d/rocm.list << EOF
+                deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/|rocm_major_version| {{ os_release }} main
+                deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/graphics/|rocm_major_version|/ubuntu {{ os_release }} main
+                EOF
+
+                sudo tee /etc/apt/preferences.d/rocm-pin-600 << EOF
+                Package: *
+                Pin: release o=repo.radeon.com
+                Pin-Priority: 600
+                EOF
+
                 sudo apt update
 
         {% endfor %}
@@ -112,8 +119,9 @@ Remove ROCm repositories
     sudo apt clean all
     sudo apt update
 
-    # Restart the system
-    sudo reboot
+.. Important::
+
+    To apply all settings, reboot your system.
 
 .. note::
 

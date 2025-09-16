@@ -23,21 +23,35 @@ Register ROCm repositories
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for os_release in config.html_context['ol_release_version_numbers']  %}
-        .. tab-item:: OL {{ os_release }}
-            :sync: ol-{{ os_release }}
+
+        {% for os_version in config.html_context['ol_version_numbers'] %}
+        {% set os_major, _  = os_version.split('.') %}
+        .. tab-item:: OL {{ os_version }}
+            :sync: ol-{{ os_version }}
 
             .. code-block:: bash
                 :substitutions:
 
                 sudo tee /etc/yum.repos.d/rocm.repo <<EOF
-                [ROCm-|rocm_version|]
-                name=ROCm|rocm_version|
-                baseurl=https://repo.radeon.com/rocm/el{{ os_release }}/|rocm_version|/main
+                [rocm]
+                name=ROCm |rocm_major_version| repository
+                baseurl=https://repo.radeon.com/rocm/el{{ os_major }}/|rocm_major_version|/main
                 enabled=1
                 priority=50
                 gpgcheck=1
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+
+                [amdgraphics]
+                name=AMD Graphics |rocm_major_version| repository
+                {% if os_major == '10' -%}
+                baseurl=https://repo.radeon.com/graphics/|rocm_major_version|/el/{{ os_major }}/main/x86_64/
+                {%- else -%}
+                baseurl=https://repo.radeon.com/graphics/|rocm_major_version|/el/{{ os_version }}/main/x86_64/
+                {%- endif %}
+                enabled=1
+                priority=50
+                gpgcheck=1
+                gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key                
                 EOF
                 sudo dnf clean all
         {% endfor %}
@@ -86,8 +100,9 @@ Remove ROCm repositories
     sudo rm -rf /var/cache/dnf
     sudo dnf clean all
     
-    # Restart the system
-    sudo reboot
+.. Important::
+
+    To apply all settings, reboot your system.
 
 .. note::
 

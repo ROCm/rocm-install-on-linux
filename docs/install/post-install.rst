@@ -122,6 +122,61 @@ If ``update-alternatives`` or ``environment-modules`` are not available on the s
 
    export LD_LIBRARY_PATH=/opt/rocm-|rocm_directory_version|/lib
 
+4. Configure OpenCL
+-----------------------------------------------------
+
+.. tab-set::
+
+  .. tab-item:: Ubuntu
+        :sync: ubuntu-tab
+
+        .. code-block:: bash
+
+            sudo apt install rocm-opencl-runtime
+
+  .. tab-item:: Debian
+        :sync: debian-tab
+
+        .. code-block:: bash
+
+            sudo apt install rocm-opencl-runtime
+
+  .. tab-item:: RHEL
+        :sync: rhel-tab
+
+        .. code-block:: bash
+
+            sudo dnf install rocm-opencl-runtime
+
+  .. tab-item:: OL
+        :sync: ol-tab
+
+        .. code-block:: bash
+
+            sudo dnf install rocm-opencl-runtime
+
+  .. tab-item:: Rocky
+        :sync: rl-tab
+
+        .. code-block:: shell
+
+            sudo dnf install rocm-opencl-runtime
+
+  .. tab-item:: SLES
+        :sync: sle-tab
+
+        .. code-block:: bash
+
+            sudo zypper install rocm-opencl-runtime
+
+  .. tab-item:: AZL
+        :sync: azl-tab
+
+        .. code-block:: bash
+
+            sudo tdnf install rocm-opencl-runtime
+
+
 Install verification
 =====================================================
 
@@ -135,41 +190,54 @@ If package installation was successful, the list will contain ``rocm*`` and ``hi
 
 .. tab-set::
 
-      .. tab-item:: Ubuntu
+   .. tab-item:: Ubuntu
+      :sync: ubuntu-tab
 
-         .. code-block:: bash
+      .. code-block:: bash
 
-            apt list --installed
+         apt list --installed
 
-      .. tab-item:: Debian
+   .. tab-item:: Debian
+      :sync: debian-tab
 
-         .. code-block:: bash
+      .. code-block:: bash
 
-            apt list --installed
+         apt list --installed
 
-      .. tab-item:: RHEL
+   .. tab-item:: RHEL
+      :sync: rhel-tab
 
-         .. code-block:: bash
+      .. code-block:: bash
 
-            dnf list installed
+         dnf list installed
    
-      .. tab-item:: OL
+   .. tab-item:: OL
+      :sync: ol-tab
 
-         .. code-block:: bash
+      .. code-block:: bash
 
-            dnf list installed
+         dnf list installed
 
-      .. tab-item:: SLES
+   .. tab-item:: Rocky
+      :sync: rl-tab
 
-         .. code-block:: bash
+      .. code-block:: bash
 
-            zypper search --installed-only
+         dnf list installed
 
-      .. tab-item:: AZL
+   .. tab-item:: SLES
+      :sync: sle-tab
 
-         .. code-block:: bash
+      .. code-block:: bash
 
-            tdnf list installed
+         zypper search --installed-only
+
+   .. tab-item:: AZL
+      :sync: azl-tab
+
+      .. code-block:: bash
+
+         tdnf list installed
 
 2. Verify the ROCm installation
 -----------------------------------------------------

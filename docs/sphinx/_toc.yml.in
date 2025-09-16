@@ -29,6 +29,8 @@ subtrees:
                   title: Red Hat Enterprise Linux
                 - file: install/install-methods/package-manager/package-manager-ol
                   title: Oracle Linux
+                - file: install/install-methods/package-manager/package-manager-rl
+                  title: Rocky Linux
                 - file: install/install-methods/package-manager/package-manager-sles
                   title: SUSE Linux Enterprise Server
                 - file: install/install-methods/package-manager/package-manager-azl
@@ -70,6 +72,14 @@ subtrees:
       title: Stanford Megatron-LM    
     - file: install/3rd-party/dgl-install
       title: DGL
+    - file: install/3rd-party/megablocks-install
+      title: Megablocks
+    - file: install/3rd-party/taichi-install
+      title: Taichi
+    - file: install/3rd-party/ray-install
+      title: Ray
+    - file: install/3rd-party/llama-cpp-install
+      title: llama.cpp
 
 - caption: How to
   entries:

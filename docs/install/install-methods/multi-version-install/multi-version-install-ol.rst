@@ -21,9 +21,10 @@ Register ROCm repositories
 .. datatemplate:nodata::
 
    .. tab-set::
-      {% for os_release in config.html_context['ol_release_version_numbers']  %}
-      .. tab-item:: OL {{ os_release }}
-            :sync: ol-{{ os_release }}
+      {% for os_version in config.html_context['ol_multi_versions'] %}
+      {% set os_major, _  = os_version.split('.') %}
+      .. tab-item:: OL {{ os_version }}
+            :sync: ol-{{ os_version }}
 
             .. code-block:: bash
                :substitutions:
@@ -31,9 +32,9 @@ Register ROCm repositories
                # Note: There is NO trailing .0 in the patch version for repositories
                for ver in |rocm_multi_versions|; do
                sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
-               [ROCm-$ver]
-               name=ROCm$ver
-               baseurl=https://repo.radeon.com/rocm/el{{ os_release }}/$ver/main
+               [rocm-$ver]
+               name=ROCm $ver repository
+               baseurl=https://repo.radeon.com/rocm/el{{ os_major }}/$ver/main
                enabled=1
                priority=50
                gpgcheck=1
@@ -74,7 +75,7 @@ Complete the :doc:`../../post-install`.
 .. tip::
 
    For a single-version installation of the latest ROCm version on OL,
-   use the steps in :ref:`ol-register-repo` and :ref:`ol-install`.
+   follow the steps in :doc:`../package-manager/package-manager-ol` in the ROCm documentation.
 
 .. _ol-multi-uninstall:
 
@@ -115,8 +116,9 @@ Remove ROCm repositories
    sudo rm -rf /var/cache/dnf
    sudo dnf clean all
 
-   # Restart the system
-   sudo reboot
+.. Important::
+
+    To apply all settings, reboot your system.
 
 .. note::
 

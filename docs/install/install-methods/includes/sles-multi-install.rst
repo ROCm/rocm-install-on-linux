@@ -61,7 +61,10 @@
       .. code-block:: bash
 
          sudo zypper --gpg-auto-import-keys install amdgpu-dkms
-         sudo reboot
+
+      .. Important::
+
+         To apply all settings, reboot your system.
 
    b. Install the registered ROCm packages.
 
