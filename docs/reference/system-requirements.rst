@@ -170,7 +170,7 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
              <p>Virtualization technology</p>
            </th>
            <th class="head">
-             <p>Host OS and version</p>
+             <p>Host OS</p>
            </th>
            <th class="head">
              <p>Guest OS</p>
