@@ -135,8 +135,6 @@ ROCm installation
                        sudo zypper install zypper
                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
                        sudo zypper --gpg-auto-import-keys refresh
-                       sudo zypper addrepo https://download.opensuse.org/repositories/devel:languages:perl/{{ os_version}}/devel:languages:perl.repo
-                       sudo zypper addrepo https://download.opensuse.org/repositories/Education/{{ os_version }}/Education.repo
                        sudo zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo
                        sudo zypper --gpg-auto-import-keys refresh
                        sudo zypper install python3-setuptools python3-wheel
