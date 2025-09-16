@@ -66,6 +66,5 @@ Select the install and uninstall instructions for your operating system
         * :ref:`SUSE Linux Enterprise Server <sles-multi-uninstall>`
         * :ref:`Azure Linux <azl-multi-uninstall>`
 
-
 See also: :doc:`/reference/system-requirements`. If you encounter install issues, you can refer to the
 :doc:`troubleshooting </reference/install-faq>` page.

@@ -29,6 +29,8 @@ subtrees:
                   title: Red Hat Enterprise Linux
                 - file: install/install-methods/package-manager/package-manager-ol
                   title: Oracle Linux
+                - file: install/install-methods/package-manager/package-manager-rl
+                  title: Rocky Linux
                 - file: install/install-methods/package-manager/package-manager-sles
                   title: SUSE Linux Enterprise Server
                 - file: install/install-methods/package-manager/package-manager-azl
