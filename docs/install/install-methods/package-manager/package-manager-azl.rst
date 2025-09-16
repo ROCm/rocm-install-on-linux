@@ -33,8 +33,8 @@ Registering ROCm repositories
 
                 sudo tee /etc/yum.repos.d/rocm.repo <<EOF
                 [rocm]
-                name=ROCm |rocm_major_version| repository
-                baseurl=https://repo.radeon.com/rocm/azurelinux{{ os_major }}/|rocm_major_version|/main/
+                name=ROCm |rocm_version| repository
+                baseurl=https://repo.radeon.com/rocm/azurelinux{{ os_major }}/|rocm_version|/main/
                 enabled=1
                 gpgcheck=1
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
