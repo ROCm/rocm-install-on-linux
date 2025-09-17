@@ -47,6 +47,8 @@ subtrees:
                   title: Red Hat Enterprise Linux
                 - file: install/install-methods/multi-version-install/multi-version-install-ol
                   title: Oracle Linux
+                - file: install/install-methods/multi-version-install/multi-version-install-rl
+                  title: Rocky Linux
                 - file: install/install-methods/multi-version-install/multi-version-install-sles
                   title: SUSE Linux Enterprise Server
                 - file: install/install-methods/multi-version-install/multi-version-install-azl
@@ -97,4 +99,4 @@ subtrees:
     - file: reference/install-faq
       title: Troubleshooting
     - file: reference/user-kernel-space-compat-matrix
-      title: User & kernel-space support
+      title: User & AMD GPU Driver (amdgpu)

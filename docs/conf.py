@@ -5,13 +5,15 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # ROCm version numbers
-rocm_version = '7.0.0'
+rocm_version = '7.0.1'
 rocm_major_version = '7.0'
-rocm_multi_versions = '7.0 6.4.3' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
-rocm_multi_versions_package_versions = '7.0.0 6.4.3' # however, in multi, the packages use 6.3.0
-rocm_directory_version = '7.0.0' # in 6.0 rocm was located in /opt/rocm-6.0.0
-amdgpu_version = '7.0' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '7.0.70000-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+rocm_multi_versions = '7.0.1 7.0' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_multi_versions_package_versions = '7.0.1 7.0.0' # however, in multi, the packages use 6.3.0
+rocm_directory_version = '7.0.1' # in 6.0 rocm was located in /opt/rocm-6.0.0
+amdgpu_version = '7.0.1' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '7.0.70001-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+udev_version = '30.10.1.0-2212064'
+udev_amdgpu_version = '30.10.1'
 
 
 latex_engine = "xelatex"
@@ -27,8 +29,8 @@ latex_elements = {
 project = "ROCm installation on Linux"
 author = "Advanced Micro Devices, Inc."
 copyright = "Copyright (c) 2025 Advanced Micro Devices, Inc. All rights reserved."
-version = "7.0.0"
-release = "7.0.0"
+version = "7.0.1"
+release = "7.0.1"
 setting_all_article_info = True
 all_article_info_os = ["linux"]
 all_article_info_author = ""
@@ -83,6 +85,8 @@ rst_prolog = f"""
 .. |amdgpu_version| replace:: {amdgpu_version}
 .. |rocm_directory_version| replace:: {rocm_directory_version}
 .. |amdgpu_install_version| replace:: {amdgpu_install_version}
+.. |udev_version| replace:: {udev_version}
+.. |udev_amdgpu_version| replace:: {udev_amdgpu_version}
 """
 
 html_theme_options = {
