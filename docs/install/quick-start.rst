@@ -82,8 +82,7 @@ ROCm installation
                        sudo dnf clean all
                        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
                        sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
-                       sudo dnf install dnf-plugin-config-manager
-                       sudo crb enable
+                       sudo dnf config-manager --enable codeready-builder-for-rhel-{{ os_major }}-x86_64-rpms
                        sudo dnf install python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        sudo dnf install rocm
@@ -108,7 +107,6 @@ ROCm installation
                        sudo dnf clean all
                        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
                        sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
-                       sudo dnf install dnf-plugin-config-manager
                        sudo crb enable
                        sudo dnf install python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups

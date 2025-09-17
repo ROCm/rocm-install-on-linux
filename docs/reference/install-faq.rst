@@ -116,22 +116,14 @@ Docker images often come with minimal installations, meaning some essential pack
     .. code-block:: shell
 
       dnf install sudo wget
-      subscription-manager register --username <username> --password <password>
-      subscription-manager attach --auto
-      subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
-
 
   .. tab-item:: SLES
 
     .. code-block:: shell
 
       zypper install sudo wget SUSEConnect
-      SUSEConnect -r <REGCODE>
-      SUSEConnect -p sle-module-desktop-applications/15.5/x86_64
-      SUSEConnect -p sle-module-development-tools/15.5/x86_64
-      SUSEConnect -p PackageHub/15.5/x86_64
 
-After installing these packages and :ref:`registering using your license for Enterprise Linux <register-enterprise-linux>` (if applicable), install ROCm following the :doc:`Quick start installation guide <../install/quick-start>` in your Docker container.
+After installing these packages, install ROCm using the :doc:`Quick start installation guide <../install/quick-start>` in your Docker container.
 
 .. _troubleshooting-symlinks:
 
