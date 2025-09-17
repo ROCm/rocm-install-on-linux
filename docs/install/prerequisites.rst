@@ -202,6 +202,8 @@ instructions specific to your distribution to add the necessary repositories.
     .. tab-item:: Red Hat Enterprise Linux
         :sync: rhel-tab
 
+        1. Add the EPEL repository.
+
            .. datatemplate:nodata::
 
                .. tab-set::
@@ -211,20 +213,29 @@ instructions specific to your distribution to add the necessary repositories.
 
                       .. tab-item:: {{ os_version }}
 
-                        1. Add the EPEL repository.
+                        .. code-block:: shell
 
-                            .. code-block:: shell
+                            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
+                            sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
 
-                                wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
-                                sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
+                  {% endfor %}
 
-                        2. Enable the CodeReady Linux Builder (CRB) repository.
+        2. Enable the CodeReady Linux Builder (CRB) repository.
 
-                            In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
+           In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
 
-                            .. code-block:: shell
+           .. datatemplate:nodata::
 
-                                sudo dnf config-manager --enable codeready-builder-for-rhel-{{ os_major }}-x86_64-rpms
+               .. tab-set::
+
+                  {% for os_version in config.html_context['rhel_version_numbers'] %}
+                  {% set os_major, _  = os_version.split('.') %}
+
+                      .. tab-item:: {{ os_version }}
+
+                        .. code-block:: shell
+
+                            sudo dnf config-manager --enable codeready-builder-for-rhel-{{ os_major }}-x86_64-rpms
 
                   {% endfor %}
 
