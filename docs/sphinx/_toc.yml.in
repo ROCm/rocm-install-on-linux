@@ -99,4 +99,4 @@ subtrees:
     - file: reference/install-faq
       title: Troubleshooting
     - file: reference/user-kernel-space-compat-matrix
-      title: User & kernel-space support
+      title: User & AMD GPU Driver (amdgpu)
