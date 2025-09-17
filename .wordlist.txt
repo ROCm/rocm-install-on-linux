@@ -1,3 +1,4 @@
+al
 ARI
 azurelinux
 BARs
@@ -52,6 +53,8 @@ Pytorch
 PyPI
 radeon
 Repo
+rhel
+rl
 rocHPL
 ROCmVersion
 rowspan
@@ -59,6 +62,7 @@ Runfile
 SBR
 seealso
 selectable
+sles
 SMCi
 SRIOV
 SVM
