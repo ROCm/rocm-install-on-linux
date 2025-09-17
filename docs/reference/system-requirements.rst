@@ -159,6 +159,9 @@ ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs l
    <div class="pst-scrollable-table-container">
     <style>
       table#virtualization-support-table tbody tr:last-child {
+        border-bottom: 2px solid var(--pst-color-border);
+      }
+      table#virtualization-support-table tbody#virtualization-support-mi210x tr:last-child {
         border-bottom: 2px solid var(--pst-color-primary);
       }
     </style>
