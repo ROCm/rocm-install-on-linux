@@ -34,19 +34,19 @@ Register ROCm repositories
 
                 sudo tee /etc/yum.repos.d/rocm.repo <<EOF
                 [rocm]
-                name=ROCm |rocm_major_version| repository
-                baseurl=https://repo.radeon.com/rocm/el{{ os_major }}/|rocm_major_version|/main
+                name=ROCm |rocm_version| repository
+                baseurl=https://repo.radeon.com/rocm/el{{ os_major }}/|rocm_version|/main
                 enabled=1
                 priority=50
                 gpgcheck=1
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
 
                 [amdgraphics]
-                name=AMD Graphics |rocm_major_version| repository
+                name=AMD Graphics |rocm_version| repository
                 {% if os_major == '10' -%}
-                baseurl=https://repo.radeon.com/graphics/|rocm_major_version|/el/{{ os_major }}/main/x86_64/
+                baseurl=https://repo.radeon.com/graphics/|rocm_version|/el/{{ os_major }}/main/x86_64/
                 {%- else -%}
-                baseurl=https://repo.radeon.com/graphics/|rocm_major_version|/el/{{ os_version }}/main/x86_64/
+                baseurl=https://repo.radeon.com/graphics/|rocm_version|/el/{{ os_version }}/main/x86_64/
                 {%- endif %}
                 enabled=1
                 priority=50

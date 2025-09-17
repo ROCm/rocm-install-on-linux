@@ -54,6 +54,7 @@ Select the install and uninstall instructions for your operating system
         * :doc:`Debian <./multi-version-install/multi-version-install-debian>`
         * :doc:`Red Hat Enterprise Linux <./multi-version-install/multi-version-install-rhel>`
         * :doc:`Oracle Linux <./multi-version-install/multi-version-install-ol>`
+        * :doc:`Rocky Linux <./multi-version-install/multi-version-install-rl>`
         * :doc:`SUSE Linux Enterprise Server <./multi-version-install/multi-version-install-sles>`
         * :doc:`Azure Linux <./multi-version-install/multi-version-install-azl>`
 
@@ -63,6 +64,7 @@ Select the install and uninstall instructions for your operating system
         * :ref:`Debian <debian-multi-uninstall>`
         * :ref:`Red Hat Enterprise Linux <rhel-multi-uninstall>`
         * :ref:`Oracle Linux <ol-multi-uninstall>`
+        * :ref:`Rocky Linux <rl-multi-uninstall>`
         * :ref:`SUSE Linux Enterprise Server <sles-multi-uninstall>`
         * :ref:`Azure Linux <azl-multi-uninstall>`
 

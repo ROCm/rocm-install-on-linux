@@ -529,8 +529,8 @@ To set up udev rules, install the package using the following instructions speci
                        :substitutions:
 
                        sudo apt update 
-                       wget https://repo.radeon.com/amdgpu/|rocm_major_version|/ubuntu/pool/main/a/amdgpu-insecure-instinct-udev-rules/amdgpu-insecure-instinct-udev-rules_30.10.0.0-2204008.{{ os_version }}_all.deb 
-                       sudo apt install ./amdgpu-insecure-instinct-udev-rules_30.10.0.0-2204008.{{ os_version }}_all.deb 
+                       wget https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/ubuntu/pool/main/a/amdgpu-insecure-instinct-udev-rules/amdgpu-insecure-instinct-udev-rules_|udev_version|.{{ os_version }}_all.deb 
+                       sudo apt install ./amdgpu-insecure-instinct-udev-rules_|udev_version|.{{ os_version }}_all.deb 
                 {% endfor %}
         
         .. tab-item:: Debian
@@ -545,8 +545,8 @@ To set up udev rules, install the package using the following instructions speci
                        :substitutions:
 
                        sudo apt update 
-                       wget https://repo.radeon.com/amdgpu/|rocm_major_version|/ubuntu/pool/main/a/amdgpu-insecure-instinct-udev-rules/amdgpu-insecure-instinct-udev-rules_30.10.0.0-2204008.22.04_all.deb 
-                       sudo apt install ./amdgpu-insecure-instinct-udev-rules_30.10.0.0-2204008.22.04_all.deb 
+                       wget https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/ubuntu/pool/main/a/amdgpu-insecure-instinct-udev-rules/amdgpu-insecure-instinct-udev-rules_|udev_version|.22.04_all.deb 
+                       sudo apt install ./amdgpu-insecure-instinct-udev-rules_|udev_version|.22.04_all.deb 
                 {% endfor %}
 
         .. tab-item:: Red Hat Enterprise Linux
@@ -561,7 +561,7 @@ To set up udev rules, install the package using the following instructions speci
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo dnf install https://repo.radeon.com/amdgpu/|rocm_major_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-30.10.0.0-2204008.el{{ os_major }}.noarch.rpm
+                       sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm
                 {% endfor %}
 
         .. tab-item:: Oracle Linux
@@ -576,7 +576,7 @@ To set up udev rules, install the package using the following instructions speci
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo dnf install https://repo.radeon.com/amdgpu/|rocm_major_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-30.10.0.0-2204008.el{{ os_major }}.noarch.rpm 
+                       sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm 
                 {% endfor %}
 
         .. tab-item:: SUSE Linux Enterprise Server
@@ -590,7 +590,7 @@ To set up udev rules, install the package using the following instructions speci
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo zypper –-no-gpg-checks install https://repo.radeon.com/amdgpu/|rocm_major_version|/sle/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-30.10.0.0-2204008.noarch.rpm 
+                       sudo zypper –-no-gpg-checks install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/sle/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.noarch.rpm 
 
                 {% endfor %}
 
@@ -624,7 +624,7 @@ To set up udev rules, install the package using the following instructions speci
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo dnf install https://repo.radeon.com/amdgpu/|rocm_major_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-30.10.0.0-2204008.el{{ os_major }}.noarch.rpm 
+                       sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm 
                 {% endfor %}
 
 b. Grant GPU access to a custom group

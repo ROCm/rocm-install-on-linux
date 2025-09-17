@@ -85,22 +85,22 @@ Download the Offline Installer Creator from ``repo.radeon.com`` using the follow
 
 Substitute your values for the following placeholders:
 
-* ``<rocm-version>``: ROCm version number for the ROCm Offline Installer Creator tool, for example, ``rocm-rel-7.0``.
+* ``<rocm-version>``: ROCm version number for the ROCm Offline Installer Creator tool, for example, ``rocm-rel-7.0.1``.
 * ``<distro>``: Linux distribution for the tool, for example, ``ubuntu``, ``ol``, ``rhel``, ``sles``, ``rocky``, or ``debian``.
 * ``<distro-version>``: Linux distribution version for the tool, for example, ``22.04`` for Ubuntu or ``9.6`` for RHEL.
-* ``<creator-package>``: The ROCm Offline Installer Creator package name, for example, ``rocm-offline-creator_1.0.12.70000-7~22.04.run``.
+* ``<creator-package>``: The ROCm Offline Installer Creator package name, for example, ``rocm-offline-creator_1.0.13.70001-1~22.04.run``.
 
 .. note::
 
    For releases that end in ``.0``, do not include the ``.0`` as part of the ``rocm-version`` component.
    For example, for ROCm 7.0.0, the ``rocm-version`` is ``rocm-rel-7.0``.
 
-For example, use this command to download ROCm 7.0 of the Offline Installer Creator 
+For example, use this command to download ROCm 7.0.1 of the Offline Installer Creator 
 for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-7.0/ubuntu/22.04/rocm-offline-creator_1.0.12.70000-7~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-7.0.1/ubuntu/22.04/rocm-offline-creator_1.0.13.70001-1~22.04.run
 
 Installer Creation
 ================================================
@@ -109,7 +109,7 @@ On the host system, run the ROCm Offline Installer Creator from the terminal com
 
 .. code-block:: shell
 
-   bash ./rocm-offline-creator_1.0.12.70000-7~22.04.run <options>
+   bash ./rocm-offline-creator_1.0.13.70001-1~22.04.run <options>
 
 The ``<options>`` parameter can either be left empty or set to these options:
 
@@ -129,7 +129,7 @@ This example demonstrates how to use the ``prompt`` option when running the Offl
 
 .. code-block:: shell
 
-   bash ./rocm-offline-creator_1.0.12.70000-7~22.04.run prompt
+   bash ./rocm-offline-creator_1.0.13.70001-1~22.04.run prompt
 
 The optional ``prompt`` parameter stops the Offline Installer Creator
 at critical checkpoints in the creation process and prompts the user. At these checkpoints, 
@@ -265,7 +265,7 @@ components are integrated into the resulting installer.
 * **ROCm Version**
 
   If **Install ROCm** is enabled, select a specific version of ROCm using the **ROCm 
-  Version** sub-menu. ROCm version 6.0.2 and later are available for selection. 
+  Version** sub-menu. ROCm version 6.0.3 and later are available for selection. 
   All ROCm components are based on this version of ROCm.  
 
   .. note::
@@ -287,7 +287,7 @@ components are integrated into the resulting installer.
 
   Depending on the ROCm version selected, two types of ROCm components or use cases can be used:
 
-  *  Legacy use cases (for ROCm 6.0.2 to 6.4.1)
+  *  Legacy use cases (for ROCm 6.0.3 to 6.4.1)
   *  Meta packages (for ROCm 6.4.2 and later)
 
   The legacy use cases are shown in the following screenshot:
@@ -759,7 +759,6 @@ The tests are based on the ROCm version and on the components being installed.
 
 Tests are available for these ROCm versions:
 
-*  6.0.2
 *  6.1.x
 *  6.2.x
 *  6.3.x
@@ -820,7 +819,6 @@ The following tests are available, depending on the ROCm version:
    :header: "ROCm version", "Test Suite Support"
    :widths: 26, 80
 
-   "6.0.2", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "6.1.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "6.2.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "6.3.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
@@ -843,7 +841,7 @@ From the build location of the offline tool, run the following command:
 
    ctest -L <rocm-version> 
 
-where ``<rocm-version>`` is one of ``6.0.2``, ``6.1.x``, ``6.2.x``, ``6.3.x``, ``6.4.x``, or ``7.0.x``.
+where ``<rocm-version>`` is one of ``6.1.x``, ``6.2.x``, ``6.3.x``, ``6.4.x``, or ``7.0.x``.
  
 Running manual tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
