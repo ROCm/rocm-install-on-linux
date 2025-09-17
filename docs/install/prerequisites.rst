@@ -226,8 +226,7 @@ instructions specific to your distribution to add the necessary repositories.
 
            .. code-block:: shell
 
-               sudo dnf install dnf-plugin-config-manager
-               sudo crb enable
+               sudo dnf config-manager --enable codeready-builder-for-rhel-{{ os_major }}-x86_64-rpms
 
     .. tab-item:: Oracle Linux
         :sync: ol-tab
@@ -255,7 +254,6 @@ instructions specific to your distribution to add the necessary repositories.
 
            .. code-block:: shell
 
-               sudo dnf install dnf-plugin-config-manager
                sudo crb enable
 
     .. tab-item:: SUSE Linux Enterprise Server
