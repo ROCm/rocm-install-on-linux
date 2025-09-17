@@ -224,9 +224,20 @@ instructions specific to your distribution to add the necessary repositories.
 
            In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
 
-           .. code-block:: shell
+           .. datatemplate:nodata::
 
-               sudo dnf config-manager --enable codeready-builder-for-rhel-{{ os_major }}-x86_64-rpms
+               .. tab-set::
+
+                  {% for os_version in config.html_context['rhel_version_numbers'] %}
+                  {% set os_major, _  = os_version.split('.') %}
+
+                      .. tab-item:: {{ os_version }}
+
+                        .. code-block:: shell
+
+                            sudo dnf config-manager --enable codeready-builder-for-rhel-{{ os_major }}-x86_64-rpms
+
+                  {% endfor %}
 
     .. tab-item:: Oracle Linux
         :sync: ol-tab
