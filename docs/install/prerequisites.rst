@@ -211,20 +211,20 @@ instructions specific to your distribution to add the necessary repositories.
 
                       .. tab-item:: {{ os_version }}
 
-                        1. Add the EPEL repository.
+                         1. Add the EPEL repository.
+ 
+                           .. code-block:: shell
+ 
+                               wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
+                               sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
 
-                            .. code-block:: shell
-
-                                wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
-                                sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
-
-                        2. Enable the CodeReady Linux Builder (CRB) repository.
-
-                            In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
-
-                            .. code-block:: shell
-
-                                sudo dnf config-manager --enable codeready-builder-for-rhel-{{ os_major }}-x86_64-rpms
+                         2. Enable the CodeReady Linux Builder (CRB) repository.
+ 
+                           In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
+ 
+                           .. code-block:: shell
+ 
+                               sudo dnf config-manager --enable codeready-builder-for-rhel-{{ os_major }}-x86_64-rpms
 
                   {% endfor %}
 
