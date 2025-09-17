@@ -222,8 +222,6 @@ instructions specific to your distribution to add the necessary repositories.
 
         2. Enable the CodeReady Linux Builder (CRB) repository.
 
-           In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
-
            .. datatemplate:nodata::
 
                .. tab-set::
@@ -260,8 +258,6 @@ instructions specific to your distribution to add the necessary repositories.
                   {% endfor %}
 
         2. Enable the CodeReady Linux Builder (CRB) repository.
-
-           In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
 
            .. code-block:: shell
 
