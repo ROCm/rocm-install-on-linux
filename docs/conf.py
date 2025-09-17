@@ -11,7 +11,7 @@ rocm_multi_versions = '7.0.1 7.0' # in 6.3, the folder names on repo.radeon.com 
 rocm_multi_versions_package_versions = '7.0.1 7.0.0' # however, in multi, the packages use 6.3.0
 rocm_directory_version = '7.0.1' # in 6.0 rocm was located in /opt/rocm-6.0.0
 amdgpu_version = '7.0.1' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '7.0.70001-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+amdgpu_install_version = '7.0.1.70001-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
 udev_version = '30.10.1.0-2212064'
 udev_amdgpu_version = '30.10.1'
 
