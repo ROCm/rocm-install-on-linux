@@ -308,8 +308,6 @@ validated for ROCm 7.0.0.
                * - Ubuntu
                  - Apex
                  - torchvision
-                 - TensorBoard
-                 - MAGMA
                  - UCX
                  - Open MPI
 
@@ -340,8 +338,6 @@ validated for ROCm 7.0.0.
                * - Ubuntu
                  - Apex
                  - torchvision
-                 - TensorBoard
-                 - MAGMA
                  - UCX
                  - Open MPI
 
