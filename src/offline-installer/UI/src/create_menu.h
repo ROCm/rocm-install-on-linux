@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@
 
 #define CREATE_MENU_ITEM_START_Y                                        5   // minimum starting y/row
 #define CREATE_MENU_ITEM_START_X                                        1   // minimum starting x/col
- 
+
 // form setup
 #define CREATE_MENU_NUM_FORM_FIELDS                                     3
 #define CREATE_MENU_FORM_FIELD_WIDTH                                    50
@@ -63,6 +63,7 @@
 #define CREATE_MENU_ITEM_INSTALLER_INPUT_PUBLIC_DESC                    "Input source for packages used in offline installer creation. 'repo-public'        provides packages from repo.radeon.com"
 #define CREATE_MENU_ITEM_DEP_DOWNLOAD_FULL_DESC                         "Set package dependency download configuration. 'full' recursively downloads        package dependencies regardless of the current packages installed on the host"
 #define CREATE_MENU_ITEM_DEP_DOWNLOAD_MIN_DESC                          "Set package dependency download configuration. 'minimum' downloads package         dependencies based on the current host configuration."
+
 
 
 void create_config_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, OFFLINE_INSTALL_CONFIG *pConfig);
