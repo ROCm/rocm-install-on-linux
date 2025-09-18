@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@
 
 // Summary page sub window settings
 #define SUMMARY_SUBWIN_WIDTH_COLS                   82
-#define SUMMARY_SUBWIN_NUM_LINES                    17
+#define SUMMARY_SUBWIN_NUM_LINES                    16
 #define SUMMARY_SUBWIN_START_X                      1
 #define SUMMARY_SUBWIN_START_Y                      3
 
@@ -40,7 +40,7 @@
 #define COLS_SUMMARY_MENU_STARTY                    0
 
 // Start position of menu items (Next Page, Prev Page, Return, Accept, page nums)
-#define SUMMARY_MENU_ITEM_START_Y                   20   // minimum starting y/row
+#define SUMMARY_MENU_ITEM_START_Y                   19   // minimum starting y/row
 #define SUMMARY_MENU_ITEM_START_X                   1    // minimum starting x/col
 #define SUMMARY_PAGE_NUM_STARTX                     75   // page number location
 #define SUMMARY_MENU_ITEM_NEXT_PAGE_INDEX           0
