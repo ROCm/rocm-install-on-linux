@@ -30,7 +30,7 @@ Registering ROCm repositories
             .. code-block:: bash
                 :substitutions:
 
-                sudo tee /etc/yum.repos.d/rocm.repo <<EOF
+                sudo tee /etc/zypp/repos.d/rocm.repo <<EOF
                 [rocm]
                 name=ROCm |rocm_major_version| repository
                 baseurl=https://repo.radeon.com/rocm/zyp/|rocm_major_version|/main

@@ -595,7 +595,7 @@ To set up udev rules, install the package using the following instructions speci
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo zypper –-no-gpg-checks install https://repo.radeon.com/amdgpu/|rocm_major_version|/sle/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-30.10.0.0-2204008.noarch.rpm 
+                       sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu/|rocm_major_version|/sle/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-30.10.0.0-2204008.noarch.rpm 
 
                 {% endfor %}
 
