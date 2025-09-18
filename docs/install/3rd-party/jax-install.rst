@@ -51,6 +51,49 @@ The ROCm JAX team provides prebuilt Docker images, which is the simplest way to 
 
 3. Verify the installation of ROCm JAX. See :ref:`jax-verify-installation`.
 
+.. _jax-docker-support:
+
+Docker image support
+--------------------
+
+AMD validates and publishes ready-made JAX images with ROCm backends on Docker
+Hub. The following Docker image tags and associated inventories are validated
+for ROCm 7.0.0.
+For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/rocm/jax-community/tags>`__ on Docker Hub.
+
+.. tab-set::
+
+   .. tab-item:: JAX 0.6.0
+      :selected:
+
+      .. tab-set::
+
+         .. tab-item:: Python 3.12
+
+            .. rubric:: Docker pull tag
+
+            .. code-block:: shell
+
+               docker pull rocm/jax:rocm7.0-jax0.6.0-py3.12
+
+            See
+            ``rocm/jax:rocm7.0-jax0.6.0-py3.12``
+            on `Docker Hub
+            <https://hub.docker.com/layers/rocm/jax/rocm7.0-jax0.6.0-py3.12/images/sha256-fc5445492b573b29d2b1d166e9dde0508bae34f2763ff3b045e9375ac9ce44eb>`__.
+
+         .. tab-item:: Python 3.10
+
+            .. rubric:: Docker pull tag
+
+            .. code-block:: shell
+
+               docker pull rocm/jax:rocm7.0-jax0.6.0-py3.10
+
+            See
+            ``rocm/jax:rocm7.0-jax0.6.0-py3.10``
+            on `Docker Hub
+            <https://hub.docker.com/layers/rocm/jax/rocm7.0-jax0.6.0-py3.10/images/sha256-a75d73f696926c42434fa8910037e104b2d46211cf72a7f66f052a75e61f18f5>`__.
+
 Using a ROCm base Docker image and installing JAX
 =================================================
 

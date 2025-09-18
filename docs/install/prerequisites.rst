@@ -222,12 +222,20 @@ instructions specific to your distribution to add the necessary repositories.
 
         2. Enable the CodeReady Linux Builder (CRB) repository.
 
-           In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
+           .. datatemplate:nodata::
 
-           .. code-block:: shell
+               .. tab-set::
 
-               sudo dnf install dnf-plugin-config-manager
-               sudo crb enable
+                  {% for os_version in config.html_context['rhel_version_numbers'] %}
+                  {% set os_major, _  = os_version.split('.') %}
+
+                      .. tab-item:: {{ os_version }}
+
+                        .. code-block:: shell
+
+                            sudo dnf config-manager --enable codeready-builder-for-rhel-{{ os_major }}-x86_64-rpms
+
+                  {% endfor %}
 
     .. tab-item:: Oracle Linux
         :sync: ol-tab
@@ -251,11 +259,8 @@ instructions specific to your distribution to add the necessary repositories.
 
         2. Enable the CodeReady Linux Builder (CRB) repository.
 
-           In order to enable CRB, you may need to install ``dnf-plugin-config-manager`` first.
-
            .. code-block:: shell
 
-               sudo dnf install dnf-plugin-config-manager
                sudo crb enable
 
     .. tab-item:: SUSE Linux Enterprise Server
@@ -590,7 +595,7 @@ To set up udev rules, install the package using the following instructions speci
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo zypper –-no-gpg-checks install https://repo.radeon.com/amdgpu/|rocm_major_version|/sle/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-30.10.0.0-2204008.noarch.rpm 
+                       sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu/|rocm_major_version|/sle/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-30.10.0.0-2204008.noarch.rpm 
 
                 {% endfor %}
 
