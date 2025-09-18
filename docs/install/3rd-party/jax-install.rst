@@ -51,6 +51,8 @@ The ROCm JAX team provides prebuilt Docker images, which is the simplest way to 
 
 3. Verify the installation of ROCm JAX. See :ref:`jax-verify-installation`.
 
+.. _jax-docker-support:
+
 Docker image support
 --------------------
 
