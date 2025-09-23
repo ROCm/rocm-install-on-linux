@@ -434,11 +434,6 @@ specific ROCm version, GPU architecture, and project requirements.
            --shm-size 8G \
            rocm/pytorch:latest
 
-   .. note::
-
-      You can pass the ``-v`` argument to mount data directories from the host
-      into the container if needed.
-
 3. Uninstall the pre-installed PyTorch inside the container. Otherwise, the prebuilt ROCm PyTorch from the
    container might conflict with your source build.
 
@@ -472,21 +467,11 @@ specific ROCm version, GPU architecture, and project requirements.
 
        export PYTORCH_ROCM_ARCH=<uarch>
 
-   Replace ``<uarch>`` with the result from ``rocminfo`` (for example, ``gfx90a``, ``gfx1030``).
+   Replace ``<uarch>`` with the result from ``rocminfo`` (for example, ``gfx90a``, ``gfx1030``). See :ref:`system-requirements`
+   for the list of AMD GPU architectures.
 
-6. Build PyTorch.
-
-   .. code-block:: bash
-
-       .ci/pytorch/build.sh
-
-   This converts PyTorch sources for HIP compatibility and compiles the framework.
-
-   To verify the build succeeded:
-
-   .. code-block:: bash
-
-       echo $?  # should return 0 if successful
+6. Build and install PyTorch following the instructions in
+   `<https://github.com/pytorch/pytorch?tab=readme-ov-file#install-pytorch>`__.
 
 .. _using-pytorch-upstream-docker-image:
 
