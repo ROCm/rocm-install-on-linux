@@ -92,6 +92,15 @@ Building ROCm components using Spack
 
       spack help
 
+After running ``setup-env.sh``, the develop branch of the `Spack packages repository <https://github.com/spack/spack-packages>`_ will be cloned and used.
+
+.. note::
+  To use your own local version of spack packages execute the following command:
+
+  .. code-block:: shell
+
+    spack repo set --destination /path/to/local/spack-packages builtin
+
 
 ROCm packages in Spack
 ===================================================
