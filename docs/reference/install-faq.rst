@@ -198,16 +198,17 @@ As a workaround for this problem, either disable SELinux or configure it to use 
  
 While ROCgdb or ROCR Debug Agent are being used, setting SELinux to permissive can be accomplished with the following command:
 
-```
-sudo setenforce 0
-```
+.. code-block:: shell
+
+  sudo setenforce 0
+
 After the session is over, it can be switched back to enforcing mode:
 
-```
-sudo setenforce 1
-```
+.. code-block:: shell
 
-```{note}
-Changing the SELinux settings can have security implications. Ensure you review your system security settings before making any changes.
-```
+  sudo setenforce 1
+
+.. note::
+
+  Changing the SELinux settings can have security implications. Ensure you review your system security settings before making any changes.
 
