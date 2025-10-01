@@ -184,3 +184,30 @@ you might get an error similar to ``Permission denied`` when attempting to acces
 
 **Solution:** You must be part of the ``video`` and ``render`` groups to access the AMD GPU or accelerator.
 To learn how to add an account to these groups, see :ref:`group_permissions`.
+
+Issue #10: ROCm debugging tools might become unresponsive in SELinux-enabled distributions
+===========================================================================================
+
+Red Hat Enterprise Linux (RHEL) and related distributions automatically enable a security feature named Security-Enhanced Linux (SELinux) that may prevent ROCm debugging tools like ROCgdb, ROCdbgapi, and ROCR Debug Agent from working correctly.
+ 
+The problem occurs when attempting to debug a program that contains code that runs on the GPU. The debugging session may become unresponsive while attempting to reach a breakpoint or doing instruction-stepping in device code. ROCgdb will still be responsive and accept interruption by pressing ``Control+C``, but the breakpoint in device code won't be hit, and the instruction-stepping operation will not conclude.
+ 
+The ROCR Debug Agent might also become unresponsive when attempting to capture data from a program that is running into queue errors, memory faults, and other triggering events.
+ 
+As a workaround for this problem, either disable SELinux or configure it to use the permissive setting.
+ 
+While ROCgdb or ROCR Debug Agent are being used, setting SELinux to permissive can be accomplished with the following command:
+
+```
+sudo setenforce 0
+```
+After the session is over, it can be switched back to enforcing mode:
+
+```
+sudo setenforce 1
+```
+
+```{note}
+Changing the SELinux settings can have security implications. Ensure you review your system security settings before making any changes.
+```
+

@@ -5,6 +5,7 @@ azurelinux
 BARs
 BooksCorpus
 br
+breakpoint
 Broadcom
 clinfo
 cli
@@ -63,6 +64,8 @@ Runfile
 SBR
 seealso
 selectable
+SELinux
+setenforce
 sles
 SMCi
 SRIOV
