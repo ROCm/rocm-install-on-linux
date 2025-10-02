@@ -35,8 +35,8 @@ This section describes the ROCm for Linux installation options.
        * :doc:`Megablocks <install/3rd-party/megablocks-install>`
        * :doc:`Taichi <install/3rd-party/taichi-install>`
        * :doc:`Ray <install/3rd-party/ray-install>`
-       * :doc:`Taichi <install/3rd-party/llama-cpp-install>`
-
+       * :doc:`llama.cpp <install/3rd-party/llama-cpp-install>`
+       * :doc:`FlashInfer <install/3rd-party/flashinfer-install>`
 
 .. grid:: 2
     :gutter: 3

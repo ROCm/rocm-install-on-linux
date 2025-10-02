@@ -82,6 +82,8 @@ subtrees:
       title: Ray
     - file: install/3rd-party/llama-cpp-install
       title: llama.cpp
+    - file: install/3rd-party/flashinfer-install
+      title: FlashInfer
 
 - caption: How to
   entries:
