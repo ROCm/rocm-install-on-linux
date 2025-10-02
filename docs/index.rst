@@ -33,6 +33,7 @@ This section describes the ROCm for Linux installation options.
        * :doc:`Stanford Megatron-LM <install/3rd-party/stanford-megatron-lm-install>`
        * :doc:`DGL <install/3rd-party/dgl-install>`
        * :doc:`Megablocks <install/3rd-party/megablocks-install>`
+       * :doc:`Taichi <install/3rd-party/taichi-install>`
        * :doc:`Ray <install/3rd-party/ray-install>`
        * :doc:`llama.cpp <install/3rd-party/llama-cpp-install>`
        * :doc:`FlashInfer <install/3rd-party/flashinfer-install>`
