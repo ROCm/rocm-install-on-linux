@@ -75,18 +75,21 @@ Register packages
 Installing
 ================================================
 
-Install ROCm packages
----------------------------------------------------------------------------
+Install kernel driver
+--------------------------------------------------------------------------
+
+For information about the AMDGPU driver installation, see the `Debian native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-debian.html>`_ in the AMD Instinct Data Center GPU Documentation.
+
+For information about driver compatibility, see :doc:`../../../reference/user-kernel-space-compat-matrix`.
+
+Install ROCm
+--------------------------------------------------------------------------
 
 .. code-block:: bash
 
     sudo apt install rocm
 
 Complete the :doc:`../../post-install`.
-
-.. note::
-
-    For information about the AMDGPU driver installation, see the `Install AMDGPU driver <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`_ in the AMD Instinct Data Center GPU Documentation.
 
 .. _debian-upgrade:
 
