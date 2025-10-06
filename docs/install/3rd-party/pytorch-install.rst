@@ -364,13 +364,13 @@ wheels command, you must select **Linux**, **Python**, **pip**, and **ROCm** in 
 
    .. note::
 
-      The following command uses the ROCm 6.4.0 PyTorch wheel. If you want a different version of ROCm,
+      The following command uses the ROCm 7.0 PyTorch wheel. If you want a different version of ROCm,
       modify the command accordingly.
 
    .. code-block:: bash
       :substitutions:
 
-       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.4/
+       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm7.0
 
 4. (Optional) Use MIOpen kdb files with ROCm PyTorch wheels.
 
@@ -401,6 +401,75 @@ wheels command, you must select **Linux**, **Python**, **pip**, and **ROCm** in 
        export ROCM_VERSION=6.2.4
 
        ./install_kdb_files_for_pytorch_wheels.sh
+
+.. _using-pytorch-rocm-docker-image:
+.. _building-pytorch-from-source:
+
+Building your own PyTorch from source
+=====================================
+
+Use the ``rocm/pytorch:latest`` image, uninstall the preinstalled PyTorch
+package, and rebuild PyTorch from source. This ensures compatibility with your
+specific ROCm version, GPU architecture, and project requirements.
+
+1. Download the latest PyTorch Docker image.
+
+   .. code-block:: bash
+
+       docker pull rocm/pytorch:latest
+
+2. Start a Docker container using the downloaded image.
+
+   .. code-block:: bash
+
+       docker run -it \
+           --cap-add=SYS_PTRACE \
+           --security-opt seccomp=unconfined \
+           --device=/dev/kfd \
+           --device=/dev/dri \
+           --group-add video \
+           --ipc=host \
+           --shm-size 8G \
+           rocm/pytorch:latest
+
+3. Uninstall the pre-installed PyTorch inside the container. Otherwise, the prebuilt ROCm PyTorch from the
+   container might conflict with your source build.
+
+   .. code-block:: bash
+
+       pip3 uninstall -y torch torchvision torchaudio
+
+4. Clone the PyTorch repository.
+
+   .. code-block:: bash
+
+       cd ~
+       git clone https://github.com/pytorch/pytorch.git
+       cd pytorch
+       git submodule update --init --recursive
+
+5. (Optional) Set your ROCm architecture.
+
+   By default, PyTorch builds for a broad set of AMD architectures. To speed
+   up compilation, you can target only your GPU architecture.
+
+   To determine your architecture:
+
+   .. code-block:: bash
+
+       rocminfo | grep gfx
+
+   Then set the ``PYTORCH_ROCM_ARCH`` environment variable:
+
+   .. code-block:: bash
+
+       export PYTORCH_ROCM_ARCH=<uarch>
+
+   Replace ``<uarch>`` with the result from ``rocminfo`` (for example, ``gfx90a``, ``gfx1030``). See :ref:`system-requirements`
+   for the list of AMD GPU architectures.
+
+6. Build and install PyTorch following the instructions in
+   `<https://github.com/pytorch/pytorch?tab=readme-ov-file#install-pytorch>`__.
 
 .. _using-pytorch-upstream-docker-image:
 
