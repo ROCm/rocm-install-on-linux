@@ -78,6 +78,16 @@ Register packages
 Installing
 ================================================
 
+Install kernel driver
+--------------------------------------------------------------------------
+
+For information about the AMDGPU driver installation, see the `Ubuntu native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-ubuntu.html>`_ in the AMD Instinct Data Center GPU Documentation.
+
+For information about driver compatibility, see :doc:`../../../reference/user-kernel-space-compat-matrix`.
+
+Install ROCm
+--------------------------------------------------------------------------
+
 .. code-block:: bash
 
     sudo apt install rocm
@@ -121,7 +131,3 @@ Remove ROCm repositories
 .. Important::
 
     To apply all settings, reboot your system.
-
-.. note::
-
-    For information about the AMDGPU driver installation, see the `Ubuntu native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-ubuntu.html>`_ in the AMD Instinct Data Center GPU Documentation.
