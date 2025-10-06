@@ -49,6 +49,16 @@ Registering ROCm repositories
 Installing
 =====================================================
 
+Install kernel driver
+--------------------------------------------------------------------------
+
+For information about the AMDGPU driver installation, see the `Red Hat Enterprise Linux native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-rhel.html>`_ in the AMD Instinct Data Center GPU Documentation.
+
+For information about driver compatibility, see :doc:`../../../reference/user-kernel-space-compat-matrix`.
+
+Install ROCm
+--------------------------------------------------------------------------
+
 .. code-block:: bash
 
     sudo dnf install rocm
@@ -91,6 +101,3 @@ Remove ROCm repositories
     # Restart the system
     sudo reboot
 
-.. note::
-
-    For information about the AMDGPU driver installation, see the `Red Hat Enterprise Linux native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-rhel.html>`_ in the AMD Instinct Data Center GPU Documentation.
