@@ -366,13 +366,13 @@ wheels command, you must select **Linux**, **Python**, **pip**, and **ROCm** in 
 
    .. note::
 
-      The following command uses the ROCm 6.4.0 PyTorch wheel. If you want a different version of ROCm,
+      The following command uses the ROCm 7.0 PyTorch wheel. If you want a different version of ROCm,
       modify the command accordingly.
 
    .. code-block:: bash
       :substitutions:
 
-       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.4/
+       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm7.0
 
 4. (Optional) Use MIOpen kdb files with ROCm PyTorch wheels.
 
@@ -713,7 +713,7 @@ ImageNet PyTorch example
 Troubleshooting
 ===============
 
-* What to do if you get the following error when trying to run PyTorch: 
+* What to do if you get the following error when trying to run PyTorch:
 
   .. code-block:: shell
 
@@ -736,10 +736,10 @@ Troubleshooting
         TORCHDIR=$( dirname $( python3 -c 'import torch; print(torch.__file__)' ) )
         roc-obj-ls -v $TORCHDIR/lib/libtorch_hip.so # check for gfx target
 
-     .. note:: 
+     .. note::
 
         Recompile PyTorch with the right gfx target if compiling from the source if
-        the hardware is not supported. 
+        the hardware is not supported.
 
 * What if you are unable to access Docker or GPU in user accounts?
 
@@ -747,8 +747,8 @@ Troubleshooting
 
 * Can you install PyTorch directly on bare metal?
 
-  Bare-metal installation of PyTorch is supported through wheels. For more information, see :ref:`using-wheels-package`. 
+  Bare-metal installation of PyTorch is supported through wheels. For more information, see :ref:`using-wheels-package`.
 
 * How do you profile PyTorch workloads?
 
-  Use the PyTorch Profiler as described in :ref:`mi300x-pytorch-profiler` to profile GPU kernels on ROCm. 
+  Use the PyTorch Profiler as described in :ref:`mi300x-pytorch-profiler` to profile GPU kernels on ROCm.
