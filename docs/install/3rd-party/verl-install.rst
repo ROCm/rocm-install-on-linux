@@ -3,17 +3,16 @@
   :keywords: installation, docker, verl, AMD, ROCm
 
 ********************************************************************************
-verl on ROCm
+verl on ROCm installation
 ********************************************************************************
 
-Volcano Engine Reinforcement Learning for LLMs (verl) is a reinforcement learning framework designed for large language models (LLMs). 
-See the `verl documentation <https://verl.readthedocs.io/en/latest/>`_ for more information about verl.
+Volcano Engine Reinforcement Learning for LLMs `(verl) <https://verl.readthedocs.io/en/latest/>`_  
+is a reinforcement learning framework designed for large language models (LLMs). 
 
-For hardware, software, and third-party framework compatibility between ROCm and verl, 
-see the following resources:
-
-* :ref:`system-requirements`
-* :doc:`rocm:compatibility/ml-compatibility/verl-compatibility`
+This topic covers setup instructions and the necessary files to build, test, and run 
+verl with ROCm support in a Docker environment. To learn more about verl
+on ROCm, including its use cases, recommendations, as well as hardware and software compatibility, 
+see :doc:`rocm:compatibility/ml-compatibility/verl-compatibility`.
 
 .. note::
 
@@ -71,7 +70,7 @@ Build your own Docker image
    .. code-block:: bash
 
       cd verl
-      docker build -f docker/Dockerfile.rocm -t my-rocm-verl .
+      docker build -f docker/Dockerfile.rocm -t my-rocm-verl
 
 3. Launch and connect to the container
 

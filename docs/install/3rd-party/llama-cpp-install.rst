@@ -1,6 +1,6 @@
 .. meta::
-  :description: Installing llama.cpp for ROCm
-  :keywords: installation instructions, llama.cpp, AMD, ROCm, GGML
+  :description: Install llama.cpp on ROCm
+  :keywords: installation, llama.cpp, docker, deep learning, AMD, ROCm, GGML
 
 ********************************************************************************
 llama.cpp on ROCm installation
@@ -8,10 +8,10 @@ llama.cpp on ROCm installation
 
 `llama.cpp <https://github.com/ggml-org/llama.cpp>`__ is an open-source framework 
 for Large Language Model (LLM) inference that runs on both central processing units 
-(CPUs) and graphics processing units (GPUs). It is written in plain C/C++, providing 
-a simple, dependency-free setup. 
+(CPUs) and graphics processing units (GPUs). 
 
-This topic covers installation. To learn more about llama.cpp on ROCm, 
+This topic covers setup instructions and the necessary files to build, test, and run 
+llama.cpp with ROCm support in a Docker environment. To learn more about llama.cpp on ROCm, 
 including its use cases, recommendations, as well as hardware and software compatibility, 
 see :doc:`rocm:compatibility/ml-compatibility/llama-cpp-compatibility`.
 

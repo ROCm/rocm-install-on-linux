@@ -1,6 +1,6 @@
 .. meta::
-  :description: Installing FlashInfer for ROCm
-  :keywords: installation, docker, FlashInfer, AMD, ROCm
+  :description: Install FlashInfer on ROCm
+  :keywords: installation, docker, FlashInfer, deep learning, AMD, ROCm
 
 ********************************************************************************
 FlashInfer on ROCm installation
@@ -10,7 +10,8 @@ FlashInfer on ROCm installation
 for Large Language Models (LLMs) that provides high-performance implementation of graphics 
 processing units (GPUs) kernels. 
 
-This topic covers installation. To learn more about FlashInfer on ROCm, 
+This topic covers setup instructions and the necessary files to build, test, and run 
+FlashInfer with ROCm support in a Docker environment. To learn more about FlashInfer on ROCm, 
 including its use cases, recommendations, as well as hardware and software compatibility, 
 see :doc:`rocm:compatibility/ml-compatibility/flashinfer-compatibility`.
 

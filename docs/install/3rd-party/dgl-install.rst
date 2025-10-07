@@ -1,26 +1,22 @@
 .. meta::
   :description: Install Deep Graph Library (DGL) on ROCm
-  :keywords: installation, docker, DGL, AMD, ROCm
+  :keywords: installation, docker, DGL, deep learning, AMD, ROCm
 
 ********************************************************************************
-DGL on ROCm
+DGL on ROCm installation
 ********************************************************************************
 
 Deep Graph Library `(DGL) <https://www.dgl.ai/>`_ is an easy-to-use, high-performance and scalable
-Python package for deep learning on graphs. DGL is framework agnostic, meaning
-if a deep graph model is a component in an end-to-end application, the rest of
-the logic is implemented using PyTorch.
+Python package for deep learning on graphs. 
 
-.. |br| raw:: html
+This topic covers setup instructions and the necessary files to build, test, and run 
+DGL with ROCm support in a Docker environment. To learn more about DGL on ROCm, 
+including its use cases, recommendations, as well as hardware and software compatibility, 
+see :doc:`rocm:compatibility/ml-compatibility/dgl-compatibility`.
 
-   <br/>
+.. note::
 
-For hardware, software, and third-party framework compatibility between ROCm and DGL, 
-see the following resources:
-
-* :ref:`system-requirements`
-
-* :doc:`rocm:compatibility/ml-compatibility/dgl-compatibility`
+	DGL is supported on ROCm 6.4.0.
 
 Install DGL
 ================================================================================
@@ -73,7 +69,7 @@ Docker image support
 
 AMD validates and publishes ready-made `DGL Docker images <https://hub.docker.com/r/rocm/dgl>`_  
 with ROCm backends on Docker Hub. The following Docker image tags and associated inventories are 
-validated for ROCm 6.4.
+validated for ROCm 6.4.0.
 
 .. tab-set::
 

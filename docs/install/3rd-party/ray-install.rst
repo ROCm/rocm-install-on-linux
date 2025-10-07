@@ -1,25 +1,20 @@
 .. meta::
-  :description: Ray on ROCm
-  :keywords: installation instructions, building, Ray, AMD, ROCm
+  :description: Install Ray on ROCm
+  :keywords: installation, docker, deep learning, Ray, AMD, ROCm
 
 ********************************************************************************
 Ray on ROCm installation
 ********************************************************************************
 
-Ray is a unified framework for scaling AI and Python applications from your laptop 
-to a full cluster, without changing your code. Ray consists of `a core distributed 
+Ray is a unified framework, consisting of `a core distributed 
 runtime  <https://docs.ray.io/en/latest/ray-core/walkthrough.html>`_ and a set of 
 `AI libraries <https://docs.ray.io/en/latest/ray-air/getting-started.html>`_ for 
 simplifying machine learning computations.
 
-Ray is a general-purpose framework that runs many types of workloads efficiently. 
-Any Python application can be scaled with Ray, without extra infrastructure.
-
-For hardware, software, and third-party framework compatibility between ROCm and Ray, 
-see the following resources:
-
-* :ref:`system-requirements`
-* :doc:`rocm:compatibility/ml-compatibility/ray-compatibility`
+This topic covers setup instructions and the necessary files to build, test, and run 
+Ray with ROCm support in a Docker environment. To learn more about Ray on ROCm, 
+including its use cases, recommendations, as well as hardware and software compatibility, 
+see :doc:`rocm:compatibility/ml-compatibility/ray-compatibility`.
 
 .. note::
 
@@ -37,7 +32,7 @@ To install Ray on ROCm, you have the following options:
 
 .. _using-docker-with-ray-pre-installed:
 
-Using a prebuilt Docker image with Ray pre-installed
+Use a prebuilt Docker image with Ray pre-installed
 --------------------------------------------------------------------------------------
 
 Docker is the recommended method to set up a Ray environment, and it avoids potential installation issues.  
@@ -126,7 +121,7 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
 .. _install-rocm-ray-bare-metal:
 
-Install Ray on bare metal or a custom container
+Install Ray on bare-metal or a custom container
 --------------------------------------------------------------------------------------
 
 Follow these steps if you prefer to install ROCm manually on your host system or in a custom container.
