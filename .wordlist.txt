@@ -1,6 +1,7 @@
 al
 APUs
 ARI
+APUs
 azurelinux
 BARs
 BooksCorpus
@@ -22,6 +23,7 @@ dmesg
 dropless
 DRM
 entrypoints
+FlashInfer
 fw
 FW
 FWDEV
@@ -41,6 +43,7 @@ KMD
 MACVTAP
 megablocks
 microarchitectures
+micromamba
 MoEs
 MSRs
 OL
@@ -76,6 +79,7 @@ tbody
 td
 thead
 TensorFlowVersion
+TVM
 untar
 vCPU
 verl

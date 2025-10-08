@@ -23,31 +23,34 @@ The ROCm JAX team provides prebuilt Docker images, which is the simplest way to 
 
    .. code-block:: bash
 
-      docker pull rocm/jax-community:latest
+      docker pull rocm/jax:latest
 
    .. note::
 
-      For specific versions of JAX, review the periodically pushed Docker images at `ROCm JAX Community on
-      Docker Hub <https://hub.docker.com/r/rocm/jax-community/tags>`_.
-
-      Additional Docker images are available at `ROCm JAX on Docker Hub <https://hub.docker.com/r/rocm/jax/tags>`_.
-      These contain the latest ROCm version but might use an older version of JAX.
+      For specific versions of JAX, review the periodically pushed Docker images at `ROCm JAX on
+      Docker Hub <https://hub.docker.com/r/rocm/jax/tags>`_.
 
 2. Once the image is downloaded, launch a container using the following command:
 
    .. code-block:: bash
 
-      docker run -it -d --network=host --device=/dev/kfd --device=/dev/dri --ipc=host --shm-size 64G \
-      --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -v $(pwd):/jax_dir \
-      --name rocm_jax rocm/jax-community:latest /bin/bash
-
-      docker attach rocm_jax
+      docker run -it \
+          --network=host \
+          --device=/dev/kfd \
+          --device=/dev/dri \
+          --ipc=host \
+          --shm-size 64G \
+          --group-add video \
+          --cap-add=SYS_PTRACE \
+          --security-opt seccomp=unconfined \
+          -v $(pwd):/jax_dir \
+          --name rocm_jax \
+          rocm/jax:latest /bin/bash
 
    .. tip::
 
       * The ``--shm-size`` parameter allocates shared memory for the container. Adjust it based on your system's resources if needed.
       * Replace ``$(pwd)`` with the absolute path to the directory you want to mount inside the container.
-      * If you prefer to use ``rocm/jax``, remember to replace ``rocm/jax-community`` with ``rocm/jax``.
 
 3. Verify the installation of ROCm JAX. See :ref:`jax-verify-installation`.
 
@@ -109,10 +112,18 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
    .. code-block:: bash
 
-      docker run -it -d --network=host --device=/dev/kfd --device=/dev/dri --ipc=host --shm-size 64G \
-      --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -v $(pwd):/jax_dir \
-      --name rocm_jax rocm/dev-ubuntu-22.04:7.0-complete /bin/bash
-      docker attach rocm_jax
+      docker run -it \
+          --network=host \
+          --device=/dev/kfd \
+          --device=/dev/dri \
+          --ipc=host \
+          --shm-size 64G \
+          --group-add video \
+          --cap-add=SYS_PTRACE \
+          --security-opt seccomp=unconfined \
+          -v $(pwd):/jax_dir \
+          --name rocm_jax \
+          rocm/dev-ubuntu-22.04:7.0-complete /bin/bash
 
 3. Install the latest version of JAX. Inside the running container, install the required version of JAX with ROCm support using pip:
 
