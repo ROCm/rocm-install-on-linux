@@ -47,6 +47,16 @@ Registering ROCm repositories
 Installing
 =====================================================
 
+Install kernel driver
+--------------------------------------------------------------------------
+
+For information about the AMDGPU driver installation, see the `Azure Linux native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-azl.html>`_ in the AMD Instinct Data Center GPU Documentation.
+
+For information about driver compatibility, see :doc:`../../../reference/user-kernel-space-compat-matrix`.
+
+Install ROCm
+--------------------------------------------------------------------------
+
 Before proceeding with a multi-version ROCm installation, you must remove
 ROCm packages that were previously installed from a single-version
 installation to avoid conflicts.
@@ -117,7 +127,3 @@ Remove ROCm repositories
 .. Important::
 
     To apply all settings, reboot your system.
-
-.. note::
-
-    For information about the AMDGPU driver installation, see the `Azure Linux native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-azl.html>`_ in the AMD Instinct Data Center GPU Documentation.
