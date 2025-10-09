@@ -35,7 +35,7 @@ Use a prebuilt Docker image with Stanford Megatron-LM pre-installed
 The recommended way to set up a Stanford Megatron-LM environment and avoid potential installation issues is with Docker. 
 The tested, prebuilt image includes Stanford Megatron-LM, PyTorch, ROCm, and other dependencies.
 
-Prebuilt Docker images with Stanford Megatron-LM configured for ROCm 6.3.0 are available on `Docker Hub <https://hub.docker.com/r/rocm/megatron-lm/tags>`_.
+Prebuilt Docker images with Stanford Megatron-LM configured for ROCm 6.3.0 are available on `Docker Hub <https://hub.docker.com/r/rocm/stanford-megatron-lm/tags>`_.
 
 1. Pull the Docker image:
 
