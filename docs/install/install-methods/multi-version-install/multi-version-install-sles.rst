@@ -120,7 +120,7 @@ Remove ROCm repositories
 
    # Remove ROCm repositories
    # Note: There is NO trailing .0 in the patch version for repositories
-   for ver |rocm_multi_versions|; do
+   for ver in |rocm_multi_versions|; do
       sudo zypper removerepo "rocm-$ver"
    done
    
