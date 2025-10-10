@@ -20,7 +20,9 @@ This section describes the ROCm for Linux installation options.
     :gutter: 3
 
     .. grid-item-card:: Install ROCm
-      
+
+       * :doc:`reference/system-requirements`  
+       * :doc:`reference/user-kernel-space-compat-matrix`
        * :doc:`Quick start <install/quick-start>` - recommended for new users
        * :doc:`Detailed install <install/detailed-install>` - includes explanations
 
@@ -49,6 +51,5 @@ This section describes the ROCm for Linux installation options.
     .. grid-item-card:: Reference
 
         * :doc:`reference/package-manager-integration`
-        * :doc:`reference/system-requirements`
         * :doc:`Troubleshooting <reference/install-faq>`
-        * :doc:`reference/user-kernel-space-compat-matrix`
+        

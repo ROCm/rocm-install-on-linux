@@ -122,61 +122,6 @@ If ``update-alternatives`` or ``environment-modules`` are not available on the s
 
    export LD_LIBRARY_PATH=/opt/rocm-|rocm_directory_version|/lib
 
-4. Configure OpenCL
------------------------------------------------------
-
-.. tab-set::
-
-  .. tab-item:: Ubuntu
-        :sync: ubuntu-tab
-
-        .. code-block:: bash
-
-            sudo apt install rocm-opencl-runtime
-
-  .. tab-item:: Debian
-        :sync: debian-tab
-
-        .. code-block:: bash
-
-            sudo apt install rocm-opencl-runtime
-
-  .. tab-item:: RHEL
-        :sync: rhel-tab
-
-        .. code-block:: bash
-
-            sudo dnf install rocm-opencl-runtime
-
-  .. tab-item:: OL
-        :sync: ol-tab
-
-        .. code-block:: bash
-
-            sudo dnf install rocm-opencl-runtime
-
-  .. tab-item:: Rocky
-        :sync: rl-tab
-
-        .. code-block:: shell
-
-            sudo dnf install rocm-opencl-runtime
-
-  .. tab-item:: SLES
-        :sync: sle-tab
-
-        .. code-block:: bash
-
-            sudo zypper install rocm-opencl-runtime
-
-  .. tab-item:: AZL
-        :sync: azl-tab
-
-        .. code-block:: bash
-
-            sudo tdnf install rocm-opencl-runtime
-
-
 Install verification
 =====================================================
 
@@ -244,13 +189,45 @@ If package installation was successful, the list will contain ``rocm*`` and ``hi
 
 Use the following ROCm tools to verify that installation was successful:
 
-.. code-block:: bash
+.. tab-set::
 
-      rocminfo
-      clinfo
+   .. tab-item:: rocminfo
 
-Both ``rocminfo`` and ``clinfo`` should output attributes for the ROCm system configuration if installation was successful. 
-For additional testing of ROCm functionality, try `rocm-examples <https://github.com/ROCm/rocm-examples>`_.
+      .. code-block:: bash
+
+         rocminfo | grep -i "Marketing Name:"
+
+      **Example output:**
+
+      .. code-block:: bash
+
+            Marketing Name:          AMD EPYC 9654 96-Core Processor    
+            Marketing Name:          AMD EPYC 9654 96-Core Processor    
+            Marketing Name:          AMD Instinct MI300X
+
+   .. tab-item:: clinfo
+
+      .. code-block:: bash
+
+         clinfo | grep -i "Board name:"
+
+      **Example output:**
+
+      .. code-block:: bash
+
+            Board name:                                    AMD Instinct MI300X
+
+   .. tab-item:: amd-smi
+
+      .. code-block:: bash
+
+          amd-smi version
+
+      **Example output:**
+
+      .. code-block:: bash
+
+            AMDSMI Tool: 26.0.2+92efa431 | AMDSMI Library version: 26.0.1 | ROCm version: 7.0.2 | amdgpu version: 6.14.14 | amd_hsmp version: N/A
 
 Troubleshooting
 =====================================================

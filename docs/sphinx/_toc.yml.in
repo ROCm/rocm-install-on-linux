@@ -5,6 +5,10 @@ root: index
 subtrees:
 - caption: Install ROCm
   entries:
+    - file: reference/system-requirements
+      title: System requirements
+    - file: reference/user-kernel-space-compat-matrix
+      title: User & AMD GPU Driver (amdgpu)
     - file: install/quick-start
       title: Quick start installation guide
     - file: install/detailed-install
@@ -96,9 +100,6 @@ subtrees:
   entries:
     - file: reference/package-manager-integration
       title: Package details
-    - file: reference/system-requirements
-      title: System requirements
     - file: reference/install-faq
       title: Troubleshooting
-    - file: reference/user-kernel-space-compat-matrix
-      title: User & AMD GPU Driver (amdgpu)
+

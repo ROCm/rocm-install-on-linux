@@ -123,6 +123,12 @@ Docker images often come with minimal installations, meaning some essential pack
 
       zypper install sudo wget SUSEConnect
 
+  .. tab-item:: AZL
+
+    .. code-block:: shell
+
+      tdnf install sudo ca-certificates
+
 After installing these packages, install ROCm using the :doc:`Quick start installation guide <../install/quick-start>` in your Docker container.
 
 .. _troubleshooting-symlinks:
