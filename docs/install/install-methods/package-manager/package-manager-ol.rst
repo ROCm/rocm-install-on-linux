@@ -43,10 +43,10 @@ Register ROCm repositories
 
                 [amdgraphics]
                 name=AMD Graphics |rocm_version| repository
-                {% if os_major == '10' -%}
-                baseurl=https://repo.radeon.com/graphics/|rocm_version|/el/{{ os_major }}/main/x86_64/
-                {%- else -%}
+                {% if os_major == '9' -%}
                 baseurl=https://repo.radeon.com/graphics/|rocm_version|/el/{{ os_version }}/main/x86_64/
+                {%- else -%}
+                baseurl=https://repo.radeon.com/graphics/|rocm_version|/el/{{ os_major }}/main/x86_64/
                 {%- endif %}
                 enabled=1
                 priority=50
@@ -60,6 +60,16 @@ Register ROCm repositories
 
 Installing
 =====================================================
+
+Install kernel driver
+--------------------------------------------------------------------------
+
+For information about the AMDGPU driver installation, see the `Oracle Linux native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-ol.html>`_ in the AMD Instinct Data Center GPU Documentation.
+
+For information about driver compatibility, see :doc:`../../../reference/user-kernel-space-compat-matrix`.
+
+Install ROCm
+--------------------------------------------------------------------------
 
 .. code-block:: bash
 
@@ -104,6 +114,3 @@ Remove ROCm repositories
 
     To apply all settings, reboot your system.
 
-.. note::
-
-    For information about the AMDGPU driver installation, see the `Oracle Linux native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-ol.html>`_ in the AMD Instinct Data Center GPU Documentation.

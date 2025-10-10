@@ -46,7 +46,7 @@ Register packages
 .. datatemplate:nodata::
 
     .. tab-set::
-        {% for (os_version, os_release) in config.html_context['debian_version_numbers'] %}
+        {% for (os_version, os_release) in config.html_context['debian_multi_versions'] %}
         .. tab-item:: Debian {{ os_version }}
             :sync: debian-{{ os_version}}
 
@@ -72,6 +72,16 @@ Register packages
 
 Installing
 =================================================
+
+Install kernel driver
+--------------------------------------------------------------------------
+
+For information about the AMDGPU driver installation, see the `Debian native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-debian.html>`_ in the AMD Instinct Data Center GPU Documentation.
+
+For information about driver compatibility, see :doc:`../../../reference/user-kernel-space-compat-matrix`.
+
+Install ROCm
+--------------------------------------------------------------------------
 
 Before proceeding with a multi-version ROCm installation, you must remove
 ROCm packages that were previously installed from a single-version
@@ -144,7 +154,3 @@ Remove ROCm repositories
 .. Important::
 
     To apply all settings, reboot your system.
-
-.. note::
-
-    For information about the AMDGPU driver installation, see the `Debian native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-debian.html>`_ in the AMD Instinct Data Center GPU Documentation.

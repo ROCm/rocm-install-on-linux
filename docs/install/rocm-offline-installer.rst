@@ -39,16 +39,18 @@ The ROCm Offline Installer Creator requires the following configuration:
 * The host system running the ROCm Offline Installer Creator and the target system running the installer must use the same
   Linux distribution and release version.
 * The host system running the ROCm Offline Installer Creator and the target system running the installer must use the same
-  Linux kernel version for the following distributions: RHEL, Oracle Linux, Rocky Linux, SLES, and Debian.
+  Linux kernel version when building an installer that includes the AMD GPU driver. If you are building a ROCm-only installer, the
+  Linux kernel versions are not required to match. If the AMD GPU driver is included with ROCm or by itself in an installer build, then the host
+  and target systems must use the same Linux kernel version for the following distributions: Red Hat Enterprise Linux, Oracle Linux,
+  SUSE Linux Enterprise Server, and Debian 13.
 
 .. note::
 
-   For Ubuntu, the Linux kernel version can be set to a target system version different from the host system creating the offline installer.
+   For Ubuntu and Debian 12, the Linux kernel version can be set to a target system version different from the host system creating the offline installer.
    See the :ref:`advanced-driver-label` menu for details.
 
-For example, if the host system uses 
-Ubuntu 22.04.4 with the 6.5.0-44-generic kernel, only an Ubuntu 22.04.4 target with the 6.5.0-44-generic kernel 
-can use the offline installer. 
+For example, if the host system uses Red Hat Enterprise Linux 10.0 with the ``6.12.0-55.34.1.el10_0.x86_64`` kernel, only
+a Red Hat Enterprise Linux 10.0 target with the ``6.12.0-55.34.1.el10_0.x86_64`` kernel can use the offline installer.
 If the base OS distribution version and the kernel version of that distribution do not match on both systems, 
 installation is not permitted.
 
@@ -65,10 +67,10 @@ Supported Linux distributions
 The ROCm Offline Installer Creator tool supports the following Linux distributions and versions:
 
 * Ubuntu: 22.04, 24.04
-* RHEL: 8.10, 9.4, 9.6
+* RHEL: 8.10, 9.4, 9.6, 10.0
 * SLES: 15.7
-* Debian: 12
-* Oracle Linux: 8.10, 9.6
+* Debian: 12, 13
+* Oracle Linux: 8.10, 9.6, 10.0
 * Rocky Linux 9.6
 
 Getting started
@@ -85,22 +87,22 @@ Download the Offline Installer Creator from ``repo.radeon.com`` using the follow
 
 Substitute your values for the following placeholders:
 
-* ``<rocm-version>``: ROCm version number for the ROCm Offline Installer Creator tool, for example, ``rocm-rel-7.0.1``.
+* ``<rocm-version>``: ROCm version number for the ROCm Offline Installer Creator tool, for example, ``rocm-rel-7.0.2``.
 * ``<distro>``: Linux distribution for the tool, for example, ``ubuntu``, ``ol``, ``rhel``, ``sles``, ``rocky``, or ``debian``.
 * ``<distro-version>``: Linux distribution version for the tool, for example, ``22.04`` for Ubuntu or ``9.6`` for RHEL.
-* ``<creator-package>``: The ROCm Offline Installer Creator package name, for example, ``rocm-offline-creator_1.0.13.70001-1~22.04.run``.
+* ``<creator-package>``: The ROCm Offline Installer Creator package name, for example, ``rocm-offline-creator_1.0.14.70002-3~22.04.run``.
 
 .. note::
 
    For releases that end in ``.0``, do not include the ``.0`` as part of the ``rocm-version`` component.
    For example, for ROCm 7.0.0, the ``rocm-version`` is ``rocm-rel-7.0``.
 
-For example, use this command to download ROCm 7.0.1 of the Offline Installer Creator 
+For example, use this command to download ROCm 7.0.2 of the Offline Installer Creator 
 for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-7.0.1/ubuntu/22.04/rocm-offline-creator_1.0.13.70001-1~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-7.0.2/ubuntu/22.04/rocm-offline-creator_1.0.14.70002-3~22.04.run
 
 Installer Creation
 ================================================
@@ -109,7 +111,7 @@ On the host system, run the ROCm Offline Installer Creator from the terminal com
 
 .. code-block:: shell
 
-   bash ./rocm-offline-creator_1.0.13.70001-1~22.04.run <options>
+   bash ./rocm-offline-creator_1.0.14.70002-3~22.04.run <options>
 
 The ``<options>`` parameter can either be left empty or set to these options:
 
@@ -129,7 +131,7 @@ This example demonstrates how to use the ``prompt`` option when running the Offl
 
 .. code-block:: shell
 
-   bash ./rocm-offline-creator_1.0.13.70001-1~22.04.run prompt
+   bash ./rocm-offline-creator_1.0.14.70002-3~22.04.run prompt
 
 The optional ``prompt`` parameter stops the Offline Installer Creator
 at critical checkpoints in the creation process and prompts the user. At these checkpoints, 
@@ -265,7 +267,7 @@ components are integrated into the resulting installer.
 * **ROCm Version**
 
   If **Install ROCm** is enabled, select a specific version of ROCm using the **ROCm 
-  Version** sub-menu. ROCm version 6.0.3 and later are available for selection. 
+  Version** sub-menu. ROCm version 6.1 and later are available for selection. 
   All ROCm components are based on this version of ROCm.  
 
   .. note::
@@ -287,7 +289,7 @@ components are integrated into the resulting installer.
 
   Depending on the ROCm version selected, two types of ROCm components or use cases can be used:
 
-  *  Legacy use cases (for ROCm 6.0.3 to 6.4.1)
+  *  Legacy use cases (for ROCm 6.1 to 6.4.1)
   *  Meta packages (for ROCm 6.4.2 and later)
 
   The legacy use cases are shown in the following screenshot:
@@ -651,7 +653,7 @@ To build the Offline Installer Creator:
 
    .. tab-set::
 
-      .. tab-item:: Ubuntu
+      .. tab-item:: Ubuntu/Debian
          :sync: ubuntu
 
          .. code-block:: bash
@@ -662,12 +664,12 @@ To build the Offline Installer Creator:
             sudo apt install makeself
             sudo apt install wget
 
-      .. tab-item:: Red Hat Enterprise Linux
+      .. tab-item:: RHEL/OL/Rocky
          :sync: RHEL
 
-         First, install the RHEL version-specific prerequisites:
+         First, install the RHEL/OL or Rocky Linux version-specific prerequisites:
 
-         Install the following for RHEL 8.x:
+         Install the following for RHEL/OL 8.x:
 
          .. code-block:: bash
 
@@ -676,13 +678,22 @@ To build the Offline Installer Creator:
             sudo rpm -ivh epel-release-latest-8.noarch.rpm
             sudo crb enable
 
-         Install the following for RHEL 9.x:
+         Install the following for RHEL/OL 9.x or Rocky Linux 9:
 
          .. code-block:: bash
 
             sudo dnf install wget
             wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
             sudo rpm -ivh epel-release-latest-9.noarch.rpm
+            sudo crb enable
+
+         Install the following for RHEL/OL 10.x:
+
+         .. code-block:: bash
+
+            sudo dnf install wget
+            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
+            sudo rpm -ivh epel-release-latest-10.noarch.rpm
             sudo crb enable
 
          Then install the generic RHEL x.x prerequisites
@@ -694,29 +705,20 @@ To build the Offline Installer Creator:
             sudo dnf install ncurses-devel
             sudo dnf install makeself
 
-      .. tab-item:: SUSE Linux Enterprise Server
+      .. tab-item:: SLES
          :sync: SLES
 
 
-         Install the following for SLES 15.5:
+         Install the following for SLES 15.7:
 
          .. code-block:: bash
 
-            SUSEConnect -p PackageHub/15.5/x86_64
+            SUSEConnect -p PackageHub/15.7/x86_64
             sudo zypper install cmake
             sudo zypper install gcc gcc-c++
             sudo zypper install ncurses-devel
             sudo zypper install makeself
 
-         Install the following for SLES 15.6:
-
-         .. code-block:: bash
-
-            SUSEConnect -p PackageHub/15.6/x86_64
-            sudo zypper install cmake
-            sudo zypper install gcc gcc-c++
-            sudo zypper install ncurses-devel
-            sudo zypper install makeself
 
 #. Clone the tool source
 
@@ -810,8 +812,6 @@ From the build location of the offline tool, run the following command:
 .. code-block:: shell 
 
    ctest
-
-This suite runs 86 tests.
 
 The following tests are available, depending on the ROCm version:
 

@@ -26,7 +26,7 @@ Before installing ROCm, complete the following prerequisites.
             DISTRIB_ID=Ubuntu
             DISTRIB_RELEASE=24.04
             DISTRIB_CODENAME=noble
-            DISTRIB_DESCRIPTION="Ubuntu 24.04.2 LTS"
+            DISTRIB_DESCRIPTION="Ubuntu 24.04.3 LTS"
 
 .. _verify_kernel_version:
 
@@ -54,57 +54,72 @@ Register your Enterprise Linux
 If you're using Red Hat Enterprise Linux (RHEL) or SUSE Linux Enterprise Server (SLES), register
 your operating system to ensure you're able to download and install packages.
 
-.. tab-set::
+.. datatemplate:nodata::
 
-  .. tab-item:: Ubuntu
-        :sync: ubuntu-tab
+    .. tab-set::
 
-        There is no registration required for Ubuntu.
+        .. tab-item:: Ubuntu
+            :sync: ubuntu-tab
 
-  .. tab-item:: Debian
-        :sync: debian-tab
+            There is no registration required for Ubuntu.
 
-        There is no registration required for Debian.
+        .. tab-item:: Debian
+            :sync: debian-tab
 
-  .. tab-item:: Red Hat Enterprise Linux
-        :sync: rhel-tab
+            There is no registration required for Debian.
 
-        Typically you can register by following the step-by-step user interface.
-        If you need to register by command line, use the following commands:
-        
-        .. code-block:: shell
+        .. tab-item:: Red Hat Enterprise Linux
+            :sync: rhel-tab
 
-            subscription-manager register --username <username> --password <password>
-            subscription-manager attach --auto
+            .. tab-set::
 
-        More details about `registering for RHEL <https://access.redhat.com/solutions/253273>`_
+                {% for os_version in config.html_context['rhel_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+                    :sync: {{ os_version }}
 
-  .. tab-item:: Oracle Linux
-        :sync: ol-tab
+                    Typically you can register by following the step-by-step user interface.
+                    If you need to register by command line, use the following commands:
 
-        There is no registration required for Oracle Linux.
+                    .. code-block:: shell
+                        :substitutions:
 
-  .. tab-item:: SUSE Linux Enterprise Server
-        :sync: sle-tab
+                        {% if os_version == '10.0' -%}
+                        subscription-manager register --username <username> --password <password>
+                        {%- else -%}
+                        subscription-manager register --username <username> --password <password>
+                        subscription-manager attach --auto
+                        {%- endif %}
 
-        Typically you can register by following the step-by-step user interface.
-        If you need to register by command line, use the following commands:
-            
-        .. code-block:: shell
+                    More details about `registering for RHEL <https://access.redhat.com/solutions/253273>`_
 
-            sudo SUSEConnect -r <REGCODE>
+                {% endfor %}
 
-        More details about `registering for SLES <https://www.suse.com/support/kb/doc/?id=000018564>`_
+        .. tab-item:: Oracle Linux
+            :sync: ol-tab
 
-  .. tab-item:: Azure Linux
-        :sync: azl-tab
+            There is no registration required for Oracle Linux.
 
-        There is no registration required for Azure Linux.
+        .. tab-item:: SUSE Linux Enterprise Server
+            :sync: sle-tab
 
-  .. tab-item:: Rocky Linux
-        :sync: rl-tab
+            Typically you can register by following the step-by-step user interface.
+            If you need to register by command line, use the following commands:
+                
+            .. code-block:: shell
 
-        There is no registration required for Rocky Linux.
+                sudo SUSEConnect -r <REGCODE>
+
+            More details about `registering for SLES <https://www.suse.com/support/kb/doc/?id=000018564>`_
+
+        .. tab-item:: Azure Linux
+            :sync: azl-tab
+
+            There is no registration required for Azure Linux.
+
+        .. tab-item:: Rocky Linux
+            :sync: rl-tab
+
+            There is no registration required for Rocky Linux.
 
 .. _update-enterprise-linux:
 
@@ -137,11 +152,12 @@ This is a requirement for newer hardware on older versions of RHEL, SLES, or OL.
                 {% for os_version in config.html_context['rhel_version_numbers'] %}
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
+                    :sync: {{ os_version }}
 
-                   .. code-block:: bash
-                       :substitutions:
+                    .. code-block:: bash
+                        :substitutions:
 
-                       sudo dnf update --releasever={{ os_version }} --exclude=\*release\*
+                        sudo dnf update --releasever={{ os_version }} --exclude=\*release\*
                 {% endfor %}
 
         .. tab-item:: Oracle Linux
@@ -152,6 +168,7 @@ This is a requirement for newer hardware on older versions of RHEL, SLES, or OL.
                 {% for os_version in config.html_context['ol_version_numbers'] %}
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
 
                    .. code-block:: bash
                        :substitutions:
@@ -212,11 +229,12 @@ instructions specific to your distribution to add the necessary repositories.
                   {% set os_major, _  = os_version.split('.') %}
 
                       .. tab-item:: {{ os_version }}
+                          :sync: {{ os_version }}
 
-                        .. code-block:: shell
+                          .. code-block:: shell
 
-                            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
-                            sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
+                              wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
+                              sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
 
                   {% endfor %}
 
@@ -230,10 +248,11 @@ instructions specific to your distribution to add the necessary repositories.
                   {% set os_major, _  = os_version.split('.') %}
 
                       .. tab-item:: {{ os_version }}
+                         :sync: {{ os_version }}
 
-                        .. code-block:: shell
+                         .. code-block:: shell
 
-                            sudo dnf config-manager --enable codeready-builder-for-rhel-{{ os_major }}-x86_64-rpms
+                             sudo dnf config-manager --enable codeready-builder-for-rhel-{{ os_major }}-x86_64-rpms
 
                   {% endfor %}
 
@@ -249,6 +268,7 @@ instructions specific to your distribution to add the necessary repositories.
                   {% for os_version in config.html_context['ol_version_numbers'] %}
                   {% set os_major, _  = os_version.split('.') %}
                       .. tab-item:: {{ os_version }}
+                        :sync: {{ os_version }}
 
                         .. code-block:: shell
 
@@ -529,6 +549,7 @@ To set up udev rules, install the package using the following instructions speci
 
                 {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
                 .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
 
                    .. code-block:: bash
                        :substitutions:
@@ -543,15 +564,15 @@ To set up udev rules, install the package using the following instructions speci
 
             .. tab-set::
 
-                {% for (os_version, os_release) in config.html_context['debian_version_numbers'] %}
+                {% for (os_version, os_release, ubuntu_version) in config.html_context['debian_udev_versions'] %}
                 .. tab-item:: {{ os_version }}
 
                    .. code-block:: bash
                        :substitutions:
 
                        sudo apt update 
-                       wget https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/ubuntu/pool/main/a/amdgpu-insecure-instinct-udev-rules/amdgpu-insecure-instinct-udev-rules_|udev_version|.22.04_all.deb 
-                       sudo apt install ./amdgpu-insecure-instinct-udev-rules_|udev_version|.22.04_all.deb 
+                       wget https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/ubuntu/pool/main/a/amdgpu-insecure-instinct-udev-rules/amdgpu-insecure-instinct-udev-rules_|udev_version|.{{ ubuntu_version }}_all.deb 
+                       sudo apt install ./amdgpu-insecure-instinct-udev-rules_|udev_version|.{{ ubuntu_version }}_all.deb 
                 {% endfor %}
 
         .. tab-item:: Red Hat Enterprise Linux
@@ -562,11 +583,17 @@ To set up udev rules, install the package using the following instructions speci
                 {% for os_version in config.html_context['rhel_version_numbers'] %}
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
 
                    .. code-block:: bash
                        :substitutions:
 
+                       {% if os_major == '9' -%}
                        sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm
+                       {%- else -%}
+                       sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_major }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm
+                       {%- endif %}
+
                 {% endfor %}
 
         .. tab-item:: Oracle Linux
@@ -577,11 +604,16 @@ To set up udev rules, install the package using the following instructions speci
                 {% for os_version in config.html_context['ol_version_numbers'] %}
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}                    
 
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm 
+                       {% if os_major == '9' -%}
+                       sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm
+                       {%- else -%}
+                       sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_major }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm
+                       {%- endif %}
                 {% endfor %}
 
         .. tab-item:: SUSE Linux Enterprise Server

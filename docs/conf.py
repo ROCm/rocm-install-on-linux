@@ -5,15 +5,15 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # ROCm version numbers
-rocm_version = '7.0.1'
+rocm_version = '7.0.2'
 rocm_major_version = '7.0'
-rocm_multi_versions = '7.0.1 7.0' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
-rocm_multi_versions_package_versions = '7.0.1 7.0.0' # however, in multi, the packages use 6.3.0
-rocm_directory_version = '7.0.1' # in 6.0 rocm was located in /opt/rocm-6.0.0
-amdgpu_version = '7.0.1' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '7.0.1.70001-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
-udev_version = '30.10.1.0-2212064'
-udev_amdgpu_version = '30.10.1'
+rocm_multi_versions = '7.0.2 7.0' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_multi_versions_package_versions = '7.0.2 7.0.0' # however, in multi, the packages use 6.3.0
+rocm_directory_version = '7.0.2' # in 6.0 rocm was located in /opt/rocm-6.0.0
+amdgpu_version = '7.0.2' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '7.0.2.70002-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+udev_version = '30.10.2.0-2226257'
+udev_amdgpu_version = '30.10.2'
 
 
 latex_engine = "xelatex"
@@ -29,21 +29,23 @@ latex_elements = {
 project = "ROCm installation on Linux"
 author = "Advanced Micro Devices, Inc."
 copyright = "Copyright (c) 2025 Advanced Micro Devices, Inc. All rights reserved."
-version = "7.0.1"
-release = "7.0.1"
+version = "7.0.2"
+release = "7.0.2"
 setting_all_article_info = True
 all_article_info_os = ["linux"]
 all_article_info_author = ""
 
 # Supported linux version numbers
 ubuntu_version_numbers = [('24.04', 'noble'), ('22.04', 'jammy')]
-debian_version_numbers = [('12', 'jammy')]
-rhel_release_version_numbers = ['9', '8']
-rhel_version_numbers = ['9.6', '9.4', '8.10']
+debian_version_numbers = [('13', 'noble'), ('12', 'jammy')]
+debian_multi_versions = [('12', 'jammy')]
+debian_udev_versions = [('13', 'noble', '24.04'), ('12', 'jammy', '22.04')]
+rhel_release_version_numbers = ['10', '9', '8']
+rhel_version_numbers = ['10.0', '9.6', '9.4', '8.10']
 rhel_multi_versions = ['9.6', '9.4', '8.10']
 sles_version_numbers = ['15.7']
-ol_release_version_numbers = ['9', '8']
-ol_version_numbers = ['9.6', '8.10']
+ol_release_version_numbers = ['10', '9', '8']
+ol_version_numbers = ['10.0', '9.6', '8.10']
 ol_multi_versions = ['9.6', '8.10']
 azl_version_numbers = ['3.0']
 rl_version_numbers = ['9.6']
@@ -96,6 +98,8 @@ html_theme_options = {
 html_context = {
     "ubuntu_version_numbers" : ubuntu_version_numbers,
     "debian_version_numbers" : debian_version_numbers,
+    "debian_multi_versions" : debian_multi_versions,
+    "debian_udev_versions" : debian_udev_versions,
     "sles_version_numbers" : sles_version_numbers,
     "rhel_release_version_numbers" : rhel_release_version_numbers,
     "rhel_version_numbers" : rhel_version_numbers,
