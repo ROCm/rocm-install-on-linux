@@ -98,7 +98,7 @@ Accelerators and GPUs listed in the following table support compute workloads (n
 
 .. [#mi350x-os] AMD Instinct MI355X and MI350X GPUs are supported only on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.0, RHEL 9.6, RHEL 9.4, Oracle Linux 10, and Oracle Linux 9.
 .. [#mi325x-os] AMD Instinct MI325X GPU is supported only on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 9.6, and RHEL 9.4.
-.. [#mi300x-os] AMD Instinct MI300X GPU is supported on all below listed :ref:`supported_distributions`.
+.. [#mi300x-os] AMD Instinct MI300X GPU is supported on all listed :ref:`supported_distributions`.
 .. [#mi300A-os] AMD Instinct MI300A GPU is supported only on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.0, RHEL 9.6, RHEL 9.4, RHEL 8.10, SLES 15 SP7, Debian 12, and Rocky Linux 9.
 .. [#mi200x-os] AMD Instinct MI200 Series GPUs are supported only on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.0, RHEL 9.6, RHEL 9.4, RHEL 8.10, SLES 15 SP7, and Debian 12.
 .. [#mi100-os] AMD Instinct MI100 GPU is supported only on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.0, RHEL 9.6, RHEL 9.4, and RHEL 8.10.
