@@ -145,8 +145,8 @@ AMD ROCm software supports the following Linux distributions.
 
 .. [#rhel-10] RHEL 10.0 and RHEL 9.6 are supported on all listed :ref:`supported_GPUs` except AMD Radeon PRO V620 GPU.
 .. [#rhel-700] RHEL 8.10 is only supported on AMD Instinct MI300X, MI300A, MI250X, MI250, MI210, and MI100 GPUs.
-.. [#sles-db-702] Debian 13 is only supported on AMD Instinct MI300X GPU.
 .. [#sles-db-700] SLES 15 SP7 and Debian 12 are only supported on AMD Instinct MI300X, MI300A, MI250X, MI250, and MI210 GPUs.
+.. [#sles-db-702] Debian 13 is only supported on AMD Instinct MI300X GPU.
 .. [#rl-700] Rocky Linux 9 is only supported on AMD Instinct MI300X and MI300A GPUs.  
 .. [#al-mi300x] Azure Linux 3.0 is supported only on AMD Instinct MI300X GPU and AMD Radeon PRO V710.
 .. [#ol-700] Oracle Linux 10 and 9 are supported only on AMD Instinct MI355X, MI350X, and MI300X GPUs.
