@@ -182,13 +182,13 @@ To verify whether the driver is on a denylist, use the following command:
 
 .. _troubleshooting-group-membership:
 
-Issue #9: Cannot access the AMD GPU or accelerator after installation
+Issue #9: Cannot access the AMD GPU after installation
 ======================================================================================
 
 If the group permissions are not set properly during ROCm installation,
 you might get an error similar to ``Permission denied`` when attempting to access the AMD GPU.
 
-**Solution:** You must be part of the ``video`` and ``render`` groups to access the AMD GPU or accelerator.
+**Solution:** You must be part of the ``video`` and ``render`` groups to access the AMD GPU.
 To learn how to add an account to these groups, see :ref:`group_permissions`.
 
 Issue #10: ROCm debugging tools might become unresponsive in SELinux-enabled distributions

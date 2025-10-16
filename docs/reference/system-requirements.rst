@@ -18,10 +18,10 @@ System requirements (Linux)
 Supported GPUs
 =============================================
 
-The following table shows the supported AMD Instinct™ accelerators, and Radeon™ PRO
+The following table shows the supported AMD Instinct™ GPUs, and Radeon™ PRO
 and Radeon GPUs. If a GPU is not listed on this table, it's not officially supported by AMD.
 
-Accelerators and GPUs listed in the following table support compute workloads (no display information or graphics). If you’re using ROCm with AMD Radeon GPUs or Ryzen APUs for graphics workloads, see the `Use ROCm on Radeon and Ryzen <https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/index.html>`_ documentation to verify compatibility and system requirements.
+GPUs listed in the following table support compute workloads (no display information or graphics). If you’re using ROCm with AMD Radeon GPUs or Ryzen APUs for graphics workloads, see the `Use ROCm on Radeon and Ryzen <https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/index.html>`_ documentation to verify compatibility and system requirements.
 
 .. tab-set::
 
@@ -29,7 +29,7 @@ Accelerators and GPUs listed in the following table support compute workloads (n
 
     .. csv-table::
       :widths: 50, 25, 25, 25, 10
-      :header: "Accelerator", "Series", "Architecture", "LLVM target", "Support"
+      :header: "GPU", "Series", "Architecture", "LLVM target", "Support"
 
       "AMD Instinct MI355X", "MI350", "CDNA4", "gfx950", "✅ [#mi350x-os]_"
       "AMD Instinct MI350X", "MI350", "CDNA4", "gfx950", "✅ [#mi350x-os]_"
@@ -156,7 +156,7 @@ AMD ROCm software supports the following Linux distributions.
 Virtualization support
 ======================
 
-ROCm supports virtualization for the Instinct accelerators and Radeon PRO GPUs listed in the following table.
+ROCm supports virtualization for the Instinct GPUs and Radeon PRO GPUs listed in the following table.
 
 .. important:: 
   
