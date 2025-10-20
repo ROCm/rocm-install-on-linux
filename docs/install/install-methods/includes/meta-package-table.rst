@@ -21,9 +21,8 @@ ROCm runtime packages
     ``rocm-ml-libraries``; Key machine learning libraries. Includes MIOpen.; ``mllib``
     ``rocm-opencl-runtime``; Run OpenCL-based applications on the AMD platform.; ``opencl``
     ;;
-    **Other packages**;
+    **Other package**;
     ``amdgpu-lib``; For users of graphics applications which require the open source Mesa 3D graphics and multimedia libraries. This package is primarily used for Radeon GPUs.; ``graphics``
-    ``hsa-runtime-rocr4wsl-amdgpu``; For users of ROCm in a Windows Subsystem for Linux (WSL) context. This package is only supported for Ubuntu.; ``wsl``
 
 .. _rocm-dev:
 
