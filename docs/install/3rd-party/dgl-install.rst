@@ -6,7 +6,7 @@
 DGL on ROCm installation
 ********************************************************************************
 
-Deep Graph Library `(DGL) <https://www.dgl.ai/>`_ is an easy-to-use, high-performance and scalable
+Deep Graph Library `(DGL) <https://www.dgl.ai/>`_ is an easy-to-use, high-performance, and scalable
 Python package for deep learning on graphs. 
 
 This topic covers setup instructions and the necessary files to build, test, and run 
@@ -39,7 +39,7 @@ The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
    To follow these instructions, input your chosen tag into ``<TAG>``. Example: ``dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0``.
 
    You can download Docker images for DGL with specific ROCm, PyTorch, Python and operating system versions. 
-   See the available tags on `Docker Hub <https://hub.docker.com/r/rocm/dgl/tags>`_ and see :ref:`docker image support <dgl-docker-support>` below.
+   See the available tags on `Docker Hub <https://hub.docker.com/r/rocm/dgl/tags>`_ and see :ref:`dgl-docker-support` below.
 
 
 1. Download your required public `DGL Docker image <https://hub.docker.com/r/rocm/dgl/tags>`_
@@ -208,7 +208,7 @@ Build your own Docker image
 Test the DGL installation
 ================================================================================
 
-To verify that DGL has been successfully installed, run the Docker container as described in the :ref:`installing DGL section <using-docker-with-dgl-pre-installed>`. 
+To verify that DGL has been successfully installed, run the Docker container as described in the :ref:`Installing DGL section <using-docker-with-dgl-pre-installed>`. 
 Once inside the container, ensure you have access to the Bash shell.
 
 To check for a shared library:

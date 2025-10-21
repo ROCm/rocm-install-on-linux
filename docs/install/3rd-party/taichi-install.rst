@@ -32,7 +32,7 @@ To install Taichi on ROCm, you have the following options:
 Use a prebuilt Docker image with Taichi pre-installed
 --------------------------------------------------------------------------------
 
-Docker is the recommended method to set up a Taichi environment, and it avoids potential installation issues. 
+Docker is the recommended method to set up a Taichi environment, as it avoids potential installation issues. 
 The tested, prebuilt image includes Taichi, Python, ROCm, and other dependencies.
 
 1. Pull the Docker image

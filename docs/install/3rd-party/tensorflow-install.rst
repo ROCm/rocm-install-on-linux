@@ -56,18 +56,11 @@ To install TensorFlow for ROCm, you have the following options:
 Use a prebuilt Docker image with TensorFlow pre-installed
 --------------------------------------------------------------------------------
 
-To install ROCm on bare metal, follow
-:doc:`/install/install-overview`. The recommended option to
-get a TensorFlow environment is through Docker.
+The recommended setup to get a TensorFlow environment is through Docker, as it avoids potential installation issues.  
+The tested, prebuilt image includes TensorFlow, ROCm, and other dependencies. See :ref:`tensorflow-docker-support`.
+To install ROCm on bare metal, follow :doc:`/install/install-overview`. 
 
-Using Docker provides portability and access to a prebuilt Docker image that
-has been rigorously tested within AMD. This can also save compilation time and
-should perform as tested and mitigate potential installation issues. See
-:ref:`tensorflow-docker-support`
-
-Follow these steps:
-
-1. Pull the latest public TensorFlow Docker image.
+1. Download the latest public `TensorFlow Docker image <<https://hub.docker.com/r/rocm/tensorflow>`__.
 
    .. code-block:: shell
 

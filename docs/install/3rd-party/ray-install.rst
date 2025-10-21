@@ -35,7 +35,7 @@ To install Ray on ROCm, you have the following options:
 Use a prebuilt Docker image with Ray pre-installed
 --------------------------------------------------------------------------------------
 
-Docker is the recommended method to set up a Ray environment, and it avoids potential installation issues.  
+Docker is the recommended method to set up a Ray environment, as it avoids potential installation issues.  
 The tested, prebuilt image includes Ray, ROCm, and other dependencies.
 
 
@@ -121,7 +121,7 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
 .. _install-rocm-ray-bare-metal:
 
-Install Ray on bare-metal or a custom container
+Install Ray on bare metal or a custom container
 --------------------------------------------------------------------------------------
 
 Follow these steps if you prefer to install ROCm manually on your host system or in a custom container.
@@ -190,7 +190,7 @@ To run unit tests manually and validate your installation fully, follow these st
 
 2. If the setup is successful, the output should list all available ROCm devices.
 
-Expected output (e.g. on MI300x node):
+Expected output (e.g. on MI300X node):
 
 .. code-block:: shell-session
 

@@ -6,7 +6,7 @@
 Megablocks on ROCm installation
 ********************************************************************************
 
-`Megablocks <https://github.com/databricks/megablocks>`__ is a light-weight library 
+`Megablocks <https://github.com/databricks/megablocks>`__ is a lightweight library 
 for mixture-of-experts `(MoE) <https://huggingface.co/blog/moe>`__ training. 
 
 This topic covers setup instructions and the necessary files to build, test, and run 
@@ -31,7 +31,7 @@ To install Megablocks on ROCm, you have the following options:
 Use a prebuilt Docker image with Megablocks pre-installed
 --------------------------------------------------------------------------------------
 
-Docker is the recommended method to set up a Megablocks environment, and it avoids potential installation issues.  
+Docker is the recommended method to set up a Megablocks environment, as it avoids potential installation issues.  
 The tested, prebuilt image includes Megablocks, PyTorch, ROCm, and other dependencies.
 
 1. Pull the Docker image
