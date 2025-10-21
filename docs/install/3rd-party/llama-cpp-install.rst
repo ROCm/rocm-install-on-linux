@@ -1,6 +1,6 @@
 .. meta::
-  :description: Installing llama.cpp for ROCm
-  :keywords: installation instructions, llama.cpp, AMD, ROCm, GGML
+  :description: Install llama.cpp on ROCm
+  :keywords: installation, llama.cpp, docker, deep learning, AMD, ROCm, GGML
 
 ********************************************************************************
 llama.cpp on ROCm installation
@@ -8,17 +8,17 @@ llama.cpp on ROCm installation
 
 `llama.cpp <https://github.com/ggml-org/llama.cpp>`__ is an open-source framework 
 for Large Language Model (LLM) inference that runs on both central processing units 
-(CPUs) and graphics processing units (GPUs). It is written in plain C/C++, providing 
-a simple, dependency-free setup. 
+(CPUs) and graphics processing units (GPUs). 
 
-This topic covers installation. To learn more about llama.cpp on ROCm, 
+This topic covers setup instructions and the necessary files to build, test, and run 
+llama.cpp with ROCm support in a Docker environment. To learn more about llama.cpp on ROCm, 
 including its use cases, recommendations, as well as hardware and software compatibility, 
 see :doc:`rocm:compatibility/ml-compatibility/llama-cpp-compatibility`.
 
 .. note::
 
-  llama.cpp is supported on ROCm 7.0.0 and 6.4.x. This guide provides installation 
-  instructions on ROCm 7.0.0, 6.4.3, 6.4.2 and 6.4.1. For ROCm 6.4.0, see :doc:`previous-versions/llama-cpp-history`.
+  llama.cpp is supported on ROCm 7.0.0 and 6.4.x. This topic provides installation 
+  instructions for ROCm 7.0.0, 6.4.3, 6.4.2 and 6.4.1. For ROCm 6.4.0, see :doc:`previous-versions/llama-cpp-history`.
 
 Install llama.cpp
 ======================================================================================
@@ -33,7 +33,7 @@ To install llama.cpp for ROCm, you have the following options:
 Use a prebuilt Docker image with llama.cpp pre-installed
 --------------------------------------------------------------------------------------
 
-Docker is the recommended method to set up a llama.cpp environment, and it avoids 
+Docker is the recommended method to set up a llama.cpp environment, as it avoids 
 potential installation issues. The tested, prebuilt image includes llama.cpp, ROCm, 
 and other dependencies.
 
@@ -43,7 +43,7 @@ and other dependencies.
 
    Tag endings of ``_full``, ``_server``, and ``_light`` serve different purposes for entrypoints as follows:
 
-   - Full: This image includes both the main executable file and the tools to convert ``LLaMA`` models into ``ggml`` and convert into 4-bit quantization.
+   - Full: This image includes both the main executable file and the tools to convert ``LLaMA`` models into ``ggml`` and apply 4-bit quantization.
    - Server: This image only includes the server executable file.
    - Light: This image only includes the main executable file.
 
@@ -64,7 +64,7 @@ and other dependencies.
 
       export MODEL_PATH='<your_model_path>'
 
-      # Multi-GPU Setup (e.g. 8-GPU) is required to load DeepSeek-V3-Q4_K_M model to avoid out-of-memory errors
+      # Multi-GPU Setup (for example, an 8-GPU configuration) is required to load DeepSeek-V3-Q4_K_M model and prevent out-of-memory errors
       # Loading the model may take several minutes depending on the hardware configuration
 
       # To run the 'full' docker image with main executable (--run) and other options

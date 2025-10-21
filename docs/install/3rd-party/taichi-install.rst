@@ -1,21 +1,18 @@
 .. meta::
   :description: Install Taichi on ROCm
-  :keywords: installation, docker, Taichi, AMD, ROCm
+  :keywords: installation, docker, Taichi, deep learning, AMD, ROCm
 
 ********************************************************************************
-Taichi on ROCm
+Taichi on ROCm installation
 ********************************************************************************
 
 `Taichi <https://www.taichi-lang.org/>`_ is an open-source, imperative, and parallel 
 programming language designed for high-performance numerical computation. 
-Embedded in Python, it leverages just-in-time (JIT) compilation frameworks such as LLVM to accelerate 
-compute-intensive Python code by compiling it to native GPU or CPU instructions.
 
-For hardware, software, and third-party framework compatibility between ROCm and Taichi, 
-see the following resources:
-
-* :ref:`system-requirements` 
-* :doc:`rocm:compatibility/ml-compatibility/taichi-compatibility` 
+This topic covers setup instructions and the necessary files to build, test, and run 
+Taichi with ROCm support in a Docker environment. To learn more about Taichi
+on ROCm, including its use cases, recommendations, as well as hardware and software compatibility, 
+see :doc:`rocm:compatibility/ml-compatibility/taichi-compatibility`.
 
 .. note::
 
@@ -35,7 +32,7 @@ To install Taichi on ROCm, you have the following options:
 Use a prebuilt Docker image with Taichi pre-installed
 --------------------------------------------------------------------------------
 
-Docker is the recommended method to set up a Taichi environment, and it avoids potential installation issues. 
+Docker is the recommended method to set up a Taichi environment, as it avoids potential installation issues. 
 The tested, prebuilt image includes Taichi, Python, ROCm, and other dependencies.
 
 1. Pull the Docker image

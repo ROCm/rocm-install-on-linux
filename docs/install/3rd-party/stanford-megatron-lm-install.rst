@@ -1,18 +1,19 @@
 .. meta::
   :description: Install Stanford Megatron-LM on ROCm
-  :keywords: installation, docker, Megatron-LM, AMD, ROCm
+  :keywords: installation, docker, Megatron-LM, deep learning, AMD, ROCm
 
 ********************************************************************************
-Stanford Megatron-LM on ROCm
+Stanford Megatron-LM on ROCm installation
 ********************************************************************************
 
-Stanford Megatron-LM is a large-scale language model training framework developed by `NVIDIA <https://github.com/NVIDIA/Megatron-LM>`_. It is
-designed to train massive transformer-based language models efficiently by model and data parallelism.  
+`Stanford Megatron-LM <https://github.com/ROCm/Stanford-Megatron-LM>`__ is a large-scale 
+language model (LLM) training framework designed to train massive transformer-based models 
+efficiently through data parallelism.  
 
-For hardware, software, and third-party framework compatibility between ROCm and Stanford-Megatron-LM, see:
-
-* :ref:`system-requirements`
-* :doc:`rocm:compatibility/ml-compatibility/stanford-megatron-lm-compatibility`
+This topic covers setup instructions and the necessary files to build, test, and run 
+Stanford Megatron-LM with ROCm support in a Docker environment. To learn more about Stanford Megatron-LM
+on ROCm, including its use cases, recommendations, as well as hardware and software compatibility, 
+see :doc:`rocm:compatibility/ml-compatibility/stanford-megatron-lm-compatibility`.
 
 .. note::
 
@@ -34,7 +35,7 @@ Use a prebuilt Docker image with Stanford Megatron-LM pre-installed
 The recommended way to set up a Stanford Megatron-LM environment and avoid potential installation issues is with Docker. 
 The tested, prebuilt image includes Stanford Megatron-LM, PyTorch, ROCm, and other dependencies.
 
-Prebuilt Docker images with Stanford Megatron-LM configured for ROCm 6.3.0 are available on `Docker Hub <https://hub.docker.com/r/rocm/megatron-lm/tags>`_.
+Prebuilt Docker images with Stanford Megatron-LM configured for ROCm 6.3.0 are available on `Docker Hub <https://hub.docker.com/r/rocm/stanford-megatron-lm/tags>`_.
 
 1. Pull the Docker image:
 
@@ -70,8 +71,12 @@ Build your own Docker image
 2. Start a Docker container using the downloaded image
 
    .. code-block:: bash
-
-      docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/pytorch:rocm6.3_ubuntu24.04_py3.12_pytorch_release_2.4.0
+      
+      docker run -it \
+      --device=/dev/kfd \
+      --device=/dev/dri \
+      --group-add video \
+      rocm/pytorch:rocm6.3_ubuntu24.04_py3.12_pytorch_release_2.4.0
 
 3. Set up dependencies
 

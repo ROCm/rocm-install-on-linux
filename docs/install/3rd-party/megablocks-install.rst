@@ -1,22 +1,18 @@
 .. meta::
   :description: Install Megablocks on ROCm
-  :keywords: installation, docker, Megablocks, AMD, ROCm
+  :keywords: installation, docker, Megablocks, deep learning, AMD, ROCm
 
 ********************************************************************************
-Megablocks on ROCm
+Megablocks on ROCm installation
 ********************************************************************************
 
-Megablocks is a light-weight library for mixture-of-experts (MoE) training. 
-The core of the system is efficient "dropless-MoE" and standard MoE layers. 
-Megablocks is integrated with `https://github.com/stanford-futuredata/Megatron-LM <https://github.com/stanford-futuredata/Megatron-LM>`_, 
-where data and pipeline parallel training of MoEs is supported.
+`Megablocks <https://github.com/databricks/megablocks>`__ is a lightweight library 
+for mixture-of-experts `(MoE) <https://huggingface.co/blog/moe>`__ training. 
 
-
-For hardware, software, and third-party framework compatibility between ROCm and Megablocks, 
-see the following resources:
-
-* :ref:`system-requirements` 
-* :doc:`rocm:compatibility/ml-compatibility/megablocks-compatibility` 
+This topic covers setup instructions and the necessary files to build, test, and run 
+Megablocks with ROCm support in a Docker environment. To learn more about Megablocks on ROCm, 
+including its use cases, recommendations, as well as hardware and software compatibility, 
+see :doc:`rocm:compatibility/ml-compatibility/megablocks-compatibility`.
 
 .. note::
 
@@ -30,15 +26,13 @@ To install Megablocks on ROCm, you have the following options:
 * :ref:`using-docker-with-megablocks-pre-installed` **(recommended)**
 * :ref:`build-megablocks-rocm-docker-image`
 
-
 .. _using-docker-with-megablocks-pre-installed:
 
-Using a prebuilt Docker image with Megablocks pre-installed
+Use a prebuilt Docker image with Megablocks pre-installed
 --------------------------------------------------------------------------------------
 
-Docker is the recommended method to set up a Megablocks environment, and it avoids potential installation issues.  
+Docker is the recommended method to set up a Megablocks environment, as it avoids potential installation issues.  
 The tested, prebuilt image includes Megablocks, PyTorch, ROCm, and other dependencies.
-
 
 1. Pull the Docker image
 
@@ -60,7 +54,6 @@ The tested, prebuilt image includes Megablocks, PyTorch, ROCm, and other depende
       --ipc=host --shm-size 16G \
       rocm/megablocks:megablocks-0.7.0_rocm6.3.0_ubuntu24.04_py3.12_pytorch2.4.0
 
-
 .. _build-megablocks-rocm-docker-image:
 
 Build your own Docker image
@@ -80,14 +73,17 @@ A Dockerfile is provided in the `https://github.com/ROCm/megablocks <https://git
    .. code-block:: bash
       
       cd megablocks
-      docker build -t rocm/megablocks:megablocks-0.7.0_rocm6.3.0_ubuntu24.04_py3.12_pytorch2.4.0 .
+      docker build -t rocm/megablocks:megablocks-0.7.0_rocm6.3.0_ubuntu24.04_py3.12_pytorch2.4.0
 
 3. Run the docker container
 
    .. code-block:: bash
       
-      docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/megablocks:megablocks-0.7.0_rocm6.3.0_ubuntu24.04_py3.12_pytorch2.4.0 .
-
+      docker run -it \
+      --device=/dev/kfd \
+      --device=/dev/dri \
+      --group-add video \
+      rocm/megablocks:megablocks-0.7.0_rocm6.3.0_ubuntu24.04_py3.12_pytorch2.4.0
 
 Set up your datasets
 ======================================================================================

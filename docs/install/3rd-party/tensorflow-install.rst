@@ -1,36 +1,23 @@
 .. meta::
-  :description: Installing TensorFlow for ROCm
-  :keywords: installation instructions, TensorFlow, AMD, ROCm
+  :description: Install TensorFlow on ROCm
+  :keywords: installation, docker, TensorFlow, deep learning, AMD, ROCm
 
-******************
-TensorFlow on ROCm
-******************
+********************************************************************************
+TensorFlow on ROCm installation
+********************************************************************************
 
 `TensorFlow <https://tensorflow.org>`__ is an open-source library for solving machine learning,
-deep learning, and AI problems. It can solve many
-problems across different sectors and industries, but primarily focuses on
-neural network training and inference. It is one of the most popular and
-in-demand frameworks and is very active in open-source contribution and
-development.
+deep learning, and AI problems. 
 
-To install TensorFlow for ROCm, you have the following options:
-
-* :ref:`install-tensorflow-prebuilt-docker` (recommended)
-
-  * :ref:`tensorflow-docker-support`
-
-* :ref:`install-tensorflow-wheels`
-
-For hardware, software, and third-party framework compatibility between ROCm and TensorFlow, see the following resources:
-
-* :ref:`system-requirements`
-
-* :doc:`rocm:compatibility/ml-compatibility/tensorflow-compatibility`
+This topic covers setup instructions and the necessary files to build, test, and run 
+TensorFlow with ROCm support in a Docker environment. To learn more about TensorFlow
+on ROCm, including its use cases, recommendations, as well as hardware and software compatibility, 
+see :doc:`rocm:compatibility/ml-compatibility/tensorflow-compatibility`.
 
 .. note::
 
-   As of ROCm 6.1, ``tensorflow-rocm`` packages are found at `<https://repo.radeon.com/rocm/manylinux>`__.
-   Prior to ROCm 6.1, packages were found at `<https://pypi.org/project/tensorflow-rocm>`_.
+   As of ROCm 6.1.0, ``tensorflow-rocm`` packages are found at `<https://repo.radeon.com/rocm/manylinux>`__.
+   Prior to ROCm 6.1.0, packages were found at `<https://pypi.org/project/tensorflow-rocm>`_.
 
 .. _install-tensorflow-versions:
 
@@ -51,25 +38,29 @@ For hardware, software, and third-party framework compatibility between ROCm and
     * - 6.0.x
       - 2.14.0, 2.13.1 2.12.1
 
-.. _install-tensorflow-prebuilt-docker:
-
 .. _install-tensorflow-options:
 
-Using a Docker image with TensorFlow pre-installed
-==================================================
+Install TensorFlow
+================================================================================
 
-To install ROCm on bare metal, follow
-:doc:`/install/install-overview`. The recommended option to
-get a TensorFlow environment is through Docker.
+To install TensorFlow for ROCm, you have the following options:
 
-Using Docker provides portability and access to a prebuilt Docker image that
-has been rigorously tested within AMD. This can also save compilation time and
-should perform as tested and mitigate potential installation issues. See
-:ref:`tensorflow-docker-support`
+* :ref:`install-tensorflow-prebuilt-docker` **(recommended)**
 
-Follow these steps:
+  * :ref:`tensorflow-docker-support`
 
-1. Pull the latest public TensorFlow Docker image.
+* :ref:`install-tensorflow-wheels`
+
+.. _install-tensorflow-prebuilt-docker:
+
+Use a prebuilt Docker image with TensorFlow pre-installed
+--------------------------------------------------------------------------------
+
+The recommended setup to get a TensorFlow environment is through Docker, as it avoids potential installation issues.  
+The tested, prebuilt image includes TensorFlow, ROCm, and other dependencies. See :ref:`tensorflow-docker-support`.
+To install ROCm on bare metal, follow :doc:`/install/install-overview`. 
+
+1. Download the latest public `TensorFlow Docker image <https://hub.docker.com/r/rocm/tensorflow>`__.
 
    .. code-block:: shell
 
@@ -90,14 +81,10 @@ Follow these steps:
            --security-opt seccomp=unconfined \
            rocm/tensorflow:latest
 
-.. |hr| raw:: html
-
-   <hr>
-
 .. _tensorflow-docker-support:
 
 Docker image support
---------------------
+--------------------------------------------------------------------------------
 
 AMD validates and publishes ready-made TensorFlow images with ROCm backends on
 Docker Hub. The following Docker image tags and associated inventories are
@@ -264,8 +251,8 @@ validated for ROCm 7.0.0.
 
 .. _install-tensorflow-wheels:
 
-Using a wheels package
-======================
+Use a wheels package
+--------------------------------------------------------------------------------
 
 To install TensorFlow using the wheels package, use the following command.
 
@@ -284,8 +271,8 @@ To install TensorFlow using the wheels package, use the following command.
 
 .. _test-tensorflow-installation:
 
-Testing the TensorFlow installation
-===================================
+Test the TensorFlow installation
+================================================================================
 
 To test the installation of TensorFlow, run the container as specified in
 :ref:`Installing TensorFlow <install-tensorflow-options>`. Ensure you have access to the Python
@@ -295,8 +282,8 @@ shell in the Docker container.
 
     python -c 'import tensorflow' 2> /dev/null && echo ‘Success’ || echo ‘Failure’
 
-Running a basic TensorFlow example
-==================================
+Run a TensorFlow example
+================================================================================
 
 To quickly validate your TensorFlow environment, run a basic TensorFlow example.
 

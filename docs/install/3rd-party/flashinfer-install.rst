@@ -1,16 +1,17 @@
 .. meta::
-  :description: Installing FlashInfer for ROCm
-  :keywords: installation, docker, FlashInfer, AMD, ROCm
+  :description: Install FlashInfer on ROCm
+  :keywords: installation, docker, FlashInfer, deep learning, AMD, ROCm
 
 ********************************************************************************
 FlashInfer on ROCm installation
 ********************************************************************************
 
 `FlashInfer <https://docs.flashinfer.ai/index.html>`__ is a library and kernel generator 
-for Large Language Models (LLMs) that provides high-performance implementation of graphics 
+for Large Language Models (LLMs) that provides a high-performance implementation of graphics 
 processing units (GPUs) kernels. 
 
-This topic covers installation. To learn more about FlashInfer on ROCm, 
+This topic covers setup instructions and the necessary files to build, test, and run 
+FlashInfer with ROCm support in a Docker environment. To learn more about FlashInfer on ROCm, 
 including its use cases, recommendations, as well as hardware and software compatibility, 
 see :doc:`rocm:compatibility/ml-compatibility/flashinfer-compatibility`.
 
@@ -32,7 +33,7 @@ To install FlashInfer on ROCm, you have the following options:
 Use a prebuilt Docker image with FlashInfer pre-installed
 --------------------------------------------------------------------------------------
 
-Docker is the recommended method to set up a FlashInfer environment, and it avoids 
+Docker is the recommended method to set up a FlashInfer environment, as it avoids 
 potential installation issues.  The tested, prebuilt image includes FlashInfer, PyTorch, 
 ROCm, and other dependencies.
 
@@ -161,7 +162,7 @@ Run a FlashInfer example
 ======================================================================================
 
 The `https://github.com/ROCm/flashinfer <https://github.com/ROCm/flashinfer>`_ repository has example code that you can run FlashInfer with.
-You can save the following code snippet to a python script once you have FlashInfer installed and run the script to try it out.
+You can save the following code snippet to a Python script once you have FlashInfer installed and run the script to try it out.
 
 1. Save the following code snippet:
 
@@ -185,7 +186,7 @@ You can save the following code snippet to a python script once you have FlashIn
       o = flashinfer.single_decode_with_kv_cache(q, k, v) # decode attention without RoPE on-the-fly
       o_rope_on_the_fly = flashinfer.single_decode_with_kv_cache(q, k, v, pos_encoding_mode="ROPE_LLAMA") # decode with LLaMA style RoPE on-the-fly
 
-2. Save it to a python script by renaming ``<example_name>``:
+2. Save it to a Python script by renaming ``<example_name>``:
 
    .. code-block:: bash
 

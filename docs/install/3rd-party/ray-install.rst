@@ -1,25 +1,20 @@
 .. meta::
-  :description: Ray on ROCm
-  :keywords: installation instructions, building, Ray, AMD, ROCm
+  :description: Install Ray on ROCm
+  :keywords: installation, docker, deep learning, Ray, AMD, ROCm
 
 ********************************************************************************
 Ray on ROCm installation
 ********************************************************************************
 
-Ray is a unified framework for scaling AI and Python applications from your laptop 
-to a full cluster, without changing your code. Ray consists of `a core distributed 
+Ray is a unified framework, consisting of `a core distributed 
 runtime  <https://docs.ray.io/en/latest/ray-core/walkthrough.html>`_ and a set of 
 `AI libraries <https://docs.ray.io/en/latest/ray-air/getting-started.html>`_ for 
 simplifying machine learning computations.
 
-Ray is a general-purpose framework that runs many types of workloads efficiently. 
-Any Python application can be scaled with Ray, without extra infrastructure.
-
-For hardware, software, and third-party framework compatibility between ROCm and Ray, 
-see the following resources:
-
-* :ref:`system-requirements`
-* :doc:`rocm:compatibility/ml-compatibility/ray-compatibility`
+This topic covers setup instructions and the necessary files to build, test, and run 
+Ray with ROCm support in a Docker environment. To learn more about Ray on ROCm, 
+including its use cases, recommendations, as well as hardware and software compatibility, 
+see :doc:`rocm:compatibility/ml-compatibility/ray-compatibility`.
 
 .. note::
 
@@ -37,10 +32,10 @@ To install Ray on ROCm, you have the following options:
 
 .. _using-docker-with-ray-pre-installed:
 
-Using a prebuilt Docker image with Ray pre-installed
+Use a prebuilt Docker image with Ray pre-installed
 --------------------------------------------------------------------------------------
 
-Docker is the recommended method to set up a Ray environment, and it avoids potential installation issues.  
+Docker is the recommended method to set up a Ray environment, as it avoids potential installation issues.  
 The tested, prebuilt image includes Ray, ROCm, and other dependencies.
 
 
@@ -195,7 +190,7 @@ To run unit tests manually and validate your installation fully, follow these st
 
 2. If the setup is successful, the output should list all available ROCm devices.
 
-Expected output (e.g. on MI300x node):
+Expected output (e.g. on MI300X node):
 
 .. code-block:: shell-session
 
