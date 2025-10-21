@@ -6,7 +6,7 @@
 DGL on ROCm installation
 ********************************************************************************
 
-Deep Graph Library `(DGL) <https://www.dgl.ai/>`_ is an easy-to-use, high-performance, and scalable
+Deep Graph Library (`DGL <https://www.dgl.ai/>`__) is an easy-to-use, high-performance, and scalable
 Python package for deep learning on graphs. 
 
 This topic covers setup instructions and the necessary files to build, test, and run 

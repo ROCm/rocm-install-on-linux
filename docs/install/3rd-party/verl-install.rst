@@ -6,7 +6,7 @@
 verl on ROCm installation
 ********************************************************************************
 
-Volcano Engine Reinforcement Learning for LLMs `(verl) <https://verl.readthedocs.io/en/latest/>`__  
+Volcano Engine Reinforcement Learning for LLMs (`verl <https://verl.readthedocs.io/en/latest/>`__) 
 is a reinforcement learning framework designed for large language models (LLMs). 
 
 This topic covers setup instructions and the necessary files to build, test, and run 

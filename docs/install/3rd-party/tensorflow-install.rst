@@ -60,7 +60,7 @@ The recommended setup to get a TensorFlow environment is through Docker, as it a
 The tested, prebuilt image includes TensorFlow, ROCm, and other dependencies. See :ref:`tensorflow-docker-support`.
 To install ROCm on bare metal, follow :doc:`/install/install-overview`. 
 
-1. Download the latest public `TensorFlow Docker image <<https://hub.docker.com/r/rocm/tensorflow>`__.
+1. Download the latest public `TensorFlow Docker image <https://hub.docker.com/r/rocm/tensorflow>`__.
 
    .. code-block:: shell
 

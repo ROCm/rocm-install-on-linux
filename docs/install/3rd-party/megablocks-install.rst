@@ -79,7 +79,11 @@ A Dockerfile is provided in the `https://github.com/ROCm/megablocks <https://git
 
    .. code-block:: bash
       
-      docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/megablocks:megablocks-0.7.0_rocm6.3.0_ubuntu24.04_py3.12_pytorch2.4.0
+      docker run -it \
+      --device=/dev/kfd \
+      --device=/dev/dri \
+      --group-add video \
+      rocm/megablocks:megablocks-0.7.0_rocm6.3.0_ubuntu24.04_py3.12_pytorch2.4.0
 
 Set up your datasets
 ======================================================================================

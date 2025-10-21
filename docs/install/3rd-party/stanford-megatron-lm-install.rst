@@ -71,8 +71,12 @@ Build your own Docker image
 2. Start a Docker container using the downloaded image
 
    .. code-block:: bash
-
-      docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/pytorch:rocm6.3_ubuntu24.04_py3.12_pytorch_release_2.4.0
+      
+      docker run -it \
+      --device=/dev/kfd \
+      --device=/dev/dri \
+      --group-add video \
+      rocm/pytorch:rocm6.3_ubuntu24.04_py3.12_pytorch_release_2.4.0
 
 3. Set up dependencies
 
