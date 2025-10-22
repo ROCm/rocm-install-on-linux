@@ -83,6 +83,7 @@ rst_prolog = f"""
 .. |amdgpu_version| replace:: {amdgpu_version}
 .. |rocm_directory_version| replace:: {rocm_directory_version}
 .. |amdgpu_install_version| replace:: {amdgpu_install_version}
+.. |udev_amdgpu_version| replace:: {udev_amdgpu_version}
 """
 
 html_theme_options = {
@@ -100,7 +101,8 @@ html_context = {
     "azl_version_numbers": azl_version_numbers,
     "rl_version_numbers" : rl_version_numbers,
     "rhel_multi_versions" : rhel_multi_versions,
-    "ol_multi_versions" : ol_multi_versions
+    "ol_multi_versions" : ol_multi_versions,
+    "udev_amdgpu_version" : udev_amdgpu_version
 }
 
 footnote_backlinks = False
