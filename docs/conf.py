@@ -12,7 +12,7 @@ rocm_multi_versions_package_versions = '7.0.0 6.4.3' # however, in multi, the pa
 rocm_directory_version = '7.0.0' # in 6.0 rocm was located in /opt/rocm-6.0.0
 amdgpu_version = '7.0' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
 amdgpu_install_version = '7.0.70000-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
-
+udev_amdgpu_version = '30.10'
 
 latex_engine = "xelatex"
 latex_elements = {
@@ -83,6 +83,7 @@ rst_prolog = f"""
 .. |amdgpu_version| replace:: {amdgpu_version}
 .. |rocm_directory_version| replace:: {rocm_directory_version}
 .. |amdgpu_install_version| replace:: {amdgpu_install_version}
+.. |udev_amdgpu_version| replace:: {udev_amdgpu_version}
 """
 
 html_theme_options = {
@@ -100,7 +101,8 @@ html_context = {
     "azl_version_numbers": azl_version_numbers,
     "rl_version_numbers" : rl_version_numbers,
     "rhel_multi_versions" : rhel_multi_versions,
-    "ol_multi_versions" : ol_multi_versions
+    "ol_multi_versions" : ol_multi_versions,
+    "udev_amdgpu_version" : udev_amdgpu_version
 }
 
 footnote_backlinks = False
