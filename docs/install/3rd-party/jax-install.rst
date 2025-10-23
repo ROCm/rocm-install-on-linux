@@ -257,9 +257,9 @@ The `<https://github.com/ROCm/rocm-jax>`__ repository contains sources for the R
 plugin for JAX as well as Dockerfiles used to build the AMD ``rocm/jax`` images.
 For the most up-to-date instructions, refer directly to the instructions in the repository:
 
-- See `Quick build <https://github.com/ROCm/ROCm-jax?tab=readme-ov-file#quickbuild>`__ for high-level steps.
+- See `Quick build <https://github.com/ROCm/ROCm-jax?tab=readme-ov-file#quickbuild>`__ for concise high-level steps.
 
-- See `Building <https://github.com/ROCm/rocm-jax/blob/master/BUILDING.md#building>`__ for more in-depth build instructions and troubleshooting suggestions, .
+- See `Building <https://github.com/ROCm/rocm-jax/blob/master/BUILDING.md#building>`__ for more in-depth build instructions and troubleshooting suggestions.
 
 .. _jax-verify-installation:
 
