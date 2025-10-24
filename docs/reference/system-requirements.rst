@@ -96,15 +96,15 @@ GPUs listed in the following table support compute workloads (no display informa
 
 .. rubric:: Footnotes
 
-.. [#mi350x-os] AMD Instinct MI355X and MI350X GPUs are supported only on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.0, RHEL 9.6, RHEL 9.4, Oracle Linux 10, and Oracle Linux 9.
-.. [#mi325x-os] AMD Instinct MI325X GPU is supported only on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 9.6, and RHEL 9.4.
-.. [#mi300x-os] AMD Instinct MI300X GPU is supported on all listed :ref:`supported_distributions`.
-.. [#mi300A-os] AMD Instinct MI300A GPU is supported only on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.0, RHEL 9.6, RHEL 9.4, RHEL 8.10, SLES 15 SP7, Debian 12, and Rocky Linux 9.
+.. [#mi350x-os] AMD Instinct MI355X and MI350X GPUs are supported on all below listed :ref:`supported_distributions` except RHEL 8.10, SLES 15 SP7, Debian 12, Rocky 9, Azure Linux 3.0, and Oracle Linux 8.
+.. [#mi325x-os] AMD Instinct MI325X GPU are supported on all below listed :ref:`supported_distributions` except RHEL 8.10, Rocky 9, Azure Linux 3.0, and Oracle Linux 8.
+.. [#mi300x-os] AMD Instinct MI300X GPU is supported on all below listed :ref:`supported_distributions`.
+.. [#mi300A-os] AMD Instinct MI300A GPU is supported on all below listed :ref:`supported_distributions` except on Debian 13, Azure Linux 3.0, Oracle Linux 10, Oracle Linux 9, and Oracle Linux 8.
 .. [#mi200x-os] AMD Instinct MI200 Series GPUs are supported only on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.0, RHEL 9.6, RHEL 9.4, RHEL 8.10, SLES 15 SP7, and Debian 12.
-.. [#mi100-os] AMD Instinct MI100 GPU is supported only on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.0, RHEL 9.6, RHEL 9.4, and RHEL 8.10.
-.. [#RDNA-OS] AMD Radeon PRO ( AI PRO R9700, PRO W7900 Dual Slot, PRO W7900, PRO W7800 48GB, PRO W7800, PRO W7700, PRO W6800)  and AMD Radeon (RX 9070 XT, RX 9070 GRE, RX 9070, RX 9060 XT, RX 9060, RX 7900 XTX, RX 7900 XT, RX 7900 GRE, RX 7800 XT, and RX 7700 XT) are supported only on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.0, and RHEL 9.6.
-.. [#rd-v710] AMD Radeon PRO V710 is supported only on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.0, RHEL 9.6, and Azure Linux 3.0.
-.. [#rd-v620] AMD Radeon PRO V620 is supported only on Ubuntu 24.04.3 and Ubuntu 22.04.5.
+.. [#mi100-os] AMD Instinct MI100 GPU is only supported on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.0, RHEL 9.6, RHEL 9.4, RHEL 8.10, and SLES 15 SP7.
+.. [#RDNA-OS] AMD Radeon PRO ( AI PRO R9700, PRO W7900 Dual Slot, PRO W7900, PRO W7800 48GB, PRO W7800, PRO W7700, PRO W6800) and AMD Radeon (RX 9070 XT, RX 9070 GRE, RX 9070, RX 9060 XT, RX 9060, RX 7900 XTX, RX 7900 XT, RX 7900 GRE, RX 7800 XT, and RX 7700 XT) are only supported on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.0, and RHEL 9.6.
+.. [#rd-v710] AMD Radeon PRO V710 is only supported on Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.0, RHEL 9.6, and Azure Linux 3.0.
+.. [#rd-v620] AMD Radeon PRO V620 is only supported on Ubuntu 24.04.3 and Ubuntu 22.04.5.
 
 .. _supported_distributions:
 
@@ -122,7 +122,7 @@ AMD ROCm software supports the following Linux distributions.
     "Ubuntu 22.04.5", "5.15 [GA], 6.8 [HWE]", "2.35", "✅"
     "RHEL 10.0", "6.12.0-55", "2.39", "✅ [#rhel-10]_"
     "RHEL 9.6", "5.14.0-570", "2.34", "✅ [#rhel-10]_"
-    "RHEL 9.4", "5.14.0-427", "2.34", "✅"
+    "RHEL 9.4", "5.14.0-427", "2.34", "✅ [#rhel-94]_"
     "RHEL 8.10", "4.18.0-553", "2.28", "✅ [#rhel-700]_"
     "SLES 15 SP7", "6.4.0-150700.51", "2.38", "✅ [#sles-db-700]_"
     "Debian 13", "6.12", "2.35", "✅ [#sles-db-702]_"
@@ -144,12 +144,14 @@ AMD ROCm software supports the following Linux distributions.
 .. rubric:: Footnotes
 
 .. [#rhel-10] RHEL 10.0 and RHEL 9.6 are supported on all listed :ref:`supported_GPUs` except AMD Radeon PRO V620 GPU.
+.. [#rhel-94] RHEL 9.4 is supported on all AMD Instinct GPUs listed under :ref:`supported_GPUs`.
 .. [#rhel-700] RHEL 8.10 is supported only on AMD Instinct MI300X, MI300A, MI250X, MI250, MI210, and MI100 GPUs.
-.. [#sles-db-700] SLES 15 SP7 and Debian 12 are supported only on AMD Instinct MI300X, MI300A, MI250X, MI250, and MI210 GPUs.
-.. [#sles-db-702] Debian 13 is supported only on AMD Instinct MI300X GPU.
+.. [#sles-db-700] SLES 15 SP7 is supported only on AMD Instinct MI325X, MI300X, MI300A, MI250X, MI250, MI210, and MI100 GPUs.
+.. [#db-710] Debian 12 are supported only on AMD Instinct MI325X, MI300X, MI300A, MI250X, MI250, and MI210 GPUs.
+.. [#sles-db-702] Debian 13 is supported only on AMD Instinct MI355X, MI350X, MI325X, and MI300X GPUs.
 .. [#rl-700] Rocky Linux 9 is supported only on AMD Instinct MI300X and MI300A GPUs.  
 .. [#al-mi300x] Azure Linux 3.0 is supported only on AMD Instinct MI300X GPU and AMD Radeon PRO V710.
-.. [#ol-700] Oracle Linux 10 and 9 are supported only on AMD Instinct MI355X, MI350X, and MI300X GPUs.
+.. [#ol-700] Oracle Linux 10 and 9 are supported only on AMD Instinct MI355X, MI350X, MI325X, and MI300X GPUs.
 .. [#ol-mi300x] Oracle Linux 8 is supported only on AMD Instinct MI300X GPUs.
 
 
@@ -224,7 +226,8 @@ ROCm supports virtualization for the Instinct GPUs and Radeon PRO GPUs listed in
              <p>Ubuntu 24.04</p>
            </td>
            <td>
-             <p>Ubuntu 24.04</p>
+             <p>Ubuntu 24.04,<br>
+                RHEL 10.0</p>
            </td>
          </tr>
        </tbody>
@@ -259,7 +262,8 @@ ROCm supports virtualization for the Instinct GPUs and Radeon PRO GPUs listed in
              <p>Ubuntu 24.04</p>
            </td>
            <td>
-             <p>Ubuntu 24.04</p>
+             <p>Ubuntu 24.04,<br>
+                RHEL 10.0</p>
            </td>
          </tr>
        </tbody>
@@ -349,10 +353,12 @@ ROCm supports virtualization for the Instinct GPUs and Radeon PRO GPUs listed in
              <p>SR-IOV</p>
            </td>
            <td>
-             <p>Ubuntu 22.04</p>
+             <p>Ubuntu 22.04,<br>
+                RHEL 9.4</p>
            </td>
            <td>
-             <p>Ubuntu 22.04</p>
+             <p>Ubuntu 22.04,<br>
+                RHEL 9.4</p>
            </td>
          </tr>
        </tbody>
@@ -365,7 +371,7 @@ ROCm supports virtualization for the Instinct GPUs and Radeon PRO GPUs listed in
              <p>KVM</p>
            </td>
            <td>
-             <p>Passthrough</p>
+             <p>SR-IOV</p>
            </td>
            <td>
              <p>RHEL 9.4</p>
@@ -380,7 +386,7 @@ ROCm supports virtualization for the Instinct GPUs and Radeon PRO GPUs listed in
              <p>KVM</p>
            </td>
            <td>
-             <p>SR-IOV</p>
+             <p>Passthrough</p>
            </td>
            <td>
              <p>RHEL 9.4</p>

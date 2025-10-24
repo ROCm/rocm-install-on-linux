@@ -5,9 +5,9 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # ROCm version numbers
-rocm_version = '7.0.2'
-rocm_major_version = '7.0'
-rocm_multi_versions = '7.0.2 7.0' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_version = '7.1.0'
+rocm_major_version = '7.1'
+rocm_multi_versions = '7.1.0 7.1' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
 rocm_multi_versions_package_versions = '7.0.2 7.0.0' # however, in multi, the packages use 6.3.0
 rocm_directory_version = '7.0.2' # in 6.0 rocm was located in /opt/rocm-6.0.0
 amdgpu_version = '7.0.2' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
@@ -29,8 +29,8 @@ latex_elements = {
 project = "ROCm installation on Linux"
 author = "Advanced Micro Devices, Inc."
 copyright = "Copyright (c) 2025 Advanced Micro Devices, Inc. All rights reserved."
-version = "7.0.2"
-release = "7.0.2"
+version = "7.1.0"
+release = "7.1.0"
 setting_all_article_info = True
 all_article_info_os = ["linux"]
 all_article_info_author = ""
