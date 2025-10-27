@@ -27,16 +27,12 @@ see :doc:`rocm:compatibility/ml-compatibility/tensorflow-compatibility`.
 
     * - ROCm version
       - TensorFlow version
+    * - 7.0.x
+      - 2.19.1, 2.18.1, 2.17.1
     * - 6.4.x
       - 2.18.1, 2.17.1, 2.16.2
     * - 6.3.x
       - 2.17.0, 2.16.2 2.15.1
-    * - 6.2.x
-      - 2.16.1, 2.15.1, 2.14.1
-    * - 6.1.x
-      - 2.15.0, 2.14.0, 2.13.1
-    * - 6.0.x
-      - 2.14.0, 2.13.1 2.12.1
 
 .. _install-tensorflow-options:
 
@@ -92,7 +88,7 @@ validated for ROCm 7.0.0.
 
 .. tab-set::
 
-   .. tab-item:: tensorflow-rocm 2.19.0
+   .. tab-item:: tensorflow-rocm 2.19.1
       :selected:
 
       .. tab-set::
