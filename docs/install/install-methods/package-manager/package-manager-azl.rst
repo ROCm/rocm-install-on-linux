@@ -46,7 +46,7 @@ Installing
 Install kernel driver
 --------------------------------------------------------------------------
 
-For information about the AMDGPU driver installation, see :ref:`amdgpu-driver-install`.
+For information about the AMDGPU driver installation, see :ref:`amdgpu-driver-install` in the ROCm documentation.
 
 For information about driver compatibility, see :doc:`../../../reference/user-kernel-space-compat-matrix`.
 
