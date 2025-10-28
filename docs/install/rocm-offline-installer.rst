@@ -88,7 +88,7 @@ Substitute your values for the following placeholders:
 * ``<rocm-version>``: ROCm version number for the ROCm Offline Installer Creator tool, for example, ``rocm-rel-7.0.1``.
 * ``<distro>``: Linux distribution for the tool, for example, ``ubuntu``, ``ol``, ``rhel``, ``sles``, ``rocky``, or ``debian``.
 * ``<distro-version>``: Linux distribution version for the tool, for example, ``22.04`` for Ubuntu or ``9.6`` for RHEL.
-* ``<creator-package>``: The ROCm Offline Installer Creator package name, for example, ``rocm-offline-creator_1.0.13.70001-1~22.04.run``.
+* ``<creator-package>``: The ROCm Offline Installer Creator package name, for example, ``rocm-offline-creator_1.0.13.70001-2~22.04.run``.
 
 .. note::
 
@@ -100,7 +100,7 @@ for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-7.0.1/ubuntu/22.04/rocm-offline-creator_1.0.13.70001-1~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-7.0.1/ubuntu/22.04/rocm-offline-creator_1.0.13.70001-2~22.04.run
 
 Installer Creation
 ================================================
@@ -109,7 +109,7 @@ On the host system, run the ROCm Offline Installer Creator from the terminal com
 
 .. code-block:: shell
 
-   bash ./rocm-offline-creator_1.0.13.70001-1~22.04.run <options>
+   bash ./rocm-offline-creator_1.0.13.70001-2~22.04.run <options>
 
 The ``<options>`` parameter can either be left empty or set to these options:
 
@@ -129,7 +129,7 @@ This example demonstrates how to use the ``prompt`` option when running the Offl
 
 .. code-block:: shell
 
-   bash ./rocm-offline-creator_1.0.13.70001-1~22.04.run prompt
+   bash ./rocm-offline-creator_1.0.13.70001-2~22.04.run prompt
 
 The optional ``prompt`` parameter stops the Offline Installer Creator
 at critical checkpoints in the creation process and prompts the user. At these checkpoints, 
