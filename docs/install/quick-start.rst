@@ -306,6 +306,10 @@ AMDGPU driver installation
                        sudo tdnf repolist --refresh
                        sudo tdnf install amdgpu
 
+                   .. note::
+                
+                       For AZL, the latest amdgpu version supported is from the ROCm 6.2.2 release.
+
                 {% endfor %}
 
 .. important::
