@@ -27,3 +27,7 @@ The AMD GPU Driver (amdgpu) is now distributed separately from the ROCm software
     "5.5.x", "5.3.x, 5.4.x, 5.5.x, 5.6.x, 5.7.x"
     "5.4.x", "5.2.x, 5.3.x, 5.4.x, 5.5.x, 5.6.x"
     "5.3.x", "5.1.x, 5.2.x, 5.3.x, 5.4.x, 5.5.x"
+
+.. note::
+
+    For AZL, the latest amdgpu version supported is from the ROCm 6.2.2 release.
