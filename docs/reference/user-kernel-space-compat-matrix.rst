@@ -26,3 +26,7 @@ Starting from ROCm™ 6.4.0, forward and backward compatibility between the AMD 
     "5.5.x", "5.3.x, 5.4.x, 5.5.x, 5.6.x, 5.7.x"
     "5.4.x", "5.2.x, 5.3.x, 5.4.x, 5.5.x, 5.6.x"
     "5.3.x", "5.1.x, 5.2.x, 5.3.x, 5.4.x, 5.5.x"
+
+.. note::
+
+    For AZL, the latest amdgpu version supported is from the ROCm 6.2.2 release.
