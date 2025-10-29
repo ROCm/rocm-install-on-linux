@@ -183,6 +183,10 @@ For more in-depth installation instructions, refer to :ref:`detailed-install-ove
                        sudo tdnf install rocm
                        sudo tdnf clean all
 
+                   .. note::
+
+                       For Azure Linux, the latest amdgpu version supported is from the ROCm 6.2.2 release.
+
                 {% endfor %}
 
 .. important::
