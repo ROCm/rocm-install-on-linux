@@ -174,6 +174,8 @@ ROCm installation
 
                 {% endfor %}
 
+.. _amdgpu-driver-install:
+
 AMDGPU driver installation
 =================================================
 
