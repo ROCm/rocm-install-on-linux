@@ -353,7 +353,7 @@ AMDGPU driver installation
 
                    .. note::
                 
-                       For AZL, the latest amdgpu version supported is from the ROCm 6.2.2 release.
+                       For Azure Linux, the latest amdgpu version supported is from the ROCm 6.2.2 release.
 
                 {% endfor %}
 
