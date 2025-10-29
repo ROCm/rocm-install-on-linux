@@ -29,4 +29,4 @@ Starting from ROCm™ 6.4.0, forward and backward compatibility between the AMD 
 
 .. note::
 
-    For AZL, the latest amdgpu version supported is from the ROCm 6.2.2 release.
+    For Azure Linux, the latest amdgpu version supported is from the ROCm 6.2.2 release.
