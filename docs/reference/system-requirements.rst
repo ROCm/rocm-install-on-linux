@@ -96,7 +96,7 @@ GPUs listed in the following table support compute workloads (no display informa
 
 .. rubric:: Footnotes
 
-.. [#mi350x-os] AMD Instinct MI355X and MI350X GPUs supports all below listed :ref:`supported_distributions` except RHEL 8.10, SLES 15 SP7, Debain 13, Debian 12, Rocky 9, Azure Linux 3.0, and Oracle Linux 8.
+.. [#mi350x-os] AMD Instinct MI355X and MI350X GPUs supports all below listed :ref:`supported_distributions` except RHEL 8.10, SLES 15 SP7, Debian 13, Debian 12, Rocky 9, Azure Linux 3.0, and Oracle Linux 8.
 .. [#mi325x-os] AMD Instinct MI325X GPU supports all below listed :ref:`supported_distributions` except RHEL 8.10, Rocky 9, Azure Linux 3.0, and Oracle Linux 8.
 .. [#mi300x-os] AMD Instinct MI300X GPU supports all below listed :ref:`supported_distributions`.
 .. [#mi300A-os] AMD Instinct MI300A GPU supports all below listed :ref:`supported_distributions` except on Debian 13, Azure Linux 3.0, Oracle Linux 10, Oracle Linux 9, and Oracle Linux 8.
