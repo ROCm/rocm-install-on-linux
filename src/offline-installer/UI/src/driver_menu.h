@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,25 +30,30 @@
 
 // form setup
 #define DRIVER_MENU_NUM_FORM_FIELDS     1
-#define DRIVER_MENU_FORM_FIELD_WIDTH    25
+#define DRIVER_MENU_FORM_FIELD_WIDTH    40
 #define DRIVER_MENU_FORM_FIELD_HEIGHT   1       // one line
 
 #define DRIVER_MENU_FORM_ROW            7       // starting row for create menu form
 #define DRIVER_MENU_FORM_COL            40      // staring column for create menu form
 
 // menu item indicies
-#define DRIVER_MENU_ITEM_INSTALL_DRIVER_INDEX   0
-#define DRIVER_MENU_ITEM_DRIVER_VER_INDEX       2
-#define DRIVER_MENU_ITEM_GRP_INDEX              4
-#define DRIVER_MENU_ITEM_BLACKLIST_INDEX        5
-#define DRIVER_MENU_ITEM_START_DRIVER_INDEX     6
+#define DRIVER_MENU_ITEM_INSTALL_DRIVER_INDEX    0
+#define DRIVER_MENU_ITEM_DRIVER_VER_INDEX        2
+#define DRIVER_MENU_ITEM_BLACKLIST_INDEX         4
+#define DRIVER_MENU_ITEM_START_DRIVER_INDEX      5
+#define DRIVER_MENU_ITEM_ADVANCED_MENU_INDEX     7
 
 // menu item rows
 #define DRIVER_MENU_ITEM_INSTALL_DRIVER_ROW     5
 #define DRIVER_MENU_ITEM_DRIVER_VER_ROW         7
-#define DRIVER_MENU_ITEM_GRP_ROW                9
-#define DRIVER_MENU_ITEM_BLACKLIST_ROW          10
-#define DRIVER_MENU_ITEM_START_DRIVER_ROW       11
+#define DRIVER_MENU_ITEM_BLACKLIST_ROW          9
+#define DRIVER_MENU_ITEM_START_DRIVER_ROW       10
+
+// advanced menu item indices
+#define ADVANCED_DRIVER_MENU_ITEM_KERNEL_VERSION_INDEX     0
+
+#define ADVANCED_DRIVER_MENU_FORM_ROW            5       // starting row for create menu form
+#define ADVANCED_DRIVER_MENU_FORM_COL            30      // staring column for advanced driver menu form
 
 
 void create_driver_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, OFFLINE_INSTALL_CONFIG *pConfig);
@@ -56,6 +61,8 @@ void destroy_driver_menu_window(MENU_DATA *pMenuData);
 void do_driver_menu(MENU_DATA *pMenuData);
 
 void driver_menu_update_state(MENU_DATA *pMenuData);
+
+bool is_user_selected_kernel();
 
 
 #endif // _DRIVER_MENU_H

@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,7 @@
 #include "rocm_menu.h"
 #include "driver_menu.h"
 #include "extras_menu.h"
+#include "post_menu.h"
 #include "summary_menu.h"
 #include "config.h"
 #include "utils.h"
@@ -42,6 +43,7 @@ typedef struct _OFFLINE_INSTALL_MENUS
     MENU_DATA menuDriver;
     MENU_DATA menuExtras;
     MENU_DATA menuSummary;
+    MENU_DATA menuPost;
 }OFFLINE_INSTALL_MENUS;
 
 typedef struct _ARGS_INFO
@@ -58,6 +60,7 @@ char *mainMenuOps[] = {
     "ROCm Options",
     "Driver Options",
     "Extra Packages",
+    "Post-Install Options",
     SKIPPABLE_MENU_ITEM,
     "< CREATE OFFLINE INSTALLER >",
     (char *)NULL,
@@ -69,6 +72,7 @@ char *mainMenuDesc[] = {
     "Set ROCm install options",
     "Set Driver (amdgpu) options",
     "Set Extra packages for installer",
+    "Post-installation settings",
     " ",
     "Create the offline installer",
     (char*)NULL,
@@ -150,7 +154,7 @@ int get_os_info(OFFLINE_INSTALL_CONFIG *pConfig)
     get_os_release_value("VERSION_ID", pConfig->distroVersion);
 
     char *debList[] = {"ubuntu", "debian", "linuxmint"};
-    char *elList[]  = {"rhel", "rocky", "almalinux", "fedora", "centos"};
+    char *elList[]  = {"rhel", "rocky", "almalinux", "fedora", "centos", "ol"};
     char *sleList[] = {"suse", "opensuse", "sles"};
 
     for (i = 0; i < ARRAY_SIZE(debList); i++) 
@@ -177,6 +181,11 @@ int get_os_info(OFFLINE_INSTALL_CONFIG *pConfig)
         }
     }
 
+    char distroVersionCopy[64];
+    strcpy(distroVersionCopy, pConfig->distroVersion);
+    char *major = strtok(distroVersionCopy, ".");
+    pConfig->majorDistroVersion = atoi(major);
+
     return 0;
 }
 
@@ -194,7 +203,15 @@ void main_menu_draw(MENU_DATA *pMenuData, OFFLINE_INSTALL_CONFIG *pConfig)
     mvwprintw(pMenuData->pMenuWindow, ITEM_TITLE_Y, ITEM_TITLE_X, "Target Installer");
     wattroff(pMenuData->pMenuWindow, COLOR_PAIR(9) | A_UNDERLINE);
     
-    sprintf(systemInfo, "    OS     : %s\n       Kernel : %s", pConfig->distroName, pConfig->kernelVersion);
+    if (pConfig->driver_config.install_driver && is_user_selected_kernel())
+    {
+        sprintf(systemInfo, "    OS     : %s\n       Kernel : %s (User selected)", pConfig->distroName, pConfig->driver_config.user_selected_kernel);
+    }
+    else
+    {
+        sprintf(systemInfo, "    OS     : %s\n       Kernel : %s", pConfig->distroName, pConfig->kernelVersion);
+    }
+    
 
     print_menu_title(pMenuData, MENU_TITLE_Y, MENU_TITLE_X, WIN_WIDTH_COLS, "ROCm Offline Installer Creator", COLOR_PAIR(2));
     print_menu_item_title(pMenuData, ITEM_TITLE_Y + 1, ITEM_TITLE_X,  systemInfo, COLOR_PAIR(9));
@@ -220,10 +237,8 @@ void update_menu_states(OFFLINE_INSTALL_MENUS *pOfflineMenus)
     summary_menu_update_state(&pOfflineMenus->menuSummary);
 }
 
-void write_offline_configuration(OFFLINE_INSTALL_CONFIG *pConfig, char *wconfig)
+void write_offline_configuration(OFFLINE_INSTALL_CONFIG *pConfig, char *wconfig, MENU_DATA *pMenuData)
 {
-    int len;
-
     FILE *file = fopen(wconfig, "w");
     if (file == NULL)  
     {
@@ -232,16 +247,7 @@ void write_offline_configuration(OFFLINE_INSTALL_CONFIG *pConfig, char *wconfig)
         return;
     }
 
-    // check if driver install is enabled - if so, add to the rocm usecase list
-    if (pConfig->driver_config.install_driver)
-    {
-        len = strlen(pConfig->rocm_config.rocm_usescases);
-        if (len)
-        {
-            strcat(pConfig->rocm_config.rocm_usescases, ",");
-        }
-        strcat(pConfig->rocm_config.rocm_usescases, "dkms");
-    }
+    update_rocm_usecase_string(pConfig->rocm_config.rocm_usescases);
 
     fprintf(file, "%s\n", "# Creator/Build Options");
     fprintf(file, "%s\n", "###############################");
@@ -253,15 +259,38 @@ void write_offline_configuration(OFFLINE_INSTALL_CONFIG *pConfig, char *wconfig)
 
     fprintf(file, "%s\n", "# ROCm Options");
     fprintf(file, "%s\n", "###############################");
+    if (pConfig->rocm_config.install_rocm)
+    {
+        fprintf(file, "%s\n", "ROCM_INSTALL=yes");
+    }
+    else
+    {
+        fprintf(file, "%s\n", "ROCM_INSTALL=no");
+    }
+    
     fprintf(file, "%s%s\n", "ROCM_USECASES=", pConfig->rocm_config.rocm_usescases);
-    fprintf(file, "%s%s\n\n", "ROCM_VERSIONS=", pConfig->rocm_config.rocm_versions);
+    fprintf(file, "%s%s\n", "ROCM_VERSIONS=", pConfig->rocm_config.rocm_versions);
+
+    if (get_usecase_type_for_version() >= eROCM_USECASES_TYPE_V2)
+    {
+        fprintf(file, "%s\n\n", "ROCM_USE_META=yes");
+    }
+    else
+    {
+        fprintf(file, "%s\n\n", "ROCM_USE_META=no");
+    }
 
     fprintf(file, "%s\n", "# Driver/amdgpu Options");
     fprintf(file, "%s\n", "###############################");
     fprintf(file, "%s%s\n", "AMDGPU_INSTALL_DRIVER=", (pConfig->driver_config.install_driver ? "yes" : "no"));
-    fprintf(file, "%s%s\n", "AMDGPU_POST_INSTALL_VIDEO_RENDER_GRP=", (pConfig->driver_config.set_group ? "yes" : "no"));
     fprintf(file, "%s%s\n", "AMDGPU_POST_INSTALL_BLACKLIST=", (pConfig->driver_config.blacklist_driver ? "yes" : "no"));
-    fprintf(file, "%s%s\n\n", "AMDGPU_POST_INSTALL_START=", (pConfig->driver_config.start_driver ? "yes" : "no"));
+    fprintf(file, "%s%s\n", "AMDGPU_POST_INSTALL_START=", (pConfig->driver_config.start_driver ? "yes" : "no"));
+    if (pConfig->driver_config.install_driver && is_user_selected_kernel())
+    {
+        fprintf(file, "%s%s\n", "KERNEL_VER=", pConfig->driver_config.user_selected_kernel);
+    }
+
+    fprintf(file, "\n");
 
     fprintf(file, "%s\n", "# Extra Package Options");
     fprintf(file, "%s\n", "###############################");
@@ -269,39 +298,82 @@ void write_offline_configuration(OFFLINE_INSTALL_CONFIG *pConfig, char *wconfig)
     char extra_packages[DEFAULT_CHAR_SIZE];
     extra_packages[0] = '\0';
 
-    // set the extra packages according to the rocm usecase
     char *tok = strtok (pConfig->rocm_config.rocm_usescases, ",");
-    if (tok)
+    
+    if ( (pConfig->extras_config.rocminfo_install) || (pConfig->extras_config.rocmsmi_install) || (pConfig->extras_config.amdsmi_install) )
     {
-        if (strcmp(tok, ROCM_USECASE) != 0)
+        // only append these packages to EXTRA_PACKAGES if user hasn't
+        // selected the rocm usecase because these packages are already part of
+        // rocm meta package
+        if (!pConfig->rocm_config.install_rocm || (tok && strcmp(tok, ROCM_USECASE) != 0))
         {
-            if ( (pConfig->extras_config.rocminfo_install) || (pConfig->extras_config.rocmsmi_install) )
+            if (pConfig->extras_config.rocminfo_install)
             {
-                fprintf(file, "%s\n", "EXTRA_PACKAGES_ONLY=yes");
+                sprintf(extra_packages + strlen(extra_packages), "rocminfo ");
+            }
+        
+            if (pConfig->extras_config.rocmsmi_install)
+            {
+                sprintf(extra_packages + strlen(extra_packages), "%s", "rocm-smi-lib ");
+            }
 
-                if (pConfig->extras_config.rocminfo_install)
-                {
-                    sprintf(extra_packages + strlen(extra_packages), "rocminfo ");
-                }
-            
-                if (pConfig->extras_config.rocmsmi_install)
-                {
-                    sprintf(extra_packages + strlen(extra_packages), "%s", "rocm-smi-lib ");
-                }
+            if (pConfig->extras_config.amdsmi_install)
+            {
+                sprintf(extra_packages + strlen(extra_packages), "%s", "amd-smi-lib ");
             }
         }
+        
+    }
+    
+    if (pConfig->extras_config.rocm_validation_suite_install)
+    {
+        sprintf(extra_packages + strlen(extra_packages), "rocm-validation-suite ");
+    }
+
+    if (pConfig->extras_config.rocdecode_install)
+    {
+        if (is_ubuntu(pMenuData) || is_debian(pMenuData))
+        {
+            sprintf(extra_packages + strlen(extra_packages), "rocdecode rocdecode-dev rocdecode-test ");
+        }
+        else
+        {
+            sprintf(extra_packages + strlen(extra_packages), "rocdecode rocdecode-devel rocdecode-test ");
+        }
+    }
+
+    if (pConfig->extras_config.rocjpeg_install)
+    {
+        if (is_ubuntu(pMenuData) || is_debian(pMenuData))
+        {
+            sprintf(extra_packages + strlen(extra_packages), "rocjpeg rocjpeg-dev rocjpeg-test ");
+        }
+        else
+        {
+            sprintf(extra_packages + strlen(extra_packages), "rocjpeg rocjpeg-devel rocjpeg-test ");
+        }
+    }
+
+    if (pConfig->extras_config.rdc_install)
+    {
+        sprintf(extra_packages + strlen(extra_packages), "rdc ");
     }
 
     fprintf(file, "%s\n", "EXTRA_PACKAGES_ONLY=no");
     fprintf(file, "%s%s%s\n\n", "EXTRA_PACKAGES=\"", extra_packages, "\"");
 
+    fprintf(file, "%s\n", "# Post-Install Options");
+    fprintf(file, "%s\n", "###############################");
+    fprintf(file, "%s%s\n", "AMDGPU_POST_GPU_ACCESS_CURRENT_USER=", (pConfig->post_config.current_user_grp ? "yes" : "no"));
+    fprintf(file, "%s%s\n\n", "AMDGPU_POST_GPU_ACCESS_ALL_USERS=", (pConfig->post_config.all_user_grp ? "yes" : "no"));
+
     fclose(file);
 }
 
-int create_offline_installer(OFFLINE_INSTALL_CONFIG *pConfig, char *wconfig)
+int create_offline_installer(OFFLINE_INSTALL_CONFIG *pConfig, char *wconfig, MENU_DATA *pMenuData)
 {
     // Write out all configuration setting to the configuration file
-    write_offline_configuration(pConfig, wconfig);
+    write_offline_configuration(pConfig, wconfig, pMenuData);
 
     return 0;
 }
@@ -407,13 +479,14 @@ int main(int argc, char *argv[])
     // set items to non-selectable for the main menu
     set_menu_grey(pMenu, COLOR_PAIR(3));
     menu_set_item_select(&offlineMenus.menuMain, 1, false);  // space after create config
-    menu_set_item_select(&offlineMenus.menuMain, 5, false);  // space before create install
+    menu_set_item_select(&offlineMenus.menuMain, 6, false);  // space before create install
 
     // Create the various main option menus
     create_config_menu_window(&offlineMenus.menuCreate, menuWindow, &offlineConfig);
     create_rocm_menu_window(&offlineMenus.menuROCM, menuWindow, &offlineConfig);
     create_driver_menu_window(&offlineMenus.menuDriver, menuWindow, &offlineConfig);
-    create_extras_menu_window(&offlineMenus.menuExtras, menuWindow, &offlineConfig);
+    create_extras_menu_window(&offlineMenus.menuExtras, menuWindow, &offlineConfig);    
+    create_post_menu_window(&offlineMenus.menuPost, menuWindow, &offlineConfig);
     create_summary_menu_window(&offlineMenus.menuSummary, menuWindow, &offlineConfig);
 
     // Draw the main menu
@@ -477,13 +550,17 @@ int main(int argc, char *argv[])
                 {
                     do_extras_menu(&offlineMenus.menuExtras);   
                 }
-                else if ( item_index(pCurrentItem) == 6 )
+                else if ( item_index(pCurrentItem) == 5 )
+                {
+                    do_post_menu(&offlineMenus.menuPost);
+                }
+                else if ( item_index(pCurrentItem) == 7 )
                 {
                     do_summary_menu(&offlineMenus.menuSummary);
                     
                     if (offlineMenus.menuSummary.isCreateInstaller)
                     {
-                        status = create_offline_installer(&offlineConfig, argsInfo.wconfig);
+                        status = create_offline_installer(&offlineConfig, argsInfo.wconfig, &offlineMenus.menuExtras);
                         done = 1;
                     }
                 }
@@ -517,6 +594,8 @@ int main(int argc, char *argv[])
     destroy_driver_menu_window(&offlineMenus.menuDriver);
     destroy_extras_menu_window(&offlineMenus.menuExtras);
     destroy_summary_menu_window(&offlineMenus.menuSummary);
+    destroy_post_menu_window(&offlineMenus.menuPost);
+
     
     delwin(menuWindow);
     endwin();
@@ -543,9 +622,8 @@ int main(int argc, char *argv[])
         fflush(stdout);
         sprintf(createCreatorDir, "%s mkdir -p /var/log/offline_creator", sudo);
         system(createCreatorDir);
-        sprintf(cmd, "./create-offline.sh %s 2>&1 | %s tee %s", argsInfo.createArgs, sudo, offlineConfig.create_confg.installer_creation_log_out_location);
+        sprintf(cmd, "./create-offline.sh %s", argsInfo.createArgs);
         system(cmd);
-        printf("Creation log stored in: %s\n", offlineConfig.create_confg.installer_creation_log_out_location);
     }
 
     return 0;

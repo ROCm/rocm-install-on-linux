@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,7 @@
  *
  * ************************************************************************ */
 #include "utils.h"
+#include "install_types.h"
 
 #include <string.h>
 #include <math.h>
@@ -119,6 +120,21 @@ int check_path_exists(char *path, int max)
     return ret;
 }
 
+bool check_file_exists(char *path, int max)
+{
+    struct stat buffer;
+    printf("%d", max);
+
+    remove_end_spaces(path, max);
+
+    if (stat(path, &buffer) != -1)
+    {
+        return S_ISREG(buffer.st_mode) != 0;
+    }
+
+    return false; // file doesn't exist.
+}
+
 void remove_slash(char *str)
 {
     int len = strlen(str);
@@ -169,7 +185,6 @@ bool is_dir_exist(char *path)
     {
         return false;
     }
-
 }
 
 bool is_rocm_installed()
@@ -205,4 +220,34 @@ bool get_value_of_wconfig(char *src, char *dst)
 
     strncpy(dst, p, strlen(p) + 1);
     return true;
+}
+
+bool is_ubuntu_kernel_header_valid(char *kernel_version)
+{
+    char command[DEFAULT_CHAR_SIZE];
+
+    sprintf(command, "/bin/bash -c \"apt-cache policy ^linux-headers-%s$ | sed -n '/Version/,\\$p' | grep http &> /dev/null\"", kernel_version);
+    
+    int ret = system(command);
+    return ret == 0;
+}
+
+bool is_debian_kernel_header_valid(char *kernel_version)
+{
+    char command[DEFAULT_CHAR_SIZE];
+
+    sprintf(command, "/bin/bash -c \"bash ./scripts_ui/is-valid-kernel.sh --kernel-version '%s'\"", kernel_version);
+    
+    int ret = system(command);
+    return ret == 0;
+}
+
+bool is_rhel_kernel_header_valid(char *kernel_version)
+{
+    char command[DEFAULT_CHAR_SIZE];
+
+    sprintf(command, "/bin/bash -c \"dnf repoquery --quiet --available --queryformat '%%{name}-%%{version}-%%{release}.%%{arch}' kernel-headers-%s | grep -E '^kernel-headers-%s$' &> /dev/null \"", kernel_version, kernel_version);
+    
+    int ret = system(command);
+    return ret == 0;
 }

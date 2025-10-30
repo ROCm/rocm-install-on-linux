@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # #############################################################################
-# Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+# Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
 # THE SOFTWARE.
 # #############################################################################
 
-CREATE_CLEAN_SOURCE_LIST_AMD=(repo-offline.list amdgpu-build.list amdgpu-local.list amdgpu.list amdgpu-proprietary.list rocm-build.list rocm.list)
+CREATE_CLEAN_SOURCE_LIST_AMD=(repo-offline.list amdgpu-build.list amdgpu-local.list amdgpu.list amdgpu-proprietary.list rocm-build.list rocm.list rocm-graphics.list)
 VALIDATE_REPO=/tmp/offline-repo
 CLEAN_REPO=0
 
@@ -66,10 +66,20 @@ cleanup_create() {
         print_msg "==== Removing rocm-local-pin-999 ===="
         $SUDO rm /etc/apt/preferences.d/rocm-local-pin-999
     fi
+
+    if [ -f /etc/apt/preferences.d/rocm-pin-600 ]; then
+        print_msg "==== Removing rocm-pin-600 ===="
+        $SUDO rm /etc/apt/preferences.d/rocm-pin-600
+    fi
     
     if [ -f /etc/apt/trusted.gpg.d/amdgpu-local.gpg ]; then
         print_msg "==== Removing amdgpu-local.gpg ===="
         $SUDO rm /etc/apt/trusted.gpg.d/amdgpu-local.gpg
+    fi
+
+    if [ -f /etc/apt/keyrings/rocm.gpg ]; then
+        print_msg "==== Removing rocm.gpg ===="
+        $SUDO rm /etc/apt/keyrings/rocm.gpg
     fi
     
     # Remove any offline validation repo if it exists
