@@ -111,11 +111,6 @@ your operating system to ensure you're able to download and install packages.
 
             More details about `registering for SLES <https://www.suse.com/support/kb/doc/?id=000018564>`_
 
-        .. tab-item:: Azure Linux
-            :sync: azl-tab
-
-            There is no registration required for Azure Linux.
-
         .. tab-item:: Rocky Linux
             :sync: rl-tab
 
@@ -182,11 +177,6 @@ This is a requirement for newer hardware on older versions of RHEL, SLES, or OL.
             .. code-block:: bash
 
                 sudo zypper update
-
-        .. tab-item:: Azure Linux
-            :sync: azl-tab
-
-            There is no update required for Azure Linux.
 
         .. tab-item:: Rocky Linux
             :sync: rl-tab
@@ -308,26 +298,6 @@ instructions specific to your distribution to add the necessary repositories.
 
                 {% endfor %}
 
-    .. tab-item:: Azure Linux
-        :sync: azl-tab
-
-        Enable the the config repository for additional packages. In order to enable config, you may need to install ``dnf-plugin-config-manager`` first.
-
-        .. datatemplate:nodata::
-
-            .. tab-set::
-
-                {% for os_version in config.html_context['azl_version_numbers'] %}
-
-                .. tab-item:: {{ os_version }}
-
-                    .. code-block:: shell
-
-                        sudo tdnf install dnf-plugin-config-manager
-                        sudo curl -o /etc/yum.repos.d/azurelinux-extended.repo https://packages.microsoft.com/azurelinux/{{ os_version }}/prod/extended/x86_64/config.repo
-
-                {% endfor %}
-
     .. tab-item:: Rocky Linux
         :sync: rl-tab
 
@@ -405,13 +375,6 @@ To install the required packages, use the following instructions specific to you
 
             sudo zypper install python3-setuptools python3-wheel
 
-    .. tab-item:: Azure Linux
-        :sync: azl-tab
-
-        .. code-block:: shell
-
-            sudo tdnf install python3-setuptools python3-wheel
-
     .. tab-item:: Rocky Linux
         :sync: rl-tab
 
@@ -463,13 +426,6 @@ Optionally, if configuring the :ref:`post-ROCm installation <config_rocm_path>` 
             # Create a link for installed modules version
             version=$(rpm -qa | grep '^Modules-' | awk -F'-' '{print $2}')
             sudo ln -s /usr/share/Modules/$version/modulefiles /usr/share/Modules/modulefiles
-
-    .. tab-item:: Azure Linux
-        :sync: azl-tab
-
-        .. code-block:: shell
-
-            sudo tdnf install environment-modules
 
     .. tab-item:: Rocky Linux
         :sync: rl-tab
@@ -629,24 +585,6 @@ To set up udev rules, install the package using the following instructions speci
 
                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/sle/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.noarch.rpm 
 
-                {% endfor %}
-
-        .. tab-item:: Azure Linux
-            :sync: azl-tab
-
-            .. tab-set::
-
-                {% for os_version in config.html_context['azl_version_numbers'] %}
-                .. tab-item:: {{ os_version }}
-
-                   .. code-block:: bash
-                       :substitutions:
-
-                       sudo tee /etc/udev/rules.d/70-amdgpu.rules <<EOF
-                       KERNEL=="kfd", MODE="0666"
-                       SUBSYSTEM=="drm", KERNEL=="renderD*", MODE="0666"
-                       EOF
-                       sudo udevadm control --reload-rules && sudo udevadm trigger
                 {% endfor %}
 
         .. tab-item:: Rocky Linux

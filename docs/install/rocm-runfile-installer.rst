@@ -132,11 +132,11 @@ Substitute values specific to your installation for the following placeholders:
    <distro-version>  = Linux distribution version for the installer
    <install-file>    = The installer .run file
 
-For example, use this command to download ROCm 7.0.2 of the ROCm Runfile Installer for Ubuntu release 22.04:
+For example, use this command to download ROCm 7.1 of the ROCm Runfile Installer for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-7.0.2/ubuntu/22.04/rocm-installer_1.2.2.70002-49-56~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-7.1/ubuntu/22.04/rocm-installer_1.2.3.70100-13-20~22.04.run
 
 Running the ROCm Runfile Installer
 ----------------------------------
@@ -618,18 +618,18 @@ Basic extraction is performed using the ``untar`` command line option:
 
    After the untar extraction process completes, the content is written to a new ``rocm-version`` directory within the specified ``<directory>``.
    The ``rocm-version`` directory is named according to the version of ROCm included in the Runfile Installer.
-   For example, if the ROCm 7.0.2 Runfile Installer is extracted using the ``untar`` command, the output directory is named ``rocm-7.0.2``.
+   For example, if the ROCm 7.1.0 Runfile Installer is extracted using the ``untar`` command, the output directory is named ``rocm-7.1.0``.
 
    The extracted ROCm directory only contains the content for ROCm components and is not configured using the standard ROCm post-installation procedure.
    Advanced users might want to configure the ROCm content manually. However, as an option for some users, the ``untar``
    command auto-generates a script that can be used for basic ROCm post-install configuration as part of the untarring process.
    The ``setup-modules`` script is generated and located in the root ``rocm-version`` directory.  
 
-   For example, after untarring ROCm 7.0.2 to the ``amd/myrocm`` user directory, the script can be found in the following location: 
+   For example, after untarring ROCm 7.1.0 to the ``amd/myrocm`` user directory, the script can be found in the following location: 
 
    .. code-block:: shell
 
-      /home/amd/myrocm/rocm-7.0.2/setup-modules-7.0.2.sh
+      /home/amd/myrocm/rocm-7.1.0/setup-modules-7.1.0.sh
 
    .. note::
 
@@ -648,15 +648,15 @@ Basic extraction is performed using the ``untar`` command line option:
       source /etc/profile.d/modules.sh
       module load rocm/<version>
 
-   For example, for a ROCm 7.0.2 Runfile Installer ``untar`` extraction to the ``amd/myrocm`` user directory, use the folllowing commands to
+   For example, for a ROCm 7.1.0 Runfile Installer ``untar`` extraction to the ``amd/myrocm`` user directory, use the folllowing commands to
    set up and load a ROCm module:
 
    .. code-block:: shell
 
-      cd /home/amd/myrocm/rocm-7.0.2
-      ./setup-modules-7.0.2.sh
+      cd /home/amd/myrocm/rocm-7.1.0
+      ./setup-modules-7.1.0.sh
       source /etc/profile.d/modules.sh
-      module load rocm/7.0.2
+      module load rocm/7.1.0
 
    After the ROCm module is loaded, ROCm is functionally ready for use, provided all ROCm dependencies have been installed on the system.
    See the :ref:`dependency-requirements` section for more details on how to install ROCm dependencies that are not already installed.
@@ -880,15 +880,15 @@ At the command line, add one or more of the post-installation options to the ``<
    in conjunction with ``target=rocm-install-path``, where ``rocm-install-path`` is the
    location of the Runfile-installed ROCm installation. The ROCm installation version and 
    the Runfile Installer version must match.
-   For example, if the current Runfile Installer is for ROCm 7.0.2, then
-   ``rocm-install-path`` must indicate the path to a ROCm 7.0.2 Runfile installation.
+   For example, if the current Runfile Installer is for ROCm 7.1.0, then
+   ``rocm-install-path`` must indicate the path to a ROCm 7.1.0 Runfile installation.
    
-   To use the ``postrocm`` argument separately from the initial install of ROCm 7.0.2
+   To use the ``postrocm`` argument separately from the initial install of ROCm 7.1.0
    to ``/home/amd/myrocm``, run:
 
    .. code-block:: shell
 
-	   bash rocm-installer.run target="/home/amd/myrocm/rocm-7.0.2" postrocm
+	   bash rocm-installer.run target="/home/amd/myrocm/rocm-7.1.0" postrocm
 
    .. note::
 

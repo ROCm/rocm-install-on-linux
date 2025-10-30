@@ -56,7 +56,6 @@ Select the install and uninstall instructions for your operating system
         * :doc:`Oracle Linux <./multi-version-install/multi-version-install-ol>`
         * :doc:`Rocky Linux <./multi-version-install/multi-version-install-rl>`
         * :doc:`SUSE Linux Enterprise Server <./multi-version-install/multi-version-install-sles>`
-        * :doc:`Azure Linux <./multi-version-install/multi-version-install-azl>`
 
     .. grid-item-card:: Uninstall
 
@@ -66,7 +65,6 @@ Select the install and uninstall instructions for your operating system
         * :ref:`Oracle Linux <ol-multi-uninstall>`
         * :ref:`Rocky Linux <rl-multi-uninstall>`
         * :ref:`SUSE Linux Enterprise Server <sles-multi-uninstall>`
-        * :ref:`Azure Linux <azl-multi-uninstall>`
 
 See also: :doc:`/reference/system-requirements`. If you encounter install issues, you can refer to the
 :doc:`troubleshooting </reference/install-faq>` page.

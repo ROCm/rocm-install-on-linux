@@ -37,8 +37,6 @@ subtrees:
                   title: Rocky Linux
                 - file: install/install-methods/package-manager/package-manager-sles
                   title: SUSE Linux Enterprise Server
-                - file: install/install-methods/package-manager/package-manager-azl
-                  title: Azure Linux
             - file: install/install-methods/multi-version-install-index
               title: Multi-version installation
               subtrees:
@@ -55,8 +53,6 @@ subtrees:
                   title: Rocky Linux
                 - file: install/install-methods/multi-version-install/multi-version-install-sles
                   title: SUSE Linux Enterprise Server
-                - file: install/install-methods/multi-version-install/multi-version-install-azl
-                  title: Azure Linux
             - file: install/rocm-offline-installer
               title: ROCm Offline Installer Creator
             - file: install/rocm-runfile-installer

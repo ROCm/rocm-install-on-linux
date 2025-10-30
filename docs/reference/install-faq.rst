@@ -108,26 +108,38 @@ Docker images often come with minimal installations, meaning some essential pack
     .. code-block:: shell
 
       apt update
-      apt install sudo wget
+      apt install sudo wget gpg
 
+  .. tab-item:: Debian
 
-  .. tab-item:: RHEL
+    .. code-block:: shell
+
+      apt update
+      apt install sudo wget gpg
+
+  .. tab-item:: Red Hat Enterprise Linux
 
     .. code-block:: shell
 
       dnf install sudo wget
 
-  .. tab-item:: SLES
+  .. tab-item:: Oracle Linux
 
     .. code-block:: shell
 
-      zypper install sudo wget SUSEConnect
+      dnf install sudo wget
 
-  .. tab-item:: AZL
+  .. tab-item:: SUSE Linux Enterprise Server
 
     .. code-block:: shell
 
-      tdnf install sudo ca-certificates
+      zypper install sudo wget SUSEConnect awk
+
+  .. tab-item:: Rocky Linux
+
+    .. code-block:: shell
+
+      dnf install sudo wget
 
 After installing these packages, install ROCm using the :doc:`Quick start installation guide <../install/quick-start>` in your Docker container.
 
