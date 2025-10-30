@@ -133,13 +133,7 @@ Docker images often come with minimal installations, meaning some essential pack
 
     .. code-block:: shell
 
-      zypper install sudo wget SUSEConnect
-
-  .. tab-item:: Azure Linux
-
-    .. code-block:: shell
-
-      tdnf install sudo ca-certificates
+      zypper install sudo wget SUSEConnect awk
 
   .. tab-item:: Rocky Linux
 
