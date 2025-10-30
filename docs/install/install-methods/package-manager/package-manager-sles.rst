@@ -32,14 +32,14 @@ Registering ROCm repositories
 
                 sudo tee /etc/zypp/repos.d/rocm.repo <<EOF
                 [rocm]
-                name=ROCm |rocm_version| repository
+                name=ROCm |rocm_directory_version| repository
                 baseurl=https://repo.radeon.com/rocm/zyp/|rocm_version|/main
                 enabled=1
                 gpgcheck=1
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
 
                 [amdgraphics]
-                name=AMD Graphics |rocm_version| repository
+                name=AMD Graphics |rocm_directory_version| repository
                 baseurl=https://repo.radeon.com/graphics/|rocm_version|/sle/{{ os_version }}/main/x86_64/
                 enabled=1
                 priority=50

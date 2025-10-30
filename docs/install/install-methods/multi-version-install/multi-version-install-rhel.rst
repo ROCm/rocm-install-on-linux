@@ -20,7 +20,7 @@ Registering ROCm repositories
 .. datatemplate:nodata::
 
    .. tab-set::
-      {% for os_version in config.html_context['rhel_multi_versions'] %}
+      {% for os_version in config.html_context['rhel_version_numbers'] %}
       {% set os_major, _  = os_version.split('.') %}
       .. tab-item:: RHEL {{ os_version }}
             :sync: rhel-{{ os_version }}
