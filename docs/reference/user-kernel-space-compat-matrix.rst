@@ -16,8 +16,9 @@ The AMD GPU Driver (amdgpu) is now distributed separately from the ROCm software
   :widths: 30, 70
   :header: "AMD GPU Driver (amdgpu)", "Supported user space versions"
 
-    "30.10.x", "6.2.x, 6.3.x, 6.4.x, 7.0.x"
-    "6.4.x", "6.1.x, 6.2.x, 6.3.x, 6.4.x, 7.0.x"
+    "30.20.x", "6.3.x, 6.4.x, 7.0.x, 7.1.x"
+    "30.10.x", "6.2.x, 6.3.x, 6.4.x, 7.0.x, 7.1.x"
+    "6.4.x", "6.1.x, 6.2.x, 6.3.x, 6.4.x, 7.0.x, 7.1.x"
     "6.3.x", "6.1.x, 6.2.x, 6.3.x, 6.4.x, 7.0.x"
     "6.2.x", "6.0.x, 6.1.x, 6.2.x, 6.3.x, 6.4.x, 7.0.x"
     "6.1.x", "5.7.x, 6.0.x, 6.1.x, 6.2.x, 6.3.x, 6.4.x"

@@ -152,35 +152,6 @@ ROCm installation
 
                 {% endfor %}
 
-        .. tab-item:: Azure Linux
-            :sync: azl-tab
-
-            .. tab-set::
-
-                {% for os_version in config.html_context['azl_version_numbers'] %}
-                {% set os_major, _  = os_version.split('.') %}
-                .. tab-item:: {{ os_version }}
-
-                   .. code-block:: bash
-                       :substitutions:
-
-                       sudo tdnf install dnf-plugin-config-manager
-                       sudo curl -o /etc/yum.repos.d/azurelinux-extended.repo https://packages.microsoft.com/azurelinux/{{ os_version }}/prod/extended/x86_64/config.repo
-                       sudo tdnf install python3-setuptools python3-wheel
-                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
-                       sudo tee /etc/yum.repos.d/rocm.repo <<EOF
-                       [rocm]
-                       name=ROCm |amdgpu_version| repository
-                       baseurl=https://repo.radeon.com/rocm/azurelinux{{ os_major }}/|amdgpu_version|/main/
-                       enabled=1
-                       gpgcheck=1
-                       gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
-                       EOF
-                       sudo tdnf install rocm
-                       sudo tdnf clean all
-
-                {% endfor %}
-
         .. tab-item:: Rocky Linux
             :sync: rl-tab
 
@@ -329,25 +300,6 @@ AMDGPU driver installation
                        sudo zypper --gpg-auto-import-keys refresh
                        sudo zypper install kernel-default-devel
                        sudo zypper install amdgpu-dkms
-
-                {% endfor %}
-
-        .. tab-item:: Azure Linux
-            :sync: azl-tab
-
-            .. tab-set::
-
-                {% for os_version in config.html_context['azl_version_numbers'] %}
-                {% set os_major, _  = os_version.split('.') %}
-                .. tab-item:: {{ os_version }}
-
-                   .. code-block:: bash
-                       :substitutions:
-
-                       sudo tdnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
-                       sudo tdnf install azurelinux-repos-amd
-                       sudo tdnf repolist --refresh
-                       sudo tdnf install amdgpu
 
                 {% endfor %}
 

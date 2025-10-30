@@ -88,14 +88,14 @@ To use ``environment-modules``, follow these instructions:
    .. code-block:: bash
       :substitutions:
 
-      module load rocm/|rocm_version|
+      module load rocm/|rocm_directory_version|
 
 #. If multiple ROCm versions are installed with a current ROCm module in use, switch to another ROCm version as follows:
 
    .. code-block:: bash
       :substitutions:
 
-      module switch rocm/|rocm_version|
+      module switch rocm/|rocm_directory_version|
 
 .. note::
 
@@ -177,13 +177,6 @@ If package installation was successful, the list will contain ``rocm*`` and ``hi
 
          zypper search --installed-only
 
-   .. tab-item:: AZL
-      :sync: azl-tab
-
-      .. code-block:: bash
-
-         tdnf list installed
-
 2. Verify the ROCm installation
 -----------------------------------------------------
 
@@ -227,7 +220,7 @@ Use the following ROCm tools to verify that installation was successful:
 
       .. code-block:: bash
 
-            AMDSMI Tool: 26.0.2+92efa431 | AMDSMI Library version: 26.0.1 | ROCm version: 7.0.2 | amdgpu version: 6.14.14 | amd_hsmp version: N/A
+          AMDSMI Tool: 26.1.0+5df6c765 | AMDSMI Library version: 26.1.0 | ROCm version: 7.1.0 | amdgpu version: 6.16.6 | amd_hsmp version: N/A
 
 Troubleshooting
 =====================================================
@@ -240,7 +233,7 @@ Troubleshooting
    .. code-block:: bash
       :substitutions:
 
-      module load /opt/rocm-|rocm_version|/lib/rocmmod
+      module load /opt/rocm-|rocm_directory_version|/lib/rocmmod
 
 #. **Will the ROCm path configuration persist once I set it?**
 
