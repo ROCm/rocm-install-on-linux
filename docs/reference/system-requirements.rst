@@ -96,7 +96,7 @@ GPUs listed in the following table support compute workloads (no display informa
 
 .. rubric:: Footnotes
 
-.. [#mi350x-os] AMD Instinct MI355X and MI350X GPUs supports all below listed :ref:`supported_distributions` except RHEL 8.10, SLES 15 SP7, Debian 12, Rocky 9, Azure Linux 3.0, and Oracle Linux 8.
+.. [#mi350x-os] AMD Instinct MI355X and MI350X GPUs supports all below listed :ref:`supported_distributions` except RHEL 8.10, SLES 15 SP7, Debian 12, Debian 13, Rocky 9, Azure Linux 3.0, and Oracle Linux 8.
 .. [#mi325x-os] AMD Instinct MI325X GPU supports all below listed :ref:`supported_distributions` except RHEL 8.10, Rocky 9, Azure Linux 3.0, and Oracle Linux 8.
 .. [#mi300x-os] AMD Instinct MI300X GPU supports all below listed :ref:`supported_distributions`.
 .. [#mi300A-os] AMD Instinct MI300A GPU supports all below listed :ref:`supported_distributions` except on Debian 13, Azure Linux 3.0, Oracle Linux 10, Oracle Linux 9, and Oracle Linux 8.
@@ -147,7 +147,7 @@ AMD ROCm software supports the following Linux distributions.
 .. [#rhel-94] RHEL 9.4 is supported on all AMD Instinct GPUs listed under :ref:`supported_GPUs`.
 .. [#rhel-700] RHEL 8.10 is supported only on AMD Instinct MI300X, MI300A, MI250X, MI250, MI210, and MI100 GPUs.
 .. [#sles-db-700] SLES 15 SP7 is supported only on AMD Instinct MI325X, MI300X, MI300A, MI250X, MI250, MI210, and MI100 GPUs.
-.. [#sles-db-702] Debian 13 is supported only on AMD Instinct MI355X, MI350X, MI325X, and MI300X GPUs.
+.. [#sles-db-702] Debian 13 is supported only on AMD Instinct MI325X, and MI300X GPUs.
 .. [#db-710] Debian 12 are supported only on AMD Instinct MI325X, MI300X, MI300A, MI250X, MI250, and MI210 GPUs.
 .. [#rl-700] Rocky Linux 9 is supported only on AMD Instinct MI300X and MI300A GPUs.  
 .. [#al-mi300x] Azure Linux 3.0 is supported only on AMD Instinct MI300X GPU and AMD Radeon PRO V710.
