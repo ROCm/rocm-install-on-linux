@@ -245,7 +245,6 @@ ROCm supports virtualization for the Instinct GPUs and Radeon PRO GPUs listed in
            </td>
            <td>
              <p>Ubuntu 24.04,<br>
-                Ubuntu 22.04,<br>
                 RHEL 9.6</p>
            </td>
            <td>
@@ -464,8 +463,7 @@ ROCm supports virtualization for the Instinct GPUs and Radeon PRO GPUs listed in
              <p>Ubuntu 24.04</p>
            </td>
            <td>
-             <p>Ubuntu 24.04.3,<br>
-                RHEL 9.6</p>
+             <p>Ubuntu 24.04.3</p>
            </td>
          </tr>
        </tbody>
