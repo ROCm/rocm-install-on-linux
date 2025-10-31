@@ -53,6 +53,10 @@ Install kernel driver
     sudo tdnf install amdgpu
     sudo modprobe amdgpu
 
+.. note::
+
+    For Azure Linux, the latest amdgpu version supported is from the ROCm 6.2.2 release.
+
 Install ROCm packages
 ----------------------------------------------------------------------------------------------------------
 
