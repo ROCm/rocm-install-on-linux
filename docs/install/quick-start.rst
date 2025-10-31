@@ -194,6 +194,8 @@ ROCm installation
 
                 {% endfor %}
 
+.. _amdgpu-driver-install:
+
 AMDGPU driver installation
 =================================================
 
@@ -333,6 +335,10 @@ AMDGPU driver installation
                        sudo tdnf install azurelinux-repos-amd
                        sudo tdnf repolist --refresh
                        sudo tdnf install amdgpu
+
+                   .. note::
+                
+                       For Azure Linux, the latest amdgpu version supported is from the ROCm 6.2.2 release.
 
                 {% endfor %}
 
