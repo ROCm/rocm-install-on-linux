@@ -101,7 +101,7 @@ ROCm runtime packages
   +============================+==========================================================================================================+
   | ``rocm``                   | Meta packages: ``rocm-developer-tools``, ``rocm-hip``, ``rocm-openmp``, ``rocm-opencl-sdk``              |
   |                            |                                                                                                          |
-  |                            | Packages: ``migraphx``, ``migraphx-dev``, ``miopen-hip``, ``miopen-hip-dev``, ``mivisionx``,             |
+  |                            | Packages: ``half``, ``migraphx``, ``migraphx-dev``, ``miopen-hip``, ``miopen-hip-dev``, ``mivisionx``,   |
   |                            | ``mivisionx-dev``, ``rocm-cmake``, ``rocm-core``, ``rocminfo``, ``rocm-llvm``, ``rpp``, ``rpp-dev``      |
   +----------------------------+----------------------------------------------------------------------------------------------------------+
   | ``rocm-hip-libraries``     | Meta package: ``rocm-hip-runtime``                                                                       |
@@ -138,7 +138,7 @@ ROCm developer packages
   |                            |                                                                                                                                     |
   |                            | Packages: ``amd-smi-lib``, ``hsa-amd-aqlprofile``, ``rocm-core``, ``rocm-dbgapi``, ``rocm-debug-agent``, ``rocm-gdb``,              |
   |                            | ``rocm-smi-lib``, ``rocprofiler``, ``rocprofiler-compute``, ``rocprofiler-dev``, ``rocprofiler-plugins``, ``rocprofiler-register``, |
-  |                            | ``rocprofiler-sdk``, ``rocprofiler-sdk-roctx``, ``rocprofiler-systems``, ``roctracer``, ``roctracer-dev``                           |
+  |                            | ``rocprofiler-sdk``, ``rocprofiler-sdk-rocpd``, ``rocprofiler-sdk-roctx``, ``rocprofiler-systems``, ``roctracer``, ``roctracer-dev``|
   +----------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
   | ``rocm-hip-runtime-dev``   | Meta package: ``rocm-hip-runtime``                                                                                                  |
   |                            |                                                                                                                                     |
