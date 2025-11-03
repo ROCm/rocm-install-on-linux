@@ -101,7 +101,7 @@ ROCm runtime packages
   +============================+==========================================================================================================+
   | ``rocm``                   | Meta packages: ``rocm-developer-tools``, ``rocm-hip``, ``rocm-openmp``, ``rocm-opencl-sdk``              |
   |                            |                                                                                                          |
-  |                            | Packages: ``migraphx``, ``migraphx-dev``, ``miopen-hip``, ``miopen-hip-dev``, ``mivisionx``,             |
+  |                            | Packages: ``half``, ``migraphx``, ``migraphx-dev``, ``miopen-hip``, ``miopen-hip-dev``, ``mivisionx``,   |
   |                            | ``mivisionx-dev``, ``rocm-cmake``, ``rocm-core``, ``rocminfo``, ``rocm-llvm``, ``rpp``, ``rpp-dev``      |
   +----------------------------+----------------------------------------------------------------------------------------------------------+
   | ``rocm-hip-libraries``     | Meta package: ``rocm-hip-runtime``                                                                       |
