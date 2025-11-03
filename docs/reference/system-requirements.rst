@@ -271,7 +271,7 @@ ROCm supports virtualization for the Instinct GPUs and Radeon PRO GPUs listed in
        </tbody>
        <tbody id="virtualization-support-mi325x">
          <tr class="row-even">
-           <td rowspan="3" style="vertical-align: middle;">
+           <td rowspan="2" style="vertical-align: middle;">
              <p>Instinct MI325X</p>
            </td>
            <td>
@@ -281,26 +281,14 @@ ROCm supports virtualization for the Instinct GPUs and Radeon PRO GPUs listed in
              <p>Passthrough</p>
            </td>
            <td>
-             <p>RHEL 9.4</p>
-           </td>
-           <td>
-             <p>Ubuntu 22.04</p>
-           </td>
-         </tr>
-         <tr>
-         <td>
-              <p>KVM</p>
-           </td>
-           <td>
-             <p>Passthrough</p>
+             <p>Ubuntu 24.04,<br>
+                Ubuntu 22.04,<br>
+                RHEL 9.6,<br>
+                RHEL 9.4</p>
            </td>
            <td>
              <p>Ubuntu 24.04,<br>
                 Ubuntu 22.04,<br>
-                RHEL 9.6</p>
-           </td>
-           <td>
-             <p>Ubuntu 24.04,<br>
                 RHEL 9.6,<br>
                 RHEL 9.4</p>
            </td>
@@ -322,7 +310,7 @@ ROCm supports virtualization for the Instinct GPUs and Radeon PRO GPUs listed in
        </tbody>
        <tbody id="virtualization-support-mi300x">
          <tr class="row-odd">
-          <td rowspan="6" style="vertical-align: middle;">
+          <td rowspan="4" style="vertical-align: middle;">
              <p>Instinct MI300X</p>
            </td>
            <td>
@@ -335,23 +323,10 @@ ROCm supports virtualization for the Instinct GPUs and Radeon PRO GPUs listed in
              <p>ESXi 8.0 Update 3</p>
            </td>
            <td>
-             <p>Ubuntu 24.04</p>
+             <p>Ubuntu 24.04,<br>
+                Ubuntu 22.04</p>
            </td>
           </tr>
-          <tr>
-          <td>
-             <p>ESXi</p>
-           </td>
-           <td>
-             <p>Passthrough</p>
-           </td>
-           <td>
-             <p>ESXi 8.0 Update 3</p>
-           </td>
-           <td>
-             <p>Ubuntu 22.04</p>
-           </td>
-         </tr>
          <tr>
          <td>
              <p>KVM</p>
@@ -360,27 +335,15 @@ ROCm supports virtualization for the Instinct GPUs and Radeon PRO GPUs listed in
              <p>Passthrough</p>
            </td>
            <td>
-             <p>Ubuntu 24.04</p>
-           </td>
-           <td>
              <p>Ubuntu 24.04,<br>
-                RHEL 9.6</p>
-           </td>
-          </tr>
-          <tr>
-          <td>
-             <p>KVM</p>
-           </td>
-           <td>
-             <p>Passthrough</p>
-           </td>
-          <td>
-             <p>Ubuntu 22.04,<br>
+                Ubuntu 22.04,<br>
                 RHEL 9.6,<br>
                 RHEL 9.4</p>
            </td>
            <td>
              <p>Ubuntu 24.04,<br>
+                Ubuntu 22.04,<br>
+                RHEL 9.6,<br>
                 RHEL 9.4</p>
            </td>
           </tr>
