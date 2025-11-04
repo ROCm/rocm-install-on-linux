@@ -127,23 +127,27 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
 3. Install the 0.6.0 jaxlib using pip install. Choose one of the following lines depending on your Python version:
 
-  Python 3.10: 
-   .. code-block:: bash
+* Python 3.10: 
+   
+.. code-block:: bash
 
       pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp310-cp310-manylinux2014_x86_64.whl
 
-  Python 3.11: 
-   .. code-block:: bash
+* Python 3.11: 
+
+.. code-block:: bash
 
       pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp311-cp311-manylinux2014_x86_64.whl
 
-  Python 3.12: 
-   .. code-block:: bash
+* Python 3.12: 
+
+.. code-block:: bash
 
       pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp312-cp312-manylinux2014_x86_64.whl
 
-  Python 3.13: 
-   .. code-block:: bash
+* Python 3.13: 
+
+.. code-block:: bash
 
       pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp313-cp313-manylinux2014_x86_64.whl
 
@@ -357,4 +361,5 @@ Expected output:
 .. code-block::
 
    [0 1 2 3]
+
 
