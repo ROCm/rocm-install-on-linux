@@ -151,10 +151,10 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
   
         pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp313-cp313-manylinux2014_x86_64.whl
 
-4. Install JAX, jax-rocm7-pjrt and jax-rocm7-plugin from PyPI
+4. Install JAX, jax-rocm7-pjrt and jax-rocm7-plugin from PyPI.
 
   .. code-block:: bash
-
+  
         pip install jax==0.6.0 jax-rocm7-pjrt jax-rocm7-plugin
 
 5. Verify the installed JAX version. Check whether the correct version of JAX and its ROCm plugins are installed.
@@ -361,6 +361,7 @@ Expected output:
 .. code-block::
 
    [0 1 2 3]
+
 
 
 
