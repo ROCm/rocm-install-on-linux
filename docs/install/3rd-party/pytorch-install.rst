@@ -110,7 +110,7 @@ validated for ROCm 7.1.0.
                  - Open MPI
 
                * - 24.04
-                 - `1.8.0a0+rocm7.1.0.git3f26640c <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1.0/>`__
+                 - `1.8.0a0+rocm7.1.0.git3f26640c <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1/>`__
                  - `0.23.0 <https://github.com/pytorch/vision/tree/v0.23.0>`__
                  - `1.16.0+ds-5ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/>`__
                  - `4.1.6-7ubuntu2 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/>`__
@@ -140,7 +140,7 @@ validated for ROCm 7.1.0.
                  - Open MPI
 
                * - 22.04
-                 - `1.8.0a0+rocm7.1.0.git3f26640c <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1.0/>`__
+                 - `1.8.0a0+rocm7.1.0.git3f26640c <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1/>`__
                  - `0.23.0 <https://github.com/pytorch/vision/tree/v0.23.0>`__
                  - `1.12.1~rc2-1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/>`__
                  - `4.1.2-2ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/>`__
@@ -174,7 +174,7 @@ validated for ROCm 7.1.0.
                  - Open MPI
 
                * - 24.04
-                 - `1.7.0a0+rocm7.1.0.git20a62dc5 <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1.0/>`__
+                 - `1.7.0a0+rocm7.1.0.git20a62dc5 <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1/>`__
                  - `0.22.1 <https://github.com/pytorch/vision/tree/v0.22.1>`__
                  - `1.16.0+ds-5ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/>`__
                  - `4.1.6-7ubuntu2 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/>`__
@@ -204,7 +204,7 @@ validated for ROCm 7.1.0.
                  - Open MPI
 
                * - 22.04
-                 - `1.7.0a0+rocm7.1.0.git20a62dc5 <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1.0/>`__
+                 - `1.7.0a0+rocm7.1.0.git20a62dc5 <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1/>`__
                  - `0.22.1 <https://github.com/pytorch/vision/tree/v0.22.1>`__
                  - `1.12.1~rc2-1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/>`__
                  - `4.1.2-2ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/>`__
@@ -238,7 +238,7 @@ validated for ROCm 7.1.0.
                  - Open MPI
 
                * - 24.04
-                 - `1.6.0+rocm7.1.0.git6596002f <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1.0/>`__
+                 - `1.6.0+rocm7.1.0.git6596002f <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1/>`__
                  - `0.21.0 <https://github.com/pytorch/vision/tree/v0.21.0>`__
                  - `1.16.0+ds-5ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/>`__
                  - `4.1.6-7ubuntu2 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/>`__
@@ -268,7 +268,7 @@ validated for ROCm 7.1.0.
                  - Open MPI
 
                * - 22.04
-                 - `1.6.0+rocm7.1.0.git6596002f <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1.0/>`__
+                 - `1.6.0+rocm7.1.0.git6596002f <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1/>`__
                  - `0.21.0 <https://github.com/pytorch/vision/tree/v0.21.0>`__
                  - `1.12.1~rc2-1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/>`__
                  - `4.1.2-2ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/>`__
