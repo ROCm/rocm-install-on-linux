@@ -95,7 +95,7 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
             See
             ``rocm/jax:rocm7.1-jax0.7.1-py3.12``
             on `Docker Hub
-            <https://hub.docker.com/repository/docker/rocm/jax/tags/rocm7.1-jax0.7.1-py3.12/sha256:bc661fee582c591c4a9355e249afb912e8fd7dfe39f1fc02008821b1dc739bdf>`__.
+            <https://hub.docker.com/layers/rocm/jax/rocm7.1-jax0.7.1-py3.12/images/sha256-bc661fee582c591c4a9355e249afb912e8fd7dfe39f1fc02008821b1dc739bdf>`__.
 
          .. tab-item:: Python 3.11
 
@@ -108,7 +108,7 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
             See
             ``rocm/jax:rocm7.1-jax0.7.1-py3.11``
             on `Docker Hub
-            <https://hub.docker.com/repository/docker/rocm/jax/tags/rocm7.1-jax0.7.1-py3.11/sha256:7e923ebfc117b2028c63991bfa1fbe274150ea94513c9530ece783f1a2f8a65e>`__.
+            <https://hub.docker.com/layers/rocm/jax/rocm7.1-jax0.7.1-py3.11/images/sha256-7e923ebfc117b2028c63991bfa1fbe274150ea94513c9530ece783f1a2f8a65e>`__.
 
 .. _build-jax-rocm-docker-image:
 
