@@ -79,7 +79,7 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
 
 .. tab-set::
 
-   .. tab-item:: JAX 0.6.0
+   .. tab-item:: JAX 0.7.1
       :selected:
 
       .. tab-set::
@@ -90,25 +90,25 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
 
             .. code-block:: shell
 
-               docker pull rocm/jax:rocm7.0-jax0.6.0-py3.12
+               docker pull rocm/jax:rocm7.1-jax0.7.1-py3.12
 
             See
-            ``rocm/jax:rocm7.0-jax0.6.0-py3.12``
+            ``rocm/jax:rocm7.1-jax0.7.1-py3.12``
             on `Docker Hub
-            <https://hub.docker.com/layers/rocm/jax/rocm7.0-jax0.6.0-py3.12/images/sha256-fc5445492b573b29d2b1d166e9dde0508bae34f2763ff3b045e9375ac9ce44eb>`__.
+            <https://hub.docker.com/layers/rocm/jax/rocm7.1-jax0.7.1-py3.12/images/sha256-bc661fee582c591c4a9355e249afb912e8fd7dfe39f1fc02008821b1dc739bdf>`__.
 
-         .. tab-item:: Python 3.10
+         .. tab-item:: Python 3.11
 
             .. rubric:: Docker pull tag
 
             .. code-block:: shell
 
-               docker pull rocm/jax:rocm7.0-jax0.6.0-py3.10
+               docker pull rocm/jax:rocm7.1-jax0.7.1-py3.11
 
             See
-            ``rocm/jax:rocm7.0-jax0.6.0-py3.10``
+            ``rocm/jax:rocm7.1-jax0.7.1-py3.11``
             on `Docker Hub
-            <https://hub.docker.com/layers/rocm/jax/rocm7.0-jax0.6.0-py3.10/images/sha256-a75d73f696926c42434fa8910037e104b2d46211cf72a7f66f052a75e61f18f5>`__.
+            <https://hub.docker.com/layers/rocm/jax/rocm7.1-jax0.7.1-py3.11/images/sha256-7e923ebfc117b2028c63991bfa1fbe274150ea94513c9530ece783f1a2f8a65e>`__.
 
 .. _build-jax-rocm-docker-image:
 
@@ -284,3 +284,4 @@ Expected output:
 .. code-block::
 
    [0 1 2 3 4]
+   
