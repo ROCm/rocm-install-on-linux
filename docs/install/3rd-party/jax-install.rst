@@ -152,12 +152,11 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
   
         pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp313-cp313-manylinux2014_x86_64.whl
 
-4. Install JAX, ``jax-rocm7-pjrt`` and ``jax-rocm7-plugin`` from PyPI.
+4. Install JAX, ``jax-rocm7-pjrt``, and ``jax-rocm7-plugin`` from PyPI.
+   
+   .. code-block:: bash
 
-
-  .. code-block:: bash
-  
-        pip install jax==0.6.0 jax-rocm7-pjrt jax-rocm7-plugin
+      pip install jax==0.6.0 jax-rocm7-pjrt jax-rocm7-plugin
 
 5. Verify the installed JAX version. Check whether the correct version of JAX and its ROCm plugins are installed.
 
@@ -190,6 +189,8 @@ Follow these steps if you prefer to install ROCm manually on your host system or
 
       rocm-smi
 
+   Expected output:
+
    .. code-block:: bash
 
       ========================================== ROCm System Management Interface ==========================================
@@ -208,44 +209,42 @@ Follow these steps if you prefer to install ROCm manually on your host system or
        ======================================================================================================================
        ================================================ End of ROCm SMI Log =================================================
 
-2. Install the required version of JAX with ROCm support using ``pip``:
+2. Install the required version of JAX with ROCm support using ``pip``.
 
 
-        a. Install the ``jaxlib`` v0.6.0 using ``pip`` install. Choose one of the following lines depending on your Python version:
+3. Install the ``jaxlib`` v0.6.0 using ``pip`` install. Choose one of the following lines depending on your Python version:
 
+* Python 3.10: 
+   
+  .. code-block:: bash
+  
+        pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp310-cp310-manylinux2014_x86_64.whl
 
-  * Python 3.10: 
-
-   .. code-block:: bash
-
-      pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp310-cp310-manylinux2014_x86_64.whl
-
-  * Python 3.11: 
-
-   .. code-block:: bash
-
-      pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp311-cp311-manylinux2014_x86_64.whl
-
- * Python 3.12: 
-
-   .. code-block:: bash
-
-      pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp312-cp312-manylinux2014_x86_64.whl
-
- * Python 3.13: 
-
-   .. code-block:: bash
-
-      pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp313-cp313-manylinux2014_x86_64.whl
-
-       b. Install JAX, jax-rocm7-pjrt and jax-rocm7-plugin from PyPI
-
+* Python 3.11: 
 
   .. code-block:: bash
+  
+        pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp311-cp311-manylinux2014_x86_64.whl
+
+* Python 3.12: 
+
+  .. code-block:: bash
+  
+        pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp312-cp312-manylinux2014_x86_64.whl
+
+* Python 3.13: 
+
+  .. code-block:: bash
+  
+        pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp313-cp313-manylinux2014_x86_64.whl
+
+4. Install JAX, ``jax-rocm7-pjrt``, and ``jax-rocm7-plugin`` from PyPI.
+   
+   .. code-block:: bash
 
       pip install jax==0.6.0 jax-rocm7-pjrt jax-rocm7-plugin
 
-3. Verify the installed JAX version. Check whether the correct version of JAX and its ROCm plugins are installed.
+5. Verify the installed JAX version. Check whether the correct version of JAX and its ROCm plugins are installed.
 
    .. code-block:: bash
 
@@ -300,7 +299,7 @@ Build ROCm JAX from source
 
     python3 build/ci_build --compiler=clang --python-versions="3.10, 3.11, 3.12, 3.13" --rocm-version=7.0.2 dist_wheels
 
-4. Troubleshooting - If you have a ``BuildKit`` error:
+3. Troubleshooting - If you have a ``BuildKit`` error:
 
 
    .. code-block:: bash
@@ -309,21 +308,20 @@ Build ROCm JAX from source
     sudo apt install docker-buildx
     export DOCKER_BUILDKIT=1
 
-5. Move the created wheels to the wheelhouse directory.
+4. Move the created wheels to the wheelhouse directory.
+   
+   .. code-block:: bash
 
+      mkdir -p wheelhouse && mv jax_rocm_plugin/wheelhouse/* ./wheelhouse/
 
-  .. code-block:: bash
-
-    mkdir -p wheelhouse && mv jax_rocm_plugin/wheelhouse/* ./wheelhouse/
-
-6. Create Docker image.
+5. Create Docker image.
 
 
    .. code-block:: bash
   
     python3 build/ci_build --rocm-version=7.0.2 build_dockers --filter=ubu22
 
-7. Create a container with the image created in the previous step.
+6. Create a container with the image created in the previous step.
 
 
    .. code-block:: bash
@@ -332,7 +330,7 @@ Build ROCm JAX from source
     drun jax-ubu22.rocm700 #OR drun <docker image id or name of the image last step produced>
 
 
-8. To test UTs:
+7. To test UTs:
 
 
    .. code-block:: bash
@@ -347,17 +345,11 @@ Build ROCm JAX from source
     python3 build/rocm/run_multi_gpu.py -c 2>&1 | tee JAX_MG_0.6.0_ut.log
 
 
-More build instructions
-
------------------------
-
-For more build instructions or options, see: 
-
-`<https://github.com/ROCm/rocm-jax/blob/rocm-jaxlib-v0.6.0/README.md>`__ 
+For more build instructions or options, see: `<https://github.com/ROCm/rocm-jax/blob/rocm-jaxlib-v0.6.0/README.md>`__ 
 
 .. _jax-verify-installation:
 
-Testing your JAX installation with ROCm
+Test your JAX installation with ROCm
 =======================================
 
 After launching the container, test whether JAX detects ROCm devices as expected:
