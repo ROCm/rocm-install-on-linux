@@ -125,7 +125,8 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
           --name rocm_jax \
           rocm/dev-ubuntu-22.04:7.0-complete /bin/bash
 
-3. Install the 0.6.0 jaxlib using pip install. Choose one of the following lines depending on your Python version:
+3. Install the ``jaxlib`` v0.6.0 using ``pip`` install. Choose one of the following lines depending on your Python version:
+
 
 * Python 3.10: 
    
@@ -151,7 +152,8 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
   
         pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp313-cp313-manylinux2014_x86_64.whl
 
-4. Install JAX, jax-rocm7-pjrt and jax-rocm7-plugin from PyPI.
+4. Install JAX, ``jax-rocm7-pjrt`` and ``jax-rocm7-plugin`` from PyPI.
+
 
   .. code-block:: bash
   
@@ -206,31 +208,38 @@ Follow these steps if you prefer to install ROCm manually on your host system or
        ======================================================================================================================
        ================================================ End of ROCm SMI Log =================================================
 
-2. Install the required version of JAX with ROCm support using pip:
+2. Install the required version of JAX with ROCm support using ``pip``:
 
-2.a. Install the 0.6.0 jaxlib using pip install. Choose one of the following lines depending on your Python version:
 
-  Python 3.10: 
+        a. Install the ``jaxlib`` v0.6.0 using ``pip`` install. Choose one of the following lines depending on your Python version:
+
+
+  * Python 3.10: 
+
    .. code-block:: bash
 
       pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp310-cp310-manylinux2014_x86_64.whl
 
-  Python 3.11: 
+  * Python 3.11: 
+
    .. code-block:: bash
 
       pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp311-cp311-manylinux2014_x86_64.whl
 
-  Python 3.12: 
+ * Python 3.12: 
+
    .. code-block:: bash
 
       pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp312-cp312-manylinux2014_x86_64.whl
 
-  Python 3.13: 
+ * Python 3.13: 
+
    .. code-block:: bash
 
       pip install https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp313-cp313-manylinux2014_x86_64.whl
 
-2.b. Install JAX, jax-rocm7-pjrt and jax-rocm7-plugin from PyPI
+       b. Install JAX, jax-rocm7-pjrt and jax-rocm7-plugin from PyPI
+
 
   .. code-block:: bash
 
@@ -274,7 +283,8 @@ Follow these steps if you prefer to install ROCm manually on your host system or
 Build ROCm JAX from source
 ==========================
 
-Clone the repository
+1. Clone the repository.
+
 
    .. code-block:: bash
 
@@ -283,13 +293,15 @@ Clone the repository
     git checkout rocm-jaxlib-v0.6.0
 
 
-Build manylinux wheels
+2. Build ``manylinux`` wheels.
+
 
    .. code-block:: bash
 
     python3 build/ci_build --compiler=clang --python-versions="3.10, 3.11, 3.12, 3.13" --rocm-version=7.0.2 dist_wheels
 
-Troubleshooting - If you have BuildKit error:
+4. Troubleshooting - If you have a ``BuildKit`` error:
+
 
    .. code-block:: bash
 
@@ -297,19 +309,22 @@ Troubleshooting - If you have BuildKit error:
     sudo apt install docker-buildx
     export DOCKER_BUILDKIT=1
 
-Move the created wheels to wheelhouse directory
+5. Move the created wheels to the wheelhouse directory.
+
 
   .. code-block:: bash
 
     mkdir -p wheelhouse && mv jax_rocm_plugin/wheelhouse/* ./wheelhouse/
 
-Create docker image
+6. Create Docker image.
+
 
    .. code-block:: bash
   
     python3 build/ci_build --rocm-version=7.0.2 build_dockers --filter=ubu22
 
-Create container with the image created in the previous step
+7. Create a container with the image created in the previous step.
+
 
    .. code-block:: bash
 
@@ -317,7 +332,8 @@ Create container with the image created in the previous step
     drun jax-ubu22.rocm700 #OR drun <docker image id or name of the image last step produced>
 
 
-To test UTs:
+8. To test UTs:
+
 
    .. code-block:: bash
 
@@ -331,7 +347,8 @@ To test UTs:
     python3 build/rocm/run_multi_gpu.py -c 2>&1 | tee JAX_MG_0.6.0_ut.log
 
 
-More Build Instructions
+More build instructions
+
 -----------------------
 
 For more build instructions or options, see: 
