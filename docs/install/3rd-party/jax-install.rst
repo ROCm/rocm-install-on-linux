@@ -330,8 +330,7 @@ Build ROCm JAX from source
     drun jax-ubu22.rocm700 #OR drun <docker image id or name of the image last step produced>
 
 
-7. To test UTs:
-
+7. To perform unit tests:
 
    .. code-block:: bash
 
