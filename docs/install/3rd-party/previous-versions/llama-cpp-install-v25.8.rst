@@ -1,6 +1,6 @@
 .. meta::
   :description: Installing llama.cpp for ROCm
-  :keywords: installation instructions, llama.cpp, AMD, ROCm, GGML
+  :keywords: installation, llama.cpp, docker, deep learning, AMD, ROCm, GGML
 
 ********************************************************************************
 llama.cpp on ROCm installation
@@ -21,7 +21,7 @@ see :doc:`rocm:compatibility/ml-compatibility/llama-cpp-compatibility`.
 
 .. note::
 
-  llama.cpp is supported on ROCm 6.4.0.
+   llama.cpp is supported on ROCm 6.4.0.
 
 Install llama.cpp
 ======================================================================================
