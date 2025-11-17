@@ -120,6 +120,8 @@ Verifying the amdgpu driver has been loaded on GPUs
 Running ``rocminfo`` and ``amd-smi list`` inside the container will only enumerate the GPUs passed into the docker container.
 Running ``rocminfo`` and ``amd-smi list`` on bare metal will enumerate all ROCm-capable GPUs on the machine.
 
+.. _docker-rocm-images:
+
 Docker images in the ROCm ecosystem
 =======================================================
 
@@ -130,7 +132,7 @@ building your own ROCm-capable containers. The built images are available on
 * ``rocm/rocm-terminal`` is a small image with the prerequisites to build HIP applications, but does not
   include any libraries.
 
-* `ROCm dev images <https://hub.docker.com/search?q=rocm%2Fdev>`_ provide a variety of OS +
+* `ROCm dev images <https://hub.docker.com/u/rocm?page=1&search=dev->`__ provide a variety of OS +
   ROCm versions, and are a great starting place for building applications.
 
 Applications
