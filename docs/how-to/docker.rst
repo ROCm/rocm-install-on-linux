@@ -132,7 +132,7 @@ building your own ROCm-capable containers. The built images are available on
 * ``rocm/rocm-terminal`` is a small image with the prerequisites to build HIP applications, but does not
   include any libraries.
 
-* `ROCm dev images <https://hub.docker.com/search?q=rocm%2Fdev>`_ provide a variety of OS +
+* `ROCm dev images <https://hub.docker.com/u/rocm?page=1&search=dev->`__ provide a variety of OS +
   ROCm versions, and are a great starting place for building applications.
 
 Applications
