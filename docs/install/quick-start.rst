@@ -223,6 +223,9 @@ AMDGPU driver installation
                 .. tab-item:: {{ os_version }}
                    :sync: {{ os_version }}
 
+                   .. caution::
+                      Before proceeding, remove any existing amdgpu-dkms installation by following the uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-ubuntu.html#uninstalling>`_.
+
                    .. code-block:: bash
                        :substitutions:
 
@@ -242,6 +245,9 @@ AMDGPU driver installation
                 {% for (os_version, os_release) in config.html_context['debian_version_numbers'] %}
                 .. tab-item:: {{ os_version }}
                    :sync: {{ os_version }}
+
+                   .. caution::
+                      Before proceeding, remove any existing amdgpu-dkms installation by following the uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-debian.html#uninstalling>`_. 
 
                    .. code-block:: bash
                        :substitutions:
@@ -263,6 +269,9 @@ AMDGPU driver installation
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
                    :sync: {{ os_version }}
+
+                   .. caution::
+                      Before proceeding, remove any existing amdgpu-dkms installation by following the uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-rhel.html#uninstalling>`_. 
 
                    Before installing AMDGPU driver on RHEL, :ref:`register and update your Enterprise Linux <register-enterprise-linux>`.
 
@@ -294,6 +303,9 @@ AMDGPU driver installation
                 .. tab-item:: {{ os_version }}
                    :sync: {{ os_version }}
 
+                   .. caution::
+                      Before proceeding, remove any existing amdgpu-dkms installation by following the uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-ol.html#uninstalling>`_. 
+
                    Before installing AMDGPU driver on OL, :ref:`update your Enterprise Linux <update-enterprise-linux>`.
 
                    .. code-block:: bash
@@ -317,6 +329,9 @@ AMDGPU driver installation
 
                 {% for os_version in config.html_context['sles_version_numbers'] %}
                 .. tab-item:: {{ os_version }}
+
+                   .. caution::
+                      Before proceeding, remove any existing amdgpu-dkms installation by following the uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-sles.html#uninstalling>`_. 
 
                    Before installing AMDGPU driver on SLES, :ref:`register and update your Enterprise Linux <register-enterprise-linux>`.
 
@@ -365,6 +380,9 @@ AMDGPU driver installation
                 {% for os_version in config.html_context['rl_version_numbers'] %}
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
+
+                   .. caution::
+                      Before proceeding, remove any existing amdgpu-dkms installation by following the uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-rl.html#uninstalling>`_. 
 
                    .. code-block:: bash
                        :substitutions:
