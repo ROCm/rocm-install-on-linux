@@ -10,7 +10,7 @@ Ubuntu multi-version installation
 
 .. caution::
 
-    Ensure that the :doc:`/install/prerequisites` are met before installing.
+    Ensure that the :doc:`/install/prerequisites` are met.
 
 .. _ubuntu-multi-register-rocm:
 
