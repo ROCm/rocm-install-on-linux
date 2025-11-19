@@ -9,7 +9,7 @@ Oracle Linux native installation
 
 .. caution::
 
-    Ensure that the :doc:`/install/prerequisites` are met before installing.
+    Ensure that the :doc:`/install/prerequisites` are met.
 
 .. Note::
 
