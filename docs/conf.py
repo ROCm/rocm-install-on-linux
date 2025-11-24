@@ -106,3 +106,6 @@ html_context = {
 }
 
 footnote_backlinks = False
+
+# Disable figure and table numbering
+numfig = False
