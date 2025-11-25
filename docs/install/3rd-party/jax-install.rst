@@ -85,6 +85,8 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
             <https://hub.docker.com/layers/rocm/jax/rocm7.0.2-jax0.6.0-py3.12-ubu24/images/sha256-8f82965b77f355ab39882033b7d1f4d06c9e3859c00e5004f46230f1a28bd0ea>`__.
 
          .. tab-item:: Python 3.10
+            :selected:
+
 
             .. rubric:: Docker pull tag
 
