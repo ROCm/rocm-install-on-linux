@@ -213,7 +213,8 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
             jax-rocm7-plugin==0.6.0
             jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp310-cp310-manylinux2014_x86_64.whl
 
-6. Instal libdw1 if neeed
+6. Install libdw1 if needed
+
 
    .. code-block:: bash
 
