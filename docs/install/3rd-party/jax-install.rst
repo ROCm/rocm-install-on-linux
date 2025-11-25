@@ -328,7 +328,8 @@ Follow these steps if you prefer to install ROCm manually on your host system or
             jax==0.6.0
             jax-rocm7-pjrt==0.6.0
             jax-rocm7-plugin==0.6.0
-            jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp313-cp313-manylinux2014_x86_64.whl
+            jaxlib @ https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp313-cp313-manylinux2014_x86_64.whl
+
 
       .. tab-item:: Python 3.12
          :sync: python-3.12
@@ -338,7 +339,8 @@ Follow these steps if you prefer to install ROCm manually on your host system or
             jax==0.6.0
             jax-rocm7-pjrt==0.6.0
             jax-rocm7-plugin==0.6.0
-            jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp312-cp312-manylinux2014_x86_64.whl
+            jaxlib @ https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp312-cp312-manylinux2014_x86_64.whl
+
 
       .. tab-item:: Python 3.11
          :sync: python-3.11
@@ -348,7 +350,8 @@ Follow these steps if you prefer to install ROCm manually on your host system or
             jax==0.6.0
             jax-rocm7-pjrt==0.6.0
             jax-rocm7-plugin==0.6.0
-            jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp311-cp311-manylinux2014_x86_64.whl
+            jaxlib @ https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp311-cp311-manylinux2014_x86_64.whl
+
 
       .. tab-item:: Python 3.10
          :sync: python-3.10
@@ -359,7 +362,8 @@ Follow these steps if you prefer to install ROCm manually on your host system or
             jax==0.6.0
             jax-rocm7-pjrt==0.6.0
             jax-rocm7-plugin==0.6.0
-            jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp310-cp310-manylinux2014_x86_64.whl
+            jaxlib @ https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp310-cp310-manylinux2014_x86_64.whl
+
 
 6. Install ``libdw1`` if needed
 
