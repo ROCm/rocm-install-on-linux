@@ -212,6 +212,8 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
       .. tab-item:: Python 3.10
          :sync: python-3.10
+         :selected:
+
 
          .. code-block::
 
@@ -221,7 +223,8 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
             jaxlib @ https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp310-cp310-manylinux2014_x86_64.whl
 
 
-6. Install libdw1 if needed
+6. Install ``libdw1`` if needed
+
 
 
    .. code-block:: bash
@@ -294,6 +297,8 @@ Follow these steps if you prefer to install ROCm manually on your host system or
 
       .. tab-item:: Python 3.10
          :sync: python-3.10
+         :selected:
+
 
          .. code-block:: bash
          
@@ -347,6 +352,7 @@ Follow these steps if you prefer to install ROCm manually on your host system or
 
       .. tab-item:: Python 3.10
          :sync: python-3.10
+         :selected:
 
          .. code-block::
 
@@ -355,7 +361,8 @@ Follow these steps if you prefer to install ROCm manually on your host system or
             jax-rocm7-plugin==0.6.0
             jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp310-cp310-manylinux2014_x86_64.whl
 
-6. Install libdw1 if needed
+6. Install ``libdw1`` if needed
+
 
 
    .. code-block:: bash
