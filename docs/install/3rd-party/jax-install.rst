@@ -85,7 +85,7 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
             <https://hub.docker.com/layers/rocm/jax/rocm7.0.2-jax0.6.0-py3.12-ubu24/images/sha256-8f82965b77f355ab39882033b7d1f4d06c9e3859c00e5004f46230f1a28bd0ea>`__.
 
          .. tab-item:: Python 3.10
-            :selected:
+
 
 
             .. rubric:: Docker pull tag
@@ -154,6 +154,8 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
       .. tab-item:: Python 3.10
          :sync: python-3.10
+         :selected:
+
 
          .. code-block:: bash
          
@@ -353,7 +355,8 @@ Follow these steps if you prefer to install ROCm manually on your host system or
             jax-rocm7-plugin==0.6.0
             jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp310-cp310-manylinux2014_x86_64.whl
 
-6. Instal libdw1 if neeed
+6. Install libdw1 if needed
+
 
    .. code-block:: bash
 
