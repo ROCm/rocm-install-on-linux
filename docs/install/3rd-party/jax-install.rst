@@ -110,6 +110,8 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
       .. tab-item:: Python 3.10
          :sync: python-3.10
+         :selected:
+
 
          .. code-block:: bash
          
@@ -139,7 +141,8 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
             jax==0.6.0
             jax-rocm7-pjrt==0.6.0
             jax-rocm7-plugin==0.6.0
-            jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp313-cp313-manylinux2014_x86_64.whl
+            jaxlib @ https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp313-cp313-manylinux2014_x86_64.whl
+
 
       .. tab-item:: Python 3.12
          :sync: python-3.12
@@ -149,7 +152,8 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
             jax==0.6.0
             jax-rocm7-pjrt==0.6.0
             jax-rocm7-plugin==0.6.0
-            jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp312-cp312-manylinux2014_x86_64.whl
+            jaxlib @ https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp312-cp312-manylinux2014_x86_64.whl
+
 
       .. tab-item:: Python 3.11
          :sync: python-3.11
@@ -159,19 +163,24 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
             jax==0.6.0
             jax-rocm7-pjrt==0.6.0
             jax-rocm7-plugin==0.6.0
-            jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp311-cp311-manylinux2014_x86_64.whl
+            jaxlib @ https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp311-cp311-manylinux2014_x86_64.whl
+
 
       .. tab-item:: Python 3.10
          :sync: python-3.10
+         :selected:
+
 
          .. code-block::
 
             jax==0.6.0
             jax-rocm7-pjrt==0.6.0
             jax-rocm7-plugin==0.6.0
-            jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp310-cp310-manylinux2014_x86_64.whl
+            jaxlib @ https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp310-cp310-manylinux2014_x86_64.whl
 
-6. Instal libdw1 if neeed
+
+6. Install ``libdw1`` if needed
+
 
    .. code-block:: bash
 
@@ -243,6 +252,7 @@ Follow these steps if you prefer to install ROCm manually on your host system or
 
       .. tab-item:: Python 3.10
          :sync: python-3.10
+         :selected
 
          .. code-block:: bash
          
@@ -272,7 +282,8 @@ Follow these steps if you prefer to install ROCm manually on your host system or
             jax==0.6.0
             jax-rocm7-pjrt==0.6.0
             jax-rocm7-plugin==0.6.0
-            jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp313-cp313-manylinux2014_x86_64.whl
+            jaxlib @ https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp313-cp313-manylinux2014_x86_64.whl
+
 
       .. tab-item:: Python 3.12
          :sync: python-3.12
@@ -282,7 +293,8 @@ Follow these steps if you prefer to install ROCm manually on your host system or
             jax==0.6.0
             jax-rocm7-pjrt==0.6.0
             jax-rocm7-plugin==0.6.0
-            jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp312-cp312-manylinux2014_x86_64.whl
+            jaxlib @ https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp312-cp312-manylinux2014_x86_64.whl
+
 
       .. tab-item:: Python 3.11
          :sync: python-3.11
@@ -292,19 +304,24 @@ Follow these steps if you prefer to install ROCm manually on your host system or
             jax==0.6.0
             jax-rocm7-pjrt==0.6.0
             jax-rocm7-plugin==0.6.0
-            jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp311-cp311-manylinux2014_x86_64.whl
+            jaxlib @ https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp311-cp311-manylinux2014_x86_64.whl
+
 
       .. tab-item:: Python 3.10
          :sync: python-3.10
+         :selected:
+
 
          .. code-block::
 
             jax==0.6.0
             jax-rocm7-pjrt==0.6.0
             jax-rocm7-plugin==0.6.0
-            jaxlib==https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp310-cp310-manylinux2014_x86_64.whl
+            jaxlib @ https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.6.0/jaxlib-0.6.0-cp310-cp310-manylinux2014_x86_64.whl
 
-6. Instal libdw1 if neeed
+
+6. Install ``libdw1`` if needed
+
 
    .. code-block:: bash
 
