@@ -64,7 +64,8 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
    .. code-block:: bash
 
-      docker pull rocm/dev-ubuntu-22.04:7.0.1-complete
+      docker pull rocm/dev-ubuntu-22.04:7.0-complete
+
 
 2. Launch the Docker container. After pulling the image, launch a container using this command:
 
@@ -81,7 +82,8 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
           --security-opt seccomp=unconfined \
           -v $(pwd):/jax_dir \
           --name rocm_jax \
-          rocm/dev-ubuntu-22.04:7.0.1-complete /bin/bash
+          rocm/dev-ubuntu-22.04:7.0-complete /bin/bash
+
 
 3. Install the ``jaxlib`` v0.6.0 using ``pip`` install. Choose one of the following lines depending on your Python version:
 
