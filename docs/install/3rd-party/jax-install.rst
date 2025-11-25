@@ -121,7 +121,7 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
    .. code-block:: bash
 
-      docker pull rocm/dev-ubuntu-22.04:7.0-complete
+      docker pull rocm/dev-ubuntu-24.04:7.1-complete
 
 2. Launch the Docker container. After pulling the image, launch a container using this command:
 
@@ -138,13 +138,16 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
           --security-opt seccomp=unconfined \
           -v $(pwd):/jax_dir \
           --name rocm_jax \
-          rocm/dev-ubuntu-22.04:7.0-complete /bin/bash
+          rocm/dev-ubuntu-24.04:7.1-complete /bin/bash
 
 3. Install the latest version of JAX. Inside the running container, install the required version of JAX with ROCm support using pip:
 
    .. code-block:: bash
 
-      pip3 install jax[rocm]
+      pip3 install --break-system-packages jax==0.7.1
+      pip3 install --break-system-packages jax-rocm7-pjrt==0.7.1
+      pip3 install --break-system-packages jax-rocm7-plugin==0.7.1
+      pip3 install --break-system-packages https://github.com/ROCm/jax/releases/download/rocm-jax-v0.7.1/jaxlib-0.7.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
 
 4. Verify the installed JAX version. Check whether the correct version of JAX and its ROCm plugins are installed.
 
@@ -156,10 +159,10 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
    .. code-block::
 
-      jax==0.4.35
-      jax-rocm60-pjrt==0.4.35
-      jax-rocm60-plugin==0.4.35
-      jaxlib==0.4.35
+      jax==0.7.1
+      jax-rocm7-pjrt==0.7.1
+      jax-rocm7-plugin==0.7.1
+      jaxlib==0.7.1
 
 5. Explicitly set the ``LLVM_PATH`` environment variable. This helps XLA find ``ld.lld`` in the PATH at runtime.
 
@@ -167,7 +170,14 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
       export LLVM_PATH=/opt/rocm/llvm
 
-6. Verify the installation of ROCm JAX. See :ref:`jax-verify-installation`.
+6. Install ``libdw1`` if needed
+
+   .. code-block:: bash
+
+	   apt update
+	   apt install libdw1
+
+7. Verify the installation of ROCm JAX. See :ref:`jax-verify-installation`.
 
 .. _install-jax-rocm-custom-container:
 
@@ -206,7 +216,10 @@ Follow these steps if you prefer to install ROCm manually on your host system or
 
    .. code-block:: bash
 
-      pip3 install jax[rocm]
+      pip3 install --break-system-packages jax==0.7.1
+      pip3 install --break-system-packages jax-rocm7-pjrt==0.7.1
+      pip3 install --break-system-packages jax-rocm7-plugin==0.7.1
+      pip3 install --break-system-packages https://github.com/ROCm/jax/releases/download/rocm-jax-v0.7.1/jaxlib-0.7.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
 
 3. Verify the installed JAX version. Check whether the correct version of JAX and its ROCm plugins are installed.
 
@@ -220,32 +233,14 @@ Follow these steps if you prefer to install ROCm manually on your host system or
 
       export LLVM_PATH=/opt/rocm/llvm
 
-5. Apply the namespace patch:
+5. Install ``libdw1`` if needed
 
    .. code-block:: bash
 
-      patch -p1 \
-          -d "$(python3 -c \"import sysconfig; print(sysconfig.get_paths()['purelib'])\")" \
-          < jax_rocm_plugin/third_party/jax/namespace.patch
+	   apt update
+	   apt install libdw1
 
-6. Verify the installation of ROCm JAX.
-
-   Run the following commands to verify that ROCm JAX is installed correctly:
-
-   .. code-block:: bash
-
-      python3 -c "import jax; print(jax.devices())"
-      python3 -c "import jax.numpy as jnp; x = jnp.arange(5); print(x)"
-
-   Expected output:
-
-   .. code-block::
-
-      [RocmDevice(id=0), RocmDevice(id=1), RocmDevice(id=2), RocmDevice(id=3)]
-
-   .. code-block::
-
-      [0 1 2 3 4]
+6. Verify the installation of ROCm JAX. See :ref:`jax-verify-installation`.
 
 .. _build-jax-from-source:
 .. _build-jax-wheels:
@@ -253,13 +248,13 @@ Follow these steps if you prefer to install ROCm manually on your host system or
 Build JAX from source
 --------------------------------------------------------------------------------------
 
-The `<https://github.com/ROCm/rocm-jax>`__ repository contains sources for the ROCm
+The `<https://github.com/ROCm/rocm-jax/tree/rocm-jaxlib-v0.7.1>`__ repository contains sources for the ROCm
 plugin for JAX as well as Dockerfiles used to build the AMD ``rocm/jax`` images.
 For the most up-to-date instructions, refer directly to the instructions in the repository:
 
-- See `Quick build <https://github.com/ROCm/ROCm-jax?tab=readme-ov-file#quickbuild>`__ for concise high-level steps.
+- See `Quick build <https://github.com/ROCm/ROCm-jax/tree/rocm-jaxlib-v0.7.1?tab=readme-ov-file#quickbuild>`__ for concise high-level steps.
 
-- See `Building <https://github.com/ROCm/rocm-jax/blob/master/BUILDING.md#building>`__ for more in-depth build instructions and troubleshooting suggestions.
+- See `Building <https://github.com/ROCm/rocm-jax/blob/rocm-jaxlib-v0.7.1/BUILDING.md#building>`__ for more in-depth build instructions and troubleshooting suggestions.
 
 .. _jax-verify-installation:
 
@@ -270,7 +265,7 @@ After launching the container, test whether JAX detects ROCm devices as expected
 
 .. code-block:: bash
 
-   python -c "import jax; print(jax.devices())"
+   python3 -c "import jax; print(jax.devices())"
    python3 -c "import jax.numpy as jnp; x = jnp.arange(5); print(x)"
 
 If the setup is successful, the output should list all available ROCm devices.
