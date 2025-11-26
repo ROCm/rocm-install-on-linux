@@ -174,8 +174,8 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
    .. code-block:: bash
 
-	   apt update
-	   apt install libdw1
+	  apt update
+	  apt install libdw1
 
 7. Verify the installation of ROCm JAX. See :ref:`jax-verify-installation`.
 
@@ -237,8 +237,8 @@ Follow these steps if you prefer to install ROCm manually on your host system or
 
    .. code-block:: bash
 
-	   apt update
-	   apt install libdw1
+	  apt update
+	  apt install libdw1
 
 6. Verify the installation of ROCm JAX. See :ref:`jax-verify-installation`.
 
