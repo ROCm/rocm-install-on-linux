@@ -5,15 +5,15 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # ROCm version numbers
-rocm_version = '7.1'
+rocm_version = '7.1.1'
 rocm_major_version = '7.0'
-rocm_multi_versions = '7.1 7.0.2' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
-rocm_multi_versions_package_versions = '7.1.0 7.0.2' # however, in multi, the packages use 6.3.0
-rocm_directory_version = '7.1.0' # in 6.0 rocm was located in /opt/rocm-6.0.0
-amdgpu_version = '7.1' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '7.1.70100-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
-udev_version = '30.20.0.0-2238411'
-udev_amdgpu_version = '30.20'
+rocm_multi_versions = '7.1.1 7.0.2' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_multi_versions_package_versions = '7.1.1 7.0.2' # however, in multi, the packages use 6.3.0
+rocm_directory_version = '7.1.1' # in 6.0 rocm was located in /opt/rocm-6.0.0
+amdgpu_version = '7.1.1' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '7.1.1.70101-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+udev_version = '30.20.1.0-2255209'
+udev_amdgpu_version = '30.20.1'
 
 
 latex_engine = "xelatex"
@@ -41,6 +41,7 @@ debian_version_numbers = [('13', 'noble'), ('12', 'jammy')]
 debian_udev_versions = [('13', 'noble', '24.04'), ('12', 'jammy', '22.04')]
 rhel_release_version_numbers = ['10', '9', '8']
 rhel_version_numbers = ['10.1', '10.0', '9.7', '9.6', '9.4', '8.10']
+rhel_multi_versions = ['10.0', '9.6', '9.4', '8.10']
 sles_version_numbers = ['15.7']
 ol_release_version_numbers = ['10', '9', '8']
 ol_version_numbers = ['10.0', '9.6', '8.10']
@@ -99,6 +100,7 @@ html_context = {
     "sles_version_numbers" : sles_version_numbers,
     "rhel_release_version_numbers" : rhel_release_version_numbers,
     "rhel_version_numbers" : rhel_version_numbers,
+    "rhel_multi_versions" : rhel_multi_versions,
     "ol_release_version_numbers" : ol_release_version_numbers,
     "ol_version_numbers" : ol_version_numbers,
     "azl_version_numbers": azl_version_numbers,

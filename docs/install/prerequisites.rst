@@ -83,7 +83,7 @@ your operating system to ensure you're able to download and install packages.
                     .. code-block:: shell
                         :substitutions:
 
-                        {% if os_version == '10.0' -%}
+                        {% if os_version == '10.0' or '10.1' -%}
                         subscription-manager register --username <username> --password <password>
                         {%- else -%}
                         subscription-manager register --username <username> --password <password>
@@ -544,7 +544,7 @@ To set up udev rules, install the package using the following instructions speci
                    .. code-block:: bash
                        :substitutions:
 
-                       {% if os_major == '9' -%}
+                       {% if os_major == '9' or os_version == '10.1' -%}
                        sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm
                        {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_major }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm

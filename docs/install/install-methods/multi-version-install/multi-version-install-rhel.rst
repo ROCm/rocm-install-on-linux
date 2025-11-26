@@ -10,7 +10,7 @@ Red Hat Enterprise Linux multi-version installation
 
 .. caution::
 
-    Ensure that the :doc:`/install/prerequisites` are met before installing.
+    Ensure that the :doc:`/install/prerequisites` are met.
 
 .. _rhel-multi-register-rocm:
 
@@ -20,7 +20,7 @@ Registering ROCm repositories
 .. datatemplate:nodata::
 
    .. tab-set::
-      {% for os_version in config.html_context['rhel_version_numbers'] %}
+      {% for os_version in config.html_context['rhel_multi_versions'] %}
       {% set os_major, _  = os_version.split('.') %}
       .. tab-item:: RHEL {{ os_version }}
             :sync: rhel-{{ os_version }}
