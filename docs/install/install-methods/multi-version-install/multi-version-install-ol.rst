@@ -10,7 +10,7 @@ Oracle Linux multi-version installation
 
 .. caution::
 
-    Ensure that the :doc:`/install/prerequisites` are met before installing.
+    Ensure that the :doc:`/install/prerequisites` are met.
 
 
 .. _ol-multi-register-rocm:
