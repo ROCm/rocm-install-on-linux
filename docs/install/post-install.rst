@@ -220,7 +220,7 @@ Use the following ROCm tools to verify that installation was successful:
 
       .. code-block:: bash
 
-          AMDSMI Tool: 26.1.0+5df6c765 | AMDSMI Library version: 26.1.0 | ROCm version: 7.1.0 | amdgpu version: 6.16.6 | amd_hsmp version: N/A
+          AMDSMI Tool: 26.2.0+021c61fc | AMDSMI Library version: 26.2.0 | ROCm version: 7.1.1 | amdgpu version: 6.16.6 | amd_hsmp version: N/A
 
 Troubleshooting
 =====================================================

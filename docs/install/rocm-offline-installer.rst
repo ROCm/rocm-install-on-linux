@@ -42,15 +42,20 @@ The ROCm Offline Installer Creator requires the following configuration:
   Linux kernel version when building an installer that includes the AMD GPU driver. If you are building a ROCm-only installer, the
   Linux kernel versions are not required to match. If the AMD GPU driver is included with ROCm or by itself in an installer build, then the host
   and target systems must use the same Linux kernel version for the following distributions: Oracle Linux,
-  SUSE Linux Enterprise Server, and Debian 13.
+  Rocky 9.6, and Debian 13.
 
 .. note::
 
-   For Ubuntu, Debian 12, and Red Hat Enterprise Linux, the Linux kernel version can be set to a target system version different from the host system creating the offline installer.
+   For the following Linux distributions, the Linux kernel version can be set to a target system version different from the host system creating the offline installer.
    See the :ref:`advanced-driver-label` menu for details.
+   
+   *  Ubuntu
+   *  Debian 12
+   *  Red Hat Enterprise Linux (RHEL)
+   *  SUSE Linux Enterprise Server (SLES) 15.7
 
-For example, if the host system uses SUSE Linux Enterprise Server 15.7 with the ``6.4.0-150700.51-default`` kernel, only
-a SUSE Linux Enterprise Server 15.7 target with the ``6.4.0-150700.51-default`` kernel can use the offline installer.
+For example, if the host system uses Oracle Linux 10.0 with the ``6.12.0-100.28.2.el10uek`` kernel, only
+an Oracle Linux 10.0 target with the ``6.12.0-100.28.2.el10uek`` kernel can use the offline installer.
 If the base OS distribution version and the kernel version of that distribution do not match on both systems, 
 installation is not permitted.
 
@@ -67,7 +72,7 @@ Supported Linux distributions
 The ROCm Offline Installer Creator tool supports the following Linux distributions and versions:
 
 * Ubuntu: 22.04, 24.04
-* RHEL: 8.10, 9.4, 9.6, 10.0
+* RHEL: 8.10, 9.4, 9.6, 9.7, 10.0, 10.1
 * SLES: 15.7
 * Debian: 12, 13
 * Oracle Linux: 8.10, 9.6, 10.0
@@ -87,22 +92,22 @@ Download the Offline Installer Creator from ``repo.radeon.com`` using the follow
 
 Substitute your values for the following placeholders:
 
-* ``<rocm-version>``: ROCm version number for the ROCm Offline Installer Creator tool, for example, ``rocm-rel-7.1``.
+* ``<rocm-version>``: ROCm version number for the ROCm Offline Installer Creator tool, for example, ``rocm-rel-7.1.1``.
 * ``<distro>``: Linux distribution for the tool, for example, ``ubuntu``, ``ol``, ``rhel``, ``sles``, ``rocky``, or ``debian``.
 * ``<distro-version>``: Linux distribution version for the tool, for example, ``22.04`` for Ubuntu or ``9.6`` for RHEL.
-* ``<creator-package>``: The ROCm Offline Installer Creator package name, for example, ``rocm-offline-creator_1.0.15.70100-5~22.04.run``.
+* ``<creator-package>``: The ROCm Offline Installer Creator package name, for example, ``rocm-offline-creator_1.0.16.70101-6~22.04.run``.
 
 .. note::
 
    For releases that end in ``.0``, do not include the ``.0`` as part of the ``rocm-version`` component.
    For example, for ROCm 7.1.0, the ``rocm-version`` is ``rocm-rel-7.1``.
 
-For example, use this command to download ROCm 7.1 of the Offline Installer Creator 
+For example, use this command to download ROCm 7.1.1 of the Offline Installer Creator 
 for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-7.1/ubuntu/22.04/rocm-offline-creator_1.0.15.70100-5~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-7.1.1/ubuntu/22.04/rocm-offline-creator_1.0.16.70101-6~22.04.run
 
 Installer Creation
 ================================================
@@ -111,7 +116,7 @@ On the host system, run the ROCm Offline Installer Creator from the terminal com
 
 .. code-block:: shell
 
-   bash ./rocm-offline-creator_1.0.15.70100-5~22.04.run <options>
+   bash ./rocm-offline-creator_1.0.16.70101-6~22.04.run <options>
 
 The ``<options>`` parameter can either be left empty or set to these options:
 
@@ -131,7 +136,7 @@ This example demonstrates how to use the ``prompt`` option when running the Offl
 
 .. code-block:: shell
 
-   bash ./rocm-offline-creator_1.0.15.70100-5~22.04.run prompt
+   bash ./rocm-offline-creator_1.0.16.70101-6~22.04.run prompt
 
 The optional ``prompt`` parameter stops the Offline Installer Creator
 at critical checkpoints in the creation process and prompts the user. At these checkpoints, 
