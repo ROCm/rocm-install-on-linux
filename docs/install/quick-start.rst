@@ -81,7 +81,7 @@ ROCm installation
                    .. code-block:: bash
                        :substitutions:
 
-                       {% if os_major == '9' or os_version == '10.1' -%}
+                       {% if os_major == '9' -%}
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
@@ -250,7 +250,7 @@ AMDGPU driver installation
                    .. code-block:: bash
                        :substitutions:
 
-                       {% if os_major == '9' or os_version == '10.1' -%}
+                       {% if os_major == '9' -%}
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
