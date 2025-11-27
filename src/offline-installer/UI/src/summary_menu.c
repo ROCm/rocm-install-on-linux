@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +22,7 @@
 #include "summary_menu.h"
 #include "help_menu.h"
 #include "create_menu.h"
+#include "driver_menu.h"
 #include <math.h>
 #include "utils.h"
 #include <string.h>
@@ -70,10 +71,22 @@ char *summaryRocmValues[] = {
     (char *)NULL
 };
 
+char *summaryPostInstallOps[] = {
+    "Add video,render group",
+    "Add udev rule",
+    (char *)NULL
+};
+
+char *summaryPostInstallValues[] = {
+    "",
+    "",
+    (char *)NULL
+};
+
+
 char *summaryDriverOps[] = {
     "amdgpu Install Driver",
     "amdgpu Driver ROCm Version",
-    "Set Video,render group",
     "Blacklist amdgpu driver",
     "Start amdgpu driver on install",
     (char *)NULL
@@ -84,17 +97,22 @@ char *summaryDriverValues[] = {
     "",
     "",
     "",
-    "",
     (char *)NULL
 };
 
 char *summaryExtraOps[] = {
     "rocminfo",
     "rocm-smi",
+    "amd-smi",
+    "rocm-validation-suite",
+    "rocdecode", 
+    "rocjpeg", 
+    "rdc", 
     (char *)NULL
 };
 
 char *summaryExtraValues[] = {
+    "",
     "",
     "",
     (char *)NULL
@@ -144,7 +162,6 @@ void process_summary_item(MENU_DATA *pMenuData);
 void draw_summary_page(MENU_DATA *pMenuData);
 void summary_menu_draw(MENU_DATA *pMenuData);
 char* bool_to_yes_no(bool value);
-int print_multiline_string(WINDOW *pMenuWindow, char *text, int startx, int starty, int width);
 void resize_and_reposition_summary_subwindow(MENU_DATA *pMenuData);
 
 // page draw
@@ -160,6 +177,7 @@ bool is_repo_public_prereqs_fulfilled(MENU_DATA *pMenuData);
 bool is_miscellaneous_opt_missing(OFFLINE_INSTALL_CONFIG *pConfig, char *opt);
 bool is_miscellaneous_prereqs_fulfilled(MENU_DATA *pMenuData);
 bool is_opt_valid(OFFLINE_INSTALL_CONFIG *pConfig, char *opt);
+bool is_download_dep_unavailable(OFFLINE_INSTALL_CONFIG *pConfig, char *opt);
 
 void create_summary_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, OFFLINE_INSTALL_CONFIG *pConfig)
 {
@@ -174,7 +192,7 @@ void create_summary_menu_window(MENU_DATA *pMenuData, WINDOW *pMenuWindow, OFFLI
 
     numItems = summaryMenuItems.numItems;
     // set items to non-selectable
-    set_menu_grey(pMenuData->pMenu, COLOR_PAIR(5));
+    set_menu_grey(pMenuData->pMenu, BLUE);
     menu_set_item_select(pMenuData, numItems - 2, false); // Disable <ACCEPT> button by default
     menu_opts_off(pMenuData->pMenu, O_SHOWDESC);
 
@@ -225,49 +243,6 @@ void do_summary_menu(MENU_DATA *pMenuData)
     unpost_menu(pMenu);
 }
 
-// return value is last row used for printing the string text
-int print_multiline_string(WINDOW *pMenuWindow, char *text, int startx, int starty, int width)
-{
-    if (strlen(text) <= (size_t)width)
-    {
-        mvwprintw(pMenuWindow, starty, startx, "%s", text);
-        return starty + 1;
-    }
-    else 
-    {
-        char *substring = calloc(1, sizeof(char *) * (width + 1));
-        if (!substring)
-        {
-            return starty;
-        }
-
-        int height = calculate_text_height(text, width);
-        int startIndex = 0;
-        int lineWidth = width;
-
-        for (int i = 0; i < height; i++)
-        {   
-            strncpy(substring, text + startIndex, lineWidth);
-            
-            // if we have < width characters left to print, then readjust
-            // lineWidth to be value of the remaining characters left to print
-            if (startIndex + width > (int)strlen(text))
-            {
-                lineWidth = (int)strlen(text) - startIndex;
-            }
-            startIndex += lineWidth;
-            mvwprintw(pMenuWindow, starty, startx, "%s", substring);
-            
-            memset(substring, 0, (size_t)width);
-            starty++;
-        }
-        
-        free(substring);
-    }
-
-    return starty;
-}
-
 int print_sub_menu_summary_options(MENU_DATA *pMenuData, WINDOW *pMenuWindow, char **menuSummaryOp, char *menuSummaryTitle, char **menuSummaryValue, int opStartx, int starty, int valueStartx, int valueWidth)
 {
     OFFLINE_INSTALL_CONFIG *pConfig = pMenuData->pConfig;
@@ -292,7 +267,7 @@ int print_sub_menu_summary_options(MENU_DATA *pMenuData, WINDOW *pMenuWindow, ch
 
         if (isOptMissing)
         {
-            wattron(pMenuWindow, COLOR_PAIR(1));
+            wattron(pMenuWindow, RED);
             optValue = "*Required*";
         }
         else
@@ -302,7 +277,12 @@ int print_sub_menu_summary_options(MENU_DATA *pMenuData, WINDOW *pMenuWindow, ch
 
         if (!isOptValid)
         {
-            wattron(pMenuWindow, COLOR_PAIR(1));
+            wattron(pMenuWindow, RED);
+        }
+
+        if (is_download_dep_unavailable(pConfig, opt))
+        {
+             wattron(pMenuWindow, RED);
         }
 
         wattron(pMenuWindow, A_BOLD);
@@ -314,9 +294,9 @@ int print_sub_menu_summary_options(MENU_DATA *pMenuData, WINDOW *pMenuWindow, ch
         // menu summary value
         starty = print_multiline_string(pMenuWindow, optValue, valueStartx, starty, valueWidth);
        
-        if (isOptMissing || !isOptValid)
+        if (isOptMissing || !isOptValid || is_download_dep_unavailable(pConfig, opt))
         {
-            wattroff(pMenuWindow, COLOR_PAIR(1));
+            wattroff(pMenuWindow, RED);
         }
         
         i++;
@@ -326,6 +306,21 @@ int print_sub_menu_summary_options(MENU_DATA *pMenuData, WINDOW *pMenuWindow, ch
     return starty;
 }
 
+
+// only return false iff user selects a specific kernel that's invalid.
+// otherwise, return true
+bool is_user_selected_kernel_valid(OFFLINE_INSTALL_CONFIG *pConfig)
+{
+    // DRIVER_MENU_CONFIG *pDriverConfig = &pMenuData->pConfig->driver_config;
+    DRIVER_MENU_CONFIG *pDriverConfig = &pConfig->driver_config;
+
+    if (pDriverConfig->install_driver && is_user_selected_kernel())
+    {
+        return pDriverConfig->user_selected_kernel_validity_status == eKERNEL_STATUS_VALID; 
+    } 
+
+    return true;
+}
 
 // checks if all prereqs required when user selects repo-public is fulfilled
 bool is_repo_public_prereqs_fulfilled(MENU_DATA *pMenuData)
@@ -393,6 +388,12 @@ bool is_miscellaneous_prereqs_fulfilled(MENU_DATA *pMenuData)
         ret &= false;
     }
 
+    // if user selected a specific kernel, then ensure that kernel is valid
+    if (!is_user_selected_kernel_valid(pConfig))
+    {
+        ret &= false;
+    }
+
     return ret;
 }
 
@@ -407,11 +408,23 @@ bool is_miscellaneous_opt_missing(OFFLINE_INSTALL_CONFIG *pConfig, char *opt)
     return false;
 }
 
+bool is_download_dep_unavailable(OFFLINE_INSTALL_CONFIG *pConfig, char *opt)
+{
+    return strcmp(opt, "Dependency Type") == 0 && pConfig->create_confg.currentInstallDLType == eDL_TYPE_UNAVAILABLE;
+}
+
 bool is_opt_valid(OFFLINE_INSTALL_CONFIG *pConfig, char *opt)
 {
     if (strcmp(opt, "Installer Path") == 0)
     {
         if (!pConfig->create_confg.is_installer_loc_valid)
+        {
+            return false;
+        }
+    }
+    else if (strcmp(opt, "Kernel") == 0)
+    {
+        if (!is_user_selected_kernel_valid(pConfig))
         {
             return false;
         }
@@ -453,9 +466,19 @@ int draw_create_config_summary_page(MENU_DATA *pMenuData)
 
     // Target Installer
     targetSystemInfoValues[0] = pOfflineConfigs->distroName;
-    targetSystemInfoValues[1] = pOfflineConfigs->kernelVersion;
-    starty = print_sub_menu_summary_options(pMenuData,pMenuSubWindow,targetSystemInfoOps, "Target Installer", targetSystemInfoValues, COL1_SUMMARY_MENU_OP_STARTX, COLS_SUMMARY_MENU_STARTY, COL2_SUMMARY_MENU_VALUE_STARTX, COL2_SUMMARY_MENU_VALUE_WIDTH);
+    char kernelVer[LARGE_CHAR_SIZE];
+    if (pOfflineConfigs->driver_config.install_driver && is_user_selected_kernel())
+    {
+        sprintf(kernelVer, "%s (User selected)", pOfflineConfigs->driver_config.user_selected_kernel);
+        targetSystemInfoValues[1] = kernelVer;
+    }
+    else
+    {
+        targetSystemInfoValues[1] = pOfflineConfigs->kernelVersion;
+    }
     
+    starty = print_sub_menu_summary_options(pMenuData,pMenuSubWindow,targetSystemInfoOps, "Target Installer", targetSystemInfoValues, COL1_SUMMARY_MENU_OP_STARTX, COLS_SUMMARY_MENU_STARTY, COL2_SUMMARY_MENU_VALUE_STARTX, COL2_SUMMARY_MENU_VALUE_WIDTH);
+
     // Create Configuration
     summaryConfigValues[0] = createMenuInstallTypes[pOfflineConfigs->installerType].installer_input;
     summaryConfigValues[1] = createMenuRepoTypes[pOfflineConfigs->installerRepoType].repo_name;
@@ -474,7 +497,7 @@ int draw_create_config_summary_page(MENU_DATA *pMenuData)
     return endy;
 }
 
-void draw_driver_summary_page(MENU_DATA *pMenuData)
+void draw_extras_and_post_install_summary_page(MENU_DATA *pMenuData)
 {
     int starty = COLS_SUMMARY_MENU_STARTY;
     WINDOW *pMenuSubWindow = pMenuData->pMenuSubWindow;
@@ -482,27 +505,29 @@ void draw_driver_summary_page(MENU_DATA *pMenuData)
 
     wclear(pMenuData->pMenuSubWindow);
 
-    // Driver
-    summaryDriverValues[0] = bool_to_yes_no(pOfflineConfigs->driver_config.install_driver);
-    if (pOfflineConfigs->driver_config.install_driver)
-    {
-        summaryDriverValues[1] = pOfflineConfigs->rocm_config.rocm_versions;
-    }
-    else
-    {
-        summaryDriverValues[1] = "N/A";
-    }
-    summaryDriverValues[2] = bool_to_yes_no(pOfflineConfigs->driver_config.set_group);
-    summaryDriverValues[3] = bool_to_yes_no(pOfflineConfigs->driver_config.blacklist_driver);
-    summaryDriverValues[4] = bool_to_yes_no(pOfflineConfigs->driver_config.start_driver);
+    // Extra
+    summaryExtraValues[0] = bool_to_yes_no(pOfflineConfigs->extras_config.rocminfo_install);
+    summaryExtraValues[1] = bool_to_yes_no(pOfflineConfigs->extras_config.rocmsmi_install);
+    summaryExtraValues[2] = bool_to_yes_no(pOfflineConfigs->extras_config.amdsmi_install);
+    summaryExtraValues[3] = bool_to_yes_no(pOfflineConfigs->extras_config.rocm_validation_suite_install);
+    summaryExtraValues[4] = bool_to_yes_no(pOfflineConfigs->extras_config.rocdecode_install);
+    summaryExtraValues[5] = bool_to_yes_no(pOfflineConfigs->extras_config.rocjpeg_install);
+    summaryExtraValues[6] = bool_to_yes_no(pOfflineConfigs->extras_config.rdc_install);
     
-    print_sub_menu_summary_options(pMenuData, pMenuSubWindow,summaryDriverOps, "Driver", summaryDriverValues, COL1_SUMMARY_MENU_OP_STARTX, starty, COL2_SUMMARY_DRIVER_MENU_VALUE_STARTX, COL2_SUMMARY_DRIVIER_MENU_VALUE_WIDTH);
+    starty = print_sub_menu_summary_options(pMenuData, pMenuSubWindow,summaryExtraOps, "Extra", summaryExtraValues, COL1_SUMMARY_MENU_OP_STARTX, starty, COL2_SUMMARY_MENU_VALUE_STARTX, COL2_SUMMARY_MENU_VALUE_WIDTH);
+    starty += 2;
+
+    summaryPostInstallValues[0] = bool_to_yes_no(pOfflineConfigs->post_config.current_user_grp);
+    summaryPostInstallValues[1] = bool_to_yes_no(pOfflineConfigs->post_config.all_user_grp);
+
+    starty = print_sub_menu_summary_options(pMenuData, pMenuSubWindow,summaryPostInstallOps, "Post-Install Options", summaryPostInstallValues, COL1_SUMMARY_MENU_OP_STARTX, starty, COL2_SUMMARY_MENU_VALUE_STARTX, COL2_SUMMARY_MENU_VALUE_WIDTH);
+    
     draw_page_number(pMenuData);
 
     wrefresh(pMenuData->pMenuSubWindow);
 }
 
-void draw_rocm_and_extras_summary_page(MENU_DATA *pMenuData)
+void draw_rocm_and_driver_summary_page(MENU_DATA *pMenuData)
 {
     int starty = COLS_SUMMARY_MENU_STARTY;
     WINDOW *pMenuSubWindow = pMenuData->pMenuSubWindow;
@@ -538,15 +563,24 @@ void draw_rocm_and_extras_summary_page(MENU_DATA *pMenuData)
         summaryRocmValues[1] = "N/A";
     }
 
-    starty = print_sub_menu_summary_options(pMenuData, pMenuSubWindow,summaryRocmOps, "ROCm", summaryRocmValues, COL1_SUMMARY_MENU_OP_STARTX, starty, COL2_SUMMARY_MENU_VALUE_STARTX, COL2_SUMMARY_MENU_VALUE_WIDTH);
-
+    starty = print_sub_menu_summary_options(pMenuData, pMenuSubWindow,summaryRocmOps, "ROCm", summaryRocmValues, COL1_SUMMARY_MENU_OP_STARTX, starty, COL2_SUMMARY_DRIVER_MENU_VALUE_STARTX, COL2_SUMMARY_DRIVIER_MENU_VALUE_WIDTH);
     starty += 2;
 
-    // Extra
-    summaryExtraValues[0] = bool_to_yes_no(pOfflineConfigs->extras_config.rocminfo_install);
-    summaryExtraValues[1] = bool_to_yes_no(pOfflineConfigs->extras_config.rocmsmi_install);
-    
-    print_sub_menu_summary_options(pMenuData, pMenuSubWindow,summaryExtraOps, "Extra", summaryExtraValues, COL1_SUMMARY_MENU_OP_STARTX, starty, COL2_SUMMARY_MENU_VALUE_STARTX, COL2_SUMMARY_MENU_VALUE_WIDTH);
+    // Driver
+    summaryDriverValues[0] = bool_to_yes_no(pOfflineConfigs->driver_config.install_driver);
+    if (pOfflineConfigs->driver_config.install_driver)
+    {
+        summaryDriverValues[1] = pOfflineConfigs->rocm_config.rocm_versions;
+    }
+    else
+    {
+        summaryDriverValues[1] = "N/A";
+    }
+    summaryDriverValues[2] = bool_to_yes_no(pOfflineConfigs->driver_config.blacklist_driver);
+    summaryDriverValues[3] = bool_to_yes_no(pOfflineConfigs->driver_config.start_driver);
+
+    print_sub_menu_summary_options(pMenuData, pMenuSubWindow,summaryDriverOps, "Driver", summaryDriverValues, COL1_SUMMARY_MENU_OP_STARTX, starty, COL2_SUMMARY_DRIVER_MENU_VALUE_STARTX, COL2_SUMMARY_DRIVIER_MENU_VALUE_WIDTH);
+
     draw_page_number(pMenuData);
 
     wrefresh(pMenuData->pMenuSubWindow);
@@ -565,16 +599,20 @@ void draw_summary_page(MENU_DATA *pMenuData)
     }
     else if (currentMenuOptIndex == 1)
     {
-        draw_rocm_and_extras_summary_page(pMenuData);
+        draw_rocm_and_driver_summary_page(pMenuData);
     }
     else if (currentMenuOptIndex == 2)
     {
-        draw_driver_summary_page(pMenuData);
+        draw_extras_and_post_install_summary_page(pMenuData);
     }
 
     if (!pConfig->rocm_config.install_rocm && !pConfig->driver_config.install_driver)
     {
         print_menu_err_msg(pMenuData, "No ROCm or Driver install selected");
+    }
+    else if (pConfig->create_confg.currentInstallDLType == eDL_TYPE_UNAVAILABLE)
+    {
+        print_menu_err_msg(pMenuData, "Download dep type is set to 'unavailable'");
     }
 }
 
@@ -605,13 +643,22 @@ void summary_menu_update_state(MENU_DATA *pMenuData)
 {
     bool all_prereqs_met = true;
     int numItems = pMenuData->itemList->numItems;
-
+    OFFLINE_INSTALL_CONFIG *pConfig = pMenuData->pConfig;
     if (!is_miscellaneous_prereqs_fulfilled(pMenuData))
     {
         all_prereqs_met = false;
     }
     // Check for updates to the current installer type
     else if (is_repo_public(pMenuData) && !is_repo_public_prereqs_fulfilled(pMenuData))
+    {
+        all_prereqs_met = false;
+    }
+    else if (!is_user_selected_kernel_valid(pConfig))
+    {
+        print_menu_err_msg(pMenuData, "%s is not valid", pConfig->driver_config.user_selected_kernel);
+        all_prereqs_met = false;
+    }
+    if (pConfig->create_confg.currentInstallDLType == eDL_TYPE_UNAVAILABLE)
     {
         all_prereqs_met = false;
     }
@@ -630,17 +677,17 @@ void process_summary_item(MENU_DATA *pMenuData)
     if (item_index(pCurrentItem) == numItems - 3)
     {
         // set "RETURN" to red
-        set_menu_fore(pMenuData->pMenu, COLOR_PAIR(6));
+        set_menu_fore(pMenuData->pMenu, WHITE_ON_RED);
     }
     else if (item_index(pCurrentItem) == numItems - 2)
     {
         // set "ACCEPT" to green
-        set_menu_fore(pMenuData->pMenu, COLOR_PAIR(4) | A_REVERSE);
+        set_menu_fore(pMenuData->pMenu, GREEN | A_REVERSE);
     }
     else
     {
         // highlight <NEXT PAGE> and <PREV PAGE> bold
-        set_menu_fore(pMenuData->pMenu, COLOR_PAIR(3) | A_BOLD);
+        set_menu_fore(pMenuData->pMenu, WHITE | A_BOLD);
     }
 }
 
@@ -665,10 +712,10 @@ void draw_next_page(MENU_DATA *pMenuData)
             draw_create_config_summary_page(pMenuData);
             break;
         case 1:
-            draw_rocm_and_extras_summary_page(pMenuData);
+            draw_rocm_and_driver_summary_page(pMenuData);
             break;
         case 2:
-            draw_driver_summary_page(pMenuData);
+            draw_extras_and_post_install_summary_page(pMenuData);
             break;
     }
 }
@@ -691,7 +738,7 @@ void draw_prev_page(MENU_DATA *pMenuData)
         }
         else if (currentSummaryPageIndex == 1)
         {
-            draw_rocm_and_extras_summary_page(pMenuData);
+            draw_rocm_and_driver_summary_page(pMenuData);
         }
     }
 }

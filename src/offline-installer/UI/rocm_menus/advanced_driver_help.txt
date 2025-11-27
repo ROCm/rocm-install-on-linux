@@ -1,0 +1,7 @@
+   Kernel Version       Enabling driver installation for the offline installer 
+                        creation requires the kernel version of the target 
+                        system. By default, the host system kernel version is 
+                        used when creating a driver offline installer package.  
+                        However, users may change the kernel version manually 
+                        and set a specific kernel version to a match the target 
+                        system kernel for the driver offline install.

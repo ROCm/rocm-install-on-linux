@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # #############################################################################
-# Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+# Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,8 @@
 # THE SOFTWARE.
 # #############################################################################
 
-
+RED='\033[0;31m'
+NC='\033[0m' # No Color
 
 ###### Functions ###############################################################
 
@@ -30,7 +31,7 @@ usage() {
 cat <<END_USAGE
 Usage: $PROG [options]
 
-[options}:
+[options]:
     help               = Displays this help information.
     version            = Displays the ROCm Offline Creater Tool version. 
     prompt             = Run the creator with user prompts.
@@ -74,23 +75,41 @@ os_release() {
 
         case "$ID" in
         ubuntu)
-	    PACKAGE_VER=${PACKAGE##*~}
-	    PACKAGE_VER=${PACKAGE_VER%.run}
-	    ;;
+        PACKAGE_VER=${PACKAGE##*~}
+        PACKAGE_VER=${PACKAGE_VER%.run}
+        ;;
+        debian)
+        PACKAGE_VER=${PACKAGE##*debian}
+        PACKAGE_VER=${PACKAGE_VER%%.*}
+        
+        DISTRO_VER=${DISTRO_VER%%.*}
+        ;;
         rhel)
-	    PACKAGE_VER=${PACKAGE##*el}
-	    PACKAGE_VER=${PACKAGE_VER%%.*}
-	    
-	    DISTRO_VER=${DISTRO_VER%%.*}
-            ;;
+        PACKAGE_VER=${PACKAGE##*el}
+        PACKAGE_VER=${PACKAGE_VER%%.*}
+        
+        DISTRO_VER=${DISTRO_VER%%.*}
+        ;;
         sles)
-	    PACKAGE_VER=${PACKAGE##*sles}
-	    PACKAGE_VER=${PACKAGE_VER%%.*}
-	    
-	    DISTRO_VER=${DISTRO_VER/./}
+        PACKAGE_VER=${PACKAGE##*sles}
+        PACKAGE_VER=${PACKAGE_VER%%.*}
+        
+        DISTRO_VER=${DISTRO_VER/./}
+        ;;
+        ol)
+        PACKAGE_VER=${PACKAGE##*ol}
+        PACKAGE_VER=${PACKAGE_VER%%.*}
+        
+        DISTRO_VER=${DISTRO_VER%%.*}
+        ;;
+        rocky)
+        PACKAGE_VER=${PACKAGE##*rocky}
+        PACKAGE_VER=${PACKAGE_VER%%.*}
+        
+        DISTRO_VER=${DISTRO_VER%%.*}
             ;;
         *)
-            echo "$ID is Unsupported OS"
+            echo -e "${RED}$ID is Unsupported OS${NC}"
             exit 1
             ;;
         esac
@@ -102,10 +121,10 @@ os_release() {
     # For non-local builds, verify package version matches for the running host distribution
     if [[ $PACKAGE != *"local"* ]]; then
         if [ $PACKAGE_VER != $DISTRO_VER ]; then
-            echo -e "\e[31m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
-            echo -e "\e[31mError: ROCm Offline Creator Package mismatch:\e[0m"
-            echo -e "\e[31m       ${DISTRO_NAME} ${DISTRO_VER} != ${DISTRO_NAME} ${PACKAGE_VER} (Package)\e[0m"
-            echo -e "\e[31m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
+            echo -e "${RED}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++${NC}"
+            echo -e "${RED}Error: ROCm Offline Creator Package mismatch:${NC}"
+            echo -e "${RED}       ${DISTRO_NAME} ${DISTRO_VER} != ${DISTRO_NAME} ${PACKAGE_VER} (Package)${NC}"
+            echo -e "${RED}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++${NC}"
             exit 1
         fi
     fi
