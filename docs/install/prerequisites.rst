@@ -544,7 +544,7 @@ To set up udev rules, install the package using the following instructions speci
                    .. code-block:: bash
                        :substitutions:
 
-                       {% if os_major == '9' or os_version == '10.1' -%}
+                       {% if os_major == '9' -%}
                        sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm
                        {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_major }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm
