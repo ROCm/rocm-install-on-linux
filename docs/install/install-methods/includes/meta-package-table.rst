@@ -43,6 +43,6 @@ ROCm developer packages
 
 .. rubric:: Footnotes
 
-.. [#legacy] Starting from ROCm 6.4.2, "Legacy use cases" in ``amdgpu-install`` are replaced by the equivalent meta package. In addition, the following amdgpu-install use cases: ``asan``, ``rocmdev``, ``multimedia``, ``multimediasdk``, ``amf``, and ``workstation`` are deprecated.
+.. [#legacy] Starting from ROCm 6.4.2, "Legacy use cases" in ``amdgpu-install`` are replaced by the equivalent meta package. In addition, the following ``amdgpu-install`` use cases: ``asan``, ``rocmdev``, ``multimedia``, ``multimediasdk``, ``amf``, and ``workstation`` are deprecated.
 
 .. [#dependencies] ``rocm-hip-sdk`` requires ``rocm-hip-runtime-devel``.
