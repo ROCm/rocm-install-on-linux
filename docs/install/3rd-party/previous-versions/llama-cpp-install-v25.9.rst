@@ -29,10 +29,10 @@ Install llama.cpp
 
 To install llama.cpp for ROCm, you have the following options:
 
-* :ref:`using-docker-with-llama-cpp-pre-installed` **(recommended)**
-* :ref:`build-llama-cpp-docker-image`
+* :ref:`using-docker-with-llama-cpp-pre-installed-v25-9` **(recommended)**
+* :ref:`build-llama-cpp-docker-image-v25-9`
 
-.. _using-docker-with-llama-cpp-pre-installed:
+.. _using-docker-with-llama-cpp-pre-installed-v25-9:
 
 Use a prebuilt Docker image with llama.cpp pre-installed
 --------------------------------------------------------------------------------------
@@ -121,7 +121,7 @@ and other dependencies.
        This will automatically download the image if it does not exist on the host. You can
        also pass the ``-v`` argument to mount any data directories from the host onto the container.
 
-.. _llama-cpp-docker-support:
+.. _llama-cpp-docker-support-v25-9:
 
 Docker image support
 --------------------------------------------------------------------------------------
@@ -374,7 +374,7 @@ validated for their respective ROCm version below.
                     * `ROCm 6.4.1 <https://repo.radeon.com/rocm/apt/6.4.1/>`__
 
 
-.. _build-llama-cpp-docker-image:
+.. _build-llama-cpp-docker-image-v25-9:
 
 Build your own Docker image
 --------------------------------------------------------------------------------------
@@ -478,7 +478,7 @@ prebuilt Docker image from AMD ROCm Docker Hub.
 
 To run unit tests manually and validate your installation fully, follow these steps:
 
-1. To verify that llama.cpp has been successfully installed, run the Docker container as described in :ref:`build-llama-cpp-docker-image`. 
+1. To verify that llama.cpp has been successfully installed, run the Docker container as described in :ref:`build-llama-cpp-docker-image-v25-9`. 
 
 2. Once inside the container, ensure you have access to the Bash shell.
 

@@ -28,7 +28,7 @@ To install DGL on ROCm, you have the following options:
 - :ref:`Build your own docker image <build-dgl-rocm-docker-image>`
 - :ref:`Use a wheels package <dgl-wheels-package>`
 
-.. _using-docker-with-dgl-pre-installed:
+.. _using-pre-docker-with-dgl-pre-installed:
 
 Use a prebuilt Docker image with DGL pre-installed
 --------------------------------------------------------------------------------

@@ -115,10 +115,7 @@ validated for ROCm 7.1.1.
 
             See
             ``rocm/tensorflow:rocm7.1.1-py3.12-tf2.20-dev``
-            on `Docker Hub
-            <https://hub.docker.com/layers/rocm/tensorflow/rocm7.1.1-py3.12-tf2.20-dev/images/sha256-5d8a717374c6dfd826f9e9c386f87a9f9ee0d163d6d0b20da155cd758a051fdc
-
->`__.
+            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.1.1-py3.12-tf2.20-dev/images/sha256-5d8a717374c6dfd826f9e9c386f87a9f9ee0d163d6d0b20da155cd758a051fdc>`__.
 
          .. tab-item:: Python 3.10
 
@@ -141,8 +138,7 @@ validated for ROCm 7.1.1.
 
             See
             ``rocm/tensorflow:rocm7.1.1-py3.10-tf2.20-dev``
-            on `Docker Hub
-            <https://hub.docker.com/layers/rocm/tensorflow/rocm7.1.1-py3.10-tf2.20-dev/images/sha256-9fcdc3e77e2d480e5abdc057051f3bc39ef18c4ebd4236a30157e8ac0634c316>`__.
+            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.1.1-py3.10-tf2.20-dev/images/sha256-9fcdc3e77e2d480e5abdc057051f3bc39ef18c4ebd4236a30157e8ac0634c316>`__.
 
    .. tab-item:: tensorflow-rocm 2.19.1
       :selected:
@@ -170,8 +166,7 @@ validated for ROCm 7.1.1.
 
             See
             ``rocm/tensorflow:rocm7.1.1-py3.12-tf2.19-dev``
-            on `Docker Hub
-            <https://hub.docker.com/layers/rocm/tensorflow/rocm7.1.1-py3.12-tf2.19-dev/images/sha256-190d36927db4efdd5b834ffa55cffc7b33e3dacb262f871c71c55b7ca87eb311>`__.
+            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.1.1-py3.12-tf2.19-dev/images/sha256-190d36927db4efdd5b834ffa55cffc7b33e3dacb262f871c71c55b7ca87eb311>`__.
 
          .. tab-item:: Python 3.10
 
@@ -194,8 +189,7 @@ validated for ROCm 7.1.1.
 
             See
             ``rocm/tensorflow:rocm7.1.1-py3.10-tf2.19-dev``
-            on `Docker Hub
-            <https://hub.docker.com/layers/rocm/tensorflow/rocm7.1.1-py3.10-tf2.19-dev/images/sha256-92611a179bb01d0e0d0ec6f0abe599de227bb8a56bf9d1d16e8c0ae3f60c0652>`__.
+            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.1.1-py3.10-tf2.19-dev/images/sha256-92611a179bb01d0e0d0ec6f0abe599de227bb8a56bf9d1d16e8c0ae3f60c0652>`__.
 
    .. tab-item:: tensorflow-rocm 2.18.1
 
@@ -222,8 +216,7 @@ validated for ROCm 7.1.1.
 
             See
             ``rocm/tensorflow:rocm7.1.1-py3.12-tf2.18-dev``
-            on `Docker Hub
-            <https://hub.docker.com/layers/rocm/tensorflow/rocm7.1.1-py3.12-tf2.18-dev/images/sha256-ad9ae7c3b57975a490380c9f4cd6793293e405f593a16c5eaec1098c03dfe298>`__.
+            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.1.1-py3.12-tf2.18-dev/images/sha256-ad9ae7c3b57975a490380c9f4cd6793293e405f593a16c5eaec1098c03dfe298>`__.
 
          .. tab-item:: Python 3.10
 
@@ -246,8 +239,7 @@ validated for ROCm 7.1.1.
 
             See
             ``rocm/tensorflow:rocm7.1.1-py3.10-tf2.18-dev``
-            on `Docker Hub
-            <https://hub.docker.com/layers/rocm/tensorflow/rocm7.1.1-py3.10-tf2.18-dev/images/sha256-924f362a5697dc88682cc794a4f640cdc868be6fb67171a16eed411061d0962c>`__.
+            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.1.1-py3.10-tf2.18-dev/images/sha256-924f362a5697dc88682cc794a4f640cdc868be6fb67171a16eed411061d0962c>`__.
 
 .. _install-tensorflow-wheels:
 

@@ -86,69 +86,69 @@ validated for ROCm 7.1.1.
 
 .. tab-set::
 
-.. tab-item:: PyTorch 2.9.1
+   .. tab-item:: PyTorch 2.9.1
 
-      .. tab-set::
+         .. tab-set::
 
-         .. tab-item:: Python 3.12
+            .. tab-item:: Python 3.12
 
-            .. rubric:: Docker pull tag
+               .. rubric:: Docker pull tag
 
-            .. code-block:: shell
+               .. code-block:: shell
 
-               docker pull rocm/pytorch:rocm7.1.1_ubuntu24.04_py3.12_pytorch_release_2.9.1
+                  docker pull rocm/pytorch:rocm7.1.1_ubuntu24.04_py3.12_pytorch_release_2.9.1
 
-            .. rubric:: Additional software components
+               .. rubric:: Additional software components
 
-            .. list-table::
-               :header-rows: 1
+               .. list-table::
+                  :header-rows: 1
 
-               * - Ubuntu
-                 - Apex
-                 - torchvision
-                 - UCX
-                 - Open MPI
+                  * - Ubuntu
+                    - Apex
+                    - torchvision
+                    - UCX
+                    - Open MPI
 
-               * - 24.04
-                 - `1.9.0+rocm7.1.1.git07c3ee53 <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1.1/>`__
-                 - `0.24.0 <https://github.com/pytorch/vision/tree/v0.24.0>`__
-                 - `1.16.0+ds-5ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/>`__
-                 - `4.1.6-7ubuntu2 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/>`__
+                  * - 24.04
+                    - `1.9.0+rocm7.1.1.git07c3ee53 <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1.1/>`__
+                    - `0.24.0 <https://github.com/pytorch/vision/tree/v0.24.0>`__
+                    - `1.16.0+ds-5ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/>`__
+                    - `4.1.6-7ubuntu2 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/>`__
 
-            See
-            ``rocm/pytorch:rocm7.1.1_ubuntu24.04_py3.12_pytorch_release_2.9.1``
-            on `Docker Hub
-            <https://hub.docker.com/layers/rocm/pytorch/rocm7.1.1_ubuntu24.04_py3.12_pytorch_release_2.9.1/images/sha256-683765a52c61341e1674fe730ab3be861a444a45a36c0a8caae7653a08a0e208>`__.
+               See
+               ``rocm/pytorch:rocm7.1.1_ubuntu24.04_py3.12_pytorch_release_2.9.1``
+               on `Docker Hub
+               <https://hub.docker.com/layers/rocm/pytorch/rocm7.1.1_ubuntu24.04_py3.12_pytorch_release_2.9.1/images/sha256-683765a52c61341e1674fe730ab3be861a444a45a36c0a8caae7653a08a0e208>`__.
 
-         .. tab-item:: Python 3.10
+            .. tab-item:: Python 3.10
 
-            .. rubric:: Docker pull tag
+               .. rubric:: Docker pull tag
 
-            .. code-block:: shell
+               .. code-block:: shell
 
-               docker pull rocm/pytorch:rocm7.1.1_ubuntu22.04_py3.10_pytorch_release_2.9.1
+                  docker pull rocm/pytorch:rocm7.1.1_ubuntu22.04_py3.10_pytorch_release_2.9.1
 
-            .. rubric:: Additional software components
+               .. rubric:: Additional software components
 
-            .. list-table::
-               :header-rows: 1
+               .. list-table::
+                  :header-rows: 1
 
-               * - Ubuntu
-                 - Apex
-                 - torchvision
-                 - UCX
-                 - Open MPI
+                  * - Ubuntu
+                    - Apex
+                    - torchvision
+                    - UCX
+                    - Open MPI
 
-               * - 22.04
-                 - `1.9.0+rocm7.1.1.git07c3ee53 <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1.1/>`__
-                 - `0.24.0 <https://github.com/pytorch/vision/tree/v0.24.0>`__
-                 - `1.12.1~rc2-1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/>`__
-                 - `4.1.2-2ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/>`__
+                  * - 22.04
+                    - `1.9.0+rocm7.1.1.git07c3ee53 <https://repo.radeon.com/rocm/manylinux/rocm-rel-7.1.1/>`__
+                    - `0.24.0 <https://github.com/pytorch/vision/tree/v0.24.0>`__
+                    - `1.12.1~rc2-1 <http://archive.ubuntu.com/ubuntu/pool/universe/u/ucx/>`__
+                    - `4.1.2-2ubuntu1 <http://archive.ubuntu.com/ubuntu/pool/universe/o/openmpi/>`__
 
-            See
-            ``rocm/pytorch:rocm7.1.1_ubuntu22.04_py3.10_pytorch_release_2.9.1``
-            on `Docker Hub
-            <https://hub.docker.com/layers/rocm/pytorch/rocm7.1.1_ubuntu22.04_py3.10_pytorch_release_2.9.1/images/sha256-079ef6d4ef803ffb4191983f67149a70dddb0b4e58fb59fbf304df2829ed173e>`__.
+               See
+               ``rocm/pytorch:rocm7.1.1_ubuntu22.04_py3.10_pytorch_release_2.9.1``
+               on `Docker Hub
+               <https://hub.docker.com/layers/rocm/pytorch/rocm7.1.1_ubuntu22.04_py3.10_pytorch_release_2.9.1/images/sha256-079ef6d4ef803ffb4191983f67149a70dddb0b4e58fb59fbf304df2829ed173e>`__.
 
    .. tab-item:: PyTorch 2.8.0
 
