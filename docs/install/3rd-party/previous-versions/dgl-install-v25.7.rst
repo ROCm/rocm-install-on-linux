@@ -27,10 +27,10 @@ Install DGL
 
 To install DGL on ROCm, you have the following options:
 
-- :ref:`Use the prebuilt Docker image <using-docker-with-dgl-pre-installed>` **(recommended)**
-- :ref:`Build your own docker image <build-dgl-rocm-docker-image>`
+- :ref:`Use the prebuilt Docker image <using-docker-with-dgl-pre-installed-v25-7>` **(recommended)**
+- :ref:`Build your own docker image <build-dgl-rocm-docker-image-v25-7>`
 
-.. _using-docker-with-dgl-pre-installed:
+.. _using-docker-with-dgl-pre-installed-v25-7:
 
 Use a prebuilt Docker image with DGL pre-installed
 --------------------------------------------------------------------------------
@@ -65,7 +65,7 @@ The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
       the ``-v`` argument to mount any data directories from the host onto the container.
 
 
-.. _dgl-docker-support:
+.. _dgl-docker-support-v25-7:
 
 Docker image support
 --------------------------------------------------------------------------------
@@ -128,7 +128,7 @@ validated for ROCm 6.4.0.
               * `Python 3.10.16 <https://www.python.org/downloads/release/python-31016/>`__
               * `PyTorch 2.3.0 <https://github.com/pytorch/pytorch/releases/tag/v2.3.0>`__
 
-.. _build-dgl-rocm-docker-image:
+.. _build-dgl-rocm-docker-image-v25-7:
 
 Build your own Docker image
 --------------------------------------------------------------------------------
@@ -211,7 +211,7 @@ Build your own Docker image
 Test the DGL installation
 ================================================================================
 
-To verify that DGL has been successfully installed, run the Docker container as described in the :ref:`installing DGL section <using-docker-with-dgl-pre-installed>`. 
+To verify that DGL has been successfully installed, run the Docker container as described in the :ref:`installing DGL section <using-docker-with-dgl-pre-installed-v25-7>`. 
 Once inside the container, ensure you have access to the Bash shell.
 
 To check for a shared library:
