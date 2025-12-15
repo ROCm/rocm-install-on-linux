@@ -24,7 +24,7 @@ Install DGL
 
 To install DGL on ROCm, you have the following options:
 
-- :ref:`Use the prebuilt Docker image <using-docker-with-dgl-pre-installed>` **(recommended)**
+- :ref:`Use the prebuilt Docker image <using-pre-docker-with-dgl-pre-installed>` **(recommended)**
 - :ref:`Build your own docker image <build-dgl-rocm-docker-image>`
 - :ref:`Use a wheels package <dgl-wheels-package>`
 
@@ -254,7 +254,7 @@ After installing a ``.whl`` file, you can confirm that the package was installed
 Test the DGL installation
 ================================================================================
 
-To verify that DGL has been successfully installed, run the Docker container as described in the :ref:`Installing DGL section <using-docker-with-dgl-pre-installed>`. 
+To verify that DGL has been successfully installed, run the Docker container as described in the :ref:`Installing DGL section <using-pre-docker-with-dgl-pre-installed>`. 
 Once inside the container, ensure you have access to the Bash shell.
 
 To check for a shared library:
