@@ -481,13 +481,13 @@ wheels command, you must select **Linux**, **Python**, **pip**, and **ROCm** in 
 
    .. note::
 
-      The following command uses the ROCm 7.0 PyTorch wheel. If you want a different version of ROCm,
+      The following command uses the ROCm 7.1 PyTorch wheel. If you want a different version of ROCm,
       modify the command accordingly.
 
    .. code-block:: bash
       :substitutions:
 
-       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm7.0
+       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm7.1
 
 4. (Optional) Use MIOpen kdb files with ROCm PyTorch wheels.
 
