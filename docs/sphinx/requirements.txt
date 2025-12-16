@@ -19,7 +19,7 @@ babel==2.17.0
     # via
     #   pydata-sphinx-theme
     #   sphinx
-beartype==0.21.0
+beartype==0.22.9
     # via sphinx-substitution-extensions
 beautifulsoup4==4.13.4
     # via pydata-sphinx-theme
@@ -234,7 +234,7 @@ sphinx-external-toc==1.0.1
     # via rocm-docs-core
 sphinx-notfound-page==1.1.0
     # via rocm-docs-core
-sphinx-substitution-extensions==2025.10.24
+sphinx-substitution-extensions==2025.12.15
     # via -r requirements.in
 sphinxcontrib-applehelp==2.0.0
     # via sphinx
