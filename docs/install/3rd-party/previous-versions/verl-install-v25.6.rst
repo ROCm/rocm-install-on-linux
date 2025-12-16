@@ -26,12 +26,12 @@ Install verl
 
 To install verl on ROCm, you have the following options:
 
-- :ref:`Use the prebuilt Docker image <using-docker-with-verl-pre-installed>` **(recommended)**
-- :ref:`Build your own Docker image <build-verl-rocm-docker-image>`
+- :ref:`Use the prebuilt Docker image <using-docker-with-verl-pre-installed-v256>` **(recommended)**
+- :ref:`Build your own Docker image <build-verl-rocm-docker-image-v256>`
  
 Running verl in a Docker environment is suitable for both runtime and CI workflows.
 
-.. _using-docker-with-verl-pre-installed:
+.. _using-docker-with-verl-pre-installed-v256:
 
 Use a prebuilt Docker image with verl pre-installed
 --------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ Prebuilt Docker images with verl configured for ROCm 6.2.0 are available on `Doc
       rocm/verl:verl-0.3.0.post0_rocm6.2_vllm0.6.3 /bin/bash
 
 
-.. _build-verl-rocm-docker-image:
+.. _build-verl-rocm-docker-image-v256:
 
 Build your own Docker image
 --------------------------------------------------------------------------------
