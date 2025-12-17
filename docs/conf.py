@@ -5,7 +5,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # ROCm version numbers
-rocm_version = '7.1.1'
+rocm_version = '7.2'
 rocm_major_version = '7.0'
 rocm_multi_versions = '7.1.1 7.0.2' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
 rocm_multi_versions_package_versions = '7.1.1 7.0.2' # however, in multi, the packages use 6.3.0
@@ -29,8 +29,8 @@ latex_elements = {
 project = "ROCm installation on Linux"
 author = "Advanced Micro Devices, Inc."
 copyright = "Copyright (c) 2025 Advanced Micro Devices, Inc. All rights reserved."
-version = "7.1.1"
-release = "7.1.1"
+version = "7.2.0"
+release = "7.2.0"
 setting_all_article_info = True
 all_article_info_os = ["linux"]
 all_article_info_author = ""

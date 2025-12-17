@@ -16,9 +16,10 @@ The :doc:`AMD GPU Driver (amdgpu) <amdgpu-docs:index>` is now distributed separa
   :widths: 30, 70
   :header: "AMD GPU Driver (amdgpu)", "Supported user space versions"
 
-    "30.20.x", "6.3.x, 6.4.x, 7.0.x, 7.1.x"
-    "30.10.x", "6.2.x, 6.3.x, 6.4.x, 7.0.x, 7.1.x"
-    "6.4.x", "6.1.x, 6.2.x, 6.3.x, 6.4.x, 7.0.x, 7.1.x"
+    "30.30.x", "6.3.x, 6.4.x, 7.0.x, 7.1.x, 7.2.x"
+    "30.20.x", "6.3.x, 6.4.x, 7.0.x, 7.1.x, 7.2.x"
+    "30.10.x", "6.2.x, 6.3.x, 6.4.x, 7.0.x, 7.1.x, 7.2.x"
+    "6.4.x", "6.1.x, 6.2.x, 6.3.x, 6.4.x, 7.0.x, 7.1.x, 7.2.x"
     "6.3.x", "6.1.x, 6.2.x, 6.3.x, 6.4.x, 7.0.x"
     "6.2.x", "6.0.x, 6.1.x, 6.2.x, 6.3.x, 6.4.x, 7.0.x"
     "6.1.x", "5.7.x, 6.0.x, 6.1.x, 6.2.x, 6.3.x, 6.4.x"
