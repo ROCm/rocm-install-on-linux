@@ -192,25 +192,26 @@ Follow these steps if you prefer to install ROCm manually on your host system or
 
    .. code-block:: bash
 
-      rocm-smi
+      amd-smi
 
    .. code-block:: bash
 
-      ========================================== ROCm System Management Interface ==========================================
-      ==================================================== Concise Info ====================================================
-     Device  [Model : Revision]    Temp        Power     Partitions      SCLK     MCLK     Fan  Perf  PwrCap  VRAM%  GPU%
-               Name (20 chars)       (Junction)  (Socket)  (Mem, Compute)
-       ======================================================================================================================
-       0       [0x74a1 : 0x00]       50.0°C      170.0W    NPS1, SPX       131Mhz   900Mhz   0%   auto  750.0W    0%   0%
-               AMD Instinct MI300X
-       1       [0x74a1 : 0x00]       51.0°C      176.0W    NPS1, SPX       132Mhz   900Mhz   0%   auto  750.0W    0%   0%
-               AMD Instinct MI300X
-       2       [0x74a1 : 0x00]       50.0°C      177.0W    NPS1, SPX       132Mhz   900Mhz   0%   auto  750.0W    0%   0%
-               AMD Instinct MI300X
-       3       [0x74a1 : 0x00]       53.0°C      176.0W    NPS1, SPX       132Mhz   900Mhz   0%   auto  750.0W    0%   0%
-               AMD Instinct MI300X
-       ======================================================================================================================
-       ================================================ End of ROCm SMI Log =================================================
+      +------------------------------------------------------------------------------+
+      | AMD-SMI 26.0.0+37d158ab      amdgpu version: 6.14.14  ROCm version: 7.0.1    |
+      | Platform: Linux Baremetal                                                    |
+      |-------------------------------------+----------------------------------------|
+      | BDF                        GPU-Name | Mem-Uti   Temp   UEC       Power-Usage |
+      | GPU  HIP-ID  OAM-ID  Partition-Mode | GFX-Uti    Fan               Mem-Usage |
+      |=====================================+========================================|
+      | 0000:09:00.0    AMD Instinct MI325X | 0 %      49 °C   0          144/1000 W |
+      |   0       0       3        SPX/NPS1 | 0 %        N/A           283/262128 MB |
+      +-------------------------------------+----------------------------------------+
+      +------------------------------------------------------------------------------+
+      | Processes:                                                                   |
+      |  GPU        PID  Process Name          GTT_MEM  VRAM_MEM  MEM_USAGE     CU % |
+      |==============================================================================|
+      |  No running processes found                                                  |
+      +------------------------------------------------------------------------------+
 
 2. Install the required version of JAX with ROCm support using pip:
 
@@ -279,4 +280,3 @@ Expected output:
 .. code-block::
 
    [0 1 2 3 4]
-   
