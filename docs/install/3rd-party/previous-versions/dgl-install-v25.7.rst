@@ -27,10 +27,10 @@ Install DGL
 
 To install DGL on ROCm, you have the following options:
 
-- :ref:`Use the prebuilt Docker image <using-docker-with-dgl-pre-installed>` **(recommended)**
-- :ref:`Build your own docker image <build-dgl-rocm-docker-image>`
+- :ref:`Use the prebuilt Docker image <using-docker-with-dgl-pre-installed-v257>` **(recommended)**
+- :ref:`Build your own docker image <build-dgl-rocm-docker-image-v257>`
 
-.. _using-docker-with-dgl-pre-installed:
+.. _using-docker-with-dgl-pre-installed-v257:
 
 Use a prebuilt Docker image with DGL pre-installed
 --------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
    To follow these instructions, input your chosen tag into ``<TAG>``. Example: ``dgl-2.4_rocm6.4_ubuntu24.04_py3.12_pytorch_release_2.6.0``.
 
    You can download Docker images for DGL with specific ROCm, PyTorch, Python and operating system versions. 
-   See the available tags on `Docker Hub <https://hub.docker.com/r/rocm/dgl/tags>`_ and see :ref:`Docker image support <dgl-docker-support>` below.
+   See the available tags on `Docker Hub <https://hub.docker.com/r/rocm/dgl/tags>`_ and see :ref:`Docker image support <dgl-docker-support-v257>` below.
 
 1. Download your required public `DGL Docker image <https://hub.docker.com/r/rocm/dgl/tags>`_
 
@@ -65,7 +65,7 @@ The tested, prebuilt image includes DGL, PyTorch, ROCm, and other dependencies.
       the ``-v`` argument to mount any data directories from the host onto the container.
 
 
-.. _dgl-docker-support:
+.. _dgl-docker-support-v257:
 
 Docker image support
 --------------------------------------------------------------------------------
@@ -128,7 +128,7 @@ validated for ROCm 6.4.0.
               * `Python 3.10.16 <https://www.python.org/downloads/release/python-31016/>`__
               * `PyTorch 2.3.0 <https://github.com/pytorch/pytorch/releases/tag/v2.3.0>`__
 
-.. _build-dgl-rocm-docker-image:
+.. _build-dgl-rocm-docker-image-v257:
 
 Build your own Docker image
 --------------------------------------------------------------------------------
