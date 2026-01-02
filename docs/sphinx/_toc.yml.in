@@ -72,8 +72,6 @@ subtrees:
       title: DGL
     - file: install/3rd-party/megablocks-install
       title: Megablocks
-    - file: install/3rd-party/taichi-install
-      title: Taichi
     - file: install/3rd-party/ray-install
       title: Ray
     - file: install/3rd-party/llama-cpp-install

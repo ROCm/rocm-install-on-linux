@@ -98,6 +98,7 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 3. Activate the conda environment
    
    .. code-block:: bash
+      
       conda init
       source ~/.bashrc
       conda activate py_3.12
