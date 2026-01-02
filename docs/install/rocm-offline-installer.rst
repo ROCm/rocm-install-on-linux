@@ -297,7 +297,7 @@ components are integrated into the resulting installer.
   .. note::
 
      To reference the meta package equivalents and descriptions for each of the legacy ROCm component use cases,
-     see the :doc:`ROCm runtime and developer packages list <./install-methods/includes/meta-package-table>`.
+     see the :doc:`ROCm runtime and developer packages list <../reference/package-manager-integration>`.
 
 .. _driver-options-label:
 
