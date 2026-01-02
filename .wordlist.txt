@@ -62,7 +62,6 @@ SMCi
 SRIOV
 SVM
 SuperMicro
-Taichi
 tbody
 td
 thead
