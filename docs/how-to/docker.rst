@@ -19,7 +19,7 @@ Prerequisites
   * `Check for amdgpu-dkms <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/post-install.html#verify-kernel-mode-driver-installation>`_
 
   * If you don't have ``amdgpu-dkms``, follow the :ref:`standard install instructions<rocm-install-quick>`
-    (which comes with ``amdgpu-dkms``) or :ref:`install amdgpu-dkms only<amdgpu-install-dkms>`.
+    (which comes with ``amdgpu-dkms``) or  `install amdgpu-dkms separately <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`__.
 
 .. seealso::
 
