@@ -28,10 +28,10 @@ Install llama.cpp
 
 To install llama.cpp for ROCm, you have the following options:
 
-* :ref:`using-docker-with-llama-cpp-pre-installed` **(recommended)**
-* :ref:`build-llama-cpp-docker-image`
+* :ref:`using-docker-with-llama-cpp-pre-installed-v25-8` **(recommended)**
+* :ref:`build-llama-cpp-docker-image-v25-8`
 
-.. _using-docker-with-llama-cpp-pre-installed:
+.. _using-docker-with-llama-cpp-pre-installed-v25-8:
 
 Use a prebuilt Docker image with llama.cpp pre-installed
 --------------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ and other dependencies.
    - Light: This image only includes the main executable file.
 
    You can download Docker images with specific ROCm, llama.cpp, and operating system versions. 
-   See the available tags on `Docker Hub <https://hub.docker.com/r/rocm/llama.cpp/tags>`_ and see :ref:`docker image support <llama-cpp-docker-support>` below.
+   See the available tags on `Docker Hub <https://hub.docker.com/r/rocm/llama.cpp/tags>`_ and see :ref:`docker image support <llama-cpp-docker-support-v25-8>` below.
 
 1. Download your required public `llama.cpp Docker image <https://hub.docker.com/r/rocm/llama.cpp/tags>`__:
 
@@ -117,7 +117,7 @@ and other dependencies.
        This will automatically download the image if it does not exist on the host. You can
        also pass the ``-v`` argument to mount any data directories from the host onto the container.
 
-.. _llama-cpp-docker-support:
+.. _llama-cpp-docker-support-v25-8:
 
 Docker image support
 --------------------------------------------------------------------------------------
@@ -165,7 +165,7 @@ validated for `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_.
               * `ROCm 6.4.0 <https://repo.radeon.com/rocm/apt/6.4/>`_
 
 
-.. _build-llama-cpp-docker-image:
+.. _build-llama-cpp-docker-image-v25-8:
 
 Build your own Docker image
 --------------------------------------------------------------------------------------
