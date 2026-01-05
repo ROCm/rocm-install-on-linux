@@ -6,10 +6,10 @@
 ROCm Runfile Installer
 ***************************************************************************
 
-The ROCm Runfile Installer installs ROCm, the AMDGPU driver,
+The ROCm Runfile Installer installs ROCm, the AMD GPU Driver,
 or a combination of the two on a system with or without
 network or internet access. Unlike all other installation methods, the ROCm Runfile Installer
-can install ROCm and the AMDGPU driver without using a native Linux package management system.
+can install ROCm and the AMD GPU Driver without using a native Linux package management system.
 
 The key advantage of using the ROCm Runfile Installer is its offline installation support.
 Many system environments have network or internet access restrictions, making installation via
@@ -21,9 +21,9 @@ The ROCm Runfile Installer includes these features:
 
 * An optional easy-to-use user interface for configuring the installation
 * An optional command line interface for the installation
-* Offline ROCm and AMDGPU driver installation (requires the prior installation of dependencies)
-* Packageless ROCm and AMDGPU driver install without native package management
-* A single self-contained installer for all ROCm and AMDGPU driver software
+* Offline ROCm and AMD GPU Driver installation (requires the prior installation of dependencies)
+* Packageless ROCm and AMD GPU Driver install without native package management
+* A single self-contained installer for all ROCm and AMD GPU Driver software
 * Configurable installation location for the ROCm install
 * Basic "tarball-like" extraction of ROCm content to a target location.
 
@@ -33,7 +33,7 @@ Prerequisites
 The ROCm Runfile Installer requires the following configuration:
 
 *  Installation of dependency requirements for the ROCm runtime
-*  Installation of dependency requirements for the AMDGPU driver (optional)
+*  Installation of dependency requirements for the AMD GPU Driver (optional)
 *  Sufficient storage space for the installation (100 GB of free space)
 *  A supported Linux distribution
 
@@ -44,7 +44,7 @@ Dependency requirements
 
 The ROCm components contained within the ROCm Runfile installer have a specific set of libraries, frameworks, and other elements
 that must be pre-installed on the system before you can use ROCm after the installation. Similarly, the
-inclusion of the AMDGPU driver as part of the installation also requires specific libraries that must be pre-installed. ROCm Runfile installer users
+inclusion of the AMD GPU Driver as part of the installation also requires specific libraries that must be pre-installed. ROCm Runfile installer users
 must pre-install the list of required first-level dependencies.
 
 To install the pre-install dependencies, use one of two methods:
@@ -58,10 +58,17 @@ Manual installation
 You can determine the dependent packages from the ROCm
 Runfile Installer **Pre-Install Configuration Settings** menu 
 in the GUI or from the command line by using the ``deps=list rocm`` argument
-for ROCm or the ``deps=list amdgpu`` argument for the AMDGPU driver. This list indicates all packages
-required for the ROCm runtime or the AMDGPU driver. The required libraries, frameworks, and other components
-within the required packages must be on the system when running ROCm or installing the AMDGPU driver.
-Users can manually install the required packages in the list using any method. 
+for ROCm or the ``deps=list amdgpu`` argument for the AMD GPU Driver. This list, which indicates all packages
+required for the ROCm runtime or the AMD GPU Driver, is displayed and saved to a
+file named ``deps_list.txt`` in the root ``rocm-installer`` directory. The required libraries, frameworks, and other components
+within the required packages must be on the system when running ROCm or installing the AMD GPU Driver.
+Users can manually install the required packages in the list using any method.
+
+The list of packages that is displayed and saved is not directly usable by the package manager.
+Each line indicates the name of the package or versioning required to meet the dependency requirement.
+Some dependencies might show multiple packages separated by the ``|`` symbol, meaning that any package from the list satisfies
+the package dependency. For example, the ``libgcc-dev`` dependency might be ``libgcc-5-dev | libgcc-7-dev``, meaning
+that either ``libgcc-5-dev`` or ``libgcc-7-dev`` can be installed to satisfy the corresponding dependency.
 
 System administrators might prefer a manual installation process when deploying ROCm across a multi-node
 cluster environment, where a base operating system image
@@ -71,7 +78,7 @@ ROCm Runfile Installer
 -----------------------------
 
 For single-system environments, users can choose to have the ROCm Runfile Installer automatically install the
-dependency requirements as part of the pre-installation stage for ROCm or the AMDGPU driver. Any missing dependency requirements can
+dependency requirements as part of the pre-installation stage for ROCm or the AMD GPU Driver. Any missing dependency requirements can
 be installed using the **Install Dependencies** option of the **Pre-Install Configuration Settings** menu
 in the GUI or from the command line using the ``deps=install rocm`` or ``deps=install amdgpu`` argument.
 
@@ -132,11 +139,11 @@ Substitute values specific to your installation for the following placeholders:
    <distro-version>  = Linux distribution version for the installer
    <install-file>    = The installer .run file
 
-For example, use this command to download ROCm 7.1.1 of the ROCm Runfile Installer for Ubuntu release 22.04:
+For example, use this command to download ROCm 7.2 of the ROCm Runfile Installer for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-7.1.1/ubuntu/22.04/rocm-installer_1.2.4.70101-25-38~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-7.2/ubuntu/22.04/rocm-installer_1.2.5.70200-14-32~22.04.run
 
 Running the ROCm Runfile Installer
 ----------------------------------
@@ -214,7 +221,7 @@ Pre-Install Configuration Settings menu
 
 The **Pre-Install Configuration Settings** menu is an optional menu used to configure pre-installation
 requirements before installation. The pre-installation settings relate to the dependent libraries
-and packages required by the ROCm runtime or the AMDGPU driver. 
+and packages required by the ROCm runtime or the AMD GPU Driver. 
 
 .. image:: ../data/how-to/rocm-runfile-preinstall-menu-2.png
    :width: 800
@@ -236,7 +243,7 @@ and packages required by the ROCm runtime or the AMDGPU driver.
 *  **Display Dependencies**
 
    **Display Dependencies** lists all required (Debian or RPM) packages that must be pre-installed on the system.
-   These packages are required by ROCm or the AMDGPU driver being installed by a particular ROCm Runfile Installer version.
+   These packages are required by ROCm or the AMD GPU Driver being installed by a particular ROCm Runfile Installer version.
 
    .. note::
 
@@ -245,7 +252,7 @@ and packages required by the ROCm runtime or the AMDGPU driver.
 *  **Validate Dependencies**
 
    **Validate Dependencies** verifies which required packages are currently installed on the system where
-   ROCm or the AMDGPU driver is being installed. It displays which packages from the required packages list are missing.
+   ROCm or the AMD GPU Driver is being installed. It displays which packages from the required packages list are missing.
 
    .. note::
 
@@ -253,7 +260,7 @@ and packages required by the ROCm runtime or the AMDGPU driver.
 
 *  **Install Dependencies**
 
-   If the installer is running on the system where ROCm or the AMDGPU driver will be installed, you can choose to install
+   If the installer is running on the system where ROCm or the AMD GPU Driver will be installed, you can choose to install
    any missing dependencies using the **Install Dependencies** option.
 
    .. note::
@@ -315,7 +322,7 @@ The **ROCm Options** menu can include or exclude ROCm from the installation.
 Driver Options menu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The **Driver Options** menu can include or exclude the AMDGPU driver from the installation.
+The **Driver Options** menu can include or exclude the AMD GPU Driver from the installation.
 
 .. image:: ../data/how-to/rocm-runfile-driver-menu-4.png
    :width: 800
@@ -323,27 +330,27 @@ The **Driver Options** menu can include or exclude the AMDGPU driver from the in
 
 *  **Install Driver**
 
-   This field indicates whether to include the AMDGPU driver in the installation. If this field is set to ``yes``,
-   AMDGPU driver installation is enabled. When this field is enabled, the system is searched for any existing
-   AMDGPU driver installations. If a previous AMDGPU driver installation is detected, the **Uninstall Driver** field becomes selectable.
+   This field indicates whether to include the AMD GPU Driver in the installation. If this field is set to ``yes``,
+   AMD GPU Driver installation is enabled. When this field is enabled, the system is searched for any existing
+   AMD GPU Driver installations. If a previous AMD GPU Driver installation is detected, the **Uninstall Driver** field becomes selectable.
    
    .. note::
       
-      The AMDGPU driver is installed for the currently running Linux kernel version. To install the AMDGPU driver for a different kernel,
-      reboot to the specific Linux kernel and reinstall AMDGPU using the runfile.
+      The AMD GPU Driver is installed for the currently running Linux kernel version. To install the AMD GPU Driver for a different kernel,
+      reboot to the specific Linux kernel and reinstall the AMD GPU Driver using the runfile.
 
 *  **Start on install**
 
    If the **Start on install** option is enabled, the Runfile installer uses ``modprobe`` to automatically launch
-   the AMDGPU driver after installation. If a pre-existing AMDGPU driver is already loaded on the system, the new driver will not start.
+   the AMD GPU Driver after installation. If a pre-existing AMD GPU Driver is already loaded on the system, the new driver will not start.
    This option can be useful for installing the driver on a system where the GPU device is newer and not yet natively
    supported as part of the upstream GPU driver for the Linux distribution.
 
 *  **Uninstall Driver**
 
-   This field is only available if a previous Runfile install of the AMDGPU driver is discovered on the install system.
-   If a Runfile installation of the AMDGPU driver is detected, select **Uninstall Driver** to remove it.
-   Package manager installs of the AMDGPU driver cannot be uninstalled by the Runfile installer and must be 
+   This field is only available if a previous Runfile install of the AMD GPU Driver is discovered on the install system.
+   If a Runfile installation of the AMD GPU Driver is detected, select **Uninstall Driver** to remove it.
+   Package manager installs of the AMD GPU Driver cannot be uninstalled by the Runfile installer and must be 
    uninstalled manually using the package management application.
 
 
@@ -399,7 +406,7 @@ Start the ROCm Runfile Installer user interface from the terminal and launch the
 While navigating through the user interface menus, use the **Done** option to return to the previous menu.
 Some menus have a **Help** option to display more information about the elements within the current menu.
 
-Follow these steps to install ROCm and the AMDGPU driver:
+Follow these steps to install ROCm and the AMD GPU Driver:
 
 #. **(Optional)** Install dependencies:
 
@@ -421,10 +428,10 @@ Follow these steps to install ROCm and the AMDGPU driver:
    d. Leave the **ROCm Install Path** field set to the default location to install ROCm
       to ``/opt/rocm`` or set the install location to a valid existing directory.
 
-#. Set the AMDGPU driver options:
+#. Set the AMD GPU Driver options:
 
    a. Enter the **Driver Options** menu.
-   b. Set **Install Driver** to **yes** to include the AMDGPU driver in the installation.
+   b. Set **Install Driver** to **yes** to include the AMD GPU Driver in the installation.
    c. **(Optional)** Select **Start on install** to load the driver after installation.
    d. **(Optional)** Select **Uninstall Driver** to uninstall a previous Runfile installation.
 
@@ -483,14 +490,14 @@ The ``<options>`` parameter can be set to these options:
 *  Install
 
    *  ``rocm``: Enable ROCm components install.
-   *  ``amdgpu``: Enable AMDGPU driver install.
-   *  ``force``: Force the ROCm and AMDGPU driver install.
+   *  ``amdgpu``: Enable AMD GPU Driver install.
+   *  ``force``: Force the ROCm and AMD GPU Driver install.
    *  ``target=<directory>``: The target directory path for the ROCm components install.
        
 *  Post-install
 
    *  ``postrocm``: Run the post-installation ROCm configuration (for instance, script execution and symbolic link creation).
-   *  ``amdgpu-start``: Start the AMDGPU driver after the install.
+   *  ``amdgpu-start``: Start the AMD GPU Driver after the install.
    *  ``gpu-access=<access_type>``
 
       *  ``<access_type>``:
@@ -504,7 +511,7 @@ The ``<options>`` parameter can be set to these options:
 
       *  (``target=<directory>``): Optional target directory for the ROCm uninstall.
 
-   *  ``uninstall-amdgpu``: Uninstall the AMDGPU driver.
+   *  ``uninstall-amdgpu``: Uninstall the AMD GPU Driver.
 
 *  Information/Debug
 
@@ -528,14 +535,14 @@ to ``udev``, and with the post-install setup:
 
    bash rocm-installer.run deps=install target="/myrocm" rocm gpu-access=all postrocm
 
-This example demonstrates how to perform a typical AMDGPU driver installation on a single target system
+This example demonstrates how to perform a typical AMD GPU Driver installation on a single target system
 with the required dependencies installed:
 
 .. code-block:: shell
 
    bash rocm-installer.run deps=install amdgpu
 
-Finally, you can combine the ROCm and AMDGPU driver installations:
+Finally, you can combine the ROCm and AMD GPU Driver installations:
 
 .. code-block:: shell
 
@@ -574,7 +581,7 @@ Two command line options let you disable the ``.run`` cleanup process: ``noexec`
    command line without specifying the ``.run`` file name.
 
    For example, extract the ``.run`` file and then use ``rocm-installer.sh`` instead of ``rocm-installer.run``
-   to install ROCm and the AMDGPU driver separately:
+   to install ROCm and the AMD GPU Driver separately:
 
    .. code-block:: shell
 
@@ -625,18 +632,18 @@ Basic extraction is performed using the ``untar`` command line option:
 
    After the untar extraction process completes, the content is written to a new ``rocm-version`` directory within the specified ``<directory>``.
    The ``rocm-version`` directory is named according to the version of ROCm included in the Runfile Installer.
-   For example, if the ROCm 7.1.1 Runfile Installer is extracted using the ``untar`` command, the output directory is named ``rocm-7.1.1``.
+   For example, if the ROCm 7.2.0 Runfile Installer is extracted using the ``untar`` command, the output directory is named ``rocm-7.2.0``.
 
    The extracted ROCm directory only contains the content for ROCm components and is not configured using the standard ROCm post-installation procedure.
    Advanced users might want to configure the ROCm content manually. However, as an option for some users, the ``untar``
    command auto-generates a script that can be used for basic ROCm post-install configuration as part of the untarring process.
    The ``setup-modules`` script is generated and located in the root ``rocm-version`` directory.  
 
-   For example, after untarring ROCm 7.1.1 to the ``amd/myrocm`` user directory, the script can be found in the following location: 
+   For example, after untarring ROCm 7.2.0 to the ``amd/myrocm`` user directory, the script can be found in the following location: 
 
    .. code-block:: shell
 
-      /home/amd/myrocm/rocm-7.1.1/setup-modules-7.1.1.sh
+      /home/amd/myrocm/rocm-7.2.0/setup-modules-7.2.0.sh
 
    .. note::
 
@@ -655,15 +662,15 @@ Basic extraction is performed using the ``untar`` command line option:
       source /etc/profile.d/modules.sh
       module load rocm/<version>
 
-   For example, for a ROCm 7.1.1 Runfile Installer ``untar`` extraction to the ``amd/myrocm`` user directory, use the folllowing commands to
+   For example, for a ROCm 7.2.0 Runfile Installer ``untar`` extraction to the ``amd/myrocm`` user directory, use the folllowing commands to
    set up and load a ROCm module:
 
    .. code-block:: shell
 
-      cd /home/amd/myrocm/rocm-7.1.1
-      ./setup-modules-7.1.1.sh
+      cd /home/amd/myrocm/rocm-7.2.0
+      ./setup-modules-7.2.0.sh
       source /etc/profile.d/modules.sh
-      module load rocm/7.1.1
+      module load rocm/7.2.0
 
    After the ROCm module is loaded, ROCm is functionally ready for use, provided all ROCm dependencies have been installed on the system.
    See the :ref:`dependency-requirements` section for more details on how to install ROCm dependencies that are not already installed.
@@ -681,7 +688,7 @@ list of ``<options>`` for the ``.run`` file. The ``<compo>`` option can include 
    This dependency option lists all the dependencies required for the ``.run`` file-based ROCm installation,
    AMDGPU installation, or both. It lists all required (Debian or RPM) packages that require pre-installation on the system.
    The additional ``rocm`` or ``amdgpu`` parameter is a requirement for the ``deps=list`` option that instructs the installer to list only the
-   dependencies required by ROCm, the AMDGPU driver, or both.
+   dependencies required by ROCm, the AMD GPU Driver, or both.
 
    Running ``deps=list`` causes the installer to quit after listing the dependencies. ``deps=list``
    can combine ``rocm`` and ``amdgpu`` and output the combined list of required dependencies.
@@ -700,7 +707,7 @@ list of ``<options>`` for the ``.run`` file. The ``<compo>`` option can include 
 
 *  ``deps=validate <rocm/amdgpu>``
 
-   This dependency option verifies whether any of the *required* ROCm or AMDGPU driver packages in the
+   This dependency option verifies whether any of the *required* ROCm or AMD GPU Driver packages in the
    dependency list are already installed on the system running the command.
    The output is a list of any missing dependency packages that require installation.
 
@@ -722,11 +729,11 @@ list of ``<options>`` for the ``.run`` file. The ``<compo>`` option can include 
 *  ``deps=install``
 
    This dependency option validates and installs any required packages in the dependency list for
-   ROCm, the AMDGPU driver, or both that are missing on the system running the command. This dependency option is not
+   ROCm, the AMD GPU Driver, or both that are missing on the system running the command. This dependency option is not
    a single ``<options>`` parameter and can be added to a list of other options for the installer.
    The ``deps=install`` option expects at least one of the ``rocm`` or ``amdgpu`` ``<options>`` parameters to also be present in the list
    to enable the pre-installation of required dependencies before the Runfile Installer installs ROCm,
-   the AMDGPU driver, or both.
+   the AMD GPU Driver, or both.
 
    For example, to install the dependencies and ROCm, the command line is as follows:
 
@@ -734,13 +741,13 @@ list of ``<options>`` for the ``.run`` file. The ``<compo>`` option can include 
 
       bash rocm-installer.run deps=install rocm
 
-   To install the dependencies and the AMDGPU driver, the command line is as follows:
+   To install the dependencies and the AMD GPU Driver, the command line is as follows:
 
    .. code-block:: shell
 
       bash rocm-installer.run deps=install amdgpu
 
-   To install the dependencies and both ROCm and the AMDGPU driver, the command line is as follows:
+   To install the dependencies and both ROCm and the AMD GPU Driver, the command line is as follows:
 
    .. code-block:: shell
 
@@ -748,7 +755,7 @@ list of ``<options>`` for the ``.run`` file. The ``<compo>`` option can include 
 
    .. note::
 
-      The installer can be set to *only* install the ROCm dependencies, AMDGPU dependencies, or both and then quit. In this case,
+      The installer can be set to *only* install the ROCm dependencies, AMD GPU Driver dependencies, or both and then quit. In this case,
       add ``-only`` to the ``deps=install`` option:
 
       .. code-block:: shell
@@ -794,8 +801,8 @@ which can be installed in a specific location.
    .. note::
 
       This option must be in the list of ``.run <options>`` for ROCm component installation.
-      The AMDGPU driver is installed for the currently running Linux kernel version. To install the AMDGPU driver for a different kernel,
-      reboot to the specific Linux kernel and reinstall AMDGPU using the runfile.
+      The AMD GPU Driver is installed for the currently running Linux kernel version. To install the AMD GPU Driver for a different kernel,
+      reboot to the specific Linux kernel and reinstall the AMD GPU Driver using the runfile.
 
    For example, to install ROCm with no other options, the command line is as follows:
 
@@ -806,7 +813,7 @@ which can be installed in a specific location.
 *  ``target=<directory>``
 
    This install option is used to set the target directory where ROCm will be installed.
-   The ``target`` option is only used as an option for ROCm installation and is not required for an AMDGPU driver install.
+   The ``target`` option is only used as an option for ROCm installation and is not required for an AMD GPU Driver install.
 
    When ``target=<directory>`` is not specified in the ``<options>`` list, the installer uses a default installation path for ROCm.
    For the command line interface method, the default install directory is ``$PWD``.
@@ -833,13 +840,13 @@ which can be installed in a specific location.
 
 *  ``amdgpu``
 
-   At the command line, add the ``amdgpu`` option to enable AMDGPU driver installation.
+   At the command line, add the ``amdgpu`` option to enable AMD GPU Driver installation.
 
    .. note::
 
-      This option must be in the list of ``.run <options>`` for AMDGPU driver installation.
+      This option must be in the list of ``.run <options>`` for AMD GPU Driver installation.
 
-   For example, to install the AMDGPU driver with no other options, the command line is as follows:
+   For example, to install the AMD GPU Driver with no other options, the command line is as follows:
 
    .. code-block:: shell
 
@@ -889,15 +896,15 @@ At the command line, add one or more of the post-installation options to the ``<
    in conjunction with ``target=rocm-install-path``, where ``rocm-install-path`` is the
    location of the Runfile-installed ROCm installation. The ROCm installation version and 
    the Runfile Installer version must match.
-   For example, if the current Runfile Installer is for ROCm 7.1.1, then
-   ``rocm-install-path`` must indicate the path to a ROCm 7.1.1 Runfile installation.
+   For example, if the current Runfile Installer is for ROCm 7.2.0, then
+   ``rocm-install-path`` must indicate the path to a ROCm 7.2.0 Runfile installation.
    
-   To use the ``postrocm`` argument separately from the initial install of ROCm 7.1.1
+   To use the ``postrocm`` argument separately from the initial install of ROCm 7.2.0
    to ``/home/amd/myrocm``, run:
 
    .. code-block:: shell
 
-      bash rocm-installer.run target="/home/amd/myrocm/rocm-7.1.1" postrocm
+      bash rocm-installer.run target="/home/amd/myrocm/rocm-7.2.0" postrocm
 
    .. note::
 
@@ -934,7 +941,7 @@ At the command line, add one or more of the post-installation options to the ``<
 Uninstall options
 ^^^^^^^^^^^^^^^^^
 
-These options configure the ROCm Runfile Installer to uninstall a previous ROCm or AMDGPU driver installation.
+These options configure the ROCm Runfile Installer to uninstall a previous ROCm or AMD GPU Driver installation.
 
 *  ``uninstall-rocm (target=<directory>)``
 
@@ -966,9 +973,9 @@ These options configure the ROCm Runfile Installer to uninstall a previous ROCm 
 
 *  ``uninstall-amdgpu``
 
-   This option configures the ROCm Runfile Installer to uninstall a previous AMDGPU driver installation.
+   This option configures the ROCm Runfile Installer to uninstall a previous AMD GPU Driver installation.
 
-   To uninstall the AMDGPU driver from the system, use the following command line:
+   To uninstall the AMD GPU Driver from the system, use the following command line:
 
    .. code-block:: shell
 
@@ -976,8 +983,8 @@ These options configure the ROCm Runfile Installer to uninstall a previous ROCm 
 
    .. note::
 
-      The ``uninstall-amdgpu`` option can only remove the AMDGPU driver if it was installed using the ROCm Runfile Installer.
-      Traditional package-based AMDGPU driver installs will not be removed.
+      The ``uninstall-amdgpu`` option can only remove the AMD GPU Driver if it was installed using the ROCm Runfile Installer.
+      Traditional package-based AMD GPU Driver installs will not be removed.
 
 Information and debug options
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
