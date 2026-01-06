@@ -38,7 +38,7 @@ GPUs listed in the following table support compute workloads (no display informa
       "AMD Instinct MI300A", "MI300", "CDNA3", "gfx942", "✅ [#mi300A-os]_"
       "AMD Instinct MI250X", "MI200", "CDNA2", "gfx90a", "✅ [#mi200x-os]_"
       "AMD Instinct MI250", "MI200", "CDNA2", "gfx90a", "✅ [#mi200x-os]_"
-      "AMD Instinct MI210", "MI200", "CDNA2", "gfx90a", "✅ [#mi210x-os]_"
+      "AMD Instinct MI210", "MI200", "CDNA2", "gfx90a", "✅ [#mi200x-os]_"
       "AMD Instinct MI100", "MI100", "CDNA", "gfx908", "✅ [#mi100-os]_"
       "AMD Instinct MI50", "N/A", "GCN5.1", "gfx906", "❌"
       "AMD Instinct MI25", "N/A", "GCN5.0", "gfx900", "❌"
@@ -50,7 +50,8 @@ GPUs listed in the following table support compute workloads (no display informa
       :header: "GPU", "Architecture", "LLVM target", "Support"
 
       "AMD Radeon AI PRO R9700", "RDNA4", "gfx1201", "✅ [#RDNA-OS]_"
-      "AMD Radeon PRO V710", "RDNA3", "gfx1101", "✅ [#rd-v710]_"
+      "AMD Radeon AI PRO R9600D", "RDNA4", "gfx1201", "✅ [#RDNA-OS]_"
+      "AMD Radeon PRO V710", "RDNA3", "gfx1101", "✅ [#RDNA-OS]_"
       "AMD Radeon PRO W7900 Dual Slot", "RDNA3", "gfx1100", "✅ [#RDNA-OS]_"
       "AMD Radeon PRO W7900", "RDNA3", "gfx1100", "✅ [#RDNA-OS]_"
       "AMD Radeon PRO W7800 48GB", "RDNA3", "gfx1100", "✅ [#RDNA-OS]_"
@@ -69,6 +70,7 @@ GPUs listed in the following table support compute workloads (no display informa
       "AMD Radeon RX 9070 XT", "RDNA4", "gfx1201", "✅ [#RDNA-OS]_"
       "AMD Radeon RX 9070 GRE", "RDNA4", "gfx1201", "✅ [#RDNA-OS]_"
       "AMD Radeon RX 9070", "RDNA4", "gfx1201", "✅ [#RDNA-OS]_"
+      "AMD Radeon RX 9060 XT LP", "RDNA4", "gfx1200", "✅ [#RDNA-OS]_"
       "AMD Radeon RX 9060 XT", "RDNA4", "gfx1200", "✅ [#RDNA-OS]_"
       "AMD Radeon RX 9060", "RDNA4", "gfx1200", "✅ [#RDNA-OS]_"
       "AMD Radeon RX 7900 XTX", "RDNA3", "gfx1100", "✅ [#RDNA-OS]_"
@@ -76,6 +78,7 @@ GPUs listed in the following table support compute workloads (no display informa
       "AMD Radeon RX 7900 GRE", "RDNA3", "gfx1100", "✅ [#RDNA-OS]_"
       "AMD Radeon RX 7800 XT", "RDNA3", "gfx1101", "✅ [#RDNA-OS]_"
       "AMD Radeon RX 7700 XT", "RDNA3", "gfx1101", "✅ [#RDNA-OS]_"
+      "AMD Radeon RX 7700", "RDNA3", "gfx1101", "✅ [#RDNA-OS]_"
       "AMD Radeon VII", "GCN5.1", "gfx906", "❌"
 
 ✅: **Supported** - Official software distributions of the current ROCm release fully support this hardware.
@@ -96,15 +99,13 @@ GPUs listed in the following table support compute workloads (no display informa
 
 .. rubric:: Footnotes
 
-.. [#mi350x-os] AMD Instinct MI355X and MI350X GPUs supports all :ref:`supported_distributions` listed below except RHEL 8.10, Debian 12, Rocky Linux 9, Azure Linux 3.0, and Oracle Linux 8.
-.. [#mi325x-os] AMD Instinct MI325X GPU supports all :ref:`supported_distributions` listed below except RHEL 8.10, Rocky Linux 9, Azure Linux 3.0, and Oracle Linux 8.
+.. [#mi350x-os] AMD Instinct MI355X and MI350X GPUs supports all :ref:`supported_distributions` listed below except RHEL 8.10, Debian 12, Rocky Linux 9, and Oracle Linux 8.
+.. [#mi325x-os] AMD Instinct MI325X GPU supports all :ref:`supported_distributions` listed below except RHEL 8.10, Rocky Linux 9, and Oracle Linux 8.
 .. [#mi300x-os] AMD Instinct MI300X GPU supports all :ref:`supported_distributions` listed below.
-.. [#mi300A-os] AMD Instinct MI300A GPU supports all :ref:`supported_distributions` listed below except Debian 13, Azure Linux 3.0, Oracle Linux 10, Oracle Linux 9, and Oracle Linux 8.
-.. [#mi200x-os] AMD Instinct MI250X and MI250 GPUs supports all :ref:`supported_distributions` listed below except Debian 13, Rocky Linux 9, Azure Linux 3.0, Oracle Linux 10, Oracle Linux 9, and Oracle Linux 8.
-.. [#mi210x-os] AMD Instinct MI210 GPUs supports all :ref:`supported_distributions` listed below except Debian 13, Rocky Linux 9, Oracle Linux 10, Oracle Linux 9, and Oracle Linux 8.
-.. [#mi100-os] AMD Instinct MI100 GPU supports all :ref:`supported_distributions` listed below except Debian 13, Debian 12, Rocky Linux 9, Azure Linux 3.0, Oracle Linux 10, Oracle Linux 9, and Oracle Linux 8.
-.. [#RDNA-OS] AMD Radeon PRO (AI PRO R9700, PRO W7900 Dual Slot, PRO W7900, PRO W7800 48GB, PRO W7800, PRO W7700, and PRO W6800) and AMD Radeon (RX 9070 XT, RX 9070 GRE, RX 9070, RX 9060 XT, RX 9060, RX 7900 XTX, RX 7900 XT, RX 7900 GRE, RX 7800 XT, and RX 7700 XT) only support Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.1, and RHEL 9.7.
-.. [#rd-v710] AMD Radeon PRO V710 only supports Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.1, RHEL 9.7, and Azure Linux 3.0.
+.. [#mi300A-os] AMD Instinct MI300A GPU supports all :ref:`supported_distributions` listed below except Debian 13, Oracle Linux 10, Oracle Linux 9, and Oracle Linux 8.
+.. [#mi200x-os] AMD Instinct MI200 Series GPUs support all :ref:`supported_distributions` listed below except Debian 13, Rocky Linux 9, Oracle Linux 10, Oracle Linux 9, and Oracle Linux 8.
+.. [#mi100-os] AMD Instinct MI100 GPU supports all :ref:`supported_distributions` listed below except Debian 13, Debian 12, Rocky Linux 9, Oracle Linux 10, Oracle Linux 9, and Oracle Linux 8.
+.. [#RDNA-OS] AMD Radeon PRO (AI PRO R9700, AI PRO R9600D, PRO V710, PRO W7900 Dual Slot, PRO W7900, PRO W7800 48GB, PRO W7800, PRO W7700, and PRO W6800) and AMD Radeon (RX 9070 XT, RX 9070 GRE, RX 9070, RX 9060 XT LP, RX 9060 XT, RX 9060, RX 7900 XTX, RX 7900 XT, RX 7900 GRE, RX 7800 XT, RX 7700 XT, and RX 7700) only support Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.1, and RHEL 9.7.
 .. [#rd-v620] AMD Radeon PRO V620 only supports Ubuntu 24.04.3 and Ubuntu 22.04.5.
 
 .. _supported_distributions:
@@ -131,7 +132,6 @@ AMD ROCm software supports the following Linux distributions.
     "Debian 13", "6.12", "2.35", "✅ [#sles-db-702]_"
     "Debian 12", "6.1.0", "2.36", "✅ [#db-710]_"
     "Rocky Linux 9", "5.14.0-570", "2.34", "✅ [#rl-700]_"
-    "Azure Linux 3.0", "6.6.60", "2.38", "✅ [#al-mi300x]_"
     "Oracle Linux 10", "6.12.0 (UEK)", "2.39", "✅ [#ol-700]_"
     "Oracle Linux 9", "5.15.0 (UEK)", "2.34", "✅ [#ol-700]_"
     "Oracle Linux 8", "5.15.0 (UEK)", "2.28", "✅ [#ol-mi300x]_"
@@ -152,8 +152,7 @@ AMD ROCm software supports the following Linux distributions.
 .. [#sles-db-700] SLES 15 SP7 is supported on all AMD Instinct GPUs listed under :ref:`supported_GPUs`.
 .. [#sles-db-702] Debian 13 is supported only on AMD Instinct MI355X, MI350X, MI325X, and MI300X GPUs.
 .. [#db-710] Debian 12 are supported only on AMD Instinct MI325X, MI300X, MI300A, MI250X, MI250, and MI210 GPUs.
-.. [#rl-700] Rocky Linux 9 is supported only on AMD Instinct MI300X and MI300A GPUs.  
-.. [#al-mi300x] Azure Linux 3.0 is supported only on AMD Instinct MI300X , MI210, and AMD Radeon PRO V710 GPUs.
+.. [#rl-700] Rocky Linux 9 is supported only on AMD Instinct MI300X and MI300A GPUs.
 .. [#ol-700] Oracle Linux 10 and 9 are supported only on AMD Instinct MI355X, MI350X, MI325X, and MI300X GPUs.
 .. [#ol-mi300x] Oracle Linux 8 is supported only on AMD Instinct MI300X GPUs.
 
