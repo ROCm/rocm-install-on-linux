@@ -8,7 +8,7 @@ subtrees:
     - file: reference/system-requirements
       title: System requirements
     - file: reference/user-kernel-space-compat-matrix
-      title: User & AMD GPU Driver (amdgpu)
+      title: AMD GPU Driver (amdgpu) support
     - file: install/quick-start
       title: Quick start installation guide
     - file: install/detailed-install

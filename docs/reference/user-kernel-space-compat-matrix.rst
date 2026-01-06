@@ -1,12 +1,12 @@
 .. meta::
-  :description: User and AMD GPU Driver (amdgpu) support matrix
+  :description: AMD GPU Driver (amdgpu) support matrix
   :keywords: Linux support, support matrix, system requirements, user space versions, kernel-mode GPU driver, KMD, AMD, ROCm
 
 *****************************************************************************************
-User and AMD GPU Driver (amdgpu) support matrix
+AMD GPU Driver (amdgpu) support matrix
 *****************************************************************************************
 
-The :doc:`AMD GPU Driver (amdgpu) <amdgpu-docs:index>` is now distributed separately from the ROCm software stack and is stored under in its own location ``/amdgpu/`` in the package repository at `repo.radeon.com <https://repo.radeon.com/amdgpu/>`_. Starting from ROCm™ 6.4.0, forward and backward compatibility between the AMD GPU Driver (amdgpu) and its user space software is provided up to a year apart (assuming hardware support is available in both). For earlier ROCm releases, the compatibility is provided for +/- 2 releases. This table shows the compatibility combinations that are currently supported.
+The :doc:`AMD GPU Driver (amdgpu) <amdgpu-docs:index>` is distributed separately from the ROCm software stack and is stored under in its own location ``/amdgpu/`` in the package repository at `repo.radeon.com <https://repo.radeon.com/amdgpu/>`_. Starting from ROCm 6.4.0, forward and backward compatibility between the AMD GPU Driver (amdgpu) and its user space software is provided up to a year apart (assuming hardware support is available in both). For earlier ROCm releases, the compatibility is provided for +/- 2 releases. This table shows the compatibility combinations that are currently supported.
 
 .. note ::
 
