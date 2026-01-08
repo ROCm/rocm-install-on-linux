@@ -18,7 +18,8 @@ see :doc:`rocm:compatibility/ml-compatibility/ray-compatibility`.
 
 .. note::
 
-	Ray is supported on ROCm 6.4.1.
+   Ray is supported on ROCm 7.0.0 and 6.4.1. This topic provides installation
+   instructions for ROCm 7.0.0. For ROCm 6.4.1, see :doc:`previous-versions/ray-history`.
 
 Install Ray
 ======================================================================================
@@ -35,31 +36,24 @@ To install Ray on ROCm, you have the following options:
 Use a prebuilt Docker image with Ray pre-installed
 --------------------------------------------------------------------------------------
 
-Docker is the recommended method to set up a Ray environment, as it avoids potential installation issues.  
-The tested, prebuilt image includes Ray, ROCm, and other dependencies.
+The recommended way to set up a Ray environment and avoid potential installation issues is with Docker. 
+The tested, prebuilt image includes Ray, PyTorch, ROCm, and other dependencies.
 
+Prebuilt Docker images with Ray configured for ROCm are available on `Docker Hub <https://hub.docker.com/r/rocm/ray/tags>`_.
 
-1. Pull the Docker image
+1. Pull the Docker image:
 
    .. code-block:: bash
 
-      docker pull rocm/ray:ray-2.48.0.post0_rocm6.4.1_ubuntu24.04_py3.12_pytorch2.6.0
+      docker pull rocm/ray:ray-2.51.1_rocm7.0.0_ubuntu22.04_py3.12_pytorch2.9.0
 
-   .. note::
-
-      For specific versions of Ray, review the periodically pushed Docker images at `ROCm Ray on
-      Docker Hub <https://hub.docker.com/r/rocm/ray/tags>`_.
-
-      Additional Docker images are available at `ROCm Ray on Docker Hub <https://hub.docker.com/r/rocm/ray/tags>`_.
-      These contain the latest ROCm version but might use an older version of Ray.
-
-2. Launch and connect to the container
+2. Launch and connect to the Docker container:
 
    .. code-block:: bash
 
       docker run -it -d --network=host --device=/dev/kfd --device=/dev/dri --ipc=host --shm-size 64G \
       --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -v $(pwd):/host_dir \
-      -w /app --name rocm_ray rocm/ray:ray-2.48.0.post0_rocm6.4.1_ubuntu24.04_py3.12_pytorch2.6.0 /bin/bash
+      -w /app --name rocm_ray rocm/ray:ray-2.51.1_rocm7.0.0_ubuntu22.04_py3.12_pytorch2.9.0 /bin/bash
 
       docker attach rocm_ray
 
@@ -73,38 +67,33 @@ The tested, prebuilt image includes Ray, ROCm, and other dependencies.
 Build your own Docker image
 --------------------------------------------------------------------------------------
 
-If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu container, follow these steps to install Ray in the container.
-
-1. Pull the ROCm Ubuntu Docker image. For example, use the following command to pull the ROCm Ubuntu image:
+1. Clone the `https://github.com/ROCm/ray <https://github.com/ROCm/ray>`__ repository:
 
    .. code-block:: bash
 
-      docker pull rocm/pytorch:rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.6.0
+      git clone https://github.com/ROCm/ray.git -b release/2.51.1 
 
-2. Launch the Docker container. After pulling the image, launch a container using this command:
-
-   .. code-block:: bash
-
-      docker run -it -d --network=host --device=/dev/kfd --device=/dev/dri --ipc=host --shm-size 64G \
-      --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -v $(pwd):/host_dir \
-      --name rocm_ray rocm/pytorch:rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.6.0 /bin/bash
-      docker attach rocm_ray
-
-3. Activate the conda environment
-   
-   .. code-block:: bash
-
-      conda init
-      source ~/.bashrc
-      conda activate py_3.12
-
-4. Install from Ray nightly wheels. Inside the running container, install the required version of Ray with ROCm support using pip:
+2. Build the Docker container using the Dockerfile in the ``ray/docker`` directory:
 
    .. code-block:: bash
 
-      pip install -U "ray[all] @ https://s3-us-west-2.amazonaws.com/ray-wheels/master/005c372262e050d5745f475e22e64305fa07f8b8/ray-3.0.0.dev0-cp312-cp312-manylinux2014_x86_64.whl" 
+      cd ray
+      docker build -f docker/Dockerfile.rocm -t my-rocm-ray .
 
-4. Verify the installed Ray version. Check whether the correct version of Ray is installed.
+3. Launch and connect to the container:
+
+   .. code-block:: bash
+
+      docker run --rm -it --device /dev/dri --device /dev/kfd -p 8265:8265 --group-add video \
+      --cap-add SYS_PTRACE --security-opt seccomp=unconfined --privileged -v $HOME/.ssh:/root/.ssh \
+      -v $HOME:$HOME --shm-size 128G -w $PWD --name rocm_verl \
+      my-rocm-ray /bin/bash
+
+   .. note::
+
+      The ``--shm-size`` parameter allocates shared memory for the container. It can be adjusted based on your system's resources.
+
+4. Verify the installed Ray version:
 
    .. code-block:: bash
 
@@ -114,10 +103,8 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
    .. code-block::
 
-      memray==1.17.2
-      ray @ https://s3-us-west-2.amazonaws.com/ray-wheels/master/005c372262e050d5745f475e22e64305fa07f8b8/ray-3.0.0.dev0-cp312-cp312-manylinux2014_x86_64.whl#sha256=e8f457f1bb8009b1e2744733c269fc54f3ec78e3705e16a2f88a8305720efe1b
-
-6. Verify the installation of ROCm Ray. See :ref:`ray-verify-installation`.
+      memray==1.19.1
+      ray==2.51.1
 
 .. _install-rocm-ray-bare-metal:
 
@@ -132,44 +119,75 @@ Follow these steps if you prefer to install ROCm manually on your host system or
 
    .. code-block:: bash
 
-      rocm-smi
+      amd-smi
+
+   Expected output:
 
    .. code-block:: bash
 
-      ========================================== ROCm System Management Interface ==========================================
-      ==================================================== Concise Info ====================================================
-     Device  [Model : Revision]    Temp        Power     Partitions      SCLK     MCLK     Fan  Perf  PwrCap  VRAM%  GPU%
-               Name (20 chars)       (Junction)  (Socket)  (Mem, Compute)
-       ======================================================================================================================
-       0       [0x74a1 : 0x00]       50.0°C      170.0W    NPS1, SPX       131Mhz   900Mhz   0%   auto  750.0W    0%   0%
-               AMD Instinct MI300X
-       1       [0x74a1 : 0x00]       51.0°C      176.0W    NPS1, SPX       132Mhz   900Mhz   0%   auto  750.0W    0%   0%
-               AMD Instinct MI300X
-       2       [0x74a1 : 0x00]       50.0°C      177.0W    NPS1, SPX       132Mhz   900Mhz   0%   auto  750.0W    0%   0%
-               AMD Instinct MI300X
-       3       [0x74a1 : 0x00]       53.0°C      176.0W    NPS1, SPX       132Mhz   900Mhz   0%   auto  750.0W    0%   0%
-               AMD Instinct MI300X
-       ======================================================================================================================
-       ================================================ End of ROCm SMI Log =================================================
+      +------------------------------------------------------------------------------+
+      | AMD-SMI 26.0.0+37d158ab      amdgpu version: 6.14.14  ROCm version: 7.0.0    |
+      | Platform: Linux Baremetal                                                    |
+      |-------------------------------------+----------------------------------------|
+      | BDF                        GPU-Name | Mem-Uti   Temp   UEC       Power-Usage |
+      | GPU  HIP-ID  OAM-ID  Partition-Mode | GFX-Uti    Fan               Mem-Usage |
+      |=====================================+========================================|
+      | 0000:05:00.0 ...Instinct MI300X OAM | 0 %      38 °C   0           141/750 W |
+      |   0       0       7        SPX/NPS1 | 0 %        N/A           283/196592 MB |
+      |-------------------------------------+----------------------------------------|
+      | 0000:26:00.0 ...Instinct MI300X OAM | 0 %      38 °C   0           135/750 W |
+      |   1       1       6        SPX/NPS1 | 0 %        N/A           283/196592 MB |
+      |-------------------------------------+----------------------------------------|
+      | 0000:46:00.0 ...Instinct MI300X OAM | 0 %      42 °C   0           139/750 W |
+      |   2       2       4        SPX/NPS1 | 0 %        N/A           283/196592 MB |
+      |-------------------------------------+----------------------------------------|
+      | 0000:65:00.0 ...Instinct MI300X OAM | 0 %      37 °C   0           136/750 W |
+      |   3       3       5        SPX/NPS1 | 0 %        N/A           283/196592 MB |
+      |-------------------------------------+----------------------------------------|
+      | 0000:85:00.0 ...Instinct MI300X OAM | 0 %      41 °C   0           139/750 W |
+      |   4       4       3        SPX/NPS1 | 0 %        N/A           283/196592 MB |
+      |-------------------------------------+----------------------------------------|
+      | 0000:a6:00.0 ...Instinct MI300X OAM | 0 %      38 °C   0           140/750 W |
+      |   5       5       2        SPX/NPS1 | 0 %        N/A           283/196592 MB |
+      |-------------------------------------+----------------------------------------|
+      | 0000:c6:00.0 ...Instinct MI300X OAM | 0 %      38 °C   0           138/750 W |
+      |   6       6       0        SPX/NPS1 | 0 %        N/A           283/196592 MB |
+      |-------------------------------------+----------------------------------------|
+      | 0000:e5:00.0 ...Instinct MI300X OAM | 0 %      37 °C   0           139/750 W |
+      |   7       7       1        SPX/NPS1 | 0 %        N/A           283/196592 MB |
+      +-------------------------------------+----------------------------------------+
+      +------------------------------------------------------------------------------+
+      | Processes:                                                                   |
+      |  GPU        PID  Process Name          GTT_MEM  VRAM_MEM  MEM_USAGE     CU % |
+      |==============================================================================|
+      |  No running processes found                                                  |
+      +------------------------------------------------------------------------------+
 
 2. Install the required version of Ray with ROCm support using pip:
 
    .. code-block:: bash
 
-      pip install -U "ray[all] @ https://s3-us-west-2.amazonaws.com/ray-wheels/master/005c372262e050d5745f475e22e64305fa07f8b8/ray-3.0.0.dev0-cp312-cp312-manylinux2014_x86_64.whl"
+      pip install -U ray[all]==2.51.1
 
-3. Verify the installed Ray version. Check whether the correct version of Ray and its ROCm plugins are installed.
+3. Verify the installed Ray version:
 
    .. code-block:: bash
 
       pip3 freeze | grep ray
+   
+   Expected output:
+
+   .. code-block::
+
+      memray==1.19.1
+      ray==2.51.1
 
 .. _build-rocm-ray-from-source:
 
 Build Ray from source
 --------------------------------------------------------------------------------------
 
-Follow the `Building Ray from Source guide <https://docs.ray.io/en/latest/ray-contribute/development.html>`__ 
+Follow the `Building Ray from source guide <https://docs.ray.io/en/latest/ray-contribute/development.html>`__ 
 to build Ray with ROCm support from source.
 
 .. _ray-verify-installation:
@@ -178,21 +196,24 @@ Test the Ray installation
 ======================================================================================
 
 Ray unit tests are optional for validating your installation if you used a
-prebuilt Docker image from AMD ROCm Docker Hub.
-
-To run unit tests manually and validate your installation fully, follow these steps:
+prebuilt Docker image from AMD ROCm Docker Hub. To run unit tests manually and
+validate your installation fully, follow these steps:
 
 1. After launching the container, test whether Ray detects ROCm devices as expected.
 
-.. code-block:: bash
+   .. code-block:: bash
    
-   python3 -c "import ray; ray.init(); print(ray.cluster_resources())"
+      python3 -c "import ray; ray.init(); print(ray.cluster_resources())"
 
 2. If the setup is successful, the output should list all available ROCm devices.
 
-Expected output (e.g. on MI300X node):
+   Expected output (for example, on the MI300X node):
 
-.. code-block:: shell-session
+   .. code-block:: shell-session
 
-   {'memory': 1420360912896.0, 'GPU': 8.0, 'accelerator_type:AMD-Instinct-MI300X-OAM': 1.0, 'node:10.7.39.110': 1.0, 'CPU': 384.0, 'node:__internal_head__': 1.0, 'object_store_memory': 200000000000.0}
+      {'memory': 1420360912896.0, 'GPU': 8.0, 'accelerator_type:AMD-Instinct-MI300X-OAM': 1.0, 'node:10.7.39.110': 1.0, 'CPU': 384.0, 'node:__internal_head__': 1.0, 'object_store_memory': 200000000000.0}
 
+Previous versions
+===============================================================================
+See :doc:`previous-versions/ray-history` to find documentation for previous releases
+of the ``ROCm/ray`` Docker image.
