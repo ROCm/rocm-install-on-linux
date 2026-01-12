@@ -234,7 +234,7 @@ sphinx-external-toc==1.0.1
     # via rocm-docs-core
 sphinx-notfound-page==1.1.0
     # via rocm-docs-core
-sphinx-substitution-extensions==2025.12.15
+sphinx-substitution-extensions==2026.1.12
     # via -r requirements.in
 sphinxcontrib-applehelp==2.0.0
     # via sphinx
