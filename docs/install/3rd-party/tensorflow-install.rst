@@ -77,7 +77,8 @@ To install ROCm on bare metal, follow :doc:`/install/install-overview`.
            --group-add video \
            --cap-add=SYS_PTRACE \
            --security-opt seccomp=unconfined \
-           rocm/tensorflow:latest
+           rocm/tensorflow:latest \
+           /bin/bash
 
 .. _tensorflow-docker-support:
 
