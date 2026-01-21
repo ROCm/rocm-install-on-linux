@@ -40,6 +40,7 @@ IIO
 IRQs
 json
 KMD
+libdw
 MACVTAP
 megablocks
 microarchitectures
@@ -75,7 +76,6 @@ SMCi
 SRIOV
 SVM
 SuperMicro
-Taichi
 tbody
 td
 thead
