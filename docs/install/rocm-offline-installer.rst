@@ -7,12 +7,12 @@ ROCm Offline Installer Creator
 ***************************************************************************
 
 The ROCm Offline Installer Creator creates an 
-installation package for a preconfigured setup of ROCm, the AMDGPU driver, or a combination
+installation package for a preconfigured setup of ROCm, the AMD GPU Driver, or a combination
 of the two on a target system without network or internet access.
 
 On a system with internet access (known as the *host*), the tool creates an installer package. It uses the host system 
 as the template for a matching offline system (known as a *target*). After creating the offline installer 
-package, you can run it on a target without network access to install ROCm and the AMDGPU driver.
+package, you can run it on a target without network access to install ROCm and the AMD GPU Driver.
 
 The ROCm Offline Installer Creator lets you  
 customize multiple unique configurations for use when
@@ -41,8 +41,7 @@ The ROCm Offline Installer Creator requires the following configuration:
 * The host system running the ROCm Offline Installer Creator and the target system running the installer must use the same
   Linux kernel version when building an installer that includes the AMD GPU driver. If you are building a ROCm-only installer, the
   Linux kernel versions are not required to match. If the AMD GPU driver is included with ROCm or by itself in an installer build, then the host
-  and target systems must use the same Linux kernel version for the following distributions: Oracle Linux,
-  Rocky 9.6, and Debian 13.
+  and target systems must use the same Linux kernel version for the Rocky Linux 9.6 distribution.
 
 .. note::
 
@@ -50,12 +49,13 @@ The ROCm Offline Installer Creator requires the following configuration:
    See the :ref:`advanced-driver-label` menu for details.
    
    *  Ubuntu
-   *  Debian 12
+   *  Debian 12 and 13
+   *  Oracle Linux
    *  Red Hat Enterprise Linux (RHEL)
    *  SUSE Linux Enterprise Server (SLES) 15.7
 
-For example, if the host system uses Oracle Linux 10.0 with the ``6.12.0-100.28.2.el10uek`` kernel, only
-an Oracle Linux 10.0 target with the ``6.12.0-100.28.2.el10uek`` kernel can use the offline installer.
+For example, if the host system uses Rocky Linux 9.6 with the ``5.14.0-570.17.1.el9_6.x86_64`` kernel, only
+a Rocky Linux 9.6 target with the ``5.14.0-570.17.1.el9_6.x86_64`` kernel can use the offline installer.
 If the base OS distribution version and the kernel version of that distribution do not match on both systems, 
 installation is not permitted.
 
@@ -63,8 +63,8 @@ The following configuration is recommended when using the ROCm Offline Installer
 
 * The host system running the ROCm Offline Installer Creator and the target system should use the same OS image and 
   have the same packages installed.
-* The host OS should not have ROCm or the AMDGPU driver installed. (This recommendation doesn't 
-  apply to any AMDGPU drivers included with the default distribution packages.)
+* The host OS should not have ROCm or the AMD GPU Driver installed. (This recommendation doesn't 
+  apply to any AMD GPU Drivers included with the default distribution packages.)
 
 Supported Linux distributions
 ================================================
@@ -92,22 +92,22 @@ Download the Offline Installer Creator from ``repo.radeon.com`` using the follow
 
 Substitute your values for the following placeholders:
 
-* ``<rocm-version>``: ROCm version number for the ROCm Offline Installer Creator tool, for example, ``rocm-rel-7.1.1``.
+* ``<rocm-version>``: ROCm version number for the ROCm Offline Installer Creator tool, for example, ``rocm-rel-7.2``.
 * ``<distro>``: Linux distribution for the tool, for example, ``ubuntu``, ``ol``, ``rhel``, ``sles``, ``rocky``, or ``debian``.
 * ``<distro-version>``: Linux distribution version for the tool, for example, ``22.04`` for Ubuntu or ``9.6`` for RHEL.
-* ``<creator-package>``: The ROCm Offline Installer Creator package name, for example, ``rocm-offline-creator_1.0.16.70101-7~22.04.run``.
+* ``<creator-package>``: The ROCm Offline Installer Creator package name, for example, ``rocm-offline-creator_1.1.0.70200-7~22.04.run``.
 
 .. note::
 
    For releases that end in ``.0``, do not include the ``.0`` as part of the ``rocm-version`` component.
-   For example, for ROCm 7.1.0, the ``rocm-version`` is ``rocm-rel-7.1``.
+   For example, for ROCm 7.2.0, the ``rocm-version`` is ``rocm-rel-7.2``.
 
-For example, use this command to download ROCm 7.1.1 of the Offline Installer Creator 
+For example, use this command to download ROCm 7.2 of the Offline Installer Creator 
 for Ubuntu release 22.04:
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-7.1.1/ubuntu/22.04/rocm-offline-creator_1.0.16.70101-7~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-linux-install-offline/rocm-rel-7.2/ubuntu/22.04/rocm-offline-creator_1.1.0.70200-7~22.04.run
 
 Installer Creation
 ================================================
@@ -116,7 +116,7 @@ On the host system, run the ROCm Offline Installer Creator from the terminal com
 
 .. code-block:: shell
 
-   bash ./rocm-offline-creator_1.0.16.70101-7~22.04.run <options>
+   bash rocm-offline-creator_1.1.0.70200-7~22.04.run <options>
 
 The ``<options>`` parameter can either be left empty or set to these options:
 
@@ -136,7 +136,7 @@ This example demonstrates how to use the ``prompt`` option when running the Offl
 
 .. code-block:: shell
 
-   bash ./rocm-offline-creator_1.0.16.70101-7~22.04.run prompt
+   bash rocm-offline-creator_1.1.0.70200-7~22.04.run prompt
 
 The optional ``prompt`` parameter stops the Offline Installer Creator
 at critical checkpoints in the creation process and prompts the user. At these checkpoints, 
@@ -319,8 +319,8 @@ components are integrated into the resulting installer.
 Driver Options menu
 -------------------------------------------------------------------------
 
-Use the **Driver Options** menu to optionally include the AMDGPU driver in the 
-offline installer. If driver installation is included, an AMDGPU driver based on a specific ROCm version 
+Use the **Driver Options** menu to optionally include the AMD GPU Driver in the 
+offline installer. If driver installation is included, an AMD GPU Driver based on a specific ROCm version 
 is integrated into the installer. In addition, the installer can configure several post-installation 
 and advanced driver options for offline installation.
 
@@ -330,34 +330,36 @@ and advanced driver options for offline installation.
 
 * **Install amdgpu Driver**
 
-  This field specifies whether to include the AMDGPU driver in the offline installer. 
+  This field specifies whether to include the AMD GPU Driver in the offline installer. 
   To enable its inclusion, set the value of **Install amdgpu Driver** to ``yes``.
-  To include the driver, select the **amdgpu Driver ROCm Version**. Otherwise, 
+  To include the driver, select the **amdgpu Driver Version**. Otherwise, 
   the creation of an offline installer is not permitted. This option is typically disabled
   when creating an ROCm-only offline installer.
 
-* **amdgpu Driver ROCm Version**
+* **amdgpu Driver Version**
 
-  If **Install amdgpu Driver** is set to ``yes``, the **amdgpu Driver ROCm Version** field is used to select a 
-  specific ROCm version to base the AMDGPU driver on. 
+  If **Install amdgpu Driver** is set to ``yes``, the **amdgpu Driver Version** field is used to select a 
+  specific AMD GPU Driver version. For ROCm 6.1 to 6.4.3, the AMD GPU Driver version matches the ROCm version.
+  For ROCm 7.0 and later, the AMD GPU Driver is distributed separately from ROCm and follows a new versioning scheme starting
+  with 30.10. The **amdgpu Driver Version** menu lists the new driver version associated with the ROCm release.
+  For example, the **amdgpu Driver Version** associated with ROCm 7.0 is version ``30.10``. 
 
   .. note::
 
-     *  The offline installer can only use one ROCm version.
-     *  The AMDGPU driver included in the offline installer is the DKMS version.
+     *  The AMD GPU Driver included in the offline installer is the DKMS version.
 
 Post-install driver options
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are including the AMDGPU driver in the offline installer, you can apply one or more
+If you are including the AMD GPU Driver in the offline installer, you can apply one or more
 of the following post-installation driver options:
 
-* **Blacklist amdgpu driver**
+* **amdgpu Driver Blacklist**
 
   When this setting is enabled, the resulting offline installer immediately 
-  disables the AMDGPU driver kernel module after installing it. As a result,  
+  disables the AMD GPU Driver kernel module after installing it. As a result,  
   the system disables driver startup and initialization on subsequent reboots. Use this
-  option when the AMDGPU driver is being debugged or is potentially unstable, 
+  option when the AMD GPU Driver is being debugged or is potentially unstable, 
   or if control of driver initialization is required during boot up.
 
   .. caution::
@@ -366,19 +368,19 @@ of the following post-installation driver options:
 
   .. note::
 
-     If this option is selected, the **Start amdgpu driver on install** option is not available.
+     If this option is selected, the **amdgpu Driver Start on install** option is not available.
 
-* **Start amdgpu driver on install**
+* **amdgpu Driver Start on install**
 
-  If the **Start amdgpu driver on install** option is enabled, the offline installer uses ``modprobe``
-  to automatically launch the AMDGPU driver after installation. If a pre-existing AMDGPU driver is 
+  If the **amdgpu Driver Start on install** option is enabled, the offline installer uses ``modprobe``
+  to automatically launch the AMD GPU Driver after installation. If a pre-existing AMD GPU Driver is 
   already loaded on the system, the installer doesn't start the new driver.
   This option is often useful for users installing the driver on a system where the GPU device is newer and 
   not yet natively supported as part of the upstream GPU driver for the Linux distribution. 
 
   .. note::
 
-     If this option is selected, the **Blacklist amdgpu driver on install** option is not
+     If this option is selected, the **amdgpu Driver Blacklist** option is not
      available for use in the offline installer.
 
 .. _advanced-driver-label:
@@ -386,14 +388,14 @@ of the following post-installation driver options:
 Advanced driver options
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-AMDGPU driver offline installer creation provides advanced options for modifying requirements
+AMD GPU Driver offline installer creation provides advanced options for modifying requirements
 and settings for the driver installation. The advanced options are selected using the **<ADVANCED>** sub-menu.
 
 .. image:: ../data/how-to/rocm-offline-installer-4b-driver-advanced-options.png
    :width: 800
    :alt: The Advanced Driver Options menu for the Offline Installer Creator 
 
-* **Kernel version** (Ubuntu only)
+* **Kernel version**
   
   Enabling driver installation for the offline installer creation requires knowing the Linux kernel version of the target system.
   By default, the host system kernel version is used when creating a driver offline installer package.
@@ -403,6 +405,10 @@ and settings for the driver installation. The advanced options are selected usin
   installed and running on the host system. For example, if the host system uses Ubuntu 22.04 with the ``6.8.0-40-generic`` kernel,
   an offline installer package for Ubuntu 22.04 with the ``6.8.0-65-generic`` kernel can be created.
   When a specific kernel version is provided in the **Kernel version** field, the offline creator checks if the kernel version is available.
+
+  Oracle Linux uses two types of Linux kernels: the Unbreakable Enterprise Kernel (UEK) and Red Hat Compatible Kernel (RHCK).
+  When creating an AMD GPU Driver offline installer for Oracle Linux, the **Kernel version** field is replaced
+  with the **UEK version** and **RHCK version** fields, which let you set either, or both, of the UEK and RHCK versions for the target system.
 
   .. caution::
 
@@ -525,22 +531,17 @@ Follow these steps to create an offline installer:
 
 #. Set the driver options:
 
-   In the **Driver Options** menu, enable or disable the installation of the amdgpu driver. To enable
-   driver installation, you must also configure the **amdgpu Driver ROCm version** field.
+   In the **Driver Options** menu, enable or disable the installation of the AMD GPU Driver. To enable
+   driver installation, you must also configure the **amdgpu Driver version** field.
 
    a. Enter the **Driver Options** menu.
-   b. Set **Install amdgpu Driver** to ``yes`` to include the amdgpu driver in the offline installer.
-   c. If the **amdgpu Driver ROCm Version** field is not already populated,
+   b. Set **Install amdgpu Driver** to ``yes`` to include the AMD GPU Driver in the offline installer.
+   c. If the **amdgpu Driver Version** field is not already populated,
       select the ROCm release version from the sub-menu.
-   d. Configure the post-installation driver options, including **Blacklist 
-      amdgpu driver** and **Start amdgpu driver on install**.
+   d. Configure the post-installation driver options, including **amdgpu Driver Blacklist**
+      and **amdgpu Driver Start on install**.
    e. If the driver offline install requires a different target Linux kernel version from the host system creating the installer,
-      set the advanced driver options using the **<ADVANCED>** sub-menu (Ubuntu only).
-
-   .. note::
-
-      The **amdgpu Driver ROCm Version** field is the same field as the **ROCm Version** field in the **ROCm Options** menu. 
-      You can set the ROCm release version from either menu.
+      set the advanced driver options using the **<ADVANCED>** sub-menu.
 
 #. Set the extra packages:
 
@@ -772,12 +773,13 @@ Tests are available for these ROCm versions:
 *  6.4.x
 *  7.0.x
 *  7.1.x
+*  7.2.x
 
 Tests are available for the following component combinations:
 
 *  ROCm only: Creates an installer for the ``rocm`` component only.
-*  Driver only: Creates an installer for the amdgpu driver only.
-*  ROCm and driver: Creates an installer for both the ``rocm`` component and the amdgpu driver.
+*  Driver only: Creates an installer for the AMD GPU Driver only.
+*  ROCm and driver: Creates an installer for both the ``rocm`` component and the AMD GPU Driver.
 *  ROCm and graphics: Creates an installer for the ``rocm,graphics`` component.
 *  ``hip`` and ``hiplibsdk``: Creates an installer for the ``hip,hiplibsdk`` component.
 
@@ -831,6 +833,7 @@ The following tests are available, depending on the ROCm version:
    "6.4.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "7.0.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
    "7.1.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
+   "7.2.x", "ROCm only, Driver only, ROCm + Driver, ROCm + graphics, hip + hiplibsdk"
 
 .. note::
    
@@ -848,7 +851,7 @@ From the build location of the offline tool, run the following command:
 
    ctest -L <rocm-version> 
 
-where ``<rocm-version>`` is one of ``6.1.x``, ``6.2.x``, ``6.3.x``, ``6.4.x``, ``7.0.x``, or ``7.1.x``.
+where ``<rocm-version>`` is one of ``6.1.x``, ``6.2.x``, ``6.3.x``, ``6.4.x``, ``7.0.x``, ``7.1.x``, or ``7.2.x``.
  
 Running manual tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -867,7 +870,7 @@ Offline Installer Creator with the ``config`` parameter.
 
 .. code-block:: shell 
 
-   bash ./rocm-offline-creator_1.0.0-local.run config=[path-to-config-file]
+   bash rocm-offline-creator_1.0.0-local.run config=[path-to-config-file]
 
 Set the ``config`` parameter to the absolute path to a configuration file. The file name must include 
 the ``.config`` file extension. The file follows the format defined by the Offline Installer Creator
