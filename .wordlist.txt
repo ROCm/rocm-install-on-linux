@@ -59,6 +59,7 @@ Pytorch
 PyPI
 radeon
 Repo
+RHCK
 rhel
 rl
 rocHPL
@@ -80,6 +81,7 @@ td
 thead
 TensorFlowVersion
 TVM
+UEK
 untar
 vCPU
 verl

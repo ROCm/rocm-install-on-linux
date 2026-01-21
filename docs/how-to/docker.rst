@@ -12,14 +12,11 @@ reproducible environments.
 Prerequisites
 ==========================================
 
-* ``amdgpu-dkms``: Docker containers share the kernel with the host OS. Therefore, the ROCm
-  kernel-mode driver (``amdgpu-dkms``) must be installed on the host. If you've already installed
-  ROCm, you probably already have ``amdgpu-dkms``.
+Docker containers share the kernel with the host OS. Therefore, the ROCm kernel-mode driver (``amdgpu-dkms``) must be installed on the host. If you've already installed ROCm, you probably already have ``amdgpu-dkms``.
 
-  * `Check for amdgpu-dkms <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/post-install.html#verify-kernel-mode-driver-installation>`_
+* `Check for amdgpu-dkms <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/post-install.html#verify-kernel-mode-driver-installation>`_.
 
-  * If you don't have ``amdgpu-dkms``, follow the :ref:`standard ROCm installation instructions <rocm-install-quick>`
-    (which comes with ``amdgpu-dkms``) or `install amdgpu-dkms separately <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`__.
+* If you don't have ``amdgpu-dkms``, follow the :ref:`standard ROCm installation instructions <rocm-install-quick>` (which comes with ``amdgpu-dkms``) or `install amdgpu-dkms <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`__ separately.
 
 .. seealso::
 
@@ -111,7 +108,7 @@ For example, to expose the first and second GPU:
 
     docker run --device /dev/kfd --device /dev/dri/renderD128 --device /dev/dri/renderD129 ..
 
-Verifying the amdgpu driver has been loaded on GPUs
+Verifying the AMD GPU driver has been loaded on GPUs
 --------------------------------------------------------------------
 
 ``rocminfo`` is an application for reporting information about the HSA system attributes and agents.
@@ -132,8 +129,96 @@ building your own ROCm-capable containers. The built images are available on
 * ``rocm/rocm-terminal`` is a small image with the prerequisites to build HIP applications, but does not
   include any libraries.
 
-* `ROCm dev images <https://hub.docker.com/u/rocm?page=1&search=dev->`__ provide a variety of OS +
+* `ROCm dev images <https://hub.docker.com/u/rocm?page=1&search=dev->`__ provide a variety of OS and
   ROCm versions, and are a great starting place for building applications.
+
+.. _pull-docker-image:
+
+Pull a ROCm dev Docker image
+----------------------------------------------------------------------------------
+
+Pull a ROCm dev Docker image with a supported configuration. See `Docker
+Hub <https://hub.docker.com/u/rocm?page=1&search=dev-ubuntu-2>`__ to browse
+available images. For example:
+
+.. tab-set::
+
+    .. tab-item:: ROCm 7.1.1
+      :sync: rocm7
+
+      .. tab-set::
+
+          .. tab-item:: Ubuntu 24.04
+            :sync: ubuntu-24
+
+            .. code-block:: shell
+
+                docker pull rocm/dev-ubuntu-24.04:7.1.1-complete
+
+            See `rocm/dev-ubuntu-24.04:7.1.1-complete
+            <https://hub.docker.com/layers/rocm/dev-ubuntu-24.04/7.1.1-complete/images/sha256-c6648f6a60470959f5f9c653ce8397d72fc0adda455942b265a5f973c9ee5891>`__
+            on Docker Hub.
+
+          .. tab-item:: Ubuntu 22.04
+            :sync: ubuntu-22
+
+            .. code-block:: shell
+
+                docker pull rocm/dev-ubuntu-22.04:7.1.1-complete
+
+            See `rocm/dev-ubuntu-22.04:7.1.1-complete
+            <https://hub.docker.com/layers/rocm/dev-ubuntu-22.04/7.1.1-complete/images/sha256-3d5c52ee04ba79a3bae0fced468906619a1451f923c7da5c1c28c59fb2c74be3>`__
+            on Docker Hub.
+
+.. _launch-container:
+
+Launch the Docker container
+----------------------------------------------------------------------------------
+
+Launch the Docker container to allow GPU access. For example:
+
+.. tab-set::
+
+    .. tab-item:: ROCm 7.1.1
+      :sync: rocm7
+
+      .. tab-set::
+
+          .. tab-item:: Ubuntu 24.04
+            :sync: ubuntu-24
+
+            .. code-block:: shell
+
+                docker run -it \
+                    --cap-add=SYS_PTRACE \
+                    --ipc=host \
+                    --privileged=true \
+                    --shm-size=128GB \
+                    --network=host \
+                    --device=/dev/kfd \
+                    --device=/dev/dri \
+                    --group-add video \
+                    -v $HOME:$HOME \
+                    --name rocm7 \
+                    rocm/dev-ubuntu-24.04:7.1.1-complete
+
+          .. tab-item:: Ubuntu 22.04
+            :sync: ubuntu-22
+
+            .. code-block:: shell
+
+                docker run -it \
+                    --cap-add=SYS_PTRACE \
+                    --ipc=host \
+                    --privileged=true \
+                    --shm-size=128GB \
+                    --network=host \
+                    --device=/dev/kfd \
+                    --device=/dev/dri \
+                    --group-add video \
+                    -v $HOME:$HOME \
+                    --name rocm7 \
+                    rocm/dev-ubuntu-22.04:7.1.1-complete
 
 Applications
 -------------------------------------------------------------------------------------------------
