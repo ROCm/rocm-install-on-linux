@@ -74,12 +74,12 @@ Docker image support
 
 AMD validates and publishes ready-made JAX images with ROCm backends on Docker
 Hub. The following Docker image tags and associated inventories are validated
-for ROCm 7.1.1.
+for ROCm 7.2.0.
 For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/rocm/jax-community/tags>`__ on Docker Hub.
 
 .. tab-set::
 
-   .. tab-item:: JAX 0.7.1
+   .. tab-item:: JAX 0.8.0
       :selected:
 
       .. tab-set::
@@ -90,12 +90,12 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
 
             .. code-block:: shell
 
-               docker pull rocm/jax:rocm7.1.1-jax0.7.1-py3.12
+               docker pull rocm/jax:rocm7.2-jax0.8.0-py3.12
 
             See
-            ``rocm/jax:rocm7.1.1-jax0.7.1-py3.12``
+            ``rocm/jax:rocm7.2-jax0.8.0-py3.12``
             on `Docker Hub
-            <https://hub.docker.com/layers/rocm/jax/rocm7.1.1-jax0.7.1-py3.12/images/sha256-1471f6853cde749d3bf06d35d94d7ca63d1fac5dbba9e6c884bb3cf6bb6f9ffa>`__.
+            <https://hub.docker.com/layers/rocm/jax/rocm7.2-jax0.8.0-py3.12/images/sha256-775462fde09a7a8f5685174bbb6353d8505f59b156df3d565edf98f890040526>`__.
 
          .. tab-item:: Python 3.11
 
@@ -103,12 +103,12 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
 
             .. code-block:: shell
 
-               docker pull rocm/jax:rocm7.1.1-jax0.7.1-py3.11
+               docker pull rocm/jax:rocm7.2-jax0.8.0-py3.11
 
             See
-            ``rocm/jax:rocm7.1.1-jax0.7.1-py3.11``
+            ``rocm/jax:rocm7.2-jax0.8.0-py3.11``
             on `Docker Hub
-            <https://hub.docker.com/layers/rocm/jax/rocm7.1.1-jax0.7.1-py3.11/images/sha256-2359c120432df16e57468c52e6d164cc0db007cf385b97e48f2e244532176548>`__.
+            <https://hub.docker.com/layers/rocm/jax/rocm7.2-jax0.8.0-py3.11/images/sha256-fd11ee894df308770794ea389e8080d52ea4eff817aebc91cd49cf725bc36af8>`__.
 
 .. _build-jax-rocm-docker-image:
 
