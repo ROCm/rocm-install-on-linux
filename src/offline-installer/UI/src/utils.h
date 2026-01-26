@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,12 +25,12 @@
 #define _UTILIS_H
 
 #define TOGGLE_BIT(val, bitIndx) val ^= (1 << bitIndx)
-#define TOGGLE_FALSE(val, bitIndx) val &= ~(1 << bitIndx) 
+#define TOGGLE_FALSE(val, bitIndx) val &= ~(1 << bitIndx)
+#define SET_BIT(val, bitIndx) val |= (1 << bitIndx)
+#define CLEAR_BIT(val, bitIndx) val &= ~(1 << bitIndx)
 
 
-#define DEFAULT_CHAR_SIZE      256
-#define LARGE_CHAR_SIZE        1024
-#define SMALL_CHAR_SIZE        32
+void exit_error(char *pError);
 
 int calculate_text_height(char *desc, int width);
 int get_char_array_size(char *array[]);
@@ -48,7 +48,17 @@ int clear_str(char *str);
 bool is_rocm_installed();
 bool get_value_of_wconfig(char *src, char *dst);
 bool is_dir_exist(char *path);
+bool check_file_exists(char *path, int max);
 
+int execute_command_with_output(const char *command, char *output, int output_size);
 
+bool is_ubuntu_kernel_header_valid(char *kernel_version);
+bool is_debian_kernel_header_valid(char *kernel_version);
+bool is_rhel_kernel_header_valid(char *kernel_version);
+bool is_sles_kernel_header_valid(char *kernel_version);
+bool is_ol_kernel_header_valid(char *kernel_version, bool is_rhck);
+bool is_uek_kernel(char *kernel_version);
+bool is_rhck_kernel_installed();
 
+int get_rhck_kernel(char *output);
 #endif // _UTILIS_H

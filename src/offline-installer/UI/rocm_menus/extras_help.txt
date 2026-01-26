@@ -1,0 +1,27 @@
+   rocminfo                rocminfo gives information about the HSA system
+                           attributes and agents.
+                             
+   
+   rocm-smi                rocm-smi acts as a command line interface for
+                           manipulating and monitoring the amdgpu kernel. 
+                       
+   
+   amd-smi                 amd-smi (AMD System Management Interface) 
+                           library offers a unified tool for managing and 
+                           monitoring GPUs, particularly in high-performance 
+                           computing environments.
+                                                   
+   
+   rocm-validation-suite   rocm-validation-suite is a tool for validation
+                           of ROCm.
+   
+   rocdecode               rocdecode is a high performance video decode
+                           SDK for AMD GPUs.    
+   
+   rocjpeg                 rocjpeg is a high performance JPEG decode SDK
+                           for AMD GPUs.   
+   
+   rdc                     rdc (ROCM Data Center Tool) simplifies
+                           administration and addresses key infrastructure 
+                           challenges in AMD GPUs within cluster and datacenter 
+                           environments.

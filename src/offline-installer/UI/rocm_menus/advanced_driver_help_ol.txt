@@ -1,0 +1,12 @@
+   Oracle Linux includes two types of Linux kernels: Unbreakable Enterprise Kernel 
+   (UEK) and Red Hat Compatible Kernel (RHCK). By default, driver installation 
+   will use the host system UEK and RHCK versions for offline installer creation. 
+   If there are multiple RHCK versions installed on the host system, the 
+   creator will choose the newest one.
+ 
+   The Advanced Driver Options menu allows for selection of specific versions of 
+   UEK and RHCK on the target system.
+ 
+   UEK version          UEK version on target system.
+ 
+   RHCK version         RHCK version on target system.

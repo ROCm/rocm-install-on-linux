@@ -1,5 +1,5 @@
 /* ************************************************************************
- * Copyright (C) 2024 Advanced Micro Devices, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Advanced Micro Devices, Inc. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,7 @@
  *
  * ************************************************************************ */
 #include "utils.h"
+#include "install_types.h"
 
 #include <string.h>
 #include <math.h>
@@ -27,6 +28,18 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <dirent.h>
+
+
+void exit_error(char *pError)
+{
+    // exit ncurses with an error string to stderr
+
+    endwin();
+    
+    fprintf(stderr, "%s\n", pError);
+    
+    exit(1);
+}
 
 int calculate_text_height(char *desc, int width)
 {
@@ -119,6 +132,21 @@ int check_path_exists(char *path, int max)
     return ret;
 }
 
+bool check_file_exists(char *path, int max)
+{
+    struct stat buffer;
+    printf("%d", max);
+
+    remove_end_spaces(path, max);
+
+    if (stat(path, &buffer) != -1)
+    {
+        return S_ISREG(buffer.st_mode) != 0;
+    }
+
+    return false; // file doesn't exist.
+}
+
 void remove_slash(char *str)
 {
     int len = strlen(str);
@@ -169,7 +197,6 @@ bool is_dir_exist(char *path)
     {
         return false;
     }
-
 }
 
 bool is_rocm_installed()
@@ -205,4 +232,134 @@ bool get_value_of_wconfig(char *src, char *dst)
 
     strncpy(dst, p, strlen(p) + 1);
     return true;
+}
+
+bool is_ubuntu_kernel_header_valid(char *kernel_version)
+{
+    char command[DEFAULT_CHAR_SIZE];
+
+    sprintf(command, "/bin/bash -c \"apt-cache policy ^linux-headers-%s$ | sed -n '/Version/,\\$p' | grep http &> /dev/null\"", kernel_version);
+    
+    int ret = system(command);
+    return ret == 0;
+}
+
+bool is_debian_kernel_header_valid(char *kernel_version)
+{
+    char command[DEFAULT_CHAR_SIZE];
+
+    sprintf(command, "/bin/bash -c \"bash ./scripts_ui/is-valid-kernel.sh --kernel-version '%s'\"", kernel_version);
+    
+    int ret = system(command);
+    return ret == 0;
+}
+
+bool is_rhel_kernel_header_valid(char *kernel_version)
+{
+    char command[DEFAULT_CHAR_SIZE];
+
+    sprintf(command, "/bin/bash -c \"dnf repoquery --quiet --available --queryformat '%%{name}-%%{version}-%%{release}.%%{arch}' kernel-headers-%s | grep -E '^kernel-headers-%s$' &> /dev/null \"", kernel_version, kernel_version);
+    
+    int ret = system(command);
+    return ret == 0;
+}
+
+bool is_sles_kernel_header_valid(char *kernel_version)
+{
+    char command[DEFAULT_CHAR_SIZE];
+    
+    sprintf(command, "/bin/bash -c \"bash ./scripts_ui/is-valid-kernel.sh --kernel-version '%s'\"", kernel_version);
+    
+    int ret = system(command);
+    return ret == 0;
+}
+
+bool is_ol_kernel_header_valid(char *kernel_version, bool is_rhck)
+{
+    char command[DEFAULT_CHAR_SIZE];
+
+    // If RHCK Kernel field
+    if (is_rhck)
+    {
+        sprintf(command, "/bin/bash -c \"dnf repoquery --quiet --available --queryformat '%%{name}-%%{version}-%%{release}.%%{arch}' kernel-headers-%s | grep -E '^kernel-headers-%s$' &> /dev/null \"", kernel_version, kernel_version);
+        
+    }
+    // If UEK Kernel field
+    else
+    {
+        if (!is_uek_kernel(kernel_version))
+        {
+            return false;
+        }
+
+        sprintf(command, "/bin/bash -c \"dnf repoquery --quiet --available --queryformat '%%{name}-%%{version}-%%{release}.%%{arch}' kernel-uek-devel-%s | grep -E '^kernel-uek-devel-%s$' &> /dev/null \"", kernel_version, kernel_version);
+        
+    }
+
+    int ret = system(command);
+    return ret == 0;
+}
+
+bool is_uek_kernel(char *kernel_version)
+{
+    if (strstr(kernel_version, "uek") != NULL)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+bool is_rhck_kernel_installed()
+{
+    char command[DEFAULT_CHAR_SIZE];
+    sprintf(command, "/bin/bash -c \"rpm -q kernel\"");
+
+    int ret = system(command);
+    return ret == 0;
+
+}
+
+int get_rhck_kernel(char *output)
+{
+    char command[DEFAULT_CHAR_SIZE];    
+    // If multiple RHEL kernels installed, get the latest one
+    sprintf(command, "/bin/bash -c \"rpm -q kernel | uniq | sort --version-sort | tail -1 | sed 's/kernel-//'\"");
+    
+    int ret = execute_command_with_output(command, output, DEFAULT_CHAR_SIZE);
+    return ret;
+}
+
+// Function to execute command and capture output
+int execute_command_with_output(const char *command, char *output, int output_size)
+{
+    FILE *fp;
+    int status = -1;
+    
+    // Clear output buffer
+    memset(output, 0, output_size);
+    
+    // Open pipe to command
+    fp = popen(command, "r");
+    if (fp == NULL) {
+        return -1;
+    }
+    
+    // Read output from command
+    if (fgets(output, output_size, fp) != NULL) {
+        // Remove trailing newline if present
+        int len = strlen(output);
+        if (len > 0 && output[len-1] == '\n') {
+            output[len-1] = '\0';
+        }
+        status = 0;
+    }
+    
+    // Close pipe and get exit status
+    int exit_code = pclose(fp);
+    if (exit_code != 0) {
+        status = exit_code;
+    }
+    
+    return status;
 }

@@ -1,5 +1,5 @@
 # ##############################################################################
-# Copyright (c) 2024 Advanced Micro Devices, Inc.
+# Copyright (c) 2024-2025 Advanced Micro Devices, Inc.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -50,4 +50,6 @@ add_dependencies(rocm_offline_creator rocm_offline_ui)
 
 add_custom_command(TARGET rocm_offline_ui
                   COMMAND echo "Copying to script directory"
+                  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/rocm_menus ${CMAKE_CURRENT_BINARY_DIR}/rocm_menus/
+                  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/driver_menus ${CMAKE_CURRENT_BINARY_DIR}/driver_menus/
                   COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_BINARY_DIR}/rocm_offline_ui ${SCRIPT_DIRECTORY}/)

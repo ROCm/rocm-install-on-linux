@@ -1,0 +1,7 @@
+   By default, the kernel version of the host system is used when creating an 
+   offline package for driver installation.  
+
+   The Advanced Driver Options menu allows for selection of specific versions 
+   of the Linux kernel on the target system.
+ 
+   Kernel version              Kernel version on target system.

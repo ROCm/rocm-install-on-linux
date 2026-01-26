@@ -1,0 +1,15 @@
+All ROCm core tools and libraries
+ROCm runtime packages
+HIP runtime packages
+HIP libraries packages
+OpenCL runtime packages
+Machine learning and MIOpen packages
+
+Developer debug and profiling
+HIP application development
+HIP library development
+OpenCL application development
+OpenMP application development
+Machine learning development
+ 
+Used for graphics configurations (ROCm on Radeon)
