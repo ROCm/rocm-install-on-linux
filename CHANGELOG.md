@@ -4,7 +4,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## (Unreleased) Offline Installer Creator v1.1.0
+## Offline Installer Creator v1.1.0
 
 ### Added
 
