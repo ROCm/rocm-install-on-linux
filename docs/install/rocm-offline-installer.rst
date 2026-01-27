@@ -10,6 +10,12 @@ The ROCm Offline Installer Creator creates an
 installation package for a preconfigured setup of ROCm, the AMD GPU Driver, or a combination
 of the two on a target system without network or internet access.
 
+.. note::
+   
+   The ROCm Offline Installer Creator is deprecated and will be removed in a future release.
+   Equivalent installation capabilities are available through the ROCm Runfile Installer,
+   a self-extracting installer that does not use the operating system package managers.
+
 On a system with internet access (known as the *host*), the tool creates an installer package. It uses the host system 
 as the template for a matching offline system (known as a *target*). After creating the offline installer 
 package, you can run it on a target without network access to install ROCm and the AMD GPU Driver.
