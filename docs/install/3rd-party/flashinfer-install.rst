@@ -17,7 +17,8 @@ see :doc:`rocm:compatibility/ml-compatibility/flashinfer-compatibility`.
 
 .. note::
 
-	FlashInfer is supported on ROCm 6.4.1.
+   FlashInfer is supported on ROCm 7.1.1 and 6.4.1. This topic provides the latest installation 
+   instructions for ROCm 7.1.1. For 6.4.1, see :doc:`previous-versions/flashinfer-history`.
 
 Install FlashInfer on ROCm
 ======================================================================================
@@ -25,8 +26,8 @@ Install FlashInfer on ROCm
 To install FlashInfer on ROCm, you have the following options:
 
 * :ref:`using-docker-with-flashinfer-pre-installed` **(recommended)**
-* :ref:`build-flashinfer-rocm-docker-image`
 * :ref:`flashinfer-pip-install`
+* :ref:`build-flashinfer-rocm-docker-image`
 
 .. _using-docker-with-flashinfer-pre-installed:
 
@@ -37,55 +38,31 @@ Docker is the recommended method to set up a FlashInfer environment, as it avoid
 potential installation issues.  The tested, prebuilt image includes FlashInfer, PyTorch, 
 ROCm, and other dependencies.
 
-1. Pull the Docker image:
+1. Pull the Docker image.
 
    .. code-block:: bash
 
-      docker pull rocm/flashinfer:flashinfer-0.2.5_rocm6.4_ubuntu24.04_py3.12_pytorch2.7
+      docker pull rocm/flashinfer:flashinfer-0.2.5.amd2_rocm7.1.1_ubuntu24.04_py3.12_pytorch2.8
 
-
-2. Launch and connect to the container:
+2. Start a Docker container using the image.
 
    .. code-block:: bash
 
       docker run -it --rm \
-      --privileged -v ./:/app \
+      --privileged \
       --network=host --device=/dev/kfd \
       --device=/dev/dri --group-add video \
       --name=my_flashinfer --cap-add=SYS_PTRACE \
       --security-opt seccomp=unconfined \
       --ipc=host --shm-size 16G \
-      rocm/flashinfer:flashinfer-0.2.5_rocm6.4_ubuntu24.04_py3.12_pytorch2.7
+      rocm/flashinfer:flashinfer-0.2.5.amd2_rocm7.1.1_ubuntu24.04_py3.12_pytorch2.8
 
-
-.. _build-flashinfer-rocm-docker-image:
-
-Build your own Docker image
---------------------------------------------------------------------------------------
-
-FlashInfer supports the ROCm platform and can be run directly by setting up a Docker container from scratch. 
-A Dockerfile is provided in the `https://github.com/ROCm/flashinfer <https://github.com/ROCm/flashinfer>`_ repository to help you get started.
-
-1. Clone the `https://github.com/ROCm/flashinfer <https://github.com/ROCm/flashinfer>`_ repository:
+3. The above step will create a Docker container with FlashInfer pre-installed. During this process, the Dockerfile will have a pre-installed and setup micromamba environment with FlashInfer available inside. To use FlashInfer, activate the micromamba environment.
 
    .. code-block:: bash
-      
-      git clone https://github.com/ROCm/flashinfer.git
 
-2. Enter the directory and build the Dockerfile:
-   
-   .. code-block:: bash
-      
-      cd flashinfer
-      docker build -t rocm/flashinfer:flashinfer-0.2.5_rocm6.4_ubuntu24.04_py3.12_pytorch2.7
+      micromamba activate base
 
-3. . Run the Docker container:
-
-   .. code-block:: bash
-      
-      docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/flashinfer:flashinfer-0.2.5_rocm6.4_ubuntu24.04_py3.12_pytorch2.7
-
-4. The above step will create a Docker container with FlashInfer pre-installed. During this process, the Dockerfile will have pre-installed and setup a micromamba environment named ``flashinfer-py3.12-torch2.7.1-rocm6.4.1``.
 
 .. _flashinfer-pip-install:
 
@@ -94,77 +71,94 @@ Install FlashInfer using pip
 
 Use a base PyTorch Docker image and follow these steps to install FlashInfer using pip.  
 
-1. Pull the base ROCm PyTorch Docker image:
+1. Pull the base ROCm PyTorch Docker image.
 
    .. code-block:: bash
 
-      docker pull rocm/pytorch:rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.7.1
-   
-2. Change the ``<container name>`` and then use the following command:
+      docker pull rocm/pytorch:rocm7.1.1_ubuntu24.04_py3.12_pytorch_release_2.8.0
+
+2. Start a Docker container using the image.
+
+   .. code-block:: bash
+
+      docker run -it --rm \
+      --privileged \
+      --network=host --device=/dev/kfd \
+      --device=/dev/dri --group-add video \
+      --cap-add=SYS_PTRACE --security-opt seccomp=unconfined \
+      --ipc=host --shm-size 128G \
+      rocm/pytorch:rocm7.1.1_ubuntu24.04_py3.12_pytorch_release_2.8.0
+
+3. After setting up the container, install FlashInfer from the AMD-hosted `PyPI repository <https://pypi.amd.com/rocm-7.1.1/simple/amd-flashinfer/>`__.
+
+   .. code-block:: bash
+
+      pip install amd-flashinfer --extra-index-url https://pypi.amd.com/rocm-7.1.1/simple
+
+.. _build-flashinfer-rocm-docker-image:
+
+Build from source
+--------------------------------------------------------------------------------------
+
+FlashInfer supports the ROCm platform and can be run directly by setting up a Docker container from scratch. 
+A Dockerfile is provided in the `https://github.com/ROCm/flashinfer <https://github.com/ROCm/flashinfer/blob/amd-integration/.devcontainer/rocm/Dockerfile>`__ repository to help you get started.
+
+1. Clone the `https://github.com/ROCm/flashinfer <https://github.com/ROCm/flashinfer>`__ repository.
 
    .. code-block:: bash
       
-      docker run -it --privileged --network=host --device=/dev/kfd --device=/dev/dri --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --ipc=host --shm-size 128G --name=<container name> rocm/pytorch:rocm6.4.1_ubuntu24.04_py3.12_pytorch_release_2.7.1
+      git clone https://github.com/ROCm/flashinfer.git
 
-3. After setting up the container, install FlashInfer from the AMD-hosted `PyPI repository <https://pypi.amd.com/simple/>`__
+2. Enter the directory and build the Dockerfile to create a Docker image.
+   
+   .. code-block:: bash
+      
+      cd flashinfer
+      docker build \
+      --build-arg USERNAME=$USER \
+      --build-arg USER_UID=$(id -u) \
+      --build-arg USER_GID=$(id -g) \
+      -f .devcontainer/rocm/Dockerfile \
+      -t rocm-flashinfer-dev .
+
+3. Start a Docker container using the image.
+
+   .. code-block:: bash
+      
+      docker run -it --rm \
+      --privileged --network=host --device=/dev/kfd \
+      --device=/dev/dri --group-add video \
+      --cap-add=SYS_PTRACE \
+      --security-opt seccomp=unconfined \
+      --ipc=host --shm-size 16G \
+      -v $PWD:/workspace \
+      rocm-flashinfer-dev
+
+4. Once you are inside the container, the micromamba environment is automatically activated. You can now install FlashInfer inside it.
 
    .. code-block:: bash
 
-      pip install flashinfer==0.2.5.post10 --extra-index-url=https://pypi.amd.com/simple
+      cd /workspace
+      FLASHINFER_HIP_ARCHITECTURES=gfx942 python -m pip wheel . --wheel-dir=./dist/ --no-deps --no-build-isolation -v
+      cd dist && pip install amd_flashinfer-*.whl
 
 
 Test the FlashInfer installation
 ======================================================================================
 
-Once you have the Docker container running, start using FlashInfer by following these steps:
+Once you have installed FlashInfer, run the following command. If it outputs ``0.2.5+amd.2``, then FlashInfer is installed correctly. You can now use FlashInfer in your projects.
 
-1. Activate the micromamba environment:
+.. code-block:: bash
 
-   .. note::
-
-      If you followed :ref:`flashinfer-pip-install`, you do not need to activate the micromamba environment.
-      If you followed :ref:`using-docker-with-flashinfer-pre-installed` or :ref:`build-flashinfer-rocm-docker-image`, don't forget this step.
-
-   .. code-block:: bash
-      
-      micromamba activate flashinfer-py3.12-torch2.7.1-rocm6.4.1
-
-2. Enter the FlashInfer directory:
-
-   .. note::
-
-      If you followed :ref:`flashinfer-pip-install`, ensure you git clone the repository first.
-
-         .. code-block:: bash
-         
-            git clone https://github.com/ROCm/flashinfer.git 
-
-   .. code-block:: bash
-      
-      cd flashinfer/
-   
-3. Run the example provided in the ``flashinfer/examples`` directory. This example runs ``Batch Decode`` and then verifies the output. 
-
-   .. code-block:: bash
-
-      python examples/test_batch_decode_example.py
-
-3. If FlashInfer was installed correctly, you should see the following output:
-   
-   .. code-block:: bash
-
-      PASS
-
-4. The above output indicates that FlashInfer is installed correctly. You can now use FlashInfer in your projects.
-
+   python -c "import flashinfer; print(flashinfer.__version__)"
 
 Run a FlashInfer example
 ======================================================================================
 
-The `https://github.com/ROCm/flashinfer <https://github.com/ROCm/flashinfer>`_ repository has example code that you can run FlashInfer with.
+The `https://github.com/ROCm/flashinfer <https://github.com/ROCm/flashinfer/tree/amd-integration/examples>`_ repository has example code that you can run FlashInfer with.
 You can save the following code snippet to a Python script once you have FlashInfer installed and run the script to try it out.
 
-1. Save the following code snippet:
+1. Save the following code snippet to a Python script named ``flashinfer_example.py``.
 
    .. code-block:: bash
 
@@ -186,11 +180,13 @@ You can save the following code snippet to a Python script once you have FlashIn
       o = flashinfer.single_decode_with_kv_cache(q, k, v) # decode attention without RoPE on-the-fly
       o_rope_on_the_fly = flashinfer.single_decode_with_kv_cache(q, k, v, pos_encoding_mode="ROPE_LLAMA") # decode with LLaMA style RoPE on-the-fly
 
-2. Save it to a Python script by renaming ``<example_name>``:
+2. Run the script to use FlashInfer.
 
    .. code-block:: bash
 
-      python <example_name>.py
+      python flashinfer_example.py
 
-3. Run the script to use FlashInfer.
-
+Previous versions
+===============================================================================
+See :doc:`previous-versions/flashinfer-history` to find documentation for previous releases
+of the ``ROCm/flashinfer`` Docker image.
