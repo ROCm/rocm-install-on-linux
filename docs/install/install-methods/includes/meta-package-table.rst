@@ -35,7 +35,7 @@ ROCm developer packages
   :header: Meta package; Description; Legacy use case [#legacy]_
 
     ``rocm-developer-tools``; Debug and profile HIP applications.; ``rocmdevtools``
-    ``rocm-hip-runtime-devel``; Develop applications on HIP or port from CUDA.; Legacy use case does not exist.
+    ``rocm-hip-runtime-dev/rocm-hip-runtime-devel`` [#runtime]_; Develop applications on HIP or port from CUDA.; Legacy use case does not exist.
     ``rocm-hip-sdk`` [#dependencies]_; Develop or port HIP applications and libraries for the AMD platform.; ``hiplibsdk``
     ``rocm-ml-sdk``; Develop and run machine learning applications for AMD.; ``mlsdk``
     ``rocm-opencl-sdk``; Develop OpenCL-based applications for the AMD platform.; ``openclsdk``
@@ -44,5 +44,7 @@ ROCm developer packages
 .. rubric:: Footnotes
 
 .. [#legacy] Starting from ROCm 6.4.2, "Legacy use cases" in ``amdgpu-install`` are replaced by the equivalent meta package. In addition, the following ``amdgpu-install`` use cases: ``asan``, ``rocmdev``, ``multimedia``, ``multimediasdk``, ``amf``, and ``workstation`` are deprecated.
+
+.. [#runtime] Use ``rocm-hip-runtime-dev`` for Debian/Ubuntu-based system and ``rocm-hip-runtime-devel`` for RHEL/RPM-based systems.
 
 .. [#dependencies] ``rocm-hip-sdk`` requires ``rocm-hip-runtime-devel``.
