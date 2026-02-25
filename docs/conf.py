@@ -28,9 +28,9 @@ latex_elements = {
 # configurations for PDF output by Read the Docs
 project = "ROCm installation on Linux"
 author = "Advanced Micro Devices, Inc."
-copyright = "Copyright (c) 2025 Advanced Micro Devices, Inc. All rights reserved."
-version = "7.2.0"
-release = "7.2.0"
+copyright = "Copyright (c) 2026 Advanced Micro Devices, Inc. All rights reserved."
+version = "7.2.1"
+release = "7.2.1"
 setting_all_article_info = True
 all_article_info_os = ["linux"]
 all_article_info_author = ""
