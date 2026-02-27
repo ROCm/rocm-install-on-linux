@@ -1,3 +1,5 @@
+:orphan:
+
 .. meta::
   :description: llama.cpp version history
   :keywords: installation, compatibility, Docker, llama.cpp, AMD, ROCm, deep learning framework

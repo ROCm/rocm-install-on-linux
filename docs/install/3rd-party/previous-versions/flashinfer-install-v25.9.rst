@@ -1,3 +1,5 @@
+:orphan:
+
 .. meta::
   :description: Install FlashInfer on ROCm
   :keywords: installation, docker, FlashInfer, deep learning, AMD, ROCm

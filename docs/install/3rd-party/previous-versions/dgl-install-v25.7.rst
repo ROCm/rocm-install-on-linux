@@ -1,3 +1,5 @@
+:orphan:
+
 .. meta::
   :description: Install Deep Graph Library (DGL) on ROCm
   :keywords: installation, docker, DGL, deep learning, AMD, ROCm
