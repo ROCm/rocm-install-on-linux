@@ -143,7 +143,7 @@ For example, use this command to download ROCm 7.2.1 of the ROCm Runfile Install
 
 .. code-block:: shell
 
-   wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-7.2.1/ubuntu/22.04/rocm-installer_1.2.6.70201-46-78~22.04.run
+   wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-7.2.1/ubuntu/22.04/rocm-installer_1.2.6.70201-48-81~22.04.run
 
 Running the ROCm Runfile Installer
 ----------------------------------
