@@ -95,8 +95,8 @@ The ROCm Runfile Installer tool supports the following Linux distributions and v
 *  RHEL: 8.10, 9.4, 9.6, 9.7, 10.0, 10.1
 *  SLES: 15.7
 *  Debian: 12, 13
-*  Oracle Linux: 8.10, 9.6, 10.0
-*  Rocky Linux: 9.6
+*  Oracle Linux: 8.10, 9.7, 10.0
+*  Rocky Linux: 9.7
 
 Oracle Linux 8 and 9 use the corresponding RHEL 8 and 9 builds. Debian 12 and 13 use the Ubuntu 22.04 and 24.04 builds.
 Rocky Linux 9 uses the RHEL 9 builds.
