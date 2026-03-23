@@ -28,7 +28,7 @@ Registering ROCm repositories
                :substitutions:
                
                # Note: There is NO trailing .0 in the patch version for repositories
-               for ver in |rocm_multi_versions|; do
+               for ver in |rocm_multi_versions_new|; do
                sudo tee --append /etc/zypp/repos.d/rocm.repo <<EOF
                [rocm-$ver]
                name=ROCm $ver repository
@@ -64,7 +64,7 @@ installation to avoid conflicts.
    :substitutions:
 
    # Note: There IS a trailing .0 in the patch version for packages
-   for ver in |rocm_multi_versions_package_versions|; do
+   for ver in |rocm_multi_versions_package_versions_new|; do
          sudo zypper --gpg-auto-import-keys install rocm$ver
    done
 
@@ -97,7 +97,7 @@ Uninstall specific meta packages
    :substitutions:
 
    # Note: There IS a trailing .0 in the patch version for packages
-   for ver in |rocm_multi_versions_package_versions|; do
+   for ver in |rocm_multi_versions_package_versions_new|; do
       sudo zypper remove rocm$ver
    done
 
@@ -108,7 +108,7 @@ Uninstall ROCm packages
    :substitutions:
 
    # Note: There IS a trailing .0 in the patch version for packages
-   for ver in |rocm_multi_versions_package_versions|; do
+   for ver in |rocm_multi_versions_package_versions_new|; do
       sudo zypper remove rocm-core$ver amdgpu-core$ver
    done
 
@@ -120,7 +120,7 @@ Remove ROCm repositories
 
    # Remove ROCm repositories
    # Note: There is NO trailing .0 in the patch version for repositories
-   for ver in |rocm_multi_versions|; do
+   for ver in |rocm_multi_versions_new|; do
       sudo zypper removerepo "rocm-$ver"
    done
    

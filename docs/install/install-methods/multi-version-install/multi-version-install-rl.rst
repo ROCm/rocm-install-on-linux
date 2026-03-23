@@ -8,6 +8,10 @@
 Rocky Linux multi-version installation
 *******************************************************
 
+.. note::
+
+   Multi-version ROCm installation is not currently supported on Rocky 9.7.
+
 .. caution::
 
     Ensure that the :doc:`/install/prerequisites` are met.
@@ -20,7 +24,7 @@ Registering ROCm repositories
 .. datatemplate:nodata::
 
    .. tab-set::
-      {% for os_version in config.html_context['rl_version_numbers'] %}
+      {% for os_version in config.html_context['rl_multi_versions'] %}
       {% set os_major, _  = os_version.split('.') %}
       .. tab-item:: Rocky {{ os_version }}
             :sync: rl-{{ os_version }}

@@ -8,10 +8,13 @@
 Oracle Linux multi-version installation
 *****************************************
 
+.. note::
+
+   Multi-version ROCm installation is not currently supported on Oracle Linux 10.1 and 9.7.
+
 .. caution::
 
     Ensure that the :doc:`/install/prerequisites` are met.
-
 
 .. _ol-multi-register-rocm:
 
@@ -21,7 +24,7 @@ Register ROCm repositories
 .. datatemplate:nodata::
 
    .. tab-set::
-      {% for os_version in config.html_context['ol_version_numbers'] %}
+      {% for os_version in config.html_context['ol_multi_versions'] %}
       {% set os_major, _  = os_version.split('.') %}
       .. tab-item:: OL {{ os_version }}
             :sync: ol-{{ os_version }}
@@ -29,6 +32,21 @@ Register ROCm repositories
             .. code-block:: bash
                :substitutions:
 
+               {% if os_major == '8' -%}
+               # Note: There is NO trailing .0 in the patch version for repositories
+               for ver in |rocm_multi_versions_new|; do
+               sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
+               [rocm-$ver]
+               name=ROCm $ver repository
+               baseurl=https://repo.radeon.com/rocm/el{{ os_major }}/$ver/main
+               enabled=1
+               priority=50
+               gpgcheck=1
+               gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+               EOF
+               done
+               sudo dnf clean all
+               {%- else -%}
                # Note: There is NO trailing .0 in the patch version for repositories
                for ver in |rocm_multi_versions|; do
                sudo tee --append /etc/yum.repos.d/rocm.repo <<EOF
@@ -42,6 +60,7 @@ Register ROCm repositories
                EOF
                done
                sudo dnf clean all
+               {%- endif %}  
       {% endfor %}
 
 .. _ol-multi-install:
@@ -63,13 +82,29 @@ Before proceeding with a multi-version ROCm installation, you must remove
 ROCm packages that were previously installed from a single-version
 installation to avoid conflicts.
 
-.. code-block:: bash
-   :substitutions:
+.. datatemplate:nodata::
 
-   # Note: There IS a trailing .0 in the patch version for packages
-   for ver in |rocm_multi_versions_package_versions|; do
-         sudo dnf install rocm$ver
-   done
+   .. tab-set::
+      {% for os_version in config.html_context['ol_multi_versions'] %}
+      {% set os_major, _  = os_version.split('.') %}
+      .. tab-item:: OL {{ os_version }}
+            :sync: ol-{{ os_version }}
+
+            .. code-block:: bash
+               :substitutions:
+
+               {% if os_major == '8' -%}
+               # Note: There IS a trailing .0 in the patch version for packages
+               for ver in |rocm_multi_versions_package_versions_new|; do
+                     sudo dnf install rocm$ver
+               done
+               {%- else -%}
+               # Note: There IS a trailing .0 in the patch version for packages
+               for ver in |rocm_multi_versions_package_versions|; do
+                     sudo dnf install rocm$ver
+               done
+               {%- endif %}  
+      {% endfor %}
 
 .. note::
 
@@ -95,24 +130,56 @@ Uninstalling
 Uninstall specific meta packages
 ---------------------------------------------------------------------------
 
-.. code-block:: bash
-   :substitutions:
+.. datatemplate:nodata::
 
-   # Note: There IS a trailing .0 in the patch version for packages
-   for ver in |rocm_multi_versions_package_versions|; do
-      sudo dnf remove rocm$ver
-   done
+   .. tab-set::
+      {% for os_version in config.html_context['ol_multi_versions'] %}
+      {% set os_major, _  = os_version.split('.') %}
+      .. tab-item:: OL {{ os_version }}
+            :sync: ol-{{ os_version }}
+
+            .. code-block:: bash
+               :substitutions:
+
+               {% if os_major == '8' -%}
+               # Note: There IS a trailing .0 in the patch version for packages
+               for ver in |rocm_multi_versions_package_versions_new|; do
+                     sudo dnf remove rocm$ver
+               done
+               {%- else -%}
+               # Note: There IS a trailing .0 in the patch version for packages
+               for ver in |rocm_multi_versions_package_versions|; do
+                     sudo dnf remove rocm$ver
+               done
+               {%- endif %}  
+      {% endfor %}
 
 Uninstall ROCm packages
 ---------------------------------------------------------------------------
 
-.. code-block:: bash
-   :substitutions:
+.. datatemplate:nodata::
 
-   # Note: There IS a trailing .0 in the patch version for packages
-   for ver in |rocm_multi_versions_package_versions|; do
-      sudo dnf remove rocm-core$ver amdgpu-core$ver
-   done
+   .. tab-set::
+      {% for os_version in config.html_context['ol_multi_versions'] %}
+      {% set os_major, _  = os_version.split('.') %}
+      .. tab-item:: OL {{ os_version }}
+            :sync: ol-{{ os_version }}
+
+            .. code-block:: bash
+               :substitutions:
+
+               {% if os_major == '8' -%}
+               # Note: There IS a trailing .0 in the patch version for packages
+               for ver in |rocm_multi_versions_package_versions_new|; do
+                     sudo dnf remove rocm-core$ver amdgpu-core$ver
+               done
+               {%- else -%}
+               # Note: There IS a trailing .0 in the patch version for packages
+               for ver in |rocm_multi_versions_package_versions|; do
+                     sudo dnf remove rocm-core$ver amdgpu-core$ver
+               done
+               {%- endif %}  
+      {% endfor %}
 
 Remove ROCm repositories
 ---------------------------------------------------------------------------

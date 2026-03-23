@@ -53,8 +53,6 @@ subtrees:
                   title: Rocky Linux
                 - file: install/install-methods/multi-version-install/multi-version-install-sles
                   title: SUSE Linux Enterprise Server
-            - file: install/rocm-offline-installer
-              title: ROCm Offline Installer Creator
             - file: install/rocm-runfile-installer
               title: ROCm Runfile Installer
         - file: install/post-install

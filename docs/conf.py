@@ -5,15 +5,17 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # ROCm version numbers
-rocm_version = '7.2'
+rocm_version = '7.2.1'
 rocm_major_version = '7.0'
 rocm_multi_versions = '7.2 7.1.1' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_multi_versions_new = '7.2.1 7.2'
 rocm_multi_versions_package_versions = '7.2.0 7.1.1' # however, in multi, the packages use 6.3.0
-rocm_directory_version = '7.2.0' # in 6.0 rocm was located in /opt/rocm-6.0.0
-amdgpu_version = '7.2' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '7.2.70200-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
-udev_version = '30.30.0.0-2278356'
-udev_amdgpu_version = '30.30'
+rocm_multi_versions_package_versions_new = '7.2.1 7.2.0'
+rocm_directory_version = '7.2.1' # in 6.0 rocm was located in /opt/rocm-6.0.0
+amdgpu_version = '7.2.1' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '7.2.1.70201-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+udev_version = '30.30.1.0-2303411'
+udev_amdgpu_version = '30.30.1'
 
 
 latex_engine = "xelatex"
@@ -44,8 +46,10 @@ rhel_version_numbers = ['10.1', '10.0', '9.7', '9.6', '9.4', '8.10']
 rhel_multi_versions = ['10.1', '10.0', '9.7', '9.6', '9.4', '8.10']
 sles_version_numbers = ['15.7']
 ol_release_version_numbers = ['10', '9', '8']
-ol_version_numbers = ['10.0', '9.6', '8.10']
-rl_version_numbers = ['9.6']
+ol_version_numbers = ['10.1', '9.7', '8.10']
+ol_multi_versions = ['10.0', '9.6', '8.10']
+rl_version_numbers = ['9.7']
+rl_multi_versions = ['9.6']
 
 exclude_patterns = [
     'temp', 
@@ -80,6 +84,8 @@ rst_prolog = f"""
 .. |rocm_major_version| replace:: {rocm_major_version}
 .. |rocm_multi_versions| replace:: {rocm_multi_versions}
 .. |rocm_multi_versions_package_versions| replace:: {rocm_multi_versions_package_versions}
+.. |rocm_multi_versions_new| replace:: {rocm_multi_versions_new}
+.. |rocm_multi_versions_package_versions_new| replace:: {rocm_multi_versions_package_versions_new}
 .. |amdgpu_version| replace:: {amdgpu_version}
 .. |rocm_directory_version| replace:: {rocm_directory_version}
 .. |amdgpu_install_version| replace:: {amdgpu_install_version}
@@ -99,9 +105,11 @@ html_context = {
     "rhel_release_version_numbers" : rhel_release_version_numbers,
     "rhel_version_numbers" : rhel_version_numbers,
     "rhel_multi_versions" : rhel_multi_versions,
+    "ol_multi_versions" : ol_multi_versions,    
     "ol_release_version_numbers" : ol_release_version_numbers,
     "ol_version_numbers" : ol_version_numbers,
-    "rl_version_numbers" : rl_version_numbers
+    "rl_version_numbers" : rl_version_numbers,
+    "rl_multi_versions" : rl_multi_versions
 }
 
 footnote_backlinks = False
