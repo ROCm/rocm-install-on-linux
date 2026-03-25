@@ -24,7 +24,6 @@ Installation methods
 
 * :ref:`package_manager`
 * :ref:`Multi-version installation <multi-version-install-overview>`
-* :ref:`ROCm Offline Installer Creator <rocm-offline-installer-creator>`
 * :ref:`ROCm Runfile Installer <rocm-runfile-installer>`
 
 .. _package_manager:
@@ -45,16 +44,6 @@ A multi-version ROCm installation handles situations where users need multiple
 versions of ROCm on the same machine for compatibility with different
 applications and hardware, testing, and other use cases.
 For instructions, see :doc:`Installing multiple ROCm versions<../install/install-methods/multi-version-install-index>`.
-
-.. _rocm-offline-installer-creator:
-
-ROCm Offline Installer Creator
-===========================================================
-
-The ROCm Offline Installer Creator creates an 
-installation package for a preconfigured setup of ROCm, the AMDGPU driver, or a combination
-of the two on a target system without network or internet access.
-See :doc:`ROCm Offline Installer Creator <../install/rocm-offline-installer>` for instructions.
 
 .. _rocm-runfile-installer:
 

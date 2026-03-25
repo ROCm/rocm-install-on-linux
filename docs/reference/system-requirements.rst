@@ -105,8 +105,8 @@ GPUs listed in the following table support compute workloads (no display informa
 .. [#mi300A-os] AMD Instinct MI300A GPU supports all :ref:`supported_distributions` listed below except Debian 13, Oracle Linux 10, Oracle Linux 9, and Oracle Linux 8.
 .. [#mi200x-os] AMD Instinct MI200 Series GPUs support all :ref:`supported_distributions` listed below except Debian 13, Rocky Linux 9, Oracle Linux 10, Oracle Linux 9, and Oracle Linux 8.
 .. [#mi100-os] AMD Instinct MI100 GPU supports all :ref:`supported_distributions` listed below except Debian 13, Debian 12, Rocky Linux 9, Oracle Linux 10, Oracle Linux 9, and Oracle Linux 8.
-.. [#RDNA-OS] AMD Radeon PRO (AI PRO R9700, AI PRO R9600D, PRO V710, PRO W7900 Dual Slot, PRO W7900, PRO W7800 48GB, PRO W7800, PRO W7700, and PRO W6800) and AMD Radeon (RX 9070 XT, RX 9070 GRE, RX 9070, RX 9060 XT LP, RX 9060 XT, RX 9060, RX 7900 XTX, RX 7900 XT, RX 7900 GRE, RX 7800 XT, RX 7700 XT, and RX 7700) only support Ubuntu 24.04.3, Ubuntu 22.04.5, RHEL 10.1, and RHEL 9.7.
-.. [#rd-v620] AMD Radeon PRO V620 only supports Ubuntu 24.04.3 and Ubuntu 22.04.5.
+.. [#RDNA-OS] AMD Radeon PRO (AI PRO R9700, AI PRO R9600D, PRO V710, PRO W7900 Dual Slot, PRO W7900, PRO W7800 48GB, PRO W7800, PRO W7700, and PRO W6800) and AMD Radeon (RX 9070 XT, RX 9070 GRE, RX 9070, RX 9060 XT LP, RX 9060 XT, RX 9060, RX 7900 XTX, RX 7900 XT, RX 7900 GRE, RX 7800 XT, RX 7700 XT, and RX 7700) only support Ubuntu 24.04.4, Ubuntu 22.04.5, RHEL 10.1, and RHEL 9.7.
+.. [#rd-v620] AMD Radeon PRO V620 only supports Ubuntu 24.04.4 and Ubuntu 22.04.5.
 
 .. _supported_distributions:
 
@@ -120,7 +120,7 @@ AMD ROCm software supports the following Linux distributions.
     :header: "Operating system", "Kernel", "Glibc", "Support"
     :escape: \
 
-    "Ubuntu 24.04.3", "6.8 [GA], 6.14 [HWE]", "2.39", "✅"
+    "Ubuntu 24.04.4", "6.8 [GA], 6.17 [HWE]", "2.39", "✅"
     "Ubuntu 22.04.5", "5.15 [GA], 6.8 [HWE]", "2.35", "✅"
     "RHEL 10.1", "6.12.0-124", "2.39", "✅ [#rhel-10]_"
     "RHEL 10.0", "6.12.0-55", "2.39", "✅ [#rhel-10]_"

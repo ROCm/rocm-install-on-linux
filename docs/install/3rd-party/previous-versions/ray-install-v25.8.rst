@@ -1,3 +1,5 @@
+:orphan:
+
 .. meta::
   :description: Install Ray on ROCm
   :keywords: installation, Docker, deep learning, Ray, AMD, ROCm
@@ -121,7 +123,7 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
       memray==1.17.2
       ray @ https://s3-us-west-2.amazonaws.com/ray-wheels/master/005c372262e050d5745f475e22e64305fa07f8b8/ray-3.0.0.dev0-cp312-cp312-manylinux2014_x86_64.whl#sha256=e8f457f1bb8009b1e2744733c269fc54f3ec78e3705e16a2f88a8305720efe1b
 
-6. Verify the installation of ROCm Ray. See :ref:`ray-verify-installation`.
+6. Verify the installation of ROCm Ray. See :ref:`ray-verify-installation-v258`.
 
 .. _install-rocm-ray-bare-metal-v258:
 
@@ -176,7 +178,7 @@ Build Ray from source
 Follow the `Building Ray from Source guide <https://docs.ray.io/en/latest/ray-contribute/development.html>`__ 
 to build Ray with ROCm support from source.
 
-.. _ray-verify-installation:
+.. _ray-verify-installation-v258:
 
 Test the Ray installation
 ======================================================================================
