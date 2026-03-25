@@ -54,7 +54,7 @@ Register packages
                 :substitutions:
 
                 # Note: There is NO trailing .0 in the patch version for repositories
-                for ver in |rocm_multi_versions|; do
+                for ver in |rocm_multi_versions_new|; do
                 sudo tee --append /etc/apt/sources.list.d/rocm.list << EOF
                 deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/$ver {{ os_release }} main
                 EOF
@@ -91,7 +91,7 @@ installation to avoid conflicts.
     :substitutions:
 
     # Note: There IS a trailing .0 in the patch version for packages
-    for ver in |rocm_multi_versions_package_versions|; do
+    for ver in |rocm_multi_versions_package_versions_new|; do
         sudo apt install rocm$ver
     done
 
@@ -123,7 +123,7 @@ Uninstall specific meta packages
     :substitutions:
 
     # Note: There IS a trailing .0 in the patch version for packages
-    for ver in |rocm_multi_versions_package_versions|; do
+    for ver in |rocm_multi_versions_package_versions_new|; do
         sudo apt autoremove rocm$ver
     done
 
@@ -134,7 +134,7 @@ Uninstall ROCm packages
     :substitutions:
 
     # Note: There IS a trailing .0 in the patch version for packages
-    for ver in |rocm_multi_versions_package_versions|; do
+    for ver in |rocm_multi_versions_package_versions_new|; do
         sudo apt autoremove rocm-core$ver
     done
 

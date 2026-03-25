@@ -47,11 +47,8 @@ To install ROCm on bare metal, follow :doc:`/install/install-overview`.
 
    .. important::
 
-      The ``rocm/pytorch:latest`` and ``rocm/pytorch:latest-release`` tags point to
+      The ``rocm/pytorch:latest`` tag points to
       a Docker image with the latest ROCm-tested release of PyTorch.
-
-      The ``rocm/pytorch:latest-release-preview`` tag points to a more recent
-      PyTorch version with limited testing on ROCm.
 
    You can download Docker images with specific ROCm, PyTorch, and operating
    system versions. See the available tags on
@@ -417,107 +414,77 @@ wheels command, you must select **Linux**, **Python**, **pip**, and **ROCm** in 
    The available ROCm release varies between the **PyTorch Build** of ``Stable`` or ``Nightly``.
    More recent releases are generally available through the Nightly builds.
 
-1. Choose one of the following three options:
+.. dropdown:: Setting up the environment for the wheel installation
 
-   **Option 1:**
+  1. Choose one of the following three options:
+  
+     **Option 1:**
+  
+     a. Download a base Docker image with the correct ROCm version.
+  
+        .. list-table::
+            :header-rows: 1
+  
+            * - Base OS
+              - Docker Image
+            * - Ubuntu 22.04
+              - `rocm/dev-ubuntu-22.04 <https://hub.docker.com/r/rocm/dev-ubuntu-22.04>`_
+            * - Ubuntu 24.04
+              - `rocm/dev-ubuntu-24.04 <https://hub.docker.com/r/rocm/dev-ubuntu-24.04>`_
+  
+     b. Pull the selected image.
+  
+        .. code-block:: bash
+  
+            docker pull rocm/dev-ubuntu-22.04:latest
+  
+     c. Start a Docker container using the downloaded image.
+  
+        .. code-block:: bash
+  
+            docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/dev-ubuntu-22.04:latest
+  
+     **Option 2:**
+  
+     a. Select a base OS Docker image. Check :ref:`system-requirements`.
+  
+     b. Pull selected base OS image (Ubuntu 22.04, for example).
+  
+        .. code-block:: bash
+  
+            docker pull ubuntu:22.04
+  
+     c. Start a Docker container using the downloaded image.
+  
+        .. code-block:: bash
+  
+            docker run -it --device=/dev/kfd --device=/dev/dri --group-add video ubuntu:22.04
+  
+     d. Install ROCm using the directions in the :ref:`rocm-install-overview` section.
+  
+     **Option 3:**
+  
+     Install on bare-metal. Check :ref:`system-requirements` and install ROCm using the
+     instructions in the :ref:`rocm-install-overview` section.
 
-   a. Download a base Docker image with the correct ROCm version.
+  2. Install the required dependencies for the wheels package.
+  
+     .. code-block:: bash
+  
+         sudo apt update
+         sudo apt install libjpeg-dev python3-dev python3-pip
+         pip3 install wheel setuptools
 
-      .. list-table::
-          :header-rows: 1
+* Install ``torch``, ``torchvision``, and ``torchaudio``, as specified in the `installation matrix <https://pytorch.org/get-started/locally/>`_.
 
-          * - Base OS
-            - Docker Image
-          * - Ubuntu 22.04
-            - `rocm/dev-ubuntu-22.04 <https://hub.docker.com/r/rocm/dev-ubuntu-22.04>`_
-          * - Ubuntu 24.04
-            - `rocm/dev-ubuntu-24.04 <https://hub.docker.com/r/rocm/dev-ubuntu-24.04>`_
+  .. code-block:: bash
 
-   b. Pull the selected image.
+      pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm7.2      
 
-      .. code-block:: bash
+  .. note::
 
-          docker pull rocm/dev-ubuntu-22.04:latest
+      The above command uses the ROCm 7.2 PyTorch wheel. If you want a different version of ROCm, modify the command accordingly.
 
-   c. Start a Docker container using the downloaded image.
-
-      .. code-block:: bash
-
-          docker run -it --device=/dev/kfd --device=/dev/dri --group-add video rocm/dev-ubuntu-22.04:latest
-
-   **Option 2:**
-
-   a. Select a base OS Docker image. Check :ref:`system-requirements`.
-
-   b. Pull selected base OS image (Ubuntu 22.04, for example).
-
-      .. code-block:: bash
-
-          docker pull ubuntu:22.04
-
-   c. Start a Docker container using the downloaded image.
-
-      .. code-block:: bash
-
-          docker run -it --device=/dev/kfd --device=/dev/dri --group-add video ubuntu:22.04
-
-   d. Install ROCm using the directions in the :ref:`rocm-install-overview` section.
-
-   **Option 3:**
-
-   Install on bare metal. Check :ref:`system-requirements` and install ROCm using the
-   directions in the  :ref:`rocm-install-overview` section.
-
-2. Install the required dependencies for the wheels package.
-
-   .. code-block:: bash
-
-       sudo apt update
-       sudo apt install libjpeg-dev python3-dev python3-pip
-       pip3 install wheel setuptools
-
-3. Install ``torch``, ``torchvision``, and ``torchaudio``, as specified in the
-   `installation matrix <https://pytorch.org/get-started/locally/>`_.
-
-   .. note::
-
-      The following command uses the ROCm 7.0 PyTorch wheel. If you want a different version of ROCm,
-      modify the command accordingly.
-
-   .. code-block:: bash
-      :substitutions:
-
-       pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm7.0
-
-4. (Optional) Use MIOpen kdb files with ROCm PyTorch wheels.
-
-   PyTorch uses `MIOpen <https://github.com/ROCm/MIOpen>`_ for machine learning
-   primitives, which are compiled into kernels at runtime. Runtime compilation causes a small warm-up
-   phase when starting PyTorch, and MIOpen kdb files contain precompiled kernels that can speed up
-   application warm-up phases.
-
-   MIOpen kdb files can be used with ROCm PyTorch wheels. However, the kdb files need to be placed in
-   a specific location with respect to the PyTorch installation path. A helper script simplifies this task by
-   taking the ROCm version and GPU architecture as inputs. This works for Ubuntu.
-
-   You can download the helper script here:
-   `install_kdb_files_for_pytorch_wheels.sh <https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh>`_, or use:
-
-   .. code-block:: bash
-
-       wget https://raw.githubusercontent.com/wiki/ROCm/pytorch/files/install_kdb_files_for_pytorch_wheels.sh
-
-   After installing ROCm PyTorch wheels, run the following code:
-
-   .. code-block:: bash
-
-       #Optional: replace 'gfx90a' with your architecture and 6.2.4 with your preferred ROCm version
-       export GFX_ARCH=gfx90a
-
-       #Optional
-       export ROCM_VERSION=6.2.4
-
-       ./install_kdb_files_for_pytorch_wheels.sh
 
 .. _using-pytorch-rocm-docker-image:
 .. _building-pytorch-from-source:
