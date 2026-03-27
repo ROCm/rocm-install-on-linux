@@ -84,6 +84,7 @@ validated for ROCm 7.2.1.
 .. tab-set::
 
    .. tab-item:: PyTorch 2.9.1
+      :selected:   
 
          .. tab-set::
 
