@@ -1,3 +1,5 @@
+:orphan:
+
 .. meta::
   :description: Installing llama.cpp for ROCm
   :keywords: installation, llama.cpp, docker, deep learning, AMD, ROCm, GGML

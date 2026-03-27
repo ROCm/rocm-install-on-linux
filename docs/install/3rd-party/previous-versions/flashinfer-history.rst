@@ -1,3 +1,5 @@
+:orphan:
+
 .. meta::
   :description: FlashInfer version history
   :keywords: installation, compatibility, Docker, version, FlashInfer, deep learning, AMD, ROCm
