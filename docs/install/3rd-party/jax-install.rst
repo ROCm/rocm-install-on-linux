@@ -197,7 +197,7 @@ Follow these steps if you prefer to install ROCm manually on your host system or
    .. code-block:: bash
 
       +------------------------------------------------------------------------------+
-      | AMD-SMI 26.2.1+fc0010cf6a    amdgpu version: 6.14.14  ROCm version: 7.2.0    |
+      | AMD-SMI 26.2.1+fc0010cf6a    amdgpu version: 6.14.14  ROCm version: 7.2.1    |
       | VBIOS version: 023.040.001.008.000001                                        |
       | Platform: Linux Baremetal                                                    |
       |-------------------------------------+----------------------------------------|
