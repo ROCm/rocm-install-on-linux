@@ -27,6 +27,8 @@ see :doc:`rocm:compatibility/ml-compatibility/tensorflow-compatibility`.
 
     * - ROCm version
       - TensorFlow version
+    * - 7.2.x
+      - 2.20.0, 2.19.1, 2.18.1
     * - 7.1.x
       - 2.20.0, 2.19.1, 2.18.1
     * - 7.0.x
