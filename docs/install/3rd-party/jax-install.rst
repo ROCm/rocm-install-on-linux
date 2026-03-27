@@ -74,12 +74,12 @@ Docker image support
 
 AMD validates and publishes ready-made JAX images with ROCm backends on Docker
 Hub. The following Docker image tags and associated inventories are validated
-for ROCm 7.2.0.
+for ROCm 7.2.1.
 For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/rocm/jax-community/tags>`__ on Docker Hub.
 
 .. tab-set::
 
-   .. tab-item:: JAX 0.8.0
+   .. tab-item:: JAX 0.8.2
       :selected:
 
       .. tab-set::
@@ -90,12 +90,12 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
 
             .. code-block:: shell
 
-               docker pull rocm/jax:rocm7.2-jax0.8.0-py3.12
+               docker pull rocm/jax:rocm7.2.1-jax0.8.2-py3.12
 
             See
-            ``rocm/jax:rocm7.2-jax0.8.0-py3.12``
+            ``rocm/jax:rocm7.2.1-jax0.8.2-py3.12``
             on `Docker Hub
-            <https://hub.docker.com/layers/rocm/jax/rocm7.2-jax0.8.0-py3.12/images/sha256-775462fde09a7a8f5685174bbb6353d8505f59b156df3d565edf98f890040526>`__.
+            <https://hub.docker.com/layers/rocm/jax/rocm7.2.1-jax0.8.2-py3.12/images/sha256-db79eadd49e9c02588b33f397b52c315a334de4b8e5896006b5dbc18ffd3f1fa>`__.
 
          .. tab-item:: Python 3.11
 
@@ -103,12 +103,12 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
 
             .. code-block:: shell
 
-               docker pull rocm/jax:rocm7.2-jax0.8.0-py3.11
+               docker pull rocm/jax:rocm7.2-jax0.8.2-py3.11
 
             See
-            ``rocm/jax:rocm7.2-jax0.8.0-py3.11``
+            ``rocm/jax:rocm7.2.1-jax0.8.2-py3.11``
             on `Docker Hub
-            <https://hub.docker.com/layers/rocm/jax/rocm7.2-jax0.8.0-py3.11/images/sha256-fd11ee894df308770794ea389e8080d52ea4eff817aebc91cd49cf725bc36af8>`__.
+            <https://hub.docker.com/layers/rocm/jax/rocm7.2.1-jax0.8.2-py3.11/images/sha256-5ed631c65c49f0dda84d576fe18fa1d3e446497ad2ff3c58ca5369c29b7c2875>`__.
 
 .. _build-jax-rocm-docker-image:
 
@@ -121,7 +121,7 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
    .. code-block:: bash
 
-      docker pull rocm/dev-ubuntu-24.04:7.1-complete
+      docker pull rocm/dev-ubuntu-24.04:7.2-complete
 
 2. Launch the Docker container. After pulling the image, launch a container using this command:
 
@@ -138,16 +138,16 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
           --security-opt seccomp=unconfined \
           -v $(pwd):/jax_dir \
           --name rocm_jax \
-          rocm/dev-ubuntu-24.04:7.1-complete /bin/bash
+          rocm/dev-ubuntu-24.04:7.2-complete /bin/bash
 
 3. Install the latest version of JAX. Inside the running container, install the required version of JAX with ROCm support using pip:
 
    .. code-block:: bash
 
-      pip3 install --break-system-packages jax==0.7.1
-      pip3 install --break-system-packages jax-rocm7-pjrt==0.7.1
-      pip3 install --break-system-packages jax-rocm7-plugin==0.7.1
-      pip3 install --break-system-packages https://github.com/ROCm/jax/releases/download/rocm-jax-v0.7.1/jaxlib-0.7.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+      pip3 install --break-system-packages jax==0.8.2
+      pip3 install --break-system-packages jax-rocm7-pjrt==0.8.2
+      pip3 install --break-system-packages jax-rocm7-plugin==0.8.2
+      pip3 install --break-system-packages https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.8.2/jaxlib-0.8.2+rocm7-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
 
 4. Verify the installed JAX version. Check whether the correct version of JAX and its ROCm plugins are installed.
 
@@ -159,10 +159,10 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
    .. code-block::
 
-      jax==0.7.1
-      jax-rocm7-pjrt==0.7.1
-      jax-rocm7-plugin==0.7.1
-      jaxlib==0.7.1
+      jax==0.8.2
+      jax-rocm7-pjrt==0.8.2
+      jax-rocm7-plugin==0.8.2
+      jaxlib==0.8.2
 
 5. Explicitly set the ``LLVM_PATH`` environment variable. This helps XLA find ``ld.lld`` in the PATH at runtime.
 
@@ -197,14 +197,18 @@ Follow these steps if you prefer to install ROCm manually on your host system or
    .. code-block:: bash
 
       +------------------------------------------------------------------------------+
-      | AMD-SMI 26.0.0+37d158ab      amdgpu version: 6.14.14  ROCm version: 7.0.1    |
+      | AMD-SMI 26.2.1+fc0010cf6a    amdgpu version: 6.14.14  ROCm version: 7.2.0    |
+      | VBIOS version: 023.040.001.008.000001                                        |
       | Platform: Linux Baremetal                                                    |
       |-------------------------------------+----------------------------------------|
       | BDF                        GPU-Name | Mem-Uti   Temp   UEC       Power-Usage |
       | GPU  HIP-ID  OAM-ID  Partition-Mode | GFX-Uti    Fan               Mem-Usage |
       |=====================================+========================================|
-      | 0000:09:00.0    AMD Instinct MI325X | 0 %      49 °C   0          144/1000 W |
-      |   0       0       3        SPX/NPS1 | 0 %        N/A           283/262128 MB |
+      | 0000:05:00.0    AMD Instinct MI355X | 0 %      54 °C   0          234/1400 W |
+      |   0       1       6        SPX/NPS1 | 0 %        N/A           283/294896 MB |
+      |-------------------------------------+----------------------------------------|
+      | 0000:15:00.0    AMD Instinct MI355X | 0 %      54 °C   0          238/1400 W |
+      |   1       3       7        SPX/NPS1 | 0 %        N/A           283/294896 MB |
       +-------------------------------------+----------------------------------------+
       +------------------------------------------------------------------------------+
       | Processes:                                                                   |
@@ -217,10 +221,10 @@ Follow these steps if you prefer to install ROCm manually on your host system or
 
    .. code-block:: bash
 
-      pip3 install --break-system-packages jax==0.7.1
-      pip3 install --break-system-packages jax-rocm7-pjrt==0.7.1
-      pip3 install --break-system-packages jax-rocm7-plugin==0.7.1
-      pip3 install --break-system-packages https://github.com/ROCm/jax/releases/download/rocm-jax-v0.7.1/jaxlib-0.7.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+      pip3 install --break-system-packages jax==0.8.2
+      pip3 install --break-system-packages jax-rocm7-pjrt==0.8.2
+      pip3 install --break-system-packages jax-rocm7-plugin==0.8.2
+      pip3 install --break-system-packages https://github.com/ROCm/rocm-jax/releases/download/rocm-jax-v0.8.2/jaxlib-0.8.2+rocm7-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
 
 3. Verify the installed JAX version. Check whether the correct version of JAX and its ROCm plugins are installed.
 
@@ -249,13 +253,13 @@ Follow these steps if you prefer to install ROCm manually on your host system or
 Build JAX from source
 --------------------------------------------------------------------------------------
 
-The `<https://github.com/ROCm/rocm-jax/tree/rocm-jaxlib-v0.7.1>`__ repository contains sources for the ROCm
+The `<https://github.com/ROCm/rocm-jax/tree/rocm-jaxlib-v0.8.2>`__ repository contains sources for the ROCm
 plugin for JAX as well as Dockerfiles used to build the AMD ``rocm/jax`` images.
 For the most up-to-date instructions, refer directly to the instructions in the repository:
 
-- See `Quick build <https://github.com/ROCm/ROCm-jax/tree/rocm-jaxlib-v0.7.1?tab=readme-ov-file#quickbuild>`__ for concise high-level steps.
+- See `Quick build <https://github.com/ROCm/ROCm-jax/tree/rocm-jaxlib-v0.8.2?tab=readme-ov-file#quickbuild>`__ for concise high-level steps.
 
-- See `Building <https://github.com/ROCm/rocm-jax/blob/rocm-jaxlib-v0.7.1/BUILDING.md#building>`__ for more in-depth build instructions and troubleshooting suggestions.
+- See `Building <https://github.com/ROCm/rocm-jax/blob/rocm-jaxlib-v0.8.2/BUILDING.md#building>`__ for more in-depth build instructions and troubleshooting suggestions.
 
 .. _jax-verify-installation:
 
