@@ -91,6 +91,7 @@ validated for ROCm 7.1.0.
 .. tab-set::
 
    .. tab-item:: tensorflow-rocm 2.20.0
+      :selected:
 
       .. tab-set::
 
@@ -143,7 +144,6 @@ validated for ROCm 7.1.0.
             <https://hub.docker.com/layers/rocm/tensorflow/rocm7.1-py3.10-tf2.20-dev/images/sha256-d2555e2af834026c53c2ca627b2cb4f0fa07825cdc96b1f932c6f825f194b3d4>`__.
 
    .. tab-item:: tensorflow-rocm 2.19.1
-      :selected:
 
       .. tab-set::
 
