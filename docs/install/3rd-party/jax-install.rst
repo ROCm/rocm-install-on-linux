@@ -90,12 +90,12 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
 
             .. code-block:: shell
 
-               docker pull rocm/jax:rocm7.2-jax0.8.2-py3.12
+               docker pull rocm/jax:rocm7.2.1-jax0.8.2-py3.12
 
             See
-            ``rocm/jax:rocm7.2-jax0.8.2-py3.12``
+            ``rocm/jax:rocm7.2.1-jax0.8.2-py3.12``
             on `Docker Hub
-            <https://hub.docker.com/layers/rocm/jax/rocm7.2-jax0.8.2-py3.12/images/sha256-775462fde09a7a8f5685174bbb6353d8505f59b156df3d565edf98f890040526>`__.
+            <https://hub.docker.com/layers/rocm/jax/rocm7.2.1-jax0.8.2-py3.12/images/sha256-db79eadd49e9c02588b33f397b52c315a334de4b8e5896006b5dbc18ffd3f1fa>`__.
 
          .. tab-item:: Python 3.11
 
@@ -106,9 +106,9 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
                docker pull rocm/jax:rocm7.2-jax0.8.2-py3.11
 
             See
-            ``rocm/jax:rocm7.2-jax0.8.2-py3.11``
+            ``rocm/jax:rocm7.2.1-jax0.8.2-py3.11``
             on `Docker Hub
-            <https://hub.docker.com/layers/rocm/jax/rocm7.2-jax0.8.2-py3.11/images/sha256-fd11ee894df308770794ea389e8080d52ea4eff817aebc91cd49cf725bc36af8>`__.
+            <https://hub.docker.com/layers/rocm/jax/rocm7.2.1-jax0.8.2-py3.11/images/sha256-5ed631c65c49f0dda84d576fe18fa1d3e446497ad2ff3c58ca5369c29b7c2875>`__.
 
 .. _build-jax-rocm-docker-image:
 
@@ -197,7 +197,7 @@ Follow these steps if you prefer to install ROCm manually on your host system or
    .. code-block:: bash
 
       +------------------------------------------------------------------------------+
-      | AMD-SMI 26.2.1+fc0010cf6a    amdgpu version: 6.14.14  ROCm version: 7.2.0    |
+      | AMD-SMI 26.2.1+fc0010cf6a    amdgpu version: 6.14.14  ROCm version: 7.2.1    |
       | VBIOS version: 023.040.001.008.000001                                        |
       | Platform: Linux Baremetal                                                    |
       |-------------------------------------+----------------------------------------|
