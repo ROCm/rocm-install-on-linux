@@ -83,7 +83,7 @@ validated for ROCm 7.2.1.
 
 .. tab-set::
 
-   .. tab-item:: PyTorch 2.9.1
+   .. tab-item:: PyTorch 2.9.1  
 
          .. tab-set::
 
@@ -710,4 +710,3 @@ Troubleshooting
 * How do you profile PyTorch workloads?
 
   Use the PyTorch Profiler as described in :ref:`mi300x-pytorch-profiler` to profile GPU kernels on ROCm.
-

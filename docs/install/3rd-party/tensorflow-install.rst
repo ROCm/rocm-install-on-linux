@@ -27,6 +27,8 @@ see :doc:`rocm:compatibility/ml-compatibility/tensorflow-compatibility`.
 
     * - ROCm version
       - TensorFlow version
+    * - 7.2.x
+      - 2.20.0, 2.19.1, 2.18.1
     * - 7.1.x
       - 2.20.0, 2.19.1, 2.18.1
     * - 7.0.x
@@ -92,6 +94,7 @@ validated for ROCm 7.2.1.
 .. tab-set::
 
    .. tab-item:: tensorflow-rocm 2.20.0
+      :selected:
 
       .. tab-set::
 
@@ -142,7 +145,6 @@ validated for ROCm 7.2.1.
             on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.2.1-py3.10-tf2.20-dev/images/sha256-8461e97db49ce352c670a4dacc0d7e8101942b4302ff329cfe20279c0b2af326>`__.
 
    .. tab-item:: tensorflow-rocm 2.19.1
-      :selected:
 
       .. tab-set::
 
