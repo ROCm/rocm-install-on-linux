@@ -246,7 +246,7 @@ validated for ROCm 7.2.1.
             See
             ``rocm/pytorch:rocm7.2.1_ubuntu24.04_py3.12_pytorch_release_2.7.1``
             on `Docker Hub
-            <https://hub.docker.com/layers/rocm/pytorch/rocm7.2_ubuntu24.04_py3.12_pytorch_release_2.7.1/images/sha256-ba4b669ebe67a6580dd5d0197e1927476fd26718850a2a9e85cd47829813b72e>`__.
+            <https://hub.docker.com/layers/rocm/pytorch/rocm7.2.1_ubuntu24.04_py3.12_pytorch_release_2.7.1/images/sha256-d9ac66c8f1741b3f46460fe5e166bfc03cd7099da2eb74c261bbfc2552b600bc>`__.
 
          .. tab-item:: Python 3.10
 
