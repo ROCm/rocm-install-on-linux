@@ -1,3 +1,5 @@
+:orphan:
+
 .. meta::
   :description: Deep Graph Library (DGL) version history
   :keywords: installation, compatibility, Docker, version, deep graph library, DGL, AMD, ROCm
