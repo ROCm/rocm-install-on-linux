@@ -110,7 +110,7 @@ For example, to expose the first and second GPU:
 
 .. note::
 
-  When GPUs are partitioned (such as the MI300 or MI350 series in DPX, QPX, or
+  When GPUs are partitioned (such as the Instinct MI300X or MI350X Series in DPX, QPX, or
   CPX mode), you must take the number of partitions into account when selecting
   different GPUs. For example, in CPX mode, ``renderD128`` and ``renderD137``
   correspond to the first and second GPU. In CPX mode, ``renderD128`` to
