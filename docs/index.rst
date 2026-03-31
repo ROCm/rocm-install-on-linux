@@ -31,13 +31,7 @@ This section describes the ROCm for Linux installation options.
        * :doc:`PyTorch <install/3rd-party/pytorch-install>`
        * :doc:`TensorFlow <install/3rd-party/tensorflow-install>`
        * :doc:`JAX <install/3rd-party/jax-install>`
-       * :doc:`verl <install/3rd-party/verl-install>`
-       * :doc:`Stanford Megatron-LM <install/3rd-party/stanford-megatron-lm-install>`
        * :doc:`DGL <install/3rd-party/dgl-install>`
-       * :doc:`Megablocks <install/3rd-party/megablocks-install>`
-       * :doc:`Ray <install/3rd-party/ray-install>`
-       * :doc:`llama.cpp <install/3rd-party/llama-cpp-install>`
-       * :doc:`FlashInfer <install/3rd-party/flashinfer-install>`
 
 .. grid:: 2
     :gutter: 3
