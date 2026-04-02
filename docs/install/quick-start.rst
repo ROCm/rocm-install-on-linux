@@ -39,6 +39,8 @@ ROCm installation
 
                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/apt/sources.list.d/amdgpu.list
+                       sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|" /etc/apt/sources.list.d/rocm.list
                        sudo apt update
                        sudo apt install python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
@@ -59,6 +61,8 @@ ROCm installation
 
                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/apt/sources.list.d/amdgpu.list
+                       sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|" /etc/apt/sources.list.d/rocm.list
                        sudo apt update
                        sudo apt install python3-setuptools python3-wheel
                        sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
@@ -86,6 +90,8 @@ ROCm installation
                        {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        {%- endif %}
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/yum.repos.d/amdgpu.repo
+                       sudo sed -i "s|graphics/7\.2\.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/yum.repos.d/rocm.repo
                        sudo dnf clean all
                        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
                        sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
@@ -116,6 +122,8 @@ ROCm installation
                        {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        {%- endif %}
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/yum.repos.d/amdgpu.repo
+                       sudo sed -i "s|graphics/7\.2\.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/yum.repos.d/rocm.repo
                        sudo dnf clean all
                        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
                        sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
@@ -144,6 +152,8 @@ ROCm installation
                        sudo SUSEConnect -p PackageHub/{{ os_version }}/x86_64
                        sudo zypper install zypper
                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/zypp/repos.d/amdgpu.repo
+                       sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/zypp/repos.d/rocm.repo
                        sudo zypper --gpg-auto-import-keys refresh
                        sudo zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo
                        sudo zypper install python3-setuptools python3-wheel
@@ -165,6 +175,8 @@ ROCm installation
                        :substitutions:
 
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/yum.repos.d/amdgpu.repo
+                       sudo sed -i "s|graphics/7\.2\.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/yum.repos.d/rocm.repo
                        sudo dnf clean all
                        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
                        sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
@@ -201,6 +213,8 @@ AMD GPU driver installation
 
                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/apt/sources.list.d/amdgpu.list
+                       sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|" /etc/apt/sources.list.d/rocm.list
                        sudo apt update
                        sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
                        sudo apt install amdgpu-dkms
@@ -225,6 +239,8 @@ AMD GPU driver installation
 
                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/apt/sources.list.d/amdgpu.list
+                       sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|" /etc/apt/sources.list.d/rocm.list
                        sudo apt update
                        sudo apt install "linux-headers-$(uname -r)"
                        sudo apt install amdgpu-dkms
@@ -255,6 +271,8 @@ AMD GPU driver installation
                        {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        {%- endif %}
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/yum.repos.d/amdgpu.repo
+                       sudo sed -i "s|graphics/7\.2\.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/yum.repos.d/rocm.repo
                        sudo dnf clean all
                        {% if os_major == '8' -%}
                        sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
@@ -289,6 +307,8 @@ AMD GPU driver installation
                        {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        {%- endif %}
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/yum.repos.d/amdgpu.repo
+                       sudo sed -i "s|graphics/7\.2\.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/yum.repos.d/rocm.repo
                        sudo dnf clean all
                        sudo dnf install "kernel-uek-devel-$(uname -r)"
                        sudo dnf install amdgpu-dkms
@@ -317,6 +337,8 @@ AMD GPU driver installation
                        sudo SUSEConnect -p PackageHub/{{ os_version }}/x86_64
                        sudo zypper install zypper
                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/zypp/repos.d/amdgpu.repo
+                       sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/zypp/repos.d/rocm.repo
                        sudo zypper --gpg-auto-import-keys refresh
                        sudo zypper install kernel-default-devel
                        sudo zypper install amdgpu-dkms
@@ -340,6 +362,8 @@ AMD GPU driver installation
                        :substitutions:
 
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/yum.repos.d/amdgpu.repo
+                       sudo sed -i "s|graphics/7\.2\.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/yum.repos.d/rocm.repo
                        sudo dnf clean all
                        sudo dnf install "kernel-headers" "kernel-devel" "kernel-devel-matched"
                        sudo dnf install amdgpu-dkms

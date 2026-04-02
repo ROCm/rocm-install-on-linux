@@ -8,10 +8,6 @@
 Oracle Linux multi-version installation
 *****************************************
 
-.. note::
-
-   Multi-version ROCm installation is not currently supported on Oracle Linux 10.1 and 9.7.
-
 .. caution::
 
     Ensure that the :doc:`/install/prerequisites` are met.

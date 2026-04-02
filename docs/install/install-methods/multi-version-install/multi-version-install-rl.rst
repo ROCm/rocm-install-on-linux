@@ -8,10 +8,6 @@
 Rocky Linux multi-version installation
 *******************************************************
 
-.. note::
-
-   Multi-version ROCm installation is not currently supported on Rocky 9.7.
-
 .. caution::
 
     Ensure that the :doc:`/install/prerequisites` are met.
