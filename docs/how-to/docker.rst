@@ -108,6 +108,15 @@ For example, to expose the first and second GPU:
 
     docker run --device /dev/kfd --device /dev/dri/renderD128 --device /dev/dri/renderD129 ..
 
+.. note::
+
+  When GPUs are partitioned (such as the Instinct MI300X or MI350X Series in DPX, QPX, or
+  CPX mode), you must account for the number of partitions when selecting
+  GPUs. For example, in CPX mode, ``renderD128`` and ``renderD137``
+  correspond to the first and second GPUs. In CPX mode, ``renderD128`` to
+  ``renderD136`` correspond to different partitions of the first GPU. For more
+  information, see `GPU partition <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/gpu-partitioning/mi300x/overview.html>`_.
+
 Verifying the AMD GPU driver has been loaded on GPUs
 --------------------------------------------------------------------
 
