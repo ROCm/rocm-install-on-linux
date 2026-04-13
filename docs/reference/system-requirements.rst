@@ -32,6 +32,16 @@ GPUs listed in the following table support compute workloads (no display informa
    installation guidance, see `TheRock releases
    <https://github.com/ROCm/TheRock/blob/main/RELEASES.md>`__.
 
+.. note::
+
+   If your GPU is not listed, it might be community-enabled through `TheRock
+   <https://github.com/ROCm/TheRock?tab=readme-ov-file#therock>`__ nightly
+   builds. This enablement is not part of the official ROCm release. For more
+   information, see `TheRock supported GPUs
+   <https://github.com/ROCm/TheRock/blob/main/SUPPORTED_GPUS.md>`__. For
+   installation guidance, see `TheRock releases
+   <https://github.com/ROCm/TheRock/blob/main/RELEASES.md>`__.
+
 .. tab-set::
 
   .. tab-item:: AMD Instinct
