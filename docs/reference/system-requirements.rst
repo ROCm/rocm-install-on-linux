@@ -23,6 +23,15 @@ and Radeon GPUs. If a GPU is not listed on this table, it's not officially suppo
 
 GPUs listed in the following table support compute workloads (no display information or graphics). If you’re using ROCm with AMD Radeon GPUs or Ryzen APUs for graphics workloads, see the `Use ROCm on Radeon and Ryzen <https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/index.html>`_ documentation to verify compatibility and system requirements.
 
+.. note::
+
+   If your GPU is not listed, it might be community-enabled through `TheRock
+   <https://github.com/ROCm/TheRock?tab=readme-ov-file#therock>`__ nightly
+   builds. For more information, see `TheRock supported GPUs
+   <https://github.com/ROCm/TheRock/blob/main/SUPPORTED_GPUS.md>`__. For
+   installation guidance, see `TheRock releases
+   <https://github.com/ROCm/TheRock/blob/main/RELEASES.md>`__.
+
 .. tab-set::
 
   .. tab-item:: AMD Instinct
