@@ -60,7 +60,7 @@ Register packages
 
                 sudo tee /etc/apt/sources.list.d/rocm.list << EOF
                 deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/|rocm_version| {{ os_release }} main
-                deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/graphics/|rocm_version|/ubuntu {{ os_release }} main
+                deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/graphics/7.2.1/ubuntu {{ os_release }} main
                 EOF
 
                 sudo tee /etc/apt/preferences.d/rocm-pin-600 << EOF

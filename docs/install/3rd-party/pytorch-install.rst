@@ -692,7 +692,7 @@ Troubleshooting
      .. code-block:: shell
 
         TORCHDIR=$( dirname $( python3 -c 'import torch; print(torch.__file__)' ) )
-        roc-obj-ls -v $TORCHDIR/lib/libtorch_hip.so # check for gfx target
+        llvm-readobj --offloading $TORCHDIR/lib/libtorch_hip.so # check for gfx target
 
      .. note::
 

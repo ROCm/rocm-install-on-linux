@@ -36,19 +36,21 @@ Installing prerequisites for Spack
         .. code-block:: shell
 
             # Install some essential utilities:
-            apt-get update
-            apt-get install make patch bash tar gzip unzip bzip2 file gnupg2 git gawk
-            apt-get update -y
-            apt-get install -y xz-utils
-            apt-get install build-essential
-            apt-get install vim
-            apt-get install libpci-dev
+            apt-get -y update
+            apt-get -y install make patch bash tar gzip unzip bzip2 file gnupg2 git gawk
+            apt-get -y update
+            apt-get -y install xz-utils
+            apt-get -y install build-essential
+            apt-get -y install vim
+            apt-get -y install libpci-dev
             # Install Python:
-            apt-get install python3
-            apt-get upgrade python3-pip
+            apt-get -y install python3
+            apt-get -y upgrade python3-pip
             # Install Compilers:
-            apt-get install gcc
-            apt-get install gfortran
+            apt-get -y install gcc
+            apt-get -y install gfortran
+            apt-get -y install liblzma-dev
+            apt-get -y install libbz2-dev
 
     .. tab-item:: SLES
         :sync: SLES
@@ -454,7 +456,7 @@ ROCm packages in Spack
    * - Tensile
      - ``rocm-tensile``
      - 5.6.0
-     - 7.1.1 (final)
+     - 7.2.0
 
 Installing ROCm components using Spack
 ===================================================
@@ -590,81 +592,51 @@ For example:
 
      $ spack spec mivisionx
 
-     -   mivisionx@7.2.0~add_tests~asan+hip~ipo build_system=cmake build_type=Release generator=make platform=linux os=ubuntu22.04 target=zen2 %cxx=gcc@11.4.0
-     -       ^cmake@3.31.8~doc+ncurses+ownlibs~qtgui build_system=generic build_type=Release platform=linux os=ubuntu22.04 target=zen2 %c,cxx=gcc@11.4.0
-     -           ^curl@8.15.0~gssapi~ldap~libidn2~librtmp~libssh~libssh2+nghttp2 build_system=autotools libs:=shared,static tls:=openssl platform=linux os=ubuntu22.04 target=zen2 %c,cxx=gcc@11.4.0
-     -               ^nghttp2@1.65.0 build_system=autotools platform=linux os=ubuntu22.04 target=zen2 %c,cxx=gcc@11.4.0
+     -   mivisionx@7.2.0%gcc@13.2.0~add_tests~asan+hip~ipo~opencl build_system=cmake build_type=Release generator=make arch=linux-ubuntu24.04-skylake_avx512
+     -       ^cmake@3.28.3%gcc@13.2.0~doc+ncurses+ownlibs~qtgui build_system=generic build_type=Release patches=dbc3892 arch=linux-ubuntu24.04-skylake_avx512
+     -           ^ffmpeg@4.4.4%gcc@13.2.0~X~avresample+bzlib~doc~drawtext+gpl~libaom~libmp3lame~libopenjpeg~libopus~libsnappy~libspeex~libssh~libvorbis~libvpx~libwebp~libx264~libxml2~libzmq~lzma~nonfree~openssl~sdl2+shared+version3 build_system=autotools patches=f070ac1 arch=linux-ubuntu24.04-skylake_avx512
+     -                ^alsa-lib@1.2.3.2%gcc@13.2.0~python build_system=autotools arch=linux-ubuntu24.04-skylake_avx512
+     -                ^bzip2@1.0.8%gcc@13.2.0~debug~pic+shared build_system=generic arch=linux-ubuntu24.04-skylake_avx512
+     -                ^libiconv@1.17%gcc@13.2.0 build_system=autotools libs=shared,static arch=linux-ubuntu24.04-skylake_avx512
      ...
 
 Creating an environment
 ===================================================
 
-You can create an environment with all the required components of your version.
+You can create an environment with all the required components of your version, install them collectively, and work in the environment.
 
-1. In the root folder, create a new folder when you can create a ``.yaml`` file. This file is used to create an environment.
-
-   .. code-block:: shell
-
-      mkdir /localscratch
-      cd /localscratch
-      vi sample.yaml
-
-2. Add all the required components in the ``sample.yaml`` file. For example:
-
-   .. code-block:: yaml
-
-      spack:
-        concretization: separately
-        packages:
-          all:
-            compiler: [gcc@8.5.0]
-        specs:
-        - matrix:
-          - ['%gcc@8.5.0^cmake@3.19.7']
-          - [rocm-cmake@7.2.0, rocm-dbgapi@7.2.0, rocm-debug-agent@7.2.0, rocm-gdb@7.2.0,
-            rocminfo@7.2.0, rocm-opencl@7.2.0, rocm-smi-lib@7.2.0, rocm-tensile@7.2.0, rocm-validation-suite@7.2.0,
-            rocprim@7.2.0, rocprofiler-dev@7.2.0, rocrand@7.2.0, rocsolver@7.2.0, rocsparse@7.2.0,
-            rocthrust@7.2.0, roctracer-dev@7.2.0]
-        view: true
-
-3. Once you've created the ``.yaml`` file, you can use it to create an environment.
+1. Create a Spack environment.
 
    .. code-block:: shell
 
-      spack env create -d /localscratch/MyEnvironment /localscratch/sample.yaml
+      spack env create myenv
 
-4. Activate the created environment.
-
-   .. code-block:: shell
-
-      spack env activate /localscratch/MyEnvironment
-
-5. Before installing, verify that you want all the component versions.
+2. Activate the created environment.
 
    .. code-block:: shell
 
-      spack find # this command will list out all components been in the environment (and 0 installed )
+      spack env activate myenv
 
-6. Install all the components in the ``.yaml`` file.
-
-   .. code-block:: shell
-
-      cd /localscratch/MyEnvironment
-      spack install -j 50
-
-7. Check that all components are successfully installed.
+3. Add the ROCm packages.
 
    .. code-block:: shell
 
-      spack find
+      spack add
+      rocm-cmake@7.2.0 rocm-dbgapi@7.2.0 rocm-debug-agent@7.2.0 rocm-gdb@7.2.0 rocminfo@7.2.0 \
+      rocm-opencl@7.2.0 rocm-smi-lib@7.2.0 rocprim@7.2.0 rocprofiler-dev@7.2.0 rocrand@7.2.0  \
+      rocthrust@7.2.0 roctracer-dev@7.2.0
 
-8. If any modification is made to the ``.yaml`` file, you must deactivate the existing environment and create a new one in order for the modifications to be reflected.
-
-   To deactivate, use:
+4. Generate the build plan.
 
    .. code-block:: shell
 
-      spack env deactivate
+      spack concretize
+
+5. Install the packages.
+
+   .. code-block:: shell
+
+      spack install
 
 Creating and applying a patch before installation
 ===================================================
