@@ -8,18 +8,19 @@
 Quick start installation guide
 ******************************
 
-This topic provides basic installation instructions for ROCm on Linux using your distribution’s native package manager. Before you begin, you should confirm your :ref:`kernel version <verify_kernel_version>` matches the :ref:`ROCm system requirements <supported_distributions>`.  
-
-Once you do, review your required installation instructions by selecting your operating system and version, and then run the provided commands in your terminal. The commands include the installation of the prerequisites, along with installing ROCm.
-
-For more in-depth installation instructions, refer to :ref:`detailed-install-overview`.
-
 .. note::
 
-    If you’re using ROCm with AMD Radeon GPUs or Ryzen APUs for graphics workloads, see the `Use ROCm on Radeon and Ryzen <https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/index.html>`_ documentation for installation instructions .
+    See `Use ROCm on Radeon and Ryzen <https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/index.html>`_ for instructions on installing ROCm on systems with AMD Radeon GPUs or Ryzen APUs for graphics workloads.
 
-ROCm installation
-=================================================
+Before proceeding, ensure your kernel meets the :ref:`ROCm system requirements <supported_distributions>`. Then select your operating system and version, and run the provided commands to install the AMD GPU and ROCm. 
+
+For detailed guidance, see `Installation via native package manager <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`_ for AMD GPU installation and :doc:`Detailed install <detailed-install>` for ROCm installation.
+
+Installing
+==========
+
+Register repositories
+---------------------
 
 .. datatemplate:nodata::
 
@@ -39,10 +40,9 @@ ROCm installation
 
                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/apt/sources.list.d/amdgpu.list
+                       sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|" /etc/apt/sources.list.d/rocm.list
                        sudo apt update
-                       sudo apt install python3-setuptools python3-wheel
-                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
-                       sudo apt install rocm
                 {% endfor %}
         
         .. tab-item:: Debian
@@ -59,10 +59,9 @@ ROCm installation
 
                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/apt/sources.list.d/amdgpu.list
+                       sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|" /etc/apt/sources.list.d/rocm.list
                        sudo apt update
-                       sudo apt install python3-setuptools python3-wheel
-                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
-                       sudo apt install rocm
 
                 {% endfor %}
 
@@ -86,13 +85,9 @@ ROCm installation
                        {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        {%- endif %}
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/yum.repos.d/amdgpu.repo
+                       sudo sed -i "s|graphics/7\.2\.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/yum.repos.d/rocm.repo
                        sudo dnf clean all
-                       wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
-                       sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
-                       sudo dnf config-manager --enable codeready-builder-for-rhel-{{ os_major }}-x86_64-rpms
-                       sudo dnf install python3-setuptools python3-wheel
-                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
-                       sudo dnf install rocm
 
                 {% endfor %}
 
@@ -116,13 +111,9 @@ ROCm installation
                        {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        {%- endif %}
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/yum.repos.d/amdgpu.repo
+                       sudo sed -i "s|graphics/7\.2\.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/yum.repos.d/rocm.repo
                        sudo dnf clean all
-                       wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
-                       sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
-                       sudo crb enable
-                       sudo dnf install python3-setuptools python3-wheel
-                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
-                       sudo dnf install rocm
 
                 {% endfor %}
 
@@ -144,11 +135,9 @@ ROCm installation
                        sudo SUSEConnect -p PackageHub/{{ os_version }}/x86_64
                        sudo zypper install zypper
                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/zypp/repos.d/amdgpu.repo
+                       sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/zypp/repos.d/rocm.repo
                        sudo zypper --gpg-auto-import-keys refresh
-                       sudo zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo
-                       sudo zypper install python3-setuptools python3-wheel
-                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
-                       sudo zypper install rocm
 
                 {% endfor %}
 
@@ -165,19 +154,14 @@ ROCm installation
                        :substitutions:
 
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
+                       sudo sed -i "s/\/30.30.2/\/30.30.1/" /etc/yum.repos.d/amdgpu.repo
+                       sudo sed -i "s|graphics/7\.2\.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/yum.repos.d/rocm.repo
                        sudo dnf clean all
-                       wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
-                       sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
-                       sudo dnf install dnf-plugin-config-manager
-                       sudo crb enable
-                       sudo dnf install python3-setuptools python3-wheel
-                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
-                       sudo dnf install rocm
 
                 {% endfor %}
 
-AMD GPU driver installation
-=================================================
+Install kernel driver
+---------------------
 
 .. datatemplate:nodata::
 
@@ -194,14 +178,11 @@ AMD GPU driver installation
 
                    .. caution::
 
-                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-ubuntu.html#uninstalling>`__.
+                      Remove any AMD GPU driver from a previous installation by following the uninstall steps in :ref:`Uninstall kernel driver <uninstall-kernel-driver>`.
 
                    .. code-block:: bash
                        :substitutions:
 
-                       wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
-                       sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
-                       sudo apt update
                        sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
                        sudo apt install amdgpu-dkms
 
@@ -218,14 +199,11 @@ AMD GPU driver installation
 
                    .. caution::
 
-                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-debian.html#uninstalling>`_. 
+                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in :ref:`Uninstall kernel driver <uninstall-kernel-driver>`.
 
                    .. code-block:: bash
                        :substitutions:
 
-                       wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
-                       sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
-                       sudo apt update
                        sudo apt install "linux-headers-$(uname -r)"
                        sudo apt install amdgpu-dkms
 
@@ -243,19 +221,11 @@ AMD GPU driver installation
 
                    .. caution::
 
-                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-rhel.html#uninstalling>`__. 
+                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in :ref:`Uninstall kernel driver <uninstall-kernel-driver>`.
                    
-                   Before installing AMD GPU driver on RHEL, :ref:`register and update your Enterprise Linux <register-enterprise-linux>`.
-
                    .. code-block:: bash
                        :substitutions:
 
-                       {% if os_major == '9' -%}
-                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
-                       {%- else -%}
-                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
-                       {%- endif %}
-                       sudo dnf clean all
                        {% if os_major == '8' -%}
                        sudo dnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
                        {%- else -%}
@@ -277,19 +247,11 @@ AMD GPU driver installation
 
                    .. caution::
 
-                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-ol.html#uninstalling>`__.
-                      
-                   Before installing AMD GPU driver on OL, :ref:`update your Enterprise Linux <update-enterprise-linux>`.
+                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in :ref:`Uninstall kernel driver <uninstall-kernel-driver>`.
 
                    .. code-block:: bash
                        :substitutions:
 
-                       {% if os_major == '9' -%}
-                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
-                       {%- else -%}
-                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
-                       {%- endif %}
-                       sudo dnf clean all
                        sudo dnf install "kernel-uek-devel-$(uname -r)"
                        sudo dnf install amdgpu-dkms
 
@@ -305,19 +267,11 @@ AMD GPU driver installation
 
                    .. caution::
 
-                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-sles.html#uninstalling>`__. 
-                   
-                   Before installing AMD GPU driver on SLES, :ref:`register and update your Enterprise Linux <register-enterprise-linux>`.
+                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in :ref:`Uninstall kernel driver <uninstall-kernel-driver>`.
 
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo SUSEConnect -p sle-module-desktop-applications/{{ os_version }}/x86_64
-                       sudo SUSEConnect -p sle-module-development-tools/{{ os_version }}/x86_64
-                       sudo SUSEConnect -p PackageHub/{{ os_version }}/x86_64
-                       sudo zypper install zypper
-                       sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
-                       sudo zypper --gpg-auto-import-keys refresh
                        sudo zypper install kernel-default-devel
                        sudo zypper install amdgpu-dkms
 
@@ -334,15 +288,143 @@ AMD GPU driver installation
 
                    .. caution::
 
-                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-rl.html#uninstalling>`__. 
+                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in :ref:`Uninstall kernel driver <uninstall-kernel-driver>`.
 
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
-                       sudo dnf clean all
                        sudo dnf install "kernel-headers" "kernel-devel" "kernel-devel-matched"
                        sudo dnf install amdgpu-dkms
+
+                {% endfor %}
+
+.. important::
+
+    To apply all settings, reboot your system.
+
+Install ROCm
+------------
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+
+        .. tab-item:: Ubuntu
+            :sync: ubuntu-tab
+
+            .. tab-set::
+
+                {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo apt install python3-setuptools python3-wheel
+                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
+                       sudo apt install rocm
+                {% endfor %}
+        
+        .. tab-item:: Debian
+            :sync: debian-tab
+
+            .. tab-set::
+
+                {% for (os_version, os_release) in config.html_context['debian_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo apt install python3-setuptools python3-wheel
+                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
+                       sudo apt install rocm
+
+                {% endfor %}
+
+        .. tab-item:: Red Hat Enterprise Linux
+            :sync: rhel-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['rhel_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
+                       sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
+                       sudo dnf config-manager --enable codeready-builder-for-rhel-{{ os_major }}-x86_64-rpms
+                       sudo dnf install python3-setuptools python3-wheel
+                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
+                       sudo dnf install rocm
+
+                {% endfor %}
+
+        .. tab-item:: Oracle Linux
+            :sync: ol-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['ol_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
+                       sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
+                       sudo crb enable
+                       sudo dnf install python3-setuptools python3-wheel
+                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
+                       sudo dnf install rocm
+
+                {% endfor %}
+
+        .. tab-item:: SUSE Linux Enterprise Server
+            :sync: sle-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['sles_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo zypper addrepo https://download.opensuse.org/repositories/science/SLE_15_SP5/science.repo
+                       sudo zypper install python3-setuptools python3-wheel
+                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
+                       sudo zypper install rocm
+
+                {% endfor %}
+
+        .. tab-item:: Rocky Linux
+            :sync: rl-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['rl_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ os_major }}.noarch.rpm
+                       sudo rpm -ivh epel-release-latest-{{ os_major }}.noarch.rpm
+                       sudo dnf install dnf-plugin-config-manager
+                       sudo crb enable
+                       sudo dnf install python3-setuptools python3-wheel
+                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
+                       sudo dnf install rocm
 
                 {% endfor %}
 
@@ -355,3 +437,358 @@ AMD GPU driver installation
     Quick Start enables GPU access for the current user only. To grant GPU access to all users, see :ref:`Configuring permissions for GPU access <group_permissions>`.
 
 After completing the installation, review the :doc:`post-install`. If you have issues with your installation, see :doc:`Troubleshooting <../reference/install-faq>`.
+
+Uninstalling
+============
+
+Uninstall ROCm
+--------------
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+
+        .. tab-item:: Ubuntu
+            :sync: ubuntu-tab
+
+            .. tab-set::
+
+                {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo apt autoremove rocm
+                       sudo apt autoremove rocm-core
+
+                {% endfor %}
+        
+        .. tab-item:: Debian
+            :sync: debian-tab
+
+            .. tab-set::
+
+                {% for (os_version, os_release) in config.html_context['debian_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo apt autoremove rocm
+                       sudo apt autoremove rocm-core
+
+                {% endfor %}
+
+        .. tab-item:: Red Hat Enterprise Linux
+            :sync: rhel-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['rhel_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf remove rocm
+                       sudo dnf remove rocm-core amdgpu-core
+
+                {% endfor %}
+
+        .. tab-item:: Oracle Linux
+            :sync: ol-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['ol_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf remove rocm
+                       sudo dnf remove rocm-core amdgpu-core
+
+                {% endfor %}
+
+        .. tab-item:: SUSE Linux Enterprise Server
+            :sync: sle-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['sles_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo zypper remove rocm
+                       sudo zypper remove rocm-core amdgpu-core
+
+                {% endfor %}
+
+        .. tab-item:: Rocky Linux
+            :sync: rl-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['rl_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf remove rocm
+                       sudo dnf remove rocm-core amdgpu-core
+
+                {% endfor %}
+
+.. _uninstall-kernel-driver:
+
+Uninstall kernel driver
+-----------------------
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+
+        .. tab-item:: Ubuntu
+            :sync: ubuntu-tab
+
+            .. tab-set::
+
+                {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo apt autoremove amdgpu-dkms
+
+                {% endfor %}
+        
+        .. tab-item:: Debian
+            :sync: debian-tab
+
+            .. tab-set::
+
+                {% for (os_version, os_release) in config.html_context['debian_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo apt autoremove amdgpu-dkms
+
+                {% endfor %}
+
+        .. tab-item:: Red Hat Enterprise Linux
+            :sync: rhel-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['rhel_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf remove amdgpu-dkms
+
+                {% endfor %}
+
+        .. tab-item:: Oracle Linux
+            :sync: ol-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['ol_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf remove amdgpu-dkms
+
+                {% endfor %}
+
+        .. tab-item:: SUSE Linux Enterprise Server
+            :sync: sle-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['sles_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo zypper remove amdgpu-dkms amdgpu-dkms-firmware
+
+                {% endfor %}
+
+        .. tab-item:: Rocky Linux
+            :sync: rl-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['rl_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo dnf remove amdgpu-dkms
+
+                {% endfor %}
+
+.. important::
+
+    To apply all settings, reboot your system.
+
+Remove repositories
+-------------------
+
+.. datatemplate:nodata::
+
+    .. tab-set::
+
+        .. tab-item:: Ubuntu
+            :sync: ubuntu-tab
+
+            .. tab-set::
+
+                {% for (os_version, os_release) in config.html_context['ubuntu_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                        sudo apt purge amdgpu-install
+                        sudo apt autoremove
+
+                        # Clear the cache and clean the system
+                        sudo rm -rf /var/cache/apt/*
+                        sudo apt clean all
+                        sudo apt update
+
+                {% endfor %}
+        
+        .. tab-item:: Debian
+            :sync: debian-tab
+
+            .. tab-set::
+
+                {% for (os_version, os_release) in config.html_context['debian_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                        sudo apt purge amdgpu-install
+                        sudo apt autoremove
+
+                        # Clear the cache and clean the system
+                        sudo rm -rf /var/cache/apt/*
+                        sudo apt clean all
+                        sudo apt update
+
+                {% endfor %}
+
+        .. tab-item:: Red Hat Enterprise Linux
+            :sync: rhel-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['rhel_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                        sudo dnf remove amdgpu-install
+
+                        # Clear the cache and clean the system
+                        sudo rm -rf /var/cache/dnf
+                        sudo dnf clean all
+
+                {% endfor %}
+
+        .. tab-item:: Oracle Linux
+            :sync: ol-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['ol_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+                   :sync: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                        sudo dnf remove amdgpu-install
+
+                        # Clear the cache and clean the system
+                        sudo rm -rf /var/cache/dnf
+                        sudo dnf clean all
+
+                {% endfor %}
+
+        .. tab-item:: SUSE Linux Enterprise Server
+            :sync: sle-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['sles_version_numbers'] %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                        sudo zypper remove amdgpu-install
+
+                        # Clear the cache and clean the system
+                        sudo zypper clean --all
+                        sudo zypper refresh
+
+                {% endfor %}
+
+        .. tab-item:: Rocky Linux
+            :sync: rl-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['rl_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                        sudo dnf remove amdgpu-install
+
+                        # Clear the cache and clean the system
+                        sudo rm -rf /var/cache/dnf
+                        sudo dnf clean all
+
+                {% endfor %}

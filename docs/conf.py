@@ -5,15 +5,15 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # ROCm version numbers
-rocm_version = '7.2.1'
+rocm_version = '7.2.2'
 rocm_major_version = '7.0'
-rocm_multi_versions = '7.2 7.1.1' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
-rocm_multi_versions_new = '7.2.1 7.2'
-rocm_multi_versions_package_versions = '7.2.0 7.1.1' # however, in multi, the packages use 6.3.0
-rocm_multi_versions_package_versions_new = '7.2.1 7.2.0'
-rocm_directory_version = '7.2.1' # in 6.0 rocm was located in /opt/rocm-6.0.0
-amdgpu_version = '7.2.1' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '7.2.1.70201-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+rocm_multi_versions = '7.2.2 7.2.1' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_multi_versions_new = '7.2.2 7.2.1'
+rocm_multi_versions_package_versions = '7.2.2 7.2.1' # however, in multi, the packages use 6.3.0
+rocm_multi_versions_package_versions_new = '7.2.2 7.2.1'
+rocm_directory_version = '7.2.2' # in 6.0 rocm was located in /opt/rocm-6.0.0
+amdgpu_version = '7.2.2' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '7.2.2.70202-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
 udev_version = '30.30.1.0-2303411'
 udev_amdgpu_version = '30.30.1'
 
@@ -31,8 +31,8 @@ latex_elements = {
 project = "ROCm installation on Linux"
 author = "Advanced Micro Devices, Inc."
 copyright = "Copyright (c) 2026 Advanced Micro Devices, Inc. All rights reserved."
-version = "7.2.1"
-release = "7.2.1"
+version = "7.2.2"
+release = "7.2.2"
 setting_all_article_info = True
 all_article_info_os = ["linux"]
 all_article_info_author = ""
@@ -47,9 +47,9 @@ rhel_multi_versions = ['10.1', '10.0', '9.7', '9.6', '9.4', '8.10']
 sles_version_numbers = ['15.7']
 ol_release_version_numbers = ['10', '9', '8']
 ol_version_numbers = ['10.1', '9.7', '8.10']
-ol_multi_versions = ['10.0', '9.6', '8.10']
+ol_multi_versions = ['10.1', '9.7', '8.10']
 rl_version_numbers = ['9.7']
-rl_multi_versions = ['9.6']
+rl_multi_versions = ['9.7']
 
 exclude_patterns = [
     'temp', 
