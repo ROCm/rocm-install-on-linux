@@ -4,9 +4,9 @@
 
 .. _detailed-install-overview:
 
-*************************************************************
-ROCm on Linux detailed installation overview
-*************************************************************
+****************
+Detailed install
+****************
 
 To install ROCm, please follow these steps
 
