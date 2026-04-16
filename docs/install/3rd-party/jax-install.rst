@@ -74,7 +74,7 @@ Docker image support
 
 AMD validates and publishes ready-made JAX images with ROCm backends on Docker
 Hub. The following Docker image tags and associated inventories are validated
-for ROCm 7.2.1.
+for ROCm 7.2.2.
 For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/rocm/jax-community/tags>`__ on Docker Hub.
 
 .. tab-set::
@@ -90,12 +90,12 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
 
             .. code-block:: shell
 
-               docker pull rocm/jax:rocm7.2.1-jax0.8.2-py3.12
+               docker pull rocm/jax:rocm7.2.2-jax0.8.2-py3.12
 
             See
-            ``rocm/jax:rocm7.2.1-jax0.8.2-py3.12``
+            ``rocm/jax:rocm7.2.2-jax0.8.2-py3.12``
             on `Docker Hub
-            <https://hub.docker.com/layers/rocm/jax/rocm7.2.1-jax0.8.2-py3.12/images/sha256-db79eadd49e9c02588b33f397b52c315a334de4b8e5896006b5dbc18ffd3f1fa>`__.
+            <https://hub.docker.com/layers/rocm/jax/rocm7.2.2-jax0.8.2-py3.12/images/sha256-13cf412cd0b01b2a8fa09f6d1ae98106584ee91c917ae7690e699c383b65db3a>`__.
 
          .. tab-item:: Python 3.11
 
@@ -103,12 +103,12 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
 
             .. code-block:: shell
 
-               docker pull rocm/jax:rocm7.2-jax0.8.2-py3.11
+               docker pull rocm/jax:rocm7.2.2-jax0.8.2-py3.11
 
             See
-            ``rocm/jax:rocm7.2.1-jax0.8.2-py3.11``
+            ``rocm/jax:rocm7.2.2-jax0.8.2-py3.11``
             on `Docker Hub
-            <https://hub.docker.com/layers/rocm/jax/rocm7.2.1-jax0.8.2-py3.11/images/sha256-5ed631c65c49f0dda84d576fe18fa1d3e446497ad2ff3c58ca5369c29b7c2875>`__.
+            <https://hub.docker.com/layers/rocm/jax/rocm7.2.2-jax0.8.2-py3.11/images/sha256-f576c7f17b6f541802fe65ce4de3255d1b6d485d199e7fb43679441a07e6f666>`__.
 
 .. _build-jax-rocm-docker-image:
 
@@ -121,7 +121,7 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
    .. code-block:: bash
 
-      docker pull rocm/dev-ubuntu-24.04:7.2-complete
+      docker pull rocm/dev-ubuntu-24.04:7.2.2-complete
 
 2. Launch the Docker container. After pulling the image, launch a container using this command:
 
@@ -138,7 +138,7 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
           --security-opt seccomp=unconfined \
           -v $(pwd):/jax_dir \
           --name rocm_jax \
-          rocm/dev-ubuntu-24.04:7.2-complete /bin/bash
+          rocm/dev-ubuntu-24.04:7.2.2-complete /bin/bash
 
 3. Install the latest version of JAX. Inside the running container, install the required version of JAX with ROCm support using pip:
 
@@ -197,7 +197,7 @@ Follow these steps if you prefer to install ROCm manually on your host system or
    .. code-block:: bash
 
       +------------------------------------------------------------------------------+
-      | AMD-SMI 26.2.1+fc0010cf6a    amdgpu version: 6.14.14  ROCm version: 7.2.1    |
+      | AMD-SMI 26.2.1+fc0010cf6a    amdgpu version: 6.14.14  ROCm version: 7.2.2    |
       | VBIOS version: 023.040.001.008.000001                                        |
       | Platform: Linux Baremetal                                                    |
       |-------------------------------------+----------------------------------------|
