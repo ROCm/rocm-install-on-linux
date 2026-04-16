@@ -103,7 +103,7 @@ For ``jax-community`` images, see `rocm/jax-community <https://hub.docker.com/r/
 
             .. code-block:: shell
 
-               docker pull rocm/jax:rocm7.2-jax0.8.2-py3.11
+               docker pull rocm/jax:rocm7.2.1-jax0.8.2-py3.11
 
             See
             ``rocm/jax:rocm7.2.1-jax0.8.2-py3.11``
@@ -121,7 +121,7 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
 
    .. code-block:: bash
 
-      docker pull rocm/dev-ubuntu-24.04:7.2-complete
+      docker pull rocm/dev-ubuntu-24.04:7.2.1-complete
 
 2. Launch the Docker container. After pulling the image, launch a container using this command:
 
@@ -138,7 +138,7 @@ If you prefer to use the ROCm Ubuntu image or already have a ROCm Ubuntu contain
           --security-opt seccomp=unconfined \
           -v $(pwd):/jax_dir \
           --name rocm_jax \
-          rocm/dev-ubuntu-24.04:7.2-complete /bin/bash
+          rocm/dev-ubuntu-24.04:7.2.1-complete /bin/bash
 
 3. Install the latest version of JAX. Inside the running container, install the required version of JAX with ROCm support using pip:
 
