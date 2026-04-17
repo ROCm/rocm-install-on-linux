@@ -10,7 +10,7 @@ Quick start installation guide
 
 .. note::
 
-    See `Use ROCm on Radeon and Ryzen <https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/index.html>`_ for instructions on installing ROCm on systems with AMD Radeon GPUs or Ryzen APUs for graphics workloads.
+    See `Use ROCm on Radeon and Ryzen <https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/index.html>`_ for instructions on installing ROCm on systems with AMD Radeon™ GPUs or Ryzen™ APUs for graphics workloads.
 
 Before proceeding, ensure your kernel meets the :ref:`ROCm system requirements <supported_distributions>`. Then select your operating system and version, and run the provided commands to install the AMD GPU and ROCm. 
 
