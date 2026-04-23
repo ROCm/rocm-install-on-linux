@@ -14,8 +14,8 @@ rocm_multi_versions_package_versions_new = '7.2.2 7.2.1'
 rocm_directory_version = '7.2.2' # in 6.0 rocm was located in /opt/rocm-6.0.0
 amdgpu_version = '7.2.2' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
 amdgpu_install_version = '7.2.2.70202-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
-udev_version = '30.30.1.0-2303411'
-udev_amdgpu_version = '30.30.1'
+udev_version = '30.30.2.0-2317211'
+udev_amdgpu_version = '30.30.2'
 
 
 latex_engine = "xelatex"
