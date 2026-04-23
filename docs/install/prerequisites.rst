@@ -550,7 +550,12 @@ To set up udev rules, install the package using the following instructions speci
                    .. code-block:: bash
                        :substitutions:
 
+                       {% if os_major == '9' -%}
+                       sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm
+                       {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_major }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm
+                       {%- endif %}
+
                 {% endfor %}
 
         .. tab-item:: Oracle Linux
@@ -566,7 +571,11 @@ To set up udev rules, install the package using the following instructions speci
                    .. code-block:: bash
                        :substitutions:
 
+                       {% if os_major == '9' -%}
+                       sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_version }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm
+                       {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu/|udev_amdgpu_version|/el/{{ os_major }}/main/x86_64/amdgpu-insecure-instinct-udev-rules-|udev_version|.el{{ os_major }}.noarch.rpm
+                       {%- endif %}
                 {% endfor %}
 
         .. tab-item:: SUSE Linux Enterprise Server
