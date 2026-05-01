@@ -2,6 +2,10 @@
   :description: ROCm installation options
   :keywords: ROCm installation, AMD, ROCm, Package manager, AMDGPU
 
+.. raw:: html
+
+   <meta http-equiv="refresh" content="0; url=https://wikipedia.org">
+
 .. _detailed-install-overview:
 
 ****************
