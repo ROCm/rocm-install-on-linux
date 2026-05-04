@@ -40,7 +40,6 @@ Register repositories
 
                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
-                       sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|" /etc/apt/sources.list.d/rocm.list
                        sudo apt update
                 {% endfor %}
         
@@ -58,7 +57,6 @@ Register repositories
 
                        wget https://repo.radeon.com/amdgpu-install/|amdgpu_version|/ubuntu/{{ os_release }}/amdgpu-install_|amdgpu_install_version|_all.deb
                        sudo apt install ./amdgpu-install_|amdgpu_install_version|_all.deb
-                       sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|" /etc/apt/sources.list.d/rocm.list
                        sudo apt update
 
                 {% endfor %}
@@ -83,7 +81,6 @@ Register repositories
                        {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/rhel/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        {%- endif %}
-                       sudo sed -i "s|graphics/7\.2\.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/yum.repos.d/rocm.repo
                        sudo dnf clean all
 
                 {% endfor %}
@@ -108,7 +105,6 @@ Register repositories
                        {%- else -%}
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_major }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
                        {%- endif %}
-                       sudo sed -i "s|graphics/7\.2\.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/yum.repos.d/rocm.repo
                        sudo dnf clean all
 
                 {% endfor %}
@@ -131,7 +127,6 @@ Register repositories
                        sudo SUSEConnect -p PackageHub/{{ os_version }}/x86_64
                        sudo zypper install zypper
                        sudo zypper --no-gpg-checks install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/sle/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.noarch.rpm
-                       sudo sed -i "s|graphics/7.2.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/zypp/repos.d/rocm.repo
                        sudo zypper --gpg-auto-import-keys refresh
 
                 {% endfor %}
@@ -149,7 +144,6 @@ Register repositories
                        :substitutions:
 
                        sudo dnf install https://repo.radeon.com/amdgpu-install/|amdgpu_version|/el/{{ os_version }}/amdgpu-install-|amdgpu_install_version|.el{{ os_major }}.noarch.rpm
-                       sudo sed -i "s|graphics/7\.2\.2|graphics/7.2.1|;s|AMD Graphics 7.2.2|AMD Graphics 7.2.1|" /etc/yum.repos.d/rocm.repo
                        sudo dnf clean all
 
                 {% endfor %}
