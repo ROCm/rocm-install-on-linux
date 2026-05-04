@@ -42,11 +42,11 @@ Registering ROCm repositories
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
 
                 [amdgraphics]
-                name=AMD Graphics 7.2.1 repository
+                name=AMD Graphics |rocm_version| repository
                 {% if os_major == '9' -%}
-                baseurl=https://repo.radeon.com/graphics/7.2.1/el/{{ os_version }}/main/x86_64/
+                baseurl=https://repo.radeon.com/graphics/|rocm_version|/el/{{ os_version }}/main/x86_64/
                 {%- else -%}
-                baseurl=https://repo.radeon.com/graphics/7.2.1/el/{{ os_major }}/main/x86_64/
+                baseurl=https://repo.radeon.com/graphics/|rocm_version|/el/{{ os_major }}/main/x86_64/
                 {%- endif %}
                 enabled=1
                 priority=50
