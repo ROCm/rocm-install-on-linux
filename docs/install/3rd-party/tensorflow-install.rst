@@ -89,7 +89,7 @@ Docker image support
 
 AMD validates and publishes ready-made TensorFlow images with ROCm backends on
 Docker Hub. The following Docker image tags and associated inventories are
-validated for ROCm 7.2.2.
+validated for ROCm 7.2.3.
 
 .. tab-set::
 
@@ -104,7 +104,7 @@ validated for ROCm 7.2.2.
 
             .. code-block:: shell
 
-               docker pull rocm/tensorflow:rocm7.2.2-py3.12-tf2.20-dev
+               docker pull rocm/tensorflow:rocm7.2.3-py3.12-tf2.20-dev
 
             .. rubric:: Additional software components
 
@@ -118,8 +118,8 @@ validated for ROCm 7.2.2.
                  - `2.20.0 <https://github.com/tensorflow/tensorboard/tree/2.20.0>`__
 
             See
-            ``rocm/tensorflow:rocm7.2.2-py3.12-tf2.20-dev``
-            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.2.2-py3.12-tf2.20-dev/images/sha256-aa5c6b5b3d4dba9572df6f175b22d3ac993d9d0cd4019a476b519434047a7dd8>`__.
+            ``rocm/tensorflow:rocm7.2.3-py3.12-tf2.20-dev``
+            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.2.3-py3.12-tf2.20-dev/images/sha256-40a70d82868a314ddc6a781ab1c3e65034b5f3e5eda281c1b0dff0e3e38014a0>`__.
 
          .. tab-item:: Python 3.10
 
@@ -127,7 +127,7 @@ validated for ROCm 7.2.2.
 
             .. code-block:: shell
 
-               docker pull rocm/tensorflow:rocm7.2.2-py3.10-tf2.20-dev
+               docker pull rocm/tensorflow:rocm7.2.3-py3.10-tf2.20-dev
 
             .. rubric:: Additional software components
 
@@ -141,8 +141,8 @@ validated for ROCm 7.2.2.
                  - `2.20.0 <https://github.com/tensorflow/tensorboard/tree/2.20.0>`__
 
             See
-            ``rocm/tensorflow:rocm7.2.2-py3.10-tf2.20-dev``
-            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.2.2-py3.10-tf2.20-dev/images/sha256-bd2a55d9e79d4da3185ee0d734f68b4178a7a9080e8277c7bd017f7ebac0e014>`__.
+            ``rocm/tensorflow:rocm7.2.3-py3.10-tf2.20-dev``
+            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.2.3-py3.10-tf2.20-dev/images/sha256-c5e44028e92e11835e003557ab4d6b6a8b635584479ec9134f72ce6d22e3011c>`__.
 
    .. tab-item:: tensorflow-rocm 2.19.1
 
@@ -154,7 +154,7 @@ validated for ROCm 7.2.2.
 
             .. code-block:: shell
 
-               docker pull rocm/tensorflow:rocm7.2.2-py3.12-tf2.19-dev
+               docker pull rocm/tensorflow:rocm7.2.3-py3.12-tf2.19-dev
 
             .. rubric:: Additional software components
 
@@ -168,8 +168,8 @@ validated for ROCm 7.2.2.
                  - `2.19.0 <https://github.com/tensorflow/tensorboard/tree/2.19.0>`__
 
             See
-            ``rocm/tensorflow:rocm7.2.2-py3.12-tf2.19-dev``
-            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.2.2-py3.12-tf2.19-dev/images/sha256-466ae7737099865b0bc2f9a34653b6dbf622304f92d17344d397cb8c706fcc22>`__.
+            ``rocm/tensorflow:rocm7.2.3-py3.12-tf2.19-dev``
+            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.2.3-py3.12-tf2.19-dev/images/sha256-473df02d398689915ef39f490a0d4bd94a9badabbc2107857b30425febeb37bc>`__.
 
          .. tab-item:: Python 3.10
 
@@ -177,7 +177,7 @@ validated for ROCm 7.2.2.
 
             .. code-block:: shell
 
-               docker pull rocm/tensorflow:rocm7.2.2-py3.10-tf2.19-dev
+               docker pull rocm/tensorflow:rocm7.2.3-py3.10-tf2.19-dev
 
             .. rubric:: Additional software components
 
@@ -191,8 +191,8 @@ validated for ROCm 7.2.2.
                  - `2.19.0 <https://github.com/tensorflow/tensorboard/tree/2.19.0>`__
 
             See
-            ``rocm/tensorflow:rocm7.2.2-py3.10-tf2.19-dev``
-            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.2.2-py3.10-tf2.19-dev/images/sha256-1b6169ff72860071f12351ed3bae56f5d482b9b53fb4eee006d0204bf039e431>`__.
+            ``rocm/tensorflow:rocm7.2.3-py3.10-tf2.19-dev``
+            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.2.3-py3.10-tf2.19-dev/images/sha256-9026e026e0463d45c69bdee97d0f770fd87118f6b4529ab0a17c64f51b565628>`__.
 
    .. tab-item:: tensorflow-rocm 2.18.1
 
@@ -204,7 +204,7 @@ validated for ROCm 7.2.2.
 
             .. code-block:: shell
 
-               docker pull rocm/tensorflow:rocm7.2.2-py3.12-tf2.18-dev
+               docker pull rocm/tensorflow:rocm7.2.3-py3.12-tf2.18-dev
 
             .. rubric:: Additional software components
 
@@ -218,8 +218,8 @@ validated for ROCm 7.2.2.
                  - `2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18.0>`__
 
             See
-            ``rocm/tensorflow:rocm7.2.2-py3.12-tf2.18-dev``
-            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.2.2-py3.12-tf2.18-dev/images/sha256-7d3d3677687063f9ea261715dbd04aafa80c7576a815f5d37a92df25b0456ead>`__.
+            ``rocm/tensorflow:rocm7.2.3-py3.12-tf2.18-dev``
+            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.2.3-py3.12-tf2.18-dev/images/sha256-27006b197197e69795fb8ec914fdc697ad93e7e738d691855b9025c2ec44f14e>`__.
 
          .. tab-item:: Python 3.10
 
@@ -227,7 +227,7 @@ validated for ROCm 7.2.2.
 
             .. code-block:: shell
 
-               docker pull rocm/tensorflow:rocm7.2.2-py3.10-tf2.18-dev
+               docker pull rocm/tensorflow:rocm7.2.3-py3.10-tf2.18-dev
 
             .. rubric:: Additional software components
 
@@ -241,8 +241,8 @@ validated for ROCm 7.2.2.
                  - `2.18.0 <https://github.com/tensorflow/tensorboard/tree/2.18.0>`__
 
             See
-            ``rocm/tensorflow:rocm7.2.2-py3.10-tf2.18-dev``
-            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.2.2-py3.10-tf2.18-dev/images/sha256-4a3a6643450813573c502c2e373556e326b30f615db0b22506487c02da81abc7>`__.
+            ``rocm/tensorflow:rocm7.2.3-py3.10-tf2.18-dev``
+            on `Docker Hub <https://hub.docker.com/layers/rocm/tensorflow/rocm7.2.3-py3.10-tf2.18-dev/images/sha256-b1781da50b8fe6c036987cc83ffa21ff5a0e9cf89f347aef748fb2275874a80e>`__.
 
 .. _install-tensorflow-wheels:
 
