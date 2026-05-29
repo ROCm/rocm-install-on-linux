@@ -124,7 +124,10 @@ validated for ROCm 7.2.4.
                .. code-block:: shell
 
                   docker pull rocm/pytorch:rocm7.2.4_ubuntu22.04_py3.10_pytorch_release_2.9.1
+                  
+               .. rubric:: Additional software components
 
+               .. list-table::
                   :header-rows: 1
                   * - Ubuntu
                     - Apex
