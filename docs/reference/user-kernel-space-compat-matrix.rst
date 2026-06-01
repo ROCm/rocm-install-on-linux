@@ -10,7 +10,10 @@ The `AMD GPU Driver (amdgpu) <https://instinct.docs.amd.com/projects/amdgpu-docs
 
 .. note ::
 
-  The supported user space versions in the following table are accurate as of the time of publication. For the most up-to-date information about AMD GPU Driver (amdgpu) and supported user space versions, see the latest version of this table at `User and AMD GPU Driver (amdgpu) support matrix <https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/user-kernel-space-compat-matrix.html>`_.
+   This compatibility window applies to most ROCm components; tools like
+   :doc:`AMD SMI <amdsmi:index>` can have tighter dependencies on the amdgpu
+   driver version since it reads GPU telemetry directly via the amdgpu kernel
+   driver.
 
 .. csv-table::
   :widths: 30, 70
