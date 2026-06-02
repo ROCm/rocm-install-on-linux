@@ -1,237 +1,172 @@
 .. meta::
-  :description: Install ROCm Docker containers
-  :keywords: installation instructions, Docker, AMD, ROCm
+   :description: Running ROCm workloads in Docker containers on AMD GPUs
+   :keywords: Docker, AMD, ROCm, GPU, container, amd-container-runtime, CDI
 
-********************************************************************************
-Running ROCm Docker containers
-********************************************************************************
+**************************
+Run ROCm Docker containers
+**************************
 
-Using Docker to run your ROCm applications is one of the best ways to get consistent and
-reproducible environments.
+Docker is a popular way to run ROCm workloads in a consistent, reproducible environment.
+There are two ways to expose AMD GPUs to Docker containers:
+
+* :ref:`AMD Container Runtime Toolkit <docker-with-toolkit>` — simplifies
+  GPU access within Docker environments, enhances device discovery, and enables
+  better integration with modern container technologies.
+
+* :ref:`Manual Docker device passthrough <docker-manual>` — passes GPU device nodes
+  directly to the container with ``--device``. No toolkit required.
 
 Prerequisites
-==========================================
+=============
 
-Docker containers share the kernel with the host OS. Therefore, the ROCm kernel-mode driver (``amdgpu-dkms``) must be installed on the host. If you've already installed ROCm, you probably already have ``amdgpu-dkms``.
+Regardless of which approach you use, the following are required on the host system:
 
-* `Check for amdgpu-dkms <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/post-install.html#verify-kernel-mode-driver-installation>`_.
+* The AMD GPU kernel-mode driver (``amdgpu-dkms``).
+  See `Install amdgpu-dkms
+  <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`__.
 
-* If you don't have ``amdgpu-dkms``, follow the :ref:`standard ROCm installation instructions <rocm-install-quick>` (which comes with ``amdgpu-dkms``) or `install amdgpu-dkms <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`__ separately.
+* `Docker Engine <https://docs.docker.com/engine/install/>`__.
 
-.. seealso::
+.. _docker-with-toolkit:
 
-   For instructions on installing Docker, see the `official Docker installation
-   documentation <https://docs.docker.com/engine/install/>`_.
+With the AMD Container Runtime Toolkit
+======================================
 
-.. _docker-access-gpus-in-container:
+The `AMD Container Runtime Toolkit
+<https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/overview.html>`__
+provides two mechanisms for GPU injection: CDI (recommended) and the
+amd-container-runtime. Both require installing the toolkit first.
 
-Accessing GPUs in containers
-==========================================
+1. Install the toolkit by following the `Quick Start Guide (AMD Container Runtime Toolkit docs)
+   <https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/quick-start-guide.html>`__.
 
-To grant a Docker container access to the host's AMD GPUs, run your container with the following options.
-See the `Docker documentation <https://docs.docker.com/reference/cli/docker/container/run/>`_ to learn
-more about the ``docker run`` command and its options.
+2. See `Running Workloads (AMD Container Runtime Toolkit docs)
+   <https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/running-workloads.html>`__
+   to get started running containerized ROCm applications on AMD GPUs.
+
+.. _docker-manual:
+
+Without the AMD Container Toolkit
+=================================
+
+If you prefer not to install the AMD Container Toolkit, or you're using older
+versions of Docker Engine, you can pass GPU device nodes directly to the
+container using Docker's ``--device`` flag. This approach requires no
+additional software beyond Docker.
 
 .. code-block:: shell
 
-    docker run --device /dev/kfd --device /dev/dri --security-opt seccomp=unconfined <image>
+   docker run -it --rm \
+       --device /dev/kfd \
+       --device /dev/dri \
+       --security-opt seccomp=unconfined \
+       <image>
 
-The purpose of each option is as follows:
+The purpose of each option:
 
 * ``--device /dev/kfd``
 
-  This is the main compute interface, shared by all GPUs.
-  The Docker CLI's ``--device`` option enables directly exposing host devices
-  to a container. See `Add host device to container (--device)
-  <https://docs.docker.com/reference/cli/docker/container/run/#device>`_ for
-  more information.
+  The main compute interface, shared by all GPUs.
 
 * ``--device /dev/dri``
 
-  This directory contains the Direct Rendering Interface (DRI) for each GPU. To restrict access to specific
-  GPUs, see :ref:`docker-restrict-gpus`.
+  Contains the Direct Rendering Interface (DRI) device nodes for each GPU.
+  Passing the whole directory grants access to all GPUs. To restrict access
+  to specific GPUs, see :ref:`docker-restrict-gpus`.
 
 * ``--security-opt seccomp=unconfined`` (optional)
 
-  This option enables memory mapping, and is recommended for containers running in HPC
-  environments.
-  See `Optional security options (--security-opt)
+  Enables memory mapping. Recommended for HPC workloads that use ``numactl``
+  for GPU/CPU affinity mappings.
+  See `Optional security options (Docker docs)
   <https://docs.docker.com/reference/cli/docker/container/run/#security-opt>`_.
-
-  The performance of an application can vary depending on the assignment of GPUs and CPUs to the
-  task. Typically, ``numactl`` is installed as part of many HPC applications to provide GPU/CPU
-  mappings. This Docker runtime option supports memory mapping and can improve performance.
-
-Docker compose
---------------------------------------------------------------------
-
-You can also use ``docker compose`` to launch your containers, even when launching a single
-container. This can be a convenient way to run complex Docker commands without having to
-remember all the CLI arguments.
-The following snippet is an example ``compose.yaml`` file, which is equivalent to
-the preceding ``docker run`` command:
-
-.. code-block:: yaml
-
-    services:
-      my-service:
-        image: <image>
-        devices:
-          - /dev/kfd
-          - /dev/dri
-        security_opt:
-          - seccomp=unconfined
-
-You can then run this using ``docker compose run my-service``.
 
 .. _docker-restrict-gpus:
 
 Restricting GPU access
---------------------------------------------------------------------
+-----------------------
 
-By default, passing ``--device /dev/dri`` grants access to all GPUs on the system. To limit a container to a
-specific subset of GPUs, you can instead pass in their individual device nodes.
+.. tip::
 
-GPU device nodes are located in ``/dev/dri/`` and are typically named ``renderD128``, ``renderD129``, and so on.
-You can list the available GPUs on your host system with the following command:
+   `AMD Container Runtime Toolkit
+   <https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/overview.html>`__
+   simplifies GPU selection, removing the need to manually map the render
+   nodes. This is recommended if your use case needs fine-grained GPU
+   selection. See `Running Workloads (AMD Container Toolkit Runtime docs)
+   <https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/running-workloads.html#running-workloads>`__
+   for more information.
+
+By default, ``--device /dev/dri`` grants access to all GPUs on the system.
+To limit a container to specific GPUs, pass their individual render nodes instead.
+
+List available render nodes on the host:
 
 .. code-block:: shell
 
    ls /dev/dri/render*
 
-To expose only the first two GPUs to the container, specify them directly in the run command.
-Note that ``/dev/kfd`` is always required for the compute interface.
-
-For example, to expose the first and second GPU:
+GPU render nodes are typically named ``renderD128``, ``renderD129``, and so on.
+Pass them individually alongside ``/dev/kfd``:
 
 .. code-block:: shell
 
-    docker run --device /dev/kfd --device /dev/dri/renderD128 --device /dev/dri/renderD129 ..
+   docker run --device /dev/kfd \
+       --device /dev/dri/renderD128 \
+       --device /dev/dri/renderD129 \
+       <image>
 
 .. note::
 
-  When GPUs are partitioned (such as the Instinct MI300X or MI350X Series in DPX, QPX, or
-  CPX mode), you must account for the number of partitions when selecting
-  GPUs. For example, in CPX mode, ``renderD128`` and ``renderD137``
-  correspond to the first and second GPUs. In CPX mode, ``renderD128`` to
-  ``renderD136`` correspond to different partitions of the first GPU. For more
-  information, see `GPU partition <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/gpu-partitioning/mi300x/overview.html>`_.
+   When GPUs are partitioned (for example, an Instinct MI300X or MI350X in DPX, QPX,
+   or CPX mode), each partition appears as a separate render node. In CPX mode,
+   ``renderD128`` through ``renderD136`` are partitions of the first physical GPU,
+   and ``renderD137`` is the second GPU. Account for this when selecting render nodes.
+   See `GPU partitioning
+   <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/gpu-partitioning/mi300x/overview.html>`__
+   for details.
 
-Verifying the AMD GPU driver has been loaded on GPUs
---------------------------------------------------------------------
+Docker Compose
+==============
 
-``rocminfo`` is an application for reporting information about the HSA system attributes and agents.
-``amd-smi`` is a tool that acts as a command line interface for manipulating and monitoring the amdgpu kernel.
+Docker Compose can simplify complex Docker invocations. See `Docker Compose
+usage <https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/docker-compose.html>`__
+for AMD Container Toolkit configuration examples.
 
-Running ``rocminfo`` and ``amd-smi list`` inside the container will only enumerate the GPUs passed into the docker container.
-Running ``rocminfo`` and ``amd-smi list`` on bare metal will enumerate all ROCm-capable GPUs on the machine.
+For manual Docker device passthrough, use the ``devices`` key in your Compose file:
 
-.. _docker-rocm-images:
+.. code-block:: yaml
 
-Docker images in the ROCm ecosystem
-=======================================================
+   services:
+     myapp:
+       image: <image>
+       devices:
+         - /dev/kfd
+         - /dev/dri
 
-The `ROCm Docker repository <https://github.com/ROCm/ROCm-docker>`_ hosts Dockerfiles useful for
-building your own ROCm-capable containers. The built images are available on
-`Docker Hub <https://hub.docker.com/u/rocm>`_. In particular:
+Verifying GPU access
+====================
 
-* ``rocm/rocm-terminal`` is a small image with the prerequisites to build HIP applications, but does not
-  include any libraries.
+Inside any container with ROCm installed, ``rocminfo`` and ``amd-smi list``
+enumerate only the GPUs passed into that container. On the host, they enumerate
+all ROCm-capable GPUs.
 
-* `ROCm dev images <https://hub.docker.com/u/rocm?page=1&search=dev->`__ provide a variety of OS and
-  ROCm versions, and are a great starting place for building applications.
+:doc:`rocminfo <rocminfo:index>` and :doc:`amd-smi <amdsmi:index>` are provided
+by the ROCm software stack. Run either tool to confirm the expected GPUs are
+visible.
 
-.. _pull-docker-image:
+Docker images
+=============
 
-Pull a ROCm dev Docker image
-----------------------------------------------------------------------------------
+The `ROCm Docker repository <https://github.com/ROCm/ROCm-docker>`_ hosts Dockerfiles
+for building ROCm-capable containers. Pre-built images are available on
+`Docker Hub <https://hub.docker.com/u/rocm>`_:
 
-Pull a ROCm dev Docker image with a supported configuration. See `Docker
-Hub <https://hub.docker.com/u/rocm?page=1&search=dev-ubuntu-2>`__ to browse
-available images. For example:
+* ``rocm/rocm-terminal`` — minimal image with prerequisites to build HIP applications,
+  without any libraries.
 
-.. tab-set::
+* `ROCm dev images <https://hub.docker.com/u/rocm?page=1&search=dev->`__ — a variety
+  of OS and ROCm version combinations, suitable as a base for building applications.
 
-    .. tab-item:: ROCm 7.1.1
-      :sync: rocm7
-
-      .. tab-set::
-
-          .. tab-item:: Ubuntu 24.04
-            :sync: ubuntu-24
-
-            .. code-block:: shell
-
-                docker pull rocm/dev-ubuntu-24.04:7.1.1-complete
-
-            See `rocm/dev-ubuntu-24.04:7.1.1-complete
-            <https://hub.docker.com/layers/rocm/dev-ubuntu-24.04/7.1.1-complete/images/sha256-c6648f6a60470959f5f9c653ce8397d72fc0adda455942b265a5f973c9ee5891>`__
-            on Docker Hub.
-
-          .. tab-item:: Ubuntu 22.04
-            :sync: ubuntu-22
-
-            .. code-block:: shell
-
-                docker pull rocm/dev-ubuntu-22.04:7.1.1-complete
-
-            See `rocm/dev-ubuntu-22.04:7.1.1-complete
-            <https://hub.docker.com/layers/rocm/dev-ubuntu-22.04/7.1.1-complete/images/sha256-3d5c52ee04ba79a3bae0fced468906619a1451f923c7da5c1c28c59fb2c74be3>`__
-            on Docker Hub.
-
-.. _launch-container:
-
-Launch the Docker container
-----------------------------------------------------------------------------------
-
-Launch the Docker container to allow GPU access. For example:
-
-.. tab-set::
-
-    .. tab-item:: ROCm 7.1.1
-      :sync: rocm7
-
-      .. tab-set::
-
-          .. tab-item:: Ubuntu 24.04
-            :sync: ubuntu-24
-
-            .. code-block:: shell
-
-                docker run -it \
-                    --cap-add=SYS_PTRACE \
-                    --ipc=host \
-                    --privileged=true \
-                    --shm-size=128GB \
-                    --network=host \
-                    --device=/dev/kfd \
-                    --device=/dev/dri \
-                    --group-add video \
-                    -v $HOME:$HOME \
-                    --name rocm7 \
-                    rocm/dev-ubuntu-24.04:7.1.1-complete
-
-          .. tab-item:: Ubuntu 22.04
-            :sync: ubuntu-22
-
-            .. code-block:: shell
-
-                docker run -it \
-                    --cap-add=SYS_PTRACE \
-                    --ipc=host \
-                    --privileged=true \
-                    --shm-size=128GB \
-                    --network=host \
-                    --device=/dev/kfd \
-                    --device=/dev/dri \
-                    --group-add video \
-                    -v $HOME:$HOME \
-                    --name rocm7 \
-                    rocm/dev-ubuntu-22.04:7.1.1-complete
-
-Applications
--------------------------------------------------------------------------------------------------
-
-AMD provides pre-built images for various GPU-ready AI and HPC applications through
-`Infinity Hub <https://www.amd.com/en/developer/resources/infinity-hub.html>`_. There, you'll also find examples
-for invoking each application and suggested parameters used for benchmarking.
+AMD also provides pre-built images for AI and HPC applications through
+`Infinity Hub <https://www.amd.com/en/developer/resources/infinity-hub.html>`_,
+including suggested parameters for benchmarking.
