@@ -7,13 +7,13 @@ Run ROCm Docker containers
 **************************
 
 Docker is a popular way to run ROCm workloads in a consistent, reproducible environment.
-There are two ways to grant Docker containers access to AMD GPUs:
+There are two ways to expose AMD GPUs to Docker containers:
 
 * :ref:`AMD Container Toolkit <docker-with-toolkit>` — simplifies
   GPU access within Docker environments, enhances device discovery, and enables
   better integration with modern container technologies.
 
-* :ref:`Plain Docker device passthrough <docker-plain>` — passes GPU device nodes
+* :ref:`Manual Docker device passthrough <docker-plain>` — passes GPU device nodes
   directly to the container with ``--device``. No toolkit required.
 
 Prerequisites
@@ -21,11 +21,11 @@ Prerequisites
 
 Regardless of which approach you use, the following are required on the host system:
 
-* The AMD GPU kernel-mode driver (``amdgpu-dkms``) must be installed.
+* The AMD GPU kernel-mode driver (``amdgpu-dkms``).
   See `Install amdgpu-dkms
   <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`__.
 
-* `Docker Engine <https://docs.docker.com/engine/install/>`__ must be installed.
+* `Docker Engine <https://docs.docker.com/engine/install/>`__.
 
 .. _docker-with-toolkit:
 
@@ -46,7 +46,7 @@ amd-container-runtime. Both require installing the toolkit first.
 
 .. _docker-plain:
 
-Without the AMD Container Toolkit (plain Docker)
+Without the AMD Container Toolkit
 ================================================
 
 If you prefer not to install the AMD Container Toolkit, or you're using older
