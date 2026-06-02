@@ -9,11 +9,11 @@ Run ROCm Docker containers
 Docker is a popular way to run ROCm workloads in a consistent, reproducible environment.
 There are two ways to expose AMD GPUs to Docker containers:
 
-* :ref:`AMD Container Toolkit <docker-with-toolkit>` — simplifies
+* :ref:`AMD Container Runtime Toolkit <docker-with-toolkit>` — simplifies
   GPU access within Docker environments, enhances device discovery, and enables
   better integration with modern container technologies.
 
-* :ref:`Manual Docker device passthrough <docker-plain>` — passes GPU device nodes
+* :ref:`Manual Docker device passthrough <docker-manual>` — passes GPU device nodes
   directly to the container with ``--device``. No toolkit required.
 
 Prerequisites
@@ -29,10 +29,11 @@ Regardless of which approach you use, the following are required on the host sys
 
 .. _docker-with-toolkit:
 
-With the AMD Container Toolkit
-==============================
+With the AMD Container Runtime Toolkit
+======================================
 
-The `AMD Container Toolkit <https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/overview.html>`__
+The `AMD Container Runtime Toolkit
+<https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/overview.html>`__
 provides two mechanisms for GPU injection: CDI (recommended) and the
 amd-container-runtime. Both require installing the toolkit first.
 
@@ -41,10 +42,9 @@ amd-container-runtime. Both require installing the toolkit first.
 
 2. See `Running Workloads (AMD Container Runtime Toolkit docs)
    <https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/running-workloads.html>`__
-   to get started running ROCm applications.
+   to get started running containerized ROCm applications on AMD GPUs.
 
-
-.. _docker-plain:
+.. _docker-manual:
 
 Without the AMD Container Toolkit
 =================================
@@ -78,7 +78,7 @@ The purpose of each option:
 
   Enables memory mapping. Recommended for HPC workloads that use ``numactl``
   for GPU/CPU affinity mappings.
-  See `Docker security options
+  See `Optional security options (Docker docs)
   <https://docs.docker.com/reference/cli/docker/container/run/#security-opt>`_.
 
 .. _docker-restrict-gpus:
@@ -132,7 +132,7 @@ Docker Compose can simplify complex Docker invocations. See `Docker Compose
 usage <https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/docker-compose.html>`__
 for AMD Container Toolkit configuration examples.
 
-For plain Docker device passthrough, use the ``devices`` key in your Compose file:
+For manual Docker device passthrough, use the ``devices`` key in your Compose file:
 
 .. code-block:: yaml
 
