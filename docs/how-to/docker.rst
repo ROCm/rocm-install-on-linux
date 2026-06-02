@@ -47,7 +47,7 @@ amd-container-runtime. Both require installing the toolkit first.
 .. _docker-plain:
 
 Without the AMD Container Toolkit
-================================================
+=================================
 
 If you prefer not to install the AMD Container Toolkit, or you're using older
 versions of Docker Engine, you can pass GPU device nodes directly to the
@@ -85,6 +85,16 @@ The purpose of each option:
 
 Restricting GPU access
 -----------------------
+
+.. tip::
+
+   `AMD Container Runtime Toolkit
+   <https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/overview.html>`__
+   simplifies GPU selection, removing the need to manually map the render
+   nodes. This is recommended if your use case needs fine-grained GPU
+   selection. See `Running Workloads (AMD Container Toolkit Runtime docs)
+   <https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/running-workloads.html#running-workloads>`__
+   for more information.
 
 By default, ``--device /dev/dri`` grants access to all GPUs on the system.
 To limit a container to specific GPUs, pass their individual render nodes instead.
