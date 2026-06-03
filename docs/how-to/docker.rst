@@ -122,7 +122,7 @@ Pass them individually alongside ``/dev/kfd``:
    ``renderD128`` through ``renderD136`` are partitions of the first physical GPU,
    and ``renderD137`` is the second GPU. Account for this when selecting render nodes.
    See `GPU partitioning
-   <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/gpu-partitioning/mi300x/overview.html>`__
+   <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-|amdgpu_version|/gpu-partitioning/mi300x/overview.html>`__
    for details.
 
 Docker Compose
