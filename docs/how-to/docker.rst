@@ -23,7 +23,7 @@ Regardless of which approach you use, the following are required on the host sys
 
 * The AMD GPU kernel-mode driver (``amdgpu-dkms``).
   See `Install amdgpu-dkms
-  <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-|udev_amdgpu_version|/install/package-manager-index.html>`__.
+  <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.4/install/package-manager-index.html>`__.
 
 * `Docker Engine <https://docs.docker.com/engine/install/>`__.
 
@@ -122,7 +122,7 @@ Pass them individually alongside ``/dev/kfd``:
    ``renderD128`` through ``renderD136`` are partitions of the first physical GPU,
    and ``renderD137`` is the second GPU. Account for this when selecting render nodes.
    See `GPU partitioning
-   <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-|udev_amdgpu_version|/gpu-partitioning/mi300x/overview.html>`__
+   <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.4/gpu-partitioning/mi300x/overview.html>`__
    for details.
 
 Docker Compose
