@@ -58,7 +58,7 @@ Installing
 Install kernel driver
 --------------------------------------------------------------------------
 
-For information about the AMDGPU driver installation, see the `SUSE Linux Enterprise Server native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-sles.html>`_ in the AMD Instinct Data Center GPU Documentation.
+For information about the AMDGPU driver installation, see the `SUSE Linux Enterprise Server native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-|amdgpu_version|/install/detailed-install/package-manager/package-manager-sles.html>`_ in the AMD Instinct Data Center GPU Documentation.
 
 For information about driver compatibility, see :doc:`../../../reference/user-kernel-space-compat-matrix`.
 

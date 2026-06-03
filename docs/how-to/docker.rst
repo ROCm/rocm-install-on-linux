@@ -23,7 +23,7 @@ Regardless of which approach you use, the following are required on the host sys
 
 * The AMD GPU kernel-mode driver (``amdgpu-dkms``).
   See `Install amdgpu-dkms
-  <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`__.
+  <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-|amdgpu_version|/install/package-manager-index.html>`__.
 
 * `Docker Engine <https://docs.docker.com/engine/install/>`__.
 
