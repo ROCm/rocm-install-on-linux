@@ -6,7 +6,7 @@
 User and AMD GPU Driver (amdgpu) support matrix
 *****************************************************************************************
 
-The AMD GPU Driver (amdgpu) is now distributed separately from the ROCm software stack and is stored under in its own location ``/amdgpu/`` in the package repository at `repo.radeon.com <https://repo.radeon.com/amdgpu/>`_. The first release was designated as AMD GPU Driver (amdgpu) version 30.10. Starting from ROCm™ 6.4.0, forward and backward compatibility between the AMD GPU Driver (amdgpu) and its user space software is provided up to a year apart (assuming hardware support is available in both). For earlier ROCm releases, the compatibility is provided for +/- 2 releases. This table shows the compatibility combinations that are currently supported.
+The `AMD GPU Driver (amdgpu) <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.20.0/>`__ is now distributed separately from the ROCm software stack and is stored under in its own location ``/amdgpu/`` in the package repository at `repo.radeon.com <https://repo.radeon.com/amdgpu/>`_. The first release was designated as AMD GPU Driver (amdgpu) version 30.10. Starting from ROCm™ 6.4.0, forward and backward compatibility between the AMD GPU Driver (amdgpu) and its user space software is provided up to a year apart (assuming hardware support is available in both). For earlier ROCm releases, the compatibility is provided for +/- 2 releases. This table shows the compatibility combinations that are currently supported.
 
 .. note ::
 
