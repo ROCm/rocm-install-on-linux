@@ -194,7 +194,7 @@ AMDGPU driver installation
 
                    .. caution::
 
-                      Remove any AMDGPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-ubuntu.html#uninstalling>`__.
+                      Remove any AMDGPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.0/install/detailed-install/package-manager/package-manager-ubuntu.html#uninstalling>`__.
 
                    .. code-block:: bash
                        :substitutions:
@@ -218,7 +218,7 @@ AMDGPU driver installation
 
                    .. caution::
 
-                      Remove any AMDGPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-debian.html#uninstalling>`_. 
+                      Remove any AMDGPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.0/install/detailed-install/package-manager/package-manager-debian.html#uninstalling>`_. 
 
                    .. code-block:: bash
                        :substitutions:
@@ -243,7 +243,7 @@ AMDGPU driver installation
 
                    .. caution::
 
-                      Remove any AMDGPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-rhel.html#uninstalling>`__. 
+                      Remove any AMDGPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.0/install/detailed-install/package-manager/package-manager-rhel.html#uninstalling>`__. 
                    
                    Before installing AMDGPU driver on RHEL, :ref:`register and update your Enterprise Linux <register-enterprise-linux>`.
 
@@ -277,7 +277,7 @@ AMDGPU driver installation
 
                    .. caution::
 
-                      Remove any AMDGPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-ol.html#uninstalling>`__.
+                      Remove any AMDGPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.0/install/detailed-install/package-manager/package-manager-ol.html#uninstalling>`__.
                       
                    Before installing AMDGPU driver on OL, :ref:`update your Enterprise Linux <update-enterprise-linux>`.
 
@@ -305,7 +305,7 @@ AMDGPU driver installation
 
                    .. caution::
 
-                      Remove any AMDGPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-sles.html#uninstalling>`__. 
+                      Remove any AMDGPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.0/install/detailed-install/package-manager/package-manager-sles.html#uninstalling>`__. 
                    
                    Before installing AMDGPU driver on SLES, :ref:`register and update your Enterprise Linux <register-enterprise-linux>`.
 
@@ -334,7 +334,7 @@ AMDGPU driver installation
 
                    .. caution::
 
-                      Remove any AMDGPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-rl.html#uninstalling>`__. 
+                      Remove any AMDGPU driver from a previous installation by following uninstallation steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.0/install/detailed-install/package-manager/package-manager-rl.html#uninstalling>`__. 
 
                    .. code-block:: bash
                        :substitutions:
