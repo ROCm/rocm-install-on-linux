@@ -51,7 +51,7 @@ Installing
 Install kernel driver
 --------------------------------------------------------------------------
 
-For information about the AMDGPU driver installation, see the `Rocky Linux native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/package-manager/package-manager-rl.html>`_ in the AMD Instinct Data Center GPU Documentation.
+For information about the AMDGPU driver installation, see the `Rocky Linux native installation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.10.1/install/detailed-install/package-manager/package-manager-rl.html>`_ in the AMD Instinct Data Center GPU Documentation.
 
 For information about driver compatibility, see :doc:`../../../reference/user-kernel-space-compat-matrix`.
 
