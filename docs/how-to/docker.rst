@@ -14,9 +14,9 @@ Prerequisites
 
 Docker containers share the kernel with the host OS. Therefore, the ROCm kernel-mode driver (``amdgpu-dkms``) must be installed on the host. If you've already installed ROCm, you probably already have ``amdgpu-dkms``.
 
-* `Check for amdgpu-dkms <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/detailed-install/post-install.html#verify-kernel-mode-driver-installation>`_.
+* `Check for amdgpu-dkms <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.3/install/detailed-install/post-install.html#verify-kernel-mode-driver-installation>`_.
 
-* If you don't have ``amdgpu-dkms``, follow the :ref:`standard ROCm installation instructions <rocm-install-quick>` (which comes with ``amdgpu-dkms``) or `install amdgpu-dkms <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`__ separately.
+* If you don't have ``amdgpu-dkms``, follow the :ref:`standard ROCm installation instructions <rocm-install-quick>` (which comes with ``amdgpu-dkms``) or `install amdgpu-dkms <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.3/install/package-manager-index.html>`__ separately.
 
 .. seealso::
 
@@ -115,7 +115,7 @@ For example, to expose the first and second GPU:
   GPUs. For example, in CPX mode, ``renderD128`` and ``renderD137``
   correspond to the first and second GPUs. In CPX mode, ``renderD128`` to
   ``renderD136`` correspond to different partitions of the first GPU. For more
-  information, see `GPU partition <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/gpu-partitioning/mi300x/overview.html>`_.
+  information, see `GPU partition <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.3/gpu-partitioning/mi300x/overview.html>`_.
 
 Verifying the AMD GPU driver has been loaded on GPUs
 --------------------------------------------------------------------
