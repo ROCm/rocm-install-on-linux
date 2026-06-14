@@ -166,7 +166,7 @@ Install kernel driver
 
                    .. caution::
 
-                      Remove any AMD GPU driver from a previous installation by following the uninstall steps in :ref:`Uninstall kernel driver <uninstall-kernel-driver>`.
+                      Remove any AMDGPU driver from a previous installation by following the uninstall steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.0/install/detailed-install/package-manager/package-manager-ubuntu.html#uninstalling>`__.
 
                    .. code-block:: bash
                        :substitutions:
@@ -187,7 +187,7 @@ Install kernel driver
 
                    .. caution::
 
-                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in :ref:`Uninstall kernel driver <uninstall-kernel-driver>`.
+                      Remove any AMDGPU driver from a previous installation by following the uninstall steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.0/install/detailed-install/package-manager/package-manager-debian.html#uninstalling>`_. 
 
                    .. code-block:: bash
                        :substitutions:
@@ -209,7 +209,7 @@ Install kernel driver
 
                    .. caution::
 
-                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in :ref:`Uninstall kernel driver <uninstall-kernel-driver>`.
+                      Remove any AMDGPU driver from a previous installation by following the uninstall steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.0/install/detailed-install/package-manager/package-manager-rhel.html#uninstalling>`__. 
                    
                    .. code-block:: bash
                        :substitutions:
@@ -235,7 +235,7 @@ Install kernel driver
 
                    .. caution::
 
-                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in :ref:`Uninstall kernel driver <uninstall-kernel-driver>`.
+                      Remove any AMDGPU driver from a previous installation by following the uninstall steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.0/install/detailed-install/package-manager/package-manager-ol.html#uninstalling>`__.
 
                    .. code-block:: bash
                        :substitutions:
@@ -255,7 +255,7 @@ Install kernel driver
 
                    .. caution::
 
-                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in :ref:`Uninstall kernel driver <uninstall-kernel-driver>`.
+                      Remove any AMDGPU driver from a previous installation by following the uninstall steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.0/install/detailed-install/package-manager/package-manager-sles.html#uninstalling>`__. 
 
                    .. code-block:: bash
                        :substitutions:
@@ -276,7 +276,7 @@ Install kernel driver
 
                    .. caution::
 
-                      Remove any AMD GPU driver from a previous installation by following uninstallation steps in :ref:`Uninstall kernel driver <uninstall-kernel-driver>`.
+                      Remove any AMDGPU driver from a previous installation by following the uninstall steps in `AMD GPU Driver documentation <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-30.30.0/install/detailed-install/package-manager/package-manager-rl.html#uninstalling>`__. 
 
                    .. code-block:: bash
                        :substitutions:
