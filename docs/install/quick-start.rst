@@ -143,10 +143,7 @@ Register repositories
                    .. code-block:: bash
                        :substitutions:
 
-                       sudo tdnf install dnf-plugin-config-manager
                        sudo curl -o /etc/yum.repos.d/azurelinux-extended.repo https://packages.microsoft.com/azurelinux/{{ os_version }}/prod/extended/x86_64/config.repo
-                       sudo tdnf install python3-setuptools python3-wheel
-                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
                        sudo tee /etc/yum.repos.d/rocm.repo <<EOF
                        [rocm]
                        name=ROCm |amdgpu_version| repository
@@ -155,8 +152,8 @@ Register repositories
                        gpgcheck=1
                        gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
                        EOF
-                       sudo tdnf install rocm
-                       sudo tdnf clean all
+                       sudo tdnf install azurelinux-repos-amd
+                       sudo tdnf repolist --refresh
 
                 {% endfor %}
 
@@ -307,8 +304,6 @@ Install kernel driver
                        :substitutions:
 
                        sudo tdnf install "kernel-headers-$(uname -r)" "kernel-devel-$(uname -r)"
-                       sudo tdnf install azurelinux-repos-amd
-                       sudo tdnf repolist --refresh
                        sudo tdnf install amdgpu
 
                    .. note::
@@ -446,6 +441,26 @@ Install ROCm
 
                 {% endfor %}
 
+        .. tab-item:: Azure Linux
+            :sync: azl-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['azl_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo tdnf install dnf-plugin-config-manager
+                       sudo tdnf install python3-setuptools python3-wheel
+                       sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
+                       sudo tdnf install rocm
+                       sudo tdnf clean all
+
+                {% endfor %}
+
         .. tab-item:: Rocky Linux
             :sync: rl-tab
 
@@ -574,6 +589,23 @@ Uninstall ROCm
 
                 {% endfor %}
 
+        .. tab-item:: Azure Linux
+            :sync: azl-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['azl_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo tdnf remove rocm
+                       sudo tdnf remove rocm-core
+
+                {% endfor %}
+
         .. tab-item:: Rocky Linux
             :sync: rl-tab
 
@@ -680,6 +712,23 @@ Uninstall kernel driver
                        sudo zypper remove amdgpu-dkms amdgpu-dkms-firmware
 
                 {% endfor %}
+
+        .. tab-item:: Azure Linux
+            :sync: azl-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['azl_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                       sudo tdnf remove amdgpu amdgpu-firmware kernel-drivers-gpu
+
+                {% endfor %}
+
 
         .. tab-item:: Rocky Linux
             :sync: rl-tab
@@ -810,6 +859,27 @@ Remove repositories
                         # Clear the cache and clean the system
                         sudo zypper clean --all
                         sudo zypper refresh
+
+                {% endfor %}
+
+        .. tab-item:: Azure Linux
+            :sync: azl-tab
+
+            .. tab-set::
+
+                {% for os_version in config.html_context['azl_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
+                .. tab-item:: {{ os_version }}
+
+                   .. code-block:: bash
+                       :substitutions:
+
+                        sudo rm /etc/yum.repos.d/rocm.repo*
+                        sudo tdnf remove azurelinux-repos-amd
+
+                        # Clear the cache and clean the system
+                        sudo rm -rf /var/cache/tdnf
+                        sudo tdnf clean all
 
                 {% endfor %}
 
