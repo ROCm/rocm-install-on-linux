@@ -133,8 +133,8 @@ Register repositories
 
                        sudo curl -o /etc/yum.repos.d/azurelinux-extended.repo https://packages.microsoft.com/azurelinux/{{ os_version }}/prod/extended/x86_64/config.repo
                        sudo tee /etc/yum.repos.d/rocm.repo <<EOF
-                       [ROCm-|amdgpu_version|]
-                       name=ROCm|amdgpu_version|
+                       [rocm]
+                       name=ROCm |amdgpu_version| repository
                        baseurl=https://repo.radeon.com/rocm/azurelinux{{ os_major }}/|amdgpu_version|/main/
                        enabled=1
                        gpgcheck=1
