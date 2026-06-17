@@ -300,6 +300,10 @@ Install kernel driver
                 {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
 
+                   .. caution::
+
+                      Remove any AMD GPU driver from a previous installation by following the uninstall steps in :ref:`Uninstall kernel driver <uninstall-kernel-driver>`.
+
                    .. code-block:: bash
                        :substitutions:
 
