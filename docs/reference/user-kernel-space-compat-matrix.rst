@@ -2,6 +2,18 @@
   :description: User and AMD GPU Driver (amdgpu) support matrix
   :keywords: Linux support, support matrix, system requirements, user space versions, kernel-mode GPU driver, KMD, AMD, ROCm
 
+.. raw:: html
+
+   <meta http-equiv="refresh" content="0; url=https://rocm.docs.amd.com/en/latest/compatibility/compatibility-matrix.html">
+
+$$$$$$$$$$$$$$
+Redirecting...
+$$$$$$$$$$$$$$
+
+.. important::
+
+   This page has moved! Go to `<https://rocm.docs.amd.com/en/latest/compatibility/compatibility-matrix.html>`__ for the latest compatibility information.
+
 *****************************************************************************************
 User and AMD GPU Driver (amdgpu) support matrix
 *****************************************************************************************

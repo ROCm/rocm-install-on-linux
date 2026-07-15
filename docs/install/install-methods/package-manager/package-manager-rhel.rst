@@ -3,6 +3,18 @@
   :keywords: ROCm install, installation instructions, RHEL, Red Hat Enterprise Linux native installation,
     AMD, ROCm
 
+.. raw:: html
+
+   <meta http-equiv="refresh" content="0; url=https://rocm.docs.amd.com/en/latest/install/rocm.html">
+
+$$$$$$$$$$$$$$
+Redirecting...
+$$$$$$$$$$$$$$
+
+.. important::
+
+   This page has moved! Go to `<https://rocm.docs.amd.com/en/latest/install/rocm.html>`__ for the latest instructions on installing ROCm.
+
 **********************************************************************************************
 Red Hat Enterprise Linux native installation
 **********************************************************************************************

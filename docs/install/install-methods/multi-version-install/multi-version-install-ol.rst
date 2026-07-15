@@ -2,6 +2,18 @@
   :description: Install multiple ROCm versions
   :keywords: installation instructions, AMD, ROCm, multiple versions, OL, Oracle Linux
 
+.. raw:: html
+
+   <meta http-equiv="refresh" content="0; url=https://rocm.docs.amd.com/en/latest/install/rocm.html">
+
+$$$$$$$$$$$$$$
+Redirecting...
+$$$$$$$$$$$$$$
+
+.. important::
+
+   This page has moved! Go to `<https://rocm.docs.amd.com/en/latest/install/rocm.html>`__ for the latest instructions on installing ROCm.
+
 .. _ol-multi-version_install:
 
 *****************************************

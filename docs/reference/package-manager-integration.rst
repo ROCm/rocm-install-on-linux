@@ -2,6 +2,18 @@
   :description: Package details
   :keywords: OpenCL, OpenMP, package manager, AMD, ROCm
 
+.. raw:: html
+
+   <meta http-equiv="refresh" content="0; url=https://rocm.docs.amd.com/en/latest/install/rocm.html">
+
+$$$$$$$$$$$$$$
+Redirecting...
+$$$$$$$$$$$$$$
+
+.. important::
+
+   This page has moved! Go to `<https://rocm.docs.amd.com/en/latest/install/rocm.html>`__ for the latest instructions on installing ROCm.
+
 ************************************************************************************
 Package details
 ************************************************************************************

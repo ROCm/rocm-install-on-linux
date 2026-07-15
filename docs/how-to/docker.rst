@@ -2,6 +2,18 @@
    :description: Running ROCm workloads in Docker containers on AMD GPUs
    :keywords: Docker, AMD, ROCm, GPU, container, amd-container-runtime, CDI
 
+.. raw:: html
+
+   <meta http-equiv="refresh" content="0; url=https://rocm.docs.amd.com/en/latest/install/rocm.html">
+
+$$$$$$$$$$$$$$
+Redirecting...
+$$$$$$$$$$$$$$
+
+.. important::
+
+   This page has moved! Go to `<https://rocm.docs.amd.com/en/latest/install/rocm.html>`__ for the latest instructions on installing ROCm.
+
 **************************
 Run ROCm Docker containers
 **************************

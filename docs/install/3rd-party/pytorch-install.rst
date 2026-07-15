@@ -2,6 +2,18 @@
   :description: Install PyTorch on ROCm
   :keywords: installation, docker, PyTorch, deep learning, AMD, ROCm
 
+.. raw:: html
+
+   <meta http-equiv="refresh" content="0; url=https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html">
+
+$$$$$$$$$$$$$$
+Redirecting...
+$$$$$$$$$$$$$$
+
+.. important::
+
+   This page has moved! Go to `<https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html>`__ for the latest instructions on installing PyTorch.
+
 *************************************************************************************
 PyTorch on ROCm installation
 *************************************************************************************

@@ -2,6 +2,18 @@
   :description: Install Deep Graph Library (DGL) on ROCm
   :keywords: installation, docker, DGL, deep learning, AMD, ROCm
 
+.. raw:: html
+
+   <meta http-equiv="refresh" content="0; url=https://rocm.docs.amd.com">
+
+$$$$$$$$$$$$$$
+Redirecting...
+$$$$$$$$$$$$$$
+
+.. important::
+
+   This page has moved! Go to `<https://rocm.docs.amd.com>`__ for the latest documentation.
+
 ********************************************************************************
 DGL on ROCm installation
 ********************************************************************************

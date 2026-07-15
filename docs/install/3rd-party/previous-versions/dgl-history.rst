@@ -4,6 +4,18 @@
   :description: Deep Graph Library (DGL) version history
   :keywords: installation, compatibility, Docker, version, deep graph library, DGL, AMD, ROCm
 
+.. raw:: html
+
+   <meta http-equiv="refresh" content="0; url=https://rocm.docs.amd.com">
+
+$$$$$$$$$$$$$$
+Redirecting...
+$$$$$$$$$$$$$$
+
+.. important::
+
+   This page has moved! Go to `<https://rocm.docs.amd.com>`__ for the latest documentation.
+
 ********************************************************************************
 DGL version history
 ********************************************************************************

@@ -3,6 +3,18 @@
   :keywords: Linux support, ROCm distributions, system requirements, supported GPUs,  Instinct,
     Radeon PRO, Radeon, AMD, ROCm
 
+.. raw:: html
+
+   <meta http-equiv="refresh" content="0; url=https://rocm.docs.amd.com/en/latest/compatibility/compatibility-matrix.html">
+
+$$$$$$$$$$$$$$
+Redirecting...
+$$$$$$$$$$$$$$
+
+.. important::
+
+   This page has moved! Go to `<https://rocm.docs.amd.com/en/latest/compatibility/compatibility-matrix.html>`__ for the latest compatibility information.
+
 .. _system-requirements:
 
 **************************************************************************************

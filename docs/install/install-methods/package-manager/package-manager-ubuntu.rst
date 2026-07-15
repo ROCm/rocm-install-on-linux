@@ -2,6 +2,18 @@
   :description: Ubuntu native installation
   :keywords: ROCm install, installation instructions, Ubuntu, Ubuntu native installation, AMD, ROCm
 
+.. raw:: html
+
+   <meta http-equiv="refresh" content="0; url=https://rocm.docs.amd.com/en/latest/install/rocm.html">
+
+$$$$$$$$$$$$$$
+Redirecting...
+$$$$$$$$$$$$$$
+
+.. important::
+
+   This page has moved! Go to `<https://rocm.docs.amd.com/en/latest/install/rocm.html>`__ for the latest instructions on installing ROCm.
+
 ****************************************************************************
 Ubuntu native installation
 ****************************************************************************

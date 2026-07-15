@@ -2,6 +2,18 @@
   :description: Install JAX on ROCm
   :keywords: installation, docker, JAX, deep learning, AMD, ROCm
 
+.. raw:: html
+
+   <meta http-equiv="refresh" content="0; url=https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/jax/install.html">
+
+$$$$$$$$$$$$$$
+Redirecting...
+$$$$$$$$$$$$$$
+
+.. important::
+
+   This page has moved! Go to `<https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/jax/install.html>`__ for the latest instructions on installing JAX.
+
 *************************************************************************************
 JAX on ROCm installation
 *************************************************************************************

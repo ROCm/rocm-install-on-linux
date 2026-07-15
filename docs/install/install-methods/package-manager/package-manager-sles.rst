@@ -3,6 +3,18 @@
   :keywords: ROCm install, installation instructions, SUSE, SUSE Linux Enterprise Server native installation,
     AMD, ROCm
 
+.. raw:: html
+
+   <meta http-equiv="refresh" content="0; url=https://rocm.docs.amd.com/en/latest/install/rocm.html">
+
+$$$$$$$$$$$$$$
+Redirecting...
+$$$$$$$$$$$$$$
+
+.. important::
+
+   This page has moved! Go to `<https://rocm.docs.amd.com/en/latest/install/rocm.html>`__ for the latest instructions on installing ROCm.
+
 *********************************************************************************************
 SUSE Linux Enterprise Server native installation
 *********************************************************************************************

@@ -2,6 +2,19 @@
   :description: ROCm installation for Linux
   :keywords: ROCm installation, AMD, ROCm, Package manager, AMDGPU
 
+.. raw:: html
+
+   <meta http-equiv="refresh" content="0; url=https://rocm.docs.amd.com/en/latest/install/rocm.html">
+
+$$$$$$$$$$$$$$
+Redirecting...
+$$$$$$$$$$$$$$
+
+.. important::
+
+   This page has moved! Go to `<https://rocm.docs.amd.com/en/latest/install/rocm.html>`__ for the latest instructions on installing ROCm.
+
+
 .. _rocm-install-home:
 
 ****************************************************************
