@@ -120,7 +120,7 @@ If ``update-alternatives`` or ``environment-modules`` are not available on the s
 .. code-block:: shell
    :substitutions:
 
-   export LD_LIBRARY_PATH=/opt/rocm-|rocm_directory_version|/lib
+   export LD_LIBRARY_PATH=/opt/rocm-|rocm_directory_version|/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 
 4. Configure OpenCL
 -----------------------------------------------------
